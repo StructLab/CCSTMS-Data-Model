@@ -1,3 +1,6 @@
+![europesRail](https://github.com/user-attachments/assets/1bdea4d1-6623-409d-bd40-17a2c865db76)
+
+
 # CCS/TMS Data Model
 
 Welcome to the **CCS/TMS Data Model Repository**! This repository serves as an extension to the Transversal CCS central resources available on [Polarion](https://polarion.rail-research.europa.eu/polarion/#/project/SPT2TS/wiki/TCCS%20SD1%20-%20Data%20Model/TCCS%20SD1%20-%20Data%20Model_INFRA) for easy accessibility and collaboration. CCS/TMS is a comprehensive, harmonized framework developed to standardize data exchange and management within the European Railway System. This data model supports the digital transformation and interoperability needs of the railway sector by providing consistent data structures for traffic control, train management, and other rail-related applications.
