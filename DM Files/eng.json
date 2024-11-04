@@ -1,7 +1,7 @@
 {
   "name": "eng",
   "intId": 3,
-  "isDefinedBy": "http://ERJU/datamodel/1.0/eng",
+  "isDefinedBy": "http://ERJU/datamodel/0.4/eng",
   "prefix": "eng",
   "containerStruct": "ETCSEngineering",
   "version": "1.0",
@@ -52,7 +52,7 @@
     ]
   },
   {
-    "name": "Switch",
+    "name": "SimplePoint",
     "info": "Defines the physical track asset Simple Point",
     "attrs": [
       {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.SimplePoint",
@@ -171,10 +171,10 @@
   {
     "name": "EngArea",
     "attrs": [
-      {"intId": 1, "name": "engAreaId", "dataType": "string", "key": "global", "sameKeyAs": "infra.FunctionalArea",
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.FunctionalArea",
        "info": "Identity of the object; used for referencing"},
       {"intId": 2, "name": "defaultSleepersType", "enumType": "SleepersType"},
-      {"intId": 3, "name": "simplePoints", "composition": "Switch", "multiplicity": "0..*", "sortedByKey": false},
+      {"intId": 3, "name": "simplePoints", "composition": "SimplePoint", "multiplicity": "0..*", "sortedByKey": false},
       {"intId": 4, "name": "crossings", "composition": "Crossing", "multiplicity": "0..*", "sortedByKey": false},
       {"intId": 5, "name": "levelCrossings", "composition": "LevelCrossing", "multiplicity": "0..*", "sortedByKey": false},
       {"intId": 6, "name": "baliseGroup", "composition": "BaliseGroup", "multiplicity": "0..*", "sortedByKey": false},
@@ -188,7 +188,7 @@
   {
     "name": "LocationAccuracyArea",
     "attrs": [
-      {"intId": 1, "name": "locationAccuracyAreaId", "dataType": "string", "key": "global", "sameKeyAs": "infra.FunctionalArea",
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.FunctionalArea",
        "info": "Identity of the object; used for referencing"},
       {"intId": 2, "name": "baliseAccuracies", "composition": "BaliseAccuracy", "multiplicity": "0..*", "sortedByKey": true},
       {"intId": 3, "name": "etcsMarkerAccuracies", "composition": "EtcsMarkerAccuracy", "multiplicity": "0..*", "sortedByKey": true},
@@ -245,7 +245,7 @@
   {
     "name": "TrackEdgeKmSigns",
     "attrs": [
-      {"intId": 1, "name": "trackEdgeKmSignsId", "dataType": "string", "key": "global", "sameKeyAs": "infra.TrackEdge",
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.TrackEdge",
        "info": "Identity of the object; used for referencing"},
       {"intId": 2, "name": "kmSigns", "composition": "KmSign", "multiplicity": "0..*", "sortedByKey": false,
        "info": "sorted by pos from 0 to length"}
@@ -264,7 +264,7 @@
   {
     "name": "KmArea",
     "attrs": [
-      {"intId": 1, "name": "kmAreaId", "dataType": "string", "sameKeyAs": "TopoArea",
+      {"intId": 1, "name": "id", "dataType": "string", "sameKeyAs": "TopoArea",
        "info": "Identity of the object; used for referencing"},
       {"intId": 2, "name": "trackEdgeKmSigns", "composition": "TrackEdgeKmSigns", "multiplicity": "0..*", "sortedByKey": true,
        "info": "composes of track edge km signs"}
