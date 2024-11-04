@@ -9808,8 +9808,8 @@ era:elementId rdf:type owl:DatatypeProperty ;
               rdfs:label "Element Id"@en .
 
 
-###  http://data.europa.eu/949/elementLength
-era:elementLength rdf:type owl:DatatypeProperty ;
+###  http://data.europa.eu/949/trackEdgeLength
+era:trackEdgeLength rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf era:length ;
                   rdfs:domain era:LinearElement ;
                   rdfs:range xsd:unsignedInt ;
