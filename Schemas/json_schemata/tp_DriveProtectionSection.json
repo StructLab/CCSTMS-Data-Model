@@ -1,0 +1,49 @@
+{
+  "$id": "https://ERJU/tp_DriveProtectionSection",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_TrackEdgeSection": {
+      "type": "object",
+      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "properties": {
+        "trackEdge": {
+          "type": "string",
+          "description": "refers to track edge"
+        },
+        "skipFromStart": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [0..skipFromStart]."
+        },
+        "skipFromEnd": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [skipFromEnd, length]."
+        }
+      },
+      "required": ["trackEdge"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines a DPS for a section of track",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "name": {
+      "type": "string"
+    },
+    "trackEdgeSection": {
+      "type": "object",
+      "$ref": "#/definitions/infra_TrackEdgeSection"
+    },
+    "maxFlankProtectionSpeed": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": ["id", "name", "trackEdgeSection"],
+  "additionalProperties": false
+}

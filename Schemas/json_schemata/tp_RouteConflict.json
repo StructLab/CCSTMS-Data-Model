@@ -1,0 +1,9 @@
+{
+  "$id": "https://ERJU/tp_RouteConflict",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "additionalProperties": false
+}

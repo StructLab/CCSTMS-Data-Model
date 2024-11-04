@@ -1,0 +1,59 @@
+{
+  "$id": "https://ERJU/tp_SimplePoint",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "An object to extend infra.SimplePoint",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "routeRequiresPointRight": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "routes require this SimplePoint to allow travelling through pointRight"
+       }
+    },
+    "routeRequiresPointLeft": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "routes require this SimplePoint to allow travelling through pointLeft"
+       }
+    },
+    "transitLockingPointRight": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "Transit that is locking the SimplePoint to right"
+       }
+    },
+    "transitLockingPointLeft": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "Transit that is locking the SimplePoint to left"
+       }
+    },
+    "zoneLockingPointRight": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "Zone (TvpSection of a single track) that is locking the SimplePoint to right"
+       }
+    },
+    "zoneLockingPointLeft": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "Zone that is locking the SimplePoint to left"
+       }
+    }
+  },
+  "required": ["id"],
+  "additionalProperties": false
+}
