@@ -1,0 +1,21 @@
+{
+  "$id": "https://ERJU/opp_WarningDevice",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "globally unique key (e.g. uuid)"
+    },
+    "deviceType": {
+      "type": "string",
+      "description": "defines the different warning devices",
+      "enum": ["acousticalIndicator", "opticalIndicator", "hapticIndicator"]
+    }
+  },
+  "required": ["id"],
+  "additionalProperties": false
+}

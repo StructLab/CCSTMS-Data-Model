@@ -1,0 +1,16 @@
+{
+  "$id": "https://ERJU/ss026_CountryId",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "properties": {
+    "nid_c": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Identity number of the country or region (Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily followadministrativeor political boundaries)"
+    }
+  },
+  "additionalProperties": false
+}

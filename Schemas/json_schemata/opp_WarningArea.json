@@ -1,0 +1,66 @@
+{
+  "$id": "https://ERJU/opp_WarningArea",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_TrackEdgeSection": {
+      "type": "object",
+      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "properties": {
+        "trackEdge": {
+          "type": "string",
+          "description": "refers to track edge"
+        },
+        "skipFromStart": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [0..skipFromStart]."
+        },
+        "skipFromEnd": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [skipFromEnd, length]."
+        }
+      },
+      "required": ["trackEdge"],
+      "additionalProperties": false
+    },
+    "opp_WarningDevice": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "globally unique key (e.g. uuid)"
+        },
+        "deviceType": {
+          "type": "string",
+          "description": "defines the different warning devices",
+          "enum": ["acousticalIndicator", "opticalIndicator", "hapticIndicator"]
+        }
+      },
+      "required": ["id"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "trackEdgeSections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "protected area",
+        "$ref": "#/definitions/infra_TrackEdgeSection"
+       },
+      "minItems": 1
+    },
+    "warningDevices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/opp_WarningDevice"
+       },
+      "minItems": 1
+    }
+  },
+  "required": ["trackEdgeSections", "warningDevices"],
+  "additionalProperties": false
+}

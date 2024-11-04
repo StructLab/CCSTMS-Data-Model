@@ -1,0 +1,26 @@
+{
+  "$id": "https://ERJU/ss026_DLMCondition",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "properties": {
+    "d_trackcond": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Track condition distance (The incremental distance to where the track conditions change. Comment : OnlyifQ_TRACKINIT=0, D_TRACKCOND and the following variables follow)"
+    },
+    "l_trackcond": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Length for which the defined track condition is valid."
+    },
+    "m_trackcond": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Type of track condition"
+    }
+  },
+  "additionalProperties": false
+}

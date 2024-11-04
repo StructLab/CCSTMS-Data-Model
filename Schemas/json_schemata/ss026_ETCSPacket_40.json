@@ -1,0 +1,22 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_40",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": " Track Condition Change of allowed current consumption (The packet gives information about change of the allowed current consumption)",
+  "properties": {
+    "d_current": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Distance to change of allowed current consumption"
+    },
+    "m_current": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Allowed current consumption (It defines the allowed current consumption to be used by the train) "
+    }
+  },
+  "additionalProperties": false
+}

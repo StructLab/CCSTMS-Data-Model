@@ -1,0 +1,17 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_66",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": " Temporary Speed Restriction Revocation (Transmission of temporary speed restriction revocation)",
+  "properties": {
+    "nid_tsr": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Identity number of Temporary Speed Restriction; Identity of TSR to be revoked"
+    }
+  },
+  "additionalProperties": false
+}

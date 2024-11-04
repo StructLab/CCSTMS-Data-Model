@@ -1,0 +1,26 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_71",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "Thispacket is used when the tracksiderequests a change of the adhesion factor to be used in the brake model.",
+  "properties": {
+    "d_adhesion": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Distance to start of area with reduced adhesion factor."
+    },
+    "l_adhesion": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Length of reduced adhesion (Length for which the reducedadhesion factor apply.)"
+    },
+    "m_adhesion": {
+      "type": "boolean",
+      "description": "Adhesion factor."
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,25 @@
+{
+  "$id": "https://ERJU/opp_PhysicalTrainUnitIdentifier",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "properties": {
+    "trainRunningNumber": {
+      "type": "string"
+    },
+    "additionalTrainRunningNumber": {
+      "type": "string",
+      "description": "Distinction between Operational Train Units with the same trainRunningNumber. This may occur if a trainRunningNumber is reused for different spare trains."
+    },
+    "tafTapTsiTrainID": {
+      "type": "string"
+    },
+    "leadingOnBoardUnitId": {
+      "type": "string",
+      "description": "see NID_ENGINE"
+    }
+  },
+  "additionalProperties": false
+}

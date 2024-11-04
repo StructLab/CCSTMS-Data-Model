@@ -1,0 +1,17 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_16",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": " Repositioning Information (Transmission of the update of an MA section)",
+  "properties": {
+    "l_section": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Length of section in the MA"
+    }
+  },
+  "additionalProperties": false
+}

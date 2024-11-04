@@ -1,0 +1,37 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_67",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "ss026_DLTrackCond": {
+      "type": "object",
+      "properties": {
+        "d_trackcond": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Track condition distance (The incremental distance to where the track conditions change)"
+        },
+        "l_trackcond": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Length for which the defined track condition is valid. (Thedistanceforwhichintegrity check alarms of balise transmission shall be ignored)"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": " Track Condition Big Metal Masses.This packet gives details concerning where to ignore integrity check alarms of balise transmission due to big metal masses trackside",
+  "properties": {
+    "dlTrackConditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/ss026_DLTrackCond"
+       },
+      "minItems": 1,
+      "maxItems": 32
+    }
+  },
+  "required": ["dlTrackConditions"],
+  "additionalProperties": false
+}

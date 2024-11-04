@@ -1,0 +1,39 @@
+{
+  "$id": "https://ERJU/opp_RestrictedAspects",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "properties": {
+    "temporarySpeedRestriction": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "use 0 if not defined"
+    },
+    "allowedDrivingModes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["undefined", "onSight", "fullSupervision", "standBy"]
+       }
+    },
+    "nonStopping": {
+      "type": "boolean",
+      "description": "if true, the trains defined in trainGroupSpec shall not stop within restriction area"
+    },
+    "trackClosure": {
+      "type": "boolean",
+      "description": "if true, the trains defined in trainGroupSpec shall not enter restriction area"
+    },
+    "operationalRadioHole": {
+      "type": "boolean",
+      "description": "if true radio communication is restricted within restriction area"
+    },
+    "maxAdhesion": {
+      "type": "string",
+      "enum": ["dryRailHigh", "dryRailMedium", "dryRailLow", "lowAdhesion", "veryLowAdhesion", "extremelyLowAdhesion", "unknownAdhesion"]
+    }
+  },
+  "additionalProperties": false
+}

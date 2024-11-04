@@ -1,0 +1,55 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_88",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "ss026_LXStatus": {
+      "type": "object",
+      "properties": {
+        "v_lx": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Permitted speed for the LX speed restriction. Speed at which the LX can be passed when it is not protected. "
+        },
+        "q_stoplx": {
+          "type": "boolean",
+          "description": "Qualifier for stopping in rear of the LX. Indicates whether stopping the train in rear of a non protected LX is required. "
+        },
+        "l_stoplx": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Length of the stopping area in rear of the start location of the LX area."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": " Level Crossing information",
+  "properties": {
+    "nid_lx": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Identity number of the Level Crossing."
+    },
+    "d_lx": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Distance to LX start location."
+    },
+    "l_lx": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Length of the LX area."
+    },
+    "q_lxstatus": {
+      "type": "boolean",
+      "description": "Indicate whether the Level Crossing is protected or not."
+    },
+    "lx_Status": {
+      "type": "object",
+      "description": "Only required for the level crossings that are protected",
+      "$ref": "#/definitions/ss026_LXStatus"
+    }
+  },
+  "additionalProperties": false
+}

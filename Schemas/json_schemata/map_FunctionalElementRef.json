@@ -1,0 +1,61 @@
+{
+  "$id": "https://ERJU/map_FunctionalElementRef",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "properties": {
+    "simplePoint": {
+      "type": "string",
+      "description": "refers to simple point"
+    },
+    "etcsMarker": {
+      "type": "string",
+      "description": "refers to ETCS marker"
+    },
+    "stopLocation": {
+      "type": "string",
+      "description": "refers to stop location"
+    },
+    "timingPoint": {
+      "type": "string",
+      "description": "refers to timing point"
+    },
+    "operationalPoint": {
+      "type": "string",
+      "description": "refers to operational point"
+    },
+    "balise": {
+      "type": "string",
+      "description": "refers to balise"
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["simplePoint"]
+    },
+    {
+      "type": "object",
+      "required": ["etcsMarker"]
+    },
+    {
+      "type": "object",
+      "required": ["stopLocation"]
+    },
+    {
+      "type": "object",
+      "required": ["timingPoint"]
+    },
+    {
+      "type": "object",
+      "required": ["operationalPoint"]
+    },
+    {
+      "type": "object",
+      "required": ["balise"]
+    }
+  ],
+  "additionalProperties": false
+}

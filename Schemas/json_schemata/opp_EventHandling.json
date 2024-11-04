@@ -1,0 +1,19 @@
+{
+  "$id": "https://ERJU/opp_EventHandling",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "properties": {
+    "event": {
+      "type": "string"
+    },
+    "passStopDepart": {
+      "type": "string",
+      "enum": ["passedEvent", "stoppedAccurateAtEvent", "stoppedWithOvershootAtEvent", "stoppedWithUndershootAtEvent", "departedFromEvent"]
+    }
+  },
+  "required": ["event"],
+  "additionalProperties": false
+}
