@@ -1,7 +1,7 @@
 {
   "name": "infra",
   "intId": 1,
-  "isDefinedBy": "http://ERJU/datamodel/1.0/infrastructure",
+  "isDefinedBy": "http://ERJU/datamodel/0.4/infrastructure",
   "prefix": "infra",
   "containerStruct": "Infrastructure",
   "version": "1.0",
@@ -228,39 +228,39 @@
     "name": "TopoArea",
     "info": "Defines a container for rail network topology",
     "attrs": [
-      {"intId": 1, "name": "topoAreaId", "dataType": "string", "key": "global",
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global",
        "info": "Identity of the object; used for referencing"},
       {"intId": 2, "name": "versionTimestamp", "dataType": "timestamp",
        "info": "version information which is valid since timestamp"},
-      {"intId": 3, "name": "linearElements", "composition": "LinearElement", "multiplicity": "0..*", "sortedByKey": true,
+      {"intId": 3, "name": "trackEdges", "composition": "TrackEdge", "multiplicity": "0..*", "sortedByKey": true,
        "info": "composes of track edges"},
-      {"intId": 4, "name": "linearElementLinks", "composition": "LinearElementLink", "multiplicity": "0..*", "sortedByKey": true,
+      {"intId": 4, "name": "trackEdgeLinks", "composition": "TrackEdgeLink", "multiplicity": "0..*", "sortedByKey": true,
        "info": "composes of track edge links"}
     ]
   },
   {
-    "name": "LinearElement",
+    "name": "TrackEdge",
     "info": "A track edge is an uninterrupted stretch of railway track, without divergence or convergence.",
     "ontology": {"subClassOf": "http://data.europa.eu/949/NetElement"},
     "attrs": [
-      {"intId": 1, "name": "elementId", "dataType": "string", "key": "global",
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global",
        "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "elementLength", "dataType": "uint32", "unit": "m", "exp": -3,
+      {"intId": 2, "name": "trackEdgeLength", "dataType": "uint32", "unit": "m", "exp": -3,
        "info": "Distance along the TrackEdge's track centre line. ",
        "ontology": {"subPropertyOf": "http://data.europa.eu/949/length"}}
     ]
   },
   {
-    "name": "LinearElementLink",
+    "name": "TrackEdgeLink",
     "info": "Defines a relation between two track edges along which a train can run.",
     "ontology": {"subClassOf": "http://data.europa.eu/949/NetRelation"},
     "attrs": [
       {"intId": 1, "name": "id", "dataType": "string", "key": "global",
        "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "from", "reference": "LinearElement",
+      {"intId": 2, "name": "trackEdgeA", "reference": "TrackEdge",
        "info": "Connects to track edge A",
        "ontology": {"subPropertyOf": "http://data.europa.eu/949/elementA"}},
-      {"intId": 3, "name": "to", "reference": "LinearElement",
+      {"intId": 3, "name": "trackEdgeB", "reference": "TrackEdge",
        "info": "Connects to track edge B",
        "ontology": {"subPropertyOf": "http://data.europa.eu/949/elementB"}},
       {"intId": 4, "name": "startOfA", "dataType": "boolean",
@@ -273,7 +273,7 @@
     "name": "TrackEdgePoint",
     "info": "Defines a non-directed spot location (without spatial expansion) on a Track Edge",
     "attrs": [
-      {"intId": 1, "name": "trackEdge", "reference": "LinearElement",
+      {"intId": 1, "name": "trackEdge", "reference": "TrackEdge",
        "info": "is positioned on track edge"},
       {"intId": 2, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
        "info": "position on the associated Track Edge"}
@@ -283,7 +283,7 @@
     "name": "DirTrackEdgePoint",
     "info": "Defines a directed spot location (without spatial expansion) on a Track Edge",
     "attrs": [
-      {"intId": 1, "name": "trackEdge", "reference": "LinearElement",
+      {"intId": 1, "name": "trackEdge", "reference": "TrackEdge",
        "info": "refers to track edge"},
       {"intId": 2, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
        "info": "position on the associated Track Edge"},
@@ -295,7 +295,7 @@
     "name": "TrackEdgeSection",
     "info": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
     "attrs": [
-      {"intId": 1, "name": "trackEdge", "reference": "LinearElement",
+      {"intId": 1, "name": "trackEdge", "reference": "TrackEdge",
        "info": "refers to track edge"},
       {"intId": 2, "name": "skipFromStart", "dataType": "uint32", "unit": "m", "exp": -3,
        "info": "ignore section [0..skipFromStart]."},
@@ -307,7 +307,7 @@
     "name": "DirTrackEdgeSection",
     "info": "Defines a directed linear object (with a linear extension) located on a Track Edge",
     "attrs": [
-      {"intId": 1, "name": "trackEdge", "reference": "LinearElement",
+      {"intId": 1, "name": "trackEdge", "reference": "TrackEdge",
        "info": "refers totrack edge"},
       {"intId": 2, "name": "skipFromStart", "dataType": "uint32", "unit": "m", "exp": -3,
        "info": "ignore section [0..skipFromStart]"},
@@ -320,7 +320,7 @@
   {
     "name": "DirTrackEdge",
     "attrs": [
-      {"intId": 1, "name": "trackEdge", "reference": "LinearElement",
+      {"intId": 1, "name": "trackEdge", "reference": "TrackEdge",
        "info": "refers totrack edge"},
       {"intId": 2, "name": "sameDir", "dataType": "boolean",
        "info": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"}
@@ -349,14 +349,14 @@
   {
     "name": "LinkedArea",
     "attrs": [
-      {"intId": 1, "name": "entireTrackEdges", "reference": "LinearElement", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 1, "name": "entireTrackEdges", "reference": "TrackEdge", "multiplicity": "0..*", "sortedByKey": true},
       {"intId": 2, "name": "trackEdgeSections", "composition": "TrackEdgeSection", "multiplicity": "0..*", "sortedByKey": false}
     ]
   },
   {
     "name": "GeometryArea",
     "attrs": [
-      {"intId": 1, "name": "geometryAreaId", "dataType": "string", "key": "global", "sameKeyAs": "TopoArea",
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "TopoArea",
        "info": "Identity of the object; used for referencing"},
       {"intId": 2, "name": "versionTimestamp", "dataType": "timestamp",
        "info": "version information which is valid since timestamp"},
@@ -370,7 +370,7 @@
     "name": "TrackEdgeGeometry",
     "info": "Defines the geometry of the track edge centre line as a list of parametrised curves. The geometry is smooth; no discontinuities in azimuth or inclination.",
     "attrs": [
-      {"intId": 1, "name": "trackEdgeGeometryId", "dataType": "string", "key": "global", "sameKeyAs": "LinearElement",
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "TrackEdge",
        "info": "Identity of the object; used for referencing"},
       {"intId": 2, "name": "horizontalAlignment", "composition": "HorizontalSegment", "multiplicity": "0..*", "sortedByKey": false,
        "info": "Sequence of geometric primitives, i.e. arc, line or clothoid, that compose this track geometry"},
@@ -475,7 +475,7 @@
   {
     "name": "SampledGeometryArea",
     "attrs": [
-      {"intId": 1, "name": "sampledGeometryAreaId", "dataType": "string", "key": "global", "sameKeyAs": "TopoArea",
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "TopoArea",
        "info": "Identity of the object; used for referencing"},
       {"intId": 2, "name": "versionTimestamp", "dataType": "timestamp",
        "info": "version information which is valid since timestamp"},
@@ -486,7 +486,7 @@
   {
     "name": "SampledTrackEdgeGeometry",
     "attrs": [
-      {"intId": 1, "name": "sampledTrackEdgeGeometryId", "dataType": "string", "key": "global", "sameKeyAs": "LinearElement",
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "TrackEdge",
        "info": "Identity of the object; used for referencing"},
       {"intId": 2, "name": "slopes", "composition": "SlopeSamplePoint", "multiplicity": "1..*", "sortedByKey": false,
        "info": "composes of slope sample points"},
@@ -527,16 +527,16 @@
     ]
   },
   {
-    "name": "Switch",
+    "name": "SimplePoint",
     "info": "Defines the physical track asset Simple Point",
     "attrs": [
       {"intId": 1, "name": "id", "dataType": "string", "key": "global",
        "info": "Identity of the object; used for referencing ; structure refers to EULYNX EU.SAS.77"},
       {"intId": 2, "name": "reversalTime", "dataType": "uint32", "unit": "s", "exp": -1,
        "info": "Defines the time in seconds to switch from one position to the other ; 0 means unknown"},
-      {"intId": 3, "name": "pointLeft", "reference": "LinearElementLink",
+      {"intId": 3, "name": "pointLeft", "reference": "TrackEdgeLink",
        "info": "Track Edge Link referencing the left side of the point in the facing direction of the simple point"},
-      {"intId": 4, "name": "pointRight", "reference": "LinearElementLink",
+      {"intId": 4, "name": "pointRight", "reference": "TrackEdgeLink",
        "info": "Track Edge Link referencing the right side of the point in the facing direction of the simple point"}
     ]
   },
@@ -546,7 +546,7 @@
     "attrs": [
       {"intId": 1, "name": "id", "dataType": "string", "key": "global",
        "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "simplePoints", "reference": "Switch", "multiplicity": "2..4", "sortedByKey": false,
+      {"intId": 2, "name": "simplePoints", "reference": "SimplePoint", "multiplicity": "2..4", "sortedByKey": false,
        "info": "Consists of simple points"},
       {"intId": 3, "name": "crossing", "reference": "Crossing",
        "info": "Consists of crossing"}
@@ -610,7 +610,7 @@
     "name": "PropertiesArea",
     "info": "the object itself contains default-values for the area. Exceptions are in trackConditions etc.",
     "attrs": [
-      {"intId": 1, "name": "propertiesAreaId", "dataType": "string", "key": "global", "sameKeyAs": "TopoArea",
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "TopoArea",
        "info": "Identity of the object; used for referencing"},
       {"intId": 2, "name": "versionTimestamp", "dataType": "timestamp",
        "info": "version information which is valid since timestamp"},
@@ -707,17 +707,17 @@
     "name": "TrackUsageArea",
     "info": "Preferred usage specification, most usable for TMS and planning",
     "attrs": [
-      {"intId": 1, "name": "trackUsageAreaId", "dataType": "string", "key": "global", "sameKeyAs": "TopoArea",
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "TopoArea",
        "info": "Identity of the object; used for referencing"},
       {"intId": 2, "name": "versionTimestamp", "dataType": "timestamp",
        "info": "version information which is valid since timestamp"},
-      {"intId": 3, "name": "secondaryTracks", "reference": "LinearElement", "multiplicity": "0..*", "sortedByKey": true,
+      {"intId": 3, "name": "secondaryTracks", "reference": "TrackEdge", "multiplicity": "0..*", "sortedByKey": true,
        "info": "all tracks except 'shuntingTracks' and 'secondaryTracks' are 'mainTracks'"},
-      {"intId": 4, "name": "shuntingTracks", "reference": "LinearElement", "multiplicity": "0..*", "sortedByKey": true,
+      {"intId": 4, "name": "shuntingTracks", "reference": "TrackEdge", "multiplicity": "0..*", "sortedByKey": true,
        "info": "all tracks except 'shuntingTracks' and 'secondaryTracks' are 'mainTracks'"},
-      {"intId": 5, "name": "preferredSameDir", "reference": "LinearElement", "multiplicity": "0..*", "sortedByKey": true,
+      {"intId": 5, "name": "preferredSameDir", "reference": "TrackEdge", "multiplicity": "0..*", "sortedByKey": true,
        "info": "track edges with preferred direction identical to the TrackEdge-Direction"},
-      {"intId": 6, "name": "preferredOppositeDir", "reference": "LinearElement", "multiplicity": "0..*", "sortedByKey": true,
+      {"intId": 6, "name": "preferredOppositeDir", "reference": "TrackEdge", "multiplicity": "0..*", "sortedByKey": true,
        "info": "track edges with preferred direction opposite to the TrackEdge-Direction"}
     ]
   },
@@ -725,7 +725,7 @@
     "name": "TrackEdgeSpeedProfile",
     "info": "Defines the permitted speeds for a Track edge in both directions",
     "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "LinearElement",
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "TrackEdge",
        "info": "Identity of the object; used for referencing"},
       {"intId": 2, "name": "sameDirProfile", "composition": "SpeedProfile",
        "info": "speed profile valid in the same direction as the trackEdge"},
@@ -1024,12 +1024,12 @@
   {
     "name": "FunctionalArea",
     "attrs": [
-      {"intId": 1, "name": "functionalAreaId", "dataType": "string", "key": "global", "sameKeyAs": "TopoArea",
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "TopoArea",
        "info": "Identity of the object; used for referencing"},
       {"intId": 2, "name": "versionTimestamp", "dataType": "timestamp",
        "info": "version information which is valid since timestamp"},
       {"intId": 3, "name": "opPoints", "composition": "OperationalPoint", "multiplicity": "0..*", "sortedByKey": true},
-      {"intId": 4, "name": "simplePoints", "composition": "Switch", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 4, "name": "simplePoints", "composition": "SimplePoint", "multiplicity": "0..*", "sortedByKey": true},
       {"intId": 5, "name": "slipCrossings", "composition": "SlipCrossing", "multiplicity": "0..*", "sortedByKey": true},
       {"intId": 6, "name": "derailers", "composition": "Derailer", "multiplicity": "0..*", "sortedByKey": true},
       {"intId": 7, "name": "crossings", "composition": "Crossing", "multiplicity": "0..*", "sortedByKey": true},
