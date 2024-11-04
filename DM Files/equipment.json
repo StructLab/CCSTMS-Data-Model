@@ -1,0 +1,390 @@
+{
+  "name": "equipment",
+  "intId": 6,
+  "isDefinedBy": "http://ERJU/datamodel/1.0/equipment",
+  "prefix": "equipment",
+  "containerStruct": "equipment",
+  "version": "1.0",
+  "info": "Static equipment data",
+  "enums": [
+  {
+    "name": "StatusTechnical",
+    "info": "Technical Status of the system, that represents the aggregated status of all hierarchical lower systems. This allows to have a top level information on the status of the system which can be drilled down if the system is in any other state than Ok.",
+    "enumLiterals": [
+      {"intId": 0, "name": "Unknown"},
+      {"intId": 1, "name": "OK"},
+      {"intId": 2, "name": "Warning"},
+      {"intId": 3, "name": "FailureNonCritical"},
+      {"intId": 4, "name": "FailureCritical"}
+    ]
+  },
+  {
+    "name": "EquipmentReplaceabilityStatus",
+    "info": "Indicates when the equipment requests a replacement. The decision to act on this indication is up to the operator, in accordance with the equipment manual.",
+    "enumLiterals": [
+      {"intId": 0, "name": "Unknown"},
+      {"intId": 1, "name": "ReplacementNotNeeded"},
+      {"intId": 2, "name": "ReplaceableAtOperation"},
+      {"intId": 3, "name": "ReplaceableMaintenance"},
+      {"intId": 4, "name": "ReplaceableRevalidation"}
+    ]
+  },
+  {
+    "name": "ControllerOperationStatus",
+    "info": "Indicates the general operation status of the controller",
+    "enumLiterals": [
+      {"intId": 0, "name": "Unknown"},
+      {"intId": 1, "name": "Booting"},
+      {"intId": 2, "name": "Fallback"}
+    ]
+  },
+  {
+    "name": "CoolingFanStatus",
+    "info": "Indicates the current status of the cooling fan",
+    "enumLiterals": [
+      {"intId": 0, "name": "Unknown"},
+      {"intId": 1, "name": "Normal"},
+      {"intId": 2, "name": "Failure"}
+    ]
+  },
+  {
+    "name": "TemperatureStatus",
+    "info": "Indicates the temperature status of the CPU",
+    "enumLiterals": [
+      {"intId": 0, "name": "Unknown"},
+      {"intId": 1, "name": "Normal"},
+      {"intId": 2, "name": "TooHigh"}
+    ]
+  },
+  {
+    "name": "CpuHealthStatus",
+    "info": "Indicates the health status of the CPU",
+    "enumLiterals": [
+      {"intId": 0, "name": "Unknown"},
+      {"intId": 1, "name": "Normal"},
+      {"intId": 2, "name": "Degraded"},
+      {"intId": 3, "name": "Failure"}
+    ]
+  },
+  {
+    "name": "CpuLoadStatus",
+    "info": "Indicates the load status of the CPU",
+    "enumLiterals": [
+      {"intId": 0, "name": "Unknown"},
+      {"intId": 1, "name": "Normal"},
+      {"intId": 2, "name": "High"},
+      {"intId": 3, "name": "Critical"}
+    ]
+  },
+  {
+    "name": "RamHealthStatus",
+    "info": "can be replaced?",
+    "enumLiterals": [
+      {"intId": 0, "name": "Unknown"},
+      {"intId": 1, "name": "Normal"},
+      {"intId": 2, "name": "Degraded"},
+      {"intId": 3, "name": "Failure"}
+    ]
+  },
+  {
+    "name": "BootingLastReason",
+    "info": "Indicates the type of the latest reset (The reason for the reset).",
+    "enumLiterals": [
+      {"intId": 0, "name": "Unknown"},
+      {"intId": 1, "name": "OnSite"},
+      {"intId": 2, "name": "RemoteMdm"},
+      {"intId": 3, "name": "InternalMaintenanceOk"},
+      {"intId": 4, "name": "InternalMaintenanceFailure"},
+      {"intId": 5, "name": "InternalFailure"}
+    ]
+  },
+  {
+    "name": "WearStatus",
+    "info": "can be replaced?",
+    "enumLiterals": [
+      {"intId": 0, "name": "Unknown"},
+      {"intId": 1, "name": "Ok"},
+      {"intId": 2, "name": "Warning"},
+      {"intId": 3, "name": "Nok"}
+    ]
+  },
+  {
+    "name": "PhysicalNetworkInterfaceOperationalStatus",
+    "info": "can be replaced?",
+    "enumLiterals": [
+      {"intId": 0, "name": "Unknown"},
+      {"intId": 1, "name": "NotAvialableNotConnected"},
+      {"intId": 2, "name": "AvailableNotConnected"},
+      {"intId": 3, "name": "Connected"},
+      {"intId": 4, "name": "NotConnectedDisturbed"}
+    ]
+  },
+  {
+    "name": "VoltageStatus",
+    "info": "voltage status",
+    "enumLiterals": [
+      {"intId": 0, "name": "Unknown"},
+      {"intId": 1, "name": "NotUsed"},
+      {"intId": 2, "name": "Undervoltage"},
+      {"intId": 3, "name": "Nominal"},
+      {"intId": 4, "name": "Overvoltage"}
+    ]
+  },
+  {
+    "name": "HighLow",
+    "info": "can be replaced?",
+    "enumLiterals": [
+      {"intId": 0, "name": "Unknown"},
+      {"intId": 1, "name": "High"},
+      {"intId": 2, "name": "Low"}
+    ]
+  },
+  {
+    "name": "OutputValue",
+    "info": "can be replaced?",
+    "enumLiterals": [
+      {"intId": 0, "name": "Unknown"},
+      {"intId": 1, "name": "On"},
+      {"intId": 2, "name": "Off"}
+    ]
+  },
+  {
+    "name": "InputValue",
+    "info": "can be replaced?",
+    "enumLiterals": [
+      {"intId": 0, "name": "Unknown"},
+      {"intId": 1, "name": "On"},
+      {"intId": 2, "name": "Off"}
+    ]
+  },
+  {
+    "name": "InputSwitchPosition",
+    "info": "can be replaced?",
+    "enumLiterals": [
+      {"intId": 0, "name": "Unknown"},
+      {"intId": 1, "name": "Position1"},
+      {"intId": 2, "name": "Position2"},
+      {"intId": 3, "name": "Position3"}
+    ]
+  }
+  ],
+  "structs": [
+  {
+    "name": "Equipment",
+    "info": "May be used to define responsibilities for diagnostic information.",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "statusTechnical", "enumType": "StatusTechnical",
+       "info": "General technical status of the equipment."},
+      {"intId": 3, "name": "statusTechnicalManufacturerSpecificValue", "dataType": "string", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "Must be used by the supplier to describe the reasons for a StatusTechnical != OK, that cannot be explained by existing datapoints (NOT including IM and manufacturer specific diagnostic messages). This Information MUST be provided from the supplier. This should provide flexibility for future uses. Multiple states can be indicated at the same time if multiple diagnosis have not been included in the model during the design phase. The supplier specific reason may not overlap with reasons already covered in other attributes."},
+      {"intId": 4, "name": "equipmentManufacturer", "dataType": "string"},
+      {"intId": 5, "name": "manufacturerModel", "dataType": "string"},
+      {"intId": 6, "name": "serialNumber", "dataType": "string"},
+      {"intId": 7, "name": "hardwareRevision", "dataType": "string"},
+      {"intId": 8, "name": "softwareRevision", "dataType": "string"},
+      {"intId": 9, "name": "replaceabityIndication", "enumType": "EquipmentReplaceabilityStatus"},
+      {"intId": 10, "name": "manufacturingDateTime", "dataType": "timestamp"},
+      {"intId": 11, "name": "label", "dataType": "string"},
+      {"intId": 12, "name": "isTimeSynchronised", "dataType": "boolean"},
+      {"intId": 13, "name": "subEquipments", "composition": "Equipment", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 14, "name": "controllers", "composition": "Controller", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 15, "name": "physicalNetworkInterfaces", "composition": "PhysicalNetworkInterface", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 16, "name": "storageMediaFlash", "composition": "StorageMediumFlash", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 17, "name": "powerSupplies", "composition": "PowerSupply", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 18, "name": "physicalDigitalOutputs", "composition": "PhysicalDigitalOutput", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 19, "name": "physicalAnaloglOutputs", "composition": "PhysicalAnalogOutput", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 20, "name": "physicalSeparatedOutputs", "composition": "PhysicalSeparatedOutput", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 21, "name": "physicalDigitalInputs", "composition": "PhysicalDigitalInput", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 22, "name": "physicalAnaloglInputs", "composition": "PhysicalAnalogInput", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 23, "name": "physicalSeparatedInputs", "composition": "PhysicalSeparatedInput", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 24, "name": "inputSwitches", "composition": "InputSwitch", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 25, "name": "inputButtons", "composition": "InputButton", "multiplicity": "0..*", "sortedByKey": true}
+    ]
+  },
+  {
+    "name": "Controller",
+    "info": "Controller",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "statusTechnical", "enumType": "StatusTechnical",
+       "info": "General technical status of the equipment."},
+      {"intId": 3, "name": "statusTechnicalManufacturerSpecificValue", "dataType": "string", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "Array of manufacturer-specific status codes."},
+      {"intId": 4, "name": "systemDescription", "dataType": "string"},
+      {"intId": 5, "name": "operatingSystem", "dataType": "string"},
+      {"intId": 6, "name": "operationStatus", "enumType": "ControllerOperationStatus"},
+      {"intId": 7, "name": "coolingFanStatus", "enumType": "CoolingFanStatus"},
+      {"intId": 8, "name": "temperatureStatus", "enumType": "TemperatureStatus"},
+      {"intId": 9, "name": "cpuHealthStatus", "enumType": "CpuHealthStatus"},
+      {"intId": 10, "name": "cpuLoadStatus", "enumType": "CpuLoadStatus"},
+      {"intId": 11, "name": "ramSize", "dataType": "uint32"},
+      {"intId": 12, "name": "ramHealthStatus", "enumType": "RamHealthStatus"},
+      {"intId": 13, "name": "bootingLastDateTime", "dataType": "timestamp"},
+      {"intId": 14, "name": "bootingLastReason", "enumType": "BootingLastReason"},
+      {"intId": 16, "name": "label", "dataType": "string"}
+    ]
+  },
+  {
+    "name": "PhysicalNetworkInterface",
+    "info": "PhysicalNetworkInterface",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "statusTechnical", "enumType": "StatusTechnical",
+       "info": "General technical status of the equipment."},
+      {"intId": 3, "name": "statusTechnicalManufacturerSpecificValue", "dataType": "string", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "Array of manufacturer-specific status codes."},
+      {"intId": 4, "name": "macAddress", "dataType": "string"},
+      {"intId": 5, "name": "operationStatus", "enumType": "PhysicalNetworkInterfaceOperationalStatus"},
+      {"intId": 6, "name": "nominationalBandwidth", "dataType": "uint32"},
+      {"intId": 7, "name": "label", "dataType": "string"}
+    ]
+  },
+  {
+    "name": "StorageMediumFlash",
+    "info": "StorageMediumFlash",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "statusTechnical", "enumType": "StatusTechnical",
+       "info": "General technical status of the equipment."},
+      {"intId": 3, "name": "statusTechnicalManufacturerSpecificValue", "dataType": "string", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "Array of manufacturer-specific status codes."},
+      {"intId": 4, "name": "memorySize", "dataType": "uint32"},
+      {"intId": 5, "name": "temperatureStatus", "enumType": "TemperatureStatus"},
+      {"intId": 6, "name": "label", "dataType": "string"},
+      {"intId": 7, "name": "wearStatus", "enumType": "WearStatus"}
+    ]
+  },
+  {
+    "name": "PowerSupply",
+    "info": "PowerSupply",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "statusTechnical", "enumType": "StatusTechnical",
+       "info": "General technical status of the equipment."},
+      {"intId": 3, "name": "statusTechnicalManufacturerSpecificValue", "dataType": "string", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "Array of manufacturer-specific status codes."},
+      {"intId": 4, "name": "inputVoltageStatus", "enumType": "VoltageStatus"},
+      {"intId": 5, "name": "outputVoltageStatus", "enumType": "VoltageStatus"},
+      {"intId": 6, "name": "outputPower", "dataType": "uint32"},
+      {"intId": 7, "name": "outputPowerLimit", "dataType": "uint32"},
+      {"intId": 8, "name": "temperatureStatus", "enumType": "TemperatureStatus"},
+      {"intId": 9, "name": "label", "dataType": "string"},
+      {"intId": 10, "name": "inputVoltage", "dataType": "float"},
+      {"intId": 11, "name": "inputCurrent", "dataType": "float"}
+    ]
+  },
+  {
+    "name": "PhysicalDigitalOutput",
+    "info": "PhysicalDigitalOutput",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "statusTechnical", "enumType": "StatusTechnical",
+       "info": "General technical status of the equipment."},
+      {"intId": 3, "name": "statusTechnicalManufacturerSpecificValue", "dataType": "string", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "Array of manufacturer-specific status codes."},
+      {"intId": 4, "name": "label", "dataType": "string"},
+      {"intId": 5, "name": "physicalOutputValue", "enumType": "HighLow"},
+      {"intId": 6, "name": "outputVoltage", "dataType": "float"},
+      {"intId": 7, "name": "outputCurrent", "dataType": "float"}
+    ]
+  },
+  {
+    "name": "PhysicalAnalogOutput",
+    "info": "PhysicalAnalogOutput",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "statusTechnical", "enumType": "StatusTechnical",
+       "info": "General technical status of the equipment."},
+      {"intId": 3, "name": "statusTechnicalManufacturerSpecificValue", "dataType": "string", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "Array of manufacturer-specific status codes."},
+      {"intId": 4, "name": "label", "dataType": "string"},
+      {"intId": 5, "name": "voltage", "dataType": "float"},
+      {"intId": 6, "name": "current", "dataType": "float"}
+    ]
+  },
+  {
+    "name": "PhysicalSeparatedOutput",
+    "info": "PhysicalSeparatedOutput",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "statusTechnical", "enumType": "StatusTechnical",
+       "info": "General technical status of the equipment."},
+      {"intId": 3, "name": "statusTechnicalManufacturerSpecificValue", "dataType": "string", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "Array of manufacturer-specific status codes."},
+      {"intId": 4, "name": "label", "dataType": "string"},
+      {"intId": 6, "name": "outputValue", "enumType": "OutputValue"}
+    ]
+  },
+  {
+    "name": "PhysicalDigitalInput",
+    "info": "PhysicalDigitalInput",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "statusTechnical", "enumType": "StatusTechnical",
+       "info": "General technical status of the equipment."},
+      {"intId": 3, "name": "statusTechnicalManufacturerSpecificValue", "dataType": "string", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "Array of manufacturer-specific status codes."},
+      {"intId": 4, "name": "label", "dataType": "string"},
+      {"intId": 5, "name": "physicalInputValue", "enumType": "HighLow"},
+      {"intId": 6, "name": "inputVoltage", "dataType": "float"},
+      {"intId": 7, "name": "inputCurrent", "dataType": "float"}
+    ]
+  },
+  {
+    "name": "PhysicalAnalogInput",
+    "info": "PhysicalAnalogInput",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "statusTechnical", "enumType": "StatusTechnical",
+       "info": "General technical status of the equipment."},
+      {"intId": 3, "name": "statusTechnicalManufacturerSpecificValue", "dataType": "string", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "Array of manufacturer-specific status codes."},
+      {"intId": 4, "name": "label", "dataType": "string"},
+      {"intId": 5, "name": "voltage", "dataType": "float"},
+      {"intId": 6, "name": "current", "dataType": "float"}
+    ]
+  },
+  {
+    "name": "PhysicalSeparatedInput",
+    "info": "PhysicalSeparatedInput",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "statusTechnical", "enumType": "StatusTechnical",
+       "info": "General technical status of the equipment."},
+      {"intId": 3, "name": "statusTechnicalManufacturerSpecificValue", "dataType": "string", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "Array of manufacturer-specific status codes."},
+      {"intId": 4, "name": "label", "dataType": "string"},
+      {"intId": 5, "name": "inputValue", "enumType": "InputValue"}
+    ]
+  },
+  {
+    "name": "AuxiliarySwitch",
+    "info": "AuxiliarySwitch",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "label", "dataType": "string"}
+    ]
+  },
+  {
+    "name": "InputSwitch",
+    "info": "InputSwitch",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "label", "dataType": "string"},
+      {"intId": 3, "name": "inputSwitchPosition", "enumType": "InputSwitchPosition"},
+      {"intId": 4, "name": "auxiliarySwitch", "composition": "AuxiliarySwitch"}
+    ]
+  },
+  {
+    "name": "InputButton",
+    "info": "InputButton",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "label", "dataType": "string"},
+      {"intId": 3, "name": "isPressed", "dataType": "boolean"},
+      {"intId": 4, "name": "auxiliarySwitch", "composition": "AuxiliarySwitch"}
+    ]
+  }
+  ]
+}
