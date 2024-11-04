@@ -1,0 +1,171 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam DefaultFontName arial
+skinparam DefaultFontSize 12
+skinparam ClassFontStyle bold
+skinparam linetype ortho
+skinparam dpi 200
+hide empty fields
+hide empty methods
+hide circle
+
+class ATO {
+}
+
+class ATOArea {
+ id: string
+}
+
+class TimingPointMapping {
+ infraTimingPoint: *infra.TimingPoint
+ atoTimingPoint: *TimingPoint
+}
+
+class ATOSegment {
+ id: string
+}
+
+class SegmentProfile {
+ nidSP: uint32
+ segmentProfileLength: uint32
+ version: uint32
+ nid_c: uint32
+ eoaOffset: uint32
+ utcOffset: uint32
+ startAltitude: int32
+ atotsContactInfoDir: boolean
+ gradientStart: int32
+ curveStart: CurveRadius
+ currentStart: uint32
+ platformAreas: SegmentSection[0..32]
+ switchOffEddyCurrentBrakeServiceBrakes: SegmentSection[0..32]
+ switchOffEddyCurrentBrakeEmergencyBrakes: SegmentSection[0..32]
+ switchOffRegenerativeBrakes: SegmentSection[0..32]
+ switchOffMagneticShoeBrakes: SegmentSection[0..32]
+ dynamicBrakeForceInhibitions: SegmentSection[0..32]
+}
+
+class AtoTSContactInfo {
+ nidATOTS: uint32
+ nidSP: uint32
+ spNidC: uint32
+ atotsNidC: uint32
+}
+
+class StaticSpeedProfileStart {
+ speed: uint32
+ trainEndApplicability: infra.TrainEndApplicability
+}
+
+class StaticSpeedProfileChange {
+ pos: uint32
+ speed: uint32
+ trainEndApplicability: infra.TrainEndApplicability
+}
+
+class AxleLoadSpeedProfile {
+ segmentSection: SegmentSection
+ speed: uint32
+ trainEndApplicability: infra.TrainEndApplicability
+ axleLoadCategory: infra.AxleLoadCategory
+}
+
+class GradientChange {
+ pos: uint32
+ gradientValue: int32
+}
+
+class CurveChange {
+ pos: uint32
+ curve: CurveRadius
+}
+
+class TimingPoint {
+ nidTP: uint32
+ name: string
+ pos: uint32
+ stopLocationTolerance: StopLocationTolerance
+ stoppingPointReachDistance: StopLocationTolerance
+}
+
+class BaliseGroup {
+ nid_bg: uint32
+ nidCQualifier: boolean
+ nid_c: uint32[0..1]
+}
+
+class Balise {
+ positionInGroup: uint32
+ pos: uint32
+}
+
+class PermittedBrakingDistance {
+ segmentSection: SegmentSection
+ value: uint32
+ byEmergencyBrake: boolean
+ gradientValue: int32
+}
+
+class VoltageStart {
+ voltage: infra.VoltageType
+ nid_c: uint32
+}
+
+class VoltageChange {
+ pos: uint32
+ voltage: infra.VoltageType
+ nid_c: uint32
+}
+
+class CurrentChange {
+ pos: uint32
+ current: uint32
+}
+
+class Tunnel {
+ segmentSection: SegmentSection
+ tunnelType: TunnelType
+}
+
+class UnprotectedLX {
+ pNominal: uint32
+ pReverse: uint32
+}
+
+class LimitedDynamicBrakeForce {
+ segmentSection: SegmentSection
+ dynamicBrakeForceLimit: uint32
+}
+
+class SegmentSection {
+ range: RangeType
+ pStart: uint32
+ pEnd: uint32
+}
+
+ATO *-- "*" ATOArea
+ATOArea *-- "1..*" ATOSegment
+ATOArea *-- "*" TimingPointMapping
+ATOSegment *-- infra.DirTrackEdgeSection
+ATOSegment *-- SegmentProfile
+SegmentProfile *-- "0..1" AtoTSContactInfo
+SegmentProfile *-- StaticSpeedProfileStart
+SegmentProfile *-- "*" StaticSpeedProfileChange
+SegmentProfile *-- "0..32" GradientChange
+SegmentProfile *-- "0..32" CurveChange
+SegmentProfile *-- VoltageStart
+SegmentProfile *-- "0..32" VoltageChange
+SegmentProfile *-- "0..32" CurrentChange
+SegmentProfile *-- "0..32" BaliseGroup
+SegmentProfile *-- "0..32" TimingPoint
+SegmentProfile *-- "0..32" Tunnel
+SegmentProfile *-- "0..32" AxleLoadSpeedProfile
+SegmentProfile *-- "0..32" UnprotectedLX
+SegmentProfile *-- "0..32" PermittedBrakingDistance
+SegmentProfile *-- "0..32" LimitedDynamicBrakeForce
+StaticSpeedProfileStart *-- "*" infra.SpecificStaticSpeedLimit
+StaticSpeedProfileChange *-- "*" infra.SpecificStaticSpeedLimit
+BaliseGroup *-- "1..8" Balise
+@enduml
