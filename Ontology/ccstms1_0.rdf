@@ -12601,9 +12601,9 @@ Distance between the signboard authorizing the driver to ‘raise pantograph’ 
     
 
 
-    <!-- http://data.europa.eu/949/elementLength -->
+    <!-- http://data.europa.eu/949/trackEdgeLength -->
 
-    <owl:DatatypeProperty rdf:about="http://data.europa.eu/949/elementLength">
+    <owl:DatatypeProperty rdf:about="http://data.europa.eu/949/trackEdgeLength">
         <rdfs:subPropertyOf rdf:resource="http://data.europa.eu/949/length"/>
         <rdfs:domain rdf:resource="http://data.europa.eu/949/LinearElement"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
