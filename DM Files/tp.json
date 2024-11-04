@@ -41,7 +41,7 @@
     "name": "ProtectedInfraElement",
     "union": true,
     "attrs": [
-      {"intId": 1, "name": "simplePoint", "reference": "infra.Switch"},
+      {"intId": 1, "name": "simplePoint", "reference": "infra.SimplePoint"},
       {"intId": 2, "name": "slipCrossing", "reference": "infra.SlipCrossing"},
       {"intId": 3, "name": "crossing", "reference": "infra.Crossing"},
       {"intId": 4, "name": "derailer", "reference": "infra.Derailer"},
@@ -156,7 +156,7 @@
     "info": "to be extended",
     "attrs": [
       {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
-      {"intId": 2, "name": "simplePoint", "reference": "infra.Switch"},
+      {"intId": 2, "name": "simplePoint", "reference": "infra.SimplePoint"},
       {"intId": 3, "name": "isLeftPosition", "dataType": "boolean",
        "info": "if false - rightPosition"}
     ]
@@ -175,7 +175,7 @@
     ]
   },
   {
-    "name": "Switch",
+    "name": "SimplePoint",
     "info": "An object to extend infra.SimplePoint",
     "attrs": [
       {"intId": 1, "name": "id", "dataType": "string", "sameKeyAs": "infra.SimplePoint",
@@ -213,7 +213,7 @@
       {"intId": 3, "name": "allocationSections", "composition": "AllocationSection", "multiplicity": "0..*", "sortedByKey": true},
       {"intId": 4, "name": "fieldObjectControllers", "composition": "FieldObjectController", "multiplicity": "0..*", "sortedByKey": true},
       {"intId": 5, "name": "routes", "composition": "Route", "multiplicity": "0..*", "sortedByKey": true},
-      {"intId": 6, "name": "simplePoints", "composition": "Switch", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 6, "name": "simplePoints", "composition": "SimplePoint", "multiplicity": "0..*", "sortedByKey": true},
       {"intId": 7, "name": "transits", "composition": "Transit", "multiplicity": "0..*", "sortedByKey": true}
     ]
   },
