@@ -208,7 +208,7 @@
   {
     "name": "TrainProtectionArea",
     "attrs": [
-      {"intId": 1, "name": "trainProtectionAreaId", "dataType": "string", "key": "global", "sameKeyAs": "infra.TopoArea"},
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.TopoArea"},
       {"intId": 2, "name": "dpsGroups", "composition": "DriveProtectionSectionGroup", "multiplicity": "0..*", "sortedByKey": true},
       {"intId": 3, "name": "allocationSections", "composition": "AllocationSection", "multiplicity": "0..*", "sortedByKey": true},
       {"intId": 4, "name": "fieldObjectControllers", "composition": "FieldObjectController", "multiplicity": "0..*", "sortedByKey": true},
