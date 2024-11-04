@@ -1,0 +1,2101 @@
+<?xml version="1.0" ?>
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:s1="http://twin.eulynx.eu/generic/Types.xsd">
+	<NamespaceUris>
+		<Uri>http://ERJU/datamodel/0.1/equipment</Uri>
+	</NamespaceUris>
+	<Models>
+		<Model ModelUri="http://ERJU/datamodel/0.1/equipment" PublicationDate="2024-10-28T10:57:01Z" Version="1.0">
+			<RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2020-04-14T00:00:00Z" Version="1.04.6"/>
+		</Model>
+	</Models>
+	<Aliases>
+		<Alias Alias="Boolean">i=1</Alias>
+		<Alias Alias="SByte">i=2</Alias>
+		<Alias Alias="Byte">i=3</Alias>
+		<Alias Alias="Int16">i=4</Alias>
+		<Alias Alias="UInt16">i=5</Alias>
+		<Alias Alias="Int32">i=6</Alias>
+		<Alias Alias="UInt32">i=7</Alias>
+		<Alias Alias="Int64">i=8</Alias>
+		<Alias Alias="UInt64">i=9</Alias>
+		<Alias Alias="Float">i=10</Alias>
+		<Alias Alias="Double">i=11</Alias>
+		<Alias Alias="String">i=12</Alias>
+		<Alias Alias="DateTime">i=13</Alias>
+		<Alias Alias="Guid">i=14</Alias>
+		<Alias Alias="ByteString">i=15</Alias>
+		<Alias Alias="XmlElement">i=16</Alias>
+		<Alias Alias="NodeId">i=17</Alias>
+		<Alias Alias="ExpandedNodeId">i=18</Alias>
+		<Alias Alias="StatusCode">i=19</Alias>
+		<Alias Alias="QualifiedName">i=20</Alias>
+		<Alias Alias="LocalizedText">i=21</Alias>
+		<Alias Alias="ExtensionObject">i=22</Alias>
+		<Alias Alias="Mandatory">i=78</Alias>
+		<Alias Alias="Optional">i=80</Alias>
+		<Alias Alias="ExposesItsArray">i=83</Alias>
+		<Alias Alias="Array0_N">i=11508</Alias>
+		<Alias Alias="Array1_N">i=11510</Alias>
+	</Aliases>
+	<UADataType NodeId="ns=1;i=1014" BrowseName="1:StatusTechnical">
+		<DisplayName>equipment_StatusTechnical</DisplayName>
+		<Description>Technical Status of the system, that represents the aggregated status of all hierarchical lower systems. This allows to have a top level information on the status of the system which can be drilled down if the system is in any other state than Ok.</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:StatusTechnical">
+			<Field Name="Unknown" Value="0"/>
+			<Field Name="OK" Value="1"/>
+			<Field Name="Warning" Value="2"/>
+			<Field Name="FailureNonCritical" Value="3"/>
+			<Field Name="FailureCritical" Value="4"/>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1014" ValueRank="1" NodeId="ns=1;i=1030" ArrayDimensions="5" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1014</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Unknown</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>OK</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Warning</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>FailureNonCritical</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>4</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>FailureCritical</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1015" BrowseName="1:EquipmentReplaceabilityStatus">
+		<DisplayName>equipment_EquipmentReplaceabilityStatus</DisplayName>
+		<Description>Indicates when the equipment requests a replacement. The decision to act on this indication is up to the operator, in accordance with the equipment manual.</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:EquipmentReplaceabilityStatus">
+			<Field Name="Unknown" Value="0"/>
+			<Field Name="ReplacementNotNeeded" Value="1"/>
+			<Field Name="ReplaceableAtOperation" Value="2"/>
+			<Field Name="ReplaceableMaintenance" Value="3"/>
+			<Field Name="ReplaceableRevalidation" Value="4"/>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1015" ValueRank="1" NodeId="ns=1;i=1031" ArrayDimensions="5" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1015</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Unknown</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>ReplacementNotNeeded</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>ReplaceableAtOperation</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>ReplaceableMaintenance</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>4</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>ReplaceableRevalidation</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1016" BrowseName="1:ControllerOperationStatus">
+		<DisplayName>equipment_ControllerOperationStatus</DisplayName>
+		<Description>Indicates the general operation status of the controller</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:ControllerOperationStatus">
+			<Field Name="Unknown" Value="0"/>
+			<Field Name="Booting" Value="1"/>
+			<Field Name="Fallback" Value="2"/>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1016" ValueRank="1" NodeId="ns=1;i=1032" ArrayDimensions="3" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1016</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Unknown</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Booting</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Fallback</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1017" BrowseName="1:CoolingFanStatus">
+		<DisplayName>equipment_CoolingFanStatus</DisplayName>
+		<Description>Indicates the current status of the cooling fan</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:CoolingFanStatus">
+			<Field Name="Unknown" Value="0"/>
+			<Field Name="Normal" Value="1"/>
+			<Field Name="Failure" Value="2"/>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1017" ValueRank="1" NodeId="ns=1;i=1033" ArrayDimensions="3" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Unknown</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Normal</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Failure</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1018" BrowseName="1:TemperatureStatus">
+		<DisplayName>equipment_TemperatureStatus</DisplayName>
+		<Description>Indicates the temperature status of the CPU</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:TemperatureStatus">
+			<Field Name="Unknown" Value="0"/>
+			<Field Name="Normal" Value="1"/>
+			<Field Name="TooHigh" Value="2"/>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1018" ValueRank="1" NodeId="ns=1;i=1034" ArrayDimensions="3" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1018</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Unknown</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Normal</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>TooHigh</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1019" BrowseName="1:CpuHealthStatus">
+		<DisplayName>equipment_CpuHealthStatus</DisplayName>
+		<Description>Indicates the health status of the CPU</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:CpuHealthStatus">
+			<Field Name="Unknown" Value="0"/>
+			<Field Name="Normal" Value="1"/>
+			<Field Name="Degraded" Value="2"/>
+			<Field Name="Failure" Value="3"/>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1019" ValueRank="1" NodeId="ns=1;i=1035" ArrayDimensions="4" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1019</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Unknown</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Normal</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Degraded</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Failure</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1020" BrowseName="1:CpuLoadStatus">
+		<DisplayName>equipment_CpuLoadStatus</DisplayName>
+		<Description>Indicates the load status of the CPU</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:CpuLoadStatus">
+			<Field Name="Unknown" Value="0"/>
+			<Field Name="Normal" Value="1"/>
+			<Field Name="High" Value="2"/>
+			<Field Name="Critical" Value="3"/>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1020" ValueRank="1" NodeId="ns=1;i=1036" ArrayDimensions="4" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1020</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Unknown</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Normal</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>High</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Critical</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1021" BrowseName="1:RamHealthStatus">
+		<DisplayName>equipment_RamHealthStatus</DisplayName>
+		<Description>can be replaced?</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:RamHealthStatus">
+			<Field Name="Unknown" Value="0"/>
+			<Field Name="Normal" Value="1"/>
+			<Field Name="Degraded" Value="2"/>
+			<Field Name="Failure" Value="3"/>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1021" ValueRank="1" NodeId="ns=1;i=1037" ArrayDimensions="4" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1021</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Unknown</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Normal</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Degraded</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Failure</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1022" BrowseName="1:BootingLastReason">
+		<DisplayName>equipment_BootingLastReason</DisplayName>
+		<Description>Indicates the type of the latest reset (The reason for the reset).</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:BootingLastReason">
+			<Field Name="Unknown" Value="0"/>
+			<Field Name="OnSite" Value="1"/>
+			<Field Name="RemoteMdm" Value="2"/>
+			<Field Name="InternalMaintenanceOk" Value="3"/>
+			<Field Name="InternalMaintenanceFailure" Value="4"/>
+			<Field Name="InternalFailure" Value="5"/>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1022" ValueRank="1" NodeId="ns=1;i=1038" ArrayDimensions="6" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1022</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Unknown</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>OnSite</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>RemoteMdm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>InternalMaintenanceOk</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>4</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>InternalMaintenanceFailure</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>5</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>InternalFailure</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1023" BrowseName="1:WearStatus">
+		<DisplayName>equipment_WearStatus</DisplayName>
+		<Description>can be replaced?</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:WearStatus">
+			<Field Name="Unknown" Value="0"/>
+			<Field Name="Ok" Value="1"/>
+			<Field Name="Warning" Value="2"/>
+			<Field Name="Nok" Value="3"/>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1023" ValueRank="1" NodeId="ns=1;i=1039" ArrayDimensions="4" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1023</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Unknown</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Ok</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Warning</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Nok</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1024" BrowseName="1:PhysicalNetworkInterfaceOperationalStatus">
+		<DisplayName>equipment_PhysicalNetworkInterfaceOperationalStatus</DisplayName>
+		<Description>can be replaced?</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:PhysicalNetworkInterfaceOperationalStatus">
+			<Field Name="Unknown" Value="0"/>
+			<Field Name="NotAvialableNotConnected" Value="1"/>
+			<Field Name="AvailableNotConnected" Value="2"/>
+			<Field Name="Connected" Value="3"/>
+			<Field Name="NotConnectedDisturbed" Value="4"/>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1024" ValueRank="1" NodeId="ns=1;i=1040" ArrayDimensions="5" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1024</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Unknown</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>NotAvialableNotConnected</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>AvailableNotConnected</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Connected</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>4</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>NotConnectedDisturbed</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1025" BrowseName="1:VoltageStatus">
+		<DisplayName>equipment_VoltageStatus</DisplayName>
+		<Description>voltage status</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:VoltageStatus">
+			<Field Name="Unknown" Value="0"/>
+			<Field Name="NotUsed" Value="1"/>
+			<Field Name="Undervoltage" Value="2"/>
+			<Field Name="Nominal" Value="3"/>
+			<Field Name="Overvoltage" Value="4"/>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1025" ValueRank="1" NodeId="ns=1;i=1041" ArrayDimensions="5" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1025</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Unknown</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>NotUsed</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Undervoltage</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Nominal</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>4</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Overvoltage</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1026" BrowseName="1:HighLow">
+		<DisplayName>equipment_HighLow</DisplayName>
+		<Description>can be replaced?</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:HighLow">
+			<Field Name="Unknown" Value="0"/>
+			<Field Name="High" Value="1"/>
+			<Field Name="Low" Value="2"/>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1026" ValueRank="1" NodeId="ns=1;i=1042" ArrayDimensions="3" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1026</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Unknown</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>High</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Low</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1027" BrowseName="1:OutputValue">
+		<DisplayName>equipment_OutputValue</DisplayName>
+		<Description>can be replaced?</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:OutputValue">
+			<Field Name="Unknown" Value="0"/>
+			<Field Name="On" Value="1"/>
+			<Field Name="Off" Value="2"/>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1027" ValueRank="1" NodeId="ns=1;i=1043" ArrayDimensions="3" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1027</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Unknown</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>On</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Off</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1028" BrowseName="1:InputValue">
+		<DisplayName>equipment_InputValue</DisplayName>
+		<Description>can be replaced?</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:InputValue">
+			<Field Name="Unknown" Value="0"/>
+			<Field Name="On" Value="1"/>
+			<Field Name="Off" Value="2"/>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1028" ValueRank="1" NodeId="ns=1;i=1044" ArrayDimensions="3" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1028</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Unknown</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>On</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Off</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1029" BrowseName="1:InputSwitchPosition">
+		<DisplayName>equipment_InputSwitchPosition</DisplayName>
+		<Description>can be replaced?</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:InputSwitchPosition">
+			<Field Name="Unknown" Value="0"/>
+			<Field Name="Position1" Value="1"/>
+			<Field Name="Position2" Value="2"/>
+			<Field Name="Position3" Value="3"/>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1029" ValueRank="1" NodeId="ns=1;i=1045" ArrayDimensions="4" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1029</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Unknown</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Position1</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Position2</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>Position3</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1000" BrowseName="1:Equipment">
+		<DisplayName>Equipment</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1046</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1047</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1048</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1049</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1050</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1051</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1052</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1053</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1054</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1055</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1056</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1057</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1058</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1059</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1060</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1061</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1062</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1063</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1064</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1065</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1066</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1067</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1068</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1069</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1070</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1046" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1014" NodeId="ns=1;i=1047" BrowseName="statusTechnical">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1048" BrowseName="statusTechnicalManufacturerSpecificValue">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1049" BrowseName="manufacturer">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1050" BrowseName="manufacturerModel">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1051" BrowseName="serialNumber">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1052" BrowseName="hardwareRevision">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1053" BrowseName="softwareRevision">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1015" NodeId="ns=1;i=1054" BrowseName="replaceabityIndication">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="DateTime" NodeId="ns=1;i=1055" BrowseName="manufacturingDateTime">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1056" BrowseName="label">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Boolean" NodeId="ns=1;i=1057" BrowseName="isTimeSynchronised">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1000" NodeId="ns=1;i=1058" BrowseName="subEquipments">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1001" NodeId="ns=1;i=1059" BrowseName="controllers">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1002" NodeId="ns=1;i=1060" BrowseName="physicalNetworkInterfaces">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1003" NodeId="ns=1;i=1061" BrowseName="storageMediaFlash">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1004" NodeId="ns=1;i=1062" BrowseName="powerSupplies">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1005" NodeId="ns=1;i=1063" BrowseName="physicalDigitalOutputs">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1006" NodeId="ns=1;i=1064" BrowseName="physicalAnaloglOutputs">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1007" NodeId="ns=1;i=1065" BrowseName="physicalSeparatedOutputs">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1008" NodeId="ns=1;i=1066" BrowseName="physicalDigitalInputs">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1009" NodeId="ns=1;i=1067" BrowseName="physicalAnaloglInputs">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1010" NodeId="ns=1;i=1068" BrowseName="physicalSeparatedInputs">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1012" NodeId="ns=1;i=1069" BrowseName="inputSwitches">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1013" NodeId="ns=1;i=1070" BrowseName="inputButtons">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1001" BrowseName="1:Controller">
+		<DisplayName>Controller</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1071</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1072</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1073</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1074</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1075</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1076</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1077</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1078</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1079</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1080</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1081</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1082</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1083</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1084</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1085</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1071" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1014" NodeId="ns=1;i=1072" BrowseName="statusTechnical">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1073" BrowseName="statusTechnicalManufacturerSpecificValue">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1074" BrowseName="systemDescription">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1075" BrowseName="operatingSystem">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1016" NodeId="ns=1;i=1076" BrowseName="operationStatus">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1017" NodeId="ns=1;i=1077" BrowseName="coolingFanStatus">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1018" NodeId="ns=1;i=1078" BrowseName="temperatureStatus">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1019" NodeId="ns=1;i=1079" BrowseName="cpuHealthStatus">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1020" NodeId="ns=1;i=1080" BrowseName="cpuLoadStatus">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1081" BrowseName="ramSize">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1021" NodeId="ns=1;i=1082" BrowseName="ramHealthStatus">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="DateTime" NodeId="ns=1;i=1083" BrowseName="bootingLastDateTime">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1022" NodeId="ns=1;i=1084" BrowseName="bootingLastReason">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1085" BrowseName="label">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1002" BrowseName="1:PhysicalNetworkInterface">
+		<DisplayName>PhysicalNetworkInterface</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1086</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1087</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1088</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1089</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1090</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1091</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1092</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1086" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1014" NodeId="ns=1;i=1087" BrowseName="statusTechnical">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1088" BrowseName="statusTechnicalManufacturerSpecificValue">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1089" BrowseName="macAddress">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1024" NodeId="ns=1;i=1090" BrowseName="operationStatus">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1091" BrowseName="nominationalBandwidth">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1092" BrowseName="label">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1003" BrowseName="1:StorageMediumFlash">
+		<DisplayName>StorageMediumFlash</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1093</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1094</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1095</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1096</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1097</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1098</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1099</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1093" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1014" NodeId="ns=1;i=1094" BrowseName="statusTechnical">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1095" BrowseName="statusTechnicalManufacturerSpecificValue">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1096" BrowseName="memorySize">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1018" NodeId="ns=1;i=1097" BrowseName="temperatureStatus">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1098" BrowseName="label">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1023" NodeId="ns=1;i=1099" BrowseName="wearStatus">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1004" BrowseName="1:PowerSupply">
+		<DisplayName>PowerSupply</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1100</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1101</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1102</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1103</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1104</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1105</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1106</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1107</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1108</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1109</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1110</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1100" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1014" NodeId="ns=1;i=1101" BrowseName="statusTechnical">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1102" BrowseName="statusTechnicalManufacturerSpecificValue">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1025" NodeId="ns=1;i=1103" BrowseName="inputVoltageStatus">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1025" NodeId="ns=1;i=1104" BrowseName="outputVoltageStatus">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1105" BrowseName="outputPower">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1106" BrowseName="outputPowerLimit">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1018" NodeId="ns=1;i=1107" BrowseName="temperatureStatus">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1108" BrowseName="label">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Float" NodeId="ns=1;i=1109" BrowseName="inputVoltage">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Float" NodeId="ns=1;i=1110" BrowseName="inputCurrent">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1005" BrowseName="1:PhysicalDigitalOutput">
+		<DisplayName>PhysicalDigitalOutput</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1111</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1112</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1113</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1114</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1115</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1116</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1117</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1111" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1014" NodeId="ns=1;i=1112" BrowseName="statusTechnical">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1113" BrowseName="statusTechnicalManufacturerSpecificValue">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1114" BrowseName="label">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1026" NodeId="ns=1;i=1115" BrowseName="physicalOutputValue">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Float" NodeId="ns=1;i=1116" BrowseName="outputVoltage">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Float" NodeId="ns=1;i=1117" BrowseName="outputCurrent">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1006" BrowseName="1:PhysicalAnalogOutput">
+		<DisplayName>PhysicalAnalogOutput</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1118</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1119</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1120</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1121</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1122</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1123</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1118" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1014" NodeId="ns=1;i=1119" BrowseName="statusTechnical">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1120" BrowseName="statusTechnicalManufacturerSpecificValue">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1121" BrowseName="label">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Float" NodeId="ns=1;i=1122" BrowseName="voltage">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Float" NodeId="ns=1;i=1123" BrowseName="current">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1007" BrowseName="1:PhysicalSeparatedOutput">
+		<DisplayName>PhysicalSeparatedOutput</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1124</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1125</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1126</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1127</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1128</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1124" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1014" NodeId="ns=1;i=1125" BrowseName="statusTechnical">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1126" BrowseName="statusTechnicalManufacturerSpecificValue">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1127" BrowseName="label">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1027" NodeId="ns=1;i=1128" BrowseName="outputValue">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1008" BrowseName="1:PhysicalDigitalInput">
+		<DisplayName>PhysicalDigitalInput</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1129</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1130</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1131</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1132</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1133</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1134</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1135</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1129" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1014" NodeId="ns=1;i=1130" BrowseName="statusTechnical">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1131" BrowseName="statusTechnicalManufacturerSpecificValue">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1132" BrowseName="label">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1026" NodeId="ns=1;i=1133" BrowseName="physicalInputValue">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Float" NodeId="ns=1;i=1134" BrowseName="inputVoltage">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Float" NodeId="ns=1;i=1135" BrowseName="inputCurrent">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1009" BrowseName="1:PhysicalAnalogInput">
+		<DisplayName>PhysicalAnalogInput</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1136</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1137</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1138</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1139</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1140</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1141</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1136" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1014" NodeId="ns=1;i=1137" BrowseName="statusTechnical">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1138" BrowseName="statusTechnicalManufacturerSpecificValue">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1139" BrowseName="label">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Float" NodeId="ns=1;i=1140" BrowseName="voltage">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Float" NodeId="ns=1;i=1141" BrowseName="current">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1010" BrowseName="1:PhysicalSeparatedInput">
+		<DisplayName>PhysicalSeparatedInput</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1142</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1143</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1144</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1145</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1146</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1142" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1014" NodeId="ns=1;i=1143" BrowseName="statusTechnical">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1144" BrowseName="statusTechnicalManufacturerSpecificValue">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1145" BrowseName="label">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1028" NodeId="ns=1;i=1146" BrowseName="inputValue">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1011" BrowseName="1:AuxiliarySwitch">
+		<DisplayName>AuxiliarySwitch</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1147</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1148</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1147" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1148" BrowseName="label">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1012" BrowseName="1:InputSwitch">
+		<DisplayName>InputSwitch</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1149</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1150</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1151</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1152</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1149" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1150" BrowseName="label">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1029" NodeId="ns=1;i=1151" BrowseName="inputSwitchPosition">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1011" NodeId="ns=1;i=1152" BrowseName="auxiliarySwitch">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1013" BrowseName="1:InputButton">
+		<DisplayName>InputButton</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1153</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1154</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1155</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1156</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1153" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1154" BrowseName="label">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Boolean" NodeId="ns=1;i=1155" BrowseName="isPressed">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1011" NodeId="ns=1;i=1156" BrowseName="auxiliarySwitch">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+</UANodeSet>

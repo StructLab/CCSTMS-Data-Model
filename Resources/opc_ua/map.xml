@@ -1,0 +1,293 @@
+<?xml version="1.0" ?>
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:s1="http://twin.eulynx.eu/generic/Types.xsd">
+	<NamespaceUris>
+		<Uri>http://ERJU/datamodel/0.4/map</Uri>
+	</NamespaceUris>
+	<Models>
+		<Model ModelUri="http://ERJU/datamodel/0.4/map" PublicationDate="2024-10-28T10:57:01Z" Version="1.0">
+			<RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2020-04-14T00:00:00Z" Version="1.04.6"/>
+		</Model>
+	</Models>
+	<Aliases>
+		<Alias Alias="Boolean">i=1</Alias>
+		<Alias Alias="SByte">i=2</Alias>
+		<Alias Alias="Byte">i=3</Alias>
+		<Alias Alias="Int16">i=4</Alias>
+		<Alias Alias="UInt16">i=5</Alias>
+		<Alias Alias="Int32">i=6</Alias>
+		<Alias Alias="UInt32">i=7</Alias>
+		<Alias Alias="Int64">i=8</Alias>
+		<Alias Alias="UInt64">i=9</Alias>
+		<Alias Alias="Float">i=10</Alias>
+		<Alias Alias="Double">i=11</Alias>
+		<Alias Alias="String">i=12</Alias>
+		<Alias Alias="DateTime">i=13</Alias>
+		<Alias Alias="Guid">i=14</Alias>
+		<Alias Alias="ByteString">i=15</Alias>
+		<Alias Alias="XmlElement">i=16</Alias>
+		<Alias Alias="NodeId">i=17</Alias>
+		<Alias Alias="ExpandedNodeId">i=18</Alias>
+		<Alias Alias="StatusCode">i=19</Alias>
+		<Alias Alias="QualifiedName">i=20</Alias>
+		<Alias Alias="LocalizedText">i=21</Alias>
+		<Alias Alias="ExtensionObject">i=22</Alias>
+		<Alias Alias="Mandatory">i=78</Alias>
+		<Alias Alias="Optional">i=80</Alias>
+		<Alias Alias="ExposesItsArray">i=83</Alias>
+		<Alias Alias="Array0_N">i=11508</Alias>
+		<Alias Alias="Array1_N">i=11510</Alias>
+	</Aliases>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=2565" BrowseName="1:MapArea">
+		<DisplayName>MapArea</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=2571</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=2572</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2573</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=2574</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2575</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2576</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2577</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=2571" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=2572" BrowseName="name">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Optional</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="DateTime" NodeId="ns=1;i=2573" BrowseName="versionTimestamp">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=2574" BrowseName="areaId">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=2575" BrowseName="epsg">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=2566" NodeId="ns=1;i=2576" BrowseName="trackEdgeProjections">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=2568" NodeId="ns=1;i=2577" BrowseName="functionalElements">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=2566" BrowseName="1:TrackEdgeProjection">
+		<DisplayName>TrackEdgeProjection</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=2578</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2579</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=2578" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=2567" NodeId="ns=1;i=2579" BrowseName="coordinates">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=2567" BrowseName="1:TrackEdgeCoordinate">
+		<DisplayName>TrackEdgeCoordinate</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2580</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2581</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2582</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2583</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2584</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2585</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2586</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2587</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=2580" BrowseName="pos">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=2581" BrowseName="x">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=2582" BrowseName="y">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=2583" BrowseName="z">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=2584" BrowseName="accPos">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=2585" BrowseName="accX">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=2586" BrowseName="accY">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=2587" BrowseName="accZ">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=2568" BrowseName="1:FunctionalElementProjection">
+		<DisplayName>FunctionalElementProjection</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2588</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2589</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2590</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2591</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2592</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2593</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2594</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="ns=1;i=2569" NodeId="ns=1;i=2588" BrowseName="elementRef">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=2589" BrowseName="x">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=2590" BrowseName="y">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=2591" BrowseName="z">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=2592" BrowseName="accX">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=2593" BrowseName="accY">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=2594" BrowseName="accZ">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=2569" BrowseName="1:FunctionalElementRef">
+		<DisplayName>FunctionalElementRef</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2595</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2596</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2597</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2598</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2599</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2600</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=2595" BrowseName="simplePoint">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=2596" BrowseName="etcsMarker">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=2597" BrowseName="stopLocation">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=2598" BrowseName="timingPoint">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=2599" BrowseName="operationalPoint">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=2600" BrowseName="balise">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=2570" BrowseName="1:MapMgmt">
+		<DisplayName>MapMgmt</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=2601</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="ns=1;i=2565" NodeId="ns=1;i=2601" BrowseName="mapAreas">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+</UANodeSet>

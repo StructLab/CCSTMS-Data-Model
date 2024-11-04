@@ -1,0 +1,4163 @@
+<?xml version="1.0" ?>
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:s1="http://twin.eulynx.eu/generic/Types.xsd">
+	<NamespaceUris>
+		<Uri>http://ERJU/datamodel/0.4/infrastructure</Uri>
+	</NamespaceUris>
+	<Models>
+		<Model ModelUri="http://ERJU/datamodel/0.4/infrastructure" PublicationDate="2024-10-28T10:57:01Z" Version="1.0">
+			<RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2020-04-14T00:00:00Z" Version="1.04.6"/>
+		</Model>
+	</Models>
+	<Aliases>
+		<Alias Alias="Boolean">i=1</Alias>
+		<Alias Alias="SByte">i=2</Alias>
+		<Alias Alias="Byte">i=3</Alias>
+		<Alias Alias="Int16">i=4</Alias>
+		<Alias Alias="UInt16">i=5</Alias>
+		<Alias Alias="Int32">i=6</Alias>
+		<Alias Alias="UInt32">i=7</Alias>
+		<Alias Alias="Int64">i=8</Alias>
+		<Alias Alias="UInt64">i=9</Alias>
+		<Alias Alias="Float">i=10</Alias>
+		<Alias Alias="Double">i=11</Alias>
+		<Alias Alias="String">i=12</Alias>
+		<Alias Alias="DateTime">i=13</Alias>
+		<Alias Alias="Guid">i=14</Alias>
+		<Alias Alias="ByteString">i=15</Alias>
+		<Alias Alias="XmlElement">i=16</Alias>
+		<Alias Alias="NodeId">i=17</Alias>
+		<Alias Alias="ExpandedNodeId">i=18</Alias>
+		<Alias Alias="StatusCode">i=19</Alias>
+		<Alias Alias="QualifiedName">i=20</Alias>
+		<Alias Alias="LocalizedText">i=21</Alias>
+		<Alias Alias="ExtensionObject">i=22</Alias>
+		<Alias Alias="Mandatory">i=78</Alias>
+		<Alias Alias="Optional">i=80</Alias>
+		<Alias Alias="ExposesItsArray">i=83</Alias>
+		<Alias Alias="Array0_N">i=11508</Alias>
+		<Alias Alias="Array1_N">i=11510</Alias>
+	</Aliases>
+	<UADataType NodeId="ns=1;i=1629" BrowseName="1:Direction">
+		<DisplayName>infra_Direction</DisplayName>
+		<Description>List of applicable usage directions with respect to Track Edge e. g. for restrictions</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:Direction">
+			<Field Name="dirBoth" Value="0">
+				<Description>Applicable for 'both' travel directions</Description>
+			</Field>
+			<Field Name="dirSame" Value="1">
+				<Description>Applicable in the same direction as TrackEdge</Description>
+			</Field>
+			<Field Name="dirReverse" Value="2">
+				<Description>Applicable in the opposite direction of the TrackEdge (from end to start)</Description>
+			</Field>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1629" ValueRank="1" NodeId="ns=1;i=1647" ArrayDimensions="3" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1629</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>dirBoth</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>dirSame</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>dirReverse</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1630" BrowseName="1:TransitionType">
+		<DisplayName>infra_TransitionType</DisplayName>
+		<Description></Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:TransitionType">
+			<Field Name="clothoidCurve" Value="0"/>
+			<Field Name="biquadraticParabola" Value="1"/>
+			<Field Name="blossCurve" Value="2"/>
+			<Field Name="cosineCurve" Value="3"/>
+			<Field Name="cubicParabola" Value="4"/>
+			<Field Name="sineCurve" Value="5"/>
+			<Field Name="wienerBogen" Value="6"/>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1630" ValueRank="1" NodeId="ns=1;i=1648" ArrayDimensions="7" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1630</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>clothoidCurve</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>biquadraticParabola</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>blossCurve</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>cosineCurve</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>4</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>cubicParabola</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>5</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>sineCurve</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>6</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>wienerBogen</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1631" BrowseName="1:BaliseGroupFunction">
+		<DisplayName>infra_BaliseGroupFunction</DisplayName>
+		<Description></Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:BaliseGroupFunction">
+			<Field Name="location" Value="0">
+				<Description>has a location function</Description>
+			</Field>
+			<Field Name="sessionManagement" Value="1">
+				<Description>has a session management function</Description>
+			</Field>
+			<Field Name="networkRegistration" Value="2">
+				<Description>has a network registration function</Description>
+			</Field>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1631" ValueRank="1" NodeId="ns=1;i=1649" ArrayDimensions="3" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1631</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>location</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>sessionManagement</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>networkRegistration</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1632" BrowseName="1:LoadingGaugeType">
+		<DisplayName>infra_LoadingGaugeType</DisplayName>
+		<Description>is coming from ETCS packets 11,12 mLoadingGauge</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:LoadingGaugeType">
+			<Field Name="loadingGaugeIncompatible" Value="0">
+				<Description>The train does not fit to any of the interoperable loading gauge profiles</Description>
+			</Field>
+			<Field Name="g1" Value="1">
+				<Description>belongs to type g1</Description>
+			</Field>
+			<Field Name="gA" Value="2">
+				<Description>belongs to type gA</Description>
+			</Field>
+			<Field Name="gB" Value="3">
+				<Description>belongs to type gB</Description>
+			</Field>
+			<Field Name="gC" Value="4">
+				<Description>belongs to type gC</Description>
+			</Field>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1632" ValueRank="1" NodeId="ns=1;i=1650" ArrayDimensions="5" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1632</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>loadingGaugeIncompatible</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>g1</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>gA</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>gB</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>4</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>gC</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1633" BrowseName="1:ConditionType">
+		<DisplayName>infra_ConditionType</DisplayName>
+		<Description>List of track conditions</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:ConditionType">
+			<Field Name="powerlessLowPanthograph" Value="0">
+				<Description>Powerless section, lower Pantograph</Description>
+			</Field>
+			<Field Name="powerlessMainSwitch" Value="1">
+				<Description>Powerless section, switch off main power switch</Description>
+			</Field>
+			<Field Name="airTightness" Value="2">
+				<Description>defines a air tightness section</Description>
+			</Field>
+			<Field Name="soundHorn" Value="3">
+				<Description>defines a sound horn section</Description>
+			</Field>
+			<Field Name="nonStoppingArea" Value="4">
+				<Description>defines a non stopping area</Description>
+			</Field>
+			<Field Name="tunnelStoppingArea" Value="5">
+				<Description>defines a tunnel stopping area</Description>
+			</Field>
+			<Field Name="bigMetalMasses" Value="6">
+				<Description>Big metal masses, ignore on-board integrity check alarm of balise transmission</Description>
+			</Field>
+			<Field Name="radioHole" Value="7">
+				<Description>stop supervision of the loss of safe radio connection</Description>
+			</Field>
+			<Field Name="switchOffRegenerativeBrake" Value="8">
+				<Description>defines a switch Off Regenerative Brake sections</Description>
+			</Field>
+			<Field Name="switchOffEddyCurrentBrakeForServiceBrake" Value="9">
+				<Description>defines a switch Off Eddy Current Brake sections</Description>
+			</Field>
+			<Field Name="switchOffEddyCurrentBrakeForEmergencyBrake" Value="10">
+				<Description>defines a switch Off Eddy Current Emergency Brake sections</Description>
+			</Field>
+			<Field Name="switchOffMagneticShoeBrake" Value="11">
+				<Description>defines a switch Off Magnetic Shoe Brake sections</Description>
+			</Field>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1633" ValueRank="1" NodeId="ns=1;i=1651" ArrayDimensions="12" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1633</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>powerlessLowPanthograph</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>powerlessMainSwitch</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>airTightness</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>soundHorn</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>4</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>nonStoppingArea</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>5</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>tunnelStoppingArea</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>6</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>bigMetalMasses</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>7</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>radioHole</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>8</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>switchOffRegenerativeBrake</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>9</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>switchOffEddyCurrentBrakeForServiceBrake</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>10</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>switchOffEddyCurrentBrakeForEmergencyBrake</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>11</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>switchOffMagneticShoeBrake</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1634" BrowseName="1:BrakeType">
+		<DisplayName>infra_BrakeType</DisplayName>
+		<Description></Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:BrakeType">
+			<Field Name="serviceBrake" Value="0">
+				<Description>defines service brake</Description>
+			</Field>
+			<Field Name="emergencyBrake" Value="1">
+				<Description>defines emergency brake</Description>
+			</Field>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1634" ValueRank="1" NodeId="ns=1;i=1652" ArrayDimensions="2" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1634</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>serviceBrake</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>emergencyBrake</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1635" BrowseName="1:VoltageType">
+		<DisplayName>infra_VoltageType</DisplayName>
+		<Description>List defining Voltage types</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:VoltageType">
+			<Field Name="vtNotFitted" Value="0">
+				<Description>Line not fitted (not electrified) with any traction system</Description>
+			</Field>
+			<Field Name="vtAC25kv50Hz" Value="1">
+				<Description>AC 25kV 50Hz</Description>
+			</Field>
+			<Field Name="vtAC15kv16_7Hz" Value="2">
+				<Description>AC 15kV 16.7Hz</Description>
+			</Field>
+			<Field Name="vtDC3kv" Value="3">
+				<Description>DC 3kV</Description>
+			</Field>
+			<Field Name="vtDC1_5kv" Value="4">
+				<Description>DC 1.5kV</Description>
+			</Field>
+			<Field Name="vtDC600v" Value="5">
+				<Description>DC 600V</Description>
+			</Field>
+			<Field Name="vtDC650v" Value="6">
+				<Description>DC 650V</Description>
+			</Field>
+			<Field Name="vtDC750v" Value="7">
+				<Description>DC 750V</Description>
+			</Field>
+			<Field Name="vtDC850v" Value="8">
+				<Description>DC 850V</Description>
+			</Field>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1635" ValueRank="1" NodeId="ns=1;i=1653" ArrayDimensions="9" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1635</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>vtNotFitted</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>vtAC25kv50Hz</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>vtAC15kv16_7Hz</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>vtDC3kv</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>4</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>vtDC1_5kv</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>5</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>vtDC600v</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>6</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>vtDC650v</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>7</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>vtDC750v</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>8</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>vtDC850v</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1636" BrowseName="1:TrackGaugeType">
+		<DisplayName>infra_TrackGaugeType</DisplayName>
+		<Description></Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:TrackGaugeType">
+			<Field Name="tgUnknown" Value="0">
+				<Description>Line not fitted (not electrified) with any traction system</Description>
+			</Field>
+			<Field Name="tg750" Value="1">
+				<Description>gauge type 750mm</Description>
+			</Field>
+			<Field Name="tg1000mm" Value="2">
+				<Description>gauge type 1000mm</Description>
+			</Field>
+			<Field Name="tg1435mm" Value="3">
+				<Description>gauge type 1435mm</Description>
+			</Field>
+			<Field Name="tg1520mm" Value="4">
+				<Description>gauge type 1520mm</Description>
+			</Field>
+			<Field Name="tg1524mm" Value="5">
+				<Description>gauge type 1524mm</Description>
+			</Field>
+			<Field Name="tg1600mm" Value="6">
+				<Description>gauge type 1600mm</Description>
+			</Field>
+			<Field Name="tg1680mm" Value="7">
+				<Description>gauge type 1680mm</Description>
+			</Field>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1636" ValueRank="1" NodeId="ns=1;i=1654" ArrayDimensions="8" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1636</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>tgUnknown</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>tg750</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>tg1000mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>tg1435mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>4</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>tg1520mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>5</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>tg1524mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>6</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>tg1600mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>7</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>tg1680mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1637" BrowseName="1:TrainEndApplicability">
+		<DisplayName>infra_TrainEndApplicability</DisplayName>
+		<Description>List of train end applicability types</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:TrainEndApplicability">
+			<Field Name="lengthDelay" Value="0">
+				<Description>Train length delay on validity end point of profile element</Description>
+			</Field>
+			<Field Name="noLengthDelay" Value="1">
+				<Description>No Train length delay on validity end point of profile element.</Description>
+			</Field>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1637" ValueRank="1" NodeId="ns=1;i=1655" ArrayDimensions="2" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1637</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>lengthDelay</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>noLengthDelay</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1638" BrowseName="1:OtherSpecificStaticSpeedProfileCategory">
+		<DisplayName>infra_OtherSpecificStaticSpeedProfileCategory</DisplayName>
+		<Description>List of other specific static speed profile categories </Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:OtherSpecificStaticSpeedProfileCategory">
+			<Field Name="SSSP_freightTrainP" Value="0">
+				<Description>Other SSSP applies to Freight train of type P</Description>
+			</Field>
+			<Field Name="SSSP_freightTrainG" Value="1">
+				<Description>Other SSSP applies to Freight train of type G</Description>
+			</Field>
+			<Field Name="SSSP_passengerTrain" Value="2">
+				<Description>Other SSSP applies to Passenger train</Description>
+			</Field>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1638" ValueRank="1" NodeId="ns=1;i=1656" ArrayDimensions="3" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1638</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>SSSP_freightTrainP</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>SSSP_freightTrainG</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>SSSP_passengerTrain</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1639" BrowseName="1:CantDeficiencyCategory">
+		<DisplayName>infra_CantDeficiencyCategory</DisplayName>
+		<Description>List of cant deficiency speed profile categories</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:CantDeficiencyCategory">
+			<Field Name="CD_Undefined" Value="0">
+				<Description>annotates inactive cant deficiency</Description>
+			</Field>
+			<Field Name="CD_80mm" Value="1">
+				<Description>Applicable for trains capable of compensating cant deficiency of 80mm</Description>
+			</Field>
+			<Field Name="CD_100mm" Value="2">
+				<Description>Applicable for trains capable of compensating cant deficiency of 100mm</Description>
+			</Field>
+			<Field Name="CD_130mm" Value="3">
+				<Description>Applicable for trains capable of compensating cant deficiency of 130mm</Description>
+			</Field>
+			<Field Name="CD_150mm" Value="4">
+				<Description>Applicable for trains capable of compensating cant deficiency of 150mm</Description>
+			</Field>
+			<Field Name="CD_165mm" Value="5">
+				<Description>Applicable for trains capable of compensating cant deficiency of 165mm</Description>
+			</Field>
+			<Field Name="CD_180mm" Value="6">
+				<Description>Applicable for trains capable of compensating cant deficiency of 180mm</Description>
+			</Field>
+			<Field Name="CD_210mm" Value="7">
+				<Description>Applicable for trains capable of compensating cant deficiency of 210mm</Description>
+			</Field>
+			<Field Name="CD_225mm" Value="8">
+				<Description>Applicable for trains capable of compensating cant deficiency of 225mm</Description>
+			</Field>
+			<Field Name="CD_245mm" Value="9">
+				<Description>Applicable for trains capable of compensating cant deficiency of 245mm</Description>
+			</Field>
+			<Field Name="CD_275mm" Value="10">
+				<Description>Applicable for trains capable of compensating cant deficiency of 275mm</Description>
+			</Field>
+			<Field Name="CD_300mm" Value="11">
+				<Description>Applicable for trains capable of compensating cant deficiency of 300mm</Description>
+			</Field>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1639" ValueRank="1" NodeId="ns=1;i=1657" ArrayDimensions="12" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1639</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>CD_Undefined</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>CD_80mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>CD_100mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>CD_130mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>4</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>CD_150mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>5</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>CD_165mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>6</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>CD_180mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>7</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>CD_210mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>8</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>CD_225mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>9</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>CD_245mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>10</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>CD_275mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>11</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>CD_300mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1640" BrowseName="1:AxleLoadCategory">
+		<DisplayName>infra_AxleLoadCategory</DisplayName>
+		<Description>List of axle load speed profile categories</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:AxleLoadCategory">
+			<Field Name="AL_A" Value="0">
+				<Description>Applicable for trains falling under axle load category A</Description>
+			</Field>
+			<Field Name="AL_HS17" Value="1">
+				<Description>Applicable for trains falling under axle load category HS17</Description>
+			</Field>
+			<Field Name="AL_B1" Value="2">
+				<Description>Applicable for trains falling under axle load category B1</Description>
+			</Field>
+			<Field Name="AL_B2" Value="3">
+				<Description>Applicable for trains falling under axle load category B2</Description>
+			</Field>
+			<Field Name="AL_C2" Value="4">
+				<Description>Applicable for trains falling under axle load category C2</Description>
+			</Field>
+			<Field Name="AL_C3" Value="5">
+				<Description>Applicable for trains falling under axle load category C3</Description>
+			</Field>
+			<Field Name="AL_C4" Value="6">
+				<Description>Applicable for trains falling under axle load category C4</Description>
+			</Field>
+			<Field Name="AL_D2" Value="7">
+				<Description>Applicable for trains falling under axle load category D2</Description>
+			</Field>
+			<Field Name="AL_D3" Value="8">
+				<Description>Applicable for trains falling under axle load category D3</Description>
+			</Field>
+			<Field Name="AL_D4" Value="9">
+				<Description>Applicable for trains falling under axle load category D4</Description>
+			</Field>
+			<Field Name="AL_D4XL" Value="10">
+				<Description>Applicable for trains falling under axle load category D4XL</Description>
+			</Field>
+			<Field Name="AL_E4" Value="11">
+				<Description>Applicable for trains falling under axle load category E4</Description>
+			</Field>
+			<Field Name="AL_E5" Value="12">
+				<Description>Applicable for trains falling under axle load category E5</Description>
+			</Field>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1640" ValueRank="1" NodeId="ns=1;i=1658" ArrayDimensions="13" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1640</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>AL_A</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>AL_HS17</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>AL_B1</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>AL_B2</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>4</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>AL_C2</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>5</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>AL_C3</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>6</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>AL_C4</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>7</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>AL_D2</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>8</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>AL_D3</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>9</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>AL_D4</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>10</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>AL_D4XL</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>11</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>AL_E4</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>12</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>AL_E5</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1641" BrowseName="1:TrainSize">
+		<DisplayName>infra_TrainSize</DisplayName>
+		<Description>List defining different train sizes</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:TrainSize">
+			<Field Name="undefinedTrainSize" Value="0">
+				<Description>train size undefined</Description>
+			</Field>
+			<Field Name="shortTrain" Value="1">
+				<Description>defines a short train</Description>
+			</Field>
+			<Field Name="halfTrain" Value="2">
+				<Description>defines a half train</Description>
+			</Field>
+			<Field Name="fullTrain" Value="3">
+				<Description>defines a full train</Description>
+			</Field>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1641" ValueRank="1" NodeId="ns=1;i=1659" ArrayDimensions="4" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1641</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>undefinedTrainSize</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>shortTrain</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>halfTrain</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>fullTrain</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1642" BrowseName="1:TrainLoadType">
+		<DisplayName>infra_TrainLoadType</DisplayName>
+		<Description></Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:TrainLoadType">
+			<Field Name="passengerTrain" Value="0">
+				<Description>defines a passenger train</Description>
+			</Field>
+			<Field Name="freightTrain" Value="1">
+				<Description>defines a freight train</Description>
+			</Field>
+			<Field Name="anyTrain" Value="2">
+				<Description>defines any train</Description>
+			</Field>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1642" ValueRank="1" NodeId="ns=1;i=1660" ArrayDimensions="3" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1642</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>passengerTrain</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>freightTrain</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>anyTrain</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1643" BrowseName="1:DoorOpeningSide">
+		<DisplayName>infra_DoorOpeningSide</DisplayName>
+		<Description></Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:DoorOpeningSide">
+			<Field Name="noSide" Value="0">
+				<Description>doors do not open in any side</Description>
+			</Field>
+			<Field Name="leftSide" Value="1">
+				<Description>doors on the left side</Description>
+			</Field>
+			<Field Name="rightSide" Value="2">
+				<Description>doors on the right side</Description>
+			</Field>
+			<Field Name="bothSides" Value="3">
+				<Description>doors on both sides</Description>
+			</Field>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1643" ValueRank="1" NodeId="ns=1;i=1661" ArrayDimensions="4" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1643</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>noSide</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>leftSide</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>rightSide</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>bothSides</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1644" BrowseName="1:PlatformHeight">
+		<DisplayName>infra_PlatformHeight</DisplayName>
+		<Description>List of nominal height of platform above rail level (refer to TSI infrastructure)</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:PlatformHeight">
+			<Field Name="PH_200mm" Value="0">
+				<Description>platform height 200mm</Description>
+			</Field>
+			<Field Name="PH_300_380mm" Value="1">
+				<Description>platform height 300-380mm</Description>
+			</Field>
+			<Field Name="PH_550mm" Value="2">
+				<Description>platform height 550mm</Description>
+			</Field>
+			<Field Name="PH_580mm" Value="3">
+				<Description>platform height 580mm</Description>
+			</Field>
+			<Field Name="PH_680mm" Value="4">
+				<Description>platform height 680mm</Description>
+			</Field>
+			<Field Name="PH_685mm" Value="5">
+				<Description>platform height 685mm</Description>
+			</Field>
+			<Field Name="PH_730mm" Value="6">
+				<Description>platform height 730mm</Description>
+			</Field>
+			<Field Name="PH_760mm" Value="7">
+				<Description>platform height 760mm</Description>
+			</Field>
+			<Field Name="PH_840mm" Value="8">
+				<Description>platform height 840mm</Description>
+			</Field>
+			<Field Name="PH_900mm" Value="9">
+				<Description>platform height 900mm</Description>
+			</Field>
+			<Field Name="PH_915mm" Value="10">
+				<Description>platform height 915mm</Description>
+			</Field>
+			<Field Name="PH_920mm" Value="11">
+				<Description>platform height 920mm</Description>
+			</Field>
+			<Field Name="PH_960mm" Value="12">
+				<Description>platform height 960mm</Description>
+			</Field>
+			<Field Name="PH_1100mm" Value="13">
+				<Description>platform height 1100mm</Description>
+			</Field>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1644" ValueRank="1" NodeId="ns=1;i=1662" ArrayDimensions="14" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1644</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>PH_200mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>PH_300_380mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>PH_550mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>PH_580mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>4</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>PH_680mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>5</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>PH_685mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>6</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>PH_730mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>7</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>PH_760mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>8</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>PH_840mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>9</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>PH_900mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>10</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>PH_915mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>11</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>PH_920mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>12</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>PH_960mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>13</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>PH_1100mm</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1645" BrowseName="1:OPType">
+		<DisplayName>infra_OPType</DisplayName>
+		<Description>List of types for Operational Point</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:OPType">
+			<Field Name="station" Value="0">
+				<Description>is of type station</Description>
+			</Field>
+			<Field Name="depot" Value="1">
+				<Description>is of type depot</Description>
+			</Field>
+			<Field Name="siding" Value="2">
+				<Description>is of type siding</Description>
+			</Field>
+			<Field Name="trainTechnicalServices" Value="3">
+				<Description>is of type train technical services</Description>
+			</Field>
+			<Field Name="shuntingYard" Value="4">
+				<Description>is of type shunting yard</Description>
+			</Field>
+			<Field Name="borderPoint" Value="5">
+				<Description>is of type border point</Description>
+			</Field>
+			<Field Name="technicalChange" Value="6">
+				<Description>is of type technical change</Description>
+			</Field>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1645" ValueRank="1" NodeId="ns=1;i=1663" ArrayDimensions="7" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1645</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>station</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>depot</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>2</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>siding</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>3</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>trainTechnicalServices</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>4</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>shuntingYard</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>5</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>borderPoint</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>6</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>technicalChange</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UADataType NodeId="ns=1;i=1646" BrowseName="1:TrainDetectorType">
+		<DisplayName>infra_TrainDetectorType</DisplayName>
+		<Description>List defining different train detection systems</Description>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+		</References>
+		<Definition Name="1:TrainDetectorType">
+			<Field Name="axleCounter" Value="0">
+				<Description>defines an axle counter</Description>
+			</Field>
+			<Field Name="trackCircuitBorder" Value="1">
+				<Description>defines a track circuit border</Description>
+			</Field>
+		</Definition>
+	</UADataType>
+	<UAVariable DataType="EnumValueType" Historizing="true" ParentNodeId="ns=1;i=1646" ValueRank="1" NodeId="ns=1;i=1664" ArrayDimensions="2" BrowseName="EnumValues">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1646</Reference>
+		</References>
+		<Value>
+			<uax:ListOfExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>0</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>axleCounter</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+				<uax:ExtensionObject>
+					<uax:TypeId>
+						<uax:Identifier>i=7616</uax:Identifier>
+					</uax:TypeId>
+					<uax:Body>
+						<uax:EnumValueType>
+							<uax:Value>1</uax:Value>
+							<uax:DisplayName>
+								<uax:Text>trackCircuitBorder</uax:Text>
+							</uax:DisplayName>
+						</uax:EnumValueType>
+					</uax:Body>
+				</uax:ExtensionObject>
+			</uax:ListOfExtensionObject>
+		</Value>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1565" BrowseName="1:TrackEdge">
+		<DisplayName>TrackEdge</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1665</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1666</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1665" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1666" BrowseName="length">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1566" BrowseName="1:TrackEdgeLink">
+		<DisplayName>TrackEdgeLink</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1667</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1668</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1669</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1670</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1671</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1667" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1668" BrowseName="trackEdgeA">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1669" BrowseName="trackEdgeB">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Boolean" NodeId="ns=1;i=1670" BrowseName="startOfA">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Boolean" NodeId="ns=1;i=1671" BrowseName="startOfB">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1567" BrowseName="1:TopoArea">
+		<DisplayName>TopoArea</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1672</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1673</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1674</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1675</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1672" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="DateTime" NodeId="ns=1;i=1673" BrowseName="versionTimestamp">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1565" NodeId="ns=1;i=1674" BrowseName="trackEdges">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1566" NodeId="ns=1;i=1675" BrowseName="trackEdgeLinks">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1568" BrowseName="1:TrackEdgePoint">
+		<DisplayName>TrackEdgePoint</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1676</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1677</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1676" BrowseName="trackEdge">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1677" BrowseName="pos">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1569" BrowseName="1:DirTrackEdgePoint">
+		<DisplayName>DirTrackEdgePoint</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1678</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1679</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1680</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1678" BrowseName="trackEdge">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1679" BrowseName="pos">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Boolean" NodeId="ns=1;i=1680" BrowseName="sameDir">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1570" BrowseName="1:TrackEdgeSection">
+		<DisplayName>TrackEdgeSection</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1681</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1682</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1683</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1681" BrowseName="trackEdge">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1682" BrowseName="skipFromStart">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1683" BrowseName="skipFromEnd">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1571" BrowseName="1:DirTrackEdgeSection">
+		<DisplayName>DirTrackEdgeSection</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1684</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1685</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1686</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1687</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1684" BrowseName="trackEdge">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1685" BrowseName="skipFromStart">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1686" BrowseName="skipFromEnd">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1629" NodeId="ns=1;i=1687" BrowseName="applicableDirection">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1572" BrowseName="1:DirTrackEdge">
+		<DisplayName>DirTrackEdge</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1688</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1689</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1688" BrowseName="trackEdge">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Boolean" NodeId="ns=1;i=1689" BrowseName="sameDir">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1573" BrowseName="1:LinkedPath">
+		<DisplayName>LinkedPath</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1690</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1691</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1692</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="ns=1;i=1572" NodeId="ns=1;i=1690" BrowseName="dirTrackEdges">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1691" BrowseName="skipFromPathStart">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1692" BrowseName="skipFromPathEnd">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1574" BrowseName="1:GeometryArea">
+		<DisplayName>GeometryArea</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1693</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1694</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1695</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1696</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1693" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="DateTime" NodeId="ns=1;i=1694" BrowseName="versionTimestamp">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Boolean" NodeId="ns=1;i=1695" BrowseName="alignment3d">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1575" NodeId="ns=1;i=1696" BrowseName="trackEdgeGeometries">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1575" BrowseName="1:TrackEdgeGeometry">
+		<DisplayName>TrackEdgeGeometry</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1697</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1698</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1699</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1700</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1697" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1576" NodeId="ns=1;i=1698" BrowseName="horizontalAlignment">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1580" NodeId="ns=1;i=1699" BrowseName="verticalAlignment">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1583" NodeId="ns=1;i=1700" BrowseName="cantPoints">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1576" BrowseName="1:HorizontalSegment">
+		<DisplayName>HorizontalSegment</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1701</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1702</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1703</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="ns=1;i=1577" NodeId="ns=1;i=1701" BrowseName="line">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1578" NodeId="ns=1;i=1702" BrowseName="arc">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1579" NodeId="ns=1;i=1703" BrowseName="transition">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1577" BrowseName="1:HorizontalLine">
+		<DisplayName>HorizontalLine</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1704</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1705</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="Double" NodeId="ns=1;i=1704" BrowseName="pos">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=1705" BrowseName="azimuth">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1578" BrowseName="1:HorizontalArc">
+		<DisplayName>HorizontalArc</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1706</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1707</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1708</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="Double" NodeId="ns=1;i=1706" BrowseName="pos">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=1707" BrowseName="azimuth">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=1708" BrowseName="radius">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1579" BrowseName="1:HorizontalTransition">
+		<DisplayName>HorizontalTransition</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1709</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1710</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1711</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1712</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="Double" NodeId="ns=1;i=1709" BrowseName="pos">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=1710" BrowseName="azimuth">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=1711" BrowseName="radius">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1630" NodeId="ns=1;i=1712" BrowseName="transitionType">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1580" BrowseName="1:VerticalSegment">
+		<DisplayName>VerticalSegment</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1713</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1714</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="ns=1;i=1581" NodeId="ns=1;i=1713" BrowseName="line">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1582" NodeId="ns=1;i=1714" BrowseName="arc">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1581" BrowseName="1:VerticalLine">
+		<DisplayName>VerticalLine</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1715</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1716</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="Double" NodeId="ns=1;i=1715" BrowseName="pos">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=1716" BrowseName="slope">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1582" BrowseName="1:VerticalArc">
+		<DisplayName>VerticalArc</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1717</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1718</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1719</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="Double" NodeId="ns=1;i=1717" BrowseName="pos">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=1718" BrowseName="slope">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=1719" BrowseName="radius">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1583" BrowseName="1:CantPoint">
+		<DisplayName>CantPoint</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1720</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1721</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="Double" NodeId="ns=1;i=1720" BrowseName="pos">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Double" NodeId="ns=1;i=1721" BrowseName="appliedCant">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1584" BrowseName="1:SampledGeometryArea">
+		<DisplayName>SampledGeometryArea</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1722</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1723</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1724</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1722" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="DateTime" NodeId="ns=1;i=1723" BrowseName="versionTimestamp">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1585" NodeId="ns=1;i=1724" BrowseName="sampledTrackEdgeGeometries">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1585" BrowseName="1:SampledTrackEdgeGeometry">
+		<DisplayName>SampledTrackEdgeGeometry</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1725</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1726</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1727</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1728</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1725" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1586" NodeId="ns=1;i=1726" BrowseName="slopes">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1588" NodeId="ns=1;i=1727" BrowseName="curves">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1587" NodeId="ns=1;i=1728" BrowseName="cants">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1586" BrowseName="1:SlopeSamplePoint">
+		<DisplayName>SlopeSamplePoint</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1729</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1730</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1729" BrowseName="pos">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Int32" NodeId="ns=1;i=1730" BrowseName="slope">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1587" BrowseName="1:CantSamplePoint">
+		<DisplayName>CantSamplePoint</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1731</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1732</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1731" BrowseName="pos">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Int32" NodeId="ns=1;i=1732" BrowseName="cant">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1588" BrowseName="1:CurveSamplePoint">
+		<DisplayName>CurveSamplePoint</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1733</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1734</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1733" BrowseName="pos">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Int32" NodeId="ns=1;i=1734" BrowseName="radius">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1589" BrowseName="1:SimplePoint">
+		<DisplayName>SimplePoint</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1735</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1736</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1737</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1738</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1735" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1736" BrowseName="reversalTime">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1737" BrowseName="pointLeft">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1738" BrowseName="pointRight">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1590" BrowseName="1:SlipCrossing">
+		<DisplayName>SlipCrossing</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1739</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1740</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1741</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1739" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1740" BrowseName="simplePoints">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1741" BrowseName="crossing">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1591" BrowseName="1:Derailer">
+		<DisplayName>Derailer</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1742</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1743</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1744</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1745</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1742" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1569" NodeId="ns=1;i=1743" BrowseName="dirSpotLocation">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1744" BrowseName="reversalTime">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Boolean" NodeId="ns=1;i=1745" BrowseName="derailToRight">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1592" BrowseName="1:Crossing">
+		<DisplayName>Crossing</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1746</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1747</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1748</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1746" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1568" NodeId="ns=1;i=1747" BrowseName="trackEdgePoints">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Boolean" NodeId="ns=1;i=1748" BrowseName="isSwitchable">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1593" BrowseName="1:BaliseGroup">
+		<DisplayName>BaliseGroup</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1749</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1750</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1751</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1752</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1753</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1754</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1749" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1750" BrowseName="nidBG">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1751" BrowseName="nidC">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1594" NodeId="ns=1;i=1752" BrowseName="balises">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1631" NodeId="ns=1;i=1753" BrowseName="bgFunction">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1629" NodeId="ns=1;i=1754" BrowseName="linkOrientationDirection">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1594" BrowseName="1:Balise">
+		<DisplayName>Balise</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1755</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1756</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1755" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1568" NodeId="ns=1;i=1756" BrowseName="spotLocation">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1595" BrowseName="1:PropertiesArea">
+		<DisplayName>PropertiesArea</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1757</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1758</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1759</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1760</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1761</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1762</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1763</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1764</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1765</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1766</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1767</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1768</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1769</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1757" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="DateTime" NodeId="ns=1;i=1758" BrowseName="versionTimestamp">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1636" NodeId="ns=1;i=1759" BrowseName="gauge">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1632" NodeId="ns=1;i=1760" BrowseName="loadingGaugeTypes">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1635" NodeId="ns=1;i=1761" BrowseName="defaultVoltage">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1762" BrowseName="defaultMaxCurrent">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1603" NodeId="ns=1;i=1763" BrowseName="teSpeedProfiles">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1596" NodeId="ns=1;i=1764" BrowseName="trackEdgeGauges">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1597" NodeId="ns=1;i=1765" BrowseName="trackEdgeLoadingGauges">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1598" NodeId="ns=1;i=1766" BrowseName="trackConditions">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1599" NodeId="ns=1;i=1767" BrowseName="currentLimitations">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1600" NodeId="ns=1;i=1768" BrowseName="permittedBrakingDistances">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1601" NodeId="ns=1;i=1769" BrowseName="tractionSystems">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1596" BrowseName="1:TrackEdgeGauge">
+		<DisplayName>TrackEdgeGauge</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1770</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1771</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="ns=1;i=1570" NodeId="ns=1;i=1770" BrowseName="trackEdgeSections">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1636" NodeId="ns=1;i=1771" BrowseName="gauge">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1597" BrowseName="1:TrackEdgeLoadingGauge">
+		<DisplayName>TrackEdgeLoadingGauge</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1772</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1773</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="ns=1;i=1570" NodeId="ns=1;i=1772" BrowseName="trackEdgeSections">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1632" NodeId="ns=1;i=1773" BrowseName="loadingGaugeType">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1598" BrowseName="1:TrackCondition">
+		<DisplayName>TrackCondition</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1774</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1775</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="ns=1;i=1570" NodeId="ns=1;i=1774" BrowseName="trackEdgeSections">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1633" NodeId="ns=1;i=1775" BrowseName="conditionType">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1599" BrowseName="1:CurrentLimitation">
+		<DisplayName>CurrentLimitation</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1776</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1777</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="ns=1;i=1570" NodeId="ns=1;i=1776" BrowseName="trackEdgeSections">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1777" BrowseName="maxCurrent">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1600" BrowseName="1:PermittedBrakingDistance">
+		<DisplayName>PermittedBrakingDistance</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1778</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1779</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1780</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1781</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1782</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="ns=1;i=1570" NodeId="ns=1;i=1778" BrowseName="trackEdgeSections">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1779" BrowseName="distance">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1634" NodeId="ns=1;i=1780" BrowseName="brakeType">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Int32" NodeId="ns=1;i=1781" BrowseName="gradientValue">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Boolean" NodeId="ns=1;i=1782" BrowseName="sameDir">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1601" BrowseName="1:TractionSystem">
+		<DisplayName>TractionSystem</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1783</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1784</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="ns=1;i=1570" NodeId="ns=1;i=1783" BrowseName="trackEdgeSections">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1635" NodeId="ns=1;i=1784" BrowseName="voltageType">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1602" BrowseName="1:TrackUsageArea">
+		<DisplayName>TrackUsageArea</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1785</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1786</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1787</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1788</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1789</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1790</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1785" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="DateTime" NodeId="ns=1;i=1786" BrowseName="versionTimestamp">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1787" BrowseName="secondaryTracks">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1788" BrowseName="shuntingTracks">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1789" BrowseName="preferredSameDir">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1790" BrowseName="preferredOppositeDir">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1603" BrowseName="1:TrackEdgeSpeedProfile">
+		<DisplayName>TrackEdgeSpeedProfile</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1791</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1792</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1793</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1791" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1604" NodeId="ns=1;i=1792" BrowseName="sameDirProfile">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1604" NodeId="ns=1;i=1793" BrowseName="oppositeDirProfile">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Optional</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1604" BrowseName="1:SpeedProfile">
+		<DisplayName>SpeedProfile</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1794</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1795</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="ns=1;i=1605" NodeId="ns=1;i=1794" BrowseName="staticSpeedProfile">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1608" NodeId="ns=1;i=1795" BrowseName="axleLoadSpeedProfiles">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1605" BrowseName="1:StaticSpeedLimit">
+		<DisplayName>StaticSpeedLimit</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1796</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1797</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1798</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1796" BrowseName="pos">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1797" BrowseName="speed">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1606" NodeId="ns=1;i=1798" BrowseName="specificStaticSpeedLimits">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1606" BrowseName="1:SpecificStaticSpeedLimit">
+		<DisplayName>SpecificStaticSpeedLimit</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1799</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1800</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1799" BrowseName="speed">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1607" NodeId="ns=1;i=1800" BrowseName="specificLimitCategory">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1607" BrowseName="1:SpeedLimitCategory">
+		<DisplayName>SpeedLimitCategory</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1801</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1802</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1803</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1638" NodeId="ns=1;i=1801" BrowseName="otherCategoryReplacesCantDeficiencySSP">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1638" NodeId="ns=1;i=1802" BrowseName="otherCategoryDoesNotReplaceCantDeficiencySSP">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1639" NodeId="ns=1;i=1803" BrowseName="cantDeficiencyCategory">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1608" BrowseName="1:AxleLoadSpeedProfile">
+		<DisplayName>AxleLoadSpeedProfile</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1804</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1805</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1806</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1807</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1804" BrowseName="startPos">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1805" BrowseName="endPos">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1806" BrowseName="speed">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1640" NodeId="ns=1;i=1807" BrowseName="axleLoadCategory">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1609" BrowseName="1:ETCSMarker">
+		<DisplayName>ETCSMarker</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1808</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1809</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1810</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1808" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1569" NodeId="ns=1;i=1809" BrowseName="dirSpotLocation">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Boolean" NodeId="ns=1;i=1810" BrowseName="markerFunctionStop">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1610" BrowseName="1:StopLocation">
+		<DisplayName>StopLocation</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1811</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1812</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1813</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1814</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1815</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1811" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1569" NodeId="ns=1;i=1812" BrowseName="dirSpotLocation">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1611" NodeId="ns=1;i=1813" BrowseName="stopTrainLimit">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Optional</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1642" NodeId="ns=1;i=1814" BrowseName="trainLoadType">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1643" NodeId="ns=1;i=1815" BrowseName="doorOpeningSide">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1611" BrowseName="1:StopTrainLimit">
+		<DisplayName>StopTrainLimit</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1816</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1817</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1818</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1819</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1816" BrowseName="trainMaxLength">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1817" BrowseName="trainMaxAxles">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1818" BrowseName="trainMaxWagons">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1641" NodeId="ns=1;i=1819" BrowseName="trainMaxSize">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1612" BrowseName="1:PlatformEdge">
+		<DisplayName>PlatformEdge</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1820</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1821</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1822</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1823</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1824</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1820" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1821" BrowseName="name">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Optional</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1573" NodeId="ns=1;i=1822" BrowseName="linearLocation">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1823" BrowseName="stopLocations">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1644" NodeId="ns=1;i=1824" BrowseName="height">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1613" BrowseName="1:Platform">
+		<DisplayName>Platform</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1825</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1826</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1827</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1825" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1826" BrowseName="name">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Optional</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1612" NodeId="ns=1;i=1827" BrowseName="platformEdges">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1614" BrowseName="1:OperationalPoint">
+		<DisplayName>OperationalPoint</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1828</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1829</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1830</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1831</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1832</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1828" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1829" BrowseName="name">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Optional</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1615" NodeId="ns=1;i=1830" BrowseName="travelTimeMeasurementPoints">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1645" NodeId="ns=1;i=1831" BrowseName="operationalPointType">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1613" NodeId="ns=1;i=1832" BrowseName="platforms">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1615" BrowseName="1:TravelTimeMeasurementPoint">
+		<DisplayName>TravelTimeMeasurementPoint</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1833</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1834</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1833" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1568" NodeId="ns=1;i=1834" BrowseName="spotLocation">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1616" BrowseName="1:TimingPoint">
+		<DisplayName>TimingPoint</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1835</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1836</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1837</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1835" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1568" NodeId="ns=1;i=1836" BrowseName="spotLocation">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1617" NodeId="ns=1;i=1837" BrowseName="activeObject">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1617" BrowseName="1:TPActiveObject">
+		<DisplayName>TPActiveObject</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1838</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1839</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1840</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1838" BrowseName="etcsMarker">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1839" BrowseName="stopLocation">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1840" BrowseName="timeMeasurePoint">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1618" BrowseName="1:Tunnel">
+		<DisplayName>Tunnel</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1841</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1842</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1843</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1841" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1842" BrowseName="name">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Optional</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1619" NodeId="ns=1;i=1843" BrowseName="tunnelTubes">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1619" BrowseName="1:TunnelTube">
+		<DisplayName>TunnelTube</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1844</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1845</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="ns=1;i=1570" NodeId="ns=1;i=1844" BrowseName="trackEdgeSections">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="UInt32" NodeId="ns=1;i=1845" BrowseName="crossSection">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1620" BrowseName="1:Bridge">
+		<DisplayName>Bridge</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1846</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1847</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1848</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1846" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1847" BrowseName="name">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Optional</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1570" NodeId="ns=1;i=1848" BrowseName="trackEdgeSections">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1621" BrowseName="1:Underpass">
+		<DisplayName>Underpass</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1849</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1850</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1851</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1849" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1850" BrowseName="name">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Optional</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1570" NodeId="ns=1;i=1851" BrowseName="trackEdgeSections">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1622" BrowseName="1:TvpSection">
+		<DisplayName>TvpSection</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1852</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1853</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1854</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1855</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1852" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1853" BrowseName="name">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Optional</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1570" NodeId="ns=1;i=1854" BrowseName="trackEdgeSections">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1855" BrowseName="trainDetectors">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1623" BrowseName="1:TrainDetector">
+		<DisplayName>TrainDetector</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1856</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1857</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1858</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1859</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1856" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1568" NodeId="ns=1;i=1857" BrowseName="spotLocation">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1646" NodeId="ns=1;i=1858" BrowseName="trainDetectorType">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable ValueRank="-1" DataType="ns=1;i=1629" NodeId="ns=1;i=1859" BrowseName="countUpDir">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1624" BrowseName="1:LevelCrossing">
+		<DisplayName>LevelCrossing</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1860</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1861</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1860" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1570" NodeId="ns=1;i=1861" BrowseName="trackEdgeSections">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array1_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1625" BrowseName="1:NationalBorder">
+		<DisplayName>NationalBorder</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1862</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1863</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1864</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1865</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1862" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1568" NodeId="ns=1;i=1863" BrowseName="spotLocation">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1864" BrowseName="fromCountryCode">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="String" NodeId="ns=1;i=1865" BrowseName="toCountryCode">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1626" BrowseName="1:BufferStop">
+		<DisplayName>BufferStop</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1866</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1867</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1868</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1866" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1569" NodeId="ns=1;i=1867" BrowseName="dirSpotLocation">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="Boolean" NodeId="ns=1;i=1868" BrowseName="isSwitchable">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1627" BrowseName="1:FunctionalArea">
+		<DisplayName>FunctionalArea</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasProperty">ns=1;i=1869</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1870</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1871</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1872</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1873</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1874</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1875</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1876</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1877</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1878</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1879</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1880</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1881</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1882</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1883</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1884</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1885</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1886</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1887</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="String" NodeId="ns=1;i=1869" BrowseName="id">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="DateTime" NodeId="ns=1;i=1870" BrowseName="versionTimestamp">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Mandatory</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1614" NodeId="ns=1;i=1871" BrowseName="opPoints">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1589" NodeId="ns=1;i=1872" BrowseName="simplePoints">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1590" NodeId="ns=1;i=1873" BrowseName="slipCrossings">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1591" NodeId="ns=1;i=1874" BrowseName="derailers">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1592" NodeId="ns=1;i=1875" BrowseName="crossings">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1623" NodeId="ns=1;i=1876" BrowseName="trainDetectors">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1593" NodeId="ns=1;i=1877" BrowseName="baliseGroups">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1609" NodeId="ns=1;i=1878" BrowseName="etcsMarkers">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1610" NodeId="ns=1;i=1879" BrowseName="stopLocations">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1618" NodeId="ns=1;i=1880" BrowseName="tunnels">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1620" NodeId="ns=1;i=1881" BrowseName="bridges">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1621" NodeId="ns=1;i=1882" BrowseName="underpasses">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1622" NodeId="ns=1;i=1883" BrowseName="tvps">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1624" NodeId="ns=1;i=1884" BrowseName="levelCrossings">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1625" NodeId="ns=1;i=1885" BrowseName="nationalBorders">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1626" NodeId="ns=1;i=1886" BrowseName="bufferStops">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1616" NodeId="ns=1;i=1887" BrowseName="timingPoints">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAObjectType IsAbstract="false" NodeId="ns=1;i=1628" BrowseName="1:Infrastructure">
+		<DisplayName>Infrastructure</DisplayName>
+		<References>
+			<Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1888</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1889</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1890</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1891</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1892</Reference>
+			<Reference ReferenceType="HasComponent">ns=1;i=1893</Reference>
+		</References>
+	</UAObjectType>
+	<UAVariable DataType="ns=1;i=1567" NodeId="ns=1;i=1888" BrowseName="topoAreas">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1574" NodeId="ns=1;i=1889" BrowseName="geometryAreas">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1584" NodeId="ns=1;i=1890" BrowseName="sampledGeometryAreas">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1627" NodeId="ns=1;i=1891" BrowseName="functionalAreas">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1595" NodeId="ns=1;i=1892" BrowseName="propertiesAreas">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+	<UAVariable DataType="ns=1;i=1602" NodeId="ns=1;i=1893" BrowseName="trackUsageAreas">
+		<References>
+			<Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+			<Reference ReferenceType="HasModellingRule">Array0_N</Reference>
+		</References>
+	</UAVariable>
+</UANodeSet>

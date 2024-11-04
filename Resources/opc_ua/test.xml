@@ -1,0 +1,1326 @@
+<?xml version='1.0' encoding='utf-8'?>
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">
+  <NamespaceUris>
+    <Uri>http://ERJU/datamodel/0.1/equipment</Uri>
+  </NamespaceUris>
+  <Aliases>
+    <Alias Alias="Boolean">i=1</Alias>
+    <Alias Alias="UInt32">i=7</Alias>
+    <Alias Alias="Float">i=10</Alias>
+    <Alias Alias="String">i=12</Alias>
+    <Alias Alias="DateTime">i=13</Alias>
+    <Alias Alias="LocalizedText">i=21</Alias>
+    <Alias Alias="HasTypeDefinition">i=40</Alias>
+    <Alias Alias="HasSubtype">i=45</Alias>
+    <Alias Alias="HasProperty">i=46</Alias>
+    <Alias Alias="HasComponent">i=47</Alias>
+  </Aliases>
+  <UADataType NodeId="ns=1;i=1014" BrowseName="1:StatusTechnical">
+    <DisplayName>equipment_StatusTechnical</DisplayName>
+    <Description>Technical Status of the system, that represents the aggregated status of all hierarchical lower systems. This allows to have a top level information on the status of the system which can be drilled down if the system is in any other state than Ok.</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1030</Reference>
+    </References>
+    <Definition Name="StatusTechnical">
+      <Field Name="Unknown" Value="0" />
+      <Field Name="OK" Value="1" />
+      <Field Name="Warning" Value="2" />
+      <Field Name="FailureNonCritical" Value="3" />
+      <Field Name="FailureCritical" Value="4" />
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId="ns=1;i=1030" BrowseName="0:EnumStrings" ParentNodeId="ns=1;i=1014" ValueRank="1" ArrayDimensions="5" DataType="LocalizedText" Historizing="true">
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1014</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UADataType NodeId="ns=1;i=1015" BrowseName="1:EquipmentReplaceabilityStatus">
+    <DisplayName>equipment_EquipmentReplaceabilityStatus</DisplayName>
+    <Description>Indicates when the equipment requests a replacement. The decision to act on this indication is up to the operator, in accordance with the equipment manual.</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1031</Reference>
+    </References>
+    <Definition Name="EquipmentReplaceabilityStatus">
+      <Field Name="Unknown" Value="0" />
+      <Field Name="ReplacementNotNeeded" Value="1" />
+      <Field Name="ReplaceableAtOperation" Value="2" />
+      <Field Name="ReplaceableMaintenance" Value="3" />
+      <Field Name="ReplaceableRevalidation" Value="4" />
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId="ns=1;i=1031" BrowseName="0:EnumStrings" ParentNodeId="ns=1;i=1015" ValueRank="1" ArrayDimensions="5" DataType="LocalizedText" Historizing="true">
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1015</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UADataType NodeId="ns=1;i=1016" BrowseName="1:ControllerOperationStatus">
+    <DisplayName>equipment_ControllerOperationStatus</DisplayName>
+    <Description>Indicates the general operation status of the controller</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1032</Reference>
+    </References>
+    <Definition Name="ControllerOperationStatus">
+      <Field Name="Unknown" Value="0" />
+      <Field Name="Booting" Value="1" />
+      <Field Name="Fallback" Value="2" />
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId="ns=1;i=1032" BrowseName="0:EnumStrings" ParentNodeId="ns=1;i=1016" ValueRank="1" ArrayDimensions="3" DataType="LocalizedText" Historizing="true">
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1016</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UADataType NodeId="ns=1;i=1017" BrowseName="1:CoolingFanStatus">
+    <DisplayName>equipment_CoolingFanStatus</DisplayName>
+    <Description>Indicates the current status of the cooling fan</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1033</Reference>
+    </References>
+    <Definition Name="CoolingFanStatus">
+      <Field Name="Unknown" Value="0" />
+      <Field Name="Normal" Value="1" />
+      <Field Name="Failure" Value="2" />
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId="ns=1;i=1033" BrowseName="0:EnumStrings" ParentNodeId="ns=1;i=1017" ValueRank="1" ArrayDimensions="3" DataType="LocalizedText" Historizing="true">
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UADataType NodeId="ns=1;i=1018" BrowseName="1:TemperatureStatus">
+    <DisplayName>equipment_TemperatureStatus</DisplayName>
+    <Description>Indicates the temperature status of the CPU</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1034</Reference>
+    </References>
+    <Definition Name="TemperatureStatus">
+      <Field Name="Unknown" Value="0" />
+      <Field Name="Normal" Value="1" />
+      <Field Name="TooHigh" Value="2" />
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId="ns=1;i=1034" BrowseName="0:EnumStrings" ParentNodeId="ns=1;i=1018" ValueRank="1" ArrayDimensions="3" DataType="LocalizedText" Historizing="true">
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1018</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UADataType NodeId="ns=1;i=1019" BrowseName="1:CpuHealthStatus">
+    <DisplayName>equipment_CpuHealthStatus</DisplayName>
+    <Description>Indicates the health status of the CPU</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1035</Reference>
+    </References>
+    <Definition Name="CpuHealthStatus">
+      <Field Name="Unknown" Value="0" />
+      <Field Name="Normal" Value="1" />
+      <Field Name="Degraded" Value="2" />
+      <Field Name="Failure" Value="3" />
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId="ns=1;i=1035" BrowseName="0:EnumStrings" ParentNodeId="ns=1;i=1019" ValueRank="1" ArrayDimensions="4" DataType="LocalizedText" Historizing="true">
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1019</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UADataType NodeId="ns=1;i=1020" BrowseName="1:CpuLoadStatus">
+    <DisplayName>equipment_CpuLoadStatus</DisplayName>
+    <Description>Indicates the load status of the CPU</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1036</Reference>
+    </References>
+    <Definition Name="CpuLoadStatus">
+      <Field Name="Unknown" Value="0" />
+      <Field Name="Normal" Value="1" />
+      <Field Name="High" Value="2" />
+      <Field Name="Critical" Value="3" />
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId="ns=1;i=1036" BrowseName="0:EnumStrings" ParentNodeId="ns=1;i=1020" ValueRank="1" ArrayDimensions="4" DataType="LocalizedText" Historizing="true">
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1020</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UADataType NodeId="ns=1;i=1021" BrowseName="1:RamHealthStatus">
+    <DisplayName>equipment_RamHealthStatus</DisplayName>
+    <Description>can be replaced?</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1037</Reference>
+    </References>
+    <Definition Name="RamHealthStatus">
+      <Field Name="Unknown" Value="0" />
+      <Field Name="Normal" Value="1" />
+      <Field Name="Degraded" Value="2" />
+      <Field Name="Failure" Value="3" />
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId="ns=1;i=1037" BrowseName="0:EnumStrings" ParentNodeId="ns=1;i=1021" ValueRank="1" ArrayDimensions="4" DataType="LocalizedText" Historizing="true">
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1021</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UADataType NodeId="ns=1;i=1022" BrowseName="1:BootingLastReason">
+    <DisplayName>equipment_BootingLastReason</DisplayName>
+    <Description>Indicates the type of the latest reset (The reason for the reset).</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1038</Reference>
+    </References>
+    <Definition Name="BootingLastReason">
+      <Field Name="Unknown" Value="0" />
+      <Field Name="OnSite" Value="1" />
+      <Field Name="RemoteMdm" Value="2" />
+      <Field Name="InternalMaintenanceOk" Value="3" />
+      <Field Name="InternalMaintenanceFailure" Value="4" />
+      <Field Name="InternalFailure" Value="5" />
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId="ns=1;i=1038" BrowseName="0:EnumStrings" ParentNodeId="ns=1;i=1022" ValueRank="1" ArrayDimensions="6" DataType="LocalizedText" Historizing="true">
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1022</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UADataType NodeId="ns=1;i=1023" BrowseName="1:WearStatus">
+    <DisplayName>equipment_WearStatus</DisplayName>
+    <Description>can be replaced?</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1039</Reference>
+    </References>
+    <Definition Name="WearStatus">
+      <Field Name="Unknown" Value="0" />
+      <Field Name="Ok" Value="1" />
+      <Field Name="Warning" Value="2" />
+      <Field Name="Nok" Value="3" />
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId="ns=1;i=1039" BrowseName="0:EnumStrings" ParentNodeId="ns=1;i=1023" ValueRank="1" ArrayDimensions="4" DataType="LocalizedText" Historizing="true">
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1023</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UADataType NodeId="ns=1;i=1024" BrowseName="1:PhysicalNetworkInterfaceOperationalStatus">
+    <DisplayName>equipment_PhysicalNetworkInterfaceOperationalStatus</DisplayName>
+    <Description>can be replaced?</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1040</Reference>
+    </References>
+    <Definition Name="PhysicalNetworkInterfaceOperationalStatus">
+      <Field Name="Unknown" Value="0" />
+      <Field Name="NotAvialableNotConnected" Value="1" />
+      <Field Name="AvailableNotConnected" Value="2" />
+      <Field Name="Connected" Value="3" />
+      <Field Name="NotConnectedDisturbed" Value="4" />
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId="ns=1;i=1040" BrowseName="0:EnumStrings" ParentNodeId="ns=1;i=1024" ValueRank="1" ArrayDimensions="5" DataType="LocalizedText" Historizing="true">
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1024</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UADataType NodeId="ns=1;i=1025" BrowseName="1:VoltageStatus">
+    <DisplayName>equipment_VoltageStatus</DisplayName>
+    <Description>voltage status</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1041</Reference>
+    </References>
+    <Definition Name="VoltageStatus">
+      <Field Name="Unknown" Value="0" />
+      <Field Name="NotUsed" Value="1" />
+      <Field Name="Undervoltage" Value="2" />
+      <Field Name="Nominal" Value="3" />
+      <Field Name="Overvoltage" Value="4" />
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId="ns=1;i=1041" BrowseName="0:EnumStrings" ParentNodeId="ns=1;i=1025" ValueRank="1" ArrayDimensions="5" DataType="LocalizedText" Historizing="true">
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1025</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UADataType NodeId="ns=1;i=1026" BrowseName="1:HighLow">
+    <DisplayName>equipment_HighLow</DisplayName>
+    <Description>can be replaced?</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1042</Reference>
+    </References>
+    <Definition Name="HighLow">
+      <Field Name="Unknown" Value="0" />
+      <Field Name="High" Value="1" />
+      <Field Name="Low" Value="2" />
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId="ns=1;i=1042" BrowseName="0:EnumStrings" ParentNodeId="ns=1;i=1026" ValueRank="1" ArrayDimensions="3" DataType="LocalizedText" Historizing="true">
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1026</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UADataType NodeId="ns=1;i=1027" BrowseName="1:OutputValue">
+    <DisplayName>equipment_OutputValue</DisplayName>
+    <Description>can be replaced?</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1043</Reference>
+    </References>
+    <Definition Name="OutputValue">
+      <Field Name="Unknown" Value="0" />
+      <Field Name="On" Value="1" />
+      <Field Name="Off" Value="2" />
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId="ns=1;i=1043" BrowseName="0:EnumStrings" ParentNodeId="ns=1;i=1027" ValueRank="1" ArrayDimensions="3" DataType="LocalizedText" Historizing="true">
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1027</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UADataType NodeId="ns=1;i=1028" BrowseName="1:InputValue">
+    <DisplayName>equipment_InputValue</DisplayName>
+    <Description>can be replaced?</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1044</Reference>
+    </References>
+    <Definition Name="InputValue">
+      <Field Name="Unknown" Value="0" />
+      <Field Name="On" Value="1" />
+      <Field Name="Off" Value="2" />
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId="ns=1;i=1044" BrowseName="0:EnumStrings" ParentNodeId="ns=1;i=1028" ValueRank="1" ArrayDimensions="3" DataType="LocalizedText" Historizing="true">
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1028</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UADataType NodeId="ns=1;i=1029" BrowseName="1:InputSwitchPosition">
+    <DisplayName>equipment_InputSwitchPosition</DisplayName>
+    <Description>can be replaced?</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=29</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1045</Reference>
+    </References>
+    <Definition Name="InputSwitchPosition">
+      <Field Name="Unknown" Value="0" />
+      <Field Name="Position1" Value="1" />
+      <Field Name="Position2" Value="2" />
+      <Field Name="Position3" Value="3" />
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId="ns=1;i=1045" BrowseName="0:EnumStrings" ParentNodeId="ns=1;i=1029" ValueRank="1" ArrayDimensions="4" DataType="LocalizedText" Historizing="true">
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1029</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAObjectType NodeId="ns=1;i=1000" BrowseName="1:Equipment">
+    <DisplayName>Equipment</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1046</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1047</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1048</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1049</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1050</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1051</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1052</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1053</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1054</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1055</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1056</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1057</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1058</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1059</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1060</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1061</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1062</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1063</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1064</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1065</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1066</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1067</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1068</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1069</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1070</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=1001" BrowseName="1:Controller">
+    <DisplayName>Controller</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1071</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1072</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1073</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1074</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1075</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1076</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1077</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1078</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1079</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1080</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1081</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1082</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1083</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1084</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1085</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=1002" BrowseName="1:PhysicalNetworkInterface">
+    <DisplayName>PhysicalNetworkInterface</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1086</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1087</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1088</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1089</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1090</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1091</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1092</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=1003" BrowseName="1:StorageMediumFlash">
+    <DisplayName>StorageMediumFlash</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1093</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1094</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1095</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1096</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1097</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1098</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1099</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=1004" BrowseName="1:PowerSupply">
+    <DisplayName>PowerSupply</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1100</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1101</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1102</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1103</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1104</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1105</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1106</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1107</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1108</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1109</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1110</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=1005" BrowseName="1:PhysicalDigitalOutput">
+    <DisplayName>PhysicalDigitalOutput</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1111</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1112</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1113</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1114</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1115</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1116</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1117</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=1006" BrowseName="1:PhysicalAnalogOutput">
+    <DisplayName>PhysicalAnalogOutput</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1118</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1119</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1120</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1121</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1122</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1123</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=1007" BrowseName="1:PhysicalSeparatedOutput">
+    <DisplayName>PhysicalSeparatedOutput</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1124</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1125</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1126</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1127</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1128</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=1008" BrowseName="1:PhysicalDigitalInput">
+    <DisplayName>PhysicalDigitalInput</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1129</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1130</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1131</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1132</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1133</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1134</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1135</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=1009" BrowseName="1:PhysicalAnalogInput">
+    <DisplayName>PhysicalAnalogInput</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1136</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1137</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1138</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1139</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1140</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1141</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=1010" BrowseName="1:PhysicalSeparatedInput">
+    <DisplayName>PhysicalSeparatedInput</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1142</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1143</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1144</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1145</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1146</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=1011" BrowseName="1:AuxiliarySwitch">
+    <DisplayName>AuxiliarySwitch</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1147</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1148</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=1012" BrowseName="1:InputSwitch">
+    <DisplayName>InputSwitch</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1149</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1150</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1151</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1152</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=1013" BrowseName="1:InputButton">
+    <DisplayName>InputButton</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1153</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1154</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1155</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1156</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId="ns=1;i=1046" BrowseName="0:id" ParentNodeId="ns=1;i=1000" DataType="String" Historizing="true">
+    <DisplayName>id</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1047" BrowseName="0:statusTechnical" ParentNodeId="ns=1;i=1000" DataType="ns=1;i=1014" Historizing="true">
+    <DisplayName>statusTechnical</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1048" BrowseName="0:statusTechnicalManufacturerSpecificValue" ParentNodeId="ns=1;i=1000" DataType="String" Historizing="true">
+    <DisplayName>statusTechnicalManufacturerSpecificValue</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1049" BrowseName="0:manufacturer" ParentNodeId="ns=1;i=1000" DataType="String" Historizing="true">
+    <DisplayName>manufacturer</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1050" BrowseName="0:manufacturerModel" ParentNodeId="ns=1;i=1000" DataType="String" Historizing="true">
+    <DisplayName>manufacturerModel</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1051" BrowseName="0:serialNumber" ParentNodeId="ns=1;i=1000" DataType="String" Historizing="true">
+    <DisplayName>serialNumber</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1052" BrowseName="0:hardwareRevision" ParentNodeId="ns=1;i=1000" DataType="String" Historizing="true">
+    <DisplayName>hardwareRevision</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1053" BrowseName="0:softwareRevision" ParentNodeId="ns=1;i=1000" DataType="String" Historizing="true">
+    <DisplayName>softwareRevision</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1054" BrowseName="0:replaceabityIndication" ParentNodeId="ns=1;i=1000" DataType="ns=1;i=1015" Historizing="true">
+    <DisplayName>replaceabityIndication</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1055" BrowseName="0:manufacturingDateTime" ParentNodeId="ns=1;i=1000" DataType="DateTime" Historizing="true">
+    <DisplayName>manufacturingDateTime</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1056" BrowseName="0:label" ParentNodeId="ns=1;i=1000" DataType="String" Historizing="true">
+    <DisplayName>label</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1057" BrowseName="0:isTimeSynchronised" ParentNodeId="ns=1;i=1000" DataType="Boolean" Historizing="true">
+    <DisplayName>isTimeSynchronised</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1058" BrowseName="0:subEquipments" ParentNodeId="ns=1;i=1000" DataType="ns=1;i=1000" Historizing="true">
+    <DisplayName>subEquipments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1059" BrowseName="0:controllers" ParentNodeId="ns=1;i=1000" DataType="ns=1;i=1001" Historizing="true">
+    <DisplayName>controllers</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1060" BrowseName="0:physicalNetworkInterfaces" ParentNodeId="ns=1;i=1000" DataType="ns=1;i=1002" Historizing="true">
+    <DisplayName>physicalNetworkInterfaces</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1061" BrowseName="0:storageMediaFlash" ParentNodeId="ns=1;i=1000" DataType="ns=1;i=1003" Historizing="true">
+    <DisplayName>storageMediaFlash</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1062" BrowseName="0:powerSupplies" ParentNodeId="ns=1;i=1000" DataType="ns=1;i=1004" Historizing="true">
+    <DisplayName>powerSupplies</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1063" BrowseName="0:physicalDigitalOutputs" ParentNodeId="ns=1;i=1000" DataType="ns=1;i=1005" Historizing="true">
+    <DisplayName>physicalDigitalOutputs</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1064" BrowseName="0:physicalAnaloglOutputs" ParentNodeId="ns=1;i=1000" DataType="ns=1;i=1006" Historizing="true">
+    <DisplayName>physicalAnaloglOutputs</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1065" BrowseName="0:physicalSeparatedOutputs" ParentNodeId="ns=1;i=1000" DataType="ns=1;i=1007" Historizing="true">
+    <DisplayName>physicalSeparatedOutputs</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1066" BrowseName="0:physicalDigitalInputs" ParentNodeId="ns=1;i=1000" DataType="ns=1;i=1008" Historizing="true">
+    <DisplayName>physicalDigitalInputs</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1067" BrowseName="0:physicalAnaloglInputs" ParentNodeId="ns=1;i=1000" DataType="ns=1;i=1009" Historizing="true">
+    <DisplayName>physicalAnaloglInputs</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1068" BrowseName="0:physicalSeparatedInputs" ParentNodeId="ns=1;i=1000" DataType="ns=1;i=1010" Historizing="true">
+    <DisplayName>physicalSeparatedInputs</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1069" BrowseName="0:inputSwitches" ParentNodeId="ns=1;i=1000" DataType="ns=1;i=1012" Historizing="true">
+    <DisplayName>inputSwitches</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1070" BrowseName="0:inputButtons" ParentNodeId="ns=1;i=1000" DataType="ns=1;i=1013" Historizing="true">
+    <DisplayName>inputButtons</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1071" BrowseName="0:id" ParentNodeId="ns=1;i=1001" DataType="String" Historizing="true">
+    <DisplayName>id</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1072" BrowseName="0:statusTechnical" ParentNodeId="ns=1;i=1001" DataType="ns=1;i=1014" Historizing="true">
+    <DisplayName>statusTechnical</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1073" BrowseName="0:statusTechnicalManufacturerSpecificValue" ParentNodeId="ns=1;i=1001" DataType="String" Historizing="true">
+    <DisplayName>statusTechnicalManufacturerSpecificValue</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1074" BrowseName="0:systemDescription" ParentNodeId="ns=1;i=1001" DataType="String" Historizing="true">
+    <DisplayName>systemDescription</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1075" BrowseName="0:operatingSystem" ParentNodeId="ns=1;i=1001" DataType="String" Historizing="true">
+    <DisplayName>operatingSystem</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1076" BrowseName="0:operationStatus" ParentNodeId="ns=1;i=1001" DataType="ns=1;i=1016" Historizing="true">
+    <DisplayName>operationStatus</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1077" BrowseName="0:coolingFanStatus" ParentNodeId="ns=1;i=1001" DataType="ns=1;i=1017" Historizing="true">
+    <DisplayName>coolingFanStatus</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1078" BrowseName="0:temperatureStatus" ParentNodeId="ns=1;i=1001" DataType="ns=1;i=1018" Historizing="true">
+    <DisplayName>temperatureStatus</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1079" BrowseName="0:cpuHealthStatus" ParentNodeId="ns=1;i=1001" DataType="ns=1;i=1019" Historizing="true">
+    <DisplayName>cpuHealthStatus</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1080" BrowseName="0:cpuLoadStatus" ParentNodeId="ns=1;i=1001" DataType="ns=1;i=1020" Historizing="true">
+    <DisplayName>cpuLoadStatus</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1081" BrowseName="0:ramSize" ParentNodeId="ns=1;i=1001" DataType="UInt32" Historizing="true">
+    <DisplayName>ramSize</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1082" BrowseName="0:ramHealthStatus" ParentNodeId="ns=1;i=1001" DataType="ns=1;i=1021" Historizing="true">
+    <DisplayName>ramHealthStatus</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1083" BrowseName="0:bootingLastDateTime" ParentNodeId="ns=1;i=1001" DataType="DateTime" Historizing="true">
+    <DisplayName>bootingLastDateTime</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1084" BrowseName="0:bootingLastReason" ParentNodeId="ns=1;i=1001" DataType="ns=1;i=1022" Historizing="true">
+    <DisplayName>bootingLastReason</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1085" BrowseName="0:label" ParentNodeId="ns=1;i=1001" DataType="String" Historizing="true">
+    <DisplayName>label</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1086" BrowseName="0:id" ParentNodeId="ns=1;i=1002" DataType="String" Historizing="true">
+    <DisplayName>id</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1002</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1087" BrowseName="0:statusTechnical" ParentNodeId="ns=1;i=1002" DataType="ns=1;i=1014" Historizing="true">
+    <DisplayName>statusTechnical</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1002</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1088" BrowseName="0:statusTechnicalManufacturerSpecificValue" ParentNodeId="ns=1;i=1002" DataType="String" Historizing="true">
+    <DisplayName>statusTechnicalManufacturerSpecificValue</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1002</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1089" BrowseName="0:macAddress" ParentNodeId="ns=1;i=1002" DataType="String" Historizing="true">
+    <DisplayName>macAddress</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1002</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1090" BrowseName="0:operationStatus" ParentNodeId="ns=1;i=1002" DataType="ns=1;i=1024" Historizing="true">
+    <DisplayName>operationStatus</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1002</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1091" BrowseName="0:nominationalBandwidth" ParentNodeId="ns=1;i=1002" DataType="UInt32" Historizing="true">
+    <DisplayName>nominationalBandwidth</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1002</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1092" BrowseName="0:label" ParentNodeId="ns=1;i=1002" DataType="String" Historizing="true">
+    <DisplayName>label</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1002</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1093" BrowseName="0:id" ParentNodeId="ns=1;i=1003" DataType="String" Historizing="true">
+    <DisplayName>id</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1003</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1094" BrowseName="0:statusTechnical" ParentNodeId="ns=1;i=1003" DataType="ns=1;i=1014" Historizing="true">
+    <DisplayName>statusTechnical</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1003</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1095" BrowseName="0:statusTechnicalManufacturerSpecificValue" ParentNodeId="ns=1;i=1003" DataType="String" Historizing="true">
+    <DisplayName>statusTechnicalManufacturerSpecificValue</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1003</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1096" BrowseName="0:memorySize" ParentNodeId="ns=1;i=1003" DataType="UInt32" Historizing="true">
+    <DisplayName>memorySize</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1003</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1097" BrowseName="0:temperatureStatus" ParentNodeId="ns=1;i=1003" DataType="ns=1;i=1018" Historizing="true">
+    <DisplayName>temperatureStatus</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1003</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1098" BrowseName="0:label" ParentNodeId="ns=1;i=1003" DataType="String" Historizing="true">
+    <DisplayName>label</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1003</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1099" BrowseName="0:wearStatus" ParentNodeId="ns=1;i=1003" DataType="ns=1;i=1023" Historizing="true">
+    <DisplayName>wearStatus</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1003</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1100" BrowseName="0:id" ParentNodeId="ns=1;i=1004" DataType="String" Historizing="true">
+    <DisplayName>id</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1101" BrowseName="0:statusTechnical" ParentNodeId="ns=1;i=1004" DataType="ns=1;i=1014" Historizing="true">
+    <DisplayName>statusTechnical</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1102" BrowseName="0:statusTechnicalManufacturerSpecificValue" ParentNodeId="ns=1;i=1004" DataType="String" Historizing="true">
+    <DisplayName>statusTechnicalManufacturerSpecificValue</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1103" BrowseName="0:inputVoltageStatus" ParentNodeId="ns=1;i=1004" DataType="ns=1;i=1025" Historizing="true">
+    <DisplayName>inputVoltageStatus</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1104" BrowseName="0:outputVoltageStatus" ParentNodeId="ns=1;i=1004" DataType="ns=1;i=1025" Historizing="true">
+    <DisplayName>outputVoltageStatus</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1105" BrowseName="0:outputPower" ParentNodeId="ns=1;i=1004" DataType="UInt32" Historizing="true">
+    <DisplayName>outputPower</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1106" BrowseName="0:outputPowerLimit" ParentNodeId="ns=1;i=1004" DataType="UInt32" Historizing="true">
+    <DisplayName>outputPowerLimit</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1107" BrowseName="0:temperatureStatus" ParentNodeId="ns=1;i=1004" DataType="ns=1;i=1018" Historizing="true">
+    <DisplayName>temperatureStatus</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1108" BrowseName="0:label" ParentNodeId="ns=1;i=1004" DataType="String" Historizing="true">
+    <DisplayName>label</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1109" BrowseName="0:inputVoltage" ParentNodeId="ns=1;i=1004" DataType="Float" Historizing="true">
+    <DisplayName>inputVoltage</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1110" BrowseName="0:inputCurrent" ParentNodeId="ns=1;i=1004" DataType="Float" Historizing="true">
+    <DisplayName>inputCurrent</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1111" BrowseName="0:id" ParentNodeId="ns=1;i=1005" DataType="String" Historizing="true">
+    <DisplayName>id</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1112" BrowseName="0:statusTechnical" ParentNodeId="ns=1;i=1005" DataType="ns=1;i=1014" Historizing="true">
+    <DisplayName>statusTechnical</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1113" BrowseName="0:statusTechnicalManufacturerSpecificValue" ParentNodeId="ns=1;i=1005" DataType="String" Historizing="true">
+    <DisplayName>statusTechnicalManufacturerSpecificValue</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1114" BrowseName="0:label" ParentNodeId="ns=1;i=1005" DataType="String" Historizing="true">
+    <DisplayName>label</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1115" BrowseName="0:physicalOutputValue" ParentNodeId="ns=1;i=1005" DataType="ns=1;i=1026" Historizing="true">
+    <DisplayName>physicalOutputValue</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1116" BrowseName="0:outputVoltage" ParentNodeId="ns=1;i=1005" DataType="Float" Historizing="true">
+    <DisplayName>outputVoltage</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1117" BrowseName="0:outputCurrent" ParentNodeId="ns=1;i=1005" DataType="Float" Historizing="true">
+    <DisplayName>outputCurrent</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1118" BrowseName="0:id" ParentNodeId="ns=1;i=1006" DataType="String" Historizing="true">
+    <DisplayName>id</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1006</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1119" BrowseName="0:statusTechnical" ParentNodeId="ns=1;i=1006" DataType="ns=1;i=1014" Historizing="true">
+    <DisplayName>statusTechnical</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1006</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1120" BrowseName="0:statusTechnicalManufacturerSpecificValue" ParentNodeId="ns=1;i=1006" DataType="String" Historizing="true">
+    <DisplayName>statusTechnicalManufacturerSpecificValue</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1006</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1121" BrowseName="0:label" ParentNodeId="ns=1;i=1006" DataType="String" Historizing="true">
+    <DisplayName>label</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1006</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1122" BrowseName="0:voltage" ParentNodeId="ns=1;i=1006" DataType="Float" Historizing="true">
+    <DisplayName>voltage</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1006</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1123" BrowseName="0:current" ParentNodeId="ns=1;i=1006" DataType="Float" Historizing="true">
+    <DisplayName>current</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1006</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1124" BrowseName="0:id" ParentNodeId="ns=1;i=1007" DataType="String" Historizing="true">
+    <DisplayName>id</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1007</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1125" BrowseName="0:statusTechnical" ParentNodeId="ns=1;i=1007" DataType="ns=1;i=1014" Historizing="true">
+    <DisplayName>statusTechnical</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1007</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1126" BrowseName="0:statusTechnicalManufacturerSpecificValue" ParentNodeId="ns=1;i=1007" DataType="String" Historizing="true">
+    <DisplayName>statusTechnicalManufacturerSpecificValue</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1007</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1127" BrowseName="0:label" ParentNodeId="ns=1;i=1007" DataType="String" Historizing="true">
+    <DisplayName>label</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1007</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1128" BrowseName="0:outputValue" ParentNodeId="ns=1;i=1007" DataType="ns=1;i=1027" Historizing="true">
+    <DisplayName>outputValue</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1007</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1129" BrowseName="0:id" ParentNodeId="ns=1;i=1008" DataType="String" Historizing="true">
+    <DisplayName>id</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1008</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1130" BrowseName="0:statusTechnical" ParentNodeId="ns=1;i=1008" DataType="ns=1;i=1014" Historizing="true">
+    <DisplayName>statusTechnical</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1008</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1131" BrowseName="0:statusTechnicalManufacturerSpecificValue" ParentNodeId="ns=1;i=1008" DataType="String" Historizing="true">
+    <DisplayName>statusTechnicalManufacturerSpecificValue</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1008</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1132" BrowseName="0:label" ParentNodeId="ns=1;i=1008" DataType="String" Historizing="true">
+    <DisplayName>label</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1008</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1133" BrowseName="0:physicalInputValue" ParentNodeId="ns=1;i=1008" DataType="ns=1;i=1026" Historizing="true">
+    <DisplayName>physicalInputValue</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1008</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1134" BrowseName="0:inputVoltage" ParentNodeId="ns=1;i=1008" DataType="Float" Historizing="true">
+    <DisplayName>inputVoltage</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1008</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1135" BrowseName="0:inputCurrent" ParentNodeId="ns=1;i=1008" DataType="Float" Historizing="true">
+    <DisplayName>inputCurrent</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1008</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1136" BrowseName="0:id" ParentNodeId="ns=1;i=1009" DataType="String" Historizing="true">
+    <DisplayName>id</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1009</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1137" BrowseName="0:statusTechnical" ParentNodeId="ns=1;i=1009" DataType="ns=1;i=1014" Historizing="true">
+    <DisplayName>statusTechnical</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1009</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1138" BrowseName="0:statusTechnicalManufacturerSpecificValue" ParentNodeId="ns=1;i=1009" DataType="String" Historizing="true">
+    <DisplayName>statusTechnicalManufacturerSpecificValue</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1009</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1139" BrowseName="0:label" ParentNodeId="ns=1;i=1009" DataType="String" Historizing="true">
+    <DisplayName>label</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1009</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1140" BrowseName="0:voltage" ParentNodeId="ns=1;i=1009" DataType="Float" Historizing="true">
+    <DisplayName>voltage</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1009</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1141" BrowseName="0:current" ParentNodeId="ns=1;i=1009" DataType="Float" Historizing="true">
+    <DisplayName>current</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1009</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1142" BrowseName="0:id" ParentNodeId="ns=1;i=1010" DataType="String" Historizing="true">
+    <DisplayName>id</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1010</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1143" BrowseName="0:statusTechnical" ParentNodeId="ns=1;i=1010" DataType="ns=1;i=1014" Historizing="true">
+    <DisplayName>statusTechnical</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1010</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1144" BrowseName="0:statusTechnicalManufacturerSpecificValue" ParentNodeId="ns=1;i=1010" DataType="String" Historizing="true">
+    <DisplayName>statusTechnicalManufacturerSpecificValue</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1010</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1145" BrowseName="0:label" ParentNodeId="ns=1;i=1010" DataType="String" Historizing="true">
+    <DisplayName>label</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1010</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1146" BrowseName="0:inputValue" ParentNodeId="ns=1;i=1010" DataType="ns=1;i=1028" Historizing="true">
+    <DisplayName>inputValue</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1010</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1147" BrowseName="0:id" ParentNodeId="ns=1;i=1011" DataType="String" Historizing="true">
+    <DisplayName>id</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1011</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1148" BrowseName="0:label" ParentNodeId="ns=1;i=1011" DataType="String" Historizing="true">
+    <DisplayName>label</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1011</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1149" BrowseName="0:id" ParentNodeId="ns=1;i=1012" DataType="String" Historizing="true">
+    <DisplayName>id</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1012</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1150" BrowseName="0:label" ParentNodeId="ns=1;i=1012" DataType="String" Historizing="true">
+    <DisplayName>label</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1012</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1151" BrowseName="0:inputSwitchPosition" ParentNodeId="ns=1;i=1012" DataType="ns=1;i=1029" Historizing="true">
+    <DisplayName>inputSwitchPosition</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1012</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1152" BrowseName="0:auxiliarySwitch" ParentNodeId="ns=1;i=1012" DataType="ns=1;i=1011" Historizing="true">
+    <DisplayName>auxiliarySwitch</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1012</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1153" BrowseName="0:id" ParentNodeId="ns=1;i=1013" DataType="String" Historizing="true">
+    <DisplayName>id</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1013</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1154" BrowseName="0:label" ParentNodeId="ns=1;i=1013" DataType="String" Historizing="true">
+    <DisplayName>label</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1013</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1155" BrowseName="0:isPressed" ParentNodeId="ns=1;i=1013" DataType="Boolean" Historizing="true">
+    <DisplayName>isPressed</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1013</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1156" BrowseName="0:auxiliarySwitch" ParentNodeId="ns=1;i=1013" DataType="ns=1;i=1011" Historizing="true">
+    <DisplayName>auxiliarySwitch</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1013</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+  </UAVariable>
+</UANodeSet>
