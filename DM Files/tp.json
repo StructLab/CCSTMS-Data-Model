@@ -1,0 +1,227 @@
+{
+  "name": "tp",
+  "intId": 4,
+  "isDefinedBy": "http://ERJU/datamodel/1.0/trainprotection",
+  "prefix": "tp",
+  "containerStruct": "TrainProtection",
+  "version": "1.0",
+  "info": "Data model for Train Protection use case",
+  "enums": [
+  {
+    "name": "DPSDependencyType",
+    "info": "Defines the type of DPS dependency",
+    "enumLiterals": [
+      {"intId": 0, "name": "Exclusive"},
+      {"intId": 1, "name": "Equivalent"},
+      {"intId": 2, "name": "Specific"}
+    ]
+  },
+  {
+    "name": "RouteType",
+    "info": "Eulynx.Taxonomy, https://dataprep.eulynx.eu/2021-05/EARoot/EA2/EA4/EA3021.htm",
+    "enumLiterals": [
+      {"intId": 0, "name": "mainRoute"},
+      {"intId": 1, "name": "onsightRoute"},
+      {"intId": 2, "name": "shuntingRoute"}
+    ]
+  },
+  {
+    "name": "ProvingType",
+    "info": "Eulynx.ProvingTypes, https://dataprep.eulynx.eu/2021-05/EARoot/EA2/EA3/EA2942.htm",
+    "enumLiterals": [
+      {"intId": 0, "name": "continuously"},
+      {"intId": 1, "name": "oneOff"},
+      {"intId": 2, "name": "staffAcknowledged"},
+      {"intId": 3, "name": "none"}
+    ]
+  }
+  ],
+  "structs": [
+  {
+    "name": "ProtectedInfraElement",
+    "union": true,
+    "attrs": [
+      {"intId": 1, "name": "simplePoint", "reference": "infra.Switch"},
+      {"intId": 2, "name": "slipCrossing", "reference": "infra.SlipCrossing"},
+      {"intId": 3, "name": "crossing", "reference": "infra.Crossing"},
+      {"intId": 4, "name": "derailer", "reference": "infra.Derailer"},
+      {"intId": 5, "name": "levelCrossing", "reference": "infra.LevelCrossing"}
+    ]
+  },
+  {
+    "name": "DriveProtectionSectionGroup",
+    "info": "Defines the configuration of a DPS Group",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global",
+       "info": "Identity of the object; used for referencing"},
+      {"intId": 2, "name": "name", "dataType": "string"},
+      {"intId": 3, "name": "driveProtectionSections", "composition": "DriveProtectionSection", "multiplicity": "1..*", "sortedByKey": false},
+      {"intId": 4, "name": "protectedInfraElements", "composition": "ProtectedInfraElement"},
+      {"intId": 5, "name": "dependenciesType", "enumType": "DPSDependencyType",
+       "info": "defines dependencies between n drive protection sections"},
+      {"intId": 6, "name": "dpsgDependencies", "dataType": "uint32", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "contains row-wise bit matrix with column = index of the element in DriveProtectionSectionGroup. 0 means not allowed to use ; 1 means allowed to use for rail traffic.Each line in the matrix contains a valid state of the DriveProtectionSectionGroup ; Use only if DPSDependencyType == Specific"},
+      {"intId": 7, "name": "runTime", "dataType": "uint32", "unit": "s", "exp": -1,
+       "info": "Defines the total time required for the DPS(s) in a DPS Group to switch from one position to the other"}
+    ]
+  },
+  {
+    "name": "DriveProtectionSection",
+    "info": "Defines a DPS for a section of track",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global",
+       "info": "Identity of the object; used for referencing"},
+      {"intId": 2, "name": "name", "dataType": "string"},
+      {"intId": 3, "name": "trackEdgeSection", "composition": "infra.TrackEdgeSection"},
+      {"intId": 4, "name": "maxFlankProtectionSpeed", "dataType": "uint32", "unit": "km/h"}
+    ]
+  },
+  {
+    "name": "AllocationSection",
+    "info": "Defines an allocation section for a section of track",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global",
+       "info": "Identity of the object; used for referencing"},
+      {"intId": 2, "name": "name", "dataType": "string"},
+      {"intId": 3, "name": "linearLocation", "composition": "infra.LinkedPath"},
+      {"intId": 4, "name": "dependencies", "reference": "AllocationSection", "multiplicity": "1..*", "sortedByKey": false,
+       "info": "is dependent on the allocation sections"}
+    ]
+  },
+  {
+    "name": "ControlledInfraElement",
+    "union": true,
+    "attrs": [
+      {"intId": 1, "name": "dpsGroup", "reference": "DriveProtectionSectionGroup"},
+      {"intId": 2, "name": "tvpSection", "reference": "infra.TvpSection"}
+    ]
+  },
+  {
+    "name": "FieldObjectController",
+    "info": "Defines a Field Object Controller",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global",
+       "info": "Identity of the object; used for referencing ; structure refers to EULYNX EU.SAS.77"},
+      {"intId": 2, "name": "controlledInfraElements", "composition": "ControlledInfraElement", "multiplicity": "1..*", "sortedByKey": false},
+      {"intId": 3, "name": "rastaServerId", "dataType": "string",
+       "info": "defines EULYNX RaSTA Server identifier for the field object controller"},
+      {"intId": 4, "name": "rastaOCId", "dataType": "string",
+       "info": "defines EULYNX RaSTA OC identifier for the field object controller"},
+      {"intId": 5, "name": "version", "dataType": "uint32",
+       "info": "defines the EULYNX field object controller version"}
+    ]
+  },
+  {
+    "name": "Route",
+    "info": "A route that starts and ends at specific pos of TrackEdges on which train can run",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global",
+       "info": "Identity of the object; used for referencing"},
+      {"intId": 2, "name": "type", "enumType": "RouteType"},
+      {"intId": 3, "name": "availableARS", "dataType": "boolean",
+       "info": "ARS=AutomaticRouteSetting"},
+      {"intId": 4, "name": "autoRoute", "dataType": "boolean",
+       "info": "see Eulynx.dataprep"},
+      {"intId": 5, "name": "isTowardsTunnel", "dataType": "boolean"},
+      {"intId": 6, "name": "setupTime", "dataType": "uint32", "unit": "s", "exp": -3,
+       "info": "use 0 if not defined"},
+      {"intId": 7, "name": "priority", "dataType": "uint32",
+       "info": "use 0 if not defined"},
+      {"intId": 8, "name": "maxSpeed", "dataType": "uint32", "unit": "km/h",
+       "info": "use 0 if not defined"},
+      {"intId": 10, "name": "overlaps", "reference": "Overlap", "multiplicity": "0..*", "sortedByKey": false},
+      {"intId": 11, "name": "flankProtections", "reference": "FlankProtection", "multiplicity": "0..*", "sortedByKey": false},
+      {"intId": 12, "name": "flankProtectionVacantSections", "composition": "VacantSection", "multiplicity": "0..*", "sortedByKey": false},
+      {"intId": 13, "name": "conflicts", "composition": "RouteConflict", "multiplicity": "0..*", "sortedByKey": false}
+    ]
+  },
+  {
+    "name": "RouteBody",
+    "info": "part the train uses directly. It is reused by several routes, which differ in restrictions etc. To be extended",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "path", "composition": "infra.LinkedPath"}
+    ]
+  },
+  {
+    "name": "Overlap",
+    "info": "to be extended",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "path", "composition": "infra.LinkedPath"}
+    ]
+  },
+  {
+    "name": "FlankProtection",
+    "info": "to be extended",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
+      {"intId": 2, "name": "simplePoint", "reference": "infra.Switch"},
+      {"intId": 3, "name": "isLeftPosition", "dataType": "boolean",
+       "info": "if false - rightPosition"}
+    ]
+  },
+  {
+    "name": "RouteConflict",
+    "attrs": [
+
+    ]
+  },
+  {
+    "name": "VacantSection",
+    "attrs": [
+      {"intId": 1, "name": "section", "reference": "infra.TvpSection"},
+      {"intId": 2, "name": "proving", "enumType": "ProvingType"}
+    ]
+  },
+  {
+    "name": "Switch",
+    "info": "An object to extend infra.SimplePoint",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "sameKeyAs": "infra.SimplePoint",
+       "info": "Identity of the object; used for referencing"},
+      {"intId": 2, "name": "routeRequiresPointRight", "reference": "Route", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "routes require this SimplePoint to allow travelling through pointRight"},
+      {"intId": 3, "name": "routeRequiresPointLeft", "reference": "Route", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "routes require this SimplePoint to allow travelling through pointLeft"},
+      {"intId": 4, "name": "transitLockingPointRight", "reference": "Transit", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "Transit that is locking the SimplePoint to right"},
+      {"intId": 5, "name": "transitLockingPointLeft", "reference": "Transit", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "Transit that is locking the SimplePoint to left"},
+      {"intId": 6, "name": "zoneLockingPointRight", "reference": "infra.TvpSection", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "Zone (TvpSection of a single track) that is locking the SimplePoint to right"},
+      {"intId": 7, "name": "zoneLockingPointLeft", "reference": "infra.TvpSection", "multiplicity": "0..*", "sortedByKey": false,
+       "info": "Zone that is locking the SimplePoint to left"}
+    ]
+  },
+  {
+    "name": "Transit",
+    "info": "A Transit represents a directed movement across a single Zone. Each route activates one or more transits.",
+    "attrs": [
+      {"intId": 1, "name": "id", "dataType": "string", "key": "global",
+       "info": "Identity of the object; used for referencing"},
+      {"intId": 2, "name": "upstreamTransits", "dataType": "string"},
+      {"intId": 3, "name": "transitZone", "reference": "infra.TvpSection", "multiplicity": "0..*", "sortedByKey": false},
+      {"intId": 4, "name": "routeRequestingTransit", "reference": "Route", "multiplicity": "0..*", "sortedByKey": false}
+    ]
+  },
+  {
+    "name": "TrainProtectionArea",
+    "attrs": [
+      {"intId": 1, "name": "trainProtectionAreaId", "dataType": "string", "key": "global", "sameKeyAs": "infra.TopoArea"},
+      {"intId": 2, "name": "dpsGroups", "composition": "DriveProtectionSectionGroup", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 3, "name": "allocationSections", "composition": "AllocationSection", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 4, "name": "fieldObjectControllers", "composition": "FieldObjectController", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 5, "name": "routes", "composition": "Route", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 6, "name": "simplePoints", "composition": "Switch", "multiplicity": "0..*", "sortedByKey": true},
+      {"intId": 7, "name": "transits", "composition": "Transit", "multiplicity": "0..*", "sortedByKey": true}
+    ]
+  },
+  {
+    "name": "TrainProtection",
+    "attrs": [
+      {"intId": 1, "name": "tpArea", "composition": "TrainProtectionArea", "multiplicity": "0..*", "sortedByKey": true}
+    ]
+  }
+  ]
+}
