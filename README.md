@@ -22,27 +22,43 @@ The **CCS/TMS Data Model** (Control Command and Signalling/Traffic Management Sy
 
 ## Structure of the Repository
 
-This repository is organized into the following sections:
+This repository contains all necessary documentation and data model files related to the project. The structure of the folders and files within the repository is as follows:
 
-- **Documentation**: Detailed guides, such as the *Scope and Approach for Collaboration and Specification*, provide an in-depth understanding of the data model’s structure, purpose, and development process.
-- **Schemas and Formats**: The CCS/TMS Data Model is available in multiple formats including JSON, XML, and XSD to support various system requirements.
-- **Version History**: Documentation on version releases, including updates, fixes, and enhancements to the data model.
+- **Documentation**: Contains the primary project documentation for guiding users through the purpose, scope, and structure of the data models. Detailed guides, such as the *Data Model Guide*, provide an in-depth understanding of the data model’s structure, purpose, history, and development process.
+- **DM Docs**: Contains documentation specific to various data model categories within the project.
+- **DM Files**: Contains JSON files for each data model component, providing structured data representations.
+- **Ontology**: CCSTMS RDF and TTL files representing the extended ERA vocabulary "ontology".
+- **Schemas**: Coming Soon --> Schemas in XSD and JSON formats for validating and structuring the data models.
 
+
+## Overview
+
+This repository contains all necessary documentation and data model files related to the project. The structure of the folders and files within the repository is as follows:
+
+- **Documentation**: Contains the primary project documentation for guiding users through the purpose, scope, and structure of the data models. Detailed guides, such as the *Data Model Guide*, provide an in-depth understanding of the data model’s structure, purpose, history, and development process.
+- **DM Docs**: Contains documentation specific to various data model categories within the project.
+- **DM Files**: Contains JSON files for each data model component, providing structured data representations.
+- **Ontology**: CCSTMS RDF and TTL files representing the extended ERA vocabulary "ontology".
+- **Schemas**: Coming Soon --> Schemas in XSD and JSON formats for validating and structuring the data models.
+
+  
 ## Getting Started
 
 To get started with the CCS/TMS Data Model:
 
 1. **Clone the Repository**: Download the repository locally to explore the data model files and documentation.
-2. **Review the Documentation**: Begin with the *Introduction* document to understand the model's purpose and scope. The *Data Model Schema* document provides specific details on the data structure.
-3. **Explore the Schemas**: Use the JSON and XML schemas as templates for integrating this data model into your systems.
+2. **Review the Documentation**: Begin with the *Introduction* document to understand the model's purpose and scope. The *Data Model Schema* and *DM Docs* provides specific details on the data structure.
+3. **Explore the Model**: Use the DM Files, Ontology (RDF & TTL), and the schemas as templates for integrating this data model into your systems.
 
-## Application of the Data Model
+      *- Infrastructure (INFRA)*  -->    covers all infrastructure data objects <br>
+      *- ATO*                     -->    configuration of ATO Trackside <br>
+      *- Engineering (ENG)*       -->    Engineering of ETCS L2 <br>
+      *- Map Reference (MAP)*     -->    Digital Map, e.g. for Localisation <br>
+      *- Operational Plan (OPP)*  -->    used by CCS-TMS Interface Specification <br>
+      *- Traffic Protection (TP)* -->    configuration for TPS / Safety Logic <br>
+      *- Subset 026 (SS026)*      -->    used for Engineering of ETCS Telegrams, later also for configuration interface specification <br>
+      *- Equipment model*         -->    imported from EULYNX for diagnostic purposes, will be extended in the next steps
 
-The CCS/TMS Data Model is applicable across multiple railway functions, including:
-
-- **Traffic Control**: Standardized data structures enable efficient communication and control for automated and manual traffic management systems.
-- **Asset Management**: The Engineering Data component supports infrastructure planning, configuration, and asset lifecycle management.
-- **Automated Train Operations (ATO)**: Provides essential data support for ATO systems, enabling a higher level of automation and safety in railway operations.
 
 ## Collaboration and Development
 
@@ -50,11 +66,11 @@ This data model is developed in collaboration with various System Pillar domains
 
 ## License
 
-This repository follows a specific license agreement for authorized usage. Please refer to the `LICENSE` file for more information.
+This repository follows *EUPL* license agreement for authorized usage. Please refer to the [European Union Public License](https://eupl.eu/1.2/en/) for more information.
 
 ## Contributing
 
-We welcome feedback and contributions from domain experts and end-users. If you have suggestions or need clarification, please open an issue or submit a pull request.
+We welcome feedback and contributions from domain experts and end-users. If you have suggestions, encounter any issues, or need clarification, please open an issue [here](https://github.com/StructLab/CCS-TMS-1.0/issues) or submit a pull request. Alternatively, you can also add comments directly on the relevant file/section in [Polarion](https://polarion.rail-research.europa.eu/polarion/#/project/SPT2TS/wiki/TCCS%20SD1%20-%20Data%20Model/TCCS%20SD1%20-%20Introduction%20to%20Data%20Model)
 
 ---
 
