@@ -1,0 +1,129 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam DefaultFontName arial
+skinparam DefaultFontSize 12
+skinparam ClassFontStyle bold
+skinparam linetype ortho
+skinparam dpi 200
+hide empty fields
+hide empty methods
+hide circle
+
+class ProtectedInfraElement << union >> {
+ simplePoint: *infra.SimplePoint
+ slipCrossing: *infra.SlipCrossing
+ crossing: *infra.Crossing
+ derailer: *infra.Derailer
+ levelCrossing: *infra.LevelCrossing
+}
+
+class DriveProtectionSectionGroup {
+ id: string
+ name: string
+ dependenciesType: DPSDependencyType
+ dpsgDependencies: uint32[*]
+ runTime: uint32
+}
+
+class DriveProtectionSection {
+ id: string
+ name: string
+ maxFlankProtectionSpeed: uint32
+}
+
+class AllocationSection {
+ id: string
+ name: string
+ dependencies: *AllocationSection[1..*]
+}
+
+class ControlledInfraElement << union >> {
+ dpsGroup: *DriveProtectionSectionGroup
+ tvpSection: *infra.TvpSection
+}
+
+class FieldObjectController {
+ id: string
+ rastaServerId: string
+ rastaOCId: string
+ version: uint32
+}
+
+class Route {
+ id: string
+ type: RouteType
+ availableARS: boolean
+ autoRoute: boolean
+ isTowardsTunnel: boolean
+ setupTime: uint32
+ priority: uint32
+ maxSpeed: uint32
+ overlaps: *Overlap[*]
+ flankProtections: *FlankProtection[*]
+}
+
+class RouteBody {
+ id: string
+}
+
+class Overlap {
+ id: string
+}
+
+class FlankProtection {
+ id: string
+ simplePoint: *infra.SimplePoint
+ isLeftPosition: boolean
+}
+
+class RouteConflict {
+}
+
+class VacantSection {
+ section: *infra.TvpSection
+ proving: ProvingType
+}
+
+class SimplePoint {
+ id: string
+ routeRequiresPointRight: *Route[*]
+ routeRequiresPointLeft: *Route[*]
+ transitLockingPointRight: *Transit[*]
+ transitLockingPointLeft: *Transit[*]
+ zoneLockingPointRight: *infra.TvpSection[*]
+ zoneLockingPointLeft: *infra.TvpSection[*]
+}
+
+class Transit {
+ id: string
+ upstreamTransits: string
+ transitZone: *infra.TvpSection[*]
+ routeRequestingTransit: *Route[*]
+}
+
+class TrainProtectionArea {
+ id: string
+}
+
+class TrainProtection {
+}
+
+DriveProtectionSectionGroup *-- "1..*" DriveProtectionSection
+DriveProtectionSectionGroup *-- ProtectedInfraElement
+DriveProtectionSection *-- infra.TrackEdgeSection
+AllocationSection *-- infra.LinkedPath
+FieldObjectController *-- "1..*" ControlledInfraElement
+Route *-- "*" VacantSection
+Route *-- "*" RouteConflict
+RouteBody *-- infra.LinkedPath
+Overlap *-- infra.LinkedPath
+TrainProtectionArea *-- "*" DriveProtectionSectionGroup
+TrainProtectionArea *-- "*" AllocationSection
+TrainProtectionArea *-- "*" FieldObjectController
+TrainProtectionArea *-- "*" Route
+TrainProtectionArea *-- "*" SimplePoint
+TrainProtectionArea *-- "*" Transit
+TrainProtection *-- "*" TrainProtectionArea
+@enduml

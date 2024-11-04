@@ -1,0 +1,150 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam DefaultFontName arial
+skinparam DefaultFontSize 12
+skinparam ClassFontStyle bold
+skinparam linetype ortho
+skinparam dpi 200
+hide empty fields
+hide empty methods
+hide circle
+
+class BufferStop {
+ id: string
+ dangerPoints: *DangerPoint[*]
+ bsType: BufferStopType
+}
+
+class SimplePoint {
+ id: string
+ foulingPoints: *FoulingPoint[1..*]
+ tipShift: double
+ bladeLength: double
+}
+
+class Crossing {
+ id: string
+ foulingPoints: *FoulingPoint[1..*]
+}
+
+class LevelCrossing {
+ id: string
+ dangerPoints: *DangerPoint[1..*]
+}
+
+class BaliseGroup {
+ id: string
+ m_version: ss026.ETCSVersion
+ q_link: boolean
+ q_updown: boolean
+}
+
+class Balise {
+ id: string
+ fixed: boolean
+ m_dup: DuplicationType
+ m_mcount: uint32
+ n_pig: uint32
+ verticallyOriented: boolean
+ standardSize: boolean
+ telegram: bytes
+ telegramChecksum: string
+ sleeperFastening: string
+ baliseMountingSystem: string
+ designType: string
+ kmReferenceMarker: *KmSign
+}
+
+class Sleepers {
+ id: string
+ sleepersType: SleepersType
+}
+
+class DangerPoint {
+ id: string
+ name: string
+}
+
+class FoulingPoint {
+ id: string
+ name: string[0..1]
+ clearancePoint: uint32
+}
+
+class EngArea {
+ id: string
+ defaultSleepersType: SleepersType
+}
+
+class LocationAccuracyArea {
+ id: string
+}
+
+class BaliseAccuracy {
+ baliseId: string
+ accuracy: uint32
+}
+
+class EtcsMarkerAccuracy {
+ markerId: string
+ accuracy: uint32
+}
+
+class StopLocationAccuracy {
+ stopLocationId: string
+ accuracy: uint32
+}
+
+class NationalBorderAccuracy {
+ nationalBorderId: string
+ accuracy: uint32
+}
+
+class BufferStopAccuracy {
+ bufferStopId: string
+ accuracy: uint32
+}
+
+class TrackEdgeKmSigns {
+ id: string
+}
+
+class KmSign {
+ pos: uint32
+ label: string
+}
+
+class KmArea {
+ id: string
+}
+
+class ETCSEngineering {
+}
+
+BufferStop *-- "1..*" infra.TrackEdgeSection
+Balise *-- "*" ss026.BalisePacket
+Sleepers *-- "1..*" infra.TrackEdgeSection
+DangerPoint *-- infra.TrackEdgePoint
+FoulingPoint *-- infra.TrackEdgePoint
+EngArea *-- "*" SimplePoint
+EngArea *-- "*" Crossing
+EngArea *-- "*" LevelCrossing
+EngArea *-- "*" BaliseGroup
+EngArea *-- "*" Balise
+EngArea *-- "*" Sleepers
+EngArea *-- "*" DangerPoint
+EngArea *-- "*" FoulingPoint
+EngArea *-- "*" BufferStop
+LocationAccuracyArea *-- "*" BaliseAccuracy
+LocationAccuracyArea *-- "*" EtcsMarkerAccuracy
+LocationAccuracyArea *-- "*" StopLocationAccuracy
+LocationAccuracyArea *-- "*" NationalBorderAccuracy
+LocationAccuracyArea *-- "*" BufferStopAccuracy
+TrackEdgeKmSigns *-- "*" KmSign
+KmArea *-- "*" TrackEdgeKmSigns
+ETCSEngineering *-- "*" EngArea
+ETCSEngineering *-- "*" LocationAccuracyArea
+ETCSEngineering *-- "*" KmArea
+@enduml

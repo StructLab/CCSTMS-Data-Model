@@ -1,0 +1,426 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam DefaultFontName arial
+skinparam DefaultFontSize 12
+skinparam ClassFontStyle bold
+skinparam linetype ortho
+skinparam dpi 200
+hide empty fields
+hide empty methods
+hide circle
+
+class OperationalTrafficPlan {
+}
+
+class OperationalPlanMovement {
+ id: string
+ issuedAt: timestamp
+ configurationDataVersionRef: string
+}
+
+class TrainUnit {
+ physicalTrainUnit: PhysicalTrainUnitIdentifier
+ nominalRotatingMass: uint32
+ regularBrakeWeightPercentage: uint32
+ emergencyBrakeWeightPercentage: uint32
+ brakePosition: BrakePosition
+ brakeModelType: BrakeModelType
+ usedGradeOfAutomation: GradeOfAutomation
+ scheduledTrainLength: uint32
+}
+
+class OperationalTrainCategory {
+ trainCategoryType: TrainCategoryType
+ description: string
+ trainUsage: TrainUsageType
+}
+
+class OperationalConsist {
+}
+
+class SupportedOnBoardEquipment {
+ trainProtectionType: TrainProtectionType
+ etcsSystemVersions: string[1..*]
+}
+
+class AnyClass {
+ className: string
+ content: bytes
+}
+
+class MovementRestriction {
+}
+
+class SpecificMovementRestriction << union >> {
+ maxSpeed: uint32
+ adhesionCategory: AdhesionCategory
+ maxCurrent: uint32
+ atoInhibition: boolean
+ dasInhibition: boolean
+}
+
+class DPSGroupsList {
+ dpsGroups: *tp.DriveProtectionSectionGroup[*]
+}
+
+class MovementEvent {
+ id: string
+ plannedType: MovementEventType
+ scheduledType: MovementEventType
+ alignment: AlignmentType
+ scheduledArrival: timestamp
+ scheduledArrivalWindow: uint32
+}
+
+class OperationalEventRef << union >> {
+ movementEvent: *MovementEvent
+ restrictionEvent: *RestrictionEvent
+ warningMeasureEvent: *WarningMeasureEvent
+}
+
+class StopDescription {
+ relaxedCoupler: boolean
+ holdTrain: boolean
+ scheduledDeparture: timestamp
+ scheduledMinDwellTime: uint32
+}
+
+class AdditionalEventTime {
+ timeValue: timestamp
+ timeType: TimeType
+}
+
+class DoorActivity {
+ openingDoorSide: DoorSide
+ centralisedOpening: boolean
+ automaticClosing: boolean
+}
+
+class TrainUnitActivity {
+ trainUnitActivityType: TrainUnitActivityType
+ actualTrainUnitIndex: uint32
+ targetTrainUnitIndex: uint32
+}
+
+class PhysicalTrainUnitIdentifier {
+ trainRunningNumber: string[0..1]
+ additionalTrainRunningNumber: string[0..1]
+ tafTapTsiTrainID: string[0..1]
+ leadingOnBoardUnitId: string[0..1]
+}
+
+class OperationalPlanRestriction {
+ id: string
+ issuedAt: timestamp
+ configurationDataVersionRef: string
+}
+
+class RestrictionEvent {
+ id: string
+ creationTime: timestamp
+ removalTime: timestamp
+}
+
+class RestrictionArea {
+}
+
+class TrainGroupSpec {
+ axleLoadCategories: infra.AxleLoadCategory[*]
+ cantDeficiencyCategories: infra.CantDeficiencyCategory[*]
+}
+
+class RestrictedAspects {
+ temporarySpeedRestriction: uint32
+ allowedDrivingModes: OnboardOperatingMode[*]
+ nonStopping: boolean
+ trackClosure: boolean
+ operationalRadioHole: boolean
+ maxAdhesion: AdhesionCategory
+}
+
+class SpecificRestriction {
+}
+
+class OperationalPlanWarningMeasure {
+ id: string
+ issuedAt: timestamp
+ configurationDataVersionRef: string
+}
+
+class WarningArea {
+}
+
+class WarningDevice {
+ id: string
+ deviceType: DeviceType
+}
+
+class WarningMeasureEvent {
+ id: string
+ creationTime: timestamp
+ removalTime: timestamp
+}
+
+class ExecutionResponse {
+ operationalPlanIssuedAt: timestamp
+ issuedAt: timestamp
+ responseCode: ResponseCode
+ rejectReason: string[0..1]
+}
+
+class OperationalPlanReference << union >> {
+ operationalPlanMovementRef: *OperationalPlanMovement
+ operationalPlanRestrictionRef: *OperationalPlanRestriction
+ operationalPlanWarningMeasureRef: *OperationalPlanWarningMeasure
+}
+
+class EventExecutionReport << union >> {
+}
+
+class MovementEventExecutionReport {
+ movementEvent: *MovementEvent
+ operationalPlanIssuedAt: timestamp
+ issuedAt: timestamp
+ executionState: EventExecutionState
+ failureReason: string[0..1]
+ warning: string[0..1]
+}
+
+class RestrictionEventExecutionReport {
+ restrictionEvent: *RestrictionEvent
+ operationalPlanIssuedAt: timestamp
+ issuedAt: timestamp
+ executionState: EventExecutionState
+ failureReason: string[0..1]
+ warning: string[0..1]
+}
+
+class WarningMeasureEventExecutionReport {
+ warningMeasureEvent: *WarningMeasureEvent
+ operationalPlanIssuedAt: timestamp
+ issuedAt: timestamp
+ executionState: EventExecutionState
+ failureReason: string[0..1]
+ warning: string[0..1]
+}
+
+class TrainUnitReportPE {
+ issuedAt: timestamp
+ operationalPlanMovement: *OperationalPlanMovement[0..1]
+}
+
+class TrainObject {
+ obuIdentifier: string
+ axleLoadCategory: infra.AxleLoadCategory
+ trainLength: uint32
+ safeTrainLength: boolean
+ communicationActive: boolean
+ trainRunningNumber: string
+ vMaxTrain: uint32
+ onboardOperatingMode: OnboardOperatingMode
+ trainObjectIdentifier: string
+ mpRequestedByTrain: boolean
+ speed: uint32
+ cantDeficiencyCategory: infra.CantDeficiencyCategory
+}
+
+class MovementPermission {
+ id: string
+}
+
+class MpSpeed {
+ vMax: uint32
+}
+
+class MpDrivingMode {
+ drivingMode: OnboardOperatingMode
+}
+
+class TrainUnitReportAtoStatus {
+ issuedAt: timestamp
+ operationalPlanMovement: *OperationalPlanMovement[0..1]
+ trainUnitIdentifier: PhysicalTrainUnitIdentifier
+ atoState: AtoState
+ routingError: boolean
+ nextStoppingPointSkip: boolean
+ lowAdhesionReportedByDriver: boolean
+ operationalConditionsFulfillment: boolean
+ isMoving: boolean
+ unableToStopAtNextStoppingPoint: boolean
+ isSlipping: boolean
+ speed: uint32
+ trainLength: uint32
+ driverId: string[0..1]
+}
+
+class EventHandling {
+ event: *MovementEvent
+ passStopDepart: MovementEventAction
+}
+
+class EventEstimation {
+ event: *MovementEvent
+ arrival: timestamp
+}
+
+class TrainUnitReportAtoCapabilities {
+ issuedAt: timestamp
+ operationalPlanMovement: *OperationalPlanMovement[0..1]
+ trainUnitIdentifier: PhysicalTrainUnitIdentifier
+ mass: uint32
+ outsideTemperature: int32
+ passengerLoad: uint32
+ lastPassengerExchangeTime: uint32
+ elapsedStartPassengerExchange: uint32
+}
+
+class EtcsDataAto {
+ trainLength: uint32
+ maximumSpeed: uint32
+ cantDeficiencyCategory: infra.CantDeficiencyCategory
+ otherInternationalCategory: infra.OtherSpecificStaticSpeedProfileCategory[0..15]
+ axleLoadCategory: infra.AxleLoadCategory
+ nominalRotatingMass: uint32
+ brakePercentage: uint32
+ preconfiguredBrakingModel: uint32
+ brakePosition: BrakePosition
+}
+
+class DoorData {
+ doorState: DoorState
+ lastPassengerExchangeTime: uint32
+}
+
+class AdditionalTrainData {
+ maxAvailableTractiveEffort: uint32
+ maxAvailableTractivePower: uint32
+ maxAvailableDynamicBrakeForce: uint32
+ maxAvailableDynamicBrakePower: uint32
+ maxAvailableServiceBrakeForce: uint32
+ regenerativeBrakeState: ActiveState
+ magneticShoeBrakeState: ActiveState
+ eddyCurrentBrakeState: ActiveState
+ electroPneumaticBrakeState: ActiveState
+ adhesionIndependentBrakeState: ActiveState
+ availableAdhesionCategory: AdhesionCategory
+ availableAdhesionPhysicalValue: uint32
+}
+
+class PhysicalConsist {
+ evnIdentifier: uint32
+ passengerLoad: uint32
+ mass: uint32
+ maxCurrentConsuption: uint32
+}
+
+class PhysicalVehicle {
+ evnIdentifier: uint32
+ mass: uint32
+ vehicleOrientation: VehicleOrientation
+ passengerLoad: uint32
+ pantographsStates: PantographState[0..7]
+}
+
+class TrackOccupationState {
+ id: string
+ issuedAt: timestamp
+ operationalPlanMovement: *OperationalPlanMovement[0..1]
+ trainUnitIdentifier: PhysicalTrainUnitIdentifier[0..1]
+ occupationState: EventState
+ creationReason: OccupationReason
+ recordedTrainLength: uint32
+ associatedTrainObject: string[0..1]
+}
+
+class DpsGroupState {
+ dpsGroup: *tp.DriveProtectionSectionGroup
+ issuedAt: timestamp
+ operationalPlanMovement: *OperationalPlanMovement[0..1]
+ state: DPSGState
+}
+
+class DPSState {
+ dps: *tp.DriveProtectionSection
+ requestedDrivability: DpsDrivability
+ currentDrivability: DpsDrivability
+}
+
+class RestrictionAreaState {
+ id: string
+ issuedAt: timestamp
+ restrictionEvent: *RestrictionEvent[0..1]
+ restrictionState: RestrictionState
+}
+
+class WarningAreaState {
+ id: string
+ issuedAt: timestamp
+ warningMeasureEvent: *WarningMeasureEvent[0..1]
+ warningState: EventState
+}
+
+OperationalTrafficPlan *-- "*" OperationalPlanMovement
+OperationalTrafficPlan *-- "*" OperationalPlanRestriction
+OperationalTrafficPlan *-- "*" OperationalPlanWarningMeasure
+OperationalPlanMovement *-- "1..*" TrainUnit
+OperationalPlanMovement *-- "1..*" MovementEvent
+OperationalPlanMovement *-- "*" MovementRestriction
+TrainUnit *-- OperationalTrainCategory
+TrainUnit *-- "1..*" OperationalConsist
+OperationalConsist *-- SupportedOnBoardEquipment
+SupportedOnBoardEquipment *-- "*" AnyClass
+MovementRestriction *-- infra.LinkedPath
+MovementRestriction *-- SpecificMovementRestriction
+SpecificMovementRestriction *-- DPSGroupsList
+MovementEvent *-- infra.DirTrackEdgePoint
+MovementEvent *-- "*" infra.DirTrackEdge
+MovementEvent *-- "0..1" StopDescription
+MovementEvent *-- "*" OperationalEventRef
+StopDescription *-- "*" TrainUnitActivity
+StopDescription *-- "0..1" DoorActivity
+StopDescription *-- "0..4" AdditionalEventTime
+OperationalPlanRestriction *-- "1..*" RestrictionEvent
+RestrictionEvent *-- RestrictionArea
+RestrictionEvent *-- "*" OperationalEventRef
+RestrictionArea *-- "1..*" infra.DirTrackEdgeSection
+RestrictionArea *-- "1..*" SpecificRestriction
+SpecificRestriction *-- "0..1" TrainGroupSpec
+SpecificRestriction *-- RestrictedAspects
+OperationalPlanWarningMeasure *-- "1..*" WarningMeasureEvent
+WarningArea *-- "1..*" infra.TrackEdgeSection
+WarningArea *-- "1..*" WarningDevice
+WarningMeasureEvent *-- WarningArea
+WarningMeasureEvent *-- "*" OperationalEventRef
+ExecutionResponse *-- OperationalPlanReference
+EventExecutionReport *-- MovementEventExecutionReport
+EventExecutionReport *-- MovementEventExecutionReport
+EventExecutionReport *-- RestrictionEventExecutionReport
+EventExecutionReport *-- RestrictionEventExecutionReport
+EventExecutionReport *-- WarningMeasureEventExecutionReport
+EventExecutionReport *-- WarningMeasureEventExecutionReport
+TrainUnitReportPE *-- TrainObject
+TrainObject *-- "0..1" MovementPermission
+TrainObject *-- infra.LinkedPath
+MovementPermission *-- infra.LinkedPath
+MovementPermission *-- "*" infra.LinkedPath
+MovementPermission *-- infra.LinkedPath
+MovementPermission *-- "1..*" MpDrivingMode
+MovementPermission *-- "1..*" MpSpeed
+MpSpeed *-- infra.LinkedPath
+MpDrivingMode *-- infra.LinkedPath
+TrainUnitReportAtoStatus *-- infra.DirTrackEdgePoint
+TrainUnitReportAtoStatus *-- "0..1" EventHandling
+TrainUnitReportAtoStatus *-- "*" EventEstimation
+TrainUnitReportAtoCapabilities *-- "0..1" EtcsDataAto
+TrainUnitReportAtoCapabilities *-- "0..1" AdditionalTrainData
+TrainUnitReportAtoCapabilities *-- "0..255" PhysicalConsist
+PhysicalConsist *-- "0..255" PhysicalVehicle
+PhysicalVehicle *-- "0..7" DoorData
+PhysicalVehicle *-- "0..7" DoorData
+TrackOccupationState *-- "1..*" infra.TrackEdgeSection
+DpsGroupState *-- "*" DPSState
+RestrictionAreaState *-- "0..1" RestrictionArea
+WarningAreaState *-- "0..1" WarningArea
+@enduml

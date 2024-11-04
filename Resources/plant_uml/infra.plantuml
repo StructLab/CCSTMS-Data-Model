@@ -1,0 +1,444 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam DefaultFontName arial
+skinparam DefaultFontSize 12
+skinparam ClassFontStyle bold
+skinparam linetype ortho
+skinparam dpi 200
+hide empty fields
+hide empty methods
+hide circle
+
+class TopoArea {
+ id: string
+ versionTimestamp: timestamp
+}
+
+class TrackEdge {
+ id: string
+ trackEdgeLength: uint32
+}
+
+class TrackEdgeLink {
+ id: string
+ trackEdgeA: *TrackEdge
+ trackEdgeB: *TrackEdge
+ startOfA: boolean
+ startOfB: boolean
+}
+
+class TrackEdgePoint {
+ trackEdge: *TrackEdge
+ pos: uint32
+}
+
+class DirTrackEdgePoint {
+ trackEdge: *TrackEdge
+ pos: uint32
+ sameDir: boolean
+}
+
+class TrackEdgeSection {
+ trackEdge: *TrackEdge
+ skipFromStart: uint32
+ skipFromEnd: uint32
+}
+
+class DirTrackEdgeSection {
+ trackEdge: *TrackEdge
+ skipFromStart: uint32
+ skipFromEnd: uint32
+ applicableDirection: Direction
+}
+
+class DirTrackEdge {
+ trackEdge: *TrackEdge
+ sameDir: boolean
+}
+
+class LinkedPath {
+ skipFromPathStart: uint32
+ skipFromPathEnd: uint32
+}
+
+class TrackArea {
+ trackEdgeSections: TrackEdgeSection[1..*]
+}
+
+class LinkedArea {
+ entireTrackEdges: *TrackEdge[*]
+ trackEdgeSections: TrackEdgeSection[*]
+}
+
+class GeometryArea {
+ id: string
+ versionTimestamp: timestamp
+ alignment3d: boolean
+}
+
+class TrackEdgeGeometry {
+ id: string
+}
+
+class HorizontalSegment << union >> {
+}
+
+class HorizontalLine {
+ trackGeometryPos: double
+ azimuth: double
+}
+
+class HorizontalArc {
+ trackGeometryPos: double
+ azimuth: double
+ radius: double
+}
+
+class HorizontalTransition {
+ trackGeometryPos: double
+ azimuth: double
+ radius: double
+ transitionType: TransitionType
+}
+
+class VerticalSegment << union >> {
+}
+
+class VerticalLine {
+ trackGeometryPos: double
+ slope: double
+}
+
+class VerticalArc {
+ trackGeometryPos: double
+ slope: double
+ radius: double
+}
+
+class CantPoint {
+ trackGeometryPos: double
+ appliedCant: double
+}
+
+class SampledGeometryArea {
+ id: string
+ versionTimestamp: timestamp
+}
+
+class SampledTrackEdgeGeometry {
+ id: string
+}
+
+class SlopeSamplePoint {
+ pos: uint32
+ samplePointSlope: int32
+}
+
+class CantSamplePoint {
+ pos: uint32
+ samplePointCant: int32
+}
+
+class CurveSamplePoint {
+ pos: uint32
+ sampleCurveRadius: int32
+}
+
+class SimplePoint {
+ id: string
+ reversalTime: uint32
+ pointLeft: *TrackEdgeLink
+ pointRight: *TrackEdgeLink
+}
+
+class SlipCrossing {
+ id: string
+ simplePoints: *SimplePoint[2..4]
+ crossing: *Crossing
+}
+
+class Derailer {
+ id: string
+ dirSpotLocation: DirTrackEdgePoint
+ reversalTime: uint32
+ derailToRight: boolean
+}
+
+class Crossing {
+ id: string
+ trackEdgePoints: TrackEdgePoint[2..2]
+ isSwitchable: boolean
+}
+
+class BaliseGroup {
+ id: string
+ nid_bg: uint32
+ nid_c: uint32
+ bgFunction: BaliseGroupFunction
+ linkOrientationDirection: Direction
+}
+
+class Balise {
+ id: string
+ spotLocation: TrackEdgePoint
+}
+
+class PropertiesArea {
+ id: string
+ versionTimestamp: timestamp
+ gauge: TrackGaugeType
+ loadingGaugeTypes: LoadingGaugeType[*]
+ defaultVoltage: VoltageType
+ defaultMaxCurrent: uint32
+}
+
+class TrackEdgeGauge {
+ trackEdgeSections: TrackEdgeSection[1..*]
+ gauge: TrackGaugeType
+}
+
+class TrackEdgeLoadingGauge {
+ trackEdgeSections: TrackEdgeSection[1..*]
+ loadingGaugeType: LoadingGaugeType
+}
+
+class TrackCondition {
+ trackEdgeSections: TrackEdgeSection[1..*]
+ conditionType: ConditionType
+}
+
+class CurrentLimitation {
+ trackEdgeSections: TrackEdgeSection[1..*]
+ maxCurrent: uint32
+}
+
+class PermittedBrakingDistance {
+ trackEdgeSections: TrackEdgeSection[1..*]
+ distance: uint32
+ brakeType: BrakeType
+ gradientValue: int32
+ sameDir: boolean
+}
+
+class TractionSystem {
+ trackEdgeSections: TrackEdgeSection[1..*]
+ voltageType: VoltageType
+}
+
+class TrackUsageArea {
+ id: string
+ versionTimestamp: timestamp
+ secondaryTracks: *TrackEdge[*]
+ shuntingTracks: *TrackEdge[*]
+ preferredSameDir: *TrackEdge[*]
+ preferredOppositeDir: *TrackEdge[*]
+}
+
+class TrackEdgeSpeedProfile {
+ id: string
+}
+
+class SpeedProfile {
+}
+
+class StaticSpeedLimit {
+ pos: uint32
+ speed: uint32
+}
+
+class SpecificStaticSpeedLimit {
+ speed: uint32
+}
+
+class SpeedLimitCategory << union >> {
+ otherCategoryReplacesCantDeficiencySSP: OtherSpecificStaticSpeedProfileCategory
+ otherCategoryDoesNotReplaceCantDeficiencySSP: OtherSpecificStaticSpeedProfileCategory
+ cantDeficiencyCategory: CantDeficiencyCategory
+}
+
+class AxleLoadSpeedProfile {
+ startPos: uint32
+ endPos: uint32
+ speed: uint32
+ axleLoadCategory: AxleLoadCategory
+}
+
+class ETCSMarker {
+ id: string
+ dirSpotLocation: DirTrackEdgePoint
+ markerFunctionStop: boolean
+}
+
+class StopLocation {
+ id: string
+ dirSpotLocation: DirTrackEdgePoint
+ trainLoadType: TrainLoadType
+ doorOpeningSide: DoorOpeningSide
+}
+
+class StopTrainLimit {
+ trainMaxLength: uint32
+ trainMaxAxles: uint32
+ trainMaxWagons: uint32
+ trainMaxSize: TrainSize
+}
+
+class PlatformEdge {
+ platformId: string
+ name: string[0..1]
+ stopLocations: *StopLocation[1..*]
+ height: PlatformHeight
+}
+
+class Platform {
+ id: string
+ name: string[0..1]
+}
+
+class OperationalPoint {
+ uopId: string
+ opName: string[0..1]
+ operationalPointType: OPType
+}
+
+class TravelTimeMeasurementPoint {
+ id: string
+ spotLocation: TrackEdgePoint
+}
+
+class TimingPoint {
+ id: string
+ spotLocation: TrackEdgePoint
+}
+
+class TPActiveObject << union >> {
+ etcsMarker: *ETCSMarker
+ stopLocation: *StopLocation
+ timeMeasurePoint: *TravelTimeMeasurementPoint
+}
+
+class Tunnel {
+ tunnelIdentification: string
+ name: string[0..1]
+}
+
+class TunnelTube {
+ trackArea: TrackArea
+ crossSection: uint32
+}
+
+class Bridge {
+ id: string
+ name: string[0..1]
+ trackArea: TrackArea
+}
+
+class Underpass {
+ id: string
+ name: string[0..1]
+ trackArea: TrackArea
+}
+
+class TvpSection {
+ id: string
+ name: string[0..1]
+ trainDetectors: *TrainDetector[*]
+}
+
+class TrainDetector {
+ id: string
+ spotLocation: TrackEdgePoint
+ trainDetectorType: TrainDetectorType
+ countUpDir: Direction
+}
+
+class LevelCrossing {
+ id: string
+ trackArea: TrackArea
+}
+
+class NationalBorder {
+ id: string
+ spotLocation: TrackEdgePoint
+ fromCountryCode: string
+ toCountryCode: string
+}
+
+class BufferStop {
+ id: string
+ dirSpotLocation: DirTrackEdgePoint
+ isSwitchable: boolean
+}
+
+class FunctionalArea {
+ id: string
+ versionTimestamp: timestamp
+}
+
+class Infrastructure {
+}
+
+TopoArea *-- "*" TrackEdge
+TopoArea *-- "*" TrackEdgeLink
+LinkedPath *-- "1..*" DirTrackEdge
+GeometryArea *-- "*" TrackEdgeGeometry
+TrackEdgeGeometry *-- "*" HorizontalSegment
+TrackEdgeGeometry *-- "*" VerticalSegment
+TrackEdgeGeometry *-- "*" CantPoint
+HorizontalSegment *-- HorizontalLine
+HorizontalSegment *-- HorizontalArc
+HorizontalSegment *-- HorizontalTransition
+VerticalSegment *-- VerticalLine
+VerticalSegment *-- VerticalArc
+SampledGeometryArea *-- "1..*" SampledTrackEdgeGeometry
+SampledTrackEdgeGeometry *-- "1..*" SlopeSamplePoint
+SampledTrackEdgeGeometry *-- "1..*" CurveSamplePoint
+SampledTrackEdgeGeometry *-- "1..*" CantSamplePoint
+BaliseGroup *-- "1..8" Balise
+PropertiesArea *-- "*" TrackEdgeSpeedProfile
+PropertiesArea *-- "*" TrackEdgeGauge
+PropertiesArea *-- "*" TrackEdgeLoadingGauge
+PropertiesArea *-- "*" TrackCondition
+PropertiesArea *-- "*" CurrentLimitation
+PropertiesArea *-- "*" PermittedBrakingDistance
+PropertiesArea *-- "*" TractionSystem
+TrackEdgeSpeedProfile *-- SpeedProfile
+TrackEdgeSpeedProfile *-- "0..1" SpeedProfile
+SpeedProfile *-- "1..*" StaticSpeedLimit
+SpeedProfile *-- "*" AxleLoadSpeedProfile
+StaticSpeedLimit *-- "*" SpecificStaticSpeedLimit
+SpecificStaticSpeedLimit *-- SpeedLimitCategory
+StopLocation *-- "0..1" StopTrainLimit
+PlatformEdge *-- LinkedPath
+Platform *-- "1..*" PlatformEdge
+OperationalPoint *-- "*" TravelTimeMeasurementPoint
+OperationalPoint *-- "*" Platform
+TimingPoint *-- TPActiveObject
+Tunnel *-- "1..*" TunnelTube
+TvpSection *-- LinkedArea
+FunctionalArea *-- "*" OperationalPoint
+FunctionalArea *-- "*" SimplePoint
+FunctionalArea *-- "*" SlipCrossing
+FunctionalArea *-- "*" Derailer
+FunctionalArea *-- "*" Crossing
+FunctionalArea *-- "*" TrainDetector
+FunctionalArea *-- "*" BaliseGroup
+FunctionalArea *-- "*" ETCSMarker
+FunctionalArea *-- "*" StopLocation
+FunctionalArea *-- "*" Tunnel
+FunctionalArea *-- "*" Bridge
+FunctionalArea *-- "*" Underpass
+FunctionalArea *-- "*" TvpSection
+FunctionalArea *-- "*" LevelCrossing
+FunctionalArea *-- "*" NationalBorder
+FunctionalArea *-- "*" BufferStop
+FunctionalArea *-- "*" TimingPoint
+Infrastructure *-- "*" TopoArea
+Infrastructure *-- "*" GeometryArea
+Infrastructure *-- "*" SampledGeometryArea
+Infrastructure *-- "*" FunctionalArea
+Infrastructure *-- "*" PropertiesArea
+Infrastructure *-- "*" TrackUsageArea
+@enduml

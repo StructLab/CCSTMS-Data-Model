@@ -1,0 +1,167 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam DefaultFontName arial
+skinparam DefaultFontSize 12
+skinparam ClassFontStyle bold
+skinparam linetype ortho
+skinparam dpi 200
+hide empty fields
+hide empty methods
+hide circle
+
+class Equipment {
+ id: string
+ statusTechnical: StatusTechnical
+ statusTechnicalManufacturerSpecificValue: string[*]
+ manufacturer: string
+ manufacturerModel: string
+ serialNumber: string
+ hardwareRevision: string
+ softwareRevision: string
+ replaceabityIndication: EquipmentReplaceabilityStatus
+ manufacturingDateTime: timestamp
+ label: string
+ isTimeSynchronised: boolean
+}
+
+class Controller {
+ id: string
+ statusTechnical: StatusTechnical
+ statusTechnicalManufacturerSpecificValue: string[*]
+ systemDescription: string
+ operatingSystem: string
+ operationStatus: ControllerOperationStatus
+ coolingFanStatus: CoolingFanStatus
+ temperatureStatus: TemperatureStatus
+ cpuHealthStatus: CpuHealthStatus
+ cpuLoadStatus: CpuLoadStatus
+ ramSize: uint32
+ ramHealthStatus: RamHealthStatus
+ bootingLastDateTime: timestamp
+ bootingLastReason: BootingLastReason
+ label: string
+}
+
+class PhysicalNetworkInterface {
+ id: string
+ statusTechnical: StatusTechnical
+ statusTechnicalManufacturerSpecificValue: string[*]
+ macAddress: string
+ operationStatus: PhysicalNetworkInterfaceOperationalStatus
+ nominationalBandwidth: uint32
+ label: string
+}
+
+class StorageMediumFlash {
+ id: string
+ statusTechnical: StatusTechnical
+ statusTechnicalManufacturerSpecificValue: string[*]
+ memorySize: uint32
+ temperatureStatus: TemperatureStatus
+ label: string
+ wearStatus: WearStatus
+}
+
+class PowerSupply {
+ id: string
+ statusTechnical: StatusTechnical
+ statusTechnicalManufacturerSpecificValue: string[*]
+ inputVoltageStatus: VoltageStatus
+ outputVoltageStatus: VoltageStatus
+ outputPower: uint32
+ outputPowerLimit: uint32
+ temperatureStatus: TemperatureStatus
+ label: string
+ inputVoltage: float
+ inputCurrent: float
+}
+
+class PhysicalDigitalOutput {
+ id: string
+ statusTechnical: StatusTechnical
+ statusTechnicalManufacturerSpecificValue: string[*]
+ label: string
+ physicalOutputValue: HighLow
+ outputVoltage: float
+ outputCurrent: float
+}
+
+class PhysicalAnalogOutput {
+ id: string
+ statusTechnical: StatusTechnical
+ statusTechnicalManufacturerSpecificValue: string[*]
+ label: string
+ voltage: float
+ current: float
+}
+
+class PhysicalSeparatedOutput {
+ id: string
+ statusTechnical: StatusTechnical
+ statusTechnicalManufacturerSpecificValue: string[*]
+ label: string
+ outputValue: OutputValue
+}
+
+class PhysicalDigitalInput {
+ id: string
+ statusTechnical: StatusTechnical
+ statusTechnicalManufacturerSpecificValue: string[*]
+ label: string
+ physicalInputValue: HighLow
+ inputVoltage: float
+ inputCurrent: float
+}
+
+class PhysicalAnalogInput {
+ id: string
+ statusTechnical: StatusTechnical
+ statusTechnicalManufacturerSpecificValue: string[*]
+ label: string
+ voltage: float
+ current: float
+}
+
+class PhysicalSeparatedInput {
+ id: string
+ statusTechnical: StatusTechnical
+ statusTechnicalManufacturerSpecificValue: string[*]
+ label: string
+ inputValue: InputValue
+}
+
+class AuxiliarySwitch {
+ id: string
+ label: string
+}
+
+class InputSwitch {
+ id: string
+ label: string
+ inputSwitchPosition: InputSwitchPosition
+}
+
+class InputButton {
+ id: string
+ label: string
+ isPressed: boolean
+}
+
+Equipment *-- "*" Equipment
+Equipment *-- "*" Controller
+Equipment *-- "*" PhysicalNetworkInterface
+Equipment *-- "*" StorageMediumFlash
+Equipment *-- "*" PowerSupply
+Equipment *-- "*" PhysicalDigitalOutput
+Equipment *-- "*" PhysicalAnalogOutput
+Equipment *-- "*" PhysicalSeparatedOutput
+Equipment *-- "*" PhysicalDigitalInput
+Equipment *-- "*" PhysicalAnalogInput
+Equipment *-- "*" PhysicalSeparatedInput
+Equipment *-- "*" InputSwitch
+Equipment *-- "*" InputButton
+InputSwitch *-- AuxiliarySwitch
+InputButton *-- AuxiliarySwitch
+@enduml

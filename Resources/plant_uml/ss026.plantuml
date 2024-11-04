@@ -1,0 +1,526 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam DefaultFontName arial
+skinparam DefaultFontSize 12
+skinparam ClassFontStyle bold
+skinparam linetype ortho
+skinparam dpi 200
+hide empty fields
+hide empty methods
+hide circle
+
+class BalisePacket {
+ nid: uint32
+ q_dir: QDir[0..1]
+ q_scale: uint32[0..1]
+}
+
+class Packet << union >> {
+}
+
+class ETCSPacket_0 {
+ nid_vbcmk: uint32
+}
+
+class ETCSPacket_2 {
+ m_version: ETCSVersion
+}
+
+class CorrectionFactor {
+ l_nvkrint: uint32
+ m_nvkrint: uint32
+}
+
+class NVKSubItem {
+ v_nvkvint: uint32
+ m_nvkvint: uint32[0..1]
+ m_nvkvint_2: uint32[0..1]
+}
+
+class NVKItem {
+ q_nvkvintset: KVType
+ a_nvp12: uint32[0..1]
+ a_nvp23: uint32[0..1]
+ v_nvkvint: uint32
+ m_nvkvint: uint32[0..1]
+ m_nvkvint_2: uint32[0..1]
+}
+
+class NVK {
+ l_nvkrint: uint32
+ m_nvkrint: uint32
+ m_nvktint: uint32
+}
+
+class ETCSPacket_3 {
+ d_validnv: uint32
+ nid_c: uint32
+ nid_c_next: uint32[0..31]
+ v_nvshunt: uint32
+ v_nvstff: uint32
+ v_nvonsight: uint32
+ v_nvlimsuperv: uint32
+ v_nvunfit: uint32
+ v_nvrel: uint32
+ d_nvroll: uint32
+ q_nvsbtsmperm: boolean
+ q_nvemrrls: boolean
+ q_nvguiperm: boolean
+ q_nvsbfbperm: boolean
+ q_nvinhsmicperm: boolean
+ v_nvallowovtrp: uint32
+ v_nvsupovtrp: uint32
+ d_nvovtrp: uint32
+ t_nvovtrp: uint32
+ d_nvpotrp: uint32
+ m_nvcontact: LinkReaction
+ t_nvcontact: uint32
+ m_nvderun: boolean
+ d_nvstff: uint32
+ q_nvdriver_adhes: boolean
+ a_nvmaxredadh1: uint32
+ a_nvmaxredadh2: uint32
+ a_nvmaxredadh3: uint32
+ q_nvlocacc: uint32
+ m_nvavadh: uint32
+ m_nvebcl: uint32
+ q_nvkint: boolean
+}
+
+class LinkItem {
+ d_link: uint32
+ nid_c: uint32[0..1]
+ nid_bg: uint32
+ q_linkorientation: boolean
+ q_linkreaction: LinkReaction
+ q_locacc: uint32
+}
+
+class ETCSPacket_5 {
+}
+
+class ETCSPacket_6 {
+ q_vbco: boolean
+ nid_vbcmk: uint32
+ nid_c: uint32
+ t_vbc: uint32[0..1]
+}
+
+class ETCSPacket_16 {
+ l_section: uint32
+}
+
+class ETCSPacket_39 {
+ d_traction: uint32
+ m_voltage: uint32
+ nid_ctraction: uint32[0..1]
+}
+
+class ETCSPacket_40 {
+ d_current: uint32
+ m_current: uint32
+}
+
+class LevelTransitionWithAck {
+ m_leveltr: EtcsLevel
+ nid_ntc: uint32[0..1]
+ l_ackleveltr: uint32
+}
+
+class ETCSPacket_41 {
+ d_leveltr: uint32
+ m_leveltr: EtcsLevel
+ nid_ntc: uint32[0..1]
+ l_ackleveltr: uint32
+}
+
+class ETCSPacket_42 {
+ q_rbc: boolean
+ nid_c: uint32[0..1]
+ nid_rbc: uint32[0..1]
+ nid_radio: string[0..1]
+ q_sleepsession: boolean
+}
+
+class ETCSPacket_44 {
+ nid_xuser: uint32
+ nid_ntc: uint32[0..1]
+ otherData: bytes
+}
+
+class ETCSPacket_45 {
+ nid_mn: string
+}
+
+class LevelTransition {
+ m_leveltr: EtcsLevel
+ nid_ntc: uint32[0..1]
+}
+
+class ETCSPacket_46 {
+ m_leveltr: EtcsLevel
+ nid_ntc: uint32[0..1]
+}
+
+class CountryBalise {
+ nid_c: uint32[0..1]
+ nid_bg: uint32
+}
+
+class ETCSPacket_49 {
+}
+
+class AxleLoadRestriction {
+ m_axleLoadCat: AxleLoadCategory
+ v_axleLoad: uint32
+}
+
+class AxleLoadSelection {
+ d_axleload: uint32[0..1]
+ l_axleload: uint32[0..1]
+ q_front: boolean[0..1]
+}
+
+class ETCSPacket_51 {
+ q_trackinit: boolean
+ d_trackinit: uint32[0..1]
+ d_axleload: uint32[0..1]
+ l_axleload: uint32[0..1]
+ q_front: boolean[0..1]
+}
+
+class PBDSelection {
+ d_pbd: uint32
+ q_gdir: boolean
+ g_pbdsr: uint32
+ q_pbdsr: boolean
+ d_pbdsr: uint32
+ l_pbdsr: uint32
+}
+
+class ETCSPacket_52 {
+ q_trackinit: boolean
+ d_trackinit: uint32[0..1]
+}
+
+class ETCSPacket_65 {
+ nid_tsr: uint32
+ d_tsr: uint32
+ l_tsr: uint32
+ q_front: boolean
+ v_tsr: uint32
+}
+
+class ETCSPacket_66 {
+ nid_tsr: uint32
+}
+
+class DLTrackCond {
+ d_trackcond: uint32
+ l_trackcond: uint32
+}
+
+class ETCSPacket_67 {
+}
+
+class DLMCondition {
+ d_trackcond: uint32
+ l_trackcond: uint32
+ m_trackcond: uint32
+}
+
+class ETCSPacket_68 {
+ q_trackinit: boolean
+ d_trackinit: uint32[0..1]
+}
+
+class TCSPCondition {
+ d_trackcond: uint32
+ l_trackcond: uint32
+ m_platform: uint32
+ q_platform: PlatformPosition
+}
+
+class ETCSPacket_69 {
+ q_trackinit: boolean
+ d_trackinit: uint32[0..1]
+}
+
+class RouteSuitability {
+ d_suitability: uint32
+ q_suitability: Q_Suitability
+ m_lineGuage: LineGuage[0..1]
+ m_axleLoadCat: AxleLoadCategory[0..1]
+ m_voltage: uint32[0..1]
+ nid_ctraction: uint32[0..1]
+}
+
+class ETCSPacket_70 {
+ q_trackinit: boolean
+ d_trackinit: uint32[0..1]
+}
+
+class ETCSPacket_71 {
+ d_adhesion: uint32
+ l_adhesion: uint32
+ m_adhesion: boolean
+}
+
+class TextMessageConfig {
+ q_textclass: TextClass
+ q_textdisplay: boolean
+ d_textdisplay: uint32
+ m_modetextdisplay: DisplayOperatingMode
+ m_leveltextdisplay: DisplayOperatingLevel
+ nid_ntc: uint32[0..1]
+ l_textdisplay: uint32
+ t_textdisplay: uint32
+ m_modetextdisplay_e: DisplayOperatingMode
+ m_leveltextdisplay_e: DisplayOperatingLevel
+ nid_ntc_e: uint32[0..1]
+ q_textconfirm: uint32
+ q_conftextdisplay: boolean[0..1]
+ q_textreport: boolean[0..1]
+ nid_textmessage: uint32[0..1]
+ nid_c: uint32[0..1]
+ nid_rbc: uint32[0..1]
+}
+
+class ETCSPacket_72 {
+ l_text: uint32
+ x_text: string
+}
+
+class ETCSPacket_76 {
+ q_text: uint32
+}
+
+class GeoPosItem {
+ nid_c: uint32[0..1]
+ nid_bg: uint32
+ d_posoff: uint32
+ q_mposition: boolean
+ m_position: uint32
+}
+
+class ETCSPacket_79 {
+}
+
+class ModeProfileItem {
+ d_mamode: uint32
+ m_mamode: MAMode
+ v_mamode: uint32
+ l_mamode: uint32
+ l_ackmamode: uint32
+ q_mamode: boolean
+}
+
+class ETCSPacket_80 {
+}
+
+class LXStatus {
+ v_lx: uint32
+ q_stoplx: boolean
+ l_stoplx: uint32[0..1]
+}
+
+class ETCSPacket_88 {
+ nid_lx: uint32
+ d_lx: uint32
+ l_lx: uint32
+ q_lxstatus: boolean
+}
+
+class ETCSPacket_90 {
+ nid_c: uint32[0..1]
+ nid_bg: uint32
+}
+
+class ETCSPacket_131 {
+ d_rbctr: uint32
+ nid_c: uint32
+ nid_rbc: uint32
+ nid_radio: string
+ q_sleepsession: boolean
+}
+
+class ETCSPacket_132 {
+ q_aspect: boolean
+}
+
+class ETCSPacket_133 {
+ q_riu: boolean
+ nid_c: uint32
+ nid_riu: uint32
+ nid_radio: string
+ d_infill: uint32
+ nid_c_next: uint32[0..1]
+ nid_bg: uint32[0..1]
+}
+
+class ETCSPacket_134 {
+ nid_loop: uint32
+ d_loop: uint32
+ l_loop: uint32
+ q_loopdir: boolean
+ q_sscode: uint32
+}
+
+class ETCSPacket_135 {
+}
+
+class ETCSPacket_136 {
+ nid_c: uint32[0..1]
+ nid_bg: uint32
+}
+
+class ETCSPacket_137 {
+ q_srstop: boolean
+}
+
+class ETCSPacket_138 {
+ d_startreverse: uint32
+ l_reversearea: uint32
+}
+
+class ETCSPacket_139 {
+ d_reverse: uint32
+ v_reverse: uint32
+}
+
+class ETCSPacket_141 {
+ q_gdir: boolean
+ g_tsr: int32
+}
+
+class ETCSPacket_145 {
+}
+
+class ETCSPacket_180 {
+ q_lssma: boolean
+ t_lssma: uint32[0..1]
+}
+
+class ETCSPacket_181 {
+}
+
+class ETCSPacket_254 {
+}
+
+class ETCSPacket_255 {
+}
+
+class PacketMgmt {
+}
+
+BalisePacket *-- Packet
+Packet *-- ETCSPacket_0
+Packet *-- ETCSPacket_2
+Packet *-- ETCSPacket_3
+Packet *-- ETCSPacket_5
+Packet *-- ETCSPacket_6
+Packet *-- ETCSPacket_16
+Packet *-- ETCSPacket_39
+Packet *-- ETCSPacket_40
+Packet *-- ETCSPacket_41
+Packet *-- ETCSPacket_42
+Packet *-- ETCSPacket_44
+Packet *-- ETCSPacket_45
+Packet *-- ETCSPacket_46
+Packet *-- ETCSPacket_49
+Packet *-- ETCSPacket_51
+Packet *-- ETCSPacket_52
+Packet *-- ETCSPacket_65
+Packet *-- ETCSPacket_66
+Packet *-- ETCSPacket_67
+Packet *-- ETCSPacket_68
+Packet *-- ETCSPacket_69
+Packet *-- ETCSPacket_70
+Packet *-- ETCSPacket_71
+Packet *-- ETCSPacket_72
+Packet *-- ETCSPacket_76
+Packet *-- ETCSPacket_79
+Packet *-- ETCSPacket_80
+Packet *-- ETCSPacket_88
+Packet *-- ETCSPacket_90
+Packet *-- ETCSPacket_131
+Packet *-- ETCSPacket_132
+Packet *-- ETCSPacket_133
+Packet *-- ETCSPacket_134
+Packet *-- ETCSPacket_135
+Packet *-- ETCSPacket_136
+Packet *-- ETCSPacket_137
+Packet *-- ETCSPacket_138
+Packet *-- ETCSPacket_139
+Packet *-- ETCSPacket_141
+Packet *-- ETCSPacket_145
+Packet *-- ETCSPacket_180
+Packet *-- ETCSPacket_181
+Packet *-- ETCSPacket_254
+Packet *-- ETCSPacket_255
+NVKItem *-- "0..31" NVKSubItem
+NVK *-- "1..32" NVKItem
+NVK *-- "0..31" CorrectionFactor
+ETCSPacket_3 *-- "0..1" NVK
+ETCSPacket_5 *-- "1..33" LinkItem
+ETCSPacket_41 *-- "0..32" LevelTransitionWithAck
+ETCSPacket_46 *-- "0..31" LevelTransition
+ETCSPacket_49 *-- "0..31" CountryBalise
+AxleLoadSelection *-- "0..31" AxleLoadRestriction
+ETCSPacket_51 *-- "0..31" AxleLoadRestriction
+ETCSPacket_51 *-- "0..31" AxleLoadSelection
+ETCSPacket_52 *-- "0..32" PBDSelection
+ETCSPacket_67 *-- "1..32" DLTrackCond
+ETCSPacket_68 *-- "0..32" DLMCondition
+ETCSPacket_69 *-- "0..32" TCSPCondition
+ETCSPacket_70 *-- "0..32" RouteSuitability
+ETCSPacket_72 *-- TextMessageConfig
+ETCSPacket_76 *-- TextMessageConfig
+ETCSPacket_79 *-- "1..32" GeoPosItem
+ETCSPacket_80 *-- "1..32" ModeProfileItem
+ETCSPacket_88 *-- "0..1" LXStatus
+PacketMgmt *-- "*" ETCSPacket_0
+PacketMgmt *-- "*" ETCSPacket_2
+PacketMgmt *-- "*" ETCSPacket_3
+PacketMgmt *-- "*" ETCSPacket_5
+PacketMgmt *-- "*" ETCSPacket_6
+PacketMgmt *-- "*" ETCSPacket_16
+PacketMgmt *-- "*" ETCSPacket_39
+PacketMgmt *-- "*" ETCSPacket_40
+PacketMgmt *-- "*" ETCSPacket_41
+PacketMgmt *-- "*" ETCSPacket_42
+PacketMgmt *-- "*" ETCSPacket_44
+PacketMgmt *-- "*" ETCSPacket_45
+PacketMgmt *-- "*" ETCSPacket_46
+PacketMgmt *-- "*" ETCSPacket_49
+PacketMgmt *-- "*" ETCSPacket_51
+PacketMgmt *-- "*" ETCSPacket_52
+PacketMgmt *-- "*" ETCSPacket_65
+PacketMgmt *-- "*" ETCSPacket_66
+PacketMgmt *-- "*" ETCSPacket_67
+PacketMgmt *-- "*" ETCSPacket_68
+PacketMgmt *-- "*" ETCSPacket_69
+PacketMgmt *-- "*" ETCSPacket_70
+PacketMgmt *-- "*" ETCSPacket_72
+PacketMgmt *-- "*" ETCSPacket_76
+PacketMgmt *-- "*" ETCSPacket_79
+PacketMgmt *-- "*" ETCSPacket_80
+PacketMgmt *-- "*" ETCSPacket_88
+PacketMgmt *-- "*" ETCSPacket_90
+PacketMgmt *-- "*" ETCSPacket_131
+PacketMgmt *-- "*" ETCSPacket_132
+PacketMgmt *-- "*" ETCSPacket_133
+PacketMgmt *-- "*" ETCSPacket_134
+PacketMgmt *-- "*" ETCSPacket_135
+PacketMgmt *-- "*" ETCSPacket_137
+PacketMgmt *-- "*" ETCSPacket_138
+PacketMgmt *-- "*" ETCSPacket_139
+PacketMgmt *-- "*" ETCSPacket_141
+PacketMgmt *-- "*" ETCSPacket_145
+PacketMgmt *-- "*" ETCSPacket_180
+PacketMgmt *-- "*" ETCSPacket_181
+PacketMgmt *-- "*" ETCSPacket_254
+PacketMgmt *-- "*" ETCSPacket_255
+@enduml
