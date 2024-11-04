@@ -1,0 +1,30 @@
+{
+  "$id": "https://ERJU/eng_BaliseGroup",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "Defines a technical device group on the railway trackbed.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "m_version": {
+      "type": "string",
+      "description": "Version of the ERTMS/ETCS system",
+      "enum": ["v1_0", "v1_1", "v2_0", "v2_1", "v_previous", "v_reserved", "v_invalid"]
+    },
+    "q_link": {
+      "type": "boolean",
+      "description": "true when the balise group is linked, otherwise, false (unlinked)"
+    },
+    "q_updown": {
+      "type": "boolean",
+      "description": "This defines the direction of information. True when it is Up-link (Track-to-Train) and false when it is Down-link (Train-to-Track)"
+    }
+  },
+  "required": ["id"],
+  "additionalProperties": false
+}

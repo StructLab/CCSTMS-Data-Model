@@ -1,0 +1,41 @@
+{
+  "$id": "https://ERJU/eng_DangerPoint",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_TrackEdgePoint": {
+      "type": "object",
+      "description": "Defines a non-directed spot location (without spatial expansion) on a Track Edge",
+      "properties": {
+        "trackEdge": {
+          "type": "string",
+          "description": "is positioned on track edge"
+        },
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated Track Edge"
+        }
+      },
+      "required": ["trackEdge"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "a specific location on the railway where a potential conflict or danger may arise between trains or between trains and other object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "name": {
+      "type": "string",
+      "description": "User-friendly name, only if different from id"
+    },
+    "spotLocation": {
+      "type": "object",
+      "$ref": "#/definitions/infra_TrackEdgePoint"
+    }
+  },
+  "required": ["id", "name", "spotLocation"],
+  "additionalProperties": false
+}

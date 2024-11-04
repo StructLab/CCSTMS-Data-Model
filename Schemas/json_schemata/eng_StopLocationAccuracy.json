@@ -1,0 +1,21 @@
+{
+  "$id": "https://ERJU/eng_StopLocationAccuracy",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "properties": {
+    "stopLocationId": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "accuracy": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "defines absolute deviation as 1sigma for stop location"
+    }
+  },
+  "required": ["stopLocationId"],
+  "additionalProperties": false
+}

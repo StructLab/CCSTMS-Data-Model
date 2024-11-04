@@ -1,0 +1,52 @@
+{
+  "$id": "https://ERJU/eng_Sleepers",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_TrackEdgeSection": {
+      "type": "object",
+      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "properties": {
+        "trackEdge": {
+          "type": "string",
+          "description": "refers to track edge"
+        },
+        "skipFromStart": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [0..skipFromStart]."
+        },
+        "skipFromEnd": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [skipFromEnd, length]."
+        }
+      },
+      "required": ["trackEdge"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Sleepers are components on which the rails arranged with corresponding gauge.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "trackEdgeSection": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "composes of track edge sections",
+        "$ref": "#/definitions/infra_TrackEdgeSection"
+       },
+      "minItems": 1
+    },
+    "sleepersType": {
+      "type": "string",
+      "description": "defines sleeper types",
+      "enum": ["unknownSleepersType", "composite", "concrete", "steel", "wood"]
+    }
+  },
+  "required": ["id", "trackEdgeSection"],
+  "additionalProperties": false
+}

@@ -1,0 +1,44 @@
+{
+  "$id": "https://ERJU/ato_LimitedDynamicBrakeForce",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "ato_SegmentSection": {
+      "type": "object",
+      "description": "Defines sections with start and end references for use in segment profile",
+      "properties": {
+        "range": {
+          "type": "string",
+          "description": "defines range type",
+          "enum": ["rtStart", "rtEnd", "rtStartEnd", "rtWholeSP"]
+        },
+        "pStart": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Start Position on the segment profile"
+        },
+        "pEnd": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "End Position on the segment profile"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines the limited dynamic brake force information for a segment profile",
+  "properties": {
+    "segmentSection": {
+      "type": "object",
+      "description": "composes of segment sections",
+      "$ref": "#/definitions/ato_SegmentSection"
+    },
+    "dynamicBrakeForceLimit": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "the defined range corresponds to the constraints from SS126"
+    }
+  },
+  "required": ["segmentSection"],
+  "additionalProperties": false
+}

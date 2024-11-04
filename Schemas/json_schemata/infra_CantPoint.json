@@ -1,0 +1,20 @@
+{
+  "$id": "https://ERJU/infra_CantPoint",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "Cant at a given location on the track.",
+  "properties": {
+    "trackGeometryPos": {
+      "type": "number",
+      "description": "position on the associated track edge"
+    },
+    "appliedCant": {
+      "type": "number",
+      "description": "Height of the right rail minus the left rail. Right/left with respect to the direction of the track edge. Rollangle=(arcsin(cant/gauge)), gauge is distance between middle of the railheads, e.g. 1500mm for EU-standard gauge '1435mm'"
+    }
+  },
+  "additionalProperties": false
+}

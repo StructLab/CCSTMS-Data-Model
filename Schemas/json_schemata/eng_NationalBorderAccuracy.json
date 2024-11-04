@@ -1,0 +1,21 @@
+{
+  "$id": "https://ERJU/eng_NationalBorderAccuracy",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "properties": {
+    "nationalBorderId": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "accuracy": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "defines absolute deviation as 1sigma for stop location"
+    }
+  },
+  "required": ["nationalBorderId"],
+  "additionalProperties": false
+}

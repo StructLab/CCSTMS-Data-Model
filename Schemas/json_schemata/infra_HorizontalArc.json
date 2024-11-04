@@ -1,0 +1,24 @@
+{
+  "$id": "https://ERJU/infra_HorizontalArc",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "Geometric primitive for a horizontal arc of circle",
+  "properties": {
+    "trackGeometryPos": {
+      "type": "number",
+      "description": "position on the associated Track Edge"
+    },
+    "azimuth": {
+      "type": "number",
+      "description": "The azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
+    },
+    "radius": {
+      "type": "number",
+      "description": "radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+    }
+  },
+  "additionalProperties": false
+}

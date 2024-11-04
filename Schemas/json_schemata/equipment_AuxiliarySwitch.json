@@ -1,0 +1,20 @@
+{
+  "$id": "https://ERJU/equipment_AuxiliarySwitch",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "AuxiliarySwitch",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "globally unique key (e.g. uuid)"
+    },
+    "label": {
+      "type": "string"
+    }
+  },
+  "required": ["id", "label"],
+  "additionalProperties": false
+}

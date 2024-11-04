@@ -1,0 +1,20 @@
+{
+  "$id": "https://ERJU/infra_HorizontalLine",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "Geometric primitive for a horizontal linear segment",
+  "properties": {
+    "trackGeometryPos": {
+      "type": "number",
+      "description": "position on the associated Track Edge"
+    },
+    "azimuth": {
+      "type": "number",
+      "description": "The azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
+    }
+  },
+  "additionalProperties": false
+}

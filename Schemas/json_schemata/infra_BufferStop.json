@@ -1,0 +1,45 @@
+{
+  "$id": "https://ERJU/infra_BufferStop",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_DirTrackEdgePoint": {
+      "type": "object",
+      "description": "Defines a directed spot location (without spatial expansion) on a Track Edge",
+      "properties": {
+        "trackEdge": {
+          "type": "string",
+          "description": "refers to track edge"
+        },
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated Track Edge"
+        },
+        "sameDir": {
+          "type": "boolean",
+          "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
+        }
+      },
+      "required": ["trackEdge"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines the object Buffer stop on the track",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "dirSpotLocation": {
+      "type": "object",
+      "$ref": "#/definitions/infra_DirTrackEdgePoint"
+    },
+    "isSwitchable": {
+      "type": "boolean",
+      "description": "true - if switchable ; false - if not switchable"
+    }
+  },
+  "required": ["id", "dirSpotLocation"],
+  "additionalProperties": false
+}

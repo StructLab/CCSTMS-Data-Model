@@ -1,0 +1,30 @@
+{
+  "$id": "https://ERJU/infra_SimplePoint",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "Defines the physical track asset Simple Point",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing ; structure refers to EULYNX EU.SAS.77"
+    },
+    "reversalTime": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Defines the time in seconds to switch from one position to the other ; 0 means unknown"
+    },
+    "pointLeft": {
+      "type": "string",
+      "description": "Track Edge Link referencing the left side of the point in the facing direction of the simple point"
+    },
+    "pointRight": {
+      "type": "string",
+      "description": "Track Edge Link referencing the right side of the point in the facing direction of the simple point"
+    }
+  },
+  "required": ["id", "pointLeft", "pointRight"],
+  "additionalProperties": false
+}

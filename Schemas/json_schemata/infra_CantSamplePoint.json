@@ -1,0 +1,21 @@
+{
+  "$id": "https://ERJU/infra_CantSamplePoint",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "Cant(superelevation) of the track at a given location on the track.",
+  "properties": {
+    "pos": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "position on the associated TrackEdge"
+    },
+    "samplePointCant": {
+      "type": "integer",
+      "description": "Defines appliedCant as the Height of the right rail minus the left rail. Right/left with respect to the direction of the track edge. Rollangle=(arcsin(cant/gauge), gauge is distance between centers of rail-heads, e.g. 1500mm for EU-standard gauge."
+    }
+  },
+  "additionalProperties": false
+}
