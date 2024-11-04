@@ -46,7 +46,7 @@ To get started with the CCS/TMS Data Model:
       *- Operational Plan (OPP)*  -->    used by CCS-TMS Interface Specification <br>
       *- Traffic Protection (TP)* -->    configuration for TPS / Safety Logic <br>
       *- Subset 026 (SS026)*      -->    used for Engineering of ETCS Telegrams, later also for configuration interface specification <br>
-      *- Equipment model*         -->    imported from EULYNX for diagnostic purposes, will be extended in the next steps
+      *- Equipment model*         -->    imported from EULYNX for diagnostic purposes
 
 
 ## Collaboration and Development
