@@ -4210,6 +4210,7 @@ The Start of tunnel is the Geographical coordinates in decimal degrees and km of
         <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-11-13</dcterms:created>
         <rdfs:comment xml:lang="en">composes of track edge links</rdfs:comment>
         <rdfs:label xml:lang="en">Linear Element Links</rdfs:label>
+        <skos:altLabel xml:lang="en">trackEdgeLinks</skos:altLabel>
     </owl:ObjectProperty>
     
 
@@ -4224,6 +4225,7 @@ The Start of tunnel is the Geographical coordinates in decimal degrees and km of
         <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-11-13</dcterms:created>
         <rdfs:comment xml:lang="en">composes of track edges</rdfs:comment>
         <rdfs:label xml:lang="en">Linear Elements</rdfs:label>
+        <skos:altLabel xml:lang="en">trackEdges</skos:altLabel>
     </owl:ObjectProperty>
     
 
@@ -12597,22 +12599,7 @@ Distance between the signboard authorizing the driver to ‘raise pantograph’ 
         <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-11-13</dcterms:created>
         <rdfs:comment xml:lang="en">Identity of the object; used for referencing</rdfs:comment>
         <rdfs:label xml:lang="en">Element Id</rdfs:label>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://data.europa.eu/949/trackEdgeLength -->
-
-    <owl:DatatypeProperty rdf:about="http://data.europa.eu/949/trackEdgeLength">
-        <rdfs:subPropertyOf rdf:resource="http://data.europa.eu/949/length"/>
-        <rdfs:domain rdf:resource="http://data.europa.eu/949/LinearElement"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
-        <ccsView>INFRA</ccsView>
-        <exp rdf:datatype="http://www.w3.org/2001/XMLSchema#int">-3</exp>
-        <unitOfMeasure rdf:resource="http://qudt.org/vocab/unit/M"/>
-        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-11-13</dcterms:created>
-        <rdfs:comment xml:lang="en">Distance along the TrackEdge&apos;s track centre line. </rdfs:comment>
-        <rdfs:label xml:lang="en">Element Length</rdfs:label>
+        <skos:altLabel xml:lang="en">id</skos:altLabel>
     </owl:DatatypeProperty>
     
 
@@ -21253,6 +21240,22 @@ See: TSI CCS (Subset 26, chapter 7. 7.5.1.149 T_NVOVTRP)</rdfs:comment>
         <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-11-13</dcterms:created>
         <rdfs:label xml:lang="en">TrackEdge KmSignsId</rdfs:label>
         <skos:altLabel xml:lang="en">id</skos:altLabel>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://data.europa.eu/949/trackEdgeLength -->
+
+    <owl:DatatypeProperty rdf:about="http://data.europa.eu/949/trackEdgeLength">
+        <rdfs:subPropertyOf rdf:resource="http://data.europa.eu/949/length"/>
+        <rdfs:domain rdf:resource="http://data.europa.eu/949/LinearElement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
+        <ccsView>INFRA</ccsView>
+        <exp rdf:datatype="http://www.w3.org/2001/XMLSchema#int">-3</exp>
+        <unitOfMeasure rdf:resource="http://qudt.org/vocab/unit/M"/>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-11-13</dcterms:created>
+        <rdfs:comment xml:lang="en">Distance along the TrackEdge&apos;s track centre line. </rdfs:comment>
+        <rdfs:label xml:lang="en">Element Length</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -34960,6 +34963,14 @@ sameThing(P1, P2) :- type(P1, Point), type(P2, Point), spaciallyIntersects(P1, P
         <rdfs:label xml:lang="en">Wood</rdfs:label>
     </owl:NamedIndividual>
     <rdf:Description>
+        <foaf:name>Maarten Duhoux</foaf:name>
+        <org:memberOf rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/ERA"/>
+    </rdf:Description>
+    <rdf:Description>
+        <foaf:name>Dragos Patru</foaf:name>
+        <org:memberOf rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/ERA"/>
+    </rdf:Description>
+    <rdf:Description>
         <foaf:name>Dragos Patru</foaf:name>
         <org:memberOf rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/ERA"/>
     </rdf:Description>
@@ -34973,16 +34984,8 @@ sameThing(P1, P2) :- type(P1, Point), type(P2, Point), spaciallyIntersects(P1, P
         <org:memberOf rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/ERA"/>
     </rdf:Description>
     <rdf:Description>
-        <foaf:name>Dragos Patru</foaf:name>
-        <org:memberOf rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/ERA"/>
-    </rdf:Description>
-    <rdf:Description>
         <foaf:name>Ghislain Atemezing</foaf:name>
         <dcterms:source rdf:resource="https://orcid.org/0000-0003-1562-6922"/>
-        <org:memberOf rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/ERA"/>
-    </rdf:Description>
-    <rdf:Description>
-        <foaf:name>Maarten Duhoux</foaf:name>
         <org:memberOf rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/ERA"/>
     </rdf:Description>
     
