@@ -9805,7 +9805,8 @@ era:elementId rdf:type owl:DatatypeProperty ;
               era:key "global" ;
               dcterms:created "2023-11-13"^^xsd:date ;
               rdfs:comment "Identity of the object; used for referencing"@en ;
-              rdfs:label "Element Id"@en .
+              rdfs:label "Element Id"@en ;
+	      skos:altLabel "id"@en .
 
 
 ###  http://data.europa.eu/949/trackEdgeLength
