@@ -1,9 +1,0 @@
-{
-  "$id": "https://ERJU/equipment_PhysicalSeparatedOutputs",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
-  "type": "object",
-  "additionalProperties": false
-}
