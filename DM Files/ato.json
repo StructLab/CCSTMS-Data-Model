@@ -304,7 +304,7 @@
     "name": "Balise",
     "info": "Defines a technical device on the railway trackbed",
     "attrs": [
-      {"intId": 1, "name": "positionInGroup", "dataType": "uint32", "range": "0..7",
+      {"intId": 1, "name": "n_pig", "dataType": "uint32", "range": "0..7",
        "info": "Defines the position of a balise in a balise group"},
       {"intId": 2, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -2,
        "info": "Position on the associated segment profile"}
