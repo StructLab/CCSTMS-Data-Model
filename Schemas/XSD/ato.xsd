@@ -353,7 +353,7 @@
 	<xs:element name="baliseGroup" type="ato:BaliseGroup"/>
 	<xs:complexType name="Balise">
 		<xs:sequence/>
-		<xs:attribute name="positionInGroup" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="n_pig" type="xs:unsignedInt" use="required"/>
 		<xs:attribute name="pos" type="xs:unsignedInt" use="required"/>
 	</xs:complexType>
 	<xs:element name="balise" type="ato:Balise"/>
@@ -361,7 +361,7 @@
 		<xs:sequence>
 			<xs:element name="segmentSection" type="ato:SegmentSection" minOccurs="1" maxOccurs="1"/>
 		</xs:sequence>
-		<xs:attribute name="value" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="distance" type="xs:unsignedInt" use="required"/>
 		<xs:attribute name="byEmergencyBrake" type="xs:boolean" use="required"/>
 		<xs:attribute name="gradientValue" type="xs:int" use="required"/>
 	</xs:complexType>
