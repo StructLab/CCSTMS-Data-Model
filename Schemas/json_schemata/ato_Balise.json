@@ -7,7 +7,7 @@
   "type": "object",
   "description": "Defines a technical device on the railway trackbed",
   "properties": {
-    "positionInGroup": {
+    "n_pig": {
       "type": "integer",
       "minimum": 0,
       "description": "Defines the position of a balise in a balise group"
