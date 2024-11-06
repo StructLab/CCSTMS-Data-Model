@@ -1,0 +1,43 @@
+{
+  "$id": "https://ERJU/infra_TrackArea",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_TrackEdgeSection": {
+      "type": "object",
+      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "properties": {
+        "trackEdge": {
+          "type": "string",
+          "description": "refers to track edge"
+        },
+        "skipFromStart": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [0..skipFromStart]."
+        },
+        "skipFromEnd": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [skipFromEnd, length]."
+        }
+      },
+      "required": ["trackEdge"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines a Track Area on the topology",
+  "properties": {
+    "trackEdgeSections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "composes of track edge sections",
+        "$ref": "#/definitions/infra_TrackEdgeSection"
+       },
+      "minItems": 1
+    }
+  },
+  "required": ["trackEdgeSections"],
+  "additionalProperties": false
+}

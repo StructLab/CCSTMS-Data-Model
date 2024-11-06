@@ -1,0 +1,24 @@
+{
+  "$id": "https://ERJU/infra_VerticalArc",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "Geometric primitive for a vertical arc.",
+  "properties": {
+    "trackGeometryPos": {
+      "type": "number",
+      "description": "position on the associated Track Edge"
+    },
+    "slope": {
+      "type": "number",
+      "description": "The vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
+    },
+    "radius": {
+      "type": "number",
+      "description": "radius at pos, negative-counter-clockwise/sag-curve, positive-clockwise/crest-curve"
+    }
+  },
+  "additionalProperties": false
+}

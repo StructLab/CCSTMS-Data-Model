@@ -1,0 +1,45 @@
+{
+  "$id": "https://ERJU/infra_LinkedArea",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_TrackEdgeSection": {
+      "type": "object",
+      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "properties": {
+        "trackEdge": {
+          "type": "string",
+          "description": "refers to track edge"
+        },
+        "skipFromStart": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [0..skipFromStart]."
+        },
+        "skipFromEnd": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [skipFromEnd, length]."
+        }
+      },
+      "required": ["trackEdge"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "entireTrackEdges": {
+      "type": "array",
+      "items": {
+        "type": "string"
+       }
+    },
+    "trackEdgeSections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/infra_TrackEdgeSection"
+       }
+    }
+  },
+  "additionalProperties": false
+}

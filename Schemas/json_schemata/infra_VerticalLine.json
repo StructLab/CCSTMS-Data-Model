@@ -1,0 +1,20 @@
+{
+  "$id": "https://ERJU/infra_VerticalLine",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "Geometric primitive for vertical linear segment",
+  "properties": {
+    "trackGeometryPos": {
+      "type": "number",
+      "description": "position on the associated Track Edge"
+    },
+    "slope": {
+      "type": "number",
+      "description": "The vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
+    }
+  },
+  "additionalProperties": false
+}

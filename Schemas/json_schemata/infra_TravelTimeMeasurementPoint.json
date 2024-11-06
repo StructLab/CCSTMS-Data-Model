@@ -1,0 +1,37 @@
+{
+  "$id": "https://ERJU/infra_TravelTimeMeasurementPoint",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_TrackEdgePoint": {
+      "type": "object",
+      "description": "Defines a non-directed spot location (without spatial expansion) on a Track Edge",
+      "properties": {
+        "trackEdge": {
+          "type": "string",
+          "description": "is positioned on track edge"
+        },
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated Track Edge"
+        }
+      },
+      "required": ["trackEdge"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "normally the passing time through a OperationalPoint is measured at the middle of it",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "spotLocation": {
+      "type": "object",
+      "$ref": "#/definitions/infra_TrackEdgePoint"
+    }
+  },
+  "required": ["id", "spotLocation"],
+  "additionalProperties": false
+}

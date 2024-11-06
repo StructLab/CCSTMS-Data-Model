@@ -1,0 +1,48 @@
+{
+  "$id": "https://ERJU/infra_TractionSystem",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_TrackEdgeSection": {
+      "type": "object",
+      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "properties": {
+        "trackEdge": {
+          "type": "string",
+          "description": "refers to track edge"
+        },
+        "skipFromStart": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [0..skipFromStart]."
+        },
+        "skipFromEnd": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [skipFromEnd, length]."
+        }
+      },
+      "required": ["trackEdge"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines the equipped traction system on the track",
+  "properties": {
+    "trackEdgeSections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "composes of track edge sections",
+        "$ref": "#/definitions/infra_TrackEdgeSection"
+       },
+      "minItems": 1
+    },
+    "voltageType": {
+      "type": "string",
+      "description": "defines the different voltage types",
+      "enum": ["vtNotFitted", "vtAC25kv50Hz", "vtAC15kv16_7Hz", "vtDC3kv", "vtDC1_5kv", "vtDC600v", "vtDC650v", "vtDC750v", "vtDC850v"]
+    }
+  },
+  "required": ["trackEdgeSections"],
+  "additionalProperties": false
+}

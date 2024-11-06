@@ -1,0 +1,115 @@
+{
+  "$id": "https://ERJU/infra_SampledGeometryArea",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_SlopeSamplePoint": {
+      "type": "object",
+      "description": "Slope (gradient) of the track at a given location on the track.",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated TrackEdge"
+        },
+        "samplePointSlope": {
+          "type": "integer",
+          "description": "The vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
+        }
+      },
+      "additionalProperties": false
+    },
+    "infra_CurveSamplePoint": {
+      "type": "object",
+      "description": "Curve (radius) of the track at a given location on the track.",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated TrackEdge"
+        },
+        "sampleCurveRadius": {
+          "type": "integer",
+          "description": "radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+        }
+      },
+      "additionalProperties": false
+    },
+    "infra_CantSamplePoint": {
+      "type": "object",
+      "description": "Cant(superelevation) of the track at a given location on the track.",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated TrackEdge"
+        },
+        "samplePointCant": {
+          "type": "integer",
+          "description": "Defines appliedCant as the Height of the right rail minus the left rail. Right/left with respect to the direction of the track edge. Rollangle=(arcsin(cant/gauge), gauge is distance between centers of rail-heads, e.g. 1500mm for EU-standard gauge."
+        }
+      },
+      "additionalProperties": false
+    },
+    "infra_SampledTrackEdgeGeometry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identity of the object; used for referencing"
+        },
+        "slopes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "description": "composes of slope sample points",
+            "$ref": "#/definitions/infra_SlopeSamplePoint"
+           },
+          "minItems": 1
+        },
+        "curves": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "description": "composes of curve sample points",
+            "$ref": "#/definitions/infra_CurveSamplePoint"
+           },
+          "minItems": 1
+        },
+        "cants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "description": "composes of cant sample points",
+            "$ref": "#/definitions/infra_CantSamplePoint"
+           },
+          "minItems": 1
+        }
+      },
+      "required": ["id", "slopes", "curves", "cants"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "versionTimestamp": {
+      "type": "string",
+      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
+      "description": "version information which is valid since timestamp"
+    },
+    "sampledTrackEdgeGeometries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "composes of sampled track edge geometries",
+        "$ref": "#/definitions/infra_SampledTrackEdgeGeometry"
+       },
+      "minItems": 1
+    }
+  },
+  "required": ["id", "versionTimestamp", "sampledTrackEdgeGeometries"],
+  "additionalProperties": false
+}

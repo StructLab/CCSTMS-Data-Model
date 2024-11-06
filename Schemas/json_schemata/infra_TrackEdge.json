@@ -1,0 +1,22 @@
+{
+  "$id": "https://ERJU/infra_TrackEdge",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "A track edge is an uninterrupted stretch of railway track, without divergence or convergence.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "trackEdgeLength": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Distance along the TrackEdge's track centre line. "
+    }
+  },
+  "required": ["id"],
+  "additionalProperties": false
+}

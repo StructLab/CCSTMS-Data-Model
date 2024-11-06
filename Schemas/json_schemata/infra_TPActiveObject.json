@@ -1,0 +1,38 @@
+{
+  "$id": "https://ERJU/infra_TPActiveObject",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "A functional object infront of which a TimingPoint is located and active",
+  "properties": {
+    "etcsMarker": {
+      "type": "string",
+      "description": "refers to ETCS marker"
+    },
+    "stopLocation": {
+      "type": "string",
+      "description": "refers to stop location"
+    },
+    "timeMeasurePoint": {
+      "type": "string",
+      "description": "refers to travel time measurement point"
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["etcsMarker"]
+    },
+    {
+      "type": "object",
+      "required": ["stopLocation"]
+    },
+    {
+      "type": "object",
+      "required": ["timeMeasurePoint"]
+    }
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,47 @@
+{
+  "$id": "https://ERJU/infra_Crossing",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_TrackEdgePoint": {
+      "type": "object",
+      "description": "Defines a non-directed spot location (without spatial expansion) on a Track Edge",
+      "properties": {
+        "trackEdge": {
+          "type": "string",
+          "description": "is positioned on track edge"
+        },
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated Track Edge"
+        }
+      },
+      "required": ["trackEdge"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines the physical track asset Crossing without possibility to switch between two track edges",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "trackEdgePoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "composes of track edge points",
+        "$ref": "#/definitions/infra_TrackEdgePoint"
+       },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "isSwitchable": {
+      "type": "boolean",
+      "description": "True: If the crossing is switchable ; False: If the crossing is not switchable ;https://commons.wikimedia.org/wiki/Category:Switched_diamond_crossings"
+    }
+  },
+  "required": ["id", "trackEdgePoints"],
+  "additionalProperties": false
+}

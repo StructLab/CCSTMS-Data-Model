@@ -1,0 +1,65 @@
+{
+  "$id": "https://ERJU/infra_VerticalSegment",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_VerticalLine": {
+      "type": "object",
+      "description": "Geometric primitive for vertical linear segment",
+      "properties": {
+        "trackGeometryPos": {
+          "type": "number",
+          "description": "position on the associated Track Edge"
+        },
+        "slope": {
+          "type": "number",
+          "description": "The vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
+        }
+      },
+      "additionalProperties": false
+    },
+    "infra_VerticalArc": {
+      "type": "object",
+      "description": "Geometric primitive for a vertical arc.",
+      "properties": {
+        "trackGeometryPos": {
+          "type": "number",
+          "description": "position on the associated Track Edge"
+        },
+        "slope": {
+          "type": "number",
+          "description": "The vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
+        },
+        "radius": {
+          "type": "number",
+          "description": "radius at pos, negative-counter-clockwise/sag-curve, positive-clockwise/crest-curve"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "A curvi-linear geometric primitive, mathematically represents a vertical segment of the centre line of a railway track",
+  "properties": {
+    "verticalSegmentLine": {
+      "type": "object",
+      "description": "composes of lines",
+      "$ref": "#/definitions/infra_VerticalLine"
+    },
+    "verticalSegmentArc": {
+      "type": "object",
+      "description": "composes of arcs",
+      "$ref": "#/definitions/infra_VerticalArc"
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["verticalSegmentLine"]
+    },
+    {
+      "type": "object",
+      "required": ["verticalSegmentArc"]
+    }
+  ],
+  "additionalProperties": false
+}

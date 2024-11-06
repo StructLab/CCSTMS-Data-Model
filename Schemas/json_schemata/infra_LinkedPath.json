@@ -1,0 +1,46 @@
+{
+  "$id": "https://ERJU/infra_LinkedPath",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_DirTrackEdge": {
+      "type": "object",
+      "properties": {
+        "trackEdge": {
+          "type": "string",
+          "description": "refers totrack edge"
+        },
+        "sameDir": {
+          "type": "boolean",
+          "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
+        }
+      },
+      "required": ["trackEdge"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines a linked path on the topology",
+  "properties": {
+    "dirTrackEdges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "composes of directed track edges",
+        "$ref": "#/definitions/infra_DirTrackEdge"
+       },
+      "minItems": 1
+    },
+    "skipFromPathStart": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "ignore section [0..skipFromStart]"
+    },
+    "skipFromPathEnd": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "ignore section [skipFromEnd, length]"
+    }
+  },
+  "required": ["dirTrackEdges"],
+  "additionalProperties": false
+}

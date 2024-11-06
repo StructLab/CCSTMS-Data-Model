@@ -1,0 +1,75 @@
+{
+  "$id": "https://ERJU/infra_TimingPoint",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_TrackEdgePoint": {
+      "type": "object",
+      "description": "Defines a non-directed spot location (without spatial expansion) on a Track Edge",
+      "properties": {
+        "trackEdge": {
+          "type": "string",
+          "description": "is positioned on track edge"
+        },
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated Track Edge"
+        }
+      },
+      "required": ["trackEdge"],
+      "additionalProperties": false
+    },
+    "infra_TPActiveObject": {
+      "type": "object",
+      "description": "A functional object infront of which a TimingPoint is located and active",
+      "properties": {
+        "etcsMarker": {
+          "type": "string",
+          "description": "refers to ETCS marker"
+        },
+        "stopLocation": {
+          "type": "string",
+          "description": "refers to stop location"
+        },
+        "timeMeasurePoint": {
+          "type": "string",
+          "description": "refers to travel time measurement point"
+        }
+      },
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["etcsMarker"]
+        },
+        {
+          "type": "object",
+          "required": ["stopLocation"]
+        },
+        {
+          "type": "object",
+          "required": ["timeMeasurePoint"]
+        }
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines a fixed point on the infrastructure",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "spotLocation": {
+      "type": "object",
+      "$ref": "#/definitions/infra_TrackEdgePoint"
+    },
+    "activeObject": {
+      "type": "object",
+      "description": "composes of active timing points object",
+      "$ref": "#/definitions/infra_TPActiveObject"
+    }
+  },
+  "required": ["id", "spotLocation", "activeObject"],
+  "additionalProperties": false
+}

@@ -1,0 +1,32 @@
+{
+  "$id": "https://ERJU/infra_DirTrackEdgeSection",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "Defines a directed linear object (with a linear extension) located on a Track Edge",
+  "properties": {
+    "trackEdge": {
+      "type": "string",
+      "description": "refers totrack edge"
+    },
+    "skipFromStart": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "ignore section [0..skipFromStart]"
+    },
+    "skipFromEnd": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "ignore section [skipFromEnd, length]"
+    },
+    "applicableDirection": {
+      "type": "string",
+      "description": "defines the applicable direction of the track edge",
+      "enum": ["dirBoth", "dirSame", "dirReverse"]
+    }
+  },
+  "required": ["trackEdge"],
+  "additionalProperties": false
+}

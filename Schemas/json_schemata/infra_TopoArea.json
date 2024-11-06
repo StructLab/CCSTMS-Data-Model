@@ -1,0 +1,82 @@
+{
+  "$id": "https://ERJU/infra_TopoArea",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_TrackEdge": {
+      "type": "object",
+      "description": "A track edge is an uninterrupted stretch of railway track, without divergence or convergence.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identity of the object; used for referencing"
+        },
+        "trackEdgeLength": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Distance along the TrackEdge's track centre line. "
+        }
+      },
+      "required": ["id"],
+      "additionalProperties": false
+    },
+    "infra_TrackEdgeLink": {
+      "type": "object",
+      "description": "Defines a relation between two track edges along which a train can run.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identity of the object; used for referencing"
+        },
+        "trackEdgeA": {
+          "type": "string",
+          "description": "Connects to track edge A"
+        },
+        "trackEdgeB": {
+          "type": "string",
+          "description": "Connects to track edge B"
+        },
+        "startOfA": {
+          "type": "boolean",
+          "description": "True when linked to the start of track edge A, false when to the end"
+        },
+        "startOfB": {
+          "type": "boolean",
+          "description": "True when linked to the start of track edge B, false when to the end"
+        }
+      },
+      "required": ["id", "trackEdgeA", "trackEdgeB"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines a container for rail network topology",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "versionTimestamp": {
+      "type": "string",
+      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
+      "description": "version information which is valid since timestamp"
+    },
+    "trackEdges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "composes of track edges",
+        "$ref": "#/definitions/infra_TrackEdge"
+       }
+    },
+    "trackEdgeLinks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "composes of track edge links",
+        "$ref": "#/definitions/infra_TrackEdgeLink"
+       }
+    }
+  },
+  "required": ["id", "versionTimestamp"],
+  "additionalProperties": false
+}

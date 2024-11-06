@@ -1,0 +1,73 @@
+{
+  "$id": "https://ERJU/infra_TvpSection",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_TrackEdgeSection": {
+      "type": "object",
+      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "properties": {
+        "trackEdge": {
+          "type": "string",
+          "description": "refers to track edge"
+        },
+        "skipFromStart": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [0..skipFromStart]."
+        },
+        "skipFromEnd": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [skipFromEnd, length]."
+        }
+      },
+      "required": ["trackEdge"],
+      "additionalProperties": false
+    },
+    "infra_LinkedArea": {
+      "type": "object",
+      "properties": {
+        "entireTrackEdges": {
+          "type": "array",
+          "items": {
+            "type": "string"
+           }
+        },
+        "trackEdgeSections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/infra_TrackEdgeSection"
+           }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines the train vacancy proving section",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing ; structure refers to EULYNX EU.SAS.77"
+    },
+    "name": {
+      "type": "string",
+      "description": "User-friendly name, only if different from id"
+    },
+    "linkedArea": {
+      "type": "object",
+      "description": "composes of linked area",
+      "$ref": "#/definitions/infra_LinkedArea"
+    },
+    "trainDetectors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "refers to train detectors"
+       }
+    }
+  },
+  "required": ["id", "linkedArea"],
+  "additionalProperties": false
+}

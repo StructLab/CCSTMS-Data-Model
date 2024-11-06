@@ -1,0 +1,51 @@
+{
+  "$id": "https://ERJU/infra_Derailer",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_DirTrackEdgePoint": {
+      "type": "object",
+      "description": "Defines a directed spot location (without spatial expansion) on a Track Edge",
+      "properties": {
+        "trackEdge": {
+          "type": "string",
+          "description": "refers to track edge"
+        },
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated Track Edge"
+        },
+        "sameDir": {
+          "type": "boolean",
+          "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
+        }
+      },
+      "required": ["trackEdge"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines the physical track asset Derailer",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "dirSpotLocation": {
+      "type": "object",
+      "description": "defines position on TrackEdge",
+      "$ref": "#/definitions/infra_DirTrackEdgePoint"
+    },
+    "reversalTime": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Defines the time in seconds to switch from one position to the other ; 0 means unknown"
+    },
+    "derailToRight": {
+      "type": "boolean",
+      "description": "if false = derailToLeft, the side at which the train will be derailed"
+    }
+  },
+  "required": ["id", "dirSpotLocation"],
+  "additionalProperties": false
+}

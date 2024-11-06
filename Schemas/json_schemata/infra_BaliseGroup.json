@@ -1,0 +1,80 @@
+{
+  "$id": "https://ERJU/infra_BaliseGroup",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_TrackEdgePoint": {
+      "type": "object",
+      "description": "Defines a non-directed spot location (without spatial expansion) on a Track Edge",
+      "properties": {
+        "trackEdge": {
+          "type": "string",
+          "description": "is positioned on track edge"
+        },
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated Track Edge"
+        }
+      },
+      "required": ["trackEdge"],
+      "additionalProperties": false
+    },
+    "infra_Balise": {
+      "type": "object",
+      "description": "Defines a balise.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identity of the object; used for referencing"
+        },
+        "spotLocation": {
+          "type": "object",
+          "description": "location on TrackEdge",
+          "$ref": "#/definitions/infra_TrackEdgePoint"
+        }
+      },
+      "required": ["id", "spotLocation"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines a group of balises.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "nid_bg": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "national identifier of the balise group"
+    },
+    "nid_c": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "country identifier of the balise group"
+    },
+    "balises": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "Defines the balises within the balise group. ETCS-positionInGroup is equal to the position this array",
+        "$ref": "#/definitions/infra_Balise"
+       },
+      "minItems": 1,
+      "maxItems": 8
+    },
+    "bgFunction": {
+      "type": "string",
+      "description": "to be clarified, if derivable from baliseTelegram",
+      "enum": ["location", "sessionManagement", "networkRegistration"]
+    },
+    "linkOrientationDirection": {
+      "type": "string",
+      "description": "defines linking orientation direction along the TrackEdge",
+      "enum": ["dirBoth", "dirSame", "dirReverse"]
+    }
+  },
+  "required": ["id", "balises"],
+  "additionalProperties": false
+}
