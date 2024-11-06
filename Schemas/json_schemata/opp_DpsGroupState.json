@@ -33,7 +33,7 @@
     "operationalPlanMovement": {
       "type": "string"
     },
-    "state": {
+    "dpsgState": {
       "type": "string",
       "description": "common state of the drive protection section group",
       "enum": ["ready", "processing", "disturbed"]
