@@ -33,7 +33,7 @@
       "description": "composes for segment sections",
       "$ref": "#/definitions/ato_SegmentSection"
     },
-    "value": {
+    "distance": {
       "type": "integer",
       "minimum": 0,
       "description": "defines the permitted braking distance value"
