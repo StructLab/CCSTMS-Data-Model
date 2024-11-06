@@ -483,7 +483,7 @@
         "description": "Must be used by the supplier to describe the reasons for a StatusTechnical != OK, that cannot be explained by existing datapoints (NOT including IM and manufacturer specific diagnostic messages). This Information MUST be provided from the supplier. This should provide flexibility for future uses. Multiple states can be indicated at the same time if multiple diagnosis have not been included in the model during the design phase. The supplier specific reason may not overlap with reasons already covered in other attributes."
        }
     },
-    "manufacturer": {
+    "equipmentManufacturer": {
       "type": "string"
     },
     "manufacturerModel": {
@@ -604,6 +604,6 @@
        }
     }
   },
-  "required": ["id", "manufacturer", "manufacturerModel", "serialNumber", "hardwareRevision", "softwareRevision", "manufacturingDateTime", "label"],
+  "required": ["id", "equipmentManufacturer", "manufacturerModel", "serialNumber", "hardwareRevision", "softwareRevision", "manufacturingDateTime", "label"],
   "additionalProperties": false
 }
