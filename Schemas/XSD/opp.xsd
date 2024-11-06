@@ -1054,7 +1054,7 @@
 				<xs:documentation>Reference to opp:OperationalPlanMovement</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="state" type="opp:DPSGState" use="required"/>
+		<xs:attribute name="dpsgState" type="opp:DPSGState" use="required"/>
 	</xs:complexType>
 	<xs:element name="dpsGroupState" type="opp:DpsGroupState"/>
 	<xs:complexType name="DPSState">
