@@ -1,0 +1,21 @@
+{
+  "$id": "https://ERJU/ss026_LevelTransition",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "properties": {
+    "m_leveltr": {
+      "type": "string",
+      "description": "Required level",
+      "enum": ["Level0", "LevelNTC", "Level1", "Level2", "Level3"]
+    },
+    "nid_ntc": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "National System identity (Each value of this variable represents the identity of a National System.)"
+    }
+  },
+  "additionalProperties": false
+}

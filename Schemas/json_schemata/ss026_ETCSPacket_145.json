@@ -1,0 +1,10 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_145",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": " Inhibition of balise group message consistency reaction.Indication to on-board that the balise group message consistency reaction (service brake command) can be inhibited for this balise group message only, in case one or more balise telegram(s) of the group is/are missed or is/are detected but not decoded.",
+  "additionalProperties": false
+}

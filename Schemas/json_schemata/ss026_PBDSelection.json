@@ -1,0 +1,39 @@
+{
+  "$id": "https://ERJU/ss026_PBDSelection",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "properties": {
+    "d_pbd": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Permitted Braking Distance. Only if Q_TRACKINIT = 0, D_PBDand the following variables follow"
+    },
+    "q_gdir": {
+      "type": "boolean",
+      "description": "Qualifier for gradient slope. Comment : 0 = downhill, 1 = uphill"
+    },
+    "g_pbdsr": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Default gradient for PBD Speed restriction (Defines a default gradient to be used for calculation of speed restriction to ensure permitted braking distance.)"
+    },
+    "q_pbdsr": {
+      "type": "boolean",
+      "description": "Qualifier for Permitted Braking Distance (Qualifier defining whether the permitted braking distance is to be achieved with the Service Brake or Emergency Brake)"
+    },
+    "d_pbdsr": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Incremental distance to the start of the next speed restriction to ensure permitted braking distance."
+    },
+    "l_pbdsr": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Length of speed restriction to ensure permitted braking distance."
+    }
+  },
+  "additionalProperties": false
+}

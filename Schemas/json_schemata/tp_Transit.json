@@ -1,0 +1,32 @@
+{
+  "$id": "https://ERJU/tp_Transit",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "A Transit represents a directed movement across a single Zone. Each route activates one or more transits.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "upstreamTransits": {
+      "type": "string"
+    },
+    "transitZone": {
+      "type": "array",
+      "items": {
+        "type": "string"
+       }
+    },
+    "routeRequestingTransit": {
+      "type": "array",
+      "items": {
+        "type": "string"
+       }
+    }
+  },
+  "required": ["id", "upstreamTransits"],
+  "additionalProperties": false
+}

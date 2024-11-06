@@ -1,0 +1,10 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_181",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": " Generic LS function marker (Used to enable the generic toggling on/off of the display of the Lowest Supervised Speed within the MA.)",
+  "additionalProperties": false
+}

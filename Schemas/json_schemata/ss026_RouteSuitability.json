@@ -1,0 +1,41 @@
+{
+  "$id": "https://ERJU/ss026_RouteSuitability",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "properties": {
+    "d_suitability": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Distance to change in route suitability (The incremental distance to where the route suitability data changes.)"
+    },
+    "q_suitability": {
+      "type": "string",
+      "description": "Type of route suitability data",
+      "enum": ["LoadingGuage", "MaxAxleLoad", "TractionSystem"]
+    },
+    "m_lineGuage": {
+      "type": "string",
+      "description": "defining which loading gauge(s) are permitted on a line (refer to TSI INF)",
+      "enum": ["g1", "gA", "gB", "gC"]
+    },
+    "m_axleLoadCat": {
+      "type": "string",
+      "description": "the values allocated below correspond to a list of increasing axle load categories (i.e. B1 > HS17, B2 > B1, D2 > C4, â¦.etc) and it is used by the on-board equipment to compare its axle load category with the axle load category sent by trackside. For the underlying meaning of the axle load categories listed below (with the exception of HS17) refer to CR INF TSI.)",
+      "enum": ["A", "HS17", "B1", "B2", "C2", "C3", "C4", "D2", "D3", "D4", "D4XL", "E4", "E5"]
+    },
+    "m_voltage": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Special/Reserved values for Traction System voltage. It indicates the voltage of the traction system installed on a specific line or respectively that can be used by an engine. The identity of the traction system is given by M_VOLTAGE and, if M_VOLTAGE â 0, by the country identifier of the traction system (NID_CTRACTION). Note that values from 6 to 15 are currently unassigned"
+    },
+    "nid_ctraction": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Country identifier of the traction system. It identifies the information, additional to M_VOLTAGE, required to fully define the traction system."
+    }
+  },
+  "additionalProperties": false
+}

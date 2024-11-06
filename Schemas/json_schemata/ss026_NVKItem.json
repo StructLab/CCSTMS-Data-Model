@@ -1,0 +1,68 @@
+{
+  "$id": "https://ERJU/ss026_NVKItem",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "ss026_NVKSubItem": {
+      "type": "object",
+      "properties": {
+        "v_nvkvint": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Speed step used to define the integrated correction factor Kv. This variable is part of the National Values."
+        },
+        "m_nvkvint": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Integrated correction factor Kv. This is the speed dependent integratedcorrection factor. M_NVKVINT(n) is valid for an estimated speed between V_NVKVINT(n) and V_NVKVINT(n+1).M_NVKVINT is valid between 0 km/h and V_NVKVINT(1)This variable is part of the National Values. Comment : Valid between V_NVKVINT andV_NVKVINT(1) If Q_NVKVINTSET = 1, gives the correction factor if maximum emergency brake deceleration is lower thanA_NVP12"
+        },
+        "m_nvkvint_2": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Only if q_nvkvintset = 1; valid between v_nvkvint(n) and v_nvkvint(n+1). Gives the correction factor if maximum emergency brake deceleration is higher than a_nvp23"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "q_nvkvintset": {
+      "type": "string",
+      "enum": ["freightTrains", "conventionalPassengerTrains"]
+    },
+    "a_nvp12": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Lower deceleration limit to determine the set of Kv to be used. Lower deceleration limit to determine the set of correction factor Kv to be used for Conventional Passenger trains. This variable is part of the National Values."
+    },
+    "a_nvp23": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Upper deceleration limit to determine the set of Kv to be used. Upper deceleration limitto determinethe set of correction factorKv to be usedfor Conventional Passenger trains. This variable is part of the National Values."
+    },
+    "v_nvkvint": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Speed step used to define the integrated correctionfactor Kv. This variable is part of the National Values. "
+    },
+    "m_nvkvint": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Integrated correction factor Kv. This is the speed dependent integrated correction factor. M_NVKVINT(n) is valid for an estimated speed between V_NVKVINT(n) and V_NVKVINT(n+1). M_NVKVINT is valid between 0 km/h and V_NVKVINT(1)This variable is part of the National Values. Comment : Valid between V_NVKVINT and V_NVKVINT(1) If Q_NVKVINTSET = 1, gives the correction factor if maximum emergency brake deceleration is lower thanA_NVP12"
+    },
+    "m_nvkvint_2": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Only if q_nvkvintset = 1; valid between v_nvkvint and v_nvkvint(1). Gives the correction factor if maximum emergency brake deceleration is higher than a_nvp23"
+    },
+    "nvkSubItems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/ss026_NVKSubItem"
+       },
+      "maxItems": 31
+    }
+  },
+  "additionalProperties": false
+}

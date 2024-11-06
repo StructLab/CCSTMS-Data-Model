@@ -1,0 +1,19 @@
+{
+  "$id": "https://ERJU/tp_VacantSection",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "properties": {
+    "section": {
+      "type": "string"
+    },
+    "proving": {
+      "type": "string",
+      "enum": ["continuously", "oneOff", "staffAcknowledged", "none"]
+    }
+  },
+  "required": ["section"],
+  "additionalProperties": false
+}

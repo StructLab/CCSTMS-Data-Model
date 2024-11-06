@@ -1,0 +1,30 @@
+{
+  "$id": "https://ERJU/ss026_TCSPCondition",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "properties": {
+    "d_trackcond": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Track condition distance (The incremental distance to where the track conditions change.)"
+    },
+    "l_trackcond": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Length for which the defined track condition is valid"
+    },
+    "m_platform": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Special/Reserved values for the Nominal height of platform above rail level (refer to TSI infrastructure)"
+    },
+    "q_platform": {
+      "type": "string",
+      "enum": ["ppLeft", "ppRight", "ppBoth"]
+    }
+  },
+  "additionalProperties": false
+}

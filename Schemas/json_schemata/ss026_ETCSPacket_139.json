@@ -1,0 +1,22 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_139",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": " Reversing supervision information (Used to send supervision parameters (distance to run, speed) of reversing area to the on-board)",
+  "properties": {
+    "d_reverse": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Maximum distance to run in RV mode (Distance from reference location to end location of the distance to run in RV mode.)"
+    },
+    "v_reverse": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Reversing mode speed limit."
+    }
+  },
+  "additionalProperties": false
+}

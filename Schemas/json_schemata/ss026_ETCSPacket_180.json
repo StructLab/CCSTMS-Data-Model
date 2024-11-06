@@ -1,0 +1,21 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_180",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": " LSSMA display toggle order (Used to toggle on/off the display of the Lowest Supervised Speed within the MA.)",
+  "properties": {
+    "q_lssma": {
+      "type": "boolean",
+      "description": "Qualifier for the LSSMA display (This qualifier tells whether the on-board has to toggle on/off the display of the lowest supervised speed within the MA.)"
+    },
+    "t_lssma": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Delay to toggle on the LSSMA display."
+    }
+  },
+  "additionalProperties": false
+}

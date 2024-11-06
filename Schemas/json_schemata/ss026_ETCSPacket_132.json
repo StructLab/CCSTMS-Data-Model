@@ -1,0 +1,16 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_132",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": " Danger for Shunting information (Transmission of the aspect of a shunting signal)",
+  "properties": {
+    "q_aspect": {
+      "type": "boolean",
+      "description": "Aspect of âdanger for shuntingâ signal. (set to False to Stop if in SH mode, otherwise True to Go if in SH mode)"
+    }
+  },
+  "additionalProperties": false
+}

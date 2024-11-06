@@ -1,0 +1,21 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_136",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": " Infill location reference (Defines location reference for all data contained in the same radio message or balise/loop telegram respectively, following this packet.)",
+  "properties": {
+    "nid_c": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "nid_bg": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Identity number of the balise group (Identity number of a balise group or loop within the country or region defined by NID_C.)"
+    }
+  },
+  "additionalProperties": false
+}

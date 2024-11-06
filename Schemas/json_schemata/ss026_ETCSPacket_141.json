@@ -1,0 +1,20 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_141",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": " Default Gradient for Temporary Speed Restriction (It defines a default gradient to be used for TSR supervision when no gradient profile (packet 21) is available)",
+  "properties": {
+    "q_gdir": {
+      "type": "boolean",
+      "description": "Qualifier for gradient slope: False = downhill; True = uphill"
+    },
+    "g_tsr": {
+      "type": "integer",
+      "description": "Default gradient for TSR supervision. Defines a default gradient to be used for TSR supervision when no gradient profile (packet 21) is available."
+    }
+  },
+  "additionalProperties": false
+}

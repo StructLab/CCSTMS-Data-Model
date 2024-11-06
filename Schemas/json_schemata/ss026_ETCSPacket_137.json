@@ -1,0 +1,16 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_137",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": " Stop if in Staff Responsible (Information to stop a train in staff responsible.)",
+  "properties": {
+    "q_srstop": {
+      "type": "boolean",
+      "description": "(Stop if in Staff Responsible) information (Specifies whether an onboard equipment in staff responsible has to stop or not))"
+    }
+  },
+  "additionalProperties": false
+}

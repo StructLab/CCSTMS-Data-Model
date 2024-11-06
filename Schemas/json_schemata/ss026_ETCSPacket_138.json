@@ -1,0 +1,22 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_138",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": " Reversing area information (Used to send start and length of reversing area to the on-board)",
+  "properties": {
+    "d_startreverse": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Distance to start of reversing permitted area."
+    },
+    "l_reversearea": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Length of the reversing permitted area."
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,36 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_131",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": " RBC transition order (Packet to order an RBC transition)",
+  "properties": {
+    "d_rbctr": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Distance to RBC transition:"
+    },
+    "nid_c": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Identity number of the country or region.Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries. Comment : âAcceptingâ RBC identity"
+    },
+    "nid_rbc": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "RBC ETCS identity number (This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS identity is given by NID_C + NID_RBC.)"
+    },
+    "nid_radio": {
+      "type": "string",
+      "description": "Radio subscriber number (Quoted as a 16 digit decimal number. The number is to be entered âleft adjustedâ starting with the first digit to be dialled. Padding by the special value F shall be added after the least significant digit of the number. For further information about NID_RADIO refer to SUBSET-054.)"
+    },
+    "q_sleepsession": {
+      "type": "boolean",
+      "description": "Session management for sleeping equipment. (Set to False when ignoring session establishment order; True when executing sessions establishment order.)"
+    }
+  },
+  "required": ["nid_radio"],
+  "additionalProperties": false
+}
