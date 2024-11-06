@@ -1,0 +1,52 @@
+{
+  "$id": "https://ERJU/ato_PermittedBrakingDistance",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "ato_SegmentSection": {
+      "type": "object",
+      "description": "Defines sections with start and end references for use in segment profile",
+      "properties": {
+        "range": {
+          "type": "string",
+          "description": "defines range type",
+          "enum": ["rtStart", "rtEnd", "rtStartEnd", "rtWholeSP"]
+        },
+        "pStart": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Start Position on the segment profile"
+        },
+        "pEnd": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "End Position on the segment profile"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines the permitted braking distance information for a segment profile",
+  "properties": {
+    "segmentSection": {
+      "type": "object",
+      "description": "composes for segment sections",
+      "$ref": "#/definitions/ato_SegmentSection"
+    },
+    "distance": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "defines the permitted braking distance value"
+    },
+    "byEmergencyBrake": {
+      "type": "boolean",
+      "description": "true if Braking is to be achieved using Emergency brake ; false if braking is to be achieved by service brake"
+    },
+    "gradientValue": {
+      "type": "integer",
+      "description": "defines gradient value to be used for permitted braking distance"
+    }
+  },
+  "required": ["segmentSection"],
+  "additionalProperties": false
+}

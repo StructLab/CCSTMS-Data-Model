@@ -1,0 +1,33 @@
+{
+  "$id": "https://ERJU/eng_SimplePoint",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "Defines the physical track asset Simple Point",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "foulingPoints": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "refers to fouling points"
+       },
+      "minItems": 1
+    },
+    "tipShift": {
+      "type": "number",
+      "description": "the tip distance from the start of the simple point on main and branching tracks"
+    },
+    "bladeLength": {
+      "type": "number",
+      "description": "the length of the blade of simple point along main and branching tracks"
+    }
+  },
+  "required": ["id", "foulingPoints"],
+  "additionalProperties": false
+}

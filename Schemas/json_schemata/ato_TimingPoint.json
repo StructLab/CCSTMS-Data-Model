@@ -1,0 +1,37 @@
+{
+  "$id": "https://ERJU/ato_TimingPoint",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "Defines a fixed point on the infrastructure",
+  "properties": {
+    "nidTP": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "defines national identifier for the timing point"
+    },
+    "name": {
+      "type": "string",
+      "description": "User-friendly name, only if different from id"
+    },
+    "pos": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Position on the associated segment profile"
+    },
+    "stopLocationTolerance": {
+      "type": "string",
+      "description": "Defines the required stopping tolerance for a Timing Point",
+      "enum": ["T_Undefined", "T_10cm", "T_20cm", "T_30cm", "T_40cm", "T_50cm", "T_1m", "T_150cm", "T_2m", "T_250cm", "T_3m", "T_5m", "T_750cm", "T_10m", "T_15m", "T_20m", "T_25m", "T_30m", "T_50m", "T_75m", "T_100m"]
+    },
+    "stoppingPointReachDistance": {
+      "type": "string",
+      "description": "Defines the distance from a stopping point to consider it as reached",
+      "enum": ["T_Undefined", "T_10cm", "T_20cm", "T_30cm", "T_40cm", "T_50cm", "T_1m", "T_150cm", "T_2m", "T_250cm", "T_3m", "T_5m", "T_750cm", "T_10m", "T_15m", "T_20m", "T_25m", "T_30m", "T_50m", "T_75m", "T_100m"]
+    }
+  },
+  "required": ["name"],
+  "additionalProperties": false
+}

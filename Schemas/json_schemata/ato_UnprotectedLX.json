@@ -1,0 +1,22 @@
+{
+  "$id": "https://ERJU/ato_UnprotectedLX",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "Defines the unprotected LX information for a segment profile",
+  "properties": {
+    "pNominal": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Position on the segment profile associated for nominal direction of Segment profile"
+    },
+    "pReverse": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Position on the segment profile associated for reverse direction of Segment profile"
+    }
+  },
+  "additionalProperties": false
+}

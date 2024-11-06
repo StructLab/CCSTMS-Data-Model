@@ -1,0 +1,22 @@
+{
+  "$id": "https://ERJU/ato_CurveChange",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "Defines the curve at a given location in segment profile",
+  "properties": {
+    "pos": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Position on the associated segment profile"
+    },
+    "curve": {
+      "type": "string",
+      "description": "defines curve radius",
+      "enum": ["cr_R_7000", "cr_7000_4500", "cr_4500_2800", "cr_2800_2000", "cr_2000_1500", "cr_1500_1250", "cr_1250_1075", "cr_1075_925", "cr_925_825", "cr_825_725", "cr_725_625", "cr_625_525", "cr_525_475", "cr_475_425", "cr_425_375", "cr_375_325", "cr_325_300", "cr_300_275", "cr_275_250", "cr_250_225", "cr_225_200", "cr_200_175", "cr_175_150", "cr_R_150"]
+    }
+  },
+  "additionalProperties": false
+}

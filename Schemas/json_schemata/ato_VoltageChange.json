@@ -1,0 +1,27 @@
+{
+  "$id": "https://ERJU/ato_VoltageChange",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": "Defines the power voltage information for a segment profile",
+  "properties": {
+    "pos": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Position on the associated segment profile"
+    },
+    "voltage": {
+      "type": "string",
+      "description": "defines the voltage type",
+      "enum": ["vtNotFitted", "vtAC25kv50Hz", "vtAC15kv16_7Hz", "vtDC3kv", "vtDC1_5kv", "vtDC600v", "vtDC650v", "vtDC750v", "vtDC850v"]
+    },
+    "nid_c": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "defines the country identifier for voltage"
+    }
+  },
+  "additionalProperties": false
+}
