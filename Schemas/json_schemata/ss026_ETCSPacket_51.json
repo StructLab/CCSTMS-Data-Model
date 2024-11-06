@@ -1,0 +1,94 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_51",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "ss026_AxleLoadRestriction": {
+      "type": "object",
+      "properties": {
+        "m_axleLoadCat": {
+          "type": "string",
+          "description": "Axle load category (The values allocated below correspond to a list of increasing axle load categories (i.e. B1 > HS17, B2 > B1, D2 > C4, â¦.etc) and it is used by the on-board equipment to compare its axle load category with the axle load category sent by trackside.For the underlying meaning of the axle load categories listed below (with the exception of HS17) refer to CR INF TSI.The category HS17 (axle load <= 17t) corresponds to a static load per axle only, as specified in HS RST TSI clause 4.2.3.2. The introduction of this artefact is necessary to ensure backward compatibility, without any negative performance impact, in case ASPs are used on lines operated with system version X = 1)",
+          "enum": ["A", "HS17", "B1", "B2", "C2", "C3", "C4", "D2", "D3", "D4", "D4XL", "E4", "E5"]
+        },
+        "v_axleLoad": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Speed restriction related to axleload. Comment : Speed restriction to be applied if the axle load category of the train M_AXLELOADCAT(n)"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ss026_AxleLoadSelection": {
+      "type": "object",
+      "properties": {
+        "d_axleload": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Incremental distance to the start of the next Axle load speed profile. Note that OnlyifQ_TRACKINIT =0, D_AXLELOAD andthefollowing variables follow"
+        },
+        "l_axleload": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Length of speed restriction due to Axle load."
+        },
+        "q_front": {
+          "type": "boolean",
+          "description": "Qualifier for validity end point of profile element. Qualifier to indicate if a speed limit given for a profile element is to be applied until the front of the train (no train length delay) or the end of the train (train length delay) has left the element."
+        },
+        "axleLoadRestrictions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/ss026_AxleLoadRestriction"
+           },
+          "maxItems": 31
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": " Axle Load Speed Profile (This packet gives the speed restrictions for trains with axle load category higher than or equal to the specified value for the speed restriction)",
+  "properties": {
+    "q_trackinit": {
+      "type": "boolean",
+      "description": "Qualifier for resuming the initial states of the related track description of the packet"
+    },
+    "d_trackinit": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Distance to start of empty profile. Distance to where initial states of the related track description in the packet shall be resumed."
+    },
+    "d_axleload": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Incremental distance to the start of the next Axle load speed profile. Note that OnlyifQ_TRACKINIT =0, D_AXLELOAD andthefollowing variables follow"
+    },
+    "l_axleload": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Length of speed restriction due to Axle load."
+    },
+    "q_front": {
+      "type": "boolean",
+      "description": "Qualifier for validity end point of profile element. Qualifier to indicate if a speed limit given for a profile element is to be applied until the front of the train (no train length delay) or the end of the train (train length delay) has left the element."
+    },
+    "axleLoadRestrictions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/ss026_AxleLoadRestriction"
+       },
+      "maxItems": 31
+    },
+    "axleLoadSelections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/ss026_AxleLoadSelection"
+       },
+      "maxItems": 31
+    }
+  },
+  "additionalProperties": false
+}

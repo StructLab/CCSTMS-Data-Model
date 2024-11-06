@@ -1,0 +1,106 @@
+{
+  "$id": "https://ERJU/opp_StopDescription",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "opp_TrainUnitActivity": {
+      "type": "object",
+      "description": "if the train turns around, an additional MovementEvent must be integrated with the new position of train head",
+      "properties": {
+        "trainUnitActivityType": {
+          "type": "string",
+          "enum": ["joinActivity", "splitActivity", "collectActivity", "dropActivity", "turnAroundActivity", "meetActivity"]
+        },
+        "actualTrainUnitIndex": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "index of TrainUnit in OperationalMovement.operationalTrainUnits before the activity"
+        },
+        "targetTrainUnitIndex": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "index of TrainUnit in OperationalMovement.operationalTrainUnits after the activity"
+        }
+      },
+      "additionalProperties": false
+    },
+    "opp_DoorActivity": {
+      "type": "object",
+      "properties": {
+        "openingDoorSide": {
+          "type": "string",
+          "description": "noneSide if the doors are kept closed",
+          "enum": ["doorSideLeft", "doorSideRight", "doorSideBoth", "doorNoneSide", "doorSideUnknown"]
+        },
+        "centralisedOpening": {
+          "type": "boolean",
+          "description": "true - centralised opening, false - opening byby passengers/driver"
+        },
+        "automaticClosing": {
+          "type": "boolean",
+          "description": "true by ATO, false - without ATO"
+        }
+      },
+      "additionalProperties": false
+    },
+    "opp_AdditionalEventTime": {
+      "type": "object",
+      "properties": {
+        "timeValue": {
+          "type": "string",
+          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+        },
+        "timeType": {
+          "type": "string",
+          "enum": ["plannedArrival", "plannedDeparture", "plannedMinDwellTime", "publishedArrival", "publishedDeparture"]
+        }
+      },
+      "required": ["timeValue"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "trainUnitActivities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "sequence of changes of TrainUnit during the stop",
+        "$ref": "#/definitions/opp_TrainUnitActivity"
+       }
+    },
+    "doorActivity": {
+      "type": "object",
+      "description": "if the attribute is not provided, the doors remain closed",
+      "$ref": "#/definitions/opp_DoorActivity"
+    },
+    "relaxedCoupler": {
+      "type": "boolean",
+      "description": "true - request for coupler relaxation, false -not, see Q_Relaxed_Coupler in SS126"
+    },
+    "holdTrain": {
+      "type": "boolean",
+      "description": "see JP in SS126"
+    },
+    "scheduledDeparture": {
+      "type": "string",
+      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
+      "description": "see departure in SS126. In the last station it is 'end of mission'."
+    },
+    "scheduledMinDwellTime": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "the train has to wait after actual arrival this number of seconds before departure. ActualEarliestDeparture = max(departure, arrival + minDwellTime) will be calculated by ATO-OB, see minDwellTime in SS126"
+    },
+    "additionalEventTimes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "Additional times for C-DAS. They will be ignored by ATO (not part of SS126).",
+        "$ref": "#/definitions/opp_AdditionalEventTime"
+       },
+      "maxItems": 4
+    }
+  },
+  "required": ["scheduledDeparture"],
+  "additionalProperties": false
+}

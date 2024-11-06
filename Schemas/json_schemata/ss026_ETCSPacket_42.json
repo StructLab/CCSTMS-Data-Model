@@ -1,0 +1,34 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_42",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": " Session Management (Packet to give the identity and telephone number of the RBC with which a session shall be established or terminated)",
+  "properties": {
+    "q_rbc": {
+      "type": "boolean",
+      "description": "Qualifier for communication session order"
+    },
+    "nid_c": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Identity number of the country or region (Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries. Comment : RBC ETCS identity :NID_C not relevant if NID_RBC has value âContact last known RBC) "
+    },
+    "nid_rbc": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "RBC ETCS identity number (This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS identity is given by NID_C + NID_RBC )"
+    },
+    "nid_radio": {
+      "type": "string",
+      "description": "Radio subscriber number (Quoted as a 16 digit decimal number. The number is to be entered âleft adjustedâ starting with the first digit to be dialed. Padding by the special value F shall be added after the least significant digit of the number. For further information about NID_RADIO refer to SUBSET-054.)"
+    },
+    "q_sleepsession": {
+      "type": "boolean",
+      "description": "Session management for sleeping equipment (Qualifier for a Sleeping onboard equipment to execute or not the (session establishment) order)"
+    }
+  },
+  "additionalProperties": false
+}

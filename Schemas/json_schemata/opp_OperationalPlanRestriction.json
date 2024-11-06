@@ -1,0 +1,212 @@
+{
+  "$id": "https://ERJU/opp_OperationalPlanRestriction",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_DirTrackEdgeSection": {
+      "type": "object",
+      "description": "Defines a directed linear object (with a linear extension) located on a Track Edge",
+      "properties": {
+        "trackEdge": {
+          "type": "string",
+          "description": "refers totrack edge"
+        },
+        "skipFromStart": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [0..skipFromStart]"
+        },
+        "skipFromEnd": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [skipFromEnd, length]"
+        },
+        "applicableDirection": {
+          "type": "string",
+          "description": "defines the applicable direction of the track edge",
+          "enum": ["dirBoth", "dirSame", "dirReverse"]
+        }
+      },
+      "required": ["trackEdge"],
+      "additionalProperties": false
+    },
+    "opp_TrainGroupSpec": {
+      "type": "object",
+      "description": "train characteristics known to interlocking for safety relevant restrictions",
+      "properties": {
+        "axleLoadCategories": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["AL_A", "AL_HS17", "AL_B1", "AL_B2", "AL_C2", "AL_C3", "AL_C4", "AL_D2", "AL_D3", "AL_D4", "AL_D4XL", "AL_E4", "AL_E5"]
+           }
+        },
+        "cantDeficiencyCategories": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["CD_Undefined", "CD_80mm", "CD_100mm", "CD_130mm", "CD_150mm", "CD_165mm", "CD_180mm", "CD_210mm", "CD_225mm", "CD_245mm", "CD_275mm", "CD_300mm"]
+           }
+        }
+      },
+      "additionalProperties": false
+    },
+    "opp_RestrictedAspects": {
+      "type": "object",
+      "properties": {
+        "temporarySpeedRestriction": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "use 0 if not defined"
+        },
+        "allowedDrivingModes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["undefined", "onSight", "fullSupervision", "standBy"]
+           }
+        },
+        "nonStopping": {
+          "type": "boolean",
+          "description": "if true, the trains defined in trainGroupSpec shall not stop within restriction area"
+        },
+        "trackClosure": {
+          "type": "boolean",
+          "description": "if true, the trains defined in trainGroupSpec shall not enter restriction area"
+        },
+        "operationalRadioHole": {
+          "type": "boolean",
+          "description": "if true radio communication is restricted within restriction area"
+        },
+        "maxAdhesion": {
+          "type": "string",
+          "enum": ["dryRailHigh", "dryRailMedium", "dryRailLow", "lowAdhesion", "veryLowAdhesion", "extremelyLowAdhesion", "unknownAdhesion"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "opp_SpecificRestriction": {
+      "type": "object",
+      "properties": {
+        "appliedToTrains": {
+          "type": "object",
+          "description": "if not provided the restriction is valid for all trains",
+          "$ref": "#/definitions/opp_TrainGroupSpec"
+        },
+        "restrictedAspects": {
+          "type": "object",
+          "$ref": "#/definitions/opp_RestrictedAspects"
+        }
+      },
+      "required": ["restrictedAspects"],
+      "additionalProperties": false
+    },
+    "opp_RestrictionArea": {
+      "type": "object",
+      "properties": {
+        "dirTrackEdgeSections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/infra_DirTrackEdgeSection"
+           },
+          "minItems": 1
+        },
+        "specificRestrictions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/opp_SpecificRestriction"
+           },
+          "minItems": 1
+        }
+      },
+      "required": ["dirTrackEdgeSections", "specificRestrictions"],
+      "additionalProperties": false
+    },
+    "opp_OperationalEventRef": {
+      "type": "object",
+      "properties": {
+        "movementEvent": {
+          "type": "string"
+        },
+        "restrictionEvent": {
+          "type": "string"
+        },
+        "warningMeasureEvent": {
+          "type": "string"
+        }
+      },
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["movementEvent"]
+        },
+        {
+          "type": "object",
+          "required": ["restrictionEvent"]
+        },
+        {
+          "type": "object",
+          "required": ["warningMeasureEvent"]
+        }
+      ],
+      "additionalProperties": false
+    },
+    "opp_RestrictionEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "globally unique key (e.g. uuid)"
+        },
+        "creationTime": {
+          "type": "string",
+          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
+          "description": "time when the restrictionArea shall be created=implemented=activated in interlocking"
+        },
+        "removalTime": {
+          "type": "string",
+          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+        },
+        "restrictionArea": {
+          "type": "object",
+          "$ref": "#/definitions/opp_RestrictionArea"
+        },
+        "startsAfterEvents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/opp_OperationalEventRef"
+           }
+        }
+      },
+      "required": ["id", "creationTime", "removalTime", "restrictionArea"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "globally unique key (e.g. uuid)"
+    },
+    "issuedAt": {
+      "type": "string",
+      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+    },
+    "configurationDataVersionRef": {
+      "type": "string",
+      "description": "version of infrastructure data"
+    },
+    "restrictionEvents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/opp_RestrictionEvent"
+       },
+      "minItems": 1
+    }
+  },
+  "required": ["id", "issuedAt", "configurationDataVersionRef", "restrictionEvents"],
+  "additionalProperties": false
+}

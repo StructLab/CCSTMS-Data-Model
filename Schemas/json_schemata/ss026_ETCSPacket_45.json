@@ -1,0 +1,17 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_45",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": " Radio Network registration (Packet to give the identity of the Radio Network to which a registration shall be enforced)",
+  "properties": {
+    "nid_mn": {
+      "type": "string",
+      "description": "Identity of Radio Network. The NID_MN identifies the GSM-R network the calling mobile station has to register with. The NID_MN consists of up to 6 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be dialled first. In case the NID_MN is shorter than 6 digits, the remaining space is to be filled with special character F"
+    }
+  },
+  "required": ["nid_mn"],
+  "additionalProperties": false
+}

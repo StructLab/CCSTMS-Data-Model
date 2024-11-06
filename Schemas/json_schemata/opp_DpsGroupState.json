@@ -1,0 +1,52 @@
+{
+  "$id": "https://ERJU/opp_DpsGroupState",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "opp_DPSState": {
+      "type": "object",
+      "properties": {
+        "dps": {
+          "type": "string"
+        },
+        "requestedDrivability": {
+          "type": "string",
+          "enum": ["full", "none"]
+        },
+        "currentDrivability": {
+          "type": "string",
+          "enum": ["full", "none"]
+        }
+      },
+      "required": ["dps"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "dpsGroup": {
+      "type": "string"
+    },
+    "issuedAt": {
+      "type": "string",
+      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+    },
+    "operationalPlanMovement": {
+      "type": "string"
+    },
+    "dpsgState": {
+      "type": "string",
+      "description": "common state of the drive protection section group",
+      "enum": ["ready", "processing", "disturbed"]
+    },
+    "dpsStates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "States of drive protection sections",
+        "$ref": "#/definitions/opp_DPSState"
+       }
+    }
+  },
+  "required": ["dpsGroup", "issuedAt"],
+  "additionalProperties": false
+}

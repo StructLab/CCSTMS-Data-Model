@@ -1,0 +1,66 @@
+{
+  "$id": "https://ERJU/opp_AdditionalTrainData",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "properties": {
+    "maxAvailableTractiveEffort": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "65535: unknown"
+    },
+    "maxAvailableTractivePower": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "65535 - unknown"
+    },
+    "maxAvailableDynamicBrakeForce": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "65535: unknown"
+    },
+    "maxAvailableDynamicBrakePower": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "65535 - unknown"
+    },
+    "maxAvailableServiceBrakeForce": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "65535: unknown"
+    },
+    "regenerativeBrakeState": {
+      "type": "string",
+      "enum": ["activeState", "inactiveState", "undefinedState"]
+    },
+    "magneticShoeBrakeState": {
+      "type": "string",
+      "enum": ["activeState", "inactiveState", "undefinedState"]
+    },
+    "eddyCurrentBrakeState": {
+      "type": "string",
+      "enum": ["activeState", "inactiveState", "undefinedState"]
+    },
+    "electroPneumaticBrakeState": {
+      "type": "string",
+      "enum": ["activeState", "inactiveState", "undefinedState"]
+    },
+    "adhesionIndependentBrakeState": {
+      "type": "string",
+      "enum": ["activeState", "inactiveState", "undefinedState"]
+    },
+    "availableAdhesionCategory": {
+      "type": "string",
+      "description": "053 in Subset",
+      "enum": ["dryRailHigh", "dryRailMedium", "dryRailLow", "lowAdhesion", "veryLowAdhesion", "extremelyLowAdhesion", "unknownAdhesion"]
+    },
+    "availableAdhesionPhysicalValue": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "600 if unknown"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,27 @@
+{
+  "$id": "https://ERJU/ss026_ETCSPacket_39",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "description": " Track Condition Change of traction system (The packet gives information about change of the traction system)",
+  "properties": {
+    "d_traction": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Distance to change of traction"
+    },
+    "m_voltage": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Special/Reserved values for Traction System voltage. It indicates the voltage of the traction system installed on a specific line or respectively that can be used by an engine. The identity of the traction system is given by M_VOLTAGE and, if M_VOLTAGE â 0, by the country identifier of the traction system (NID_CTRACTION). Note that values from 6 to 15 are currently unassigned"
+    },
+    "nid_ctraction": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Country identifier of the traction system. It identifies the information, additional to M_VOLTAGE, required to fully define the traction system. Note that NID_CTRACTION given only if M_VOLTAGE â 0"
+    }
+  },
+  "additionalProperties": false
+}

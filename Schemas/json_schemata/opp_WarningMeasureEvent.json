@@ -1,0 +1,126 @@
+{
+  "$id": "https://ERJU/opp_WarningMeasureEvent",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "infra_TrackEdgeSection": {
+      "type": "object",
+      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "properties": {
+        "trackEdge": {
+          "type": "string",
+          "description": "refers to track edge"
+        },
+        "skipFromStart": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [0..skipFromStart]."
+        },
+        "skipFromEnd": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ignore section [skipFromEnd, length]."
+        }
+      },
+      "required": ["trackEdge"],
+      "additionalProperties": false
+    },
+    "opp_WarningDevice": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "globally unique key (e.g. uuid)"
+        },
+        "deviceType": {
+          "type": "string",
+          "description": "defines the different warning devices",
+          "enum": ["acousticalIndicator", "opticalIndicator", "hapticIndicator"]
+        }
+      },
+      "required": ["id"],
+      "additionalProperties": false
+    },
+    "opp_WarningArea": {
+      "type": "object",
+      "properties": {
+        "trackEdgeSections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "description": "protected area",
+            "$ref": "#/definitions/infra_TrackEdgeSection"
+           },
+          "minItems": 1
+        },
+        "warningDevices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/opp_WarningDevice"
+           },
+          "minItems": 1
+        }
+      },
+      "required": ["trackEdgeSections", "warningDevices"],
+      "additionalProperties": false
+    },
+    "opp_OperationalEventRef": {
+      "type": "object",
+      "properties": {
+        "movementEvent": {
+          "type": "string"
+        },
+        "restrictionEvent": {
+          "type": "string"
+        },
+        "warningMeasureEvent": {
+          "type": "string"
+        }
+      },
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["movementEvent"]
+        },
+        {
+          "type": "object",
+          "required": ["restrictionEvent"]
+        },
+        {
+          "type": "object",
+          "required": ["warningMeasureEvent"]
+        }
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "globally unique key (e.g. uuid)"
+    },
+    "creationTime": {
+      "type": "string",
+      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
+      "description": "the same as activationTime"
+    },
+    "removalTime": {
+      "type": "string",
+      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+    },
+    "warningArea": {
+      "type": "object",
+      "$ref": "#/definitions/opp_WarningArea"
+    },
+    "startsAfterEvents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/opp_OperationalEventRef"
+       }
+    }
+  },
+  "required": ["id", "creationTime", "removalTime", "warningArea"],
+  "additionalProperties": false
+}

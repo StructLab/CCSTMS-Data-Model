@@ -1,0 +1,55 @@
+{
+  "$id": "https://ERJU/opp_OperationalConsist",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+    "opp_AnyClass": {
+      "type": "object",
+      "properties": {
+        "className": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string",
+          "contentEncoding": "base64"
+        }
+      },
+      "required": ["className", "content"],
+      "additionalProperties": false
+    },
+    "opp_SupportedOnBoardEquipment": {
+      "type": "object",
+      "properties": {
+        "trainProtectionType": {
+          "type": "string",
+          "enum": ["Etcs"]
+        },
+        "etcsSystemVersions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "\\d+.\\d+"
+           },
+          "minItems": 1
+        },
+        "anyClasses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/opp_AnyClass"
+           }
+        }
+      },
+      "required": ["etcsSystemVersions"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "supportedOnBoardEquipment": {
+      "type": "object",
+      "$ref": "#/definitions/opp_SupportedOnBoardEquipment"
+    }
+  },
+  "required": ["supportedOnBoardEquipment"],
+  "additionalProperties": false
+}

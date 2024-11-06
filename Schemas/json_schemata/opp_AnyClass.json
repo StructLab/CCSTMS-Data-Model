@@ -1,0 +1,19 @@
+{
+  "$id": "https://ERJU/opp_AnyClass",
+  "$schema": "http://json-schema.org/draft-08/schema#",
+  "definitions": {
+
+  },
+  "type": "object",
+  "properties": {
+    "className": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string",
+      "contentEncoding": "base64"
+    }
+  },
+  "required": ["className", "content"],
+  "additionalProperties": false
+}
