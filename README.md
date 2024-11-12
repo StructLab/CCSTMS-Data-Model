@@ -28,7 +28,7 @@ This repository contains all necessary documentation and data model files relate
 - **DM Docs**: Contains documentation specific to various data model categories within the project.
 - **DM Files**: Contains JSON files for each data model component, providing structured data representations.
 - **Ontology**: CCSTMS RDF and TTL files representing the extended ERA vocabulary "ontology".
-- **Schemas**: Coming Soon --> Schemas in XSD and JSON formats for validating and structuring the data models.
+- **Schemas**: Schemas in XSD and JSON formats for validating and structuring the data models.
 
   
 ## Getting Started
