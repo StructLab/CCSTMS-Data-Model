@@ -27,7 +27,7 @@ This repository contains all necessary documentation and data model files relate
 - **Documentation**: Contains the primary project documentation for guiding users through the purpose, scope, and structure of the data models. Detailed guides, such as the *Data Model Guide*, provide an in-depth understanding of the data model’s structure, purpose, history, and development process.
 - **DM Docs**: Contains documentation specific to various data model categories within the project.
 - **DM Files**: Contains JSON files for each data model component, providing structured data representations.
-- **Ontology**: CCSTMS RDF and TTL files representing the extended ERA vocabulary "ontology".
+- **Ontology**: CCSTMS RDF and TTL files representing the extended ERA vocabulary "ontology". This has been moved to [ERA-CCSTMS](https://github.com/StructLab/ERA-CCSTMS)
 - **Schemas**: Schemas in XSD and JSON formats for validating and structuring the data models.
 
   
@@ -59,7 +59,7 @@ This repository follows *EUPL* license agreement for authorized usage. Please re
 
 ## Contributing
 
-We welcome feedback and contributions from domain experts and end-users. If you have suggestions, encounter any issues, or need clarification, please open an issue [here](https://github.com/StructLab/CCS-TMS-1.0/issues) or submit a pull request. Alternatively, you can also add comments directly on the relevant file/section in [Polarion](https://polarion.rail-research.europa.eu/polarion/#/project/SPT2TS/wiki/TCCS%20SD1%20-%20Data%20Model/TCCS%20SD1%20-%20Introduction%20to%20Data%20Model)
+We welcome feedback and contributions from domain experts and end-users. If you have suggestions, encounter any issues, or need clarification, please open an issue [here](https://github.com/StructLab/CCS-TMS-1.0/issues) or submit ontology related comment [here](https://github.com/StructLab/ERA-CCSTMS). Alternatively, you can also add comments directly on the relevant file/section in [Polarion](https://polarion.rail-research.europa.eu/polarion/#/project/SPT2TS/wiki/TCCS%20SD1%20-%20Data%20Model/TCCS%20SD1%20-%20Introduction%20to%20Data%20Model)
 
 ---
 
