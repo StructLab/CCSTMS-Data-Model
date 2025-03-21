@@ -1,1014 +1,970 @@
 {
-  "name": "ss026",
-  "intId": 5,
-  "isDefinedBy": "http://ERJU/datamodel/1.0/SS026",
-  "prefix": "ss026",
-  "containerStruct": "PacketMgmt",
-  "version": "1.0",
-  "info": "All Packets according to SUBSET-026-7 v360",
+  "$schema": "ERJU meta-model.json", "intId": 5, "isDefinedBy": "http://ERJU/datamodel/0.4/SS026", "name": "BalisePackets", 
+  "containerStruct": "PacketMgmt", "info": "All Packets according to SUBSET-026-7 v360", "prefix": "ss026", 
+  "version": "1.0", 
   "enums": [
-  {
-    "name": "QDir",
-    "info": "Validity direction of transmitted data. Qualifier to indicate the relevantvalidity direction of transmitted data, with reference to directionality of the balise group sending the information or to directionality of the LRBG, in case of information sent via radio.",
-    "enumLiterals": [
-      {"intId": 0, "name": "reverse"},
-      {"intId": 1, "name": "nominal"},
-      {"intId": 2, "name": "both"}
-    ]
-  },
-  {
-    "name": "ETCSVersion",
-    "info": "M_VERSION:Version of ETCS system. This gives the version of the ETCS system. Each part indicates the first and second number of the version respectively. The first number distinguishes not compatible versions. (The three MSBs)The second number indicates compatibility within a version X. (Thefour LSBs).",
-    "enumLiterals": [
-      {"intId": 0, "name": "v1_0", "info": "0010000: introduced in SRS 1.2.0"},
-      {"intId": 1, "name": "v1_1", "info": "0010001: introduced in SRS 3.3.0"},
-      {"intId": 2, "name": "v2_0", "info": "0100000: introduced in SRS 3.3.0"},
-      {"intId": 3, "name": "v2_1", "info": "0100001: introduced in SRS 3.5.0"},
-      {"intId": 4, "name": "v_previous", "info": "Previous version according toe.g. EEIG SRS, UIC A200 SRS (000XXXX)"},
-      {"intId": 5, "name": "v_reserved", "info": "Values from 0100010 to 1111111 are valid, but reserved for future use"},
-      {"intId": 6, "name": "v_invalid", "info": "Values from 0010010 to 0011111 are not valid"}
-    ]
-  },
-  {
-    "name": "KVType",
-    "info": "Type of Kv_int set.",
-    "enumLiterals": [
-      {"intId": 0, "name": "freightTrains"},
-      {"intId": 1, "name": "conventionalPassengerTrains"}
-    ]
-  },
-  {
-    "name": "LinkReaction",
-    "info": "Q_LINKREACTION: linking reaction. Qualifier for the reaction to be performed ifa linking or a balise group message consistency problem occurs with the balise group linked to.",
-    "enumLiterals": [
-      {"intId": 0, "name": "trainTrip"},
-      {"intId": 1, "name": "applyServiceBrake"},
-      {"intId": 2, "name": "noReaction"}
-    ]
-  },
-  {
-    "name": "EtcsLevel",
-    "info": "M_LEVELTR, binary value 101, 110, and 111 are spare",
-    "enumLiterals": [
-      {"intId": 0, "name": "Level0"},
-      {"intId": 1, "name": "LevelNTC", "info": "Specified by NID_NTC"},
-      {"intId": 2, "name": "Level1"},
-      {"intId": 3, "name": "Level2"},
-      {"intId": 4, "name": "Level3"}
-    ]
-  },
-  {
-    "name": "AxleLoadCategory",
-    "info": "M_AXLELOADCAT, binary values from 0001101 to 1111111 are spare",
-    "enumLiterals": [
-      {"intId": 0, "name": "A"},
-      {"intId": 1, "name": "HS17"},
-      {"intId": 2, "name": "B1"},
-      {"intId": 3, "name": "B2"},
-      {"intId": 4, "name": "C2"},
-      {"intId": 5, "name": "C3"},
-      {"intId": 6, "name": "C4"},
-      {"intId": 7, "name": "D2"},
-      {"intId": 8, "name": "D3"},
-      {"intId": 9, "name": "D4"},
-      {"intId": 10, "name": "D4XL"},
-      {"intId": 11, "name": "E4"},
-      {"intId": 12, "name": "E5"}
-    ]
-  },
-  {
-    "name": "PlatformPosition",
-    "info": "Platform position (relative to direction of authorised movement).None. Length of variable : 2 bits",
-    "enumLiterals": [
-      {"intId": 0, "name": "ppLeft", "info": "Platform on left side"},
-      {"intId": 1, "name": "ppRight", "info": "Platform on right side"},
-      {"intId": 2, "name": "ppBoth", "info": "Platform on both sides"}
-    ]
-  },
-  {
-    "name": "TextClass",
-    "info": "Class of message to be displayed..Q_TEXTCLASS specifies the class of the text message included in the same packet (either plain or fixed message). Length of variable : 2 bits.",
-    "enumLiterals": [
-      {"intId": 0, "name": "auxiliary", "info": "Auxiliary Information"},
-      {"intId": 1, "name": "important", "info": "Important Information"}
-    ]
-  },
-  {
-    "name": "DisplayOperatingMode",
-    "info": "Onboard operating mode for text display.The text is displayed when entering / as long as in the defined mode. ",
-    "enumLiterals": [
-      {"intId": 0, "name": "DOM_fullSupervision"},
-      {"intId": 1, "name": "DOM_onSight"},
-      {"intId": 2, "name": "DOM_staffResponsible"},
-      {"intId": 3, "name": "DOM_spare"},
-      {"intId": 4, "name": "DOM_unfitted"},
-      {"intId": 5, "name": "DOM_spare1"},
-      {"intId": 6, "name": "DOM_standBy"},
-      {"intId": 7, "name": "DOM_trip"},
-      {"intId": 8, "name": "DOM_postTrip"},
-      {"intId": 9, "name": "DOM_spare2"},
-      {"intId": 10, "name": "DOM_spare3"},
-      {"intId": 11, "name": "DOM_spare4"},
-      {"intId": 12, "name": "DOM_limitedSupervision"},
-      {"intId": 13, "name": "DOM_spare5"},
-      {"intId": 14, "name": "DOM_reversing"},
-      {"intId": 15, "name": "DOM_notLimitedByMode"}
-    ]
-  },
-  {
-    "name": "DisplayOperatingLevel",
-    "info": "Onboard operating level for text display.The text is displayed when entering / as long as in the defined level. Binary values 110 and 111 are spare",
-    "enumLiterals": [
-      {"intId": 0, "name": "DOL_level0"},
-      {"intId": 1, "name": "DOL_levelNTC"},
-      {"intId": 2, "name": "DOL_level1"},
-      {"intId": 3, "name": "DOL_level2"},
-      {"intId": 4, "name": "DOL_level3"},
-      {"intId": 5, "name": "DOL_notLimited", "info": "The display of the text shall not be limited by the level"}
-    ]
-  },
-  {
-    "name": "MAMode",
-    "info": "Required mode for a part of the MA.",
-    "enumLiterals": [
-      {"intId": 0, "name": "OnSight", "info": "On Sight"},
-      {"intId": 1, "name": "Shunting", "info": "Shunting"},
-      {"intId": 2, "name": "LimitedSupervision", "info": "Limited Supervision"}
-    ]
-  },
-  {
-    "name": "Q_Suitability",
-    "info": "Type of route suitability data",
-    "enumLiterals": [
-      {"intId": 0, "name": "LoadingGuage"},
-      {"intId": 1, "name": "MaxAxleLoad"},
-      {"intId": 2, "name": "TractionSystem"}
-    ]
-  },
-  {
-    "name": "LineGuage",
-    "info": "Defining which loading guage(s) are permitted ona line (refer to TSI INF)",
-    "enumLiterals": [
-      {"intId": 0, "name": "g1", "info": "xxxx xxx1"},
-      {"intId": 1, "name": "gA", "info": "xxxx xx1x"},
-      {"intId": 2, "name": "gB", "info": "xxxx x1xx"},
-      {"intId": 3, "name": "gC", "info": "xxxx 1xxx"}
-    ]
-  }
-  ],
+    {
+      "name": "QDir", 
+      "info": "Validity direction of transmitted data. Qualifier to indicate the relevantvalidity direction of transmitted data, with reference to directionality of the balise group sending the information or to directionality of the LRBG, in case of information sent via radio.", 
+      "enumLiterals": [{"intId": 0, "name": "reverse"}, {"intId": 1, "name": "nominal"}, {"intId": 2, "name": "both"}], 
+      "intId": 1
+    }, 
+    {
+      "name": "ETCSMVersions", 
+      "info": "M_VERSION:Version of ETCS system. This gives the version of the ETCS system. Each part indicates the first and second number of the version respectively. The first number distinguishes not compatible versions. (The three MSBs)The second number indicates compatibility within a version X. (Thefour LSBs).", 
+      "enumLiterals": [{"intId": 0, "name": "v1_0", "info": "0010000: introduced in SRS 1.2.0"}, 
+        {"intId": 1, "name": "v1_1", "info": "0010001: introduced in SRS 3.3.0"}, 
+        {"intId": 2, "name": "v2_0", "info": "0100000: introduced in SRS 3.3.0"}, 
+        {"intId": 3, "name": "v2_1", "info": "0100001: introduced in SRS 3.5.0"}, 
+        {"intId": 4, "name": "v_previous", "info": "Previous version according toe.g. EEIG SRS, UIC A200 SRS (000XXXX)"}, 
+        {"intId": 5, "name": "v_reserved", "info": "Values from 0100010 to 1111111 are valid, but reserved for future use"}, 
+        {"intId": 6, "name": "v_invalid", "info": "Values from 0010010 to 0011111 are not valid"}], 
+      "intId": 2
+    }, 
+    {
+      "name": "KVType", "info": "Type of Kv_int set.", 
+      "enumLiterals": [{"intId": 0, "name": "freightTrains"}, {"intId": 1, "name": "conventionalPassengerTrains"}], 
+      "intId": 3
+    }, 
+    {
+      "name": "ETCSReactionsNVContact", 
+      "info": "Q_LINKREACTION: linking reaction. Qualifier for the reaction to be performed ifa linking or a balise group message        consistency problem occurs with the balise group linked to.", 
+      "enumLiterals": [{"intId": 0, "name": "trainTrip"}, {"intId": 1, "name": "applyServiceBrake"}, {"intId": 2, "name": "noReaction"}], 
+      "intId": 4
+    }, 
+    {
+      "name": "ETCSLevels", "info": "M_LEVELTR, binary value 101, 110, and 111 are spare", 
+      "enumLiterals": [{"intId": 0, "name": "Level0"}, {"intId": 1, "name": "LevelNTC", "info": "Specified by NID_NTC"}, 
+        {"intId": 2, "name": "Level1"}, {"intId": 3, "name": "Level2"}, {"intId": 4, "name": "Level3"}], 
+      "intId": 5
+    }, 
+    {
+      "name": "LoadCapabilityLineCategories", "info": "M_AXLELOADCAT, binary values from 0001101 to 1111111 are spare", 
+      "enumLiterals": [{"intId": 0, "name": "A"}, {"intId": 1, "name": "HS17"}, {"intId": 2, "name": "B1"}, {"intId": 3, "name": "B2"}, 
+        {"intId": 4, "name": "C2"}, {"intId": 5, "name": "C3"}, {"intId": 6, "name": "C4"}, {"intId": 7, "name": "D2"}, 
+        {"intId": 8, "name": "D3"}, {"intId": 9, "name": "D4"}, {"intId": 10, "name": "D4XL"}, 
+        {"intId": 11, "name": "E4"}, {"intId": 12, "name": "E5"}]
+    }, 
+    {
+      "name": "PlatformPosition", "info": "Platform position (relative to direction of authorised movement).", 
+      "enumLiterals": [{"intId": 0, "name": "ppLeft", "info": "Platform on left side"}, 
+        {"intId": 1, "name": "ppRight", "info": "Platform on right side"}, 
+        {"intId": 2, "name": "ppBoth", "info": "Platform on both sides"}], 
+      "intId": 7
+    }, 
+    {
+      "name": "TextClass", 
+      "info": "Class of message to be displayed..Q_TEXTCLASS specifies the class of the text message included in the same packet (either plain or fixed message).", 
+      "enumLiterals": [{"intId": 0, "name": "auxiliary", "info": "Auxiliary Information"}, 
+        {"intId": 1, "name": "important", "info": "Important Information"}], 
+      "intId": 8
+    }, 
+    {
+      "name": "DisplayOperatingMode", 
+      "info": "Onboard operating mode for text display.The text is displayed when entering / as long as in the defined mode. ", 
+      "enumLiterals": [{"intId": 0, "name": "DOM_fullSupervision"}, {"intId": 1, "name": "DOM_onSight"}, 
+        {"intId": 2, "name": "DOM_staffResponsible"}, {"intId": 3, "name": "DOM_spare"}, 
+        {"intId": 4, "name": "DOM_unfitted"}, {"intId": 5, "name": "DOM_spare1"}, {"intId": 6, "name": "DOM_standBy"}, 
+        {"intId": 7, "name": "DOM_trip"}, {"intId": 8, "name": "DOM_postTrip"}, {"intId": 9, "name": "DOM_spare2"}, 
+        {"intId": 10, "name": "DOM_spare3"}, {"intId": 11, "name": "DOM_spare4"}, 
+        {"intId": 12, "name": "DOM_limitedSupervision"}, {"intId": 13, "name": "DOM_spare5"}, 
+        {"intId": 14, "name": "DOM_reversing"}, {"intId": 15, "name": "DOM_notLimitedByMode"}], 
+      "intId": 9
+    }, 
+    {
+      "name": "DisplayOperatingLevel", 
+      "info": "Onboard operating level for text display.The text is displayed when entering / as long as in the defined level. Binary values 110 and 111 are spare", 
+      "enumLiterals": [{"intId": 0, "name": "DOL_level0"}, {"intId": 1, "name": "DOL_levelNTC"}, {"intId": 2, "name": "DOL_level1"}, 
+        {"intId": 3, "name": "DOL_level2"}, {"intId": 4, "name": "DOL_level3"}, 
+        {"intId": 5, "name": "DOL_notLimited", "info": "The display of the text shall not be limited by the level"}], 
+      "intId": 10
+    }, 
+    {
+      "name": "MAMode", "info": "Required mode for a part of the MA.", 
+      "enumLiterals": [{"intId": 0, "name": "OnSight", "info": "On Sight"}, {"intId": 1, "name": "Shunting", "info": "Shunting"}, 
+        {"intId": 2, "name": "LimitedSupervision", "info": "Limited Supervision"}], 
+      "intId": 11
+    }, 
+    {
+      "name": "Q_Suitability", "info": "Type of route suitability data", 
+      "enumLiterals": [{"intId": 0, "name": "LoadingGuage"}, {"intId": 1, "name": "MaxAxleLoad"}, {"intId": 2, "name": "TractionSystem"}], 
+      "intId": 12
+    }, 
+    {
+      "name": "LineGauge", "info": "Defining which loading guage(s) are permitted on a line (refer to TSI INF)", 
+      "enumLiterals": [{"intId": 0, "name": "g1", "info": "xxxx xxx1"}, {"intId": 1, "name": "gA", "info": "xxxx xx1x"}, 
+        {"intId": 2, "name": "gB", "info": "xxxx x1xx"}, {"intId": 3, "name": "gC", "info": "xxxx 1xxx"}], 
+      "intId": 13
+    }], 
   "structs": [
-  {
-    "name": "BalisePacket",
-    "info": "defines Packets according to ERA UNISIG SUBSET-026-7",
-    "attrs": [
-      {"intId": 1, "name": "nid", "dataType": "uint32", "range": "0..255",
-       "info": "packet identifier"},
-      {"intId": 2, "name": "q_dir", "enumType": "QDir", "multiplicity": "0..1",
-       "info": "specifies the validity direction of transmitted data"},
-      {"intId": 3, "name": "q_scale", "dataType": "uint32", "range": "0..2", "multiplicity": "0..1",
-       "info": "An indicator specifying the uniform scale applied to describe distances within the packet containing Q_SCALE"},
-      {"intId": 4, "name": "packet", "composition": "Packet"}
-    ]
-  },
-  {
-    "name": "Packet",
-    "info": "Packets are multiple variables grouped into a single unit, with a defined internal structure",
-    "union": true,
-    "attrs": [
-      {"intId": 1, "name": "packet_0", "composition": "ETCSPacket_0"},
-      {"intId": 2, "name": "packet_2", "composition": "ETCSPacket_2"},
-      {"intId": 3, "name": "packet_3", "composition": "ETCSPacket_3"},
-      {"intId": 4, "name": "packet_5", "composition": "ETCSPacket_5"},
-      {"intId": 5, "name": "packet_6", "composition": "ETCSPacket_6"},
-      {"intId": 6, "name": "packet_16", "composition": "ETCSPacket_16"},
-      {"intId": 7, "name": "packet_39", "composition": "ETCSPacket_39"},
-      {"intId": 8, "name": "packet_40", "composition": "ETCSPacket_40"},
-      {"intId": 9, "name": "packet_41", "composition": "ETCSPacket_41"},
-      {"intId": 10, "name": "packet_42", "composition": "ETCSPacket_42"},
-      {"intId": 11, "name": "packet_44", "composition": "ETCSPacket_44"},
-      {"intId": 12, "name": "packet_45", "composition": "ETCSPacket_45"},
-      {"intId": 13, "name": "packet_46", "composition": "ETCSPacket_46"},
-      {"intId": 14, "name": "packet_49", "composition": "ETCSPacket_49"},
-      {"intId": 15, "name": "packet_51", "composition": "ETCSPacket_51"},
-      {"intId": 16, "name": "packet_52", "composition": "ETCSPacket_52"},
-      {"intId": 17, "name": "packet_65", "composition": "ETCSPacket_65"},
-      {"intId": 18, "name": "packet_66", "composition": "ETCSPacket_66"},
-      {"intId": 19, "name": "packet_67", "composition": "ETCSPacket_67"},
-      {"intId": 20, "name": "packet_68", "composition": "ETCSPacket_68"},
-      {"intId": 21, "name": "packet_69", "composition": "ETCSPacket_69"},
-      {"intId": 22, "name": "packet_70", "composition": "ETCSPacket_70"},
-      {"intId": 23, "name": "packet_71", "composition": "ETCSPacket_71"},
-      {"intId": 24, "name": "packet_72", "composition": "ETCSPacket_72"},
-      {"intId": 25, "name": "packet_76", "composition": "ETCSPacket_76"},
-      {"intId": 26, "name": "packet_79", "composition": "ETCSPacket_79"},
-      {"intId": 27, "name": "packet_80", "composition": "ETCSPacket_80"},
-      {"intId": 28, "name": "packet_88", "composition": "ETCSPacket_88"},
-      {"intId": 29, "name": "packet_90", "composition": "ETCSPacket_90"},
-      {"intId": 30, "name": "packet_131", "composition": "ETCSPacket_131"},
-      {"intId": 31, "name": "packet_132", "composition": "ETCSPacket_132"},
-      {"intId": 32, "name": "packet_133", "composition": "ETCSPacket_133"},
-      {"intId": 33, "name": "packet_134", "composition": "ETCSPacket_134"},
-      {"intId": 34, "name": "packet_135", "composition": "ETCSPacket_135"},
-      {"intId": 35, "name": "packet_136", "composition": "ETCSPacket_136"},
-      {"intId": 36, "name": "packet_137", "composition": "ETCSPacket_137"},
-      {"intId": 37, "name": "packet_138", "composition": "ETCSPacket_138"},
-      {"intId": 38, "name": "packet_139", "composition": "ETCSPacket_139"},
-      {"intId": 39, "name": "packet_141", "composition": "ETCSPacket_141"},
-      {"intId": 40, "name": "packet_145", "composition": "ETCSPacket_145"},
-      {"intId": 41, "name": "packet_180", "composition": "ETCSPacket_180"},
-      {"intId": 42, "name": "packet_181", "composition": "ETCSPacket_181"},
-      {"intId": 43, "name": "packet_254", "composition": "ETCSPacket_254"},
-      {"intId": 44, "name": "packet_255", "composition": "ETCSPacket_255"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_0",
-    "info": " Virtual Balise Cover marker (Indication to on-board that the telegram can be ignored according to a VBC)",
-    "attrs": [
-      {"intId": 1, "name": "nid_vbcmk", "dataType": "uint32", "range": "0..63",
-       "info": "Marker for Virtual Balise Cover."}
-    ]
-  },
-  {
-    "name": "ETCSPacket_2",
-    "info": " System Version order (This packet is used to tell the on-board which is the operated system version)",
-    "attrs": [
-      {"intId": 1, "name": "m_version", "enumType": "ETCSVersion",
-       "info": "This gives the version of the ETCS system. Each part indicates the first and second number of the version respectively: The first number distinguishes not compatible versions (The three MSBs)_ The second number indicates compatibility within a version X. (The four LSBs)"}
-    ]
-  },
-  {
-    "name": "CorrectionFactor",
-    "attrs": [
-      {"intId": 1, "name": "l_nvkrint", "dataType": "uint32", "range": "0..31",
-       "info": "Train length step used to define the integrated correction factor Kr. This variable is part of the National Values."},
-      {"intId": 2, "name": "m_nvkrint", "dataType": "uint32", "range": "0..31",
-       "info": "Integrated correction factor Kr. This is the train length dependentintegrated correction factor. M_NVKRINT(l) is valid for a train length between L_NVKRINT(l) and L_NVKRINT(l+1).M_NVKRINT is valid between 0m and L_NVKRINT(1)This variable is part of the National Values."}
-    ]
-  },
-  {
-    "name": "NVKSubItem",
-    "attrs": [
-      {"intId": 1, "name": "v_nvkvint", "dataType": "uint32", "range": "0..127",
-       "info": "Speed step used to define the integrated correction factor Kv. This variable is part of the National Values."},
-      {"intId": 2, "name": "m_nvkvint", "dataType": "uint32", "range": "0..127", "multiplicity": "0..1",
-       "info": "Integrated correction factor Kv. This is the speed dependent integratedcorrection factor. M_NVKVINT(n) is valid for an estimated speed between V_NVKVINT(n) and V_NVKVINT(n+1).M_NVKVINT is valid between 0 km/h and V_NVKVINT(1)This variable is part of the National Values. Comment : Valid between V_NVKVINT andV_NVKVINT(1) If Q_NVKVINTSET = 1, gives the correction factor if maximum emergency brake deceleration is lower thanA_NVP12"},
-      {"intId": 3, "name": "m_nvkvint_2", "dataType": "uint32", "range": "0..127", "multiplicity": "0..1",
-       "info": "Only if q_nvkvintset = 1; valid between v_nvkvint(n) and v_nvkvint(n+1). Gives the correction factor if maximum emergency brake deceleration is higher than a_nvp23"}
-    ]
-  },
-  {
-    "name": "NVKItem",
-    "attrs": [
-      {"intId": 1, "name": "q_nvkvintset", "enumType": "KVType"},
-      {"intId": 2, "name": "a_nvp12", "dataType": "uint32", "range": "0..63", "multiplicity": "0..1",
-       "info": "Lower deceleration limit to determine the set of Kv to be used. Lower deceleration limit to determine the set of correction factor Kv to be used for Conventional Passenger trains. This variable is part of the National Values."},
-      {"intId": 3, "name": "a_nvp23", "dataType": "uint32", "range": "0..63", "multiplicity": "0..1",
-       "info": "Upper deceleration limit to determine the set of Kv to be used. Upper deceleration limitto determinethe set of correction factorKv to be usedfor Conventional Passenger trains. This variable is part of the National Values."},
-      {"intId": 4, "name": "v_nvkvint", "dataType": "uint32", "range": "0..127",
-       "info": "Speed step used to define the integrated correctionfactor Kv. This variable is part of the National Values. "},
-      {"intId": 5, "name": "m_nvkvint", "dataType": "uint32", "range": "0..127", "multiplicity": "0..1",
-       "info": "Integrated correction factor Kv. This is the speed dependent integrated correction factor. M_NVKVINT(n) is valid for an estimated speed between V_NVKVINT(n) and V_NVKVINT(n+1). M_NVKVINT is valid between 0 km/h and V_NVKVINT(1)This variable is part of the National Values. Comment : Valid between V_NVKVINT and V_NVKVINT(1) If Q_NVKVINTSET = 1, gives the correction factor if maximum emergency brake deceleration is lower thanA_NVP12"},
-      {"intId": 6, "name": "m_nvkvint_2", "dataType": "uint32", "range": "0..127", "multiplicity": "0..1",
-       "info": "Only if q_nvkvintset = 1; valid between v_nvkvint and v_nvkvint(1). Gives the correction factor if maximum emergency brake deceleration is higher than a_nvp23"},
-      {"intId": 7, "name": "nvkSubItems", "composition": "NVKSubItem", "multiplicity": "0..31", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "NVK",
-    "attrs": [
-      {"intId": 1, "name": "nvkItems", "composition": "NVKItem", "multiplicity": "1..32", "sortedByKey": false,
-       "info": "q_nvkvintset and other variables follows"},
-      {"intId": 2, "name": "l_nvkrint", "dataType": "uint32", "range": "0..31",
-       "info": "Train length step used to define the integrated correction factor Kr. This variable is part of the National Values."},
-      {"intId": 3, "name": "m_nvkrint", "dataType": "uint32", "range": "0..31",
-       "info": "Integrated correction factor Kr. This is the train length dependentintegrated correction factor. M_NVKRINT(l) is valid for a train length between L_NVKRINT(l) and L_NVKRINT(l+1).M_NVKRINT is valid between 0m and L_NVKRINT(1)This variable is part of the National Values."},
-      {"intId": 4, "name": "correctionFactors", "composition": "CorrectionFactor", "multiplicity": "0..31", "sortedByKey": false,
-       "info": "integration correction factors"},
-      {"intId": 5, "name": "m_nvktint", "dataType": "uint32", "range": "0..31",
-       "info": "Integrated correction factor Kt."}
-    ]
-  },
-  {
-    "name": "ETCSPacket_3",
-    "info": " National Values (Downloads a set of National Values to the train)",
-    "attrs": [
-      {"intId": 1, "name": "d_validnv", "dataType": "uint32", "range": "0..32767",
-       "info": "Distance to start of validity of national values."},
-      {"intId": 2, "name": "nid_c", "dataType": "uint32", "range": "0..1023",
-       "info": "Identity number of the country or region. Code used to identify thecountryor region in which the balise group, the RBC or the RIU is situated. These need not necessarily followadministrative or political boundaries."},
-      {"intId": 3, "name": "nid_c_next", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..31", "sortedByKey": false,
-       "info": "Identification of additional national area(s) to which the set applies."},
-      {"intId": 4, "name": "v_nvshunt", "dataType": "uint32", "unit": "km/h", "range": "0..127",
-       "info": "Shunting mode speed limit (This variable is part ofthe National Values.)"},
-      {"intId": 5, "name": "v_nvstff", "dataType": "uint32", "unit": "km/h", "range": "0..127",
-       "info": "Staff Responsible mode speed limit (This variable is partof the National Values)"},
-      {"intId": 6, "name": "v_nvonsight", "dataType": "uint32", "unit": "km/h", "range": "0..127",
-       "info": "On Sight mode speed limit (This variable is partof the National Values.)"},
-      {"intId": 7, "name": "v_nvlimsuperv", "dataType": "uint32", "unit": "km/h", "range": "0..127",
-       "info": "Limited Supervision mode speed limit (Thisvariable is part of the National Values.)"},
-      {"intId": 8, "name": "v_nvunfit", "dataType": "uint32", "unit": "km/h", "range": "0..127",
-       "info": "Unfitted mode speed limit (This variable is part of theNational Values.)"},
-      {"intId": 9, "name": "v_nvrel", "dataType": "uint32", "unit": "km/h", "range": "0..127",
-       "info": "Release Speed (This variable is part of the NationalValues.)"},
-      {"intId": 10, "name": "d_nvroll", "dataType": "uint32", "range": "0..32767",
-       "info": "Roll away distance limit (This variable is part of theNational Values and is used for Roll Away Protection and Reverse Movement Protection. Within the (national/default) limitsof D_NVROLL the train may be moved for uncoupling.)"},
-      {"intId": 11, "name": "q_nvsbtsmperm", "dataType": "boolean",
-       "info": "Permission to use service brake in target speed monitoring (This variable is part of the National Values.)"},
-      {"intId": 12, "name": "q_nvemrrls", "dataType": "boolean",
-       "info": "Qualifier Emergency Brake Release (Permission to revoke theemergency brake command when the Permitted Speed limit is no longer exceeded or at standstill (for ceiling speedand target speed monitoring))"},
-      {"intId": 13, "name": "q_nvguiperm", "dataType": "boolean",
-       "info": "Permission to use the guidance curve (This variable is part oftheNational Values.)"},
-      {"intId": 14, "name": "q_nvsbfbperm", "dataType": "boolean",
-       "info": "Permission to use the service brake feedback (This variable ispart of the National Values)"},
-      {"intId": 15, "name": "q_nvinhsmicperm", "dataType": "boolean",
-       "info": "Permission to inhibit the compensation of the speed measurement inaccuracy (Qualifier to inhibit the compensation of the speed measurement inaccuracy for the calculation of the EBI related supervision limits. This variable is part of the National Values.)"},
-      {"intId": 16, "name": "v_nvallowovtrp", "dataType": "uint32", "range": "0..127",
-       "info": "Speed limit allowing the driver to select the âoverrideâ function (This variable is part of the National Values)"},
-      {"intId": 17, "name": "v_nvsupovtrp", "dataType": "uint32", "unit": "km/h", "range": "0..127",
-       "info": "Override speed limit to be supervised when theâoverrideâ function is active. (This variable is part of the National Values. Length of variable)"},
-      {"intId": 18, "name": "d_nvovtrp", "dataType": "uint32", "range": "0..32767",
-       "info": "Maximum distance for overriding the train trip. (Thisvariable is part of the National Values)"},
-      {"intId": 19, "name": "t_nvovtrp", "dataType": "uint32", "unit": "s", "range": "0..255",
-       "info": "Maximum time for overriding the train trip. (This variable ispart of the National Values)"},
-      {"intId": 20, "name": "d_nvpotrp", "dataType": "uint32", "range": "0..32767",
-       "info": "Maximum distance for reversing in Post Trip mode. (Thisvariable is part of the National Values)"},
-      {"intId": 21, "name": "m_nvcontact", "enumType": "LinkReaction",
-       "info": "same enum values as M_NVCONTACT"},
-      {"intId": 22, "name": "t_nvcontact", "dataType": "uint32", "unit": "s", "range": "0..255",
-       "info": "Maximal time without new safe message (If no safe message has been received from the track for more than T_NVCONTACT seconds, an appropriate action according toM_NVCONTACT must be triggered. This variable is part of the National Values)"},
-      {"intId": 23, "name": "m_nvderun", "dataType": "boolean",
-       "info": "Entry of Driver ID permitted while running (This variable is part ofthe National Values)"},
-      {"intId": 24, "name": "d_nvstff", "dataType": "uint32", "range": "0..32767",
-       "info": "Maximumdistance for running in Staff Responsible mode (This variable is part of the National Values.)"},
-      {"intId": 25, "name": "q_nvdriver_adhes", "dataType": "boolean",
-       "info": "Qualifier for the modification of trackside adhesion factorbydriver. (This variable is part of the National Values.)"},
-      {"intId": 26, "name": "a_nvmaxredadh1", "dataType": "uint32", "range": "0..63",
-       "info": "Maximumdeceleration under reducedadhesion conditions (1) (Maximum deceleration under reduced adhesion conditions applicable for trains: With brake position (Passenger train in P) and with special/additional brakes independent from wheel/rail adhesion. This variable is part of the National Values.)"},
-      {"intId": 27, "name": "a_nvmaxredadh2", "dataType": "uint32", "range": "0..63",
-       "info": "Maximum deceleration under reducedadhesion conditions (2) (Maximum deceleration under reduced adhesion conditions applicable for trains: with brakeposition (Passenger train in P), and without special/additional brakes independent from wheel/rail adhesion. This variable is part of the National Values)"},
-      {"intId": 28, "name": "a_nvmaxredadh3", "dataType": "uint32", "range": "0..63",
-       "info": "Maximum deceleration under reduced adhesion conditions. Maximum deceleration under reduced adhesion conditions applicable for trains: with brake position(Freight train in P), or with brake position (Freight train in G). This variable is part of the National Values."},
-      {"intId": 29, "name": "q_nvlocacc", "dataType": "uint32", "unit": "m", "range": "0..63",
-       "info": "Default accuracy of the balise location (absolute value)"},
-      {"intId": 30, "name": "m_nvavadh", "dataType": "uint32", "range": "0..31",
-       "info": "Weighting factor for available wheel/rail adhesion (This variable ispart of the National Values)"},
-      {"intId": 31, "name": "m_nvebcl", "dataType": "uint32", "range": "0..15",
-       "info": "Confidence level for emergency brake safe deceleration on dry rails.This variable is part of the National Values. Based on the required confidence level, the on-board equipment selects its corresponding rolling stock correction factor Kdry_rst(V).The confidence level on emergency brake safe deceleration represents the probability of the following individual event: the rolling stock emergency brake subsystem of the train doesensure a deceleration at least equal to A_brake_emergency(V) * Kdry_rst(V), when the emergency brake is commanded ondry rails."},
-      {"intId": 32, "name": "q_nvkint", "dataType": "boolean",
-       "info": "Qualifier for integrated correction factors (This variable is part of the National Values)"},
-      {"intId": 33, "name": "nVKs", "composition": "NVK", "multiplicity": "0..1",
-       "info": "exists only if Q_NVKINT is true."}
-    ]
-  },
-  {
-    "name": "LinkItem",
-    "attrs": [
-      {"intId": 1, "name": "d_link", "dataType": "uint32", "range": "0..32767",
-       "info": "Incremental linking distance to next linked balise group"},
-      {"intId": 2, "name": "nid_c", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..1",
-       "info": "New Country Qualifier (Qualifier to indicate whether the next balise group is in the same country / railway administration as the one before inside the packet or not.For the first balise group in the packet, ifnot provided, it is the same country / railway administration as the one of the LRBG within the radio message, the one of balise group within the balise telegram giving the packet, or the one of the loop within the loop message giving the packet)"},
-      {"intId": 3, "name": "nid_bg", "dataType": "uint32", "range": "0..16383",
-       "info": "Identity number of the balise group. Identity number of a balise group or loop within the country or region defined by NID_C."},
-      {"intId": 4, "name": "q_linkorientation", "dataType": "boolean",
-       "info": "Qualifier for the direction of the linked balise group. Indicateswhether the linked balise group will be overpassed by the train in nominal or reverse directio"},
-      {"intId": 5, "name": "q_linkreaction", "enumType": "LinkReaction",
-       "info": "linking reaction. Qualifier for the reaction to be performed ifa linking or a balise group message consistency problem occurs with the balise group linked to."},
-      {"intId": 6, "name": "q_locacc", "dataType": "uint32", "unit": "m", "range": "0..63",
-       "info": "Accuracy of the balise location. This Qualifier defines the absolutevalueof the accuracyof the Balise location"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_5",
-    "info": " Linking Information",
-    "attrs": [
-      {"intId": 1, "name": "links", "composition": "LinkItem", "multiplicity": "1..33", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "ETCSPacket_6",
-    "info": " Virtual Balise Cover order(The packet sets/removes a Virtual Balise Cover)",
-    "attrs": [
-      {"intId": 1, "name": "q_vbco", "dataType": "boolean",
-       "info": "Qualifier for Virtual Balise Cover order (Qualifier to set or remove a VBC)"},
-      {"intId": 2, "name": "nid_vbcmk", "dataType": "uint32", "range": "0..63",
-       "info": "Marker for Virtual Balise Cover"},
-      {"intId": 3, "name": "nid_c", "dataType": "uint32", "range": "0..1023",
-       "info": "Identity number of the country or region (Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries )"},
-      {"intId": 4, "name": "t_vbc", "dataType": "uint32", "range": "0..255", "multiplicity": "0..1",
-       "info": "VBC validity period"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_16",
-    "info": " Repositioning Information (Transmission of the update of an MA section)",
-    "attrs": [
-      {"intId": 1, "name": "l_section", "dataType": "uint32", "range": "0..32767",
-       "info": "Length of section in the MA"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_39",
-    "info": " Track Condition Change of traction system (The packet gives information about change of the traction system)",
-    "attrs": [
-      {"intId": 1, "name": "d_traction", "dataType": "uint32", "range": "0..32767",
-       "info": "Distance to change of traction"},
-      {"intId": 2, "name": "m_voltage", "dataType": "uint32", "range": "0..15",
-       "info": "Special/Reserved values for Traction System voltage. It indicates the voltage of the traction system installed on a specific line or respectively that can be used by an engine. The identity of the traction system is given by M_VOLTAGE and, if M_VOLTAGE â 0, by the country identifier of the traction system (NID_CTRACTION). Note that values from 6 to 15 are currently unassigned"},
-      {"intId": 3, "name": "nid_ctraction", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..1",
-       "info": "Country identifier of the traction system. It identifies the information, additional to M_VOLTAGE, required to fully define the traction system. Note that NID_CTRACTION given only if M_VOLTAGE â 0"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_40",
-    "info": " Track Condition Change of allowed current consumption (The packet gives information about change of the allowed current consumption)",
-    "attrs": [
-      {"intId": 1, "name": "d_current", "dataType": "uint32", "range": "0..32767",
-       "info": "Distance to change of allowed current consumption"},
-      {"intId": 2, "name": "m_current", "dataType": "uint32", "unit": "A", "exp": 1, "range": "0..1023",
-       "info": "Allowed current consumption (It defines the allowed current consumption to be used by the train) "}
-    ]
-  },
-  {
-    "name": "LevelTransitionWithAck",
-    "attrs": [
-      {"intId": 1, "name": "m_leveltr", "enumType": "EtcsLevel",
-       "info": "Required level"},
-      {"intId": 2, "name": "nid_ntc", "dataType": "uint32", "range": "0..255", "multiplicity": "0..1",
-       "info": "National System identity (Each value of this variable represents the identity of a National System)"},
-      {"intId": 3, "name": "l_ackleveltr", "dataType": "uint32", "range": "0..32767",
-       "info": "Length of the acknowledgement area in rear of the required level."}
-    ]
-  },
-  {
-    "name": "ETCSPacket_41",
-    "info": " Level Transition Order (Packet to identify where a level transition shall take place. In case of mixed levels, the successive M_LEVELTRâs go from the highest priority level to the lowest one)",
-    "attrs": [
-      {"intId": 1, "name": "d_leveltr", "dataType": "uint32", "range": "0..32767",
-       "info": "Distance to level transition"},
-      {"intId": 2, "name": "m_leveltr", "enumType": "EtcsLevel",
-       "info": "Required level"},
-      {"intId": 3, "name": "nid_ntc", "dataType": "uint32", "range": "0..255", "multiplicity": "0..1",
-       "info": "National System identity. Each value of this variable represents the identity of a National System."},
-      {"intId": 4, "name": "l_ackleveltr", "dataType": "uint32", "range": "0..32767",
-       "info": "Length of the acknowledgement area in rear of the required level."},
-      {"intId": 5, "name": "levelTransitionWithAck", "composition": "LevelTransitionWithAck", "multiplicity": "0..32", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "ETCSPacket_42",
-    "info": " Session Management (Packet to give the identity and telephone number of the RBC with which a session shall be established or terminated)",
-    "attrs": [
-      {"intId": 1, "name": "q_rbc", "dataType": "boolean",
-       "info": "Qualifier for communication session order"},
-      {"intId": 2, "name": "nid_c", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..1",
-       "info": "Identity number of the country or region (Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries. Comment : RBC ETCS identity :NID_C not relevant if NID_RBC has value âContact last known RBC) "},
-      {"intId": 3, "name": "nid_rbc", "dataType": "uint32", "range": "0..16383", "multiplicity": "0..1",
-       "info": "RBC ETCS identity number (This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS identity is given by NID_C + NID_RBC )"},
-      {"intId": 4, "name": "nid_radio", "dataType": "string", "multiplicity": "0..1",
-       "info": "Radio subscriber number (Quoted as a 16 digit decimal number. The number is to be entered âleft adjustedâ starting with the first digit to be dialed. Padding by the special value F shall be added after the least significant digit of the number. For further information about NID_RADIO refer to SUBSET-054.)"},
-      {"intId": 5, "name": "q_sleepsession", "dataType": "boolean",
-       "info": "Session management for sleeping equipment (Qualifier for a Sleeping onboard equipment to execute or not the (session establishment) order)"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_44",
-    "info": " Data used by applications outside the ERTMS/ETCS system (Messages between trackside and on-board devices, which contain information used by applications outside the ERTMS/ETCS system)",
-    "attrs": [
-      {"intId": 1, "name": "nid_xuser", "dataType": "uint32", "range": "0..511",
-       "info": "Identity of user system (Identity of user system for which remainder of packet is intended)"},
-      {"intId": 2, "name": "nid_ntc", "dataType": "uint32", "range": "0..255", "multiplicity": "0..1",
-       "info": "National System identity (Each value of this variable represents the identity of a National System). Applicable only if nid_xuser = 102 (National System Functions)"},
-      {"intId": 3, "name": "otherData", "dataType": "bytes"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_45",
-    "info": " Radio Network registration (Packet to give the identity of the Radio Network to which a registration shall be enforced)",
-    "attrs": [
-      {"intId": 1, "name": "nid_mn", "dataType": "string",
-       "info": "Identity of Radio Network. The NID_MN identifies the GSM-R network the calling mobile station has to register with. The NID_MN consists of up to 6 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be dialled first. In case the NID_MN is shorter than 6 digits, the remaining space is to be filled with special character F"}
-    ]
-  },
-  {
-    "name": "LevelTransition",
-    "attrs": [
-      {"intId": 1, "name": "m_leveltr", "enumType": "EtcsLevel",
-       "info": "Required level"},
-      {"intId": 2, "name": "nid_ntc", "dataType": "uint32", "range": "0..255", "multiplicity": "0..1",
-       "info": "National System identity (Each value of this variable represents the identity of a National System.)"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_46",
-    "info": " Conditional Level Transition Order (Packet for a conditional level transition. The successive M_LEVELTRâs go from the highest priority level to the lowest one)",
-    "attrs": [
-      {"intId": 1, "name": "m_leveltr", "enumType": "EtcsLevel",
-       "info": "Required level"},
-      {"intId": 2, "name": "nid_ntc", "dataType": "uint32", "range": "0..255", "multiplicity": "0..1",
-       "info": "National System identity (Each value of this variable represents the identity of a National System.)"},
-      {"intId": 3, "name": "levelTransitions", "composition": "LevelTransition", "multiplicity": "0..31", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "CountryBalise",
-    "attrs": [
-      {"intId": 1, "name": "nid_c", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..1"},
-      {"intId": 2, "name": "nid_bg", "dataType": "uint32", "range": "0..16383",
-       "info": "Identity number of the balise group (Identity number of a balise group or loop within the country or region defined by NID_C)"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_49",
-    "info": " List of balises for SH Area (Used to list balise group(s) which the train can pass over in SH mode)",
-    "attrs": [
-      {"intId": 1, "name": "countryBalises", "composition": "CountryBalise", "multiplicity": "0..31", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "AxleLoadRestriction",
-    "attrs": [
-      {"intId": 1, "name": "m_axleLoadCat", "enumType": "AxleLoadCategory",
-       "info": "Axle load category (The values allocated below correspond to a list of increasing axle load categories (i.e. B1 > HS17, B2 > B1, D2 > C4, â¦.etc) and it is used by the on-board equipment to compare its axle load category with the axle load category sent by trackside.For the underlying meaning of the axle load categories listed below (with the exception of HS17) refer to CR INF TSI.The category HS17 (axle load <= 17t) corresponds to a static load per axle only, as specified in HS RST TSI clause 4.2.3.2. The introduction of this artefact is necessary to ensure backward compatibility, without any negative performance impact, in case ASPs are used on lines operated with system version X = 1)"},
-      {"intId": 2, "name": "v_axleLoad", "dataType": "uint32", "range": "0..127",
-       "info": "Speed restriction related to axleload. Comment : Speed restriction to be applied if the axle load category of the train M_AXLELOADCAT(n)"}
-    ]
-  },
-  {
-    "name": "AxleLoadSelection",
-    "attrs": [
-      {"intId": 1, "name": "d_axleload", "dataType": "uint32", "range": "0..32767", "multiplicity": "0..1",
-       "info": "Incremental distance to the start of the next Axle load speed profile. Note that OnlyifQ_TRACKINIT =0, D_AXLELOAD andthefollowing variables follow"},
-      {"intId": 2, "name": "l_axleload", "dataType": "uint32", "range": "0..32767", "multiplicity": "0..1",
-       "info": "Length of speed restriction due to Axle load."},
-      {"intId": 3, "name": "q_front", "dataType": "boolean", "multiplicity": "0..1",
-       "info": "Qualifier for validity end point of profile element. Qualifier to indicate if a speed limit given for a profile element is to be applied until the front of the train (no train length delay) or the end of the train (train length delay) has left the element."},
-      {"intId": 4, "name": "axleLoadRestrictions", "composition": "AxleLoadRestriction", "multiplicity": "0..31", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "ETCSPacket_51",
-    "info": " Axle Load Speed Profile (This packet gives the speed restrictions for trains with axle load category higher than or equal to the specified value for the speed restriction)",
-    "attrs": [
-      {"intId": 1, "name": "q_trackinit", "dataType": "boolean",
-       "info": "Qualifier for resuming the initial states of the related track description of the packet"},
-      {"intId": 2, "name": "d_trackinit", "dataType": "uint32", "range": "0..32767", "multiplicity": "0..1",
-       "info": "Distance to start of empty profile. Distance to where initial states of the related track description in the packet shall be resumed."},
-      {"intId": 3, "name": "d_axleload", "dataType": "uint32", "range": "0..32767", "multiplicity": "0..1",
-       "info": "Incremental distance to the start of the next Axle load speed profile. Note that OnlyifQ_TRACKINIT =0, D_AXLELOAD andthefollowing variables follow"},
-      {"intId": 4, "name": "l_axleload", "dataType": "uint32", "range": "0..32767", "multiplicity": "0..1",
-       "info": "Length of speed restriction due to Axle load."},
-      {"intId": 5, "name": "q_front", "dataType": "boolean", "multiplicity": "0..1",
-       "info": "Qualifier for validity end point of profile element. Qualifier to indicate if a speed limit given for a profile element is to be applied until the front of the train (no train length delay) or the end of the train (train length delay) has left the element."},
-      {"intId": 6, "name": "axleLoadRestrictions", "composition": "AxleLoadRestriction", "multiplicity": "0..31", "sortedByKey": false},
-      {"intId": 7, "name": "axleLoadSelections", "composition": "AxleLoadSelection", "multiplicity": "0..31", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "PBDSelection",
-    "attrs": [
-      {"intId": 1, "name": "d_pbd", "dataType": "uint32", "range": "0..32767",
-       "info": "Permitted Braking Distance. Only if Q_TRACKINIT = 0, D_PBDand the following variables follow"},
-      {"intId": 2, "name": "q_gdir", "dataType": "boolean",
-       "info": "Qualifier for gradient slope. Comment : 0 = downhill, 1 = uphill"},
-      {"intId": 3, "name": "g_pbdsr", "dataType": "uint32", "range": "0..255",
-       "info": "Default gradient for PBD Speed restriction (Defines a default gradient to be used for calculation of speed restriction to ensure permitted braking distance.)"},
-      {"intId": 4, "name": "q_pbdsr", "dataType": "boolean",
-       "info": "Qualifier for Permitted Braking Distance (Qualifier defining whether the permitted braking distance is to be achieved with the Service Brake or Emergency Brake)"},
-      {"intId": 5, "name": "d_pbdsr", "dataType": "uint32", "range": "0..32767",
-       "info": "Incremental distance to the start of the next speed restriction to ensure permitted braking distance."},
-      {"intId": 6, "name": "l_pbdsr", "dataType": "uint32", "range": "0..32767",
-       "info": "Length of speed restriction to ensure permitted braking distance."}
-    ]
-  },
-  {
-    "name": "ETCSPacket_52",
-    "info": " Permitted Braking Distance Information (This packet requests the on-board calculation of speed restrictions which ensure a given permitted brake distance in case of an EB, or SB, intervention)",
-    "attrs": [
-      {"intId": 1, "name": "q_trackinit", "dataType": "boolean",
-       "info": "Qualifier for resuming the initial states of the related track description of the packet."},
-      {"intId": 2, "name": "d_trackinit", "dataType": "uint32", "range": "0..32767", "multiplicity": "0..1",
-       "info": "Distance to start of empty profile (Distance to where initial states of the related track description in the packet shall be resumed.)"},
-      {"intId": 3, "name": "pbdSelection", "composition": "PBDSelection", "multiplicity": "0..32", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "ETCSPacket_65",
-    "info": " Temporary Speed Restriction (Transmission of temporary speed restriction)",
-    "attrs": [
-      {"intId": 1, "name": "nid_tsr", "dataType": "uint32", "range": "0..255",
-       "info": "Identity number of Temporary Speed Restriction"},
-      {"intId": 2, "name": "d_tsr", "dataType": "uint32", "range": "0..32767",
-       "info": "Distance to beginning of temporary speed restriction"},
-      {"intId": 3, "name": "l_tsr", "dataType": "uint32", "range": "0..32767",
-       "info": "Length of the temporary speed restriction"},
-      {"intId": 4, "name": "q_front", "dataType": "boolean",
-       "info": "Qualifier for validity end point of profile element (Qualifier to indicate if a speed limit given for a profile element is to be applied until the front of the train (no train length delay) or the end of the train (train length delay) has left the element)"},
-      {"intId": 5, "name": "v_tsr", "dataType": "uint32", "unit": "km/h", "range": "0..127",
-       "info": "Permitted speed for the temporary speed restriction. "}
-    ]
-  },
-  {
-    "name": "ETCSPacket_66",
-    "info": " Temporary Speed Restriction Revocation (Transmission of temporary speed restriction revocation)",
-    "attrs": [
-      {"intId": 1, "name": "nid_tsr", "dataType": "uint32", "range": "0..255",
-       "info": "Identity number of Temporary Speed Restriction; Identity of TSR to be revoked"}
-    ]
-  },
-  {
-    "name": "DLTrackCond",
-    "attrs": [
-      {"intId": 1, "name": "d_trackcond", "dataType": "uint32", "range": "0..32767",
-       "info": "Track condition distance (The incremental distance to where the track conditions change)"},
-      {"intId": 2, "name": "l_trackcond", "dataType": "uint32", "range": "0..32767",
-       "info": "Length for which the defined track condition is valid. (Thedistanceforwhichintegrity check alarms of balise transmission shall be ignored)"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_67",
-    "info": " Track Condition Big Metal Masses.This packet gives details concerning where to ignore integrity check alarms of balise transmission due to big metal masses trackside",
-    "attrs": [
-      {"intId": 1, "name": "dlTrackConditions", "composition": "DLTrackCond", "multiplicity": "1..32", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "DLMCondition",
-    "attrs": [
-      {"intId": 1, "name": "d_trackcond", "dataType": "uint32", "range": "0..32767",
-       "info": "Track condition distance (The incremental distance to where the track conditions change. Comment : OnlyifQ_TRACKINIT=0, D_TRACKCOND and the following variables follow)"},
-      {"intId": 2, "name": "l_trackcond", "dataType": "uint32", "range": "0..32767",
-       "info": "Length for which the defined track condition is valid."},
-      {"intId": 3, "name": "m_trackcond", "dataType": "uint32", "range": "0..15",
-       "info": "Type of track condition"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_68",
-    "info": " Track Condition (The packet gives details concerning the track ahead to support the driver when e.g. lower pantograph)",
-    "attrs": [
-      {"intId": 1, "name": "q_trackinit", "dataType": "boolean",
-       "info": "Qualifier for resuming the initial states of the related track description of the packet"},
-      {"intId": 2, "name": "d_trackinit", "dataType": "uint32", "range": "0..32767", "multiplicity": "0..1",
-       "info": "Distance to start of empty profile (Distance to where initial states of the related track description in the packet shall be resumed.)"},
-      {"intId": 3, "name": "trackCondSelection", "composition": "DLMCondition", "multiplicity": "0..32", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "TCSPCondition",
-    "attrs": [
-      {"intId": 1, "name": "d_trackcond", "dataType": "uint32", "range": "0..32767",
-       "info": "Track condition distance (The incremental distance to where the track conditions change.)"},
-      {"intId": 2, "name": "l_trackcond", "dataType": "uint32", "range": "0..32767",
-       "info": "Length for which the defined track condition is valid"},
-      {"intId": 3, "name": "m_platform", "dataType": "uint32", "range": "0..15",
-       "info": "Special/Reserved values for the Nominal height of platform above rail level (refer to TSI infrastructure)"},
-      {"intId": 4, "name": "q_platform", "enumType": "PlatformPosition"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_69",
-    "info": " Track Condition Station Platforms (The packet gives details concerning the location and height of station platforms for use by the trainâs door control system)",
-    "attrs": [
-      {"intId": 1, "name": "q_trackinit", "dataType": "boolean",
-       "info": "Qualifier for resuming the initial states of the related track description of the packet"},
-      {"intId": 2, "name": "d_trackinit", "dataType": "uint32", "range": "0..32767", "multiplicity": "0..1",
-       "info": "Distance to start of empty profile (Distance to where initial states of the related track description in the packet shall be resumed.)"},
-      {"intId": 3, "name": "trackCondPlatformSelection", "composition": "TCSPCondition", "multiplicity": "0..32", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "RouteSuitability",
-    "attrs": [
-      {"intId": 1, "name": "d_suitability", "dataType": "uint32", "range": "0..32767",
-       "info": "Distance to change in route suitability (The incremental distance to where the route suitability data changes.)"},
-      {"intId": 2, "name": "q_suitability", "enumType": "Q_Suitability",
-       "info": "Type of route suitability data"},
-      {"intId": 3, "name": "m_lineGuage", "enumType": "LineGuage", "multiplicity": "0..1",
-       "info": "defining which loading gauge(s) are permitted on a line (refer to TSI INF)"},
-      {"intId": 4, "name": "m_axleLoadCat", "enumType": "AxleLoadCategory", "multiplicity": "0..1",
-       "info": "the values allocated below correspond to a list of increasing axle load categories (i.e. B1 > HS17, B2 > B1, D2 > C4, â¦.etc) and it is used by the on-board equipment to compare its axle load category with the axle load category sent by trackside. For the underlying meaning of the axle load categories listed below (with the exception of HS17) refer to CR INF TSI.)"},
-      {"intId": 5, "name": "m_voltage", "dataType": "uint32", "range": "0..15", "multiplicity": "0..1",
-       "info": "Special/Reserved values for Traction System voltage. It indicates the voltage of the traction system installed on a specific line or respectively that can be used by an engine. The identity of the traction system is given by M_VOLTAGE and, if M_VOLTAGE â 0, by the country identifier of the traction system (NID_CTRACTION). Note that values from 6 to 15 are currently unassigned"},
-      {"intId": 6, "name": "nid_ctraction", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..1",
-       "info": "Country identifier of the traction system. It identifies the information, additional to M_VOLTAGE, required to fully define the traction system."}
-    ]
-  },
-  {
-    "name": "ETCSPacket_70",
-    "info": "Route suitability data (The packet gives the characteristics needed to enter a route)",
-    "attrs": [
-      {"intId": 1, "name": "q_trackinit", "dataType": "boolean",
-       "info": "Qualifier for resuming the initial states of the related track description of the packet"},
-      {"intId": 2, "name": "d_trackinit", "dataType": "uint32", "range": "0..32767", "multiplicity": "0..1",
-       "info": "Distance to start of empty profile (Distance to where initial states of the related track description in the packet shall be resumed)"},
-      {"intId": 3, "name": "routeSuitabilities", "composition": "RouteSuitability", "multiplicity": "0..32", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "ETCSPacket_71",
-    "info": "Thispacket is used when the tracksiderequests a change of the adhesion factor to be used in the brake model.",
-    "attrs": [
-      {"intId": 1, "name": "d_adhesion", "dataType": "uint32", "range": "0..32767",
-       "info": "Distance to start of area with reduced adhesion factor."},
-      {"intId": 2, "name": "l_adhesion", "dataType": "uint32", "range": "0..32767",
-       "info": "Length of reduced adhesion (Length for which the reducedadhesion factor apply.)"},
-      {"intId": 3, "name": "m_adhesion", "dataType": "boolean",
-       "info": "Adhesion factor."}
-    ]
-  },
-  {
-    "name": "TextMessageConfig",
-    "attrs": [
-      {"intId": 1, "name": "q_textclass", "enumType": "TextClass",
-       "info": "Class of message to be displayed (Q_TEXTCLASS specifies the class of the text message included in the same packet (either plain or fixed message))"},
-      {"intId": 2, "name": "q_textdisplay", "dataType": "boolean",
-       "info": "Qualifier for the combination of text message events (Q_TEXTDISPLAY defines whether the start/end events for text message are to be combined or not.)"},
-      {"intId": 3, "name": "d_textdisplay", "dataType": "uint32", "range": "0..32767",
-       "info": "Distance from where on a text shall be displayed."},
-      {"intId": 4, "name": "m_modetextdisplay", "enumType": "DisplayOperatingMode",
-       "info": "Onboard operating mode for text display (The text is displayed when entering / as long as in the defined mode)"},
-      {"intId": 5, "name": "m_leveltextdisplay", "enumType": "DisplayOperatingLevel",
-       "info": "Onboard operating level for text display (The text is displayed when entering / as long as in the defined level)"},
-      {"intId": 6, "name": "nid_ntc", "dataType": "uint32", "range": "0..255", "multiplicity": "0..1",
-       "info": "National System identity. Each value of this variable represents the identity of a National System."},
-      {"intId": 7, "name": "l_textdisplay", "dataType": "uint32", "range": "0..32767",
-       "info": "Length on which a text shall be displayed. "},
-      {"intId": 8, "name": "t_textdisplay", "dataType": "uint32", "unit": "s", "range": "0..1023",
-       "info": "Duration for which a text shall be displayed."},
-      {"intId": 9, "name": "m_modetextdisplay_e", "enumType": "DisplayOperatingMode",
-       "info": "Onboard operating mode for text display. The text is displayed when entering / as long as in the defined mode. Comment : End event"},
-      {"intId": 10, "name": "m_leveltextdisplay_e", "enumType": "DisplayOperatingLevel",
-       "info": "Onboard operating level for text display.The text is displayed when entering / as long as in the defined level."},
-      {"intId": 11, "name": "nid_ntc_e", "dataType": "uint32", "range": "0..255", "multiplicity": "0..1",
-       "info": "National System identity. Each value of this variable represents the identity of a National System. "},
-      {"intId": 12, "name": "q_textconfirm", "dataType": "uint32", "range": "0..3",
-       "info": "Qualifier for text confirmation. "},
-      {"intId": 13, "name": "q_conftextdisplay", "dataType": "boolean", "multiplicity": "0..1",
-       "info": "Qualifier for text confirmation versus end of text display. (Gives the relationship between the event (driver acknowledgement) and the list of events (location), (time), (mode), (level) defining the end condition for text display.)"},
-      {"intId": 14, "name": "q_textreport", "dataType": "boolean", "multiplicity": "0..1",
-       "info": "Qualifier for reporting acknowledgement of text by driver. "},
-      {"intId": 15, "name": "nid_textmessage", "dataType": "uint32", "range": "0..255", "multiplicity": "0..1",
-       "info": "Text message identifier (Identity of a text message from trackside to be used in a report of driver acknowledgement to the RBC.)"},
-      {"intId": 16, "name": "nid_c", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..1",
-       "info": "Identity number of the country or region (Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries.)"},
-      {"intId": 17, "name": "nid_rbc", "dataType": "uint32", "range": "0..16383", "multiplicity": "0..1",
-       "info": "RBC ETCS identity number (This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS identity is given by NID_C + NID_RBC.)"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_72",
-    "info": " Packet for sending plain text messages",
-    "attrs": [
-      {"intId": 1, "name": "textMessageConfig", "composition": "TextMessageConfig"},
-      {"intId": 2, "name": "l_text", "dataType": "uint32", "range": "0..225",
-       "info": "Length of text string (L_TEXT defines the length of a text string (L_TEXT * X_TEXT))"},
-      {"intId": 3, "name": "x_text", "dataType": "string",
-       "info": "Text string used to transmit plain text messages"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_76",
-    "info": "Packet for sending fixed text messages",
-    "attrs": [
-      {"intId": 1, "name": "textMessageConfig", "composition": "TextMessageConfig"},
-      {"intId": 2, "name": "q_text", "dataType": "uint32", "range": "0..225",
-       "info": "Fixed message to be displayed (Q_TEXT is a pointer to select a fixed text message from the defined table. The language selected by the driver for the DMI shall be used additionally as a qualifier to choose the appropriate language table.)"}
-    ]
-  },
-  {
-    "name": "GeoPosItem",
-    "attrs": [
-      {"intId": 1, "name": "nid_c", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..1"},
-      {"intId": 2, "name": "nid_bg", "dataType": "uint32", "range": "0..16383",
-       "info": "Identity number of the balise group. Identity number of a balise group or loop within the country or region defined by NID_C."},
-      {"intId": 3, "name": "d_posoff", "dataType": "uint32", "range": "0..32767",
-       "info": "Offset from the location reference of the geographical position reference balise group to the related track kilometre reference..The geographical position reporting function uses this variables content as an offset from the location reference of the geographical position reference balise group to the related track kilometre reference."},
-      {"intId": 4, "name": "q_mposition", "dataType": "boolean",
-       "info": "Qualifier for track kilometre direction. Qualifier to indicate the direction of counting of the geographical position track kilometre in relation to the geographical position reference balise group directionality."},
-      {"intId": 5, "name": "m_position", "dataType": "uint32", "unit": "m", "range": "0..16777215",
-       "info": "Track kilometre reference value. The geographical position reporting function uses this variables content as a reference value. "}
-    ]
-  },
-  {
-    "name": "ETCSPacket_79",
-    "info": " Geographical Position Information",
-    "attrs": [
-      {"intId": 1, "name": "geoPosItems", "composition": "GeoPosItem", "multiplicity": "1..32", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "ModeProfileItem",
-    "attrs": [
-      {"intId": 1, "name": "d_mamode", "dataType": "uint32", "range": "0..32767",
-       "info": "Incremental distance to the start of the next Mode Profile"},
-      {"intId": 2, "name": "m_mamode", "enumType": "MAMode",
-       "info": "Required mode for a part of the MA. None. Comment : OS, LS, SH"},
-      {"intId": 3, "name": "v_mamode", "dataType": "uint32", "unit": "km/h", "range": "0..127",
-       "info": "Required mode related speed."},
-      {"intId": 4, "name": "l_mamode", "dataType": "uint32", "range": "0..32767",
-       "info": "Length of the area of the required mode."},
-      {"intId": 5, "name": "l_ackmamode", "dataType": "uint32", "range": "0..32767",
-       "info": "Length of the acknowledgement area in rear of the start of the required mode."},
-      {"intId": 6, "name": "q_mamode", "dataType": "boolean",
-       "info": "Qualifier to indicate the supervision of the beginning of the mode profile. This qualifier defines whether the beginning of the mode profile shall be considered as the SvL, or if the SvL shall be derived from the movement authority."}
-    ]
-  },
-  {
-    "name": "ETCSPacket_80",
-    "info": " Mode profile associated to an MA",
-    "attrs": [
-      {"intId": 1, "name": "modeProfiles", "composition": "ModeProfileItem", "multiplicity": "1..32", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "LXStatus",
-    "attrs": [
-      {"intId": 1, "name": "v_lx", "dataType": "uint32", "unit": "km/h", "range": "0..127",
-       "info": "Permitted speed for the LX speed restriction. Speed at which the LX can be passed when it is not protected. "},
-      {"intId": 2, "name": "q_stoplx", "dataType": "boolean",
-       "info": "Qualifier for stopping in rear of the LX. Indicates whether stopping the train in rear of a non protected LX is required. "},
-      {"intId": 3, "name": "l_stoplx", "dataType": "uint32", "range": "0..32767", "multiplicity": "0..1",
-       "info": "Length of the stopping area in rear of the start location of the LX area."}
-    ]
-  },
-  {
-    "name": "ETCSPacket_88",
-    "info": " Level Crossing information",
-    "attrs": [
-      {"intId": 1, "name": "nid_lx", "dataType": "uint32", "range": "0..255",
-       "info": "Identity number of the Level Crossing."},
-      {"intId": 2, "name": "d_lx", "dataType": "uint32", "range": "0..32767",
-       "info": "Distance to LX start location."},
-      {"intId": 3, "name": "l_lx", "dataType": "uint32", "range": "0..32767",
-       "info": "Length of the LX area."},
-      {"intId": 4, "name": "q_lxstatus", "dataType": "boolean",
-       "info": "Indicate whether the Level Crossing is protected or not."},
-      {"intId": 5, "name": "lx_Status", "composition": "LXStatus", "multiplicity": "0..1",
-       "info": "Only required for the level crossings that are protected"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_90",
-    "info": "Track Ahead Free up to level 2/3 transition location (Notification to on-board that track ahead is free from the balise group transmitting this information up to the level 2/3 transition location)",
-    "attrs": [
-      {"intId": 1, "name": "nid_c", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..1",
-       "info": "New Country Qualifier (Qualifier to indicate whether the next balise group is in the same country / railway administration as the one before inside the packet or not.For the first balise group in the packet, if Q_NEWCOUNTRY = 0, it is the same country / railway administration as the one of the LRBG within the radio message, the one of balise group within the balise telegram giving the packet, or the one of the loop within the loop message giving the packet.)"},
-      {"intId": 2, "name": "nid_bg", "dataType": "uint32", "range": "0..16383",
-       "info": "Identity number ofLevel2/3transition locationbalise group (Identity number of a balise group or loop within the country or region defined by NID_C.)"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_131",
-    "info": " RBC transition order (Packet to order an RBC transition)",
-    "attrs": [
-      {"intId": 1, "name": "d_rbctr", "dataType": "uint32", "range": "0..32767",
-       "info": "Distance to RBC transition:"},
-      {"intId": 2, "name": "nid_c", "dataType": "uint32", "range": "0..1023",
-       "info": "Identity number of the country or region.Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries. Comment : âAcceptingâ RBC identity"},
-      {"intId": 3, "name": "nid_rbc", "dataType": "uint32", "range": "0..16383",
-       "info": "RBC ETCS identity number (This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS identity is given by NID_C + NID_RBC.)"},
-      {"intId": 4, "name": "nid_radio", "dataType": "string",
-       "info": "Radio subscriber number (Quoted as a 16 digit decimal number. The number is to be entered âleft adjustedâ starting with the first digit to be dialled. Padding by the special value F shall be added after the least significant digit of the number. For further information about NID_RADIO refer to SUBSET-054.)"},
-      {"intId": 5, "name": "q_sleepsession", "dataType": "boolean",
-       "info": "Session management for sleeping equipment. (Set to False when ignoring session establishment order; True when executing sessions establishment order.)"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_132",
-    "info": " Danger for Shunting information (Transmission of the aspect of a shunting signal)",
-    "attrs": [
-      {"intId": 1, "name": "q_aspect", "dataType": "boolean",
-       "info": "Aspect of âdanger for shuntingâ signal. (set to False to Stop if in SH mode, otherwise True to Go if in SH mode)"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_133",
-    "info": " Radio infill area information",
-    "attrs": [
-      {"intId": 1, "name": "q_riu", "dataType": "boolean",
-       "info": "Qualifier for communication session order."},
-      {"intId": 2, "name": "nid_c", "dataType": "uint32", "range": "0..1023",
-       "info": "Identity number of the country or region. Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries. Comment : RIU ETCS identity"},
-      {"intId": 3, "name": "nid_riu", "dataType": "uint32", "range": "0..16383",
-       "info": "Identity of radio infill unit. This variable provides the identity of the RIU belonging to NID_C. The RIU ETCS identity is given by NID_C + NID_RIU."},
-      {"intId": 4, "name": "nid_radio", "dataType": "string",
-       "info": "Radio subscriber number. (Quoted as a 16 digit decimal number. The number is to be entered âleft adjustedâ starting with the first digit to be dialled. Padding by the special value F shall be added after the least significant digit of the number.)"},
-      {"intId": 5, "name": "d_infill", "dataType": "uint32", "range": "0..32767",
-       "info": "Distance to location where to connect/disconnect to a radio infill unit."},
-      {"intId": 6, "name": "nid_c_next", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..1",
-       "info": "Refers to the next main signal balise group (relevant only for the case of establishing a communication session"},
-      {"intId": 7, "name": "nid_bg", "dataType": "uint32", "range": "0..16383", "multiplicity": "0..1",
-       "info": "Identity number of the balise group. Identity number of a balise group or loop within the country or region defined by NID_C."}
-    ]
-  },
-  {
-    "name": "ETCSPacket_134",
-    "info": " EOLM Packet",
-    "attrs": [
-      {"intId": 1, "name": "nid_loop", "dataType": "uint32", "range": "0..16383",
-       "info": "Identity number of the loop. (Identity number of a loop within the country or region defined by NID_C given in the EOLM balise header)"},
-      {"intId": 2, "name": "d_loop", "dataType": "uint32", "range": "0..32767",
-       "info": "Distance between EOLM and start of loop (The EOLM specifies the distance to the beginning of the loop transmission.)"},
-      {"intId": 3, "name": "l_loop", "dataType": "uint32", "range": "0..32767",
-       "info": "Length of loop. (L_LOOP specifies the length of the loop starting from the distance indicated by D_LOOP)"},
-      {"intId": 4, "name": "q_loopdir", "dataType": "boolean",
-       "info": "Qualifier to indicate the direction of the loop. set to False if it is opposite direction, else, True if it is same direction"},
-      {"intId": 5, "name": "q_sscode", "dataType": "uint32", "range": "0..15",
-       "info": "Spread Spectrum Code for Euroloop. Specifies the code required to receive telegrams from a specific Euroloop installation."}
-    ]
-  },
-  {
-    "name": "ETCSPacket_135",
-    "info": " Stop Shunting on desk opening (Packet to stop Shunting on desk opening)",
-    "attrs": [
-
-    ]
-  },
-  {
-    "name": "ETCSPacket_136",
-    "info": " Infill location reference (Defines location reference for all data contained in the same radio message or balise/loop telegram respectively, following this packet.)",
-    "attrs": [
-      {"intId": 1, "name": "nid_c", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..1"},
-      {"intId": 2, "name": "nid_bg", "dataType": "uint32", "range": "0..16383",
-       "info": "Identity number of the balise group (Identity number of a balise group or loop within the country or region defined by NID_C.)"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_137",
-    "info": " Stop if in Staff Responsible (Information to stop a train in staff responsible.)",
-    "attrs": [
-      {"intId": 1, "name": "q_srstop", "dataType": "boolean",
-       "info": "(Stop if in Staff Responsible) information (Specifies whether an onboard equipment in staff responsible has to stop or not))"}
-    ]
-  },
-  {
-    "name": "ETCSPacket_138",
-    "info": " Reversing area information (Used to send start and length of reversing area to the on-board)",
-    "attrs": [
-      {"intId": 1, "name": "d_startreverse", "dataType": "uint32", "range": "0..32767",
-       "info": "Distance to start of reversing permitted area."},
-      {"intId": 2, "name": "l_reversearea", "dataType": "uint32", "range": "0..32767",
-       "info": "Length of the reversing permitted area."}
-    ]
-  },
-  {
-    "name": "ETCSPacket_139",
-    "info": " Reversing supervision information (Used to send supervision parameters (distance to run, speed) of reversing area to the on-board)",
-    "attrs": [
-      {"intId": 1, "name": "d_reverse", "dataType": "uint32", "range": "0..32767",
-       "info": "Maximum distance to run in RV mode (Distance from reference location to end location of the distance to run in RV mode.)"},
-      {"intId": 2, "name": "v_reverse", "dataType": "uint32", "unit": "km/h", "range": "0..127",
-       "info": "Reversing mode speed limit."}
-    ]
-  },
-  {
-    "name": "ETCSPacket_141",
-    "info": " Default Gradient for Temporary Speed Restriction (It defines a default gradient to be used for TSR supervision when no gradient profile (packet 21) is available)",
-    "attrs": [
-      {"intId": 1, "name": "q_gdir", "dataType": "boolean",
-       "info": "Qualifier for gradient slope: False = downhill; True = uphill"},
-      {"intId": 2, "name": "g_tsr", "dataType": "int32", "unit": "permill", "range": "0..255",
-       "info": "Default gradient for TSR supervision. Defines a default gradient to be used for TSR supervision when no gradient profile (packet 21) is available."}
-    ]
-  },
-  {
-    "name": "ETCSPacket_145",
-    "info": " Inhibition of balise group message consistency reaction.Indication to on-board that the balise group message consistency reaction (service brake command) can be inhibited for this balise group message only, in case one or more balise telegram(s) of the group is/are missed or is/are detected but not decoded.",
-    "attrs": [
-
-    ]
-  },
-  {
-    "name": "ETCSPacket_180",
-    "info": " LSSMA display toggle order (Used to toggle on/off the display of the Lowest Supervised Speed within the MA.)",
-    "attrs": [
-      {"intId": 1, "name": "q_lssma", "dataType": "boolean",
-       "info": "Qualifier for the LSSMA display (This qualifier tells whether the on-board has to toggle on/off the display of the lowest supervised speed within the MA.)"},
-      {"intId": 2, "name": "t_lssma", "dataType": "uint32", "unit": "s", "range": "0..255", "multiplicity": "0..1",
-       "info": "Delay to toggle on the LSSMA display."}
-    ]
-  },
-  {
-    "name": "ETCSPacket_181",
-    "info": " Generic LS function marker (Used to enable the generic toggling on/off of the display of the Lowest Supervised Speed within the MA.)",
-    "attrs": [
-
-    ]
-  },
-  {
-    "name": "ETCSPacket_254",
-    "info": "Default balise, loop or RIU information (Indication to on-board that balise telegram, loop message or RIU information contains default information due to a fault of the trackside equipment.)",
-    "attrs": [
-
-    ]
-  },
-  {
-    "name": "ETCSPacket_255",
-    "info": " End of Information (This packet consists only of NID_PACKET containing 8 bit 1smessage/telegram when receiving eight bits set to one in the NID_PACKET field.)",
-    "attrs": [
-
-    ]
-  }
-  ]
+    {
+      "name": "BalisePacket", "info": "defines Packets according to ERA UNISIG SUBSET-026-7", 
+      "attrs": [{"intId": 1, "name": "nid", "dataType": "uint32", "range": "0..255", "info": "packet identifier"}, 
+        {"intId": 2, "name": "q_dir", "enumType": "QDir", "multiplicity": "0..1", 
+          "info": "specifies the validity direction of transmitted data"}, 
+        {"intId": 3, "name": "q_scale", "dataType": "uint32", "range": "0..2", "multiplicity": "0..1", 
+          "info": "An indicator specifying the uniform scale applied to describe distances within the packet containing Q_SCALE"}, 
+        {"intId": 4, "name": "packet", "composition": "Packet", "info": "consists of variable group of the ETCS-Packet"}], 
+      "intId": 1
+    }, 
+    {
+      "name": "Packet", "info": "Packets are multiple variables grouped into a single unit, with a defined internal structure", 
+      "union": true, 
+      "attrs": [{"intId": 1, "name": "packet_0", "composition": "ETCSPacket_0", "info": "Virtual Balise Cover marker"}, 
+        {"intId": 2, "name": "packet_2", "composition": "ETCSPacket_2", "info": "System Version order"}, 
+        {"intId": 3, "name": "packet_3", "composition": "ETCSPacket_3", "info": "National Values"}, 
+        {"intId": 4, "name": "packet_5", "composition": "ETCSPacket_5", "info": "Linking Information"}, 
+        {"intId": 5, "name": "packet_6", "composition": "ETCSPacket_6", "info": "Virtual Balise Cover order"}, 
+        {"intId": 6, "name": "packet_16", "composition": "ETCSPacket_16", "info": "Repositioning Information"}, 
+        {"intId": 7, "name": "packet_39", "composition": "ETCSPacket_39", "info": "Track Condition Change of traction system"}, 
+        {"intId": 8, "name": "packet_40", "composition": "ETCSPacket_40", 
+          "info": "Track Condition Change of allowed current consumption"}, 
+        {"intId": 9, "name": "packet_41", "composition": "ETCSPacket_41", "info": "Level Transition Order"}, 
+        {"intId": 10, "name": "packet_42", "composition": "ETCSPacket_42", "info": "Session Management"}, 
+        {"intId": 11, "name": "packet_44", "composition": "ETCSPacket_44", 
+          "info": "Data used by applications outside the ERTMS/ETCS system"}, 
+        {"intId": 12, "name": "packet_45", "composition": "ETCSPacket_45", "info": "Radio Network registration"}, 
+        {"intId": 13, "name": "packet_46", "composition": "ETCSPacket_46", "info": "Conditional Level Transition Order"}, 
+        {"intId": 14, "name": "packet_49", "composition": "ETCSPacket_49", "info": "List of balises for SH Area"}, 
+        {"intId": 15, "name": "packet_51", "composition": "ETCSPacket_51", "info": "Axle Load Speed Profile"}, 
+        {"intId": 16, "name": "packet_52", "composition": "ETCSPacket_52", "info": "Permitted Braking Distance Information"}, 
+        {"intId": 17, "name": "packet_65", "composition": "ETCSPacket_65", "info": "Temporary Speed Restriction"}, 
+        {"intId": 18, "name": "packet_66", "composition": "ETCSPacket_66", "info": "Temporary Speed Restriction Revocation"}, 
+        {"intId": 19, "name": "packet_67", "composition": "ETCSPacket_67", "info": "Track Condition Big Metal Masses"}, 
+        {"intId": 20, "name": "packet_68", "composition": "ETCSPacket_68", "info": "Track Condition"}, 
+        {"intId": 21, "name": "packet_69", "composition": "ETCSPacket_69", "info": "Track Condition Station Platforms"}, 
+        {"intId": 22, "name": "packet_70", "composition": "ETCSPacket_70", "info": "Route Suitability Data"}, 
+        {"intId": 23, "name": "packet_71", "composition": "ETCSPacket_71", "info": "Adhesion factor"}, 
+        {"intId": 24, "name": "packet_72", "composition": "ETCSPacket_72", "info": "Packet for sending plain text messages"}, 
+        {"intId": 25, "name": "packet_76", "composition": "ETCSPacket_76", "info": "Packet for sending fixed text messages"}, 
+        {"intId": 26, "name": "packet_79", "composition": "ETCSPacket_79", "info": "Geographical Position Information"}, 
+        {"intId": 27, "name": "packet_80", "composition": "ETCSPacket_80", "info": "Mode profile"}, 
+        {"intId": 28, "name": "packet_88", "composition": "ETCSPacket_88", "info": "Level Crossing information"}, 
+        {"intId": 29, "name": "packet_90", "composition": "ETCSPacket_90", 
+          "info": "Track Ahead Free up to level 2/3 transition location"}, 
+        {"intId": 30, "name": "packet_131", "composition": "ETCSPacket_131", "info": "RBC transition order"}, 
+        {"intId": 31, "name": "packet_132", "composition": "ETCSPacket_132", "info": "Danger for Shunting information"}, 
+        {"intId": 32, "name": "packet_133", "composition": "ETCSPacket_133", "info": "Radio infill area information"}, 
+        {"intId": 33, "name": "packet_134", "composition": "ETCSPacket_134", "info": "EOLM Packet"}, 
+        {"intId": 34, "name": "packet_135", "composition": "ETCSPacket_135", "info": "Stop Shunting on desk opening"}, 
+        {"intId": 35, "name": "packet_136", "composition": "ETCSPacket_136", "info": "Infill location reference"}, 
+        {"intId": 36, "name": "packet_137", "composition": "ETCSPacket_137", "info": "Stop if in Staff Responsible"}, 
+        {"intId": 37, "name": "packet_138", "composition": "ETCSPacket_138", "info": "Reversing area information"}, 
+        {"intId": 38, "name": "packet_139", "composition": "ETCSPacket_139", "info": "Reversing supervision information"}, 
+        {"intId": 39, "name": "packet_141", "composition": "ETCSPacket_141", 
+          "info": "Default Gradient for Temporary Speed Restriction"}, 
+        {"intId": 40, "name": "packet_145", "composition": "ETCSPacket_145", 
+          "info": "Inhibition of balise group message consistency reaction"}, 
+        {"intId": 41, "name": "packet_180", "composition": "ETCSPacket_180", "info": "LSSMA display toggle order"}, 
+        {"intId": 42, "name": "packet_181", "composition": "ETCSPacket_181", "info": "Generic LS function marker"}, 
+        {"intId": 43, "name": "packet_254", "composition": "ETCSPacket_254", "info": "Default balise, loop or RIU information"}, 
+        {"intId": 44, "name": "packet_255", "composition": "ETCSPacket_255", "info": "End of Information"}], 
+      "intId": 2
+    }, 
+    {
+      "name": "ETCSPacket_0", 
+      "info": " Virtual Balise Cover marker (Indication to on-board that the telegram can be ignored according to a VBC)", 
+      "attrs": [{"intId": 1, "name": "nid_vbcmk", "dataType": "uint32", "range": "0..63", "info": "Marker for Virtual Balise Cover."}], 
+      "intId": 3
+    }, 
+    {
+      "name": "ETCSPacket_2", 
+      "info": " System Version order (This packet is used to tell the on-board which is the operated system version)", 
+      "attrs": [
+        {"intId": 1, "name": "etcsMVersion", "enumType": "ETCSMVersions", 
+          "info": "This gives the version of the ETCS system. Each part indicates the first and second number of the version respectively: The first number distinguishes not compatible versions (The three MSBs)_ The second number indicates compatibility within a version X. (The four LSBs)"}], 
+      "intId": 4
+    }, 
+    {
+      "name": "CorrectionFactor", 
+      "info": "Defines the correction factors used to adjust train operation parameters based on train length. These factors are part of the National Values and are used to determine the integrated correction factor Kr for specific train length intervals.", 
+      "attrs": [
+        {"intId": 1, "name": "l_nvkrint", "dataType": "uint32", "range": "0..31", 
+          "info": "Train length step used to define the integrated correction factor Kr. This variable is part of the National Values."}, 
+        {"intId": 2, "name": "m_nvkrint", "dataType": "uint32", "range": "0..31", 
+          "info": "Integrated correction factor Kr. This is the train length dependentintegrated correction factor. M_NVKRINT(l) is valid for a train length between L_NVKRINT(l) and L_NVKRINT(l+1).M_NVKRINT is valid between 0m and L_NVKRINT(1)This variable is part of the National Values."}], 
+      "intId": 5
+    }, 
+    {
+      "name": "NVKSubItem", 
+      "info": "Defines the speed-dependent correction factors used for braking calculations as part of the National Values. These factors determine the integrated correction factor Kv based on estimated train speed and emergency brake deceleration conditions", 
+      "attrs": [
+        {"intId": 1, "name": "v_nvkvint", "dataType": "uint32", "range": "0..127", 
+          "info": "Speed step used to define the integrated correction factor Kv. This variable is part of the National Values."}, 
+        {"intId": 2, "name": "m_nvkvint", "dataType": "uint32", "range": "0..127", "multiplicity": "0..1", 
+          "info": "Integrated correction factor Kv. This is the speed dependent integratedcorrection factor. M_NVKVINT(n) is valid for an estimated speed between V_NVKVINT(n) and V_NVKVINT(n+1).M_NVKVINT is valid between 0 km/h and V_NVKVINT(1)This variable is part of the National Values. Comment : Valid between V_NVKVINT andV_NVKVINT(1) If Q_NVKVINTSET = 1, gives the correction factor if maximum emergency brake deceleration is lower thanA_NVP12"}, 
+        {"intId": 3, "name": "m_nvkvint_2", "dataType": "uint32", "range": "0..127", "multiplicity": "0..1", 
+          "info": "Only if q_nvkvintset = 1; valid between v_nvkvint(n) and v_nvkvint(n+1). Gives the correction factor if maximum emergency brake deceleration is higher than a_nvp23"}], 
+      "intId": 6
+    }, 
+    {
+      "name": "NVKItem", 
+      "info": "Defines the correction factor set Kv used for braking calculations based on speed and deceleration limits. This includes thresholds for selecting the appropriate Kv set, speed-dependent correction factors, and associated sub-items. These values are part of the National Values and are used to refine braking performance for Conventional Passenger trains.", 
+      "attrs": [{"intId": 1, "name": "q_nvkvintset", "enumType": "KVType", "info": "Type of kv_int set"}, 
+        {"intId": 2, "name": "a_nvp12", "dataType": "uint32", "range": "0..63", "multiplicity": "0..1", 
+          "info": "Lower deceleration limit to determine the set of Kv to be used. Lower deceleration limit to determine the set of correction factor Kv to be used for Conventional Passenger trains. This variable is part of the National Values."}, 
+        {"intId": 3, "name": "a_nvp23", "dataType": "uint32", "range": "0..63", "multiplicity": "0..1", 
+          "info": "Upper deceleration limit to determine the set of Kv to be used. Upper deceleration limitto determinethe set of correction factorKv to be usedfor Conventional Passenger trains. This variable is part of the National Values."}, 
+        {"intId": 4, "name": "v_nvkvint", "dataType": "uint32", "range": "0..127", 
+          "info": "Speed step used to define the integrated correctionfactor Kv. This variable is part of the National Values. "}, 
+        {"intId": 5, "name": "m_nvkvint", "dataType": "uint32", "range": "0..127", "multiplicity": "0..1", 
+          "info": "Integrated correction factor Kv. This is the speed dependent integrated correction factor. M_NVKVINT(n) is valid for an estimated speed between V_NVKVINT(n) and V_NVKVINT(n+1). M_NVKVINT is valid between 0 km/h and V_NVKVINT(1)This variable is part of the National Values. Comment : Valid between V_NVKVINT and V_NVKVINT(1) If Q_NVKVINTSET = 1, gives the correction factor if maximum emergency brake deceleration is lower thanA_NVP12"}, 
+        {"intId": 6, "name": "m_nvkvint_2", "dataType": "uint32", "range": "0..127", "multiplicity": "0..1", 
+          "info": "Only if q_nvkvintset = 1; valid between v_nvkvint and v_nvkvint(1). Gives the correction factor if maximum emergency brake deceleration is higher than a_nvp23"}, 
+        {"intId": 7, "name": "nvkSubItems", "composition": "NVKSubItem", "multiplicity": "0..31", "info": "List of NVKSubItem"}], 
+      "intId": 7
+    }, 
+    {
+      "name": "NVK", 
+      "info": "Defines the integrated correction factors Kv, Kr, and Kt used for speed- and train length-dependent braking performance adjustments. It aggregates multiple correction factor sets, including train length steps, speed-dependent correction factors, and their associated validation parameters, as part of the National Values.", 
+      "attrs": [
+        {"intId": 1, "name": "nvkItems", "composition": "NVKItem", "multiplicity": "1..32", 
+          "info": "q_nvkvintset and other variables follows"}, 
+        {"intId": 2, "name": "l_nvkrint", "dataType": "uint32", "range": "0..31", 
+          "info": "Train length step used to define the integrated correction factor Kr. This variable is part of the National Values."}, 
+        {"intId": 3, "name": "m_nvkrint", "dataType": "uint32", "range": "0..31", 
+          "info": "Integrated correction factor Kr. This is the train length dependentintegrated correction factor. M_NVKRINT(l) is valid for a train length between L_NVKRINT(l) and L_NVKRINT(l+1).M_NVKRINT is valid between 0m and L_NVKRINT(1)This variable is part of the National Values."}, 
+        {"intId": 4, "name": "correctionFactors", "composition": "CorrectionFactor", "multiplicity": "0..31", 
+          "info": "integration correction factors"}, 
+        {"intId": 5, "name": "m_nvktint", "dataType": "uint32", "range": "0..31", "info": "Integrated correction factor Kt."}], 
+      "intId": 8
+    }, 
+    {
+      "name": "ETCSPacket_3", "info": " National Values.Downloads a set of National Values to the train", 
+      "attrs": [
+        {"intId": 1, "name": "d_validnv", "dataType": "uint32", "range": "0..32767", 
+          "info": "Distance to start of validity of national values."}, 
+        {"intId": 2, "name": "nid_c", "dataType": "uint32", "range": "0..1023", 
+          "info": "Identity number of the country or region. Code used to identify thecountryor region in which the balise group, the RBC or the RIU is situated. These need not necessarily followadministrative or political boundaries."}, 
+        {"intId": 3, "name": "nid_c_next", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..31", 
+          "info": "Identification of additional national area(s) to which the set applies."}, 
+        {"intId": 4, "name": "v_nvshunt", "dataType": "uint32", "range": "0..127", "unit": "km/h", 
+          "info": "Shunting mode speed limit (This variable is part ofthe National Values.)"}, 
+        {"intId": 5, "name": "v_nvstff", "dataType": "uint32", "range": "0..127", "unit": "km/h", 
+          "info": "Staff Responsible mode speed limit (This variable is partof the National Values)"}, 
+        {"intId": 6, "name": "v_nvonsight", "dataType": "uint32", "range": "0..127", "unit": "km/h", 
+          "info": "On Sight mode speed limit (This variable is partof the National Values.)"}, 
+        {"intId": 7, "name": "v_nvlimsuperv", "dataType": "uint32", "range": "0..127", "unit": "km/h", 
+          "info": "Limited Supervision mode speed limit (Thisvariable is part of the National Values.)"}, 
+        {"intId": 8, "name": "v_nvunfit", "dataType": "uint32", "range": "0..127", "unit": "km/h", 
+          "info": "Unfitted mode speed limit (This variable is part of theNational Values.)"}, 
+        {"intId": 9, "name": "v_nvrel", "dataType": "uint32", "range": "0..127", "unit": "km/h", 
+          "info": "Release Speed (This variable is part of the NationalValues.)"}, 
+        {"intId": 10, "name": "d_nvroll", "dataType": "uint32", "range": "0..32767", 
+          "info": "Roll away distance limit (This variable is part of theNational Values and is used for Roll Away Protection and Reverse Movement Protection. Within the (national/default) limitsof D_NVROLL the train may be moved for uncoupling.)"}, 
+        {"intId": 11, "name": "q_nvsbtsmperm", "dataType": "boolean", 
+          "info": "Permission to use service brake in target speed     monitoring (This variable is part of the National Values.)"}, 
+        {"intId": 12, "name": "q_nvemrrls", "dataType": "boolean", 
+          "info": "Qualifier Emergency Brake Release (Permission to revoke theemergency brake command when the Permitted Speed limit is no longer exceeded or at standstill (for ceiling speedand target speed monitoring))"}, 
+        {"intId": 13, "name": "q_nvguiperm", "dataType": "boolean", 
+          "info": "Permission to use the guidance curve (This variable is part oftheNational Values.)"}, 
+        {"intId": 14, "name": "q_nvsbfbperm", "dataType": "boolean", 
+          "info": "Permission to use the service brake feedback (This variable ispart of the National Values)"}, 
+        {"intId": 15, "name": "q_nvinhsmicperm", "dataType": "boolean", 
+          "info": "Permission to inhibit the compensation of the speed measurement inaccuracy (Qualifier to inhibit the compensation of the speed measurement inaccuracy for the calculation of the EBI related supervision limits. This variable is part of the National Values.)"}, 
+        {"intId": 16, "name": "v_nvallowovtrp", "dataType": "uint32", "range": "0..127", 
+          "info": "Speed limit allowing the driver to select the \u00e2override\u00e2 function (This variable is part of the National Values)"}, 
+        {"intId": 17, "name": "v_nvsupovtrp", "dataType": "uint32", "range": "0..127", "unit": "km/h", 
+          "info": "Override speed limit to be supervised when the\u00e2override\u00e2 function is active. (This variable is part of the National Values. Length of variable)"}, 
+        {"intId": 18, "name": "d_nvovtrp", "dataType": "uint32", "range": "0..32767", 
+          "info": "Maximum distance for overriding the train trip. (Thisvariable is part of the National Values)"}, 
+        {"intId": 19, "name": "t_nvovtrp", "dataType": "uint32", "range": "0..255", "unit": "s", 
+          "info": "Maximum time for overriding the train trip. (This variable ispart of the National Values)"}, 
+        {"intId": 20, "name": "d_nvpotrp", "dataType": "uint32", "range": "0..32767", 
+          "info": "Maximum distance for reversing in Post Trip mode. (Thisvariable is part of the National Values)"}, 
+        {"intId": 21, "name": "m_nvcontact", "enumType": "ETCSReactionsNVContact", "info": "same enum values as M_NVCONTACT"}, 
+        {"intId": 22, "name": "t_nvcontact", "dataType": "uint32", "range": "0..255", "unit": "s", 
+          "info": "Maximal time without new safe message (If no safe message has been received from the track for more than T_NVCONTACT seconds, an appropriate action according toM_NVCONTACT must be triggered. This variable is part of the National Values)"}, 
+        {"intId": 23, "name": "m_nvderun", "dataType": "boolean", 
+          "info": "Entry of Driver ID permitted while running (This variable is part ofthe National Values)"}, 
+        {"intId": 24, "name": "d_nvstff", "dataType": "uint32", "range": "0..32767", 
+          "info": "Maximumdistance for running in Staff Responsible mode (This variable is part of the National Values.)"}, 
+        {"intId": 25, "name": "q_nvdriver_adhes", "dataType": "boolean", 
+          "info": "Qualifier for the modification of trackside adhesion factorbydriver. (This variable is part of the National Values.)"}, 
+        {"intId": 26, "name": "a_nvmaxredadh1", "dataType": "uint32", "range": "0..63", 
+          "info": "Maximumdeceleration under reducedadhesion conditions (1) (Maximum deceleration under reduced adhesion conditions applicable for trains: With brake position (Passenger train in P) and with special/additional brakes independent from wheel/rail adhesion. This variable is part of the National Values.)"}, 
+        {"intId": 27, "name": "a_nvmaxredadh2", "dataType": "uint32", "range": "0..63", 
+          "info": "Maximum deceleration under reducedadhesion conditions (2) (Maximum deceleration under reduced adhesion conditions applicable for trains: with brakeposition (Passenger train in P), and without special/additional brakes independent from wheel/rail adhesion. This variable is part of the National Values)"}, 
+        {"intId": 28, "name": "a_nvmaxredadh3", "dataType": "uint32", "range": "0..63", 
+          "info": "Maximum deceleration under reduced adhesion conditions. Maximum deceleration under reduced adhesion conditions applicable for trains: with brake position(Freight train in P), or with brake position (Freight train in G). This variable is part of the National Values."}, 
+        {"intId": 29, "name": "q_nvlocacc", "dataType": "uint32", "range": "0..63", "unit": "m", 
+          "info": "Default accuracy of the balise location (absolute value)"}, 
+        {"intId": 30, "name": "m_nvavadh", "dataType": "uint32", "range": "0..31", 
+          "info": "Weighting factor for available wheel/rail adhesion (This variable ispart of the National Values)"}, 
+        {"intId": 31, "name": "m_nvebcl", "dataType": "uint32", "range": "0..15", 
+          "info": "Confidence level for emergency brake safe deceleration on dry rails.This variable is part of the National Values. Based on the required confidence level, the on-board equipment selects its corresponding rolling stock correction factor Kdry_rst(V).The confidence level on emergency brake safe deceleration represents the probability of the following individual event: the rolling stock emergency brake subsystem of the train doesensure a deceleration at least equal to A_brake_emergency(V) * Kdry_rst(V), when the emergency brake is commanded ondry rails."}, 
+        {"intId": 32, "name": "q_nvkint", "dataType": "boolean", 
+          "info": "Qualifier for integrated correction factors (This variable is part of the National Values)"}, 
+        {"intId": 33, "name": "nVKs", "composition": "NVK", "multiplicity": "0..1", "info": "exists only if Q_NVKINT is true."}], 
+      "intId": 9
+    }, 
+    {
+      "name": "LinkItem", 
+      "info": "Defines the attributes for linking balise groups in railway signaling, ensuring proper navigation and train positioning. This includes linking distances, country and region qualifiers, balise group identity, link orientation, reaction to inconsistencies, and location accuracy to maintain safe and reliable operations.", 
+      "attrs": [
+        {"intId": 1, "name": "d_link", "dataType": "uint32", "range": "0..32767", 
+          "info": "Incremental linking distance to next linked balise group"}, 
+        {"intId": 2, "name": "nid_c", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..1", 
+          "info": "New Country Qualifier (Qualifier to indicate whether the next balise group is in the same country / railway administration as the one before inside the packet or not.For the first balise group in the packet, ifnot provided, it is the same country / railway administration as the one of the LRBG within the radio message, the one of balise group within the balise telegram giving the packet, or the one of the loop within the loop message giving the packet)"}, 
+        {"intId": 3, "name": "nid_bg", "dataType": "uint32", "range": "0..16383", 
+          "info": "Identity number of the balise group. Identity number of a balise group  or loop within the country or region defined by NID_C."}, 
+        {"intId": 4, "name": "q_linkorientation", "dataType": "boolean", 
+          "info": "Qualifier for the direction of the linked balise group. Indicateswhether the linked balise group will be overpassed by the train in nominal or reverse directio"}, 
+        {"intId": 5, "name": "q_linkreaction", "enumType": "ETCSReactionsNVContact", 
+          "info": "linking reaction. Qualifier for the reaction to be performed ifa linking or a balise group message consistency problem occurs with the balise group linked to."}, 
+        {"intId": 6, "name": "q_locacc", "dataType": "uint32", "range": "0..63", "unit": "m", 
+          "info": "Accuracy of the balise location. This Qualifier defines the absolutevalueof the accuracyof the Balise location"}], 
+      "intId": 10
+    }, 
+    {
+      "name": "ETCSPacket_5", "info": " Linking Information", 
+      "attrs": [
+        {"intId": 1, "name": "links", "composition": "LinkItem", "multiplicity": "1..33", 
+          "info": "List of Balise Group linking information"}], 
+      "intId": 11
+    }, 
+    {
+      "name": "ETCSPacket_6", "info": " Virtual Balise Cover order(The packet sets/removes a Virtual Balise Cover)", 
+      "attrs": [
+        {"intId": 1, "name": "q_vbco", "dataType": "boolean", 
+          "info": "Qualifier for Virtual Balise Cover order (Qualifier to set or remove a VBC)"}, 
+        {"intId": 2, "name": "nid_vbcmk", "dataType": "uint32", "range": "0..63", "info": "Marker for Virtual Balise Cover"}, 
+        {"intId": 3, "name": "nid_c", "dataType": "uint32", "range": "0..1023", 
+          "info": "Identity number of the country or region (Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political    boundaries )"}, 
+        {"intId": 4, "name": "t_vbc", "dataType": "uint32", "multiplicity": "0..1", "range": "0..255", 
+          "info": "Virtual Balise Cover (VBC) validity period"}], 
+      "intId": 12
+    }, 
+    {
+      "name": "ETCSPacket_16", "info": " Repositioning Information (Transmission of the update of an MA section)", 
+      "attrs": [{"intId": 1, "name": "l_section", "dataType": "uint32", "range": "0..32767", "info": "Length of section in the MA"}], 
+      "intId": 13
+    }, 
+    {
+      "name": "ETCSPacket_39", 
+      "info": " Track Condition Change of traction system (The packet gives information about change of the traction system)", 
+      "attrs": [{"intId": 1, "name": "d_traction", "dataType": "uint32", "range": "0..32767", "info": "Distance to change of traction"}, 
+        {"intId": 2, "name": "m_voltage", "dataType": "uint32", "range": "0..15", 
+          "info": "Special/Reserved values for Traction System voltage. It indicates the voltage of the traction system installed on a specific line or respectively that can be used by an engine. The identity of the traction system is given by M_VOLTAGE and, if M_VOLTAGE \u00e2 0, by the country identifier of the traction system (NID_CTRACTION). Note that values from 6 to 15 are currently unassigned"}, 
+        {"intId": 3, "name": "nid_ctraction", "dataType": "uint32", "multiplicity": "0..1", "range": "0..1023", 
+          "info": "Country identifier of the traction system. It identifies the information, additional to M_VOLTAGE, required to fully define the traction system. Note that NID_CTRACTION given only if M_VOLTAGE \u00e2 0"}], 
+      "intId": 14
+    }, 
+    {
+      "name": "ETCSPacket_40", 
+      "info": " Track Condition Change of allowed current consumption (The packet gives information about change of the allowed current consumption)", 
+      "attrs": [
+        {"intId": 1, "name": "d_current", "dataType": "uint32", "range": "0..32767", 
+          "info": "Distance to change of allowed current consumption"}, 
+        {"intId": 2, "name": "m_current", "dataType": "uint32", "range": "0..1023", "unit": "A", "exp": 1, 
+          "info": "Allowed current consumption (It defines the allowed current consumption to be used by the train) "}], 
+      "intId": 15
+    }, 
+    {
+      "name": "LevelTransitionWithAck", 
+      "info": "Defines the parameters for level transitions requiring acknowledgment in ETCS operations. This includes the target ETCS level, the associated national system identity, and the length of the acknowledgment area required for a safe transition.", 
+      "attrs": [{"intId": 1, "name": "m_leveltr", "enumType": "ETCSLevels", "info": "Required level"}, 
+        {"intId": 2, "name": "nid_ntc", "dataType": "uint32", "multiplicity": "0..1", "range": "0..255", 
+          "info": "National System identity (Each value of this variable represents the identity of a National System)"}, 
+        {"intId": 3, "name": "l_ackleveltr", "dataType": "uint32", "range": "0..32767", 
+          "info": "Length of the acknowledgement area in rear of the required level."}], 
+      "intId": 16
+    }, 
+    {
+      "name": "ETCSPacket_41", 
+      "info": "Level Transition Order (Packet to identify where a level transition shall take place. In case of mixed levels, the successive M_LEVELTR\u00e2\u0099s go from the highest priority level to the lowest one)", 
+      "attrs": [{"intId": 1, "name": "d_leveltr", "dataType": "uint32", "range": "0..32767", "info": "Distance to level transition"}, 
+        {"intId": 2, "name": "m_leveltr", "enumType": "ETCSLevels", "info": "Required level"}, 
+        {"intId": 3, "name": "nid_ntc", "dataType": "uint32", "multiplicity": "0..1", "range": "0..255", 
+          "info": "National System identity. Each value of this variable represents the identity of a National System."}, 
+        {"intId": 4, "name": "l_ackleveltr", "dataType": "uint32", "range": "0..32767", 
+          "info": "Length of the acknowledgement area in rear of the required level."}, 
+        {"intId": 5, "name": "levelTransitionWithAck", "composition": "LevelTransitionWithAck", "multiplicity": "0..32", 
+          "info": "List of level transitions requiring acknowledgment in ETCS operation"}], 
+      "intId": 17
+    }, 
+    {
+      "name": "ETCSPacket_42", 
+      "info": " Session Management (Packet to give the identity and telephone number of the RBC with which a session shall be established or terminated)", 
+      "attrs": [{"intId": 1, "name": "q_rbc", "dataType": "boolean", "info": "Qualifier for communication session order"}, 
+        {"intId": 2, "name": "nid_c", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..1", 
+          "info": "Identity number of the country or region (Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries. Comment : RBC ETCS identity :NID_C not relevant if NID_RBC has value \u00e2Contact last known RBC) "}, 
+        {"intId": 3, "name": "nid_rbc", "dataType": "uint32", "multiplicity": "0..1", "range": "0..16383", 
+          "info": "RBC ETCS identity number (This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS identity is given by NID_C + NID_RBC )"}, 
+        {"intId": 4, "name": "nid_radio", "dataType": "string", "multiplicity": "0..1", 
+          "info": "Radio subscriber number (Quoted as a 16 digit decimal number. The number is to be entered \u00e2left adjusted\u00e2 starting with the first digit to be dialed. Padding by the special value F shall be added after the least significant digit of the number. For further information about NID_RADIO refer to SUBSET-054.)"}, 
+        {"intId": 5, "name": "q_sleepsession", "dataType": "boolean", 
+          "info": "Session management for sleeping equipment (Qualifier for a Sleeping onboard equipment to execute or not the (session establishment) order)"}], 
+      "intId": 18
+    }, 
+    {
+      "name": "ETCSPacket_44", 
+      "info": " Data used by applications outside the ERTMS/ETCS system (Messages between trackside and on-board devices, which contain information used by applications outside the ERTMS/ETCS system)", 
+      "attrs": [
+        {"intId": 1, "name": "nid_xuser", "dataType": "uint32", "range": "0..511", 
+          "info": "Identity of user system (Identity of user system for which remainder of packet is intended)"}, 
+        {"intId": 2, "name": "nid_ntc", "dataType": "uint32", "multiplicity": "0..1", "range": "0..255", 
+          "info": "National System identity (Each value of this variable represents the identity of a National System). Applicable only if nid_xuser = 102 (National System Functions)"}, 
+        {"intId": 3, "name": "otherData", "dataType": "bytes", 
+          "info": "Other data, depending on the Identity of user system - NID_XUSER"}], 
+      "intId": 19
+    }, 
+    {
+      "name": "ETCSPacket_45", 
+      "info": " Radio Network registration (Packet to give the identity of the Radio Network to which a registration shall be enforced)", 
+      "attrs": [
+        {"intId": 1, "name": "nid_mn", "dataType": "string", 
+          "info": "Identity of Radio Network. The NID_MN identifies the GSM-R network the calling mobile station has to register with. The NID_MN consists of up to 6 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be dialled first. In case the NID_MN is shorter than 6 digits, the remaining space is to be filled with special character F"}], 
+      "intId": 20
+    }, 
+    {
+      "name": "LevelTransition", 
+      "info": "Defines the parameters for level transitions in ETCS operations, specifying the required ETCS level and the associated national system identity to ensure seamless interoperability between signaling systems.", 
+      "attrs": [{"intId": 1, "name": "m_leveltr", "enumType": "ETCSLevels", "info": "Required level"}, 
+        {"intId": 2, "name": "nid_ntc", "dataType": "uint32", "multiplicity": "0..1", "range": "0..255", 
+          "info": "National System identity (Each value of this variable represents the identity of a National System.)"}], 
+      "intId": 21
+    }, 
+    {
+      "name": "ETCSPacket_46", 
+      "info": " Conditional Level Transition Order (Packet for a conditional level transition. The successive M_LEVELTR\u00e2\u0099s go from the highest priority level to the lowest one)", 
+      "attrs": [{"intId": 1, "name": "m_leveltr", "enumType": "ETCSLevels", "info": "Required level"}, 
+        {"intId": 2, "name": "nid_ntc", "dataType": "uint32", "multiplicity": "0..1", "range": "0..255", 
+          "info": "National System identity (Each value of this variable represents the identity of a National System.)"}, 
+        {"intId": 3, "name": "levelTransitions", "composition": "LevelTransition", "multiplicity": "0..31", 
+          "info": "List of level transitions parameters"}], 
+      "intId": 22
+    }, 
+    {
+      "name": "CountryBalise", "info": "The new country's and balise group's identification number", 
+      "attrs": [{"intId": 1, "name": "nid_c", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..1"}, 
+        {"intId": 2, "name": "nid_bg", "dataType": "uint32", "range": "0..16383", 
+          "info": "Identity number of the balise group (Identity number of a balise group or loop within the country or region defined by NID_C)"}], 
+      "intId": 23
+    }, 
+    {
+      "name": "ETCSPacket_49", 
+      "info": " List of balises for SH Area (Used to list balise group(s) which the train can pass over in SH mode)", 
+      "attrs": [
+        {"intId": 1, "name": "countryBalises", "composition": "CountryBalise", "multiplicity": "0..31", 
+          "info": "List of the additional country balises for Shunting Area "}], 
+      "intId": 24
+    }, 
+    {
+      "name": "AxleLoadRestriction", "info": "Defines the restriction with respect to the axle load", 
+      "attrs": [
+        {"intId": 1, "name": "m_axleLoadCat", "enumType": "infra.LoadCapabilityLineCategories", 
+          "info": "Axle load category (The values allocated below correspond to a list of increasing axle load categories (i.e. B1 > HS17, B2 > B1, D2 > C4, \u00e2\u00a6.etc) and it is used by the on-board equipment to compare its axle load category with the axle load category sent by trackside.For the underlying meaning of the axle load categories listed below (with the exception of HS17) refer to CR INF TSI.The category HS17 (axle load <= 17t) corresponds to a static load per axle only, as specified in HS RST TSI clause 4.2.3.2. The introduction of this artefact is necessary to ensure backward compatibility, without any negative performance impact, in case ASPs are used on lines operated with system version X = 1)"}, 
+        {"intId": 2, "name": "v_axleLoad", "dataType": "uint32", "range": "0..127", 
+          "info": "Speed restriction related to axleload. Speed restriction to be applied if the axle load category of the train M_AXLELOADCAT(n)"}], 
+      "intId": 25
+    }, 
+    {
+      "name": "AxleLoadSelection", 
+      "info": "Defines the selection criteria for axle load-based speed restrictions in a railway network. It represents a structured profile containing axle load constraints, distances, and validity conditions necessary for safe train operations.", 
+      "attrs": [
+        {"intId": 1, "name": "d_axleload", "dataType": "uint32", "multiplicity": "0..1", "range": "0..32767", 
+          "info": "Incremental distance to the start of the next Axle load speed profile. Note that OnlyifQ_TRACKINIT =0, D_AXLELOAD andthefollowing variables follow"}, 
+        {"intId": 2, "name": "l_axleload", "dataType": "uint32", "multiplicity": "0..1", "range": "0..32767", 
+          "info": "Length of speed restriction due to Axle load."}, 
+        {"intId": 3, "name": "q_front", "dataType": "boolean", "multiplicity": "0..1", 
+          "info": "Qualifier for validity end point of profile element. Qualifier to indicate if a speed limit given for a profile element is to be applied until the front of the train (no train length delay) or the end of the train (train length delay) has left the element."}, 
+        {"intId": 4, "name": "axleLoadRestrictions", "composition": "AxleLoadRestriction", "multiplicity": "0..31", 
+          "info": "List of axle load restrictions for the selection"}], 
+      "intId": 26
+    }, 
+    {
+      "name": "ETCSPacket_51", 
+      "info": " Axle Load Speed Profile (This packet gives the speed restrictions for trains with axle load category higher than or equal to the specified value for the speed restriction)", 
+      "attrs": [
+        {"intId": 1, "name": "q_trackinit", "dataType": "boolean", 
+          "info": "Qualifier for resuming the initial states of the related track description of the packet"}, 
+        {"intId": 2, "name": "d_trackinit", "dataType": "uint32", "multiplicity": "0..1", "range": "0..32767", 
+          "info": "Distance to start of empty profile. Distance to where initial states of the related track description in the packet shall be resumed."}, 
+        {"intId": 3, "name": "d_axleload", "dataType": "uint32", "multiplicity": "0..1", "range": "0..32767", 
+          "info": "Incremental distance to the start of the next Axle load speed profile. Note that OnlyifQ_TRACKINIT =0, D_AXLELOAD andthefollowing variables follow"}, 
+        {"intId": 4, "name": "l_axleload", "dataType": "uint32", "multiplicity": "0..1", "range": "0..32767", 
+          "info": "Length of speed restriction due to Axle load."}, 
+        {"intId": 5, "name": "q_front", "dataType": "boolean", "multiplicity": "0..1", 
+          "info": "Qualifier for validity end point of profile element. Qualifier to indicate if a speed limit given for a profile element is to be applied until the front of the train (no train length delay) or the end of the train (train length delay) has left the element."}, 
+        {"intId": 6, "name": "axleLoadRestrictions", "composition": "AxleLoadRestriction", "multiplicity": "0..31", 
+          "info": "List of axle load restrictions for the selection"}, 
+        {"intId": 7, "name": "axleLoadSelections", "composition": "AxleLoadSelection", "multiplicity": "0..31", 
+          "info": "List of the selection criteria for axle load-based restrictions"}], 
+      "intId": 27
+    }, 
+    {
+      "name": "PBDSelection", 
+      "info": "Defines the selection criteria for Permitted Braking Distance (PBD) constraints, ensuring safe braking within defined limits. This includes parameters such as braking distance, gradient slope, speed restrictions, and braking mode qualifiers, which influence braking performance calculations.", 
+      "attrs": [
+        {"intId": 1, "name": "d_pbd", "dataType": "uint32", "range": "0..32767", 
+          "info": "Permitted Braking Distance. Only if Q_TRACKINIT = 0, D_PBDand the following variables follow"}, 
+        {"intId": 2, "name": "q_gdir", "dataType": "boolean", 
+          "info": "Qualifier for gradient slope. Comment : 0 = downhill, 1 = uphill"}, 
+        {"intId": 3, "name": "g_pbdsr", "dataType": "uint32", "range": "0..255", 
+          "info": "Default gradient for PBD Speed restriction (Defines a default gradient to be used for calculation of speed restriction to ensure permitted braking distance.)"}, 
+        {"intId": 4, "name": "q_pbdsr", "dataType": "boolean", 
+          "info": "Qualifier for Permitted Braking Distance (Qualifier defining whether the permitted braking distance is to be achieved with the Service Brake or Emergency Brake)"}, 
+        {"intId": 5, "name": "d_pbdsr", "dataType": "uint32", "range": "0..32767", 
+          "info": "Incremental distance to the start of the next speed restriction to ensure permitted braking distance."}, 
+        {"intId": 6, "name": "l_pbdsr", "dataType": "uint32", "range": "0..32767", 
+          "info": "Length of speed restriction to ensure permitted braking distance."}], 
+      "intId": 28
+    }, 
+    {
+      "name": "ETCSPacket_52", 
+      "info": " Permitted Braking Distance Information (This packet requests the on-board calculation of speed restrictions which ensure a given permitted brake distance in case of an EB, or SB, intervention)", 
+      "attrs": [
+        {"intId": 1, "name": "q_trackinit", "dataType": "boolean", 
+          "info": "Qualifier for resuming the initial states of the related track description of the packet."}, 
+        {"intId": 2, "name": "d_trackinit", "dataType": "uint32", "multiplicity": "0..1", "range": "0..32767", 
+          "info": "Distance to start of empty profile (Distance to where initial states of the related track description in the packet shall be resumed.)"}, 
+        {"intId": 3, "name": "pbdSelection", "composition": "PBDSelection", "multiplicity": "0..32", 
+          "info": "List of permitted braking distance constraints"}], 
+      "intId": 29
+    }, 
+    {
+      "name": "ETCSPacket_65", "info": " Temporary Speed Restriction (Transmission of temporary speed restriction)", 
+      "attrs": [
+        {"intId": 1, "name": "nid_tsr", "dataType": "uint32", "range": "0..255", 
+          "info": "Identity number of Temporary Speed Restriction"}, 
+        {"intId": 2, "name": "d_tsr", "dataType": "uint32", "range": "0..32767", 
+          "info": "Distance to beginning of temporary speed restriction"}, 
+        {"intId": 3, "name": "l_tsr", "dataType": "uint32", "range": "0..32767", 
+          "info": "Length of the temporary speed restriction"}, 
+        {"intId": 4, "name": "q_front", "dataType": "boolean", 
+          "info": "Qualifier for validity end point of profile element (Qualifier to indicate if a speed limit given for a profile element is to be applied until the front of the train (no train length delay) or the end of the train (train length delay) has left the element)"}, 
+        {"intId": 5, "name": "v_tsr", "dataType": "uint32", "range": "0..127", "unit": "km/h", 
+          "info": "Permitted speed for the temporary speed restriction. "}], 
+      "intId": 30
+    }, 
+    {
+      "name": "ETCSPacket_66", 
+      "info": " Temporary Speed Restriction Revocation (Transmission of temporary speed restriction revocation)", 
+      "attrs": [
+        {"intId": 1, "name": "nid_tsr", "dataType": "uint32", "range": "0..255", 
+          "info": "Identity number of Temporary Speed Restriction; Identity of TSR to be revoked"}], 
+      "intId": 31
+    }, 
+    {
+      "name": "DLTrackCond", 
+      "info": "Defines the parameters for dynamic line track conditions, specifying the distance to track condition changes and the validity length of the condition. These parameters are used to manage integrity check alarms of balise transmission within the defined section.", 
+      "attrs": [
+        {"intId": 1, "name": "d_trackcond", "dataType": "uint32", "range": "0..32767", 
+          "info": "Track condition distance (The incremental distance to where the track conditions change)"}, 
+        {"intId": 2, "name": "l_trackcond", "dataType": "uint32", "range": "0..32767", 
+          "info": "Length for which the defined track condition is valid. (Thedistanceforwhichintegrity check alarms of balise transmission shall be ignored)"}], 
+      "intId": 32
+    }, 
+    {
+      "name": "ETCSPacket_67", 
+      "info": " Track Condition Big Metal Masses.This packet gives details concerning where to ignore integrity check alarms of balise transmission due to big metal masses trackside", 
+      "attrs": [
+        {"intId": 1, "name": "dlTrackConditions", "composition": "DLTrackCond", "multiplicity": "1..32", 
+          "info": "List of track condition (distance-length)"}], 
+      "intId": 33
+    }, 
+    {
+      "name": "DLMCondition", 
+      "info": "Defines the track conditions, specifying the distance to track condition changes, the validity length of the condition, and the type of track condition to ensure safe and efficient train movement.", 
+      "attrs": [
+        {"intId": 1, "name": "d_trackcond", "dataType": "uint32", "range": "0..32767", 
+          "info": "Track condition distance (The incremental distance to where the track conditions change. Comment : OnlyifQ_TRACKINIT=0, D_TRACKCOND and the following variables follow)"}, 
+        {"intId": 2, "name": "l_trackcond", "dataType": "uint32", "range": "0..32767", 
+          "info": "Length for which the defined track condition is valid."}, 
+        {"intId": 3, "name": "m_trackcond", "dataType": "uint32", "range": "0..15", "info": "Type of track condition"}], 
+      "intId": 34
+    }, 
+    {
+      "name": "ETCSPacket_68", 
+      "info": " Track Condition.The packet gives details concerning the track ahead to support the driver when e.g. lower pantograph", 
+      "attrs": [
+        {"intId": 1, "name": "q_trackinit", "dataType": "boolean", 
+          "info": "Qualifier for resuming the initial states of the related track description of the packet"}, 
+        {"intId": 2, "name": "d_trackinit", "dataType": "uint32", "multiplicity": "0..1", "range": "0..32767", 
+          "info": "Distance to start of empty profile (Distance to where initial states of the related track description in the packet shall be resumed.)"}, 
+        {"intId": 3, "name": "trackCondSelection", "composition": "DLMCondition", "multiplicity": "0..32", 
+          "info": "List the track condition parameters"}], 
+      "intId": 35
+    }, 
+    {
+      "name": "TCSPCondition", 
+      "info": "Defines the conditions related to track characteristics and platform parameters, ensuring accurate assessment of track suitability. This includes track condition change distances, validity lengths, platform height specifications, and platform positioning, as referenced in TSI infrastructure standards.", 
+      "attrs": [
+        {"intId": 1, "name": "d_trackcond", "dataType": "uint32", "range": "0..32767", 
+          "info": "Track condition distance (The incremental distance to where the track conditions change.)"}, 
+        {"intId": 2, "name": "l_trackcond", "dataType": "uint32", "range": "0..32767", 
+          "info": "Length for which the defined track condition is valid"}, 
+        {"intId": 3, "name": "m_platform", "dataType": "uint32", "range": "0..15", 
+          "info": "Special/Reserved values for the Nominal height of platform above rail level (refer to TSI infrastructure)"}, 
+        {"intId": 4, "name": "q_platform", "enumType": "PlatformPosition", 
+          "info": "defines the platform position with respect to the direction of authorized movement"}], 
+      "intId": 36
+    }, 
+    {
+      "name": "ETCSPacket_69", 
+      "info": " Track Condition Station Platforms (The packet gives details concerning the location and height of station platforms for use by the train\u00e2\u0099s door control system)", 
+      "attrs": [
+        {"intId": 1, "name": "q_trackinit", "dataType": "boolean", 
+          "info": "Qualifier for resuming the initial states of the related track description of the packet"}, 
+        {"intId": 2, "name": "d_trackinit", "dataType": "uint32", "multiplicity": "0..1", "range": "0..32767", 
+          "info": "Distance to start of empty profile (Distance to where initial states of the related track description in the packet shall be resumed.)"}, 
+        {"intId": 3, "name": "trackCondPlatformSelection", "composition": "TCSPCondition", "multiplicity": "0..32", 
+          "info": "List the conditions related to track characteristics and platform parameters"}], 
+      "intId": 37
+    }, 
+    {
+      "name": "RouteSuitability", 
+      "info": "Defines the parameters for route suitability assessment, ensuring compatibility between railway infrastructure and rolling stock. This includes route suitability changes, loading gauge constraints, axle load categories, traction system voltage, and country-specific traction system identifiers, allowing on-board systems to validate operational feasibility.", 
+      "attrs": [
+        {"intId": 1, "name": "d_suitability", "dataType": "uint32", "range": "0..32767", 
+          "info": "Distance to change in route suitability (The incremental distance to where the route suitability data changes.)"}, 
+        {"intId": 2, "name": "q_suitability", "enumType": "Q_Suitability", "info": "Type of route suitability data"}, 
+        {"intId": 3, "name": "m_lineGauge", "enumType": "LineGauge", "multiplicity": "0..1", 
+          "info": "defining which loading gauge(s) are permitted on a line (refer to TSI INF)"}, 
+        {"intId": 4, "name": "m_axleLoadCat", "enumType": "infra.LoadCapabilityLineCategories", "multiplicity": "0..1", 
+          "info": "the values allocated below correspond to a list of increasing axle load categories (i.e. B1 > HS17, B2 > B1, D2 > C4, \u00e2\u00a6.etc) and it is used by the on-board equipment to compare its axle load category with the axle load category sent by trackside. For the underlying meaning of the axle load categories listed below (with the exception of HS17) refer to CR INF TSI.)"}, 
+        {"intId": 5, "name": "m_voltage", "dataType": "uint32", "range": "0..15", "multiplicity": "0..1", 
+          "info": "Special/Reserved values for Traction System voltage. It indicates the voltage of the traction system installed on a specific line or respectively that can be used by an engine. The identity of the traction system is given by M_VOLTAGE and, if M_VOLTAGE \u00e2 0, by the country identifier of the traction system (NID_CTRACTION). Note that values from 6 to 15 are currently unassigned"}, 
+        {"intId": 6, "name": "nid_ctraction", "dataType": "uint32", "multiplicity": "0..1", "range": "0..1023", 
+          "info": "Country identifier of the traction system. It identifies the information, additional to M_VOLTAGE, required to fully define the traction system."}], 
+      "intId": 38
+    }, 
+    {
+      "name": "ETCSPacket_70", "info": "Route suitability data (The packet gives the characteristics needed to enter a route)", 
+      "attrs": [
+        {"intId": 1, "name": "q_trackinit", "dataType": "boolean", 
+          "info": "Qualifier for resuming the initial states of the related track description of the packet"}, 
+        {"intId": 2, "name": "d_trackinit", "dataType": "uint32", "multiplicity": "0..1", "range": "0..32767", 
+          "info": "Distance to start of empty profile (Distance to where initial states of the related track description in the packet shall be resumed)"}, 
+        {"intId": 3, "name": "routeSuitabilities", "composition": "RouteSuitability", "multiplicity": "0..32", 
+          "info": "Lists of RouteSuitabilities"}], 
+      "intId": 39
+    }, 
+    {
+      "name": "ETCSPacket_71", 
+      "info": "Thispacket is used when the tracksiderequests a change of the adhesion factor to be used in the brake model.", 
+      "attrs": [
+        {"intId": 1, "name": "d_adhesion", "dataType": "uint32", "range": "0..32767", 
+          "info": "Distance to start of area with reduced adhesion factor."}, 
+        {"intId": 2, "name": "l_adhesion", "dataType": "uint32", "range": "0..32767", 
+          "info": "Length of reduced adhesion (Length for which the reducedadhesion factor apply.)"}, 
+        {"intId": 3, "name": "m_adhesion", "dataType": "boolean", "info": "Adhesion factor."}], 
+      "intId": 40
+    }, 
+    {
+      "name": "TextMessageConfig", 
+      "info": "Defines the configuration parameters for text message display and acknowledgment in railway operations. This includes message classification, display conditions based on distance, mode, and level, as well as qualifiers for text confirmation, reporting, and national system identity. These parameters ensure proper handling of onboard text messages and their interaction with trackside signaling and RBC communication.", 
+      "attrs": [
+        {"intId": 1, "name": "q_textclass", "enumType": "TextClass", 
+          "info": "Class of message to be displayed (Q_TEXTCLASS specifies the class of the text message included in the same packet (either plain or fixed message))"}, 
+        {"intId": 2, "name": "q_textdisplay", "dataType": "boolean", 
+          "info": "Qualifier for the combination of text message events (Q_TEXTDISPLAY defines whether the start/end events for text message are to be combined or not.)"}, 
+        {"intId": 3, "name": "d_textdisplay", "dataType": "uint32", "range": "0..32767", 
+          "info": "Distance from where on a text shall be displayed."}, 
+        {"intId": 4, "name": "m_modetextdisplay", "enumType": "DisplayOperatingMode", 
+          "info": "Onboard operating mode for text display (The text is displayed when entering / as long as in the defined mode)"}, 
+        {"intId": 5, "name": "m_leveltextdisplay", "enumType": "DisplayOperatingLevel", 
+          "info": "Onboard operating level for text display (The text is displayed when entering / as long as in the defined level)"}, 
+        {"intId": 6, "name": "nid_ntc", "dataType": "uint32", "multiplicity": "0..1", "range": "0..255", 
+          "info": "National System identity. Each value of this variable represents the identity of a National System."}, 
+        {"intId": 7, "name": "l_textdisplay", "dataType": "uint32", "range": "0..32767", 
+          "info": "Length on which a text shall be displayed. "}, 
+        {"intId": 8, "name": "t_textdisplay", "dataType": "uint32", "unit": "s", "range": "0..1023", 
+          "info": "Duration for which a text shall be displayed."}, 
+        {"intId": 9, "name": "m_modetextdisplay_e", "enumType": "DisplayOperatingMode", 
+          "info": "Onboard operating mode for text display. The text is displayed when entering / as long as in the defined mode. Comment : End event"}, 
+        {"intId": 10, "name": "m_leveltextdisplay_e", "enumType": "DisplayOperatingLevel", 
+          "info": "Onboard operating level for text display.The text is displayed when entering / as long as in the defined level."}, 
+        {"intId": 11, "name": "nid_ntc_e", "dataType": "uint32", "multiplicity": "0..1", "range": "0..255", 
+          "info": "National System identity. Each value of this variable represents the identity of a National System. "}, 
+        {"intId": 12, "name": "q_textconfirm", "dataType": "uint32", "range": "0..3", "info": "Qualifier for text confirmation. "}, 
+        {"intId": 13, "name": "q_conftextdisplay", "dataType": "boolean", "multiplicity": "0..1", 
+          "info": "Qualifier for text confirmation versus end of text display. (Gives the relationship between the event (driver acknowledgement) and the list of events (location), (time), (mode), (level) defining the end condition for text display.)"}, 
+        {"intId": 14, "name": "q_textreport", "dataType": "boolean", "multiplicity": "0..1", 
+          "info": "Qualifier for reporting acknowledgement of text by driver. "}, 
+        {"intId": 15, "name": "nid_textmessage", "dataType": "uint32", "multiplicity": "0..1", "range": "0..255", 
+          "info": "Text message identifier (Identity of a text message from trackside to be used in a report of driver acknowledgement to the RBC.)"}, 
+        {"intId": 16, "name": "nid_c", "dataType": "uint32", "multiplicity": "0..1", "range": "0..1023", 
+          "info": "Identity number of the country or region (Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries.)"}, 
+        {"intId": 17, "name": "nid_rbc", "dataType": "uint32", "multiplicity": "0..1", "range": "0..16383", 
+          "info": "RBC ETCS identity number (This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS identity is given by NID_C + NID_RBC.)"}], 
+      "intId": 41
+    }, 
+    {
+      "name": "ETCSPacket_72", "info": " Packet for sending plain text messages", 
+      "attrs": [
+        {"intId": 1, "name": "textMessageConfig", "composition": "TextMessageConfig", 
+          "info": "List of the configuration parameters for text message display and acknowledgment"}, 
+        {"intId": 2, "name": "l_text", "dataType": "uint32", "range": "0..225", 
+          "info": "Length of text string (L_TEXT defines the length of a text string (L_TEXT * X_TEXT))"}, 
+        {"intId": 3, "name": "x_text", "dataType": "string", "info": "Text string used to transmit plain text messages"}], 
+      "intId": 42
+    }, 
+    {
+      "name": "ETCSPacket_76", "info": "Packet for sending fixed text messages", 
+      "attrs": [
+        {"intId": 1, "name": "textMessageConfig", "composition": "TextMessageConfig", 
+          "info": "List of the configuration parameters for text message display and acknowledgment"}, 
+        {"intId": 2, "name": "q_text", "dataType": "uint32", "range": "0..225", 
+          "info": "Fixed message to be displayed (Q_TEXT is a pointer to select a fixed text message from the defined table. The language selected by the driver for the DMI shall be used additionally as a qualifier to choose the appropriate language table.)"}], 
+      "intId": 43
+    }, 
+    {
+      "name": "GeoPosItem", 
+      "info": "Defines the parameters for geographical position referencing in railway operations. This includes balise group identity, position offsets, track kilometre references, and direction qualifiers to support accurate location tracking and reporting along the railway network.", 
+      "attrs": [{"intId": 1, "name": "nid_c", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..1"}, 
+        {"intId": 2, "name": "nid_bg", "dataType": "uint32", "range": "0..16383", 
+          "info": "Identity number of the balise group. Identity number of a balise group or loop within the country or region defined by NID_C."}, 
+        {"intId": 3, "name": "d_posoff", "dataType": "uint32", "range": "0..32767", 
+          "info": "Offset from the location reference of the geographical position reference balise group to the related track kilometre reference..The geographical position reporting function uses this variables content as an offset from the location reference of the geographical position reference balise group to the related track kilometre reference."}, 
+        {"intId": 4, "name": "q_mposition", "dataType": "boolean", 
+          "info": "Qualifier for track kilometre direction. Qualifier to indicate the direction of counting of the geographical position track kilometre in relation to the geographical position reference balise group directionality."}, 
+        {"intId": 5, "name": "m_position", "dataType": "uint32", "range": "0..16777215", "unit": "m", 
+          "info": "Track kilometre reference value. The geographical position reporting function uses this variables content as a reference value. "}], 
+      "intId": 44
+    }, 
+    {
+      "name": "ETCSPacket_79", 
+      "info": "Geographical Position Information. This packet gives geographical location information for one or multiple references to the train", 
+      "attrs": [
+        {"intId": 1, "name": "geoPosItems", "composition": "GeoPosItem", "multiplicity": "1..32", 
+          "info": "List of Geographical Position Reference"}], 
+      "intId": 45
+    }, 
+    {
+      "name": "ModeProfileItem", 
+      "info": "Defines the parameters for mode profile transitions in railway operations, specifying the required mode, associated speed limits, and spatial constraints. This includes incremental distances, supervision qualifiers, and acknowledgment areas to ensure proper mode application within the movement authority framework.", 
+      "attrs": [
+        {"intId": 1, "name": "d_mamode", "dataType": "uint32", "range": "0..32767", 
+          "info": "Incremental distance to the start of the next Mode Profile"}, 
+        {"intId": 2, "name": "m_mamode", "enumType": "MAMode", 
+          "info": "Required mode for a part of the MA. None. Comment : OS, LS, SH"}, 
+        {"intId": 3, "name": "v_mamode", "dataType": "uint32", "range": "0..127", "unit": "km/h", 
+          "info": "Required mode related speed."}, 
+        {"intId": 4, "name": "l_mamode", "dataType": "uint32", "range": "0..32767", 
+          "info": "Length of the area of the required mode."}, 
+        {"intId": 5, "name": "l_ackmamode", "dataType": "uint32", "range": "0..32767", 
+          "info": "Length of the acknowledgement area in rear of the start of the required mode."}, 
+        {"intId": 6, "name": "q_mamode", "dataType": "boolean", 
+          "info": "Qualifier to indicate the supervision of the beginning of the mode profile. This qualifier defines whether the beginning of the mode profile shall be considered as the SvL, or if the SvL shall be derived from the movement authority."}], 
+      "intId": 46
+    }, 
+    {
+      "name": "ETCSPacket_80", "info": " Mode profile associated to an MA", 
+      "attrs": [
+        {"intId": 1, "name": "modeProfiles", "composition": "ModeProfileItem", "multiplicity": "1..32", 
+          "info": "List of mode profile transition items"}], 
+      "intId": 47
+    }, 
+    {
+      "name": "LXStatus", 
+      "info": "Defines the status parameters for a Level Crossing (LX) in railway operations, including the permitted speed when the crossing is not protected, the requirement for stopping before the crossing, and the designated stopping area length to ensure safe passage.", 
+      "attrs": [
+        {"intId": 1, "name": "v_lx", "dataType": "uint32", "range": "0..127", "unit": "km/h", 
+          "info": "Permitted speed for the LX speed restriction. Speed at which the LX can be passed when it is not protected. "}, 
+        {"intId": 2, "name": "q_stoplx", "dataType": "boolean", 
+          "info": "Qualifier for stopping in rear of the LX. Indicates whether stopping the train in rear of a non protected LX is required. "}, 
+        {"intId": 3, "name": "l_stoplx", "dataType": "uint32", "range": "0..32767", "multiplicity": "0..1", 
+          "info": "Length of the stopping area in rear of the start location of the LX area."}], 
+      "intId": 48
+    }, 
+    {
+      "name": "ETCSPacket_88", "info": " Level Crossing information", 
+      "attrs": [
+        {"intId": 1, "name": "nid_lx", "dataType": "uint32", "range": "0..255", "info": "Identity number of the Level Crossing."}, 
+        {"intId": 2, "name": "d_lx", "dataType": "uint32", "range": "0..32767", "info": "Distance to LX start location."}, 
+        {"intId": 3, "name": "l_lx", "dataType": "uint32", "range": "0..32767", "info": "Length of the LX area."}, 
+        {"intId": 4, "name": "q_lxstatus", "dataType": "boolean", 
+          "info": "Indicate whether the Level Crossing is protected or not."}, 
+        {"intId": 5, "name": "lx_Status", "composition": "LXStatus", "multiplicity": "0..1", 
+          "info": "Only required for the level crossings that are protected"}], 
+      "intId": 49
+    }, 
+    {
+      "name": "ETCSPacket_90", 
+      "info": "Track Ahead Free up to level 2/3 transition location (Notification to on-board that track ahead is free from the balise group transmitting this information up to the level 2/3 transition location)", 
+      "attrs": [
+        {"intId": 1, "name": "nid_c", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..1", 
+          "info": "New Country Qualifier (Qualifier to indicate whether the next balise group is in the same country / railway administration as the one before inside the packet or not.For the first balise group in the packet, if Q_NEWCOUNTRY = 0, it is the same country / railway administration as the one of the LRBG within the radio message, the one of balise group within the balise telegram giving the packet, or the one of the loop within the loop message giving the packet.)"}, 
+        {"intId": 2, "name": "nid_bg", "dataType": "uint32", "range": "0..16383", 
+          "info": "Identity number ofLevel2/3transition locationbalise group (Identity number of a balise group or loop within the country or region defined by NID_C.)"}], 
+      "intId": 50
+    }, 
+    {
+      "name": "ETCSPacket_131", "info": " RBC transition order (Packet to order an RBC transition)", 
+      "attrs": [{"intId": 1, "name": "d_rbctr", "dataType": "uint32", "range": "0..32767", "info": "Distance to RBC transition:"}, 
+        {"intId": 2, "name": "nid_c", "dataType": "uint32", "range": "0..1023", 
+          "info": "Identity number of the country or region.Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries. Comment : \u00e2Accepting\u00e2 RBC identity"}, 
+        {"intId": 3, "name": "nid_rbc", "dataType": "uint32", "range": "0..16383", 
+          "info": "RBC ETCS identity number (This variable provides the identity of the RBC belonging to NID_C. The RBC ETCS identity is given by NID_C + NID_RBC.)"}, 
+        {"intId": 4, "name": "nid_radio", "dataType": "string", 
+          "info": "Radio subscriber number (Quoted as a 16 digit decimal number. The number is to be entered \u00e2left adjusted\u00e2 starting with the first digit to be dialled. Padding by the special value F shall be added after the least significant digit of the number. For further information about NID_RADIO refer to SUBSET-054.)"}, 
+        {"intId": 5, "name": "q_sleepsession", "dataType": "boolean", 
+          "info": "Session management for sleeping equipment. (Set to False when ignoring session establishment order; True when executing sessions establishment order.)"}], 
+      "intId": 51
+    }, 
+    {
+      "name": "ETCSPacket_132", "info": " Danger for Shunting information (Transmission of the aspect of a shunting signal)", 
+      "attrs": [
+        {"intId": 1, "name": "q_aspect", "dataType": "boolean", 
+          "info": "Aspect of \u00e2danger for shunting\u00e2 signal. (set to False to Stop if in SH mode, otherwise True to Go if in SH mode)"}], 
+      "intId": 52
+    }, 
+    {
+      "name": "ETCSPacket_133", "info": " Radio infill area information", 
+      "attrs": [{"intId": 1, "name": "q_riu", "dataType": "boolean", "info": "Qualifier for communication session order."}, 
+        {"intId": 2, "name": "nid_c", "dataType": "uint32", "range": "0..1023", 
+          "info": "Identity number of the country or region. Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries."}, 
+        {"intId": 3, "name": "nid_riu", "dataType": "uint32", "range": "0..16383", 
+          "info": "Identity of radio infill unit. This variable provides the identity of the RIU belonging to NID_C. The RIU ETCS identity is given by NID_C + NID_RIU."}, 
+        {"intId": 4, "name": "nid_radio", "dataType": "string", 
+          "info": "Radio subscriber number. (Quoted as a 16 digit decimal number. The number is to be entered \u00e2left adjusted\u00e2 starting with the first digit to be dialled. Padding by the special value F shall be added after the least significant digit of the number.)"}, 
+        {"intId": 5, "name": "d_infill", "dataType": "uint32", "range": "0..32767", 
+          "info": "Distance to location where to connect/disconnect to a radio infill unit."}, 
+        {"intId": 6, "name": "nid_c_next", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..1", 
+          "info": "Refers to the next main signal balise group (relevant only for the case of establishing a communication session"}, 
+        {"intId": 7, "name": "nid_bg", "dataType": "uint32", "multiplicity": "0..1", "range": "0..16383", 
+          "info": "Identity number of the balise group. Identity number of a balise group or loop within the country or region defined by NID_C."}], 
+      "intId": 53
+    }, 
+    {
+      "name": "ETCSPacket_134", "info": "EOLM Packet. This packet announces a loop.", 
+      "attrs": [
+        {"intId": 1, "name": "nid_loop", "dataType": "uint32", "range": "0..16383", 
+          "info": "Identity number of the loop. (Identity number of a loop within the country or region defined by NID_C given in the EOLM balise header)"}, 
+        {"intId": 2, "name": "d_loop", "dataType": "uint32", "range": "0..32767", 
+          "info": "Distance between EOLM and start of loop (The EOLM specifies the distance to the beginning of the loop transmission.)"}, 
+        {"intId": 3, "name": "l_loop", "dataType": "uint32", "range": "0..32767", 
+          "info": "Length of loop. (L_LOOP specifies the length of the loop starting from the distance indicated by D_LOOP)"}, 
+        {"intId": 4, "name": "q_loopdir", "dataType": "boolean", 
+          "info": "Qualifier to indicate the direction of the loop. set to False if it is opposite direction, else, True if it is same direction"}, 
+        {"intId": 5, "name": "q_sscode", "dataType": "uint32", "range": "0..15", 
+          "info": "Spread Spectrum Code for Euroloop. Specifies the code required to receive telegrams from a specific Euroloop installation."}], 
+      "intId": 54
+    }, 
+    {"name": "ETCSPacket_135", "info": " Stop Shunting on desk opening (Packet to stop Shunting on desk opening)", 
+      "attrs": [], "intId": 55}, 
+    {
+      "name": "ETCSPacket_136", 
+      "info": " Infill location reference (Defines location reference for all data contained in the same radio message or balise/loop telegram respectively, following this packet.)", 
+      "attrs": [{"intId": 1, "name": "nid_c", "dataType": "uint32", "range": "0..1023", "multiplicity": "0..1"}, 
+        {"intId": 2, "name": "nid_bg", "dataType": "uint32", "range": "0..16383", 
+          "info": "Identity number of the balise group (Identity number of a balise group or loop within the country or region defined by NID_C.)"}], 
+      "intId": 56
+    }, 
+    {
+      "name": "ETCSPacket_137", "info": " Stop if in Staff Responsible (Information to stop a train in staff responsible.)", 
+      "attrs": [
+        {"intId": 1, "name": "q_srstop", "dataType": "boolean", 
+          "info": "(Stop if in Staff Responsible) information (Specifies whether an onboard equipment in staff responsible has to stop or not))"}], 
+      "intId": 57
+    }, 
+    {
+      "name": "ETCSPacket_138", 
+      "info": " Reversing area information (Used to send start and length of reversing area to the on-board)", 
+      "attrs": [
+        {"intId": 1, "name": "d_startreverse", "dataType": "uint32", "range": "0..32767", 
+          "info": "Distance to start of reversing permitted area."}, 
+        {"intId": 2, "name": "l_reversearea", "dataType": "uint32", "range": "0..32767", 
+          "info": "Length of the reversing permitted area."}], 
+      "intId": 58
+    }, 
+    {
+      "name": "ETCSPacket_139", 
+      "info": " Reversing supervision information (Used to send supervision parameters (distance to run, speed) of reversing area to the on-board)", 
+      "attrs": [
+        {"intId": 1, "name": "d_reverse", "dataType": "uint32", "range": "0..32767", 
+          "info": "Maximum distance to run in RV mode (Distance from reference location to end location of the distance to run in RV mode.)"}, 
+        {"intId": 2, "name": "v_reverse", "dataType": "uint32", "range": "0..127", "unit": "km/h", 
+          "info": "Reversing mode speed limit."}], 
+      "intId": 59
+    }, 
+    {
+      "name": "ETCSPacket_141", 
+      "info": " Default Gradient for Temporary Speed Restriction (It defines a default gradient to be used for TSR supervision when no gradient profile (packet 21) is available)", 
+      "attrs": [
+        {"intId": 1, "name": "q_gdir", "dataType": "boolean", 
+          "info": "Qualifier for gradient slope: False = downhill; True = uphill"}, 
+        {"intId": 2, "name": "g_tsr", "dataType": "int32", "range": "0..255", "unit": "permill", 
+          "info": "Default gradient for TSR supervision. Defines a default gradient to be used for TSR supervision when no gradient profile (packet 21) is available."}], 
+      "intId": 60
+    }, 
+    {
+      "name": "ETCSPacket_145", 
+      "info": " Inhibition of balise group message consistency reaction.Indication to on-board that the balise group message consistency reaction (service brake command) can be inhibited for this balise group message only, in case one or more balise telegram(s) of the group is/are missed or is/are detected but not decoded.", 
+      "attrs": [], "intId": 61
+    }, 
+    {
+      "name": "ETCSPacket_180", 
+      "info": " LSSMA display toggle order (Used to toggle on/off the display of the Lowest Supervised Speed within the MA.)", 
+      "attrs": [
+        {"intId": 1, "name": "q_lssma", "dataType": "boolean", 
+          "info": "Qualifier for the LSSMA display (This qualifier tells whether the on-board has to toggle on/off the display of the lowest supervised speed within the MA.)"}, 
+        {"intId": 2, "name": "t_lssma", "dataType": "uint32", "unit": "s", "range": "0..255", "multiplicity": "0..1", 
+          "info": "Delay to toggle on the LSSMA display."}], 
+      "intId": 62
+    }, 
+    {
+      "name": "ETCSPacket_181", 
+      "info": " Generic LS function marker (Used to enable the generic toggling on/off of the display of the Lowest Supervised Speed within the MA.)", 
+      "attrs": [], "intId": 63
+    }, 
+    {
+      "name": "ETCSPacket_254", 
+      "info": "Default balise, loop or RIU information (Indication to on-board that balise telegram, loop message or RIU information contains default information due to a fault of the trackside equipment.)", 
+      "attrs": [], "intId": 64
+    }, 
+    {
+      "name": "ETCSPacket_255", 
+      "info": " End of Information (This packet consists only of NID_PACKET containing 8 bit 1smessage/telegram when receiving eight bits set to one in the NID_PACKET field.)", 
+      "attrs": [], "intId": 65
+    }, 
+    {
+      "name": "PacketMgmt", 
+      "attrs": [{"intId": 1, "name": "packets_0", "composition": "ETCSPacket_0", "multiplicity": "*"}, 
+        {"intId": 2, "name": "packets_2", "composition": "ETCSPacket_2", "multiplicity": "*"}, 
+        {"intId": 3, "name": "packets_3", "composition": "ETCSPacket_3", "multiplicity": "*"}, 
+        {"intId": 4, "name": "packets_5", "composition": "ETCSPacket_5", "multiplicity": "*"}, 
+        {"intId": 5, "name": "packets_6", "composition": "ETCSPacket_6", "multiplicity": "*"}, 
+        {"intId": 6, "name": "packets_16", "composition": "ETCSPacket_16", "multiplicity": "*"}, 
+        {"intId": 7, "name": "packets_39", "composition": "ETCSPacket_39", "multiplicity": "*"}, 
+        {"intId": 8, "name": "packets_40", "composition": "ETCSPacket_40", "multiplicity": "*"}, 
+        {"intId": 9, "name": "packets_41", "composition": "ETCSPacket_41", "multiplicity": "*"}, 
+        {"intId": 10, "name": "packets_42", "composition": "ETCSPacket_42", "multiplicity": "*"}, 
+        {"intId": 11, "name": "packets_44", "composition": "ETCSPacket_44", "multiplicity": "*"}, 
+        {"intId": 12, "name": "packets_45", "composition": "ETCSPacket_45", "multiplicity": "*"}, 
+        {"intId": 13, "name": "packets_46", "composition": "ETCSPacket_46", "multiplicity": "*"}, 
+        {"intId": 14, "name": "packets_49", "composition": "ETCSPacket_49", "multiplicity": "*"}, 
+        {"intId": 15, "name": "packets_51", "composition": "ETCSPacket_51", "multiplicity": "*"}, 
+        {"intId": 16, "name": "packets_52", "composition": "ETCSPacket_52", "multiplicity": "*"}, 
+        {"intId": 17, "name": "packets_65", "composition": "ETCSPacket_65", "multiplicity": "*"}, 
+        {"intId": 18, "name": "packets_66", "composition": "ETCSPacket_66", "multiplicity": "*"}, 
+        {"intId": 19, "name": "packets_67", "composition": "ETCSPacket_67", "multiplicity": "*"}, 
+        {"intId": 20, "name": "packets_68", "composition": "ETCSPacket_68", "multiplicity": "*"}, 
+        {"intId": 21, "name": "packets_69", "composition": "ETCSPacket_69", "multiplicity": "*"}, 
+        {"intId": 22, "name": "packets_70", "composition": "ETCSPacket_70", "multiplicity": "*"}, 
+        {"intId": 23, "name": "packets_71", "composition": "ETCSPacket_71", "multiplicity": "*"}, 
+        {"intId": 24, "name": "packets_71", "composition": "ETCSPacket_72", "multiplicity": "*"}, 
+        {"intId": 25, "name": "packets_76", "composition": "ETCSPacket_76", "multiplicity": "*"}, 
+        {"intId": 26, "name": "packets_79", "composition": "ETCSPacket_79", "multiplicity": "*"}, 
+        {"intId": 27, "name": "packets_80", "composition": "ETCSPacket_80", "multiplicity": "*"}, 
+        {"intId": 28, "name": "packets_88", "composition": "ETCSPacket_88", "multiplicity": "*"}, 
+        {"intId": 29, "name": "packets_90", "composition": "ETCSPacket_90", "multiplicity": "*"}, 
+        {"intId": 30, "name": "packets_131", "composition": "ETCSPacket_131", "multiplicity": "*"}, 
+        {"intId": 31, "name": "packets_132", "composition": "ETCSPacket_132", "multiplicity": "*"}, 
+        {"intId": 32, "name": "packets_133", "composition": "ETCSPacket_133", "multiplicity": "*"}, 
+        {"intId": 33, "name": "packets_134", "composition": "ETCSPacket_134", "multiplicity": "*"}, 
+        {"intId": 34, "name": "packets_135", "composition": "ETCSPacket_135", "multiplicity": "*"}, 
+        {"intId": 35, "name": "packets_137", "composition": "ETCSPacket_137", "multiplicity": "*"}, 
+        {"intId": 36, "name": "packets_138", "composition": "ETCSPacket_138", "multiplicity": "*"}, 
+        {"intId": 37, "name": "packets_139", "composition": "ETCSPacket_139", "multiplicity": "*"}, 
+        {"intId": 38, "name": "packets_141", "composition": "ETCSPacket_141", "multiplicity": "*"}, 
+        {"intId": 39, "name": "packets_145", "composition": "ETCSPacket_145", "multiplicity": "*"}, 
+        {"intId": 40, "name": "packets_180", "composition": "ETCSPacket_180", "multiplicity": "*"}, 
+        {"intId": 41, "name": "packets_181", "composition": "ETCSPacket_181", "multiplicity": "*"}, 
+        {"intId": 42, "name": "packets_254", "composition": "ETCSPacket_254", "multiplicity": "*"}, 
+        {"intId": 43, "name": "packets_255", "composition": "ETCSPacket_255", "multiplicity": "*"}], 
+      "intId": 66
+    }]
 }

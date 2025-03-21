@@ -1,104 +1,76 @@
 {
-  "name": "map",
-  "intId": 7,
-  "isDefinedBy": "http://ERJU/datamodel/1.0/map",
-  "prefix": "map",
-  "containerStruct": "MapMgmt",
-  "version": "1.0",
-  "info": "Data model to build map",
+  "$schema": "ERJU meta-model.json", "isDefinedBy": "http://ERJU/datamodel/0.4/map", "name": "Map", 
+  "containerStruct": "MapMgmt", "prefix": "map", "intId": 7, "version": "1.0", "info": "Data model to build map", 
+  "enums": [], 
   "structs": [
-  {
-    "name": "MapArea",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "name", "dataType": "string", "multiplicity": "0..1",
-       "info": "User-friendly name, only if different from id"},
-      {"intId": 3, "name": "versionTimestamp", "dataType": "timestamp",
-       "info": "version information which is valid since timestamp"},
-      {"intId": 4, "name": "areaId", "dataType": "string",
-       "info": "there could be several maps representing one area"},
-      {"intId": 5, "name": "epsg", "dataType": "uint32",
-       "info": "EPSG code, 1 - monitor coordinates"},
-      {"intId": 6, "name": "trackEdgeProjections", "composition": "TrackEdgeProjection", "multiplicity": "0..*", "sortedByKey": true,
-       "info": "composes of track edges"},
-      {"intId": 7, "name": "functionalElements", "composition": "FunctionalElementProjection", "multiplicity": "0..*", "sortedByKey": false,
-       "info": "composes of functional elements"}
-    ]
-  },
-  {
-    "name": "TrackEdgeProjection",
-    "attrs": [
-      {"intId": 1, "name": "trackEdgeProjectionId", "dataType": "string", "key": "global", "sameKeyAs": "infra.TrackEdge",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "coordinates", "composition": "TrackEdgeCoordinate", "multiplicity": "2..*", "sortedByKey": false,
-       "info": "composes of coordinates"}
-    ]
-  },
-  {
-    "name": "TrackEdgeCoordinate",
-    "attrs": [
-      {"intId": 1, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
-       "info": "position on the associated Track Edge"},
-      {"intId": 2, "name": "x", "dataType": "double",
-       "info": "todo: mapping to each EPSG-code"},
-      {"intId": 3, "name": "y", "dataType": "double",
-       "info": "todo: mapping to each EPSG-code"},
-      {"intId": 4, "name": "z", "dataType": "double",
-       "info": "todo: mapping to each EPSG-code"},
-      {"intId": 5, "name": "accPos", "dataType": "uint32", "unit": "m", "exp": -3,
-       "info": "absolute accuracy as 1sigma. Use 0 if not defined"},
-      {"intId": 6, "name": "accX", "dataType": "double",
-       "info": "absolute accuracy as 1sigma. Use 0.0 if not defined"},
-      {"intId": 7, "name": "accY", "dataType": "double",
-       "info": "absolute accuracy as 1sigma. Use 0.0 if not defined"},
-      {"intId": 8, "name": "accZ", "dataType": "double",
-       "info": "absolute accuracy as 1sigma. Use 0.0 if not defined"}
-    ]
-  },
-  {
-    "name": "FunctionalElementProjection",
-    "attrs": [
-      {"intId": 1, "name": "elementRef", "composition": "FunctionalElementRef",
-       "info": "composes of element refs"},
-      {"intId": 2, "name": "x", "dataType": "double",
-       "info": "todo: mapping to each EPSG-code"},
-      {"intId": 3, "name": "y", "dataType": "double",
-       "info": "todo: mapping to each EPSG-code"},
-      {"intId": 4, "name": "z", "dataType": "double",
-       "info": "todo: mapping to each EPSG-code"},
-      {"intId": 5, "name": "accX", "dataType": "double",
-       "info": "absolute accuracy as 1sigma. Use 0.0 if not defined"},
-      {"intId": 6, "name": "accY", "dataType": "double",
-       "info": "absolute accuracy as 1sigma. Use 0.0 if not defined"},
-      {"intId": 7, "name": "accZ", "dataType": "double",
-       "info": "absolute accuracy as 1sigma. Use 0.0 if not defined"}
-    ]
-  },
-  {
-    "name": "FunctionalElementRef",
-    "union": true,
-    "attrs": [
-      {"intId": 1, "name": "simplePoint", "reference": "infra.Switch",
-       "info": "refers to simple point"},
-      {"intId": 2, "name": "etcsMarker", "reference": "infra.ETCSMarker",
-       "info": "refers to ETCS marker"},
-      {"intId": 3, "name": "stopLocation", "reference": "infra.StopLocation",
-       "info": "refers to stop location"},
-      {"intId": 4, "name": "timingPoint", "reference": "infra.TimingPoint",
-       "info": "refers to timing point"},
-      {"intId": 5, "name": "operationalPoint", "reference": "infra.OperationalPoint",
-       "info": "refers to operational point"},
-      {"intId": 6, "name": "balise", "reference": "infra.Balise",
-       "info": "refers to balise"}
-    ]
-  },
-  {
-    "name": "MapMgmt",
-    "attrs": [
-      {"intId": 1, "name": "mapAreas", "composition": "MapArea", "multiplicity": "0..*", "sortedByKey": true,
-       "info": "composes of map areas"}
-    ]
-  }
-  ]
+    {
+      "name": "Map", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", "info": "Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "name", "dataType": "string", "info": "User-friendly name, only if different from id", 
+          "multiplicity": "0..1"}, 
+        {"intId": 3, "name": "versionTimestamp", "dataType": "timestamp", 
+          "info": "Defines the version information which is valid since timestamp"}, 
+        {"intId": 4, "name": "areaId", "dataType": "string", 
+          "info": "Defines the areaIds for a Map. There could be several maps representing one area"}, 
+        {"intId": 5, "name": "epsg", "dataType": "uint32", 
+          "info": "Defines the applicable EPSG code for the map area. Use 1 for monitor coordinates"}, 
+        {"intId": 6, "name": "linearElementProjections", "composition": "LinearElementProjection", "ordered": "byKey", 
+          "multiplicity": "*", "info": "Defines container for projections of linearElements on same mapping system"}, 
+        {"intId": 7, "name": "functionalElements", "composition": "FunctionalElementProjection", "multiplicity": "*", 
+          "info": "Defines a container for a reference to a functional element of the infrastructure"}]
+    }, 
+    {
+      "name": "LinearElementProjection", 
+      "attrs": [{"intId": 1, "name": "linearElement", "reference": "infra.LinearElement"}, 
+        {"intId": 2, "name": "coordinates", "composition": "LinearElementCoordinate", "multiplicity": "2..*", 
+          "ordered": "byIndex", "info": "Defines a sequence of coordinates representing a mapping of a linear element"}], 
+      "intId": 2
+    }, 
+    {
+      "name": "LinearElementCoordinate", 
+      "attrs": [
+        {"intId": 1, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3, 
+          "info": "Defines position on the associated LinearElement"}, 
+        {"intId": 2, "name": "x", "dataType": "double", "info": "Defines the x coordiante value, mapping to each EPSG-code"}, 
+        {"intId": 3, "name": "y", "dataType": "double", "info": "Defines the y coordiante value, mapping to each EPSG-code"}, 
+        {"intId": 4, "name": "z", "dataType": "double", "info": "Defines the z coordiante value, mapping to each EPSG-code"}, 
+        {"intId": 5, "name": "accPos", "dataType": "uint32", "unit": "m", "exp": -3, 
+          "info": "absolute accuracy as 1sigma. Use 0 if not defined"}, 
+        {"intId": 6, "name": "accX", "dataType": "double", "info": "absolute accuracy as 1sigma. Use 0.0 if not defined"}, 
+        {"intId": 7, "name": "accY", "dataType": "double", "info": "absolute accuracy as 1sigma. Use 0.0 if not defined"}, 
+        {"intId": 8, "name": "accZ", "dataType": "double", "info": "absolute accuracy as 1sigma. Use 0.0 if not defined"}], 
+      "intId": 3
+    }, 
+    {
+      "name": "FunctionalElementProjection", 
+      "attrs": [
+        {"intId": 1, "name": "elementRef", "composition": "FunctionalElementRef", 
+          "info": "Defines reference container for which the coodinate is defined"}, 
+        {"intId": 2, "name": "x", "dataType": "double", "info": "todo: mapping to each EPSG-code"}, 
+        {"intId": 3, "name": "y", "dataType": "double", "info": "todo: mapping to each EPSG-code"}, 
+        {"intId": 4, "name": "z", "dataType": "double", "info": "todo: mapping to each EPSG-code"}, 
+        {"intId": 5, "name": "accX", "dataType": "double", "info": "absolute accuracy as 1sigma. Use 0.0 if not defined"}, 
+        {"intId": 6, "name": "accY", "dataType": "double", "info": "absolute accuracy as 1sigma. Use 0.0 if not defined"}, 
+        {"intId": 7, "name": "accZ", "dataType": "double", "info": "absolute accuracy as 1sigma. Use 0.0 if not defined"}], 
+      "intId": 4
+    }, 
+    {
+      "name": "FunctionalElementRef", "union": true, 
+      "attrs": [{"intId": 1, "name": "switch", "reference": "infra.Switch", "info": "refers to switch/simple point"}, 
+        {"intId": 2, "name": "etcsMarker", "reference": "infra.ETCSMarker", "info": "refers to ETCS marker"}, 
+        {"intId": 3, "name": "stopLocation", "reference": "infra.StopLocation", "info": "refers to stop location"}, 
+        {"intId": 4, "name": "timingPoint", "reference": "infra.TimingPoint", "info": "Defines a reference to a timing point"}, 
+        {"intId": 5, "name": "operationalPoint", "reference": "infra.OperationalPoint", 
+          "info": "Defines a reference to an operational point (station, siding etc)."}, 
+        {"intId": 6, "name": "balise", "reference": "infra.Balise", "info": "Defines a reference to a functional balise"}], 
+      "intId": 5
+    }, 
+    {
+      "name": "MapMgmt", 
+      "attrs": [
+        {"intId": 1, "name": "maps", "composition": "Map", "multiplicity": "*", "ordered": "byKey", 
+          "info": "Defines container for all Maps in a system"}], 
+      "intId": 6
+    }]
 }

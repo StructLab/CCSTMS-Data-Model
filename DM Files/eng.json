@@ -1,282 +1,258 @@
 {
-  "name": "eng",
-  "intId": 3,
-  "isDefinedBy": "http://ERJU/datamodel/0.4/eng",
-  "prefix": "eng",
-  "containerStruct": "ETCSEngineering",
-  "version": "1.0",
-  "info": "Engineering Data for the ETCS Level 2/3 use case",
+  "$schema": "ERJU meta-model.json", "isDefinedBy": "http://ERJU/datamodel/0.4/eng", "name": "ETCSEngineering", 
+  "containerStruct": "ETCSEngineering", "prefix": "eng", "intId": 3, "version": "1.0", 
+  "info": "Engineering Data for the ETCS Level 2/3 use case", 
   "enums": [
-  {
-    "name": "BufferStopType",
-    "enumLiterals": [
-      {"intId": 0, "name": "friction", "info": "is of type friction"},
-      {"intId": 1, "name": "hydraulic", "info": "is of type hyraulic"},
-      {"intId": 2, "name": "fixated", "info": "is of type fixated"},
-      {"intId": 3, "name": "other", "info": "is of type other"}
-    ]
-  },
-  {
-    "name": "DuplicationType",
-    "info": "Flags to indicate whether the information of the balise is a duplicate of the balise before or after.",
-    "enumLiterals": [
-      {"intId": 0, "name": "noDuplicates", "info": " does not duplicate any balise"},
-      {"intId": 1, "name": "duplicateNextBalise", "info": " duplicates next balise"},
-      {"intId": 2, "name": "duplicatePreviousBalise", "info": "duplicates previous balise"}
-    ]
-  },
-  {
-    "name": "SleepersType",
-    "enumLiterals": [
-      {"intId": 0, "name": "unknownSleepersType", "info": " sleeper type unknown"},
-      {"intId": 1, "name": "composite", "info": " is of type composite"},
-      {"intId": 2, "name": "concrete", "info": "is of type concrete"},
-      {"intId": 3, "name": "steel", "info": "is of type steel"},
-      {"intId": 4, "name": "wood", "info": "is of type wood"}
-    ]
-  }
-  ],
+    {
+      "name": "BufferStopType", 
+      "enumLiterals": [{"intId": 0, "name": "friction", "info": "is of type friction"}, 
+        {"intId": 1, "name": "hydraulic", "info": "is of type hyraulic"}, 
+        {"intId": 2, "name": "fixated", "info": "is of type fixated"}, 
+        {"intId": 3, "name": "other", "info": "is of type other"}], 
+      "intId": 1
+    }, 
+    {
+      "name": "DuplicationType", 
+      "info": "Flags to indicate whether the information of the balise is a duplicate of the balise before or after.", 
+      "enumLiterals": [{"intId": 0, "name": "noDuplicates", "info": " does not duplicate any balise"}, 
+        {"intId": 1, "name": "duplicateNextBalise", "info": " duplicates next balise"}, 
+        {"intId": 2, "name": "duplicatePreviousBalise", "info": "duplicates previous balise"}], 
+      "intId": 2
+    }, 
+    {
+      "name": "SleepersType", 
+      "enumLiterals": [{"intId": 0, "name": "unknownSleepersType", "info": " sleeper type unknown"}, 
+        {"intId": 1, "name": "composite", "info": " is of type composite"}, 
+        {"intId": 2, "name": "concrete", "info": "is of type concrete"}, 
+        {"intId": 3, "name": "steel", "info": "is of type steel"}, 
+        {"intId": 4, "name": "wood", "info": "is of type wood"}], 
+      "intId": 3
+    }], 
   "structs": [
-  {
-    "name": "BufferStop",
-    "info": "object buffer stop on the track",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.BufferStop",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "dangerPoints", "reference": "DangerPoint", "multiplicity": "0..*", "sortedByKey": false,
-       "info": "refers to danger points"},
-      {"intId": 3, "name": "trackEdgeSections", "composition": "infra.TrackEdgeSection", "multiplicity": "1..*", "sortedByKey": false,
-       "info": "composes of track edge sections"},
-      {"intId": 4, "name": "bsType", "enumType": "BufferStopType",
-       "info": "defines buffer stop types"}
-    ]
-  },
-  {
-    "name": "SimplePoint",
-    "info": "Defines the physical track asset Simple Point",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.SimplePoint",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "foulingPoints", "reference": "FoulingPoint", "multiplicity": "1..*", "sortedByKey": false,
-       "info": "refers to fouling points"},
-      {"intId": 3, "name": "tipShift", "dataType": "double",
-       "info": "the tip distance from the start of the simple point on main and branching tracks"},
-      {"intId": 4, "name": "bladeLength", "dataType": "double",
-       "info": "the length of the blade of simple point along main and branching tracks"}
-    ]
-  },
-  {
-    "name": "Crossing",
-    "info": "Defines the physical track asset Crossing without possibility to switch between two track edges",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.Crossing",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "foulingPoints", "reference": "FoulingPoint", "multiplicity": "1..*", "sortedByKey": false,
-       "info": "refers to fouling points"}
-    ]
-  },
-  {
-    "name": "LevelCrossing",
-    "info": "Defines the track asset level crossing",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.LevelCrossing",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "dangerPoints", "reference": "DangerPoint", "multiplicity": "1..*", "sortedByKey": false,
-       "info": "refers to danger points"}
-    ]
-  },
-  {
-    "name": "BaliseGroup",
-    "info": "Defines a technical device group on the railway trackbed.",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.BaliseGroup",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "m_version", "enumType": "ss026.ETCSVersion",
-       "info": "Version of the ERTMS/ETCS system"},
-      {"intId": 3, "name": "q_link", "dataType": "boolean",
-       "info": "true when the balise group is linked, otherwise, false (unlinked)"},
-      {"intId": 4, "name": "q_updown", "dataType": "boolean",
-       "info": "This defines the direction of information. True when it is Up-link (Track-to-Train) and false when it is Down-link (Train-to-Track)"}
-    ]
-  },
-  {
-    "name": "Balise",
-    "info": "Defines a technical device on the railway trackbed.",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.Balise",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "fixed", "dataType": "boolean",
-       "info": "false when balise is of transparent type"},
-      {"intId": 3, "name": "m_dup", "enumType": "DuplicationType"},
-      {"intId": 4, "name": "m_mcount", "dataType": "uint32", "range": "0..255",
-       "info": "the purpose of message counter is to make it possible for the ERTMS/ETCS on-board to detect which balise group message the telegram belongs to."},
-      {"intId": 5, "name": "n_pig", "dataType": "uint32", "range": "0..7",
-       "info": "position in the group. Defines the position of the balise in the balise group."},
-      {"intId": 6, "name": "verticallyOriented", "dataType": "boolean",
-       "info": "false when oriented parallel to the sleepers"},
-      {"intId": 7, "name": "standardSize", "dataType": "boolean",
-       "info": "false when balise is of reduced size"},
-      {"intId": 8, "name": "etcsPackets", "composition": "ss026.BalisePacket", "multiplicity": "0..*", "sortedByKey": false,
-       "info": "Referring to the ss026 of this Data Model"},
-      {"intId": 9, "name": "telegram", "dataType": "bytes",
-       "info": "The telegram content of the Balise"},
-      {"intId": 10, "name": "telegramChecksum", "dataType": "string",
-       "info": "A checksum to verify the integrity of the stored telegram"},
-      {"intId": 11, "name": "sleeperFastening", "dataType": "string",
-       "info": "Indicates the fastening system used for the balise on thesleeper"},
-      {"intId": 12, "name": "baliseMountingSystem", "dataType": "string",
-       "info": "Indicates the mounting system used for the balise"},
-      {"intId": 13, "name": "designType", "dataType": "string",
-       "info": "Manufacturer type of that balise"},
-      {"intId": 14, "name": "kmReferenceMarker", "reference": "KmSign",
-       "info": "reference to the relevant reference marker"}
-    ]
-  },
-  {
-    "name": "Sleepers",
-    "info": "Sleepers are components on which the rails arranged with corresponding gauge.",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "trackEdgeSection", "composition": "infra.TrackEdgeSection", "multiplicity": "1..*", "sortedByKey": false,
-       "info": "composes of track edge sections"},
-      {"intId": 3, "name": "sleepersType", "enumType": "SleepersType",
-       "info": "defines sleeper types"}
-    ]
-  },
-  {
-    "name": "DangerPoint",
-    "info": "a specific location on the railway where a potential conflict or danger may arise between trains or between trains and other object",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "name", "dataType": "string",
-       "info": "User-friendly name, only if different from id"},
-      {"intId": 3, "name": "spotLocation", "composition": "infra.TrackEdgePoint"}
-    ]
-  },
-  {
-    "name": "FoulingPoint",
-    "info": "the point on a railway track beyond which a train is not allowed to proceed if another train or object is occupying that portion of the track",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "name", "dataType": "string", "multiplicity": "0..1",
-       "info": "User-friendly name, only if different from id"},
-      {"intId": 3, "name": "spotLocation", "composition": "infra.TrackEdgePoint"},
-      {"intId": 4, "name": "clearancePoint", "dataType": "uint32",
-       "info": "location along the TrackEdge from spotLocation, measured from start"}
-    ]
-  },
-  {
-    "name": "EngArea",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.FunctionalArea",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "defaultSleepersType", "enumType": "SleepersType"},
-      {"intId": 3, "name": "simplePoints", "composition": "SimplePoint", "multiplicity": "0..*", "sortedByKey": false},
-      {"intId": 4, "name": "crossings", "composition": "Crossing", "multiplicity": "0..*", "sortedByKey": false},
-      {"intId": 5, "name": "levelCrossings", "composition": "LevelCrossing", "multiplicity": "0..*", "sortedByKey": false},
-      {"intId": 6, "name": "baliseGroup", "composition": "BaliseGroup", "multiplicity": "0..*", "sortedByKey": false},
-      {"intId": 7, "name": "balises", "composition": "Balise", "multiplicity": "0..*", "sortedByKey": false},
-      {"intId": 8, "name": "sleepers", "composition": "Sleepers", "multiplicity": "0..*", "sortedByKey": false},
-      {"intId": 9, "name": "dangerPoints", "composition": "DangerPoint", "multiplicity": "0..*", "sortedByKey": false},
-      {"intId": 10, "name": "foulingPoints", "composition": "FoulingPoint", "multiplicity": "0..*", "sortedByKey": false},
-      {"intId": 11, "name": "bufferStops", "composition": "BufferStop", "multiplicity": "0..*", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "LocationAccuracyArea",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.FunctionalArea",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "baliseAccuracies", "composition": "BaliseAccuracy", "multiplicity": "0..*", "sortedByKey": true},
-      {"intId": 3, "name": "etcsMarkerAccuracies", "composition": "EtcsMarkerAccuracy", "multiplicity": "0..*", "sortedByKey": true},
-      {"intId": 4, "name": "stopLocationAccuracies", "composition": "StopLocationAccuracy", "multiplicity": "0..*", "sortedByKey": true},
-      {"intId": 5, "name": "nationalBorderAccuracies", "composition": "NationalBorderAccuracy", "multiplicity": "0..*", "sortedByKey": true},
-      {"intId": 6, "name": "bufferStopAccuracies", "composition": "BufferStopAccuracy", "multiplicity": "0..*", "sortedByKey": true}
-    ]
-  },
-  {
-    "name": "BaliseAccuracy",
-    "attrs": [
-      {"intId": 1, "name": "baliseId", "dataType": "string", "sameKeyAs": "infra.Balise",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "accuracy", "dataType": "uint32", "unit": "m", "exp": -3,
-       "info": "defines absolute deviation as 1sigma for balise"}
-    ]
-  },
-  {
-    "name": "EtcsMarkerAccuracy",
-    "attrs": [
-      {"intId": 1, "name": "markerId", "dataType": "string", "sameKeyAs": "infra.ETCSMarker",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "accuracy", "dataType": "uint32", "unit": "m", "exp": -3,
-       "info": "defines absolute deviation as 1sigma for etcsMarker"}
-    ]
-  },
-  {
-    "name": "StopLocationAccuracy",
-    "attrs": [
-      {"intId": 1, "name": "stopLocationId", "dataType": "string", "sameKeyAs": "infra.StopLocation",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "accuracy", "dataType": "uint32", "unit": "m", "exp": -3,
-       "info": "defines absolute deviation as 1sigma for stop location"}
-    ]
-  },
-  {
-    "name": "NationalBorderAccuracy",
-    "attrs": [
-      {"intId": 1, "name": "nationalBorderId", "dataType": "string", "sameKeyAs": "infra.NationalBorder",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "accuracy", "dataType": "uint32", "unit": "m", "exp": -3,
-       "info": "defines absolute deviation as 1sigma for stop location"}
-    ]
-  },
-  {
-    "name": "BufferStopAccuracy",
-    "attrs": [
-      {"intId": 1, "name": "bufferStopId", "dataType": "string", "sameKeyAs": "infra.BufferStop",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "accuracy", "dataType": "uint32", "unit": "m", "exp": -3,
-       "info": "defines absolute deviation as 1sigma for stop location"}
-    ]
-  },
-  {
-    "name": "TrackEdgeKmSigns",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.TrackEdge",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "kmSigns", "composition": "KmSign", "multiplicity": "0..*", "sortedByKey": false,
-       "info": "sorted by pos from 0 to length"}
-    ]
-  },
-  {
-    "name": "KmSign",
-    "info": "An object that represent a physical sign that would be used to convey Kilometer information at specific location on a TrackEdge",
-    "attrs": [
-      {"intId": 1, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3,
-       "info": "position on the associated trackEdge"},
-      {"intId": 2, "name": "label", "dataType": "string",
-       "info": "example 44.50"}
-    ]
-  },
-  {
-    "name": "KmArea",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "sameKeyAs": "TopoArea",
-       "info": "Identity of the object; used for referencing"},
-      {"intId": 2, "name": "trackEdgeKmSigns", "composition": "TrackEdgeKmSigns", "multiplicity": "0..*", "sortedByKey": true,
-       "info": "composes of track edge km signs"}
-    ]
-  },
-  {
-    "name": "ETCSEngineering",
-    "attrs": [
-      {"intId": 1, "name": "engAreas", "composition": "EngArea", "multiplicity": "0..*", "sortedByKey": true},
-      {"intId": 2, "name": "locationAccuracyAreas", "composition": "LocationAccuracyArea", "multiplicity": "0..*", "sortedByKey": true},
-      {"intId": 3, "name": "kmAreas", "composition": "KmArea", "multiplicity": "0..*", "sortedByKey": true}
-    ]
-  }
-  ]
+    {
+      "name": "BufferStop", "info": "object buffer stop on the track", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.BufferStop", 
+          "info": "Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "dangerPoints", "reference": "DangerPoint", "multiplicity": "0..*", 
+          "info": "refers to danger points"}, 
+        {"intId": 3, "name": "linearElementSections", "composition": "infra.LinearElementSection", "multiplicity": "1..*", 
+          "info": "composes of track edge sections"}, 
+        {"intId": 4, "name": "bsType", "enumType": "BufferStopType", "info": "Defines buffer stop type"}], 
+      "intId": 1
+    }, 
+    {
+      "name": "Switch", "info": "Defines the physical track asset Switch (Simple Point)", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.Switch", 
+          "info": "Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "foulingPoints", "reference": "FoulingPoint", "multiplicity": "1..*", 
+          "info": "refers to fouling points"}, 
+        {"intId": 3, "name": "tipShift", "dataType": "double", "unit": "m", 
+          "info": "Defines the tip distance from the start of the switch on main and branching tracks"}, 
+        {"intId": 4, "name": "bladeLength", "dataType": "double", "unit": "m", 
+          "info": "Defines the length of the blade of switch along main and branching tracks"}], 
+      "intId": 2
+    }, 
+    {
+      "name": "Crossing", 
+      "info": "Defines the physical track asset Crossing without possibility to switch between two track edges", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.Crossing", 
+          "info": "Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "foulingPoints", "reference": "FoulingPoint", "multiplicity": "1..*", 
+          "info": "refers to fouling points"}], 
+      "intId": 3
+    }, 
+    {
+      "name": "LevelCrossing", "info": "Defines the track asset level crossing", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.LevelCrossing", 
+          "info": "Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "dangerPoints", "reference": "DangerPoint", "multiplicity": "1..*", 
+          "info": "refers to danger points"}], 
+      "intId": 4
+    }, 
+    {
+      "name": "BaliseGroup", "info": "Defines a technical device group on the railway trackbed.", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.BaliseGroup", 
+          "info": "Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "m_version", "enumType": "ss026.ETCSMVersions", 
+          "info": "This gives the version of the ETCS system. Each part indicates the first and second number of the version respectively: The first number distinguishes not compatible versions (The three MSBs)_ The second number indicates compatibility within a version X. (The four LSBs)"}, 
+        {"intId": 3, "name": "q_link", "dataType": "boolean", 
+          "info": "true when the balise group is linked, otherwise, false (unlinked)"}, 
+        {"intId": 4, "name": "q_updown", "dataType": "boolean", 
+          "info": "This defines the direction of information. True when it is Up-link (Track-to-Train) and false when it is Down-link (Train-to-Track)"}], 
+      "intId": 5
+    }, 
+    {
+      "name": "Balise", "info": "Defines a technical device on the railway trackbed.", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "infra.Balise", 
+          "info": "Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "fixed", "dataType": "boolean", "info": "Defines if the balise is fixed or virtual"}, 
+        {"intId": 3, "name": "m_dup", "enumType": "DuplicationType", 
+          "info": "Defines whether the information of the balise is a duplicate of the balise before or after"}, 
+        {"intId": 4, "name": "m_mcount", "dataType": "uint32", "range": "0..255", 
+          "info": "the purpose of message counter is to make it possible for the ERTMS/ETCS on-board to detect which balise group message the telegram belongs to."}, 
+        {"intId": 5, "name": "n_pig", "dataType": "uint32", "range": "0..7", 
+          "info": "position in the group. Defines the position of the balise in the balise group."}, 
+        {"intId": 6, "name": "verticallyOriented", "dataType": "boolean", 
+          "info": "Defines the orientation of the balise. false when oriented parallel to the sleepers"}, 
+        {"intId": 7, "name": "standardSize", "dataType": "boolean", 
+          "info": "Defines the standard size if balise. false when balise is of reduced size"}, 
+        {"intId": 8, "name": "etcsPackets", "composition": "ss026.BalisePacket", "multiplicity": "0..*", 
+          "info": "Defines the ETCS packets associates to the Balise Group."}, 
+        {"intId": 9, "name": "telegram", "dataType": "bytes", "info": "Defines the telegram content of the balise"}, 
+        {"intId": 10, "name": "telegramChecksum", "dataType": "string", 
+          "info": "Defines the checksum to verify the integrity of the stored telegram"}, 
+        {"intId": 11, "name": "sleeperFastening", "dataType": "string", 
+          "info": "Defines the fastening system used for the balise on the sleeper"}, 
+        {"intId": 12, "name": "baliseMountingSystem", "dataType": "string", 
+          "info": "Defines the mounting system used for the balise"}, 
+        {"intId": 13, "name": "designType", "dataType": "string", "info": "Defines the manufacturer type for the balise"}], 
+      "intId": 6
+    }, 
+    {
+      "name": "Sleepers", "info": "Sleepers are components on which the rails arranged with corresponding gauge.", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", "info": "Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "linearElementSection", "composition": "infra.LinearElementSection", "multiplicity": "1..*", 
+          "info": "composes of track edge sections"}, 
+        {"intId": 3, "name": "sleepersType", "enumType": "SleepersType", "info": "defines sleepers type"}], 
+      "intId": 7
+    }, 
+    {
+      "name": "DangerPoint", 
+      "info": "a specific location on the railway where a potential conflict or danger may arise between trains or between trains and    other object", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", "info": "Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "name", "dataType": "string", "info": "User-friendly name, only if different from id"}, 
+        {"intId": 3, "name": "topologicalCoordinate", "composition": "infra.TopologicalCoordinate", 
+          "info": "Defines the point location on the linear element"}], 
+      "intId": 8
+    }, 
+    {
+      "name": "FoulingPoint", 
+      "info": "the point on a railway track beyond which a train is not allowed to proceed if another train or object is occupying that   portion of the track", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", "info": "Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "name", "dataType": "string", "info": "User-friendly name, only if different from id", 
+          "multiplicity": "0..1"}, 
+        {"intId": 3, "name": "topologicalCoordinate", "composition": "infra.TopologicalCoordinate", 
+          "info": "Defines the point location on the linear element"}], 
+      "intId": 9
+    }, 
+    {
+      "name": "EngArea", 
+      "attrs": [{"intId": 1, "name": "onTopoArea", "reference": "infra.TopoArea", "info": "refrence to the corresponding Topo Area"}, 
+        {"intId": 2, "name": "defaultSleepersType", "enumType": "SleepersType", "info": "Defines the default sleeper type"}, 
+        {"intId": 3, "name": "switches", "composition": "Switch", "multiplicity": "0..*", "info": "Defines the list of switches"}, 
+        {"intId": 4, "name": "crossings", "composition": "Crossing", "multiplicity": "0..*", 
+          "info": "Defines the list of crossings"}, 
+        {"intId": 5, "name": "levelCrossings", "composition": "LevelCrossing", "multiplicity": "0..*", 
+          "info": "Defines the list of level crossings"}, 
+        {"intId": 6, "name": "baliseGroup", "composition": "BaliseGroup", "multiplicity": "0..*", 
+          "info": "Defines the balise groups"}, 
+        {"intId": 7, "name": "balises", "composition": "Balise", "multiplicity": "0..*", "info": "Defines the list of balises"}, 
+        {"intId": 8, "name": "sleepers", "composition": "Sleepers", "multiplicity": "0..*", 
+          "info": "Defines the list of sleepers"}, 
+        {"intId": 9, "name": "dangerPoints", "composition": "DangerPoint", "multiplicity": "0..*", 
+          "info": "Defines the list of danger points"}, 
+        {"intId": 10, "name": "foulingPoints", "composition": "FoulingPoint", "multiplicity": "0..*", 
+          "info": "Defines the list of fouling points"}, 
+        {"intId": 11, "name": "bufferStops", "composition": "BufferStop", "multiplicity": "0..*", 
+          "info": "Defines the list of buffer stops"}], 
+      "intId": 10
+    }, 
+    {
+      "name": "LocationAccuracyArea", 
+      "attrs": [{"intId": 1, "name": "onTopoArea", "reference": "infra.TopoArea", "info": "reference to the corresponding Topo Area"}, 
+        {"intId": 2, "name": "baliseAccuracies", "composition": "BaliseAccuracy", "multiplicity": "*", 
+          "info": "Defines the balise accuracies"}, 
+        {"intId": 3, "name": "etcsMarkerAccuracies", "composition": "EtcsMarkerAccuracy", "multiplicity": "*", 
+          "info": "Defines the ETCS Marker Accuracies", "ordered": "byKey"}, 
+        {"intId": 4, "name": "stopLocationAccuracies", "composition": "StopLocationAccuracy", "multiplicity": "*", 
+          "info": "Defines the Stop Location Accuracies", "ordered": "byKey"}, 
+        {"intId": 5, "name": "nationalBorderAccuracies", "composition": "NationalBorderAccuracy", "multiplicity": "*", 
+          "info": "Defines the National Border Accuracies", "ordered": "byKey"}, 
+        {"intId": 6, "name": "bufferStopAccuracies", "composition": "BufferStopAccuracy", "multiplicity": "*", 
+          "info": "Defines the BufferStop Accuracies", "ordered": "byKey"}], 
+      "intId": 11
+    }, 
+    {
+      "name": "BaliseAccuracy", 
+      "attrs": [{"intId": 1, "name": "balise", "reference": "infra.Balise", "info": "Defines a reference to a functional balise"}, 
+        {"intId": 2, "name": "accuracy", "dataType": "uint32", "unit": "m", "exp": -3, 
+          "info": "defines absolute deviation as 1sigma for balise"}], 
+      "intId": 12
+    }, 
+    {
+      "name": "EtcsMarkerAccuracy", 
+      "attrs": [{"intId": 1, "name": "etcsMarker", "reference": "infra.ETCSMarker", "info": "refers to ETCS Marker"}, 
+        {"intId": 2, "name": "accuracy", "dataType": "uint32", "unit": "m", "exp": -3, 
+          "info": "defines absolute deviation as 1sigma for etcsMarker"}], 
+      "intId": 13
+    }, 
+    {
+      "name": "StopLocationAccuracy", 
+      "attrs": [{"intId": 1, "name": "stopLocation", "reference": "infra.StopLocation", "info": "refers to stop locaton"}, 
+        {"intId": 2, "name": "accuracy", "dataType": "uint32", "unit": "m", "exp": -3, 
+          "info": "defines absolute deviation as 1sigma for stop location"}], 
+      "intId": 14
+    }, 
+    {
+      "name": "NationalBorderAccuracy", 
+      "attrs": [{"intId": 1, "name": "nationalBorder", "reference": "infra.NationalBorder", "info": "refers to National border"}, 
+        {"intId": 2, "name": "accuracy", "dataType": "uint32", "unit": "m", "exp": -3, 
+          "info": "defines absolute deviation as 1sigma for stop location"}], 
+      "intId": 15
+    }, 
+    {
+      "name": "BufferStopAccuracy", 
+      "attrs": [{"intId": 1, "name": "bufferStop", "reference": "infra.BufferStop", "info": "refers to buffer stop"}, 
+        {"intId": 2, "name": "accuracy", "dataType": "uint32", "unit": "m", "exp": -3, 
+          "info": "defines absolute deviation as 1sigma for stop location"}], 
+      "intId": 16
+    }, 
+    {
+      "name": "LinearElementKmSigns", 
+      "attrs": [
+        {"intId": 1, "name": "linearElement", "reference": "infra.LinearElement", 
+          "info": "reference to the corresponding linear element"}, 
+        {"intId": 2, "name": "kilometricPosts", "composition": "KilometricPost", "multiplicity": "*", "ordered": "byIndex", 
+          "info": "Defines the kilometre posts on the track. These are sorted by pos from 0 to length"}], 
+      "intId": 17
+    }, 
+    {
+      "name": "KilometricPost", 
+      "info": "An object that represent a physical sign that would be used to convey Kilometer information at specific location on    a LinearElement", 
+      "attrs": [
+        {"intId": 1, "name": "pos", "dataType": "uint32", "unit": "m", "exp": -3, 
+          "info": "position on the associated LinearElement"}, 
+        {"intId": 2, "name": "kmPostName", "dataType": "string", "multiplicity": "0..1", 
+          "info": "Defines the name of Kilometric Post (optional)"}, 
+        {"intId": 3, "name": "kilometerNumber", "dataType": "uint32", 
+          "info": "Defines the kilometer number of the kilometric post"}], 
+      "intId": 18
+    }, 
+    {
+      "name": "KmArea", 
+      "attrs": [{"intId": 1, "name": "onTopoArea", "reference": "infra.TopoArea", "info": "refrence to the corresponding Topo Area"}, 
+        {"intId": 2, "name": "linearElementKmSigns", "composition": "LinearElementKmSigns", "multiplicity": "*", 
+          "ordered": "byKey", "info": "composes of linear element kilometer signs"}], 
+      "intId": 19
+    }, 
+    {
+      "name": "ETCSEngineering", 
+      "attrs": [
+        {"intId": 1, "name": "engAreas", "composition": "EngArea", "multiplicity": "*", 
+          "info": "Defines the list of engineering areas", "ordered": "byKey"}, 
+        {"intId": 2, "name": "locationAccuracyAreas", "composition": "LocationAccuracyArea", "multiplicity": "*", 
+          "info": "Defines the list of location accuracy areas", "ordered": "byKey"}, 
+        {"intId": 3, "name": "kmAreas", "composition": "KmArea", "multiplicity": "*", "info": "Defines the list of km areas", 
+          "ordered": "byKey"}], 
+      "intId": 20
+    }]
 }

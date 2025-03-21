@@ -1,913 +1,841 @@
 {
-  "name": "opp",
-  "intId": 6,
-  "isDefinedBy": "http://ERJU/datamodel/1.0/operationalPlan",
-  "prefix": "opp",
-  "containerStruct": "TrafficPlan",
-  "version": "1.0",
-  "info": "Operational-plan-package of the SCI-OP model",
-  "enums": [
-  {
-    "name": "BrakePosition",
-    "enumLiterals": [
-      {"intId": 0, "name": "passengerTrainInP"},
-      {"intId": 1, "name": "passengerTrainInR"},
-      {"intId": 2, "name": "freightTrainInP"},
-      {"intId": 3, "name": "freightTrainInG"},
-      {"intId": 4, "name": "brakePositionUnknown"}
-    ]
-  },
-  {
-    "name": "BrakeModelType",
-    "enumLiterals": [
-      {"intId": 0, "name": "lambda"},
-      {"intId": 1, "name": "gamma"},
-      {"intId": 2, "name": "undefined"}
-    ]
-  },
-  {
-    "name": "GradeOfAutomation",
-    "enumLiterals": [
-      {"intId": 0, "name": "GoAUnknown"},
-      {"intId": 1, "name": "GoA1"},
-      {"intId": 2, "name": "GoA2"},
-      {"intId": 3, "name": "GoA3"},
-      {"intId": 4, "name": "GoA4"}
-    ]
-  },
-  {
-    "name": "TrainCategoryType",
-    "enumLiterals": [
-      {"intId": 0, "name": "trainCategoryUnknown"},
-      {"intId": 1, "name": "interregional"},
-      {"intId": 2, "name": "regional"},
-      {"intId": 3, "name": "subUrban"},
-      {"intId": 4, "name": "nightTrain"},
-      {"intId": 5, "name": "motorRail"},
-      {"intId": 6, "name": "mountainTrain"},
-      {"intId": 7, "name": "historicTrain"},
-      {"intId": 8, "name": "coachGroup"},
-      {"intId": 9, "name": "tram"},
-      {"intId": 10, "name": "underground"},
-      {"intId": 11, "name": "highspeedTrain"},
-      {"intId": 12, "name": "intercity"}
-    ]
-  },
-  {
-    "name": "TrainUsageType",
-    "enumLiterals": [
-      {"intId": 0, "name": "trainUsageUndefined"},
-      {"intId": 1, "name": "commercialPassengerTrain"},
-      {"intId": 2, "name": "commercialCargoTrain"},
-      {"intId": 3, "name": "locomotiveRunningLight"},
-      {"intId": 4, "name": "lightRunning"},
-      {"intId": 5, "name": "notInService", "info": "betriebsfahrt"},
-      {"intId": 6, "name": "engineeringTrain"},
-      {"intId": 7, "name": "breakdownTrain", "info": "Hilfszug"},
-      {"intId": 8, "name": "mixedTrain"},
-      {"intId": 9, "name": "specialTrain"},
-      {"intId": 10, "name": "otherTrain"}
-    ]
-  },
-  {
-    "name": "TrainProtectionType",
-    "enumLiterals": [
-      {"intId": 0, "name": "Etcs"}
-    ]
-  },
-  {
-    "name": "AdhesionCategory",
-    "enumLiterals": [
-      {"intId": 0, "name": "dryRailHigh", "info": " Conditions where 100% of thebrake force of the vehicle can be appliedwith no axle sliding of more than2% (adhesion level typically above 0.15µ)"},
-      {"intId": 1, "name": "dryRailMedium", "info": "Conditions where the wheel/railadhesion is in the range 0.15 â 0.10 (Damprails with some contamination)"},
-      {"intId": 2, "name": "dryRailLow", "info": " Conditions where thewheel/rail adhesion is in the range 0.10 â0.08 (Typical autumn mornings due todew/dampness often combined with lightovernight rust)"},
-      {"intId": 3, "name": "lowAdhesion", "info": "Conditions where thewheel/rail adhesion is in the range 0.08 â0.05"},
-      {"intId": 4, "name": "veryLowAdhesion", "info": "Conditions where thewheel/rail adhesion is in the range 0.05-0.03"},
-      {"intId": 5, "name": "extremelyLowAdhesion", "info": "Conditionswhere the wheel/rail adhesion is below 0.03"},
-      {"intId": 255, "name": "unknownAdhesion"}
-    ]
-  },
-  {
-    "name": "TimeType",
-    "enumLiterals": [
-      {"intId": 0, "name": "plannedArrival"},
-      {"intId": 1, "name": "plannedDeparture"},
-      {"intId": 2, "name": "plannedMinDwellTime"},
-      {"intId": 3, "name": "publishedArrival"},
-      {"intId": 4, "name": "publishedDeparture"}
-    ]
-  },
-  {
-    "name": "MovementEventType",
-    "enumLiterals": [
-      {"intId": 0, "name": "pass", "info": "if the speed != 0 at the movement event position"},
-      {"intId": 1, "name": "stop", "info": "if the speed == 0 at the movement event position"}
-    ]
-  },
-  {
-    "name": "AlignmentType",
-    "enumLiterals": [
-      {"intId": 0, "name": "head"},
-      {"intId": 1, "name": "center"},
-      {"intId": 2, "name": "rear"}
-    ]
-  },
-  {
-    "name": "TrainUnitActivityType",
-    "enumLiterals": [
-      {"intId": 0, "name": "joinActivity", "info": "uncouple vehicles/parts for self-propelling train parts"},
-      {"intId": 1, "name": "splitActivity", "info": "uncouple vehicles/parts for self-propelling train parts"},
-      {"intId": 2, "name": "collectActivity", "info": "couple vehicles/parts"},
-      {"intId": 3, "name": "dropActivity", "info": "uncouple vehicles/trainParts"},
-      {"intId": 4, "name": "turnAroundActivity", "info": "stop to change driving direction of a train. After TurnAround a new MovementEvent with changed train position will be inserted into the Movement"},
-      {"intId": 5, "name": "meetActivity", "info": "Relevant for PE to request restricted MP in advance"}
-    ]
-  },
-  {
-    "name": "DeviceType",
-    "enumLiterals": [
-      {"intId": 0, "name": "acousticalIndicator"},
-      {"intId": 1, "name": "opticalIndicator"},
-      {"intId": 2, "name": "hapticIndicator"}
-    ]
-  },
-  {
-    "name": "ResponseCode",
-    "enumLiterals": [
-      {"intId": 0, "name": "accepted"},
-      {"intId": 1, "name": "rejected"}
-    ]
-  },
-  {
-    "name": "EventExecutionState",
-    "enumLiterals": [
-      {"intId": 0, "name": "eventCompleted"},
-      {"intId": 1, "name": "eventFailed"},
-      {"intId": 2, "name": "eventWarning"}
-    ]
-  },
-  {
-    "name": "ConnectionState",
-    "enumLiterals": [
-      {"intId": 0, "name": "connectionEstablished"},
-      {"intId": 1, "name": "connectionTerminated"},
-      {"intId": 2, "name": "connectionUndefined"}
-    ]
-  },
-  {
-    "name": "OperatingState",
-    "enumLiterals": [
-      {"intId": 0, "name": "active"},
-      {"intId": 1, "name": "readyForMP"},
-      {"intId": 2, "name": "inactive"},
-      {"intId": 3, "name": "undefined"}
-    ]
-  },
-  {
-    "name": "OnboardOperatingMode",
-    "enumLiterals": [
-      {"intId": 0, "name": "undefined"},
-      {"intId": 1, "name": "onSight"},
-      {"intId": 2, "name": "fullSupervision"},
-      {"intId": 3, "name": "standBy"}
-    ]
-  },
-  {
-    "name": "MovementEventAction",
-    "enumLiterals": [
-      {"intId": 0, "name": "passedEvent"},
-      {"intId": 1, "name": "stoppedAccurateAtEvent"},
-      {"intId": 2, "name": "stoppedWithOvershootAtEvent"},
-      {"intId": 3, "name": "stoppedWithUndershootAtEvent"},
-      {"intId": 4, "name": "departedFromEvent"}
-    ]
-  },
-  {
-    "name": "AtoState",
-    "enumLiterals": [
-      {"intId": 0, "name": "unknown"},
-      {"intId": 1, "name": "CO", "info": "State Configuration"},
-      {"intId": 2, "name": "NA", "info": "State Not Available"},
-      {"intId": 3, "name": "AV", "info": "State Available"},
-      {"intId": 4, "name": "RE", "info": "State Ready"},
-      {"intId": 5, "name": "EG", "info": "State Engaged"},
-      {"intId": 6, "name": "DE", "info": "State Disengaged"},
-      {"intId": 7, "name": "FA", "info": "State Failure"}
-    ]
-  },
-  {
-    "name": "DoorState",
-    "enumLiterals": [
-      {"intId": 0, "name": "doorStateUnknown"},
-      {"intId": 1, "name": "doorStateBlocked", "info": "defect"},
-      {"intId": 2, "name": "doorStateAvailable"}
-    ]
-  },
-  {
-    "name": "PantographState",
-    "enumLiterals": [
-      {"intId": 0, "name": "pantographBlocked", "info": "can not be used, defect"},
-      {"intId": 1, "name": "pantographLowered"},
-      {"intId": 2, "name": "pantographRaised"},
-      {"intId": 3, "name": "pantographStateUnknown"}
-    ]
-  },
-  {
-    "name": "DoorSide",
-    "enumLiterals": [
-      {"intId": 0, "name": "doorSideLeft"},
-      {"intId": 1, "name": "doorSideRight"},
-      {"intId": 2, "name": "doorSideBoth"},
-      {"intId": 3, "name": "doorNoneSide"},
-      {"intId": 4, "name": "doorSideUnknown"}
-    ]
-  },
-  {
-    "name": "ActiveState",
-    "enumLiterals": [
-      {"intId": 0, "name": "activeState"},
-      {"intId": 1, "name": "inactiveState"},
-      {"intId": 2, "name": "undefinedState"}
-    ]
-  },
-  {
-    "name": "VehicleOrientation",
-    "enumLiterals": [
-      {"intId": 0, "name": "orientationUknown"},
-      {"intId": 1, "name": "orientationSameAsTrainUnit"},
-      {"intId": 2, "name": "orientationInverseToTrainUnit"}
-    ]
-  },
-  {
-    "name": "EventState",
-    "enumLiterals": [
-      {"intId": 0, "name": "created"},
-      {"intId": 1, "name": "updated"},
-      {"intId": 2, "name": "removed"}
-    ]
-  },
-  {
-    "name": "OccupationReason",
-    "enumLiterals": [
-      {"intId": 0, "name": "shorterLTrain"},
-      {"intId": 1, "name": "toCommLoss"},
-      {"intId": 2, "name": "systemInit"},
-      {"intId": 3, "name": "ttdOccupation"},
-      {"intId": 4, "name": "ttdFree"}
-    ]
-  },
-  {
-    "name": "DPSGState",
-    "info": "States of drive protection section group",
-    "enumLiterals": [
-      {"intId": 0, "name": "ready"},
-      {"intId": 1, "name": "processing"},
-      {"intId": 2, "name": "disturbed"}
-    ]
-  },
-  {
-    "name": "DpsDrivability",
-    "info": "drivability of a drive protection section",
-    "enumLiterals": [
-      {"intId": 0, "name": "full"},
-      {"intId": 1, "name": "none"}
-    ]
-  },
-  {
-    "name": "RestrictionState",
-    "enumLiterals": [
-      {"intId": 0, "name": "created"},
-      {"intId": 1, "name": "removed"}
-    ]
-  }
-  ],
+  "$schema": "ERJU meta-model.json", "isDefinedBy": "http://ERJU/datamodel/0.4/operationalPlan", "name": "OperationalPlan", 
+  "prefix": "opp", "intId": 6, "version": "1.0", "info": "Operational-plan-package of the SCI-OP model", 
+  "containerStruct": "TrafficPlan", 
   "structs": [
-  {
-    "name": "OperationalTrafficPlan",
-    "info": "main container for all plan-related objects",
-    "attrs": [
-      {"intId": 1, "name": "operationalPlanMovements", "composition": "OperationalPlanMovement", "multiplicity": "0..*", "sortedByKey": true},
-      {"intId": 2, "name": "operationalPlanRestrictions", "composition": "OperationalPlanRestriction", "multiplicity": "0..*", "sortedByKey": true},
-      {"intId": 3, "name": "operationalPlanWarningMeasures", "composition": "OperationalPlanWarningMeasure", "multiplicity": "0..*", "sortedByKey": true}
-    ]
-  },
-  {
-    "name": "OperationalPlanMovement",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
-      {"intId": 2, "name": "issuedAt", "dataType": "timestamp",
-       "info": "issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations"},
-      {"intId": 3, "name": "configurationDataVersionRef", "dataType": "string",
-       "info": "the movement-plan is valid only on this configuration version"},
-      {"intId": 4, "name": "operationalTrainUnits", "composition": "TrainUnit", "multiplicity": "1..*", "sortedByKey": false,
-       "info": "defines train units used during the movement"},
-      {"intId": 5, "name": "movementEvents", "composition": "MovementEvent", "multiplicity": "1..*", "sortedByKey": false,
-       "info": "defines operational activities along the movement"},
-      {"intId": 6, "name": "movementRestrictions", "composition": "MovementRestriction", "multiplicity": "0..*", "sortedByKey": false,
-       "info": "defines restrictions valid for this movement along the movement"}
-    ]
-  },
-  {
-    "name": "TrainUnit",
-    "attrs": [
-      {"intId": 1, "name": "physicalTrainUnit", "composition": "PhysicalTrainUnitIdentifier",
-       "info": "to be used inPlan Execution user interface of Workbench (fallback level for TMS)"},
-      {"intId": 2, "name": "operationalTrainCategory", "composition": "OperationalTrainCategory",
-       "info": "to be used inPlan Execution user interface of Workbench (fallback level for TMS)"},
-      {"intId": 3, "name": "operationalConsists", "composition": "OperationalConsist", "multiplicity": "1..*", "sortedByKey": false,
-       "info": "defines the sequnce of consists starting from train-head"},
-      {"intId": 4, "name": "nominalRotatingMass", "dataType": "uint32", "unit": "kg",
-       "info": "special value 160=unknown"},
-      {"intId": 5, "name": "regularBrakeWeightPercentage", "dataType": "uint32", "unit": "permill",
-       "info": "use zero as undefined"},
-      {"intId": 6, "name": "emergencyBrakeWeightPercentage", "dataType": "uint32", "unit": "permill",
-       "info": "use zero as undefined"},
-      {"intId": 7, "name": "brakePosition", "enumType": "BrakePosition"},
-      {"intId": 8, "name": "brakeModelType", "enumType": "BrakeModelType"},
-      {"intId": 9, "name": "usedGradeOfAutomation", "enumType": "GradeOfAutomation"},
-      {"intId": 10, "name": "scheduledTrainLength", "dataType": "uint32", "unit": "m",
-       "info": "Train length in meter"}
-    ]
-  },
-  {
-    "name": "OperationalTrainCategory",
-    "attrs": [
-      {"intId": 1, "name": "trainCategoryType", "enumType": "TrainCategoryType"},
-      {"intId": 2, "name": "description", "dataType": "string",
-       "info": "for UI-purposes"},
-      {"intId": 3, "name": "trainUsage", "enumType": "TrainUsageType",
-       "info": "for UI-purposes"}
-    ]
-  },
-  {
-    "name": "OperationalConsist",
-    "attrs": [
-      {"intId": 1, "name": "supportedOnBoardEquipment", "composition": "SupportedOnBoardEquipment"}
-    ]
-  },
-  {
-    "name": "SupportedOnBoardEquipment",
-    "attrs": [
-      {"intId": 1, "name": "trainProtectionType", "enumType": "TrainProtectionType"},
-      {"intId": 2, "name": "etcsSystemVersions", "dataType": "string", "regex": "\\d+.\\d+", "multiplicity": "1..*", "sortedByKey": false},
-      {"intId": 3, "name": "anyClasses", "composition": "AnyClass", "multiplicity": "0..*", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "AnyClass",
-    "attrs": [
-      {"intId": 1, "name": "className", "dataType": "string"},
-      {"intId": 2, "name": "content", "dataType": "bytes"}
-    ]
-  },
-  {
-    "name": "MovementRestriction",
-    "attrs": [
-      {"intId": 1, "name": "restrictedPath", "composition": "infra.LinkedPath"},
-      {"intId": 2, "name": "specificRestriction", "composition": "SpecificMovementRestriction"}
-    ]
-  },
-  {
-    "name": "SpecificMovementRestriction",
-    "union": true,
-    "attrs": [
-      {"intId": 1, "name": "maxSpeed", "dataType": "uint32", "unit": "km/h"},
-      {"intId": 2, "name": "adhesionCategory", "enumType": "AdhesionCategory"},
-      {"intId": 3, "name": "maxCurrent", "dataType": "uint32", "unit": "A",
-       "info": "electric current limitation, s. item 0.33 in SS126"},
-      {"intId": 4, "name": "atoInhibition", "dataType": "boolean",
-       "info": "train section is not contantly monitored, or stimulate driver's attention, or approaching overcrouded station"},
-      {"intId": 5, "name": "dasInhibition", "dataType": "boolean",
-       "info": "Driver advisory system not available in this section"},
-      {"intId": 6, "name": "excludedDPSGroupsForFlankProtection", "composition": "DPSGroupsList",
-       "info": "List of DPSGroups to be excluded from flank protection calculation."}
-    ]
-  },
-  {
-    "name": "DPSGroupsList",
-    "attrs": [
-      {"intId": 1, "name": "dpsGroups", "reference": "tp.DriveProtectionSectionGroup", "multiplicity": "0..*", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "MovementEvent",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
-      {"intId": 2, "name": "plannedType", "enumType": "MovementEventType"},
-      {"intId": 3, "name": "scheduledType", "enumType": "MovementEventType"},
-      {"intId": 4, "name": "alignment", "enumType": "AlignmentType",
-       "info": "train-alignment at position (head, center, end)"},
-      {"intId": 5, "name": "position", "composition": "infra.DirTrackEdgePoint"},
-      {"intId": 6, "name": "trackPathToNextEvent", "composition": "infra.DirTrackEdge", "multiplicity": "0..*", "sortedByKey": false,
-       "info": "this event.position is on the [0]-element and nextEvent.position is on the [last]-element. Must be provided in each MovementEvent except the last one."},
-      {"intId": 7, "name": "stopDescription", "composition": "StopDescription", "multiplicity": "0..1"},
-      {"intId": 8, "name": "scheduledArrival", "dataType": "timestamp",
-       "info": "equal to scheduledDeparture for a passing train, see latestArrival inSS126. In the first station it is time of 'start of mission'"},
-      {"intId": 9, "name": "scheduledArrivalWindow", "dataType": "uint32", "unit": "s",
-       "info": "scheduledEaliestArrival = scheduledArrival - scheduledArrivalWindow. For passing trains scheduledEarliestDeparture = scheduledEarliestArrival, see arrivalWindow in SS126. In the first station it is a time window for 'start of mission'."}
-    ]
-  },
-  {
-    "name": "StopDescription",
-    "attrs": [
-      {"intId": 1, "name": "trainUnitActivities", "composition": "TrainUnitActivity", "multiplicity": "0..*", "sortedByKey": false,
-       "info": "sequence of changes of TrainUnit during the stop"},
-      {"intId": 2, "name": "doorActivity", "composition": "DoorActivity", "multiplicity": "0..1",
-       "info": "if the attribute is not provided, the doors remain closed"},
-      {"intId": 3, "name": "relaxedCoupler", "dataType": "boolean",
-       "info": "true - request for coupler relaxation, false -not, see Q_Relaxed_Coupler in SS126"},
-      {"intId": 4, "name": "holdTrain", "dataType": "boolean",
-       "info": "see JP in SS126"},
-      {"intId": 5, "name": "scheduledDeparture", "dataType": "timestamp",
-       "info": "see departure in SS126. In the last station it is 'end of mission'."},
-      {"intId": 6, "name": "scheduledMinDwellTime", "dataType": "uint32", "unit": "s",
-       "info": "the train has to wait after actual arrival this number of seconds before departure. ActualEarliestDeparture = max(departure, arrival + minDwellTime) will be calculated by ATO-OB, see minDwellTime in SS126"},
-      {"intId": 7, "name": "additionalEventTimes", "composition": "AdditionalEventTime", "multiplicity": "0..4", "sortedByKey": false,
-       "info": "Additional times for C-DAS. They will be ignored by ATO (not part of SS126)."}
-    ]
-  },
-  {
-    "name": "AdditionalEventTime",
-    "attrs": [
-      {"intId": 1, "name": "timeValue", "dataType": "timestamp"},
-      {"intId": 2, "name": "timeType", "enumType": "TimeType"}
-    ]
-  },
-  {
-    "name": "DoorActivity",
-    "attrs": [
-      {"intId": 1, "name": "openingDoorSide", "enumType": "DoorSide",
-       "info": "noneSide if the doors are kept closed"},
-      {"intId": 2, "name": "centralisedOpening", "dataType": "boolean",
-       "info": "true - centralised opening, false - opening byby passengers/driver"},
-      {"intId": 3, "name": "automaticClosing", "dataType": "boolean",
-       "info": "true by ATO, false - without ATO"}
-    ]
-  },
-  {
-    "name": "TrainUnitActivity",
-    "info": "if the train turns around, an additional MovementEvent must be integrated with the new position of train head",
-    "attrs": [
-      {"intId": 1, "name": "trainUnitActivityType", "enumType": "TrainUnitActivityType"},
-      {"intId": 2, "name": "actualTrainUnitIndex", "dataType": "uint32",
-       "info": "index of TrainUnit in OperationalMovement.operationalTrainUnits before the activity"},
-      {"intId": 3, "name": "targetTrainUnitIndex", "dataType": "uint32",
-       "info": "index of TrainUnit in OperationalMovement.operationalTrainUnits after the activity"}
-    ]
-  },
-  {
-    "name": "PhysicalTrainUnitIdentifier",
-    "attrs": [
-      {"intId": 1, "name": "trainRunningNumber", "dataType": "string", "multiplicity": "0..1"},
-      {"intId": 2, "name": "additionalTrainRunningNumber", "dataType": "string", "multiplicity": "0..1",
-       "info": "Distinction between Operational Train Units with the same trainRunningNumber. This may occur if a trainRunningNumber is reused for different spare trains."},
-      {"intId": 3, "name": "tafTapTsiTrainID", "dataType": "string", "multiplicity": "0..1"},
-      {"intId": 4, "name": "leadingOnBoardUnitId", "dataType": "string", "multiplicity": "0..1",
-       "info": "see NID_ENGINE"}
-    ]
-  },
-  {
-    "name": "OperationalPlanRestriction",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
-      {"intId": 2, "name": "issuedAt", "dataType": "timestamp"},
-      {"intId": 3, "name": "configurationDataVersionRef", "dataType": "string",
-       "info": "version of infrastructure data"},
-      {"intId": 5, "name": "restrictionEvents", "composition": "RestrictionEvent", "multiplicity": "1..*", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "RestrictionEvent",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
-      {"intId": 2, "name": "creationTime", "dataType": "timestamp",
-       "info": "time when the restrictionArea shall be created=implemented=activated in interlocking"},
-      {"intId": 3, "name": "removalTime", "dataType": "timestamp"},
-      {"intId": 4, "name": "restrictionArea", "composition": "RestrictionArea"}
-    ]
-  },
-  {
-    "name": "RestrictionArea",
-    "attrs": [
-      {"intId": 1, "name": "dirTrackEdgeSections", "composition": "infra.DirTrackEdgeSection", "multiplicity": "1..*", "sortedByKey": false},
-      {"intId": 2, "name": "specificRestrictions", "composition": "SpecificRestriction", "multiplicity": "1..*", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "TrainGroupSpec",
-    "info": "train characteristics known to interlocking for safety relevant restrictions",
-    "attrs": [
-      {"intId": 1, "name": "axleLoadCategories", "enumType": "infra.AxleLoadCategory", "multiplicity": "0..*", "sortedByKey": false},
-      {"intId": 2, "name": "cantDeficiencyCategories", "enumType": "infra.CantDeficiencyCategory", "multiplicity": "0..*", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "RestrictedAspects",
-    "attrs": [
-      {"intId": 1, "name": "temporarySpeedRestriction", "dataType": "uint32", "unit": "km/h",
-       "info": "use 0 if not defined"},
-      {"intId": 2, "name": "allowedDrivingModes", "enumType": "OnboardOperatingMode", "multiplicity": "0..*", "sortedByKey": false},
-      {"intId": 3, "name": "nonStopping", "dataType": "boolean",
-       "info": "if true, the trains defined in trainGroupSpec shall not stop within restriction area"},
-      {"intId": 4, "name": "trackClosure", "dataType": "boolean",
-       "info": "if true, the trains defined in trainGroupSpec shall not enter restriction area"},
-      {"intId": 5, "name": "operationalRadioHole", "dataType": "boolean",
-       "info": "if true radio communication is restricted within restriction area"},
-      {"intId": 6, "name": "maxAdhesion", "enumType": "AdhesionCategory"}
-    ]
-  },
-  {
-    "name": "SpecificRestriction",
-    "attrs": [
-      {"intId": 1, "name": "appliedToTrains", "composition": "TrainGroupSpec", "multiplicity": "0..1",
-       "info": "if not provided the restriction is valid for all trains"},
-      {"intId": 2, "name": "restrictedAspects", "composition": "RestrictedAspects"}
-    ]
-  },
-  {
-    "name": "OperationalPlanWarningMeasure",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
-      {"intId": 2, "name": "issuedAt", "dataType": "timestamp"},
-      {"intId": 3, "name": "configurationDataVersionRef", "dataType": "string",
-       "info": "version of infrastructure data"},
-      {"intId": 4, "name": "warningMeasureEvents", "composition": "WarningMeasureEvent", "multiplicity": "1..*", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "WarningArea",
-    "attrs": [
-      {"intId": 1, "name": "trackEdgeSections", "composition": "infra.TrackEdgeSection", "multiplicity": "1..*", "sortedByKey": false,
-       "info": "protected area"},
-      {"intId": 2, "name": "warningDevices", "composition": "WarningDevice", "multiplicity": "1..*", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "WarningDevice",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
-      {"intId": 2, "name": "deviceType", "enumType": "DeviceType",
-       "info": "defines the different warning devices"}
-    ]
-  },
-  {
-    "name": "WarningMeasureEvent",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global"},
-      {"intId": 2, "name": "creationTime", "dataType": "timestamp",
-       "info": "the same as activationTime"},
-      {"intId": 3, "name": "removalTime", "dataType": "timestamp"},
-      {"intId": 4, "name": "warningArea", "composition": "WarningArea"}
-    ]
-  },
-  {
-    "name": "ExecutionResponse",
-    "attrs": [
-      {"intId": 1, "name": "operationalPlanRef", "composition": "OperationalPlanReference"},
-      {"intId": 2, "name": "operationalPlanIssuedAt", "dataType": "timestamp"},
-      {"intId": 3, "name": "issuedAt", "dataType": "timestamp"},
-      {"intId": 4, "name": "responseCode", "enumType": "ResponseCode"},
-      {"intId": 5, "name": "rejectReason", "dataType": "string", "multiplicity": "0..1"}
-    ]
-  },
-  {
-    "name": "OperationalPlanReference",
-    "union": true,
-    "attrs": [
-      {"intId": 1, "name": "operationalPlanMovementRef", "reference": "OperationalPlanMovement"},
-      {"intId": 2, "name": "operationalPlanRestrictionRef", "reference": "OperationalPlanRestriction"},
-      {"intId": 3, "name": "operationalPlanWarningMeasureRef", "reference": "OperationalPlanWarningMeasure"}
-    ]
-  },
-  {
-    "name": "EventExecutionReport",
-    "union": true,
-    "attrs": [
-      {"intId": 1, "name": "arrivalReport", "composition": "MovementEventExecutionReport",
-       "info": "for passing only the departure report shall be sent"},
-      {"intId": 2, "name": "departureReport", "composition": "MovementEventExecutionReport"},
-      {"intId": 3, "name": "creationRestrictionReport", "composition": "RestrictionEventExecutionReport"},
-      {"intId": 4, "name": "removalRestrictionReport", "composition": "RestrictionEventExecutionReport"},
-      {"intId": 5, "name": "creationWarningMeasureReport", "composition": "WarningMeasureEventExecutionReport"},
-      {"intId": 6, "name": "removalWarningMeasureReport", "composition": "WarningMeasureEventExecutionReport"}
-    ]
-  },
-  {
-    "name": "MovementEventExecutionReport",
-    "attrs": [
-      {"intId": 1, "name": "movementEvent", "reference": "MovementEvent",
-       "info": "in json is a string with planId/eventId"},
-      {"intId": 2, "name": "operationalPlanIssuedAt", "dataType": "timestamp"},
-      {"intId": 3, "name": "issuedAt", "dataType": "timestamp"},
-      {"intId": 4, "name": "executionState", "enumType": "EventExecutionState"},
-      {"intId": 5, "name": "failureReason", "dataType": "string", "multiplicity": "0..1",
-       "info": "informal error message in English"},
-      {"intId": 6, "name": "warning", "dataType": "string", "multiplicity": "0..1",
-       "info": "informal warning message in English"}
-    ]
-  },
-  {
-    "name": "RestrictionEventExecutionReport",
-    "attrs": [
-      {"intId": 1, "name": "restrictionEvent", "reference": "RestrictionEvent",
-       "info": "in json is a string with planId/eventId"},
-      {"intId": 2, "name": "operationalPlanIssuedAt", "dataType": "timestamp"},
-      {"intId": 3, "name": "issuedAt", "dataType": "timestamp"},
-      {"intId": 4, "name": "executionState", "enumType": "EventExecutionState"},
-      {"intId": 5, "name": "failureReason", "dataType": "string", "multiplicity": "0..1",
-       "info": "informal error message in English"},
-      {"intId": 6, "name": "warning", "dataType": "string", "multiplicity": "0..1",
-       "info": "informal warning message in English"}
-    ]
-  },
-  {
-    "name": "WarningMeasureEventExecutionReport",
-    "attrs": [
-      {"intId": 1, "name": "warningMeasureEvent", "reference": "WarningMeasureEvent",
-       "info": "in json is a string with planId/eventId"},
-      {"intId": 2, "name": "operationalPlanIssuedAt", "dataType": "timestamp"},
-      {"intId": 3, "name": "issuedAt", "dataType": "timestamp"},
-      {"intId": 4, "name": "executionState", "enumType": "EventExecutionState"},
-      {"intId": 5, "name": "failureReason", "dataType": "string", "multiplicity": "0..1",
-       "info": "informal error message in English"},
-      {"intId": 6, "name": "warning", "dataType": "string", "multiplicity": "0..1",
-       "info": "informal warning message in English"}
-    ]
-  },
-  {
-    "name": "TrainUnitReportPE",
-    "attrs": [
-      {"intId": 1, "name": "issuedAt", "dataType": "timestamp"},
-      {"intId": 2, "name": "operationalPlanMovement", "reference": "OperationalPlanMovement", "multiplicity": "0..1",
-       "info": "if the new train was created in TrafficCS it does not have an operationalPlan (Movement) yet"},
-      {"intId": 3, "name": "cmdTrainObject", "composition": "TrainObject"}
-    ]
-  },
-  {
-    "name": "TrainObject",
-    "info": "comes from TrafficCS-PlanExecution",
-    "attrs": [
-      {"intId": 1, "name": "obuIdentifier", "dataType": "string"},
-      {"intId": 2, "name": "axleLoadCategory", "enumType": "infra.AxleLoadCategory"},
-      {"intId": 3, "name": "movementPermission", "composition": "MovementPermission", "multiplicity": "0..1"},
-      {"intId": 4, "name": "trainLength", "dataType": "uint32", "unit": "m"},
-      {"intId": 5, "name": "safeTrainLength", "dataType": "boolean"},
-      {"intId": 6, "name": "communicationActive", "dataType": "boolean"},
-      {"intId": 7, "name": "trainRunningNumber", "dataType": "string"},
-      {"intId": 8, "name": "vMaxTrain", "dataType": "uint32", "unit": "km/h"},
-      {"intId": 9, "name": "onboardOperatingMode", "enumType": "OnboardOperatingMode"},
-      {"intId": 10, "name": "trainLocation", "composition": "infra.LinkedPath",
-       "info": "contains the position of the entire train (i.e., from rear to front) including the confidence intervals"},
-      {"intId": 11, "name": "trainObjectIdentifier", "dataType": "string",
-       "info": "Generated by TrainProtectionSystem. It can generate two different trainObjectIds for the same physical train after it disappeared in a radio hole and appeared again."},
-      {"intId": 12, "name": "mpRequestedByTrain", "dataType": "boolean"},
-      {"intId": 13, "name": "speed", "dataType": "uint32", "unit": "km/h"},
-      {"intId": 14, "name": "cantDeficiencyCategory", "enumType": "infra.CantDeficiencyCategory"}
-    ]
-  },
-  {
-    "name": "MovementPermission",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string",
-       "info": "id of the movement permission"},
-      {"intId": 2, "name": "riskBuffer", "composition": "infra.LinkedPath",
-       "info": "overlap after MP"},
-      {"intId": 3, "name": "riskPaths", "composition": "infra.LinkedPath", "multiplicity": "0..*", "sortedByKey": false,
-       "info": "defines the paths over the flank protection area (point, derailer, ...) on the neighboring tracks"},
-      {"intId": 4, "name": "pathWay", "composition": "infra.LinkedPath",
-       "info": "describes the linear extent of the MA as in actual path of the train"},
-      {"intId": 5, "name": "movementModes", "composition": "MpDrivingMode", "multiplicity": "1..*", "sortedByKey": false},
-      {"intId": 6, "name": "speeds", "composition": "MpSpeed", "multiplicity": "1..*", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "MpSpeed",
-    "attrs": [
-      {"intId": 1, "name": "vMax", "dataType": "uint32", "unit": "km/h"},
-      {"intId": 2, "name": "path", "composition": "infra.LinkedPath"}
-    ]
-  },
-  {
-    "name": "MpDrivingMode",
-    "attrs": [
-      {"intId": 1, "name": "drivingMode", "enumType": "OnboardOperatingMode"},
-      {"intId": 2, "name": "path", "composition": "infra.LinkedPath"}
-    ]
-  },
-  {
-    "name": "TrainUnitReportAtoStatus",
-    "info": "source ATO ss126 STR-frame",
-    "attrs": [
-      {"intId": 1, "name": "issuedAt", "dataType": "timestamp"},
-      {"intId": 2, "name": "operationalPlanMovement", "reference": "OperationalPlanMovement", "multiplicity": "0..1",
-       "info": "if the new train was created in TrafficCS it does not have an operationalPlan (Movement) yet"},
-      {"intId": 3, "name": "trainUnitIdentifier", "composition": "PhysicalTrainUnitIdentifier"},
-      {"intId": 4, "name": "atoState", "enumType": "AtoState"},
-      {"intId": 5, "name": "routingError", "dataType": "boolean",
-       "info": "inconsistent path"},
-      {"intId": 6, "name": "nextStoppingPointSkip", "dataType": "boolean",
-       "info": "skip-request by the train driver. "},
-      {"intId": 7, "name": "lowAdhesionReportedByDriver", "dataType": "boolean"},
-      {"intId": 8, "name": "operationalConditionsFulfillment", "dataType": "boolean"},
-      {"intId": 9, "name": "isMoving", "dataType": "boolean",
-       "info": "speed != 0.0 ?"},
-      {"intId": 10, "name": "unableToStopAtNextStoppingPoint", "dataType": "boolean",
-       "info": "the train istoo close and/or too fast for stopping"},
-      {"intId": 11, "name": "isSlipping", "dataType": "boolean",
-       "info": "bit7 from SS126"},
-      {"intId": 12, "name": "speed", "dataType": "uint32", "unit": "km/h"},
-      {"intId": 13, "name": "trainLength", "dataType": "uint32", "unit": "m"},
-      {"intId": 14, "name": "driverId", "dataType": "string", "multiplicity": "0..1"},
-      {"intId": 15, "name": "frontPosition", "composition": "infra.DirTrackEdgePoint",
-       "info": "the direction can be deduced from JP and STR in SS 126"},
-      {"intId": 16, "name": "eventHandling", "composition": "EventHandling", "multiplicity": "0..1"},
-      {"intId": 17, "name": "eventEstimations", "composition": "EventEstimation", "multiplicity": "0..*", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "EventHandling",
-    "attrs": [
-      {"intId": 1, "name": "event", "reference": "MovementEvent"},
-      {"intId": 2, "name": "passStopDepart", "enumType": "MovementEventAction"}
-    ]
-  },
-  {
-    "name": "EventEstimation",
-    "attrs": [
-      {"intId": 1, "name": "event", "reference": "MovementEvent"},
-      {"intId": 2, "name": "arrival", "dataType": "timestamp"}
-    ]
-  },
-  {
-    "name": "TrainUnitReportAtoCapabilities",
-    "info": "source - ATO Train Capability Report",
-    "attrs": [
-      {"intId": 1, "name": "issuedAt", "dataType": "timestamp"},
-      {"intId": 2, "name": "operationalPlanMovement", "reference": "OperationalPlanMovement", "multiplicity": "0..1",
-       "info": "if the new train was created in TrafficCS it does not have an operationalPlan (Movement) yet"},
-      {"intId": 3, "name": "trainUnitIdentifier", "composition": "PhysicalTrainUnitIdentifier"},
-      {"intId": 4, "name": "mass", "dataType": "uint32", "unit": "kg", "exp": 2,
-       "info": "train mass including load, 0 if unknown"},
-      {"intId": 5, "name": "outsideTemperature", "dataType": "int32", "unit": "degree",
-       "info": "127 if unknown"},
-      {"intId": 6, "name": "etcsData", "composition": "EtcsDataAto", "multiplicity": "0..1",
-       "info": "not provided if invalid"},
-      {"intId": 7, "name": "passengerLoad", "dataType": "uint32", "unit": "percent", "range": "0..255",
-       "info": "255 unknown"},
-      {"intId": 8, "name": "lastPassengerExchangeTime", "dataType": "uint32", "unit": "s",
-       "info": "65535: unknown"},
-      {"intId": 9, "name": "elapsedStartPassengerExchange", "dataType": "uint32", "unit": "s",
-       "info": "Time elapsed between standstill and the doors are released for operation or opening; 4096: unknown"},
-      {"intId": 10, "name": "additionalTrainData", "composition": "AdditionalTrainData", "multiplicity": "0..1"},
-      {"intId": 11, "name": "physicalConsists", "composition": "PhysicalConsist", "multiplicity": "0..255", "sortedByKey": false,
-       "info": "0-unknown"}
-    ]
-  },
-  {
-    "name": "EtcsDataAto",
-    "attrs": [
-      {"intId": 1, "name": "trainLength", "dataType": "uint32", "unit": "m",
-       "info": "0 if unknown"},
-      {"intId": 2, "name": "maximumSpeed", "dataType": "uint32", "unit": "km/h",
-       "info": "0 if unknown"},
-      {"intId": 3, "name": "cantDeficiencyCategory", "enumType": "infra.CantDeficiencyCategory"},
-      {"intId": 4, "name": "otherInternationalCategory", "enumType": "infra.OtherSpecificStaticSpeedProfileCategory", "multiplicity": "0..15", "sortedByKey": false},
-      {"intId": 5, "name": "axleLoadCategory", "enumType": "infra.AxleLoadCategory"},
-      {"intId": 6, "name": "nominalRotatingMass", "dataType": "uint32", "unit": "kg",
-       "info": "relates to total train weight. 16 if unknown"},
-      {"intId": 7, "name": "brakePercentage", "dataType": "uint32", "unit": "percent",
-       "info": "255 if unknown"},
-      {"intId": 8, "name": "preconfiguredBrakingModel", "dataType": "uint32",
-       "info": "255 if unknown"},
-      {"intId": 9, "name": "brakePosition", "enumType": "BrakePosition"}
-    ]
-  },
-  {
-    "name": "DoorData",
-    "attrs": [
-      {"intId": 1, "name": "doorState", "enumType": "DoorState"},
-      {"intId": 2, "name": "lastPassengerExchangeTime", "dataType": "uint32", "unit": "s",
-       "info": "255: unknown"}
-    ]
-  },
-  {
-    "name": "AdditionalTrainData",
-    "attrs": [
-      {"intId": 1, "name": "maxAvailableTractiveEffort", "dataType": "uint32", "unit": "N", "exp": 3, "range": "0..3000",
-       "info": "65535: unknown"},
-      {"intId": 2, "name": "maxAvailableTractivePower", "dataType": "uint32", "unit": "W", "exp": 3, "range": "0..32000",
-       "info": "65535 - unknown"},
-      {"intId": 3, "name": "maxAvailableDynamicBrakeForce", "dataType": "uint32", "unit": "N", "exp": 3, "range": "0..3000",
-       "info": "65535: unknown"},
-      {"intId": 4, "name": "maxAvailableDynamicBrakePower", "dataType": "uint32", "unit": "W", "exp": 3, "range": "0..32000",
-       "info": "65535 - unknown"},
-      {"intId": 5, "name": "maxAvailableServiceBrakeForce", "dataType": "uint32", "unit": "N", "exp": 3, "range": "0..3000",
-       "info": "65535: unknown"},
-      {"intId": 6, "name": "regenerativeBrakeState", "enumType": "ActiveState"},
-      {"intId": 7, "name": "magneticShoeBrakeState", "enumType": "ActiveState"},
-      {"intId": 8, "name": "eddyCurrentBrakeState", "enumType": "ActiveState"},
-      {"intId": 9, "name": "electroPneumaticBrakeState", "enumType": "ActiveState"},
-      {"intId": 10, "name": "adhesionIndependentBrakeState", "enumType": "ActiveState"},
-      {"intId": 11, "name": "availableAdhesionCategory", "enumType": "AdhesionCategory",
-       "info": "053 in Subset"},
-      {"intId": 12, "name": "availableAdhesionPhysicalValue", "dataType": "uint32", "exp": -3,
-       "info": "600 if unknown"}
-    ]
-  },
-  {
-    "name": "PhysicalConsist",
-    "attrs": [
-      {"intId": 1, "name": "evnIdentifier", "dataType": "uint32",
-       "info": "European vehicle number (EVN) 12 digits, 0=unknown"},
-      {"intId": 2, "name": "passengerLoad", "dataType": "uint32", "unit": "percent",
-       "info": "255=unknown"},
-      {"intId": 3, "name": "mass", "dataType": "uint32", "unit": "kg", "exp": 2, "range": "0..150000",
-       "info": "32767: unknown"},
-      {"intId": 4, "name": "maxCurrentConsuption", "dataType": "uint32", "unit": "A", "exp": 1, "range": "0..1023",
-       "info": "1023: unknown"},
-      {"intId": 5, "name": "physicalVehicles", "composition": "PhysicalVehicle", "multiplicity": "0..255", "sortedByKey": false,
-       "info": "empty=unknown"}
-    ]
-  },
-  {
-    "name": "PhysicalVehicle",
-    "attrs": [
-      {"intId": 1, "name": "evnIdentifier", "dataType": "uint32",
-       "info": "European vehicle number (EVN) [2018/1614/EU] 12 digits, 0: unknown"},
-      {"intId": 2, "name": "mass", "dataType": "uint32", "unit": "kg", "exp": 2, "range": "0..150000",
-       "info": "2047: unknown"},
-      {"intId": 3, "name": "vehicleOrientation", "enumType": "VehicleOrientation"},
-      {"intId": 4, "name": "doorDataLeft", "composition": "DoorData", "multiplicity": "0..7", "sortedByKey": false,
-       "info": "left in respect of normal orientation"},
-      {"intId": 5, "name": "doorDataRight", "composition": "DoorData", "multiplicity": "0..7", "sortedByKey": false},
-      {"intId": 6, "name": "passengerLoad", "dataType": "uint32", "unit": "percent",
-       "info": "255=unknown"},
-      {"intId": 7, "name": "pantographsStates", "enumType": "PantographState", "multiplicity": "0..7", "sortedByKey": false}
-    ]
-  },
-  {
-    "name": "TrackOccupationState",
-    "info": "sent by low-level system on each track occupation registered, contains CMD.UnresolvedTrackboundObject",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global",
-       "info": "id of UnresolvedTrackboundObject"},
-      {"intId": 2, "name": "issuedAt", "dataType": "timestamp"},
-      {"intId": 3, "name": "operationalPlanMovement", "reference": "OperationalPlanMovement", "multiplicity": "0..1"},
-      {"intId": 4, "name": "trainUnitIdentifier", "composition": "PhysicalTrainUnitIdentifier", "multiplicity": "0..1"},
-      {"intId": 5, "name": "occupationState", "enumType": "EventState"},
-      {"intId": 6, "name": "creationReason", "enumType": "OccupationReason"},
-      {"intId": 7, "name": "recordedTrainLength", "dataType": "uint32", "unit": "m",
-       "info": "use 0 if not defined"},
-      {"intId": 8, "name": "trackArea", "composition": "infra.TrackEdgeSection", "multiplicity": "1..*", "sortedByKey": false},
-      {"intId": 9, "name": "associatedTrainObject", "dataType": "string", "multiplicity": "0..1",
-       "info": "trainObjectId defined in MovementPermission"}
-    ]
-  },
-  {
-    "name": "DpsGroupState",
-    "attrs": [
-      {"intId": 1, "name": "dpsGroup", "reference": "tp.DriveProtectionSectionGroup"},
-      {"intId": 2, "name": "issuedAt", "dataType": "timestamp"},
-      {"intId": 3, "name": "operationalPlanMovement", "reference": "OperationalPlanMovement", "multiplicity": "0..1"},
-      {"intId": 4, "name": "dpsgState", "enumType": "DPSGState",
-       "info": "common state of the drive protection section group"},
-      {"intId": 5, "name": "dpsStates", "composition": "DPSState", "multiplicity": "0..*", "sortedByKey": false,
-       "info": "States of drive protection sections"}
-    ]
-  },
-  {
-    "name": "DPSState",
-    "attrs": [
-      {"intId": 1, "name": "dps", "reference": "tp.DriveProtectionSection"},
-      {"intId": 2, "name": "requestedDrivability", "enumType": "DpsDrivability"},
-      {"intId": 3, "name": "currentDrivability", "enumType": "DpsDrivability"}
-    ]
-  },
-  {
-    "name": "RestrictionAreaState",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global",
-       "info": "id of restrictionArea generated by interlocking"},
-      {"intId": 2, "name": "issuedAt", "dataType": "timestamp"},
-      {"intId": 3, "name": "restrictionEvent", "reference": "RestrictionEvent", "multiplicity": "0..1",
-       "info": "is provided if planned one"},
-      {"intId": 4, "name": "restrictionState", "enumType": "RestrictionState"},
-      {"intId": 5, "name": "restrictionArea", "composition": "RestrictionArea", "multiplicity": "0..1",
-       "info": "provided if created by PE or implemented differently than planned"}
-    ]
-  },
-  {
-    "name": "WarningAreaState",
-    "info": "sent at low-level for each activated/deactivated warning area",
-    "attrs": [
-      {"intId": 1, "name": "id", "dataType": "string", "key": "global",
-       "info": "warningArea-id generated by interlocking"},
-      {"intId": 2, "name": "issuedAt", "dataType": "timestamp"},
-      {"intId": 3, "name": "warningMeasureEvent", "reference": "WarningMeasureEvent", "multiplicity": "0..1"},
-      {"intId": 4, "name": "warningState", "enumType": "EventState"},
-      {"intId": 5, "name": "warningArea", "composition": "WarningArea", "multiplicity": "0..1",
-       "info": "provided if differs from warningMeasureEvent.warningArea or unplanned"}
-    ]
-  }
-  ]
+    {
+      "name": "OperationalTrafficPlan", "info": "Defines a container class for all OperationalPlans", 
+      "attrs": [
+        {"intId": 1, "name": "operationalPlanMovements", "composition": "OperationalPlanMovement", "multiplicity": "*", 
+          "ordered": "byKey", "info": "Composes of operational plan movements"}, 
+        {"intId": 2, "name": "operationalPlanRestrictions", "composition": "OperationalPlanRestriction", "multiplicity": "*", 
+          "ordered": "byKey", "info": "Composes of operational plan restrictions"}, 
+        {"intId": 3, "name": "operationalPlanWarningMeasures", "composition": "OperationalPlanWarningMeasure", 
+          "multiplicity": "*", "ordered": "byKey", "info": "Composes of operational plan warning measures"}]
+    }, 
+    {
+      "name": "OperationalPlanMovement", "info": "Defines a train run with a dedicated train number.", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", 
+          "info": "Defines the Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "issuedAt", "dataType": "timestamp", 
+          "info": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"}, 
+        {"intId": 3, "name": "configurationDataVersionRef", "dataType": "string", 
+          "info": "Defines the configuration data version for which the operational plan is valid"}, 
+        {"intId": 4, "name": "includesEndOfJourney", "dataType": "boolean", 
+          "info": "Defines if the operational plan movement include the end of journey. if true, the movementEvents contains entire remaining path including the end position, otherwise the journey will continue after the last movementEvent of this object"}, 
+        {"intId": 5, "name": "operationalTrainUnits", "composition": "TrainUnit", "multiplicity": "1..*", 
+          "info": "Defines the set of train units, which are active during some paths of the train movement. The same train unit can be used in not connected parts of the path"}, 
+        {"intId": 6, "name": "movementEvents", "composition": "MovementEvent", "multiplicity": "1..*", "ordered": "byIndex", 
+          "info": "Defines times/operational activities sequence along the movement"}, 
+        {"intId": 7, "name": "movementRestrictions", "composition": "MovementRestriction", "multiplicity": "*", 
+          "info": "Defines train specific restrictions, which are active along its path-sections"}]
+    }, 
+    {
+      "name": "TrainUnit", "info": "Defines rolling stock, which is used to implement part of a train movement.", 
+      "attrs": [
+        {"intId": 1, "name": "physicalTrainUnit", "composition": "PhysicalTrainUnitIdentifier", 
+          "info": "Defines the physical train unit to be used in Plan Execution user interface of Workbench (fallback level for TMS)"}, 
+        {"intId": 2, "name": "operationalTrainCategory", "composition": "OperationalTrainCategory", 
+          "info": "Defines the category type for the train in operational plan. To be used inPlan Execution user interface of Workbench (fallback level for TMS)"}, 
+        {
+          "intId": 3, "name": "operationalConsists", "composition": "OperationalConsist", "multiplicity": "1..*", 
+          "ordered": "byIndex", 
+          "info": "Defines operational consists building the TrainUnit starting from the train-head."
+        }, 
+        {"intId": 4, "name": "nominalRotatingMass", "dataType": "uint32", "unit": "kg", 
+          "info": "Defines the nominal rotating mass of the train,special value 0=unknown"}, 
+        {"intId": 5, "name": "regularBrakeWeightPercentage", "dataType": "uint32", "unit": "permill", 
+          "info": "Defines the regular brake weight percentage. Use 0 if undefined"}, 
+        {"intId": 6, "name": "emergencyBrakeWeightPercentage", "dataType": "uint32", "unit": "permill", 
+          "info": "Defines the emergency brake weight percentage. Use zero if undefined"}, 
+        {"intId": 7, "name": "brakePosition", "enumType": "BrakePosition", 
+          "info": "Defines the active brake position for the train"}, 
+        {"intId": 8, "name": "brakeModelType", "enumType": "BrakeModelType", 
+          "info": "Defines the applicable brake model type for the train"}, 
+        {"intId": 9, "name": "atoGradeAutomation", "enumType": "ATOGradeOfAutomation", 
+          "info": "Defines the ato grade of automation for the train"}, 
+        {"intId": 10, "name": "scheduledTrainLength", "dataType": "uint32", "unit": "m", 
+          "info": "Defines the scheduled train length in meters"}]
+    }, 
+    {
+      "name": "OperationalTrainCategory", "info": "Defines usage category for an OperationalTrain", 
+      "attrs": [{"intId": 1, "name": "trainCategoryType", "enumType": "TrainCategoryType"}, 
+        {"intId": 2, "name": "description", "dataType": "string", 
+          "info": "Defines the description for the operational train categoryfor UI-purposes"}, 
+        {"intId": 3, "name": "trainUsage", "enumType": "TrainUsageType", "info": "Defines the train usage type for UI-purposes"}]
+    }, 
+    {
+      "name": "OperationalConsist", 
+      "info": "Defines a rolling-stock consist unit identified by the installed onboard equipment.", 
+      "attrs": [
+        {"intId": 1, "name": "supportedOnBoardEquipment", "composition": "SupportedOnBoardEquipment", 
+          "info": "Defines the list of supported onboard equipment for an operational consist"}]
+    }, 
+    {
+      "name": "SupportedOnBoardEquipment", "info": "Defines Onboard equipment installed and active on a train", 
+      "attrs": [
+        {"intId": 1, "name": "trainProtectionType", "enumType": "TrainProtectionType", 
+          "info": "Defines the train protection type supported by the on board equipment"}, 
+        {"intId": 2, "name": "etcsSystemVersions", "dataType": "string", "multiplicity": "1..*", "regex": "\\d+.\\d+", 
+          "info": "Defines the supported etcs system versions"}, 
+        {"intId": 3, "name": "onboardExtensions", "composition": "OnBoardExtension", "multiplicity": "*"}]
+    }, 
+    {
+      "name": "OnBoardExtension", 
+      "info": "A container class for a non-standard key-value-property. Messages need sometimes IM-specific information.", 
+      "attrs": [
+        {"intId": 1, "name": "contentType", "dataType": "string", 
+          "info": "Defines the key-attribute in a key-value-pair. Used for annotation of IM-specific onboard-equipment"}, 
+        {"intId": 2, "name": "content", "dataType": "bytes", 
+          "info": "Defines the value-attribute in a key-value-pair. Used for annotation of IM-specific onboard-equipment"}]
+    }, 
+    {
+      "name": "MovementRestriction", "info": "Defines train specific restriction along its path.", 
+      "attrs": [
+        {"intId": 1, "name": "restrictedPath", "composition": "infra.NetLinearReference", 
+          "info": "Defines the restricted path associated to a restriction of on an operational plan movement"}, 
+        {"intId": 2, "name": "specificRestriction", "composition": "SpecificMovementRestriction", 
+          "info": "Defines the specific restriction active on the restriction path associated to an operational plan movement"}]
+    }, 
+    {
+      "name": "SpecificMovementRestriction", "info": "Defines single aspect of the train specific restriction", "union": true, 
+      "attrs": [{"intId": 1, "name": "maxSpeed", "dataType": "uint32", "unit": "km/h", "info": "Defines the maximum applicable speed"}, 
+        {"intId": 2, "name": "adhesionCategory", "enumType": "AdhesionCategory", 
+          "info": "Defines the different adhesion categories applicable for the train as per track conditions"}, 
+        {"intId": 3, "name": "maxCurrent", "dataType": "uint32", "unit": "A", 
+          "info": "Defines max current value, s. item 0.33 in SS126"}, 
+        {"intId": 4, "name": "atoInhibition", "dataType": "boolean", 
+          "info": "train section is not contantly monitored, or stimulate driver's attention, or approaching overcrouded station"}, 
+        {"intId": 5, "name": "dasInhibition", "dataType": "boolean", "info": "Defines the Driver advisory system inhibition zone"}, 
+        {"intId": 6, "name": "excludedDPSGroupsForFlankProtection", "composition": "DPSGroupsList", 
+          "info": "Defines the list of DPSGroups to be excluded from flank protection calculation."}]
+    }, 
+    {
+      "name": "DPSGroupsList", "info": "Defines a set of Drive-Protection-Section-Groups", 
+      "attrs": [
+        {"intId": 1, "name": "dpsGroups", "reference": "tp.DriveProtectionSectionGroup", "multiplicity": "*", 
+          "info": "Defines the list of DPS Groups"}]
+    }, 
+    {
+      "name": "MovementEvent", 
+      "info": "Defines an operational activity on a specific point in space and time for a train run.", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", 
+          "info": "Defines the Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "plannedType", "enumType": "MovementEventType", "info": "Defines if stop or pass was planned"}, 
+        {"intId": 3, "name": "scheduledType", "enumType": "MovementEventType", "info": "Defines if stop or pass is scheduled"}, 
+        {"intId": 4, "name": "alignment", "enumType": "AlignmentType", 
+          "info": "Defines the train-alignment at position (head, center, end)"}, 
+        {"intId": 5, "name": "position", "composition": "infra.NetPointReference", 
+          "info": "Defines position on a linearElement for the movement event"}, 
+        {"intId": 6, "name": "pathToNextEvent", "reference": "infra.LinearElement", "multiplicity": "0..*", "ordered": "byIndex", 
+          "info": "Defines the path-part after the LinearElement of the position-value. Must be provided in each MovementEvent except the last one."}, 
+        {"intId": 7, "name": "stopDescription", "composition": "StopDescription", "multiplicity": "0..1", 
+          "info": "Defines the stop description in case of a stop of the train"}, 
+        {"intId": 8, "name": "scheduledArrival", "dataType": "timestamp", 
+          "info": "Defines the scheduled arrival time. equal to scheduledDeparture for a passing train, see latestArrival inSS126. In the first station it is time of 'start of mission', in UTC"}, 
+        {"intId": 9, "name": "scheduledArrivalWindow", "dataType": "uint32", "unit": "s", 
+          "info": "Defines the scheduled arrival window. scheduledEaliestArrival = scheduledArrival - scheduledArrivalWindow. For passing trains scheduledEarliestDeparture = scheduledEarliestArrival, see arrivalWindow in SS126. In the first station it is a time window for 'start of mission'."}, 
+        {"intId": 10, "name": "startsAfterEvents", "composition": "OperationalEventRef", "multiplicity": "0..*", 
+          "info": "Defines the set of operational events, which must be finished before the current event starts."}]
+    }, 
+    {
+      "name": "OperationalEventRef", "info": "Defines a reference to one of possible OperationalEvents (as a unit)", 
+      "union": true, 
+      "attrs": [
+        {"intId": 1, "name": "movementEvent", "reference": "MovementEvent", 
+          "info": "refers a movement event including the movement plan"}, 
+        {"intId": 2, "name": "restrictionEvent", "reference": "RestrictionEvent", 
+          "info": "Refers a restriction event including restriction plan"}, 
+        {"intId": 3, "name": "warningMeasureEvent", "reference": "WarningMeasureEvent", 
+          "info": "Refers a warnning measure event including the warning plan"}]
+    }, 
+    {
+      "name": "StopDescription", "info": "Defines activities to be implemented by the train when it stopps.", 
+      "attrs": [
+        {"intId": 1, "name": "trainUnitActivities", "composition": "TrainUnitActivity", "multiplicity": "*", "ordered": "byIndex", 
+          "info": "Defines the sequence of changes of TrainUnit during the stop"}, 
+        {"intId": 2, "name": "doorActivity", "composition": "DoorActivity", "multiplicity": "0..1", 
+          "info": "Defines the door activity. If the attribute is not provided, the doors remain closed"}, 
+        {"intId": 3, "name": "relaxedCoupler", "dataType": "boolean", 
+          "info": "Defines the state of coupler. true - request for coupler relaxation, false -not, see Q_Relaxed_Coupler in SS126"}, 
+        {"intId": 4, "name": "holdTrain", "dataType": "boolean", 
+          "info": "Defines, that if the train shall be hold until the next update. See JP in SS126"}, 
+        {"intId": 5, "name": "scheduledDeparture", "dataType": "timestamp", 
+          "info": "Defines the scheduled departure time. see departure in SS126. In the last station it is 'end of mission', in UTC."}, 
+        {"intId": 6, "name": "scheduledMinDwellTime", "dataType": "uint32", "unit": "s", 
+          "info": "Defines if the train has to wait after actual arrival this number of seconds before departure. ActualEarliestDeparture = max(departure, arrival + minDwellTime) will be calculated by ATO-OB, see minDwellTime in SS126"}, 
+        {"intId": 7, "name": "additionalEventTimes", "composition": "AdditionalEventTime", "multiplicity": "0..4", 
+          "info": "Defines the state of coupler. true - request for coupler relaxation, false -not, see Q_Relaxed_Coupler in SS126"}]
+    }, 
+    {
+      "name": "AdditionalEventTime", 
+      "info": "Definestimes not required for ATO, but useful for CDAS (e.g. published arrival, plannedArrival etc.)", 
+      "attrs": [{"intId": 1, "name": "timeValue", "dataType": "timestamp", "info": "Defines the time value in UTC"}, 
+        {"intId": 2, "name": "timeType", "enumType": "TimeType", "info": "Defines the time type for a stop description"}]
+    }, 
+    {
+      "name": "DoorActivity", "info": "Defines which doors shall be open and how they shall be open.", 
+      "attrs": [
+        {"intId": 1, "name": "openingDoorSide", "enumType": "DoorSide", 
+          "info": "Defines the door opening side. noneSide if the doors are kept closed.noneSide if the doors are kept closed"}, 
+        {"intId": 2, "name": "centralisedOpening", "dataType": "boolean", 
+          "info": "Defines if the doors can be centrally opened. true - centralised opening, false - opening by passengers/driver"}, 
+        {"intId": 3, "name": "automaticClosing", "dataType": "boolean", 
+          "info": "Defines if automatic closing of doors is performed by ATO or not. True by ATO, false - without ATO"}]
+    }, 
+    {
+      "name": "TrainUnitActivity", "info": "Defines, what happens with the rolling stock at this location.", 
+      "attrs": [
+        {"intId": 1, "name": "trainUnitActivityType", "enumType": "TrainUnitActivityType", 
+          "info": "Defines the train unit activity type"}, 
+        {"intId": 2, "name": "actualTrainUnitIndex", "dataType": "uint32", 
+          "info": "Defines the index of TrainUnit in OperationalMovement. operationalTrainUnits before the activity"}, 
+        {"intId": 3, "name": "targetTrainUnitIndex", "dataType": "uint32", 
+          "info": "Defines the index of TrainUnit in OperationalMovement. operationalTrainUnits after the activity"}]
+    }, 
+    {
+      "name": "PhysicalTrainUnitIdentifier", 
+      "info": "Defines a set of possible identifiers for a physical train (ETCS-trainRunningNumber, OBU-ID etc).", 
+      "attrs": [
+        {"intId": 1, "name": "trainRunningNumber", "dataType": "string", "multiplicity": "0..1", 
+          "info": "Defines the Train Running Number for ETCS same as SS026.NID_OPERATIONAL. To be usable for ETCS must contain a decimal number [0..99999999]. Mapping to uint32 by filling with F: '1233' -> 0x1233FFFF"}, 
+        {"intId": 2, "name": "additionalTrainRunningNumber", "dataType": "string", "multiplicity": "0..1", 
+          "info": "Defines the distinction between Operational Train Units with the same trainRunningNumber. This may occur if a trainRunningNumber is reused for different spare trains."}, 
+        {"intId": 3, "name": "tafTapTsiTrainID", "dataType": "string", "multiplicity": "0..1", 
+          "info": "refers to taf tap tsi train id"}, 
+        {"intId": 4, "name": "leadingOnBoardUnitId", "dataType": "string", "multiplicity": "0..1", 
+          "info": "Defines NID_ENGINE. To be usable with ETCS must contain a decimal number [0..16.777.215]"}]
+    }, 
+    {
+      "name": "OperationalPlanRestriction", "info": "Defines a temporary infrastructure restriction", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", 
+          "info": "Defines the Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "issuedAt", "dataType": "timestamp", 
+          "info": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"}, 
+        {"intId": 3, "name": "configurationDataVersionRef", "dataType": "string", 
+          "info": "Defines the configuration data version for which the operational plan is valid"}, 
+        {"intId": 5, "name": "restrictionEvents", "composition": "RestrictionEvent", "multiplicity": "1..*", 
+          "info": "Defines a set of restriction events assigned the the operational plan restriction"}]
+    }, 
+    {
+      "name": "RestrictionEvent", 
+      "info": "Defines a part of temporary infrastructure restriction, especially if one Restriction plan contains several areas to be activate to different times.", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", 
+          "info": "Defines the Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "creationTime", "dataType": "timestamp", 
+          "info": "Defines the time when the restrictionArea shall be created=implemented=activated in interlocking, in UTC"}, 
+        {"intId": 3, "name": "removalTime", "dataType": "timestamp", "info": "Defines the removal time in UTC"}, 
+        {"intId": 4, "name": "restrictionArea", "composition": "RestrictionArea", 
+          "info": "Defines the restriction area associated to a restriction event"}, 
+        {"intId": 5, "name": "startsAfterEvents", "composition": "OperationalEventRef", "multiplicity": "0..*", 
+          "info": "Defines the set of operational events, which must be finished before the current event starts."}]
+    }, 
+    {
+      "name": "RestrictionArea", "info": "Defines a topological area, in which the restrictions must be applied.", 
+      "attrs": [
+        {"intId": 1, "name": "linearElementSections", "composition": "infra.LinearElementSection", "multiplicity": "1..*", 
+          "info": "composes of linear element sections"}, 
+        {"intId": 2, "name": "specificRestrictions", "composition": "SpecificRestriction", "multiplicity": "1..*", 
+          "info": "Defines the list of specific restrictions"}]
+    }, 
+    {
+      "name": "TrainGroupSpec", 
+      "info": "Defines the train aspects, which define if the train belongs to the restricted group.", 
+      "attrs": [
+        {"intId": 1, "name": "axleLoadCategories", "enumType": "infra.LoadCapabilityLineCategories", "multiplicity": "*", 
+          "info": "Trains with the listed Axle-Load-Category belong to the TrainGroup."}, 
+        {"intId": 2, "name": "cantDeficiencyCategories", "enumType": "infra.CantDeficiencies", "multiplicity": "*", 
+          "info": "Defines the different cant deficiency categories"}]
+    }, 
+    {
+      "name": "RestrictedAspect", "info": "Defines single aspects of the infrastructure restriction", "union": true, 
+      "attrs": [
+        {"intId": 1, "name": "temporarySpeedRestriction", "dataType": "uint32", "unit": "km/h", 
+          "info": "Defines the temporary speed restriction on the track"}, 
+        {"intId": 2, "name": "allowedDrivingModes", "enumType": "OnboardOperatingMode", "multiplicity": "*", 
+          "info": "Defines the allowed driving modes"}, 
+        {"intId": 3, "name": "nonStopping", "dataType": "boolean", 
+          "info": "Defines the non stopping area. if true, the trains defined in trainGroupSpec shall not stop within restriction area"}, 
+        {"intId": 4, "name": "trackClosure", "dataType": "boolean", 
+          "info": "Defines track closure information. If true, the trains defined in trainGroupSpec shall not enter restriction area"}, 
+        {"intId": 5, "name": "operationalRadioHole", "dataType": "boolean", 
+          "info": "Defines the presence of operational radio holes. if true radio communication is restricted within restriction area"}, 
+        {"intId": 6, "name": "maxAdhesion", "enumType": "AdhesionCategory", "info": "Defines the maximum adhesion"}, 
+        {"intId": 7, "name": "atoInhibition", "dataType": "boolean", 
+          "info": "Defined the ato inhibition zones. Exmaples: train section is not contantly monitored, or stimulate driver's attention, or approaching overcrouded station"}, 
+        {"intId": 8, "name": "maxCurrent", "dataType": "uint32", "unit": "A", 
+          "info": "Defines max current value. For ATO, SS126. Ignored by TrafficCS"}]
+    }, 
+    {
+      "name": "SpecificRestriction", "info": "Defines single aspect of the infrastructure restriction.", 
+      "attrs": [
+        {"intId": 1, "name": "appliedToTrains", "composition": "TrainGroupSpec", "multiplicity": "0..1", 
+          "info": "Defines the applicable trains that are affected by the specific restriction"}, 
+        {"intId": 2, "name": "restrictedAspects", "composition": "RestrictedAspect", "multiplicity": "1..*", 
+          "info": "Defines the restricted aspects associated to a specific restriction"}]
+    }, 
+    {
+      "name": "OperationalPlanWarningMeasure", "info": "Defines a temporary warning area, required for e.g. a possession.", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", 
+          "info": "Defines the Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "issuedAt", "dataType": "timestamp", 
+          "info": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"}, 
+        {"intId": 3, "name": "configurationDataVersionRef", "dataType": "string", 
+          "info": "Defines the configuration data version for which the operational plan is valid"}, 
+        {"intId": 4, "name": "warningMeasureEvents", "composition": "WarningMeasureEvent", "multiplicity": "1..*", 
+          "info": "Defines the list of warning measures events"}]
+    }, 
+    {
+      "name": "WarningArea", "info": "Defines area in which Warning measures shall be implemented.", 
+      "attrs": [{"intId": 1, "name": "trackArea", "composition": "infra.NetAreaReference", "info": "protected area"}, 
+        {"intId": 2, "name": "warningDevices", "composition": "WarningDevice", "multiplicity": "1..*", 
+          "info": "Defines the list of warning devices"}]
+    }, 
+    {
+      "name": "WarningDevice", 
+      "info": "Defines functional warning device which must be activated to implement warning measure", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", 
+          "info": "Defines the Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "deviceType", "enumType": "DeviceType", 
+          "info": "Defines a functional warning device type used for securing the warning area"}]
+    }, 
+    {
+      "name": "WarningMeasureEvent", "info": "Defines planned activation/removal of warning area", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", 
+          "info": "Defines the Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "creationTime", "dataType": "timestamp", 
+          "info": "Defines the time when the warningArea shall be created=implemented=activated in interlocking, in UTC"}, 
+        {"intId": 3, "name": "removalTime", "dataType": "timestamp", "info": "Defines the removal time in UTC"}, 
+        {"intId": 4, "name": "warningArea", "composition": "WarningArea"}, 
+        {"intId": 5, "name": "startsAfterEvents", "composition": "OperationalEventRef", "multiplicity": "0..*", 
+          "info": "Defines the set of operational events, which must be finished before the current event starts."}]
+    }, 
+    {
+      "name": "ExecutionResponse", 
+      "info": "Defines the result of evaluation of an operational plan from the TrafficCS (accepts/rejects)", 
+      "attrs": [
+        {"intId": 1, "name": "operationalPlanRef", "composition": "OperationalPlanReference", 
+          "info": "Refers to an operational plan"}, 
+        {"intId": 2, "name": "operationalPlanIssuedAt", "dataType": "timestamp", 
+          "info": "refers to the issuedAt-value of the operational plan request, in UTC"}, 
+        {"intId": 3, "name": "issuedAt", "dataType": "timestamp", 
+          "info": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"}, 
+        {"intId": 4, "name": "responseCode", "enumType": "ResponseCode", 
+          "info": "Defines the respose code associated the event execution request"}, 
+        {"intId": 5, "name": "rejectReason", "dataType": "string", "multiplicity": "0..1", 
+          "info": "Defines the reject reason for an event execution request"}]
+    }, 
+    {
+      "name": "OperationalPlanReference", 
+      "info": "Defines a reference to one of possible OperationalPlans (movement, restriction, warning)", "union": true, 
+      "attrs": [
+        {"intId": 1, "name": "operationalPlanMovementRef", "reference": "OperationalPlanMovement", 
+          "info": "Refers the operational plan movement"}, 
+        {"intId": 2, "name": "operationalPlanRestrictionRef", "reference": "OperationalPlanRestriction", 
+          "info": "Refers the operational plan restriction"}, 
+        {"intId": 3, "name": "operationalPlanWarningMeasureRef", "reference": "OperationalPlanWarningMeasure", 
+          "info": "Refers the operational plan warning measure"}]
+    }, 
+    {
+      "name": "EventExecutionReport", "info": "Defines states of start/end of an event (success/failure, timestamp etc.)", 
+      "union": true, 
+      "attrs": [
+        {"intId": 1, "name": "arrivalReport", "composition": "MovementEventExecutionReport", 
+          "info": "Defines the arrival reports. For passing only the departure reports are to be sent"}, 
+        {"intId": 2, "name": "departureReport", "composition": "MovementEventExecutionReport", 
+          "info": "Defines the result of departure attempt"}, 
+        {"intId": 3, "name": "creationRestrictionReport", "composition": "RestrictionEventExecutionReport", 
+          "info": "Defines the result of creation of a restriction"}, 
+        {"intId": 4, "name": "removalRestrictionReport", "composition": "RestrictionEventExecutionReport", 
+          "info": "Defines the result of removal of a restriction"}, 
+        {"intId": 5, "name": "creationWarningMeasureReport", "composition": "WarningMeasureEventExecutionReport", 
+          "info": "Defines the result of creation of a warning measure"}, 
+        {"intId": 6, "name": "removalWarningMeasureReport", "composition": "WarningMeasureEventExecutionReport", 
+          "info": "Defines the result of removal of warning measure"}]
+    }, 
+    {
+      "name": "MovementEventExecutionReport", 
+      "info": "Defines state of execution of a warning measure event (completed, failed, warning).", 
+      "attrs": [
+        {"intId": 1, "name": "movementEvent", "reference": "MovementEvent", 
+          "info": "refers to a movement event. In json is a string with planId/eventId"}, 
+        {"intId": 2, "name": "operationalPlanIssuedAt", "dataType": "timestamp", "info": "in UTC"}, 
+        {"intId": 3, "name": "issuedAt", "dataType": "timestamp", 
+          "info": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"}, 
+        {"intId": 4, "name": "executionState", "enumType": "EventExecutionState", 
+          "info": "Defines the type of execution result of the event"}, 
+        {"intId": 5, "name": "failureReason", "dataType": "string", "multiplicity": "0..1", 
+          "info": "Defines an informal error message in English"}, 
+        {"intId": 6, "name": "warning", "dataType": "string", "multiplicity": "0..1", 
+          "info": "Defines an informal warning message in English"}]
+    }, 
+    {
+      "name": "RestrictionEventExecutionReport", 
+      "info": "Defines how the restriction event was executed (success, failure ...)", 
+      "attrs": [
+        {"intId": 1, "name": "restrictionEvent", "reference": "RestrictionEvent", 
+          "info": "refers to a restriction event including operational plan restriction"}, 
+        {"intId": 2, "name": "operationalPlanIssuedAt", "dataType": "timestamp", "info": "in UTC"}, 
+        {"intId": 3, "name": "issuedAt", "dataType": "timestamp", 
+          "info": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"}, 
+        {"intId": 4, "name": "executionState", "enumType": "EventExecutionState", 
+          "info": "Defines the type of execution result of the event"}, 
+        {"intId": 5, "name": "failureReason", "dataType": "string", "multiplicity": "0..1", 
+          "info": "Defines an informal error message in English"}, 
+        {"intId": 6, "name": "warning", "dataType": "string", "multiplicity": "0..1", 
+          "info": "Defines an informal warning message in English"}]
+    }, 
+    {
+      "name": "WarningMeasureEventExecutionReport", 
+      "attrs": [
+        {"intId": 1, "name": "warningMeasureEvent", "reference": "WarningMeasureEvent", 
+          "info": "in json is a string with planId/eventId"}, 
+        {"intId": 2, "name": "operationalPlanIssuedAt", "dataType": "timestamp", "info": "in UTC"}, 
+        {"intId": 3, "name": "issuedAt", "dataType": "timestamp", 
+          "info": "iDefines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"}, 
+        {"intId": 4, "name": "executionState", "enumType": "EventExecutionState", 
+          "info": "Defines the type of execution result of the event"}, 
+        {"intId": 5, "name": "failureReason", "dataType": "string", "multiplicity": "0..1", 
+          "info": "Defines an informal error message in English"}, 
+        {"intId": 6, "name": "warning", "dataType": "string", "multiplicity": "0..1", 
+          "info": "Defines an informal warning message in English"}]
+    }, 
+    {
+      "name": "TrainUnitReportPE", 
+      "info": "Defines train report (position, capabilities, permission) coming from PlanExecution system.", 
+      "attrs": [
+        {"intId": 1, "name": "issuedAt", "dataType": "timestamp", 
+          "info": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"}, 
+        {"intId": 2, "name": "operationalPlanMovement", "reference": "OperationalPlanMovement", "multiplicity": "0..1", 
+          "info": "Refers to the operational plan movement. If the new train was created in TrafficCS it does not have an operationalPlan (Movement) yet"}, 
+        {"intId": 3, "name": "cmdTrainObject", "composition": "TrainObject", "info": "Defines the train object information"}]
+    }, 
+    {
+      "name": "TrainObject", 
+      "info": "Defines a train report generated by TrafficCS including its position, length, speed etc.", 
+      "attrs": [{"intId": 1, "name": "obuIdentifier", "dataType": "string", "info": "Defines the onboard-unit identifier"}, 
+        {"intId": 2, "name": "axleLoadCategory", "enumType": "infra.LoadCapabilityLineCategories"}, 
+        {"intId": 3, "name": "movementPermission", "composition": "MovementPermission", "multiplicity": "0..1", 
+          "info": "Defines the movement permission for the train"}, 
+        {"intId": 4, "name": "trainLength", "dataType": "uint32", "unit": "m", "info": "Defines the train length"}, 
+        {"intId": 5, "name": "safeTrainLength", "dataType": "boolean", "info": "Defines if the trainLength-value is safe"}, 
+        {"intId": 6, "name": "communicationActive", "dataType": "boolean", 
+          "info": "Defines the communication state for the train object"}, 
+        {"intId": 7, "name": "trainRunningNumber", "dataType": "string", 
+          "info": "see PhysicalTrainUnitIdentifier.trainRunningNumber"}, 
+        {"intId": 8, "name": "vMaxTrain", "dataType": "uint32", "unit": "km/h", "info": "Defines maximum train speed"}, 
+        {"intId": 9, "name": "onboardOperatingMode", "enumType": "OnboardOperatingMode", 
+          "info": "Defines the on-board operating mode of the train"}, 
+        {"intId": 10, "name": "trainLocation", "composition": "infra.NetLinearReference", 
+          "info": "Defines the position of the entire train (i.e., from rear to front) including the confidence intervals"}, 
+        {"intId": 11, "name": "trainObjectIdentifier", "dataType": "string", 
+          "info": "Generated by TrainProtectionSystem. It can generate two different trainObjectIds for the same physical train after it disappeared in a radio hole and appeared again."}, 
+        {"intId": 12, "name": "mpRequestedByTrain", "dataType": "boolean", 
+          "info": "Defines the train object identifier. Generated by TrainProtectionSystem. It can generate two different trainObjectIds for the same physical train after it disappeared in a radio hole and appeared again."}, 
+        {"intId": 13, "name": "currentSpeed", "dataType": "uint32", "unit": "km/h", "info": "Defines current speed of the train"}, 
+        {"intId": 14, "name": "cantDeficiencyCategory", "enumType": "infra.CantDeficiencies"}]
+    }, 
+    {
+      "name": "MovementPermission", "info": "Defines path and speed profiles assigned to a train for its next movement.", 
+      "attrs": [{"intId": 1, "name": "id", "dataType": "string", "info": "Defines the Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "riskBuffer", "composition": "infra.NetLinearReference", 
+          "info": "Defines the risk buffer for a movement permission =overlap after MP"}, 
+        {"intId": 3, "name": "riskPaths", "composition": "infra.NetLinearReference", "multiplicity": "*", 
+          "info": "Defines flank protection area on the neighbouring tracks"}, 
+        {"intId": 4, "name": "pathWay", "composition": "infra.NetLinearReference", 
+          "info": "Definesthe linear extent of the MA as in actual path of the train"}, 
+        {"intId": 5, "name": "movementModes", "composition": "MpDrivingMode", "multiplicity": "1..*", 
+          "info": "Defines applicable movement modes"}, 
+        {"intId": 6, "name": "speeds", "composition": "MpSpeed", "multiplicity": "1..*", 
+          "info": "Defines the maximum applicable speeds for the movement permission"}]
+    }, 
+    {
+      "name": "MpSpeed", "info": "Defines speed-restriction section of the path defined in a movement permission.", 
+      "attrs": [
+        {"intId": 1, "name": "vMax", "dataType": "uint32", "unit": "km/h", 
+          "info": "Defines the maximum applicable speed for movement permission along the assigned path"}, 
+        {"intId": 2, "name": "path", "composition": "infra.NetLinearReference", "info": "refers the applicable path"}]
+    }, 
+    {
+      "name": "MpDrivingMode", 
+      "info": "Defines inside of a movement permission, which parts of the reserved path can be driven in which ETCS mode.", 
+      "attrs": [
+        {"intId": 1, "name": "drivingMode", "enumType": "OnboardOperatingMode", 
+          "info": "Defines the applicable driving mode along the associated path"}, 
+        {"intId": 2, "name": "path", "composition": "infra.NetLinearReference", "info": "refers the applicable path"}]
+    }, 
+    {
+      "name": "TrainUnitReportAtoStatus", 
+      "info": "Defines train position report from ATO with additional info (driverId, speed, etc.). Source is SS126.STR.", 
+      "attrs": [
+        {"intId": 1, "name": "issuedAt", "dataType": "timestamp", 
+          "info": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"}, 
+        {"intId": 2, "name": "operationalPlanMovement", "reference": "OperationalPlanMovement", "multiplicity": "0..1", 
+          "info": "Refers to the operational plan movement. If the new train was created in TrafficCS it does not have an operationalPlan (Movement) yet"}, 
+        {"intId": 3, "name": "trainUnitIdentifier", "composition": "PhysicalTrainUnitIdentifier"}, 
+        {"intId": 4, "name": "atoState", "enumType": "AtoState", "info": "Defines the current ATO On-Board state"}, 
+        {"intId": 5, "name": "routingError", "dataType": "boolean", 
+          "info": "Defines if a routing error has occured (inconsistent path)"}, 
+        {"intId": 6, "name": "nextStoppingPointSkip", "dataType": "boolean", 
+          "info": "Defines the wish of the train driver to skip the next stop. "}, 
+        {"intId": 7, "name": "lowAdhesionReportedByDriver", "dataType": "boolean", 
+          "info": "Defines any low adhesion is reported by the driver"}, 
+        {"intId": 8, "name": "operationalConditionsFulfillment", "dataType": "boolean", 
+          "info": "Defines if the operational conditions are fullfilled for ATO"}, 
+        {"intId": 9, "name": "isMoving", "dataType": "boolean", "info": "Defines if the train is moving or not (v != 0)"}, 
+        {"intId": 10, "name": "unableToStopAtNextStoppingPoint", "dataType": "boolean", 
+          "info": "Defines if the the train is too close and/or too fast for stopping"}, 
+        {"intId": 11, "name": "isSlipping", "dataType": "boolean", "info": "Defines if the wheel slip occurs.bit7 from SS126"}, 
+        {"intId": 12, "name": "speed", "dataType": "uint32", "unit": "km/h", "info": "current speed of the train"}, 
+        {"intId": 13, "name": "trainLength", "dataType": "uint32", "unit": "m", "info": "Defines the train length"}, 
+        {"intId": 14, "name": "driverId", "dataType": "string", "multiplicity": "0..1", 
+          "info": "Defines the driver id for the train unit"}, 
+        {"intId": 15, "name": "frontPosition", "composition": "infra.NetPointReference", 
+          "info": "Defines the train front position with respect to the track edge direction. This direction can be deduced from JP and STR in SS 126"}, 
+        {"intId": 16, "name": "eventHandling", "composition": "EventHandling", "multiplicity": "0..1", 
+          "info": "defines how the previous event was handled"}, 
+        {"intId": 17, "name": "eventEstimations", "composition": "EventEstimation", "multiplicity": "*", "ordered": "byIndex", 
+          "info": "Refers to event estimations"}]
+    }, 
+    {
+      "name": "EventHandling", "info": "Defines, how the previous event was handled.", 
+      "attrs": [
+        {"intId": 1, "name": "event", "reference": "MovementEvent", "info": "refers a movement event including the movement plan"}, 
+        {"intId": 2, "name": "passStopDepart", "enumType": "MovementEventAction", 
+          "info": "Defines the result of the event handling action"}]
+    }, 
+    {
+      "name": "EventEstimation", "info": "Defines forecast for events coming from ATO-Onboard", 
+      "attrs": [
+        {"intId": 1, "name": "event", "reference": "MovementEvent", "info": "refers a movement event including the movement plan"}, 
+        {"intId": 2, "name": "arrival", "dataType": "timestamp", "info": "Defines the arrival time in UTC"}]
+    }, 
+    {
+      "name": "TrainUnitReportAtoCapabilities", "info": "Defines train capabilities reported by ATO from the train.", 
+      "attrs": [
+        {"intId": 1, "name": "issuedAt", "dataType": "timestamp", 
+          "info": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"}, 
+        {"intId": 2, "name": "operationalPlanMovement", "reference": "OperationalPlanMovement", "multiplicity": "0..1", 
+          "info": "Refers to the operational plan movement. If the new train was created in TrafficCS it does not have an operationalPlan (Movement) yet"}, 
+        {"intId": 3, "name": "trainUnitIdentifier", "composition": "PhysicalTrainUnitIdentifier"}, 
+        {"intId": 4, "name": "mass", "dataType": "uint32", "unit": "kg", "exp": 2, 
+          "info": "train mass including load, 0 if unknown"}, 
+        {"intId": 5, "name": "outsideTemperature", "dataType": "int32", "unit": "degree", 
+          "info": "Defines the outside temperature. Use 127 if unknown"}, 
+        {"intId": 6, "name": "etcsData", "composition": "EtcsDataAto", "multiplicity": "0..1", 
+          "info": "Defines the valid ETCS Data for the train. Not provided if invalid"}, 
+        {"intId": 7, "name": "passengerLoad", "dataType": "uint32", "unit": "percent", "range": "0..255", "info": "255 unknown"}, 
+        {"intId": 8, "name": "lastPassengerExchangeTime", "dataType": "uint32", "unit": "s", "info": "65535: unknown"}, 
+        {"intId": 9, "name": "elapsedStartPassengerExchange", "dataType": "uint32", "unit": "s", 
+          "info": "Defines the time elapsed between standstill and the doors are released for operation or opening; 4096: unknown"}, 
+        {"intId": 10, "name": "additionalTrainData", "composition": "AdditionalTrainData", "multiplicity": "0..1", 
+          "info": "Defines additional train data as part of ATO capabilities report"}, 
+        {"intId": 11, "name": "physicalConsists", "composition": "PhysicalConsist", "multiplicity": "0..255", 
+          "ordered": "byIndex", "info": "Defines the list of physical consists. Empty if unknown"}]
+    }, 
+    {
+      "name": "EtcsDataAto", "info": "Defines static train capability data reported by ATO", 
+      "attrs": [{"intId": 1, "name": "trainLength", "dataType": "uint32", "unit": "m", "info": "Defines the train length,0 if unknown"}, 
+        {"intId": 2, "name": "maximumSpeed", "dataType": "uint32", "unit": "km/h", 
+          "info": "Defines the maximum applicable speed, use 0 if unknown"}, 
+        {"intId": 3, "name": "cantDeficiencyCategory", "enumType": "infra.CantDeficiencies", 
+          "info": "Defines the cant deficiency category of the train"}, 
+        {"intId": 4, "name": "otherInternationalCategory", "enumType": "infra.OtherSpecificStaticSpeedProfileCategory", 
+          "multiplicity": "0..15", "info": "Defines other international train categories"}, 
+        {"intId": 5, "name": "axleLoadCategory", "enumType": "infra.LoadCapabilityLineCategories"}, 
+        {"intId": 6, "name": "nominalRotatingMass", "dataType": "uint32", "unit": "kg", 
+          "info": "relates to total train weight. 16 if unknown"}, 
+        {"intId": 7, "name": "brakePercentage", "dataType": "uint32", "unit": "percent", 
+          "info": "Defines the brake percentage. 255 if unknown"}, 
+        {"intId": 8, "name": "preconfiguredBrakingModel", "dataType": "uint32", 
+          "info": "Defines preconfigured braking model for the train. Use 255 if unknown"}, 
+        {"intId": 9, "name": "brakePosition", "enumType": "BrakePosition", 
+          "info": "Defines the active brake position for the train"}]
+    }, 
+    {
+      "name": "DoorData", "info": "Defines availability of a door and last open time.", 
+      "attrs": [{"intId": 1, "name": "doorState", "enumType": "DoorState", "info": "Defines the door state"}, 
+        {"intId": 2, "name": "lastPassengerExchangeTime", "dataType": "uint32", "unit": "s", 
+          "info": "Defines the last passenger exchange time. Use 65535 if unknown"}]
+    }, 
+    {
+      "name": "AdditionalTrainData", 
+      "info": "Defines dynamic train characteristics, which are not primary for the timetable (therefore 'additional')", 
+      "attrs": [
+        {"intId": 1, "name": "maxAvailableTractiveEffort", "dataType": "uint32", "unit": "N", "exp": 3, "range": "0..3000", 
+          "info": "Defines the maximun available traction effort. Use 65535 if unknown"}, 
+        {"intId": 2, "name": "maxAvailableTractivePower", "dataType": "uint32", "unit": "W", "exp": 3, "range": "0..32000", 
+          "info": "Defines the maximun available traction power. Use 65535 if unknown"}, 
+        {"intId": 3, "name": "maxAvailableDynamicBrakeForce", "dataType": "uint32", "unit": "N", "exp": 3, "range": "0..3000", 
+          "info": "Defines the maximun available dynamic brake force. Use 65535 if unknown"}, 
+        {"intId": 4, "name": "maxAvailableDynamicBrakePower", "dataType": "uint32", "unit": "W", "exp": 3, "range": "0..32000", 
+          "info": "Defines the maximun available dynamic brake power. Use 65535 if unknown"}, 
+        {"intId": 5, "name": "maxAvailableServiceBrakeForce", "dataType": "uint32", "unit": "N", "exp": 3, "range": "0..3000", 
+          "info": "Defines the maximun available service brake force. Use 65535 if unknown"}, 
+        {"intId": 6, "name": "regenerativeBrakeState", "enumType": "ActiveState", 
+          "info": "Defines the state of the regenerative brake"}, 
+        {"intId": 7, "name": "magneticShoeBrakeState", "enumType": "ActiveState", 
+          "info": "Defines the state of magnetic shoe brake"}, 
+        {"intId": 8, "name": "eddyCurrentBrakeState", "enumType": "ActiveState", 
+          "info": "Defines the state of eddy current brake"}, 
+        {"intId": 9, "name": "electroPneumaticBrakeState", "enumType": "ActiveState", 
+          "info": "Defines the state of electro pneumatic brake"}, 
+        {"intId": 10, "name": "adhesionIndependentBrakeState", "enumType": "ActiveState", 
+          "info": "Defines the adhesion independent brake state"}, 
+        {"intId": 11, "name": "availableAdhesionCategory", "enumType": "AdhesionCategory", 
+          "info": "Defines the available adhesion categories;053 in Subset"}, 
+        {"intId": 12, "name": "availableAdhesionPhysicalValue", "dataType": "uint32", "exp": -3, 
+          "info": "Defines the available adhesion value. 600 if unknown"}]
+    }, 
+    {
+      "name": "PhysicalConsist", "info": "Defines an un-splittable part of the train", 
+      "attrs": [
+        {"intId": 1, "name": "evnIdentifier", "dataType": "uint64", 
+          "info": "Defines the european vehicle number (EVN) 12 digits,use 0 if unknown"}, 
+        {"intId": 2, "name": "passengerLoad", "dataType": "uint32", "unit": "percent", 
+          "info": "Defines hte passenger load. Use 255 if unknown"}, 
+        {"intId": 3, "name": "mass", "dataType": "uint32", "unit": "kg", "exp": 2, "range": "0..150000", 
+          "info": "Defines the train mass including load. Use 0 if unknown"}, 
+        {"intId": 4, "name": "maxCurrentConsuption", "dataType": "uint32", "unit": "A", "exp": 1, "range": "0..1023", 
+          "info": "Defines the maximun current consumption. Use 1023 if unknown"}, 
+        {"intId": 5, "name": "physicalVehicles", "composition": "PhysicalVehicle", "multiplicity": "0..255", "ordered": "byIndex", 
+          "info": "Defines the physical vehicles part of the physical consist. empty=unknown"}]
+    }, 
+    {
+      "name": "PhysicalVehicle", "info": "Defines a single carrige inside of a physical consist.", 
+      "attrs": [
+        {"intId": 1, "name": "evnIdentifier", "dataType": "uint64", 
+          "info": "European vehicle number (EVN) [2018/1614/EU] 12 digits, 0: unknown"}, 
+        {"intId": 2, "name": "mass", "dataType": "uint32", "unit": "kg", "exp": 2, "range": "0..150000", "info": "2047: unknown"}, 
+        {"intId": 3, "name": "vehicleOrientation", "enumType": "VehicleOrientation", 
+          "info": "Defines the orientation of the vehicle with respect to the train unit"}, 
+        {"intId": 4, "name": "doorDataLeft", "composition": "DoorData", "multiplicity": "0..7", "ordered": "byIndex", 
+          "info": "Defines the left door data. Left is with respect of normal orientation"}, 
+        {"intId": 5, "name": "doorDataRight", "composition": "DoorData", "multiplicity": "0..7", "ordered": "byIndex", 
+          "info": "Defines the right door data. Right is with respect of normal orientation"}, 
+        {"intId": 6, "name": "passengerLoad", "dataType": "uint32", "unit": "percent", "info": "255=unknown"}, 
+        {"intId": 7, "name": "pantographsStates", "enumType": "PantographState", "multiplicity": "0..7", "ordered": "byIndex", 
+          "info": "Defines the state of the pantograph"}]
+    }, 
+    {
+      "name": "TrackOccupationState", 
+      "info": "sent by low-level system on each track occupation registered, contains CMD.UnresolvedTrackboundObject", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", 
+          "info": "Defines the Identity of the object; used for referencing"}, 
+        {"intId": 2, "name": "issuedAt", "dataType": "timestamp", 
+          "info": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"}, 
+        {"intId": 3, "name": "operationalPlanMovement", "reference": "OperationalPlanMovement", "multiplicity": "0..1", 
+          "info": "Refers to the operational plan movement. if the new train was created in TrafficCS it does not have an operationalPlan (Movement) yet"}, 
+        {"intId": 4, "name": "trainUnitIdentifier", "composition": "PhysicalTrainUnitIdentifier", "multiplicity": "0..1", 
+          "info": "Defines the train unit identifier"}, 
+        {"intId": 5, "name": "occupationState", "enumType": "EventState", "info": "Defines the occupation state of the track"}, 
+        {"intId": 6, "name": "creationReason", "enumType": "OccupationReason", "info": "Defines the creation reason"}, 
+        {"intId": 7, "name": "recordedTrainLength", "dataType": "uint32", "unit": "m", 
+          "info": "Defines the recorded train length. Use 0 if undefined"}, 
+        {"intId": 8, "name": "trackArea", "composition": "infra.NetAreaReference", "info": "composes of net area reference"}, 
+        {"intId": 9, "name": "associatedTrainObject", "dataType": "string", "multiplicity": "0..1", 
+          "info": "Defines the trainObjectId defined in MovementPermission"}]
+    }, 
+    {
+      "name": "DpsGroupState", "info": "Define drivability state of a drive protection section", 
+      "attrs": [{"intId": 1, "name": "dpsGroup", "reference": "tp.DriveProtectionSectionGroup", "info": "refers to dpsGroup"}, 
+        {"intId": 2, "name": "issuedAt", "dataType": "timestamp", 
+          "info": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"}, 
+        {"intId": 3, "name": "operationalPlanMovement", "reference": "OperationalPlanMovement", "multiplicity": "0..1", 
+          "info": "Refers to the operational plan movement. if the new train was created in TrafficCS it does not have an operationalPlan (Movement) yet"}, 
+        {"intId": 4, "name": "dpsgState", "enumType": "DpsgState", "info": "common state of the drive protection section group"}, 
+        {"intId": 5, "name": "dpsStates", "composition": "DPSState", "multiplicity": "*", 
+          "info": "Defines the states of drive protection sections"}]
+    }, 
+    {
+      "name": "DPSState", "info": "Defines state of a drive protection section", 
+      "attrs": [{"intId": 1, "name": "dps", "reference": "tp.DriveProtectionSection", "info": "refers to drive protection section"}, 
+        {"intId": 2, "name": "requestedDrivability", "enumType": "DpsDrivability", 
+          "info": "up to the operator, in accordance with the equipment manual"}, 
+        {"intId": 3, "name": "currentDrivability", "enumType": "DpsDrivability", 
+          "info": "Defines the current drivability states for DPS"}]
+    }, 
+    {
+      "name": "RestrictionAreaState", "info": "Defines if the restriction is activated(created)/removed", 
+      "attrs": [
+        {"intId": 1, "name": "id", "dataType": "string", "key": "global", 
+          "info": "id of restrictionArea generated by interlocking"}, 
+        {"intId": 2, "name": "issuedAt", "dataType": "timestamp", 
+          "info": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"}, 
+        {"intId": 3, "name": "restrictionEvent", "reference": "RestrictionEvent", "multiplicity": "0..1", 
+          "info": "refers to planned restriction event inclusive the operational plan restriction"}, 
+        {"intId": 4, "name": "restrictionState", "enumType": "RestrictionState", 
+          "info": "Defines if the area was created or removed"}, 
+        {"intId": 5, "name": "restrictionArea", "composition": "RestrictionArea", "multiplicity": "0..1", 
+          "info": "Defines the restriction area associated to a restriction area state. Provided if created by PE or implemented differently than planned"}]
+    }, 
+    {
+      "name": "WarningAreaState", "info": "Defines the state of a WarningMeasureEvent (created/updated/removed).", 
+      "attrs": [{"intId": 1, "name": "id", "dataType": "string", "key": "global", "info": "warningArea-id generated by interlocking"}, 
+        {"intId": 2, "name": "issuedAt", "dataType": "timestamp", 
+          "info": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"}, 
+        {"intId": 3, "name": "warningMeasureEvent", "reference": "WarningMeasureEvent", "multiplicity": "0..1", 
+          "info": "refers to planned warning measure event (if planned)"}, 
+        {"intId": 4, "name": "warningState", "enumType": "EventState", 
+          "info": "Defines if the warning area was established or removed"}, 
+        {"intId": 5, "name": "warningArea", "composition": "WarningArea", "multiplicity": "0..1", 
+          "info": "Defines the warning area associated with the warning area state. Provided if differs from warningMeasureEvent.warningArea or unplanned"}]
+    }], 
+  "enums": [
+    {
+      "name": "BrakePosition", 
+      "enumLiterals": [{"intId": 0, "name": "passengerTrainInP"}, {"intId": 1, "name": "passengerTrainInR"}, 
+        {"intId": 2, "name": "freightTrainInP"}, {"intId": 3, "name": "freightTrainInG"}, 
+        {"intId": 4, "name": "brakePositionUnknown"}]
+    }, 
+    {"name": "BrakeModelType", 
+      "enumLiterals": [{"intId": 0, "name": "lambda"}, {"intId": 1, "name": "gamma"}, {"intId": 2, "name": "undefined"}]}, 
+    {
+      "name": "ATOGradeOfAutomation", 
+      "enumLiterals": [{"intId": 0, "name": "GoAUnknown"}, {"intId": 1, "name": "GoA1"}, {"intId": 2, "name": "GoA2"}, 
+        {"intId": 3, "name": "GoA3"}, {"intId": 4, "name": "GoA4"}]
+    }, 
+    {
+      "name": "TrainCategoryType", 
+      "enumLiterals": [{"intId": 0, "name": "trainCategoryUnknown"}, {"intId": 1, "name": "interregional"}, {"intId": 2, "name": "regional"}, 
+        {"intId": 3, "name": "subUrban"}, {"intId": 4, "name": "nightTrain"}, {"intId": 5, "name": "motorRail"}, 
+        {"intId": 6, "name": "mountainTrain"}, {"intId": 7, "name": "historicTrain"}, {"intId": 8, "name": "coachGroup"}, 
+        {"intId": 9, "name": "tram"}, {"intId": 10, "name": "underground"}, {"intId": 11, "name": "highspeedTrain"}, 
+        {"intId": 12, "name": "intercity"}]
+    }, 
+    {
+      "name": "TrainUsageType", 
+      "enumLiterals": [{"intId": 0, "name": "trainUsageUndefined"}, {"intId": 1, "name": "commercialPassengerTrain"}, 
+        {"intId": 2, "name": "commercialCargoTrain"}, {"intId": 3, "name": "locomotiveRunningLight"}, 
+        {"intId": 4, "name": "lightRunning"}, {"intId": 5, "name": "notInService", "info": "betriebsfahrt"}, 
+        {"intId": 6, "name": "engineeringTrain"}, {"intId": 7, "name": "breakdownTrain", "info": "Hilfszug"}, 
+        {"intId": 8, "name": "mixedTrain"}, {"intId": 9, "name": "specialTrain"}, {"intId": 10, "name": "otherTrain"}]
+    }, 
+    {"name": "TrainProtectionType", "enumLiterals": [{"intId": 0, "name": "Etcs"}]}, 
+    {
+      "name": "AdhesionCategory", 
+      "enumLiterals": [
+        {"intId": 0, "name": "dryRailHigh", 
+          "info": " Conditions where 100% of thebrake force of the vehicle can be appliedwith no axle sliding of more than2% (adhesion level typically above 0.15\u00b5)"}, 
+        {"intId": 1, "name": "dryRailMedium", 
+          "info": "Conditions where the wheel/railadhesion is in the range 0.15 \u00e2 0.10 (Damprails with some contamination)"}, 
+        {"intId": 2, "name": "dryRailLow", 
+          "info": " Conditions where thewheel/rail adhesion is in the range 0.10 \u00e20.08 (Typical autumn mornings due todew/dampness often combined with lightovernight rust)"}, 
+        {"intId": 3, "name": "lowAdhesion", "info": "Conditions where thewheel/rail adhesion is in the range 0.08 \u00e20.05"}, 
+        {"intId": 4, "name": "veryLowAdhesion", "info": "Conditions where thewheel/rail adhesion is in the range 0.05-0.03"}, 
+        {"intId": 5, "name": "extremelyLowAdhesion", "info": "Conditionswhere the wheel/rail adhesion is below 0.03"}, 
+        {"intId": 255, "name": "unknownAdhesion"}]
+    }, 
+    {
+      "name": "TimeType", 
+      "enumLiterals": [{"intId": 0, "name": "plannedArrival"}, {"intId": 1, "name": "plannedDeparture"}, 
+        {"intId": 2, "name": "plannedMinDwellTime"}, {"intId": 3, "name": "publishedArrival"}, 
+        {"intId": 4, "name": "publishedDeparture"}]
+    }, 
+    {
+      "name": "MovementEventType", 
+      "enumLiterals": [{"intId": 0, "name": "pass", "info": "if the speed != 0 at the movement event position"}, 
+        {"intId": 1, "name": "stop", "info": "if the speed == 0 at the movement event position"}]
+    }, 
+    {"name": "AlignmentType", 
+      "enumLiterals": [{"intId": 0, "name": "head"}, {"intId": 1, "name": "center"}, {"intId": 2, "name": "rear"}]}, 
+    {
+      "name": "TrainUnitActivityType", 
+      "enumLiterals": [{"intId": 0, "name": "joinActivity", "info": "uncouple vehicles/parts for self-propelling train parts"}, 
+        {"intId": 1, "name": "splitActivity", "info": "uncouple vehicles/parts for self-propelling train parts"}, 
+        {"intId": 2, "name": "collectActivity", "info": "couple vehicles/parts"}, 
+        {"intId": 3, "name": "dropActivity", "info": "uncouple vehicles/trainParts"}, 
+        {"intId": 4, "name": "turnAroundActivity", 
+          "info": "stop to change driving direction of a train. After TurnAround a new MovementEvent with changed train position will be inserted into the Movement"}, 
+        {"intId": 5, "name": "meetActivity", "info": "Relevant for PE to request restricted MP in advance"}, 
+        {"intId": 6, "name": "otherActivity", 
+          "info": "the change must be calculated by comparing TrainUnits before and after the activity"}]
+    }, 
+    {
+      "name": "DeviceType", 
+      "enumLiterals": [{"intId": 0, "name": "acousticalIndicator"}, {"intId": 1, "name": "opticalIndicator"}, 
+        {"intId": 2, "name": "hapticIndicator"}]
+    }, 
+    {"name": "ResponseCode", "enumLiterals": [{"intId": 0, "name": "accepted"}, {"intId": 1, "name": "rejected"}]}, 
+    {"name": "EventExecutionState", 
+      "enumLiterals": [{"intId": 0, "name": "eventCompleted"}, {"intId": 1, "name": "eventFailed"}, {"intId": 2, "name": "eventWarning"}]}, 
+    {
+      "name": "ConnectionState", 
+      "enumLiterals": [{"intId": 0, "name": "connectionEstablished"}, {"intId": 1, "name": "connectionTerminated"}, 
+        {"intId": 2, "name": "connectionUndefined"}]
+    }, 
+    {
+      "name": "OperatingState", 
+      "enumLiterals": [{"intId": 0, "name": "active"}, {"intId": 1, "name": "readyForMP"}, {"intId": 2, "name": "inactive"}, 
+        {"intId": 3, "name": "undefined"}]
+    }, 
+    {
+      "name": "OnboardOperatingMode", 
+      "enumLiterals": [{"intId": 0, "name": "undefined"}, {"intId": 1, "name": "onSight"}, {"intId": 2, "name": "fullSupervision"}, 
+        {"intId": 3, "name": "standBy"}]
+    }, 
+    {
+      "name": "MovementEventAction", 
+      "enumLiterals": [{"intId": 0, "name": "passedEvent"}, {"intId": 1, "name": "stoppedAccurateAtEvent"}, 
+        {"intId": 2, "name": "stoppedWithOvershootAtEvent"}, {"intId": 3, "name": "stoppedWithUndershootAtEvent"}, 
+        {"intId": 4, "name": "departedFromEvent"}]
+    }, 
+    {
+      "name": "AtoState", 
+      "enumLiterals": [{"intId": 0, "name": "unknown"}, {"intId": 1, "name": "CO", "info": "State Configuration"}, 
+        {"intId": 2, "name": "NA", "info": "State Not Available"}, {"intId": 3, "name": "AV", "info": "State Available"}, 
+        {"intId": 4, "name": "RE", "info": "State Ready"}, {"intId": 5, "name": "EG", "info": "State Engaged"}, 
+        {"intId": 6, "name": "DE", "info": "State Disengaged"}, {"intId": 7, "name": "FA", "info": "State Failure"}]
+    }, 
+    {
+      "name": "DoorState", 
+      "enumLiterals": [{"intId": 0, "name": "doorStateUnknown"}, {"intId": 1, "name": "doorStateBlocked", "info": "defect"}, 
+        {"intId": 2, "name": "doorStateAvailable"}]
+    }, 
+    {
+      "name": "PantographState", 
+      "enumLiterals": [{"intId": 0, "name": "pantographBlocked", "info": "can not be used, defect"}, {"intId": 1, "name": "pantographLowered"}, 
+        {"intId": 2, "name": "pantographRaised"}, {"intId": 3, "name": "pantographStateUnknown"}]
+    }, 
+    {
+      "name": "DoorSide", 
+      "enumLiterals": [{"intId": 0, "name": "doorSideLeft"}, {"intId": 1, "name": "doorSideRight"}, {"intId": 2, "name": "doorSideBoth"}, 
+        {"intId": 3, "name": "doorNoneSide"}, {"intId": 4, "name": "doorSideUnknown"}]
+    }, 
+    {"name": "ActiveState", 
+      "enumLiterals": [{"intId": 0, "name": "activeState"}, {"intId": 1, "name": "inactiveState"}, {"intId": 2, "name": "undefinedState"}]}, 
+    {
+      "name": "VehicleOrientation", 
+      "enumLiterals": [{"intId": 0, "name": "orientationUknown"}, {"intId": 1, "name": "orientationSameAsTrainUnit"}, 
+        {"intId": 2, "name": "orientationInverseToTrainUnit"}]
+    }, 
+    {"name": "EventState", 
+      "enumLiterals": [{"intId": 0, "name": "created"}, {"intId": 1, "name": "updated"}, {"intId": 2, "name": "removed"}]}, 
+    {
+      "name": "OccupationReason", 
+      "enumLiterals": [{"intId": 0, "name": "shorterLTrain"}, {"intId": 1, "name": "toCommLoss"}, {"intId": 2, "name": "systemInit"}, 
+        {"intId": 3, "name": "ttdOccupation"}, {"intId": 4, "name": "ttdFree"}]
+    }, 
+    {
+      "name": "DpsgState", "info": "States of drive protection section group", 
+      "enumLiterals": [
+        {"intId": 0, "name": "ready", 
+          "info": "Associated Switchable Trackside Asset is not executing commands, connection health is good and switchable trackside asset is operationally good"}, 
+        {"intId": 1, "name": "processing", 
+          "info": "Associated Switchable Trackside Asset is currently executing a command, connection health is good and switchable trackside asset is operationally good . It is still possible to issue another set command to reverse the movement."}, 
+        {"intId": 2, "name": "disturbed", 
+          "info": "Either the connection health is not good or the associated Switchable Trackside Asset is in an operationally disturbed state"}, 
+        {"intId": 3, "name": "trailed"}]
+    }, 
+    {"name": "DpsDrivability", "info": "drivability of a drive protection section", 
+      "enumLiterals": [{"intId": 0, "name": "full"}, {"intId": 1, "name": "none"}]}, 
+    {"name": "RestrictionState", "enumLiterals": [{"intId": 0, "name": "created"}, {"intId": 1, "name": "removed"}]}]
 }
