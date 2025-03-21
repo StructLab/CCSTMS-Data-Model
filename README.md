@@ -27,7 +27,7 @@ This repository contains all necessary documentation and data model files relate
 - **Documentation**: Contains the primary project documentation for guiding users through the purpose, scope, and structure of the data models. Detailed guides, such as the *Data Model Guide*, provide an in-depth understanding of the data model’s structure, purpose, history, and development process.
 - **DM Docs**: Contains documentation specific to various data model categories within the project.
 - **DM Files**: Contains JSON files for each data model component, providing structured data representations.
-- **Ontology**: CCSTMS RDF and TTL files representing the extended ERA vocabulary "ontology". This has been moved to [ERA-CCSTMS](https://github.com/StructLab/ERA-CCSTMS)
+- **Ontology**: CCSTMS RDF and TTL files representing the extended ERA vocabulary "ontology" can be found [HERE](https://ext-era-doc.vercel.app/). NOTE: Issues or questions specifically related to the extended ontology can be raised here --> [ERA-CCSTMS](https://github.com/StructLab/ERA-CCSTMS)
 - **Schemas**: Schemas in XSD and JSON formats for validating and structuring the data models.
 
   
