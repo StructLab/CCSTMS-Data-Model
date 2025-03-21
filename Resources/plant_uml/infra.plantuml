@@ -14,62 +14,51 @@ hide circle
 class TopoArea {
  id: string
  versionTimestamp: timestamp
+ <b>name: string[0..1]</b>
 }
 
-class TrackEdge {
+class LinearElement {
  id: string
- trackEdgeLength: uint32
+ <b>lengthOfNetLinearElement: uint32</b>
+ <b>name: string[0..1]</b>
+ <s>lengthOfLinearElement: uint32</s>
 }
 
-class TrackEdgeLink {
+class NetRelation {
  id: string
- trackEdgeA: *TrackEdge
- trackEdgeB: *TrackEdge
- startOfA: boolean
- startOfB: boolean
+ elementA: *LinearElement
+ elementB: *LinearElement
+ isOnOriginOfElementA: boolean
+ isOnOriginOfElementB: boolean
 }
 
-class TrackEdgePoint {
- trackEdge: *TrackEdge
- pos: uint32
+class TopologicalCoordinate {
+ onLinearElement: *LinearElement
+ offsetFromOrigin: uint32
 }
 
-class DirTrackEdgePoint {
- trackEdge: *TrackEdge
- pos: uint32
- sameDir: boolean
+class NetPointReference {
+ hasTopoCoordinate: TopologicalCoordinate
+ appliesToDirection: OrientationDirections
 }
 
-class TrackEdgeSection {
- trackEdge: *TrackEdge
- skipFromStart: uint32
- skipFromEnd: uint32
+class LinearElementSection {
+ onElement: *LinearElement
+ startOffsetFromOrigin: uint32
+ endOffsetFromOrigin: uint32
+ appliesInBothDirections: boolean
 }
 
-class DirTrackEdgeSection {
- trackEdge: *TrackEdge
- skipFromStart: uint32
- skipFromEnd: uint32
- applicableDirection: Direction
+class NetLinearReference {
+ startsAt: TopologicalCoordinate
+ endsAt: TopologicalCoordinate
+ hasSequence: *LinearElement[*]
 }
 
-class DirTrackEdge {
- trackEdge: *TrackEdge
- sameDir: boolean
-}
-
-class LinkedPath {
- skipFromPathStart: uint32
- skipFromPathEnd: uint32
-}
-
-class TrackArea {
- trackEdgeSections: TrackEdgeSection[1..*]
+class NetAreaReference {
 }
 
 class LinkedArea {
- entireTrackEdges: *TrackEdge[*]
- trackEdgeSections: TrackEdgeSection[*]
 }
 
 class GeometryArea {
@@ -78,7 +67,7 @@ class GeometryArea {
  alignment3d: boolean
 }
 
-class TrackEdgeGeometry {
+class LinearElementGeometry {
  id: string
 }
 
@@ -86,18 +75,18 @@ class HorizontalSegment << union >> {
 }
 
 class HorizontalLine {
- trackGeometryPos: double
+ elementGeometryPos: double
  azimuth: double
 }
 
 class HorizontalArc {
- trackGeometryPos: double
+ elementGeometryPos: double
  azimuth: double
  radius: double
 }
 
 class HorizontalTransition {
- trackGeometryPos: double
+ elementGeometryPos: double
  azimuth: double
  radius: double
  transitionType: TransitionType
@@ -107,18 +96,19 @@ class VerticalSegment << union >> {
 }
 
 class VerticalLine {
- trackGeometryPos: double
+ elementGeometryPos: double
  slope: double
 }
 
 class VerticalArc {
- trackGeometryPos: double
+ elementGeometryPos: double
  slope: double
  radius: double
+ arcType: ArcType
 }
 
 class CantPoint {
- trackGeometryPos: double
+ elementGeometryPos: double
  appliedCant: double
 }
 
@@ -127,7 +117,7 @@ class SampledGeometryArea {
  versionTimestamp: timestamp
 }
 
-class SampledTrackEdgeGeometry {
+class SampledLinearElementGeometry {
  id: string
 }
 
@@ -146,30 +136,34 @@ class CurveSamplePoint {
  sampleCurveRadius: int32
 }
 
-class SimplePoint {
+class Switch {
  id: string
  reversalTime: uint32
- pointLeft: *TrackEdgeLink
- pointRight: *TrackEdgeLink
+ pointLeft: *NetRelation
+ pointRight: *NetRelation
+ <b>name: string[0..1]</b>
 }
 
 class SlipCrossing {
  id: string
- simplePoints: *SimplePoint[2..4]
+ switches: *Switch[2..4]
  crossing: *Crossing
+ <b>name: string[0..1]</b>
 }
 
 class Derailer {
  id: string
- dirSpotLocation: DirTrackEdgePoint
+ netPointReference: NetPointReference
  reversalTime: uint32
  derailToRight: boolean
+ <b>name: string[0..1]</b>
 }
 
 class Crossing {
  id: string
- trackEdgePoints: TrackEdgePoint[2..2]
+ topologicalCoordinates: TopologicalCoordinate[2..2]
  isSwitchable: boolean
+ <b>name: string[0..1]</b>
 }
 
 class BaliseGroup {
@@ -177,45 +171,45 @@ class BaliseGroup {
  nid_bg: uint32
  nid_c: uint32
  bgFunction: BaliseGroupFunction
- linkOrientationDirection: Direction
+ linkOrientationDirection: OrientationDirections
 }
 
 class Balise {
  id: string
- spotLocation: TrackEdgePoint
+ topologicalCoordinate: TopologicalCoordinate
 }
 
 class PropertiesArea {
  id: string
  versionTimestamp: timestamp
- gauge: TrackGaugeType
+ gauge: NominalTrackGauges
  loadingGaugeTypes: LoadingGaugeType[*]
- defaultVoltage: VoltageType
+ defaultVoltage: EnergySupplySystems
  defaultMaxCurrent: uint32
 }
 
-class TrackEdgeGauge {
- trackEdgeSections: TrackEdgeSection[1..*]
- gauge: TrackGaugeType
+class LinearElementGauge {
+ linearElementSections: LinearElementSection[1..*]
+ gauge: NominalTrackGauges
 }
 
-class TrackEdgeLoadingGauge {
- trackEdgeSections: TrackEdgeSection[1..*]
+class LinearElementLoadingGauge {
+ linearElementSections: LinearElementSection[1..*]
  loadingGaugeType: LoadingGaugeType
 }
 
 class TrackCondition {
- trackEdgeSections: TrackEdgeSection[1..*]
- conditionType: ConditionType
+ linearElementSections: LinearElementSection[1..*]
+ conditionType: TransmittedTrackConditions
 }
 
 class CurrentLimitation {
- trackEdgeSections: TrackEdgeSection[1..*]
+ linearElementSections: LinearElementSection[1..*]
  maxCurrent: uint32
 }
 
 class PermittedBrakingDistance {
- trackEdgeSections: TrackEdgeSection[1..*]
+ linearElementSections: LinearElementSection[1..*]
  distance: uint32
  brakeType: BrakeType
  gradientValue: int32
@@ -223,20 +217,20 @@ class PermittedBrakingDistance {
 }
 
 class TractionSystem {
- trackEdgeSections: TrackEdgeSection[1..*]
- voltageType: VoltageType
+ linearElementSections: LinearElementSection[1..*]
+ voltageType: EnergySupplySystems
 }
 
 class TrackUsageArea {
  id: string
  versionTimestamp: timestamp
- secondaryTracks: *TrackEdge[*]
- shuntingTracks: *TrackEdge[*]
- preferredSameDir: *TrackEdge[*]
- preferredOppositeDir: *TrackEdge[*]
+ secondaryTracks: *LinearElement[*]
+ shuntingTracks: *LinearElement[*]
+ preferredSameDir: *LinearElement[*]
+ preferredOppositeDir: *LinearElement[*]
 }
 
-class TrackEdgeSpeedProfile {
+class LinearElementSpeedProfile {
  id: string
 }
 
@@ -255,27 +249,29 @@ class SpecificStaticSpeedLimit {
 class SpeedLimitCategory << union >> {
  otherCategoryReplacesCantDeficiencySSP: OtherSpecificStaticSpeedProfileCategory
  otherCategoryDoesNotReplaceCantDeficiencySSP: OtherSpecificStaticSpeedProfileCategory
- cantDeficiencyCategory: CantDeficiencyCategory
+ cantDeficiencyCategory: CantDeficiencies
 }
 
 class AxleLoadSpeedProfile {
  startPos: uint32
  endPos: uint32
  speed: uint32
- axleLoadCategory: AxleLoadCategory
+ axleLoadCategory: LoadCapabilityLineCategories
 }
 
 class ETCSMarker {
  id: string
- dirSpotLocation: DirTrackEdgePoint
+ netPointReference: NetPointReference
  markerFunctionStop: boolean
+ <b>name: string[0..1]</b>
 }
 
 class StopLocation {
  id: string
- dirSpotLocation: DirTrackEdgePoint
+ netPointReference: NetPointReference
  trainLoadType: TrainLoadType
  doorOpeningSide: DoorOpeningSide
+ <b>name: string[0..1]</b>
 }
 
 class StopTrainLimit {
@@ -289,7 +285,8 @@ class PlatformEdge {
  platformId: string
  name: string[0..1]
  stopLocations: *StopLocation[1..*]
- height: PlatformHeight
+ <b>platformHeight: PlatformHeights</b>
+ <s>height: PlatformHeight</s>
 }
 
 class Platform {
@@ -298,19 +295,21 @@ class Platform {
 }
 
 class OperationalPoint {
- uopId: string
+ <b>uopid: string</b>
  opName: string[0..1]
- operationalPointType: OPType
+ opType: OperationalPointTypes
+ <s>uopId: string</s>
 }
 
 class TravelTimeMeasurementPoint {
  id: string
- spotLocation: TrackEdgePoint
+ topologicalCoordinate: TopologicalCoordinate
 }
 
 class TimingPoint {
  id: string
- spotLocation: TrackEdgePoint
+ topologicalCoordinate: TopologicalCoordinate
+ <b>name: string[0..1]</b>
 }
 
 class TPActiveObject << union >> {
@@ -325,51 +324,55 @@ class Tunnel {
 }
 
 class TunnelTube {
- trackArea: TrackArea
+ areaReference: NetAreaReference
  crossSection: uint32
 }
 
 class Bridge {
  id: string
  name: string[0..1]
- trackArea: TrackArea
+ areaReference: NetAreaReference
 }
 
 class Underpass {
  id: string
  name: string[0..1]
- trackArea: TrackArea
+ areaReference: NetAreaReference
 }
 
 class TvpSection {
  id: string
  name: string[0..1]
- trainDetectors: *TrainDetector[*]
+ linkedArea: NetAreaReference
+ trainDetectors: *TrainDetector[0..*]
 }
 
 class TrainDetector {
  id: string
- spotLocation: TrackEdgePoint
- trainDetectorType: TrainDetectorType
- countUpDir: Direction
+ topologicalCoordinate: TopologicalCoordinate
+ trainDetectorType: TrainDetectionSystems
+ referenceDir: OrientationDirections
 }
 
 class LevelCrossing {
  id: string
- trackArea: TrackArea
+ areaReference: NetAreaReference
+ <b>name: string[0..1]</b>
 }
 
 class NationalBorder {
  id: string
- spotLocation: TrackEdgePoint
+ topologicalCoordinate: TopologicalCoordinate
  fromCountryCode: string
  toCountryCode: string
+ <b>name: string[0..1]</b>
 }
 
 class BufferStop {
  id: string
- dirSpotLocation: DirTrackEdgePoint
+ netPointReference: NetPointReference
  isSwitchable: boolean
+ <b>name: string[0..1]</b>
 }
 
 class FunctionalArea {
@@ -380,46 +383,46 @@ class FunctionalArea {
 class Infrastructure {
 }
 
-TopoArea *-- "*" TrackEdge
-TopoArea *-- "*" TrackEdgeLink
-LinkedPath *-- "1..*" DirTrackEdge
-GeometryArea *-- "*" TrackEdgeGeometry
-TrackEdgeGeometry *-- "*" HorizontalSegment
-TrackEdgeGeometry *-- "*" VerticalSegment
-TrackEdgeGeometry *-- "*" CantPoint
-HorizontalSegment *-- HorizontalLine
-HorizontalSegment *-- HorizontalArc
-HorizontalSegment *-- HorizontalTransition
-VerticalSegment *-- VerticalLine
-VerticalSegment *-- VerticalArc
-SampledGeometryArea *-- "1..*" SampledTrackEdgeGeometry
-SampledTrackEdgeGeometry *-- "1..*" SlopeSamplePoint
-SampledTrackEdgeGeometry *-- "1..*" CurveSamplePoint
-SampledTrackEdgeGeometry *-- "1..*" CantSamplePoint
+TopoArea *-- "0..*" LinearElement
+TopoArea *-- "0..*" NetRelation
+NetAreaReference *-- "1..*" NetLinearReference
+LinkedArea *-- "1..*" NetLinearReference
+GeometryArea *-- "0..*" LinearElementGeometry
+LinearElementGeometry *-- "0..*" HorizontalSegment
+LinearElementGeometry *-- "0..*" VerticalSegment
+LinearElementGeometry *-- "0..*" CantPoint
+HorizontalSegment *-- "1" HorizontalLine
+HorizontalSegment *-- "1" HorizontalArc
+HorizontalSegment *-- "1" HorizontalTransition
+VerticalSegment *-- "1" VerticalLine
+VerticalSegment *-- "1" VerticalArc
+SampledGeometryArea *-- "1..*" SampledLinearElementGeometry
+SampledLinearElementGeometry *-- "1..*" SlopeSamplePoint
+SampledLinearElementGeometry *-- "1..*" CurveSamplePoint
+SampledLinearElementGeometry *-- "1..*" CantSamplePoint
 BaliseGroup *-- "1..8" Balise
-PropertiesArea *-- "*" TrackEdgeSpeedProfile
-PropertiesArea *-- "*" TrackEdgeGauge
-PropertiesArea *-- "*" TrackEdgeLoadingGauge
+PropertiesArea *-- "*" LinearElementSpeedProfile
+PropertiesArea *-- "*" LinearElementGauge
+PropertiesArea *-- "*" LinearElementLoadingGauge
 PropertiesArea *-- "*" TrackCondition
 PropertiesArea *-- "*" CurrentLimitation
 PropertiesArea *-- "*" PermittedBrakingDistance
 PropertiesArea *-- "*" TractionSystem
-TrackEdgeSpeedProfile *-- SpeedProfile
-TrackEdgeSpeedProfile *-- "0..1" SpeedProfile
+LinearElementSpeedProfile *-- "1" SpeedProfile
+LinearElementSpeedProfile *-- "0..1" SpeedProfile
 SpeedProfile *-- "1..*" StaticSpeedLimit
-SpeedProfile *-- "*" AxleLoadSpeedProfile
-StaticSpeedLimit *-- "*" SpecificStaticSpeedLimit
-SpecificStaticSpeedLimit *-- SpeedLimitCategory
+SpeedProfile *-- "0..*" AxleLoadSpeedProfile
+StaticSpeedLimit *-- "0..*" SpecificStaticSpeedLimit
+SpecificStaticSpeedLimit *-- "1" SpeedLimitCategory
 StopLocation *-- "0..1" StopTrainLimit
-PlatformEdge *-- LinkedPath
+PlatformEdge *-- "1" NetLinearReference
 Platform *-- "1..*" PlatformEdge
-OperationalPoint *-- "*" TravelTimeMeasurementPoint
-OperationalPoint *-- "*" Platform
-TimingPoint *-- TPActiveObject
+OperationalPoint *-- "0..*" TravelTimeMeasurementPoint
+OperationalPoint *-- "0..*" Platform
+TimingPoint *-- "1" TPActiveObject
 Tunnel *-- "1..*" TunnelTube
-TvpSection *-- LinkedArea
 FunctionalArea *-- "*" OperationalPoint
-FunctionalArea *-- "*" SimplePoint
+FunctionalArea *-- "*" Switch
 FunctionalArea *-- "*" SlipCrossing
 FunctionalArea *-- "*" Derailer
 FunctionalArea *-- "*" Crossing

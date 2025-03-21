@@ -25,7 +25,7 @@ class ETCSPacket_0 {
 }
 
 class ETCSPacket_2 {
- m_version: ETCSVersion
+ etcsMVersion: ETCSMVersions
 }
 
 class CorrectionFactor {
@@ -75,7 +75,7 @@ class ETCSPacket_3 {
  d_nvovtrp: uint32
  t_nvovtrp: uint32
  d_nvpotrp: uint32
- m_nvcontact: LinkReaction
+ m_nvcontact: ETCSReactionsNVContact
  t_nvcontact: uint32
  m_nvderun: boolean
  d_nvstff: uint32
@@ -94,7 +94,7 @@ class LinkItem {
  nid_c: uint32[0..1]
  nid_bg: uint32
  q_linkorientation: boolean
- q_linkreaction: LinkReaction
+ q_linkreaction: ETCSReactionsNVContact
  q_locacc: uint32
 }
 
@@ -124,14 +124,14 @@ class ETCSPacket_40 {
 }
 
 class LevelTransitionWithAck {
- m_leveltr: EtcsLevel
+ m_leveltr: ETCSLevels
  nid_ntc: uint32[0..1]
  l_ackleveltr: uint32
 }
 
 class ETCSPacket_41 {
  d_leveltr: uint32
- m_leveltr: EtcsLevel
+ m_leveltr: ETCSLevels
  nid_ntc: uint32[0..1]
  l_ackleveltr: uint32
 }
@@ -155,12 +155,12 @@ class ETCSPacket_45 {
 }
 
 class LevelTransition {
- m_leveltr: EtcsLevel
+ m_leveltr: ETCSLevels
  nid_ntc: uint32[0..1]
 }
 
 class ETCSPacket_46 {
- m_leveltr: EtcsLevel
+ m_leveltr: ETCSLevels
  nid_ntc: uint32[0..1]
 }
 
@@ -173,7 +173,7 @@ class ETCSPacket_49 {
 }
 
 class AxleLoadRestriction {
- m_axleLoadCat: AxleLoadCategory
+ m_axleLoadCat: infra.LoadCapabilityLineCategories
  v_axleLoad: uint32
 }
 
@@ -251,8 +251,8 @@ class ETCSPacket_69 {
 class RouteSuitability {
  d_suitability: uint32
  q_suitability: Q_Suitability
- m_lineGuage: LineGuage[0..1]
- m_axleLoadCat: AxleLoadCategory[0..1]
+ m_lineGauge: LineGauge[0..1]
+ m_axleLoadCat: infra.LoadCapabilityLineCategories[0..1]
  m_voltage: uint32[0..1]
  nid_ctraction: uint32[0..1]
 }
@@ -415,51 +415,51 @@ class ETCSPacket_255 {
 class PacketMgmt {
 }
 
-BalisePacket *-- Packet
-Packet *-- ETCSPacket_0
-Packet *-- ETCSPacket_2
-Packet *-- ETCSPacket_3
-Packet *-- ETCSPacket_5
-Packet *-- ETCSPacket_6
-Packet *-- ETCSPacket_16
-Packet *-- ETCSPacket_39
-Packet *-- ETCSPacket_40
-Packet *-- ETCSPacket_41
-Packet *-- ETCSPacket_42
-Packet *-- ETCSPacket_44
-Packet *-- ETCSPacket_45
-Packet *-- ETCSPacket_46
-Packet *-- ETCSPacket_49
-Packet *-- ETCSPacket_51
-Packet *-- ETCSPacket_52
-Packet *-- ETCSPacket_65
-Packet *-- ETCSPacket_66
-Packet *-- ETCSPacket_67
-Packet *-- ETCSPacket_68
-Packet *-- ETCSPacket_69
-Packet *-- ETCSPacket_70
-Packet *-- ETCSPacket_71
-Packet *-- ETCSPacket_72
-Packet *-- ETCSPacket_76
-Packet *-- ETCSPacket_79
-Packet *-- ETCSPacket_80
-Packet *-- ETCSPacket_88
-Packet *-- ETCSPacket_90
-Packet *-- ETCSPacket_131
-Packet *-- ETCSPacket_132
-Packet *-- ETCSPacket_133
-Packet *-- ETCSPacket_134
-Packet *-- ETCSPacket_135
-Packet *-- ETCSPacket_136
-Packet *-- ETCSPacket_137
-Packet *-- ETCSPacket_138
-Packet *-- ETCSPacket_139
-Packet *-- ETCSPacket_141
-Packet *-- ETCSPacket_145
-Packet *-- ETCSPacket_180
-Packet *-- ETCSPacket_181
-Packet *-- ETCSPacket_254
-Packet *-- ETCSPacket_255
+BalisePacket *-- "1" Packet
+Packet *-- "1" ETCSPacket_0
+Packet *-- "1" ETCSPacket_2
+Packet *-- "1" ETCSPacket_3
+Packet *-- "1" ETCSPacket_5
+Packet *-- "1" ETCSPacket_6
+Packet *-- "1" ETCSPacket_16
+Packet *-- "1" ETCSPacket_39
+Packet *-- "1" ETCSPacket_40
+Packet *-- "1" ETCSPacket_41
+Packet *-- "1" ETCSPacket_42
+Packet *-- "1" ETCSPacket_44
+Packet *-- "1" ETCSPacket_45
+Packet *-- "1" ETCSPacket_46
+Packet *-- "1" ETCSPacket_49
+Packet *-- "1" ETCSPacket_51
+Packet *-- "1" ETCSPacket_52
+Packet *-- "1" ETCSPacket_65
+Packet *-- "1" ETCSPacket_66
+Packet *-- "1" ETCSPacket_67
+Packet *-- "1" ETCSPacket_68
+Packet *-- "1" ETCSPacket_69
+Packet *-- "1" ETCSPacket_70
+Packet *-- "1" ETCSPacket_71
+Packet *-- "1" ETCSPacket_72
+Packet *-- "1" ETCSPacket_76
+Packet *-- "1" ETCSPacket_79
+Packet *-- "1" ETCSPacket_80
+Packet *-- "1" ETCSPacket_88
+Packet *-- "1" ETCSPacket_90
+Packet *-- "1" ETCSPacket_131
+Packet *-- "1" ETCSPacket_132
+Packet *-- "1" ETCSPacket_133
+Packet *-- "1" ETCSPacket_134
+Packet *-- "1" ETCSPacket_135
+Packet *-- "1" ETCSPacket_136
+Packet *-- "1" ETCSPacket_137
+Packet *-- "1" ETCSPacket_138
+Packet *-- "1" ETCSPacket_139
+Packet *-- "1" ETCSPacket_141
+Packet *-- "1" ETCSPacket_145
+Packet *-- "1" ETCSPacket_180
+Packet *-- "1" ETCSPacket_181
+Packet *-- "1" ETCSPacket_254
+Packet *-- "1" ETCSPacket_255
 NVKItem *-- "0..31" NVKSubItem
 NVK *-- "1..32" NVKItem
 NVK *-- "0..31" CorrectionFactor
@@ -476,8 +476,8 @@ ETCSPacket_67 *-- "1..32" DLTrackCond
 ETCSPacket_68 *-- "0..32" DLMCondition
 ETCSPacket_69 *-- "0..32" TCSPCondition
 ETCSPacket_70 *-- "0..32" RouteSuitability
-ETCSPacket_72 *-- TextMessageConfig
-ETCSPacket_76 *-- TextMessageConfig
+ETCSPacket_72 *-- "1" TextMessageConfig
+ETCSPacket_76 *-- "1" TextMessageConfig
 ETCSPacket_79 *-- "1..32" GeoPosItem
 ETCSPacket_80 *-- "1..32" ModeProfileItem
 ETCSPacket_88 *-- "0..1" LXStatus
@@ -503,6 +503,7 @@ PacketMgmt *-- "*" ETCSPacket_67
 PacketMgmt *-- "*" ETCSPacket_68
 PacketMgmt *-- "*" ETCSPacket_69
 PacketMgmt *-- "*" ETCSPacket_70
+PacketMgmt *-- "*" ETCSPacket_71
 PacketMgmt *-- "*" ETCSPacket_72
 PacketMgmt *-- "*" ETCSPacket_76
 PacketMgmt *-- "*" ETCSPacket_79

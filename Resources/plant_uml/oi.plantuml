@@ -1,0 +1,290 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam DefaultFontName arial
+skinparam DefaultFontSize 12
+skinparam ClassFontStyle bold
+skinparam linetype ortho
+skinparam dpi 200
+hide empty fields
+hide empty methods
+hide circle
+
+class OI {
+}
+
+class OIArea {
+ id: string
+}
+
+class TimingPointMapping {
+ infraTimingPoint: *infra.TimingPoint
+ atoTimingPoint: *TimingPoint
+}
+
+class OISegment {
+ id: string
+}
+
+class SegmentProfile {
+ nidSP: uint32
+ length: uint32
+ version: uint32
+ nidC: uint32
+}
+
+class AdjacentSegmentProfile {
+ nidSP: uint32
+ version: uint32
+ nidC: uint32
+ linkType: LinkType
+}
+
+class SegmentDescription {
+}
+
+class DrivingProfile {
+ eoaOffset: uint32
+ utcOffset: uint32
+ startAltitude: int32
+ atotsContactInfoDir: boolean
+ gradientStart: int32
+ curveStart: CurveRadius
+ currentStart: uint32
+ platformAreas: SegmentSection[0..*]
+ switchOffEddyCurrentBrakeServiceBrakes: SegmentSection[0..*]
+ switchOffEddyCurrentBrakeEmergencyBrakes: SegmentSection[0..*]
+ switchOffRegenerativeBrakes: SegmentSection[0..*]
+ switchOffMagneticShoeBrakes: SegmentSection[0..*]
+ dynamicBrakeForceInhibitions: SegmentSection[0..*]
+}
+
+class GeometryProfile {
+ <s>trackEdgeCoordinates: TrackEdgeCoordinate0..*</s>
+}
+
+class Attitude {
+ <b>rollAngle: int32</b>
+ <b>curvature: int32</b>
+ <b>azimuth: double</b>
+ <b>pitch: int32</b>
+}
+
+class AtoTSContactInfo {
+ nidATOTS: uint32
+ nidSP: uint32
+ spNidC: uint32
+ atotsNidC: uint32
+}
+
+class StaticSpeedProfileStart {
+ speed: uint32
+ trainEndApplicability: infra.TrainEndApplicability
+}
+
+class StaticSpeedProfileChange {
+ pos: uint32
+ speed: uint32
+ trainEndApplicability: infra.TrainEndApplicability
+}
+
+class AxleLoadSpeedProfile {
+ segmentSection: SegmentSection
+ speed: uint32
+ trainEndApplicability: infra.TrainEndApplicability
+ axleLoadCategory: infra.LoadCapabilityLineCategories
+}
+
+class GradientChange {
+ pos: uint32
+ gradientValue: int32
+}
+
+class CurveChange {
+ pos: uint32
+ curve: CurveRadius
+}
+
+class TimingPoint {
+ nidTP: uint32
+ name: string
+ pos: uint32
+ stopLocationTolerance: StopLocationTolerance
+ stoppingPointReachDistance: StopLocationTolerance
+}
+
+class BaliseGroup {
+ nid_bg: uint32
+ nidCQualifier: boolean
+ nid_c: uint32[0..1]
+}
+
+class Balise {
+ n_pig: uint32
+ pos: uint32
+}
+
+class PermittedBrakingDistance {
+ segmentSection: SegmentSection
+ distance: uint32
+ byEmergencyBrake: boolean
+ gradientValue: int32
+}
+
+class VoltageStart {
+ <b>voltageType: infra.EnergySupplySystems</b>
+ nid_c: uint32
+ <s>voltage: infra.VoltageType</s>
+}
+
+class VoltageChange {
+ pos: uint32
+ <b>voltageType: infra.EnergySupplySystems</b>
+ nid_c: uint32
+ <s>voltage: infra.VoltageType</s>
+}
+
+class CurrentChange {
+ pos: uint32
+ currentValue: uint32
+}
+
+class Tunnel {
+ segmentSection: SegmentSection
+ tunnelType: TunnelType
+}
+
+class UnprotectedLX {
+ pNominal: uint32
+ pReverse: uint32
+}
+
+class LimitedDynamicBrakeForce {
+ segmentSection: SegmentSection
+ dynamicBrakeForceLimit: uint32
+}
+
+class SegmentSection {
+ range: RangeType
+ pStart: uint32
+ pEnd: uint32
+}
+
+class MapAreaRequest {
+ <b>trackTrainHeader: TrackTrainHeader</b>
+ <b>mapAreaRadius: uint32</b>
+ <s>packetHeader: PacketHeader</s>
+}
+
+class RelativePosition {
+ nidSP: uint32
+ version: uint32
+ nidC: uint32
+ pos: uint32
+}
+
+class AbsolutePosition {
+ x: double[0..1]
+ y: double[0..1]
+ z: double[0..1]
+}
+
+class MapArea {
+ <b>trackTrainHeader: TrackTrainHeader</b>
+ <s>packetHeader: PacketHeader</s>
+}
+
+class SegmentProfileList {
+ nidSP: uint32
+ version: uint32
+ nidC: uint32
+}
+
+class SegmentProfileRequest {
+ <b>trackTrainHeader: TrackTrainHeader</b>
+ nidSP: uint32
+ nidC: uint32
+ <s>version: uint32</s>
+}
+
+class SegmentProfilePacket {
+ <b>trackTrainHeader: TrackTrainHeader</b>
+ <s>packetHeader: PacketHeader</s>
+}
+
+class DigitalRegisterHandshakeRequest {
+ <b>trackTrainheader: TrackTrainHeader</b>
+ <b>handingOver: boolean</b>
+}
+
+class DigitalRegisterHandshakeAcknowledgement {
+ <b>trackTrainHeader: TrackTrainHeader</b>
+ <b>nidDRTA: uint32</b>
+ <b>nidC: uint32</b>
+ <b>timeOutResponse: uint32</b>
+ <b>systemVersion: uint32</b>
+}
+
+class DigitalRegisterHandshakeRejection {
+ <b>trackTrainHeader: TrackTrainHeader</b>
+ <b>rejectionReason: RejectReason</b>
+}
+
+class ContactInformation {
+ <b>nidDRTA: uint32</b>
+ <b>nidC: uint32</b>
+}
+
+class DigitalRegisterSessionTerminationRequest {
+ <b>trackTrainHeader: TrackTrainHeader</b>
+}
+
+class DigitalRegisterSessionTermination {
+ <b>trackTrainHeader: TrackTrainHeader</b>
+ <b>terminationReason: TerminationReason</b>
+}
+
+class TrackTrainHeader {
+ <b>packetId: string</b>
+ <b>leadingOnBoardUnitId: string[0..1]</b>
+ <b>issuedAt: timestamp</b>
+}
+
+OI *-- "*" OIArea
+OIArea *-- "1..*" OISegment
+OIArea *-- "*" TimingPointMapping
+OISegment *-- "1" infra.LinearElementSection
+OISegment *-- "1" SegmentProfile
+SegmentProfile *-- "1" SegmentDescription
+SegmentProfile *-- "1..4" AdjacentSegmentProfile
+SegmentDescription *-- "0..1" DrivingProfile
+SegmentDescription *-- "0..1" GeometryProfile
+DrivingProfile *-- "0..1" AtoTSContactInfo
+DrivingProfile *-- "1" StaticSpeedProfileStart
+DrivingProfile *-- "*" StaticSpeedProfileChange
+DrivingProfile *-- "0..*" GradientChange
+DrivingProfile *-- "0..*" CurveChange
+DrivingProfile *-- "1" VoltageStart
+DrivingProfile *-- "0..*" VoltageChange
+DrivingProfile *-- "0..*" CurrentChange
+DrivingProfile *-- "0..*" BaliseGroup
+DrivingProfile *-- "0..*" TimingPoint
+DrivingProfile *-- "0..*" Tunnel
+DrivingProfile *-- "0..*" AxleLoadSpeedProfile
+DrivingProfile *-- "0..*" UnprotectedLX
+DrivingProfile *-- "0..*" PermittedBrakingDistance
+DrivingProfile *-- "0..*" LimitedDynamicBrakeForce
+GeometryProfile *-- "*" map.LinearElementCoordinate
+GeometryProfile *-- "0..1" Attitude
+StaticSpeedProfileStart *-- "0..*" infra.SpecificStaticSpeedLimit
+StaticSpeedProfileChange *-- "0..*" infra.SpecificStaticSpeedLimit
+BaliseGroup *-- "1..8" Balise
+MapAreaRequest *-- "1" RelativePosition
+MapAreaRequest *-- "1" AbsolutePosition
+MapArea *-- "1..*" SegmentProfileList
+SegmentProfilePacket *-- "1..*" SegmentProfile
+DigitalRegisterHandshakeRequest *-- "1" RelativePosition
+DigitalRegisterHandshakeRequest *-- "1" AbsolutePosition
+DigitalRegisterHandshakeRejection *-- "0..1" ContactInformation
+@enduml

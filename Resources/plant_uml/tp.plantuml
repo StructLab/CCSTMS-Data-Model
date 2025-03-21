@@ -12,7 +12,7 @@ hide empty methods
 hide circle
 
 class ProtectedInfraElement << union >> {
- simplePoint: *infra.SimplePoint
+ switch: *infra.Switch
  slipCrossing: *infra.SlipCrossing
  crossing: *infra.Crossing
  derailer: *infra.Derailer
@@ -21,9 +21,9 @@ class ProtectedInfraElement << union >> {
 
 class DriveProtectionSectionGroup {
  id: string
- name: string
+ name: string[0..1]
  dependenciesType: DPSDependencyType
- dpsgDependencies: uint32[*]
+ dpsgDependencies: uint32[0..*]
  runTime: uint32
 }
 
@@ -35,7 +35,7 @@ class DriveProtectionSection {
 
 class AllocationSection {
  id: string
- name: string
+ name: string[0..1]
  dependencies: *AllocationSection[1..*]
 }
 
@@ -46,84 +46,41 @@ class ControlledInfraElement << union >> {
 
 class FieldObjectController {
  id: string
- rastaServerId: string
- rastaOCId: string
+ <b>rastaId: string</b>
+ <b>eulynxBaseline: string</b>
  version: uint32
+ <b>belongsToAoc: *AreaOfControl</b>
+ <s>rastaServerId: string</s>
+ <s>rastaOCId: string</s>
 }
 
-class Route {
+class AreaOfControl {
  id: string
- type: RouteType
- availableARS: boolean
- autoRoute: boolean
- isTowardsTunnel: boolean
- setupTime: uint32
- priority: uint32
- maxSpeed: uint32
- overlaps: *Overlap[*]
- flankProtections: *FlankProtection[*]
-}
-
-class RouteBody {
- id: string
-}
-
-class Overlap {
- id: string
-}
-
-class FlankProtection {
- id: string
- simplePoint: *infra.SimplePoint
- isLeftPosition: boolean
-}
-
-class RouteConflict {
-}
-
-class VacantSection {
- section: *infra.TvpSection
- proving: ProvingType
-}
-
-class SimplePoint {
- id: string
- routeRequiresPointRight: *Route[*]
- routeRequiresPointLeft: *Route[*]
- transitLockingPointRight: *Transit[*]
- transitLockingPointLeft: *Transit[*]
- zoneLockingPointRight: *infra.TvpSection[*]
- zoneLockingPointLeft: *infra.TvpSection[*]
-}
-
-class Transit {
- id: string
- upstreamTransits: string
- transitZone: *infra.TvpSection[*]
- routeRequestingTransit: *Route[*]
+ name: string[0..1]
+ <b>iPAddress: string</b>
+ <b>rastaId: string</b>
+ <b>portNumber: uint32</b>
 }
 
 class TrainProtectionArea {
  id: string
+ <s>routes: Route0..*</s>
+ <s>switches: Switch0..*</s>
+ <s>transits: Transit0..*</s>
 }
 
 class TrainProtection {
 }
 
 DriveProtectionSectionGroup *-- "1..*" DriveProtectionSection
-DriveProtectionSectionGroup *-- ProtectedInfraElement
-DriveProtectionSection *-- infra.TrackEdgeSection
-AllocationSection *-- infra.LinkedPath
+DriveProtectionSectionGroup *-- "1" ProtectedInfraElement
+DriveProtectionSection *-- "1" infra.LinearElementSection
+AllocationSection *-- "1" infra.NetLinearReference
 FieldObjectController *-- "1..*" ControlledInfraElement
-Route *-- "*" VacantSection
-Route *-- "*" RouteConflict
-RouteBody *-- infra.LinkedPath
-Overlap *-- infra.LinkedPath
+AreaOfControl *-- "1" infra.NetAreaReference
 TrainProtectionArea *-- "*" DriveProtectionSectionGroup
 TrainProtectionArea *-- "*" AllocationSection
 TrainProtectionArea *-- "*" FieldObjectController
-TrainProtectionArea *-- "*" Route
-TrainProtectionArea *-- "*" SimplePoint
-TrainProtectionArea *-- "*" Transit
+TrainProtectionArea *-- "1" AreaOfControl
 TrainProtection *-- "*" TrainProtectionArea
 @enduml

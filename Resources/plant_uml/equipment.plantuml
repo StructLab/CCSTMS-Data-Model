@@ -14,7 +14,7 @@ hide circle
 class Equipment {
  id: string
  statusTechnical: StatusTechnical
- statusTechnicalManufacturerSpecificValue: string[*]
+ statusTechnicalManufacturerSpecificMessage: string[*]
  manufacturer: string
  manufacturerModel: string
  serialNumber: string
@@ -29,7 +29,7 @@ class Equipment {
 class Controller {
  id: string
  statusTechnical: StatusTechnical
- statusTechnicalManufacturerSpecificValue: string[*]
+ statusTechnicalManufacturerSpecificMessage: string[*]
  systemDescription: string
  operatingSystem: string
  operationStatus: ControllerOperationStatus
@@ -37,7 +37,7 @@ class Controller {
  temperatureStatus: TemperatureStatus
  cpuHealthStatus: CpuHealthStatus
  cpuLoadStatus: CpuLoadStatus
- ramSize: uint32
+ ramSize: uint64
  ramHealthStatus: RamHealthStatus
  bootingLastDateTime: timestamp
  bootingLastReason: BootingLastReason
@@ -47,17 +47,17 @@ class Controller {
 class PhysicalNetworkInterface {
  id: string
  statusTechnical: StatusTechnical
- statusTechnicalManufacturerSpecificValue: string[*]
+ statusTechnicalManufacturerSpecificMessage: string[*]
  macAddress: string
  operationStatus: PhysicalNetworkInterfaceOperationalStatus
- nominationalBandwidth: uint32
+ nominalBandwidth: uint32
  label: string
 }
 
 class StorageMediumFlash {
  id: string
  statusTechnical: StatusTechnical
- statusTechnicalManufacturerSpecificValue: string[*]
+ statusTechnicalManufacturerSpecificMessage: string[*]
  memorySize: uint32
  temperatureStatus: TemperatureStatus
  label: string
@@ -67,7 +67,7 @@ class StorageMediumFlash {
 class PowerSupply {
  id: string
  statusTechnical: StatusTechnical
- statusTechnicalManufacturerSpecificValue: string[*]
+ statusTechnicalManufacturerSpecificMessage: string[*]
  inputVoltageStatus: VoltageStatus
  outputVoltageStatus: VoltageStatus
  outputPower: uint32
@@ -81,7 +81,7 @@ class PowerSupply {
 class PhysicalDigitalOutput {
  id: string
  statusTechnical: StatusTechnical
- statusTechnicalManufacturerSpecificValue: string[*]
+ statusTechnicalManufacturerSpecificMessage: string[*]
  label: string
  physicalOutputValue: HighLow
  outputVoltage: float
@@ -91,7 +91,7 @@ class PhysicalDigitalOutput {
 class PhysicalAnalogOutput {
  id: string
  statusTechnical: StatusTechnical
- statusTechnicalManufacturerSpecificValue: string[*]
+ statusTechnicalManufacturerSpecificMessage: string[*]
  label: string
  voltage: float
  current: float
@@ -100,7 +100,7 @@ class PhysicalAnalogOutput {
 class PhysicalSeparatedOutput {
  id: string
  statusTechnical: StatusTechnical
- statusTechnicalManufacturerSpecificValue: string[*]
+ statusTechnicalManufacturerSpecificMessage: string[*]
  label: string
  outputValue: OutputValue
 }
@@ -108,7 +108,7 @@ class PhysicalSeparatedOutput {
 class PhysicalDigitalInput {
  id: string
  statusTechnical: StatusTechnical
- statusTechnicalManufacturerSpecificValue: string[*]
+ statusTechnicalManufacturerSpecificMessage: string[*]
  label: string
  physicalInputValue: HighLow
  inputVoltage: float
@@ -118,7 +118,7 @@ class PhysicalDigitalInput {
 class PhysicalAnalogInput {
  id: string
  statusTechnical: StatusTechnical
- statusTechnicalManufacturerSpecificValue: string[*]
+ statusTechnicalManufacturerSpecificMessage: string[*]
  label: string
  voltage: float
  current: float
@@ -127,12 +127,12 @@ class PhysicalAnalogInput {
 class PhysicalSeparatedInput {
  id: string
  statusTechnical: StatusTechnical
- statusTechnicalManufacturerSpecificValue: string[*]
+ statusTechnicalManufacturerSpecificMessage: string[*]
  label: string
  inputValue: InputValue
 }
 
-class AuxiliarySwitch {
+class AuxiliaryInput {
  id: string
  label: string
 }
@@ -149,19 +149,19 @@ class InputButton {
  isPressed: boolean
 }
 
-Equipment *-- "*" Equipment
-Equipment *-- "*" Controller
-Equipment *-- "*" PhysicalNetworkInterface
-Equipment *-- "*" StorageMediumFlash
-Equipment *-- "*" PowerSupply
-Equipment *-- "*" PhysicalDigitalOutput
-Equipment *-- "*" PhysicalAnalogOutput
-Equipment *-- "*" PhysicalSeparatedOutput
-Equipment *-- "*" PhysicalDigitalInput
-Equipment *-- "*" PhysicalAnalogInput
-Equipment *-- "*" PhysicalSeparatedInput
-Equipment *-- "*" InputSwitch
-Equipment *-- "*" InputButton
-InputSwitch *-- AuxiliarySwitch
-InputButton *-- AuxiliarySwitch
+Equipment *-- "0..*" Equipment
+Equipment *-- "0..*" Controller
+Equipment *-- "0..*" PhysicalNetworkInterface
+Equipment *-- "0..*" StorageMediumFlash
+Equipment *-- "0..*" PowerSupply
+Equipment *-- "0..*" PhysicalDigitalOutput
+Equipment *-- "0..*" PhysicalAnalogOutput
+Equipment *-- "0..*" PhysicalSeparatedOutput
+Equipment *-- "0..*" PhysicalDigitalInput
+Equipment *-- "0..*" PhysicalAnalogInput
+Equipment *-- "0..*" PhysicalSeparatedInput
+Equipment *-- "0..*" InputSwitch
+Equipment *-- "0..*" InputButton
+InputSwitch *-- "1" AuxiliaryInput
+InputButton *-- "1" AuxiliaryInput
 @enduml

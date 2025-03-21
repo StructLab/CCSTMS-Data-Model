@@ -11,19 +11,19 @@ hide empty fields
 hide empty methods
 hide circle
 
-class MapArea {
- id: string
- name: string[0..1]
- versionTimestamp: timestamp
- areaId: string
- epsg: uint32
+class Map {
+ <b>id: string</b>
+ <b>name: string[0..1]</b>
+ <b>versionTimestamp: timestamp</b>
+ <b>areaId: string</b>
+ <b>epsg: uint32</b>
 }
 
-class TrackEdgeProjection {
- id: string
+class LinearElementProjection {
+ linearElement: *infra.LinearElement
 }
 
-class TrackEdgeCoordinate {
+class LinearElementCoordinate {
  pos: uint32
  x: double
  y: double
@@ -44,7 +44,7 @@ class FunctionalElementProjection {
 }
 
 class FunctionalElementRef << union >> {
- simplePoint: *infra.SimplePoint
+ switch: *infra.Switch
  etcsMarker: *infra.ETCSMarker
  stopLocation: *infra.StopLocation
  timingPoint: *infra.TimingPoint
@@ -53,11 +53,12 @@ class FunctionalElementRef << union >> {
 }
 
 class MapMgmt {
+ <s>mapAreas: MapArea0..*</s>
 }
 
-MapArea *-- "*" TrackEdgeProjection
-MapArea *-- "*" FunctionalElementProjection
-TrackEdgeProjection *-- "2..*" TrackEdgeCoordinate
-FunctionalElementProjection *-- FunctionalElementRef
-MapMgmt *-- "*" MapArea
+Map *-- "*" LinearElementProjection
+Map *-- "*" FunctionalElementProjection
+LinearElementProjection *-- "2..*" LinearElementCoordinate
+FunctionalElementProjection *-- "1" FunctionalElementRef
+MapMgmt *-- "*" Map
 @enduml

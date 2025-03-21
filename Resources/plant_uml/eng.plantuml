@@ -13,11 +13,11 @@ hide circle
 
 class BufferStop {
  id: string
- dangerPoints: *DangerPoint[*]
+ dangerPoints: *DangerPoint[0..*]
  bsType: BufferStopType
 }
 
-class SimplePoint {
+class Switch {
  id: string
  foulingPoints: *FoulingPoint[1..*]
  tipShift: double
@@ -36,7 +36,7 @@ class LevelCrossing {
 
 class BaliseGroup {
  id: string
- m_version: ss026.ETCSVersion
+ m_version: ss026.ETCSMVersions
  q_link: boolean
  q_updown: boolean
 }
@@ -54,7 +54,7 @@ class Balise {
  sleeperFastening: string
  baliseMountingSystem: string
  designType: string
- kmReferenceMarker: *KmSign
+ <s>kmReferenceMarker: *KilometricPost0..1</s>
 }
 
 class Sleepers {
@@ -70,80 +70,90 @@ class DangerPoint {
 class FoulingPoint {
  id: string
  name: string[0..1]
- clearancePoint: uint32
+ <s>clearancePoint: uint32</s>
 }
 
 class EngArea {
- id: string
+ <b>onTopoArea: *infra.TopoArea</b>
  defaultSleepersType: SleepersType
+ <s>id: string</s>
 }
 
 class LocationAccuracyArea {
- id: string
+ <b>onTopoArea: *infra.TopoArea</b>
+ <s>id: string</s>
 }
 
 class BaliseAccuracy {
- baliseId: string
+ <b>balise: *infra.Balise</b>
  accuracy: uint32
+ <s>baliseId: string</s>
 }
 
 class EtcsMarkerAccuracy {
- markerId: string
+ <b>etcsMarker: *infra.ETCSMarker</b>
  accuracy: uint32
+ <s>markerId: string</s>
 }
 
 class StopLocationAccuracy {
- stopLocationId: string
+ <b>stopLocation: *infra.StopLocation</b>
  accuracy: uint32
+ <s>stopLocationId: string</s>
 }
 
 class NationalBorderAccuracy {
- nationalBorderId: string
+ <b>nationalBorder: *infra.NationalBorder</b>
  accuracy: uint32
+ <s>nationalBorderId: string</s>
 }
 
 class BufferStopAccuracy {
- bufferStopId: string
+ <b>bufferStop: *infra.BufferStop</b>
  accuracy: uint32
+ <s>bufferStopId: string</s>
 }
 
-class TrackEdgeKmSigns {
- id: string
+class LinearElementKmSigns {
+ <b>linearElement: *infra.LinearElement</b>
+ <s>id: string</s>
 }
 
-class KmSign {
+class KilometricPost {
  pos: uint32
- label: string
+ kmPostName: string[0..1]
+ kilometerNumber: uint32
 }
 
 class KmArea {
- id: string
+ <b>onTopoArea: *infra.TopoArea</b>
+ <s>id: string</s>
 }
 
 class ETCSEngineering {
 }
 
-BufferStop *-- "1..*" infra.TrackEdgeSection
-Balise *-- "*" ss026.BalisePacket
-Sleepers *-- "1..*" infra.TrackEdgeSection
-DangerPoint *-- infra.TrackEdgePoint
-FoulingPoint *-- infra.TrackEdgePoint
-EngArea *-- "*" SimplePoint
-EngArea *-- "*" Crossing
-EngArea *-- "*" LevelCrossing
-EngArea *-- "*" BaliseGroup
-EngArea *-- "*" Balise
-EngArea *-- "*" Sleepers
-EngArea *-- "*" DangerPoint
-EngArea *-- "*" FoulingPoint
-EngArea *-- "*" BufferStop
+BufferStop *-- "1..*" infra.LinearElementSection
+Balise *-- "0..*" ss026.BalisePacket
+Sleepers *-- "1..*" infra.LinearElementSection
+DangerPoint *-- "1" infra.TopologicalCoordinate
+FoulingPoint *-- "1" infra.TopologicalCoordinate
+EngArea *-- "0..*" Switch
+EngArea *-- "0..*" Crossing
+EngArea *-- "0..*" LevelCrossing
+EngArea *-- "0..*" BaliseGroup
+EngArea *-- "0..*" Balise
+EngArea *-- "0..*" Sleepers
+EngArea *-- "0..*" DangerPoint
+EngArea *-- "0..*" FoulingPoint
+EngArea *-- "0..*" BufferStop
 LocationAccuracyArea *-- "*" BaliseAccuracy
 LocationAccuracyArea *-- "*" EtcsMarkerAccuracy
 LocationAccuracyArea *-- "*" StopLocationAccuracy
 LocationAccuracyArea *-- "*" NationalBorderAccuracy
 LocationAccuracyArea *-- "*" BufferStopAccuracy
-TrackEdgeKmSigns *-- "*" KmSign
-KmArea *-- "*" TrackEdgeKmSigns
+LinearElementKmSigns *-- "*" KilometricPost
+KmArea *-- "*" LinearElementKmSigns
 ETCSEngineering *-- "*" EngArea
 ETCSEngineering *-- "*" LocationAccuracyArea
 ETCSEngineering *-- "*" KmArea
