@@ -1,15 +1,19 @@
 {
   "$id": "https://ERJU/ss026_LevelTransition",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines the parameters for level transitions in ETCS operations, specifying the required ETCS level and the associated national system identity to ensure seamless interoperability between signaling systems.",
   "properties": {
     "m_leveltr": {
       "type": "string",
-      "description": "Required level",
-      "enum": ["Level0", "LevelNTC", "Level1", "Level2", "Level3"]
+      "enum": [
+        "Level0",
+        "LevelNTC",
+        "Level1",
+        "Level2",
+        "Level3"
+      ],
+      "description": "Required level"
     },
     "nid_ntc": {
       "type": "integer",

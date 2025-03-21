@@ -1,26 +1,26 @@
 {
   "$id": "https://ERJU/map_MapMgmt",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "map_TrackEdgeCoordinate": {
+    "map.LinearElementCoordinate": {
       "type": "object",
       "properties": {
         "pos": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated Track Edge"
+          "description": "Defines position on the associated LinearElement"
         },
         "x": {
           "type": "number",
-          "description": "todo: mapping to each EPSG-code"
+          "description": "Defines the x coordiante value, mapping to each EPSG-code"
         },
         "y": {
           "type": "number",
-          "description": "todo: mapping to each EPSG-code"
+          "description": "Defines the y coordiante value, mapping to each EPSG-code"
         },
         "z": {
           "type": "number",
-          "description": "todo: mapping to each EPSG-code"
+          "description": "Defines the z coordiante value, mapping to each EPSG-code"
         },
         "accPos": {
           "type": "integer",
@@ -42,32 +42,34 @@
       },
       "additionalProperties": false
     },
-    "map_TrackEdgeProjection": {
+    "map.LinearElementProjection": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identity of the object; used for referencing"
+        "linearElement": {
+          "type": "string"
         },
         "coordinates": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of coordinates",
-            "$ref": "#/definitions/map_TrackEdgeCoordinate"
-           },
-          "minItems": 2
+            "$ref": "#/definitions/map.LinearElementCoordinate"
+          },
+          "minItems": 2,
+          "description": "Defines a sequence of coordinates representing a mapping of a linear element"
         }
       },
-      "required": ["id", "coordinates"],
+      "required": [
+        "linearElement",
+        "coordinates"
+      ],
       "additionalProperties": false
     },
-    "map_FunctionalElementRef": {
+    "map.FunctionalElementRef": {
       "type": "object",
       "properties": {
-        "simplePoint": {
+        "switch": {
           "type": "string",
-          "description": "refers to simple point"
+          "description": "refers to switch/simple point"
         },
         "etcsMarker": {
           "type": "string",
@@ -79,52 +81,64 @@
         },
         "timingPoint": {
           "type": "string",
-          "description": "refers to timing point"
+          "description": "Defines a reference to a timing point"
         },
         "operationalPoint": {
           "type": "string",
-          "description": "refers to operational point"
+          "description": "Defines a reference to an operational point (station, siding etc)."
         },
         "balise": {
           "type": "string",
-          "description": "refers to balise"
+          "description": "Defines a reference to a functional balise"
         }
       },
       "oneOf": [
         {
           "type": "object",
-          "required": ["simplePoint"]
+          "required": [
+            "switch"
+          ]
         },
         {
           "type": "object",
-          "required": ["etcsMarker"]
+          "required": [
+            "etcsMarker"
+          ]
         },
         {
           "type": "object",
-          "required": ["stopLocation"]
+          "required": [
+            "stopLocation"
+          ]
         },
         {
           "type": "object",
-          "required": ["timingPoint"]
+          "required": [
+            "timingPoint"
+          ]
         },
         {
           "type": "object",
-          "required": ["operationalPoint"]
+          "required": [
+            "operationalPoint"
+          ]
         },
         {
           "type": "object",
-          "required": ["balise"]
+          "required": [
+            "balise"
+          ]
         }
       ],
       "additionalProperties": false
     },
-    "map_FunctionalElementProjection": {
+    "map.FunctionalElementProjection": {
       "type": "object",
       "properties": {
         "elementRef": {
           "type": "object",
-          "description": "composes of element refs",
-          "$ref": "#/definitions/map_FunctionalElementRef"
+          "$ref": "#/definitions/map.FunctionalElementRef",
+          "description": "Defines reference container for which the coodinate is defined"
         },
         "x": {
           "type": "number",
@@ -151,10 +165,12 @@
           "description": "absolute accuracy as 1sigma. Use 0.0 if not defined"
         }
       },
-      "required": ["elementRef"],
+      "required": [
+        "elementRef"
+      ],
       "additionalProperties": false
     },
-    "map_MapArea": {
+    "map.Map": {
       "type": "object",
       "properties": {
         "id": {
@@ -167,48 +183,52 @@
         },
         "versionTimestamp": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
-          "description": "version information which is valid since timestamp"
+          "format": "date-time",
+          "description": "Defines the version information which is valid since timestamp"
         },
         "areaId": {
           "type": "string",
-          "description": "there could be several maps representing one area"
+          "description": "Defines the areaIds for a Map. There could be several maps representing one area"
         },
         "epsg": {
           "type": "integer",
           "minimum": 0,
-          "description": "EPSG code, 1 - monitor coordinates"
+          "description": "Defines the applicable EPSG code for the map area. Use 1 for monitor coordinates"
         },
-        "trackEdgeProjections": {
+        "linearElementProjections": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edges",
-            "$ref": "#/definitions/map_TrackEdgeProjection"
-           }
+            "$ref": "#/definitions/map.LinearElementProjection"
+          },
+          "description": "Defines container for projections of linearElements on same mapping system"
         },
         "functionalElements": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of functional elements",
-            "$ref": "#/definitions/map_FunctionalElementProjection"
-           }
+            "$ref": "#/definitions/map.FunctionalElementProjection"
+          },
+          "description": "Defines a container for a reference to a functional element of the infrastructure"
         }
       },
-      "required": ["id", "versionTimestamp", "areaId"],
+      "required": [
+        "id",
+        "versionTimestamp",
+        "areaId"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
   "properties": {
-    "mapAreas": {
+    "maps": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "composes of map areas",
-        "$ref": "#/definitions/map_MapArea"
-       }
+        "$ref": "#/definitions/map.Map"
+      },
+      "description": "Defines container for all Maps in a system"
     }
   },
   "additionalProperties": false

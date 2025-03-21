@@ -1,0 +1,109 @@
+{
+  "$id": "https://ERJU/tp_AreaOfControl",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "infra.TopologicalCoordinate": {
+      "type": "object",
+      "description": "Defines a topological coordinates on the track",
+      "properties": {
+        "onLinearElement": {
+          "type": "string",
+          "description": "is positioned on linear element"
+        },
+        "offsetFromOrigin": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated NetElement"
+        }
+      },
+      "required": [
+        "onLinearElement"
+      ],
+      "additionalProperties": false
+    },
+    "infra.NetLinearReference": {
+      "type": "object",
+      "description": "Defines a linked path on the topology",
+      "properties": {
+        "startsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Definesthe starting coordinate of a linear reference"
+        },
+        "endsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Defines the ending coordinate of a linear reference."
+        },
+        "hasSequence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Defines a sequence of linearElements from the start to the end excluding those defined in startAt- and endsAt-TopologicalCoodinates."
+        }
+      },
+      "required": [
+        "startsAt",
+        "endsAt"
+      ],
+      "additionalProperties": false
+    },
+    "infra.NetAreaReference": {
+      "type": "object",
+      "description": "Represents an area reference in the network.",
+      "properties": {
+        "includes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/infra.NetLinearReference"
+          },
+          "minItems": 1,
+          "description": "List of linear references included in an network area reference."
+        }
+      },
+      "required": [
+        "includes"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines the Area of Control of a system like Traffic CS, MBS/APS, TMS, PE/EAL, ....",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the system"
+    },
+    "name": {
+      "type": "string",
+      "description": "User-friendly name, only if different from id"
+    },
+    "area": {
+      "type": "object",
+      "$ref": "#/definitions/infra.NetAreaReference",
+      "description": "composes of linked area"
+    },
+    "iPAddress": {
+      "type": "string",
+      "description": "defines the ip address for communication purposes"
+    },
+    "rastaId": {
+      "type": "string",
+      "description": "defines EULYNX RaSTA identifier for the field object controller"
+    },
+    "portNumber": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "defines the port number for communication purposes"
+    }
+  },
+  "required": [
+    "id",
+    "area",
+    "iPAddress",
+    "rastaId"
+  ],
+  "additionalProperties": false
+}

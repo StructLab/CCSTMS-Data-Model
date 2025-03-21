@@ -1,45 +1,56 @@
 {
   "$id": "https://ERJU/infra_NationalBorder",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_TrackEdgePoint": {
+    "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a non-directed spot location (without spatial expansion) on a Track Edge",
+      "description": "Defines a topological coordinates on the track",
       "properties": {
-        "trackEdge": {
+        "onLinearElement": {
           "type": "string",
-          "description": "is positioned on track edge"
+          "description": "is positioned on linear element"
         },
-        "pos": {
+        "offsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated Track Edge"
+          "description": "position on the associated NetElement"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onLinearElement"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
-  "description": "A border point is used to separate the railway network due to different reasons. Typical examples are country borders, the change of owning infrastructure manager or the border of a station",
+  "description": "Defines a border point is used to separate the railway network due to different reasons. Typical examples are country borders, the change of owning infrastructure manager or the border of a station",
   "properties": {
     "id": {
       "type": "string",
       "description": "Identity of the object; used for referencing"
     },
-    "spotLocation": {
+    "topologicalCoordinate": {
       "type": "object",
-      "$ref": "#/definitions/infra_TrackEdgePoint"
+      "$ref": "#/definitions/infra.TopologicalCoordinate"
     },
     "fromCountryCode": {
       "type": "string",
-      "description": "starting part of the TrackEdge"
+      "description": "Defines the from country code for the national border in the direction of linear element"
     },
     "toCountryCode": {
       "type": "string",
-      "description": "ending part of the TrackEdge"
+      "description": "Defines the to country code for the national border in the direction of linear element"
+    },
+    "name": {
+      "type": "string",
+      "description": "User-friendly name, only if different from id"
     }
   },
-  "required": ["id", "spotLocation", "fromCountryCode", "toCountryCode"],
+  "required": [
+    "id",
+    "topologicalCoordinate",
+    "fromCountryCode",
+    "toCountryCode"
+  ],
   "additionalProperties": false
 }

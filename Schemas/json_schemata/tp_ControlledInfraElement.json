@@ -1,9 +1,6 @@
 {
   "$id": "https://ERJU/tp_ControlledInfraElement",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "properties": {
     "dpsGroup": {
@@ -16,11 +13,15 @@
   "oneOf": [
     {
       "type": "object",
-      "required": ["dpsGroup"]
+      "required": [
+        "dpsGroup"
+      ]
     },
     {
       "type": "object",
-      "required": ["tvpSection"]
+      "required": [
+        "tvpSection"
+      ]
     }
   ],
   "additionalProperties": false

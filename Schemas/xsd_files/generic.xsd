@@ -1,0 +1,588 @@
+<?xml version="1.0" ?>
+<xs:schema targetNamespace="https://erju.org/generic" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:generic="https://erju.org/generic" elementFormDefault="qualified" version="1.0">
+	<xs:simpleType name="StatusTechnical">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="Ok"/>
+			<xs:enumeration value="Warning"/>
+			<xs:enumeration value="FailureNonCritical"/>
+			<xs:enumeration value="FailureCritical"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EquipmentReplaceabilityStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="ReplacementNotNeeded"/>
+			<xs:enumeration value="ReplaceableAtOperation"/>
+			<xs:enumeration value="ReplaceableMaintenance"/>
+			<xs:enumeration value="ReplaceableRevalidation"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ControllerOperationStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="Booting"/>
+			<xs:enumeration value="InOperation"/>
+			<xs:enumeration value="Fallback"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CoolingFanStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="Normal"/>
+			<xs:enumeration value="Degraded"/>
+			<xs:enumeration value="Failure"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TemperatureStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="Normal"/>
+			<xs:enumeration value="TooHigh"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CpuHealthStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="Normal"/>
+			<xs:enumeration value="Degraded"/>
+			<xs:enumeration value="Failure"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CpuLoadStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="Normal"/>
+			<xs:enumeration value="High"/>
+			<xs:enumeration value="Critical"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RamHealthStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="Normal"/>
+			<xs:enumeration value="Degraded"/>
+			<xs:enumeration value="Failure"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ControllerResetReason">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="OnSite"/>
+			<xs:enumeration value="RemoteMdm"/>
+			<xs:enumeration value="InternalMaintenanceOk"/>
+			<xs:enumeration value="InternalMaintenanceFailure"/>
+			<xs:enumeration value="InternalFailure"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="WearStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="Ok"/>
+			<xs:enumeration value="Warning"/>
+			<xs:enumeration value="Nok"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PhysicalNetworkInterfaceOperationalStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="NotAvialableNotConnected"/>
+			<xs:enumeration value="AvailableNotConnected"/>
+			<xs:enumeration value="Connected"/>
+			<xs:enumeration value="NotConnectedDisturbed"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VoltageStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="NotUsed"/>
+			<xs:enumeration value="Undervoltage"/>
+			<xs:enumeration value="Nominal"/>
+			<xs:enumeration value="Overvoltage"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="HighLow">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="High"/>
+			<xs:enumeration value="Low"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OutputValue">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="On"/>
+			<xs:enumeration value="Off"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InputValue">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="On"/>
+			<xs:enumeration value="Off"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InputSwitchPosition">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="Position1"/>
+			<xs:enumeration value="Position2"/>
+			<xs:enumeration value="Position3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BasicDataReadable">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="NotReadable"/>
+			<xs:enumeration value="Incomplete"/>
+			<xs:enumeration value="FormallyCorrect"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FieldElementOperationStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="Booting"/>
+			<xs:enumeration value="InitialisingWaitingForPdiOrMaintenance"/>
+			<xs:enumeration value="InitialisingWaitingForPdi"/>
+			<xs:enumeration value="InitialisingWaitingForDataUpdate"/>
+			<xs:enumeration value="InitialisingWaitingForNoMaintenanceTimeout"/>
+			<xs:enumeration value="Operational"/>
+			<xs:enumeration value="FallbackMode"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FluidLevelStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="HighAlarm"/>
+			<xs:enumeration value="HighWarning"/>
+			<xs:enumeration value="Normal"/>
+			<xs:enumeration value="LowWarning"/>
+			<xs:enumeration value="LowAlarm"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Equipment">
+		<xs:sequence>
+			<xs:element name="subEquipment" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="subEquipmentItem" type="generic:Equipment" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="controller" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="controllerItem" type="generic:Controller" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="physicalNetworkInterface" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="physicalNetworkInterfaceItem" type="generic:PhysicalNetworkInterface" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="storageMediumFlashMemory" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="storageMediumFlashMemoryItem" type="generic:StorageMediumFlashMemory" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="powerSupply" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="powerSupplyItem" type="generic:PowerSupply" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="physicalDigitalOutput" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="physicalDigitalOutputItem" type="generic:PhysicalDigitalOutput" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="physicalAnalogOutput" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="physicalAnalogOutputItem" type="generic:PhysicalAnalogOutput" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="physicalSeparatedOutput" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="physicalSeparatedOutputItem" type="generic:PhysicalSeparatedOutput" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="physicalDigitalInput" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="physicalDigitalInputItem" type="generic:PhysicalDigitalInput" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="physicalAnalogInput" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="physicalAnalogInputItem" type="generic:PhysicalAnalogInput" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="physicalSeparatedInput" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="physicalSeparatedInputItem" type="generic:PhysicalSeparatedInput" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="inputSwitch" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="inputSwitchItem" type="generic:InputSwitch" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="inputButton" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="inputButtonItem" type="generic:InputButton" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="statusTechnical" type="generic:StatusTechnical" use="required"/>
+		<xs:attribute name="statusTechnicalManufacturerSpecificMessage" type="xs:string"/>
+		<xs:attribute name="manufacturer" type="xs:string" use="required"/>
+		<xs:attribute name="manufacturerModel" type="xs:string" use="required"/>
+		<xs:attribute name="serialNumber" type="xs:string" use="required"/>
+		<xs:attribute name="hardwareRevision" type="xs:string" use="required"/>
+		<xs:attribute name="softwareRevision" type="xs:string" use="required"/>
+		<xs:attribute name="replacementIndication" type="generic:EquipmentReplaceabilityStatus" use="required"/>
+		<xs:attribute name="manufacturingDateTime" type="xs:dateTime" use="required"/>
+		<xs:attribute name="label" type="xs:string"/>
+		<xs:attribute name="isTimeSynchronised" type="xs:boolean"/>
+	</xs:complexType>
+	<xs:element name="equipment" type="generic:Equipment"/>
+	<xs:complexType name="Controller">
+		<xs:sequence/>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="statusTechnical" type="generic:StatusTechnical" use="required"/>
+		<xs:attribute name="statusTechnicalManufacturerSpecificMessage" type="xs:string"/>
+		<xs:attribute name="systemDescription" type="xs:string"/>
+		<xs:attribute name="operatingSystem" type="xs:string"/>
+		<xs:attribute name="operationStatus" type="generic:ControllerOperationStatus" use="required"/>
+		<xs:attribute name="coolingFanStatus" type="generic:CoolingFanStatus"/>
+		<xs:attribute name="temperatureStatus" type="generic:TemperatureStatus" use="required"/>
+		<xs:attribute name="cpuHealthStatus" type="generic:CpuHealthStatus" use="required"/>
+		<xs:attribute name="cpuLoadStatus" type="generic:CpuLoadStatus" use="required"/>
+		<xs:attribute name="ramSize" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="ramHealthStatus" type="generic:RamHealthStatus" use="required"/>
+		<xs:attribute name="bootingLastDateTime" type="xs:dateTime"/>
+		<xs:attribute name="bootingLastReason" type="generic:ControllerResetReason"/>
+		<xs:attribute name="label" type="xs:string"/>
+	</xs:complexType>
+	<xs:element name="controller" type="generic:Controller"/>
+	<xs:complexType name="PhysicalNetworkInterface">
+		<xs:sequence/>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="statusTechnical" type="generic:StatusTechnical" use="required"/>
+		<xs:attribute name="statusTechnicalManufacturerSpecificMessage" type="xs:string"/>
+		<xs:attribute name="macAddress" type="xs:string" use="required"/>
+		<xs:attribute name="operationStatus" type="generic:PhysicalNetworkInterfaceOperationalStatus" use="required"/>
+		<xs:attribute name="nominalBandwidth" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="label" type="xs:string"/>
+	</xs:complexType>
+	<xs:element name="physicalNetworkInterface" type="generic:PhysicalNetworkInterface"/>
+	<xs:complexType name="StorageMediumFlashMemory">
+		<xs:sequence/>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="statusTechnical" type="generic:StatusTechnical" use="required"/>
+		<xs:attribute name="statusTechnicalManufacturerSpecificMessage" type="xs:string"/>
+		<xs:attribute name="memorySize" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="temperatureStatus" type="generic:TemperatureStatus"/>
+		<xs:attribute name="label" type="xs:string"/>
+		<xs:attribute name="wearStatus" type="generic:WearStatus" use="required"/>
+	</xs:complexType>
+	<xs:element name="storageMediumFlashMemory" type="generic:StorageMediumFlashMemory"/>
+	<xs:complexType name="PowerSupply">
+		<xs:sequence/>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="statusTechnical" type="generic:StatusTechnical" use="required"/>
+		<xs:attribute name="statusTechnicalManufacturerSpecificMessage" type="xs:string"/>
+		<xs:attribute name="inputVoltageStatus" type="generic:VoltageStatus" use="required"/>
+		<xs:attribute name="outputVoltageStatus" type="generic:VoltageStatus" use="required"/>
+		<xs:attribute name="outputPower" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="outputPowerLimit" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="temperatureStatus" type="generic:TemperatureStatus"/>
+		<xs:attribute name="label" type="xs:string"/>
+		<xs:attribute name="inputVoltage" type="xs:decimal" use="required"/>
+		<xs:attribute name="inputCurrent" type="xs:decimal" use="required"/>
+	</xs:complexType>
+	<xs:element name="powerSupply" type="generic:PowerSupply"/>
+	<xs:complexType name="PhysicalDigitalOutput">
+		<xs:sequence/>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="statusTechnical" type="generic:StatusTechnical" use="required"/>
+		<xs:attribute name="statusTechnicalManufacturerSpecificMessage" type="xs:string"/>
+		<xs:attribute name="label" type="xs:string" use="required"/>
+		<xs:attribute name="physicalOutputValue" type="generic:HighLow" use="required"/>
+		<xs:attribute name="outputVoltage" type="xs:decimal"/>
+		<xs:attribute name="outputCurrent" type="xs:decimal"/>
+	</xs:complexType>
+	<xs:element name="physicalDigitalOutput" type="generic:PhysicalDigitalOutput"/>
+	<xs:complexType name="PhysicalAnalogOutput">
+		<xs:sequence/>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="statusTechnical" type="generic:StatusTechnical" use="required"/>
+		<xs:attribute name="statusTechnicalManufacturerSpecificMessage" type="xs:string"/>
+		<xs:attribute name="label" type="xs:string"/>
+		<xs:attribute name="voltage" type="xs:decimal" use="required"/>
+		<xs:attribute name="current" type="xs:decimal" use="required"/>
+	</xs:complexType>
+	<xs:element name="physicalAnalogOutput" type="generic:PhysicalAnalogOutput"/>
+	<xs:complexType name="PhysicalSeparatedOutput">
+		<xs:sequence/>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="statusTechnical" type="generic:StatusTechnical" use="required"/>
+		<xs:attribute name="statusTechnicalManufacturerSpecificMessage" type="xs:string"/>
+		<xs:attribute name="label" type="xs:string"/>
+		<xs:attribute name="outputValue" type="generic:OutputValue" use="required"/>
+	</xs:complexType>
+	<xs:element name="physicalSeparatedOutput" type="generic:PhysicalSeparatedOutput"/>
+	<xs:complexType name="PhysicalDigitalInput">
+		<xs:sequence/>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="statusTechnical" type="generic:StatusTechnical" use="required"/>
+		<xs:attribute name="statusTechnicalManufacturerSpecificMessage" type="xs:string"/>
+		<xs:attribute name="label" type="xs:string"/>
+		<xs:attribute name="physicalInputValue" type="generic:HighLow" use="required"/>
+		<xs:attribute name="inputVoltage" type="xs:decimal"/>
+		<xs:attribute name="inputCurrent" type="xs:decimal"/>
+	</xs:complexType>
+	<xs:element name="physicalDigitalInput" type="generic:PhysicalDigitalInput"/>
+	<xs:complexType name="PhysicalAnalogInput">
+		<xs:sequence/>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="statusTechnical" type="generic:StatusTechnical" use="required"/>
+		<xs:attribute name="statusTechnicalManufacturerSpecificMessage" type="xs:string"/>
+		<xs:attribute name="label" type="xs:string"/>
+		<xs:attribute name="voltage" type="xs:decimal" use="required"/>
+		<xs:attribute name="current" type="xs:decimal" use="required"/>
+	</xs:complexType>
+	<xs:element name="physicalAnalogInput" type="generic:PhysicalAnalogInput"/>
+	<xs:complexType name="PhysicalSeparatedInput">
+		<xs:sequence/>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="statusTechnical" type="generic:StatusTechnical" use="required"/>
+		<xs:attribute name="statusTechnicalManufacturerSpecificMessage" type="xs:string"/>
+		<xs:attribute name="label" type="xs:string"/>
+		<xs:attribute name="inputValue" type="generic:InputValue" use="required"/>
+	</xs:complexType>
+	<xs:element name="physicalSeparatedInput" type="generic:PhysicalSeparatedInput"/>
+	<xs:complexType name="AuxiliaryInput">
+		<xs:sequence>
+			<xs:element name="inputButton" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="inputButtonItem" type="generic:InputButton" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="inputSwitch" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="inputSwitchItem" type="generic:InputSwitch" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="label" type="xs:string"/>
+	</xs:complexType>
+	<xs:element name="auxiliaryInput" type="generic:AuxiliaryInput"/>
+	<xs:complexType name="InputSwitch">
+		<xs:sequence/>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="label" type="xs:string"/>
+		<xs:attribute name="inputSwitchPosition" type="generic:InputSwitchPosition" use="required"/>
+	</xs:complexType>
+	<xs:element name="inputSwitch" type="generic:InputSwitch"/>
+	<xs:complexType name="InputButton">
+		<xs:sequence/>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="label" type="xs:string"/>
+		<xs:attribute name="isPressed" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	<xs:element name="inputButton" type="generic:InputButton"/>
+	<xs:complexType name="Subsystem">
+		<xs:sequence>
+			<xs:element name="statusTechnicalManufacturerSpecificMessage" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="statusTechnicalManufacturerSpecificMessageItem" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:attribute name="value" type="xs:string" use="required"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="subsystemIdentification" type="xs:string" use="required"/>
+		<xs:attribute name="statusTechnical" type="generic:StatusTechnical" use="required"/>
+		<xs:attribute name="isTimeSynchronised" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	<xs:element name="subsystem" type="generic:Subsystem"/>
+	<xs:complexType name="FieldElement">
+		<xs:sequence>
+			<xs:element name="subsystem" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="subsystemItem" type="generic:Subsystem" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="operationStatus" type="generic:FieldElementOperationStatus" use="required"/>
+		<xs:attribute name="fieldElementSpecificationRevision" type="xs:string" use="required"/>
+		<xs:attribute name="basicDataReadable" type="generic:BasicDataReadable" use="required"/>
+	</xs:complexType>
+	<xs:element name="fieldElement" type="generic:FieldElement"/>
+	<xs:complexType name="LogEvent">
+		<xs:sequence/>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="messageId" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="logEvent" type="generic:LogEvent"/>
+	<xs:complexType name="LogEventSubsystemEvent">
+		<xs:sequence>
+			<xs:element name="logEvent" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="logEventItem" type="generic:LogEvent" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="logEventSubsystemEvent" type="generic:LogEventSubsystemEvent"/>
+	<xs:complexType name="MotorTurnData">
+		<xs:sequence/>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="index" type="xs:decimal" use="required"/>
+	</xs:complexType>
+	<xs:element name="motorTurnData" type="generic:MotorTurnData"/>
+	<xs:complexType name="MotorTurnData_1AC">
+		<xs:sequence>
+			<xs:element name="motorTurnData" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="motorTurnDatum" type="generic:MotorTurnData" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="voltage" type="xs:decimal" use="required"/>
+		<xs:attribute name="current" type="xs:decimal" use="required"/>
+		<xs:attribute name="cosPhi" type="xs:decimal" use="required"/>
+	</xs:complexType>
+	<xs:element name="motorTurnData_1AC" type="generic:MotorTurnData_1AC"/>
+	<xs:complexType name="MotorTurnData_1AC_ActiveCurrentInductiveCompensation">
+		<xs:sequence>
+			<xs:element name="motorTurnData" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="motorTurnDatum" type="generic:MotorTurnData" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="activeCurrent" type="xs:decimal" use="required"/>
+	</xs:complexType>
+	<xs:element name="motorTurnData_1AC_ActiveCurrentInductiveCompensation" type="generic:MotorTurnData_1AC_ActiveCurrentInductiveCompensation"/>
+	<xs:complexType name="MotorTurnData_1AC_ActiveCurrentPhaseAngleCompensation">
+		<xs:sequence>
+			<xs:element name="motorTurnData" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="motorTurnDatum" type="generic:MotorTurnData" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="activeCurrent" type="xs:decimal" use="required"/>
+	</xs:complexType>
+	<xs:element name="motorTurnData_1AC_ActiveCurrentPhaseAngleCompensation" type="generic:MotorTurnData_1AC_ActiveCurrentPhaseAngleCompensation"/>
+	<xs:complexType name="MotorTurnData_1AC_Power">
+		<xs:sequence>
+			<xs:element name="motorTurnData" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="motorTurnDatum" type="generic:MotorTurnData" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="power" type="xs:decimal" use="required"/>
+	</xs:complexType>
+	<xs:element name="motorTurnData_1AC_Power" type="generic:MotorTurnData_1AC_Power"/>
+	<xs:complexType name="MotorTurnData_3AC">
+		<xs:sequence>
+			<xs:element name="motorTurnData" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="motorTurnDatum" type="generic:MotorTurnData" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="voltage_L1" type="xs:decimal" use="required"/>
+		<xs:attribute name="current_L1" type="xs:decimal" use="required"/>
+		<xs:attribute name="cosPhi_L1" type="xs:decimal" use="required"/>
+		<xs:attribute name="voltage_L2" type="xs:decimal" use="required"/>
+		<xs:attribute name="current_L2" type="xs:decimal" use="required"/>
+		<xs:attribute name="cosPhi_L2" type="xs:decimal" use="required"/>
+		<xs:attribute name="voltage_L3" type="xs:decimal" use="required"/>
+		<xs:attribute name="current_L3" type="xs:decimal" use="required"/>
+		<xs:attribute name="cosPhi_L3" type="xs:decimal" use="required"/>
+	</xs:complexType>
+	<xs:element name="motorTurnData_3AC" type="generic:MotorTurnData_3AC"/>
+	<xs:complexType name="MotorTurnData_3AC_Power">
+		<xs:sequence>
+			<xs:element name="motorTurnData" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="motorTurnDatum" type="generic:MotorTurnData" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="power_L1" type="xs:decimal" use="required"/>
+		<xs:attribute name="power_L2" type="xs:decimal" use="required"/>
+		<xs:attribute name="power_L3" type="xs:decimal" use="required"/>
+	</xs:complexType>
+	<xs:element name="motorTurnData_3AC_Power" type="generic:MotorTurnData_3AC_Power"/>
+	<xs:complexType name="MotorTurnData_Hydraulic">
+		<xs:sequence>
+			<xs:element name="motorTurnData" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="motorTurnDatum" type="generic:MotorTurnData" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="fluidPressure_left" type="xs:decimal" use="required"/>
+		<xs:attribute name="fluidPressure_right" type="xs:decimal" use="required"/>
+		<xs:attribute name="fluidLevelStatus" type="generic:FluidLevelStatus" use="required"/>
+		<xs:attribute name="voltageOnEndposition" type="xs:decimal" use="required"/>
+	</xs:complexType>
+	<xs:element name="motorTurnData_Hydraulic" type="generic:MotorTurnData_Hydraulic"/>
+</xs:schema>

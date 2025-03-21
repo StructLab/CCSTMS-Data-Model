@@ -1,11 +1,8 @@
 {
   "$id": "https://ERJU/infra_TrackUsageArea",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
-  "description": "Preferred usage specification, most usable for TMS and planning",
+  "description": "Defines the preferred usage specification, most usable for TMS and planning",
   "properties": {
     "id": {
       "type": "string",
@@ -13,38 +10,41 @@
     },
     "versionTimestamp": {
       "type": "string",
-      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
+      "format": "date-time",
       "description": "version information which is valid since timestamp"
     },
     "secondaryTracks": {
       "type": "array",
       "items": {
-        "type": "string",
-        "description": "all tracks except 'shuntingTracks' and 'secondaryTracks' are 'mainTracks'"
-       }
+        "type": "string"
+      },
+      "description": "Defines the list of secondary tracks. All tracks except 'shuntingTracks' and 'secondaryTracks' are 'mainTracks'"
     },
     "shuntingTracks": {
       "type": "array",
       "items": {
-        "type": "string",
-        "description": "all tracks except 'shuntingTracks' and 'secondaryTracks' are 'mainTracks'"
-       }
+        "type": "string"
+      },
+      "description": "Defines the list of shunting tracks. All tracks except 'shuntingTracks' and 'secondaryTracks' are 'mainTracks'"
     },
     "preferredSameDir": {
       "type": "array",
       "items": {
-        "type": "string",
-        "description": "track edges with preferred direction identical to the TrackEdge-Direction"
-       }
+        "type": "string"
+      },
+      "description": "Defines the list of linear elements with preferred direction identical to the Linear element-Direction"
     },
     "preferredOppositeDir": {
       "type": "array",
       "items": {
-        "type": "string",
-        "description": "track edges with preferred direction opposite to the TrackEdge-Direction"
-       }
+        "type": "string"
+      },
+      "description": "Defines the list of linear elements with preferred direction opposite to the Linear element-Direction"
     }
   },
-  "required": ["id", "versionTimestamp"],
+  "required": [
+    "id",
+    "versionTimestamp"
+  ],
   "additionalProperties": false
 }

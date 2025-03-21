@@ -1,14 +1,21 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_41",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "ss026_LevelTransitionWithAck": {
+    "ss026.LevelTransitionWithAck": {
       "type": "object",
+      "description": "Defines the parameters for level transitions requiring acknowledgment in ETCS operations. This includes the target ETCS level, the associated national system identity, and the length of the acknowledgment area required for a safe transition.",
       "properties": {
         "m_leveltr": {
           "type": "string",
-          "description": "Required level",
-          "enum": ["Level0", "LevelNTC", "Level1", "Level2", "Level3"]
+          "enum": [
+            "Level0",
+            "LevelNTC",
+            "Level1",
+            "Level2",
+            "Level3"
+          ],
+          "description": "Required level"
         },
         "nid_ntc": {
           "type": "integer",
@@ -25,7 +32,7 @@
     }
   },
   "type": "object",
-  "description": " Level Transition Order (Packet to identify where a level transition shall take place. In case of mixed levels, the successive M_LEVELTRâs go from the highest priority level to the lowest one)",
+  "description": "Level Transition Order (Packet to identify where a level transition shall take place. In case of mixed levels, the successive M_LEVELTR\u00e2\u0099s go from the highest priority level to the lowest one)",
   "properties": {
     "d_leveltr": {
       "type": "integer",
@@ -34,8 +41,14 @@
     },
     "m_leveltr": {
       "type": "string",
-      "description": "Required level",
-      "enum": ["Level0", "LevelNTC", "Level1", "Level2", "Level3"]
+      "enum": [
+        "Level0",
+        "LevelNTC",
+        "Level1",
+        "Level2",
+        "Level3"
+      ],
+      "description": "Required level"
     },
     "nid_ntc": {
       "type": "integer",
@@ -51,9 +64,10 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_LevelTransitionWithAck"
-       },
-      "maxItems": 32
+        "$ref": "#/definitions/ss026.LevelTransitionWithAck"
+      },
+      "maxItems": 32,
+      "description": "List of level transitions requiring acknowledgment in ETCS operation"
     }
   },
   "additionalProperties": false

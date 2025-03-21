@@ -1,20 +1,17 @@
 {
   "$id": "https://ERJU/infra_CantSamplePoint",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
-  "description": "Cant(superelevation) of the track at a given location on the track.",
+  "description": "Defines the cant(superelevation) of the track at a given location on the track.",
   "properties": {
     "pos": {
       "type": "integer",
       "minimum": 0,
-      "description": "position on the associated TrackEdge"
+      "description": "position on the associated LinearElement"
     },
     "samplePointCant": {
       "type": "integer",
-      "description": "Defines appliedCant as the Height of the right rail minus the left rail. Right/left with respect to the direction of the track edge. Rollangle=(arcsin(cant/gauge), gauge is distance between centers of rail-heads, e.g. 1500mm for EU-standard gauge."
+      "description": "Defines the height of the outer rail minus the inner rail. Outer rail and inner rail are defined according to the direction of curve.Rollangle=(arcsin(cant/gauge), gauge is distance between centers of rail-heads, e.g. 1500mm for EU-standard gauge."
     }
   },
   "additionalProperties": false

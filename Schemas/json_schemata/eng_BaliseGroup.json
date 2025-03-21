@@ -1,9 +1,6 @@
 {
   "$id": "https://ERJU/eng_BaliseGroup",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "description": "Defines a technical device group on the railway trackbed.",
   "properties": {
@@ -13,8 +10,16 @@
     },
     "m_version": {
       "type": "string",
-      "description": "Version of the ERTMS/ETCS system",
-      "enum": ["v1_0", "v1_1", "v2_0", "v2_1", "v_previous", "v_reserved", "v_invalid"]
+      "enum": [
+        "v1_0",
+        "v1_1",
+        "v2_0",
+        "v2_1",
+        "v_previous",
+        "v_reserved",
+        "v_invalid"
+      ],
+      "description": "This gives the version of the ETCS system. Each part indicates the first and second number of the version respectively: The first number distinguishes not compatible versions (The three MSBs)_ The second number indicates compatibility within a version X. (The four LSBs)"
     },
     "q_link": {
       "type": "boolean",
@@ -25,6 +30,8 @@
       "description": "This defines the direction of information. True when it is Up-link (Track-to-Train) and false when it is Down-link (Train-to-Track)"
     }
   },
-  "required": ["id"],
+  "required": [
+    "id"
+  ],
   "additionalProperties": false
 }

@@ -1,10 +1,8 @@
 {
   "$id": "https://ERJU/ss026_NVKSubItem",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines the speed-dependent correction factors used for braking calculations as part of the National Values. These factors determine the integrated correction factor Kv based on estimated train speed and emergency brake deceleration conditions",
   "properties": {
     "v_nvkvint": {
       "type": "integer",

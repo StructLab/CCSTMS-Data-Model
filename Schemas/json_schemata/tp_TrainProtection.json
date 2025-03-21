@@ -1,30 +1,36 @@
 {
   "$id": "https://ERJU/tp_TrainProtection",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_TrackEdgeSection": {
+    "infra.LinearElementSection": {
       "type": "object",
-      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "description": "Defines a directed linear object (with a linear extension) located on a LinearElement",
       "properties": {
-        "trackEdge": {
+        "onElement": {
           "type": "string",
-          "description": "refers to track edge"
+          "description": "refers to linear element"
         },
-        "skipFromStart": {
+        "startOffsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [0..skipFromStart]."
+          "description": "Defines the start offset from the origin"
         },
-        "skipFromEnd": {
+        "endOffsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]."
+          "description": "Defines the end offset from the origin"
+        },
+        "appliesInBothDirections": {
+          "type": "boolean",
+          "description": "Defines if the section applies in both directions"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onElement"
+      ],
       "additionalProperties": false
     },
-    "tp_DriveProtectionSection": {
+    "tp.DriveProtectionSection": {
       "type": "object",
       "description": "Defines a DPS for a section of track",
       "properties": {
@@ -35,22 +41,26 @@
         "name": {
           "type": "string"
         },
-        "trackEdgeSection": {
+        "linearElementSection": {
           "type": "object",
-          "$ref": "#/definitions/infra_TrackEdgeSection"
+          "$ref": "#/definitions/infra.LinearElementSection"
         },
         "maxFlankProtectionSpeed": {
           "type": "integer",
           "minimum": 0
         }
       },
-      "required": ["id", "name", "trackEdgeSection"],
+      "required": [
+        "id",
+        "name",
+        "linearElementSection"
+      ],
       "additionalProperties": false
     },
-    "tp_ProtectedInfraElement": {
+    "tp.ProtectedInfraElement": {
       "type": "object",
       "properties": {
-        "simplePoint": {
+        "switch": {
           "type": "string"
         },
         "slipCrossing": {
@@ -69,28 +79,38 @@
       "oneOf": [
         {
           "type": "object",
-          "required": ["simplePoint"]
+          "required": [
+            "switch"
+          ]
         },
         {
           "type": "object",
-          "required": ["slipCrossing"]
+          "required": [
+            "slipCrossing"
+          ]
         },
         {
           "type": "object",
-          "required": ["crossing"]
+          "required": [
+            "crossing"
+          ]
         },
         {
           "type": "object",
-          "required": ["derailer"]
+          "required": [
+            "derailer"
+          ]
         },
         {
           "type": "object",
-          "required": ["levelCrossing"]
+          "required": [
+            "levelCrossing"
+          ]
         }
       ],
       "additionalProperties": false
     },
-    "tp_DriveProtectionSectionGroup": {
+    "tp.DriveProtectionSectionGroup": {
       "type": "object",
       "description": "Defines the configuration of a DPS Group",
       "properties": {
@@ -99,32 +119,37 @@
           "description": "Identity of the object; used for referencing"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         },
         "driveProtectionSections": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/tp_DriveProtectionSection"
-           },
+            "$ref": "#/definitions/tp.DriveProtectionSection"
+          },
           "minItems": 1
         },
         "protectedInfraElements": {
           "type": "object",
-          "$ref": "#/definitions/tp_ProtectedInfraElement"
+          "$ref": "#/definitions/tp.ProtectedInfraElement"
         },
         "dependenciesType": {
           "type": "string",
-          "description": "defines dependencies between n drive protection sections",
-          "enum": ["Exclusive", "Equivalent", "Specific"]
+          "enum": [
+            "Exclusive",
+            "Equivalent",
+            "Specific"
+          ],
+          "description": "defines dependencies between n drive protection sections"
         },
         "dpsgDependencies": {
           "type": "array",
           "items": {
             "type": "integer",
-            "minimum": 0,
-            "description": "contains row-wise bit matrix with column = index of the element in DriveProtectionSectionGroup. 0 means not allowed to use ; 1 means allowed to use for rail traffic.Each line in the matrix contains a valid state of the DriveProtectionSectionGroup ; Use only if DPSDependencyType == Specific"
-           }
+            "minimum": 0
+          },
+          "description": "contains row-wise bit matrix with column = index of the element in DriveProtectionSectionGroup. 0 means not allowed to use ; 1 means allowed to use for rail traffic.Each line in the matrix contains a valid state of the DriveProtectionSectionGroup ; Use only if DPSDependencyType == Specific"
         },
         "runTime": {
           "type": "integer",
@@ -132,52 +157,14 @@
           "description": "Defines the total time required for the DPS(s) in a DPS Group to switch from one position to the other"
         }
       },
-      "required": ["id", "name", "driveProtectionSections", "protectedInfraElements"],
+      "required": [
+        "id",
+        "driveProtectionSections",
+        "protectedInfraElements"
+      ],
       "additionalProperties": false
     },
-    "infra_DirTrackEdge": {
-      "type": "object",
-      "properties": {
-        "trackEdge": {
-          "type": "string",
-          "description": "refers totrack edge"
-        },
-        "sameDir": {
-          "type": "boolean",
-          "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
-        }
-      },
-      "required": ["trackEdge"],
-      "additionalProperties": false
-    },
-    "infra_LinkedPath": {
-      "type": "object",
-      "description": "Defines a linked path on the topology",
-      "properties": {
-        "dirTrackEdges": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "description": "composes of directed track edges",
-            "$ref": "#/definitions/infra_DirTrackEdge"
-           },
-          "minItems": 1
-        },
-        "skipFromPathStart": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [0..skipFromStart]"
-        },
-        "skipFromPathEnd": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]"
-        }
-      },
-      "required": ["dirTrackEdges"],
-      "additionalProperties": false
-    },
-    "tp_AllocationSection": {
+    "tp.AllocationSection": {
       "type": "object",
       "description": "Defines an allocation section for a section of track",
       "properties": {
@@ -186,25 +173,30 @@
           "description": "Identity of the object; used for referencing"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         },
-        "linearLocation": {
+        "linearReference": {
           "type": "object",
-          "$ref": "#/definitions/infra_LinkedPath"
+          "$ref": "#/definitions/infra.NetLinearReference"
         },
         "dependencies": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "is dependent on the allocation sections"
-           },
-          "minItems": 1
+            "type": "string"
+          },
+          "minItems": 1,
+          "description": "is dependent on the allocation sections"
         }
       },
-      "required": ["id", "name", "linearLocation", "dependencies"],
+      "required": [
+        "id",
+        "linearReference",
+        "dependencies"
+      ],
       "additionalProperties": false
     },
-    "tp_ControlledInfraElement": {
+    "tp.ControlledInfraElement": {
       "type": "object",
       "properties": {
         "dpsGroup": {
@@ -217,16 +209,20 @@
       "oneOf": [
         {
           "type": "object",
-          "required": ["dpsGroup"]
+          "required": [
+            "dpsGroup"
+          ]
         },
         {
           "type": "object",
-          "required": ["tvpSection"]
+          "required": [
+            "tvpSection"
+          ]
         }
       ],
       "additionalProperties": false
     },
-    "tp_FieldObjectController": {
+    "tp.FieldObjectController": {
       "type": "object",
       "description": "Defines a Field Object Controller",
       "properties": {
@@ -238,245 +234,178 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/tp_ControlledInfraElement"
-           },
+            "$ref": "#/definitions/tp.ControlledInfraElement"
+          },
           "minItems": 1
         },
-        "rastaServerId": {
+        "rastaId": {
           "type": "string",
-          "description": "defines EULYNX RaSTA Server identifier for the field object controller"
+          "description": "defines EULYNX RaSTA identifier for the field object controller"
         },
-        "rastaOCId": {
+        "eulynxBaseline": {
           "type": "string",
-          "description": "defines EULYNX RaSTA OC identifier for the field object controller"
+          "description": "defines EULYNX baseline for the filed object controller"
         },
         "version": {
           "type": "integer",
           "minimum": 0,
           "description": "defines the EULYNX field object controller version"
+        },
+        "belongsToAoc": {
+          "type": "string",
+          "description": "defines the Area of Control to which this field object controller belongs to"
         }
       },
-      "required": ["id", "controlledInfraElements", "rastaServerId", "rastaOCId"],
+      "required": [
+        "id",
+        "controlledInfraElements",
+        "rastaId",
+        "eulynxBaseline",
+        "belongsToAoc"
+      ],
       "additionalProperties": false
     },
-    "tp_VacantSection": {
+    "infra.TopologicalCoordinate": {
       "type": "object",
+      "description": "Defines a topological coordinates on the track",
       "properties": {
-        "section": {
-          "type": "string"
-        },
-        "proving": {
+        "onLinearElement": {
           "type": "string",
-          "enum": ["continuously", "oneOff", "staffAcknowledged", "none"]
+          "description": "is positioned on linear element"
+        },
+        "offsetFromOrigin": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated NetElement"
         }
       },
-      "required": ["section"],
+      "required": [
+        "onLinearElement"
+      ],
       "additionalProperties": false
     },
-    "tp_RouteConflict": {
+    "infra.NetLinearReference": {
       "type": "object",
-      "additionalProperties": false
-    },
-    "tp_Route": {
-      "type": "object",
-      "description": "A route that starts and ends at specific pos of TrackEdges on which train can run",
+      "description": "Defines a linked path on the topology",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identity of the object; used for referencing"
+        "startsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Definesthe starting coordinate of a linear reference"
         },
-        "type": {
-          "type": "string",
-          "enum": ["mainRoute", "onsightRoute", "shuntingRoute"]
+        "endsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Defines the ending coordinate of a linear reference."
         },
-        "availableARS": {
-          "type": "boolean",
-          "description": "ARS=AutomaticRouteSetting"
-        },
-        "autoRoute": {
-          "type": "boolean",
-          "description": "see Eulynx.dataprep"
-        },
-        "isTowardsTunnel": {
-          "type": "boolean"
-        },
-        "setupTime": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "use 0 if not defined"
-        },
-        "priority": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "use 0 if not defined"
-        },
-        "maxSpeed": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "use 0 if not defined"
-        },
-        "overlaps": {
+        "hasSequence": {
           "type": "array",
           "items": {
             "type": "string"
-           }
-        },
-        "flankProtections": {
-          "type": "array",
-          "items": {
-            "type": "string"
-           }
-        },
-        "flankProtectionVacantSections": {
+          },
+          "description": "Defines a sequence of linearElements from the start to the end excluding those defined in startAt- and endsAt-TopologicalCoodinates."
+        }
+      },
+      "required": [
+        "startsAt",
+        "endsAt"
+      ],
+      "additionalProperties": false
+    },
+    "infra.NetAreaReference": {
+      "type": "object",
+      "description": "Represents an area reference in the network.",
+      "properties": {
+        "includes": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/tp_VacantSection"
-           }
-        },
-        "conflicts": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/tp_RouteConflict"
-           }
+            "$ref": "#/definitions/infra.NetLinearReference"
+          },
+          "minItems": 1,
+          "description": "List of linear references included in an network area reference."
         }
       },
-      "required": ["id"],
+      "required": [
+        "includes"
+      ],
       "additionalProperties": false
     },
-    "tp_SimplePoint": {
+    "tp.AreaOfControl": {
       "type": "object",
-      "description": "An object to extend infra.SimplePoint",
+      "description": "Defines the Area of Control of a system like Traffic CS, MBS/APS, TMS, PE/EAL, ....",
       "properties": {
         "id": {
           "type": "string",
-          "description": "Identity of the object; used for referencing"
+          "description": "Identity of the system"
         },
-        "routeRequiresPointRight": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "description": "routes require this SimplePoint to allow travelling through pointRight"
-           }
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         },
-        "routeRequiresPointLeft": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "description": "routes require this SimplePoint to allow travelling through pointLeft"
-           }
+        "area": {
+          "type": "object",
+          "$ref": "#/definitions/infra.NetAreaReference",
+          "description": "composes of linked area"
         },
-        "transitLockingPointRight": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "description": "Transit that is locking the SimplePoint to right"
-           }
+        "iPAddress": {
+          "type": "string",
+          "description": "defines the ip address for communication purposes"
         },
-        "transitLockingPointLeft": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "description": "Transit that is locking the SimplePoint to left"
-           }
+        "rastaId": {
+          "type": "string",
+          "description": "defines EULYNX RaSTA identifier for the field object controller"
         },
-        "zoneLockingPointRight": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "description": "Zone (TvpSection of a single track) that is locking the SimplePoint to right"
-           }
-        },
-        "zoneLockingPointLeft": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "description": "Zone that is locking the SimplePoint to left"
-           }
+        "portNumber": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines the port number for communication purposes"
         }
       },
-      "required": ["id"],
+      "required": [
+        "id",
+        "area",
+        "iPAddress",
+        "rastaId"
+      ],
       "additionalProperties": false
     },
-    "tp_Transit": {
+    "tp.TrainProtectionArea": {
       "type": "object",
-      "description": "A Transit represents a directed movement across a single Zone. Each route activates one or more transits.",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "Identity of the object; used for referencing"
-        },
-        "upstreamTransits": {
           "type": "string"
-        },
-        "transitZone": {
-          "type": "array",
-          "items": {
-            "type": "string"
-           }
-        },
-        "routeRequestingTransit": {
-          "type": "array",
-          "items": {
-            "type": "string"
-           }
-        }
-      },
-      "required": ["id", "upstreamTransits"],
-      "additionalProperties": false
-    },
-    "tp_TrainProtectionArea": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
         },
         "dpsGroups": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/tp_DriveProtectionSectionGroup"
-           }
+            "$ref": "#/definitions/tp.DriveProtectionSectionGroup"
+          }
         },
         "allocationSections": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/tp_AllocationSection"
-           }
+            "$ref": "#/definitions/tp.AllocationSection"
+          }
         },
         "fieldObjectControllers": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/tp_FieldObjectController"
-           }
+            "$ref": "#/definitions/tp.FieldObjectController"
+          }
         },
-        "routes": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/tp_Route"
-           }
-        },
-        "simplePoints": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/tp_SimplePoint"
-           }
-        },
-        "transits": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/tp_Transit"
-           }
+        "areaOfControl": {
+          "type": "object",
+          "$ref": "#/definitions/tp.AreaOfControl"
         }
       },
-      "required": ["id"],
+      "required": [
+        "id",
+        "areaOfControl"
+      ],
       "additionalProperties": false
     }
   },
@@ -486,8 +415,8 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/tp_TrainProtectionArea"
-       }
+        "$ref": "#/definitions/tp.TrainProtectionArea"
+      }
     }
   },
   "additionalProperties": false

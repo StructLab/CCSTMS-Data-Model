@@ -1,10 +1,8 @@
 {
   "$id": "https://ERJU/ss026_GeoPosItem",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines the parameters for geographical position referencing in railway operations. This includes balise group identity, position offsets, track kilometre references, and direction qualifiers to support accurate location tracking and reporting along the railway network.",
   "properties": {
     "nid_c": {
       "type": "integer",

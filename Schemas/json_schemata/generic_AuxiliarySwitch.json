@@ -1,0 +1,20 @@
+{
+  "$id": "https://ERJU/generic_AuxiliarySwitch",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "AuxiliarySwitch",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string",
+      "description": "It is assigned to all classes representing physically identifiable entities. This string, corresponding to a physically identifiable label, facilitates consistent reference between the physical entities in the field and their digital representations within the model."
+    }
+  },
+  "required": [
+    "id",
+    "label"
+  ],
+  "additionalProperties": false
+}

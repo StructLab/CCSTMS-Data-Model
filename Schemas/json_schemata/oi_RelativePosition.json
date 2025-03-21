@@ -1,0 +1,29 @@
+{
+  "$id": "https://ERJU/oi_RelativePosition",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Defines relative position description",
+  "properties": {
+    "nidSP": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "defines national identifier for the segment profile"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "defines the version of the segment profile"
+    },
+    "nidC": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "defines country identifier for the segment profile"
+    },
+    "pos": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "position on the associated on the segment profile"
+    }
+  },
+  "additionalProperties": false
+}

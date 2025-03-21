@@ -1,10 +1,8 @@
 {
   "$id": "https://ERJU/ss026_LinkItem",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines the attributes for linking balise groups in railway signaling, ensuring proper navigation and train positioning. This includes linking distances, country and region qualifiers, balise group identity, link orientation, reaction to inconsistencies, and location accuracy to maintain safe and reliable operations.",
   "properties": {
     "d_link": {
       "type": "integer",
@@ -19,7 +17,7 @@
     "nid_bg": {
       "type": "integer",
       "minimum": 0,
-      "description": "Identity number of the balise group. Identity number of a balise group or loop within the country or region defined by NID_C."
+      "description": "Identity number of the balise group. Identity number of a balise group  or loop within the country or region defined by NID_C."
     },
     "q_linkorientation": {
       "type": "boolean",
@@ -27,8 +25,12 @@
     },
     "q_linkreaction": {
       "type": "string",
-      "description": "linking reaction. Qualifier for the reaction to be performed ifa linking or a balise group message consistency problem occurs with the balise group linked to.",
-      "enum": ["trainTrip", "applyServiceBrake", "noReaction"]
+      "enum": [
+        "trainTrip",
+        "applyServiceBrake",
+        "noReaction"
+      ],
+      "description": "linking reaction. Qualifier for the reaction to be performed ifa linking or a balise group message consistency problem occurs with the balise group linked to."
     },
     "q_locacc": {
       "type": "integer",

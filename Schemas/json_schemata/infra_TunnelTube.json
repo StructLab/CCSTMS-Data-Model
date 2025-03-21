@@ -1,61 +1,90 @@
 {
   "$id": "https://ERJU/infra_TunnelTube",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_TrackEdgeSection": {
+    "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "description": "Defines a topological coordinates on the track",
       "properties": {
-        "trackEdge": {
+        "onLinearElement": {
           "type": "string",
-          "description": "refers to track edge"
+          "description": "is positioned on linear element"
         },
-        "skipFromStart": {
+        "offsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [0..skipFromStart]."
-        },
-        "skipFromEnd": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]."
+          "description": "position on the associated NetElement"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onLinearElement"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackArea": {
+    "infra.NetLinearReference": {
       "type": "object",
-      "description": "Defines a Track Area on the topology",
+      "description": "Defines a linked path on the topology",
       "properties": {
-        "trackEdgeSections": {
+        "startsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Definesthe starting coordinate of a linear reference"
+        },
+        "endsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Defines the ending coordinate of a linear reference."
+        },
+        "hasSequence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Defines a sequence of linearElements from the start to the end excluding those defined in startAt- and endsAt-TopologicalCoodinates."
+        }
+      },
+      "required": [
+        "startsAt",
+        "endsAt"
+      ],
+      "additionalProperties": false
+    },
+    "infra.NetAreaReference": {
+      "type": "object",
+      "description": "Represents an area reference in the network.",
+      "properties": {
+        "includes": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge sections",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.NetLinearReference"
+          },
+          "minItems": 1,
+          "description": "List of linear references included in an network area reference."
         }
       },
-      "required": ["trackEdgeSections"],
+      "required": [
+        "includes"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
   "description": "Defines the tunnels tubes within a tunnel. Main Use-Case identify emergency management with rescue into neighbour tube",
   "properties": {
-    "trackArea": {
+    "areaReference": {
       "type": "object",
-      "description": "composes of track area",
-      "$ref": "#/definitions/infra_TrackArea"
+      "$ref": "#/definitions/infra.NetAreaReference",
+      "description": "composes of track area"
     },
     "crossSection": {
       "type": "integer",
       "minimum": 0,
-      "description": "for calculation of air-resistance ; Standard Cross section dimensions corresponding to ATO Tunnel types will be defined later"
+      "description": "Defines the standard Cross section dimensions of a tunnel for calculation of air-resistance"
     }
   },
-  "required": ["trackArea"],
+  "required": [
+    "areaReference"
+  ],
   "additionalProperties": false
 }

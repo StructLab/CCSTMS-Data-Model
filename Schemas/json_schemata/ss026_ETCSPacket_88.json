@@ -1,9 +1,10 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_88",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "ss026_LXStatus": {
+    "ss026.LXStatus": {
       "type": "object",
+      "description": "Defines the status parameters for a Level Crossing (LX) in railway operations, including the permitted speed when the crossing is not protected, the requirement for stopping before the crossing, and the designated stopping area length to ensure safe passage.",
       "properties": {
         "v_lx": {
           "type": "integer",
@@ -47,8 +48,8 @@
     },
     "lx_Status": {
       "type": "object",
-      "description": "Only required for the level crossings that are protected",
-      "$ref": "#/definitions/ss026_LXStatus"
+      "$ref": "#/definitions/ss026.LXStatus",
+      "description": "Only required for the level crossings that are protected"
     }
   },
   "additionalProperties": false

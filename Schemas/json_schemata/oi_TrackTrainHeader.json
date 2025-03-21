@@ -1,0 +1,25 @@
+{
+  "$id": "https://ERJU/oi_TrackTrainHeader",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "properties": {
+    "packetId": {
+      "type": "string",
+      "description": "defines the packet identifier"
+    },
+    "leadingOnBoardUnitId": {
+      "type": "string",
+      "description": "see NID_ENGINE. To be usable with ETCS must contain a decimal number [0..16.777.215]"
+    },
+    "issuedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"
+    }
+  },
+  "required": [
+    "packetId",
+    "issuedAt"
+  ],
+  "additionalProperties": false
+}

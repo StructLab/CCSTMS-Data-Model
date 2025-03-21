@@ -1,9 +1,6 @@
 {
   "$id": "https://ERJU/eng_Crossing",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "description": "Defines the physical track asset Crossing without possibility to switch between two track edges",
   "properties": {
@@ -14,12 +11,15 @@
     "foulingPoints": {
       "type": "array",
       "items": {
-        "type": "string",
-        "description": "refers to fouling points"
-       },
-      "minItems": 1
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "refers to fouling points"
     }
   },
-  "required": ["id", "foulingPoints"],
+  "required": [
+    "id",
+    "foulingPoints"
+  ],
   "additionalProperties": false
 }

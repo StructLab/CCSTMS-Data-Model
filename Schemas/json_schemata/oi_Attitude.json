@@ -1,0 +1,24 @@
+{
+  "$id": "https://ERJU/oi_Attitude",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "properties": {
+    "rollAngle": {
+      "type": "integer",
+      "description": "Defines roll angle at a position in radians as the difference between the right rail minus the left rail. Right/left with respect to the direction of the linear element."
+    },
+    "curvature": {
+      "type": "integer",
+      "description": "curvature at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+    },
+    "azimuth": {
+      "type": "number",
+      "description": "The azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
+    },
+    "pitch": {
+      "type": "integer",
+      "description": "Defines pitch in radians at a point as a height difference between current point and the next"
+    }
+  },
+  "additionalProperties": false
+}

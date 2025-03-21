@@ -1,19 +1,22 @@
 {
   "$id": "https://ERJU/opp_DoorData",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines availability of a door and last open time.",
   "properties": {
     "doorState": {
       "type": "string",
-      "enum": ["doorStateUnknown", "doorStateBlocked", "doorStateAvailable"]
+      "enum": [
+        "doorStateUnknown",
+        "doorStateBlocked",
+        "doorStateAvailable"
+      ],
+      "description": "Defines the door state"
     },
     "lastPassengerExchangeTime": {
       "type": "integer",
       "minimum": 0,
-      "description": "255: unknown"
+      "description": "Defines the last passenger exchange time. Use 65535 if unknown"
     }
   },
   "additionalProperties": false

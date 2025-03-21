@@ -1,16 +1,15 @@
 {
   "$id": "https://ERJU/opp_DPSGroupsList",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines a set of Drive-Protection-Section-Groups",
   "properties": {
     "dpsGroups": {
       "type": "array",
       "items": {
         "type": "string"
-       }
+      },
+      "description": "Defines the list of DPS Groups"
     }
   },
   "additionalProperties": false

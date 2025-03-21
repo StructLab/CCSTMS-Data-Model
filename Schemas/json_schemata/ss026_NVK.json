@@ -1,9 +1,10 @@
 {
   "$id": "https://ERJU/ss026_NVK",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "ss026_NVKSubItem": {
+    "ss026.NVKSubItem": {
       "type": "object",
+      "description": "Defines the speed-dependent correction factors used for braking calculations as part of the National Values. These factors determine the integrated correction factor Kv based on estimated train speed and emergency brake deceleration conditions",
       "properties": {
         "v_nvkvint": {
           "type": "integer",
@@ -23,12 +24,17 @@
       },
       "additionalProperties": false
     },
-    "ss026_NVKItem": {
+    "ss026.NVKItem": {
       "type": "object",
+      "description": "Defines the correction factor set Kv used for braking calculations based on speed and deceleration limits. This includes thresholds for selecting the appropriate Kv set, speed-dependent correction factors, and associated sub-items. These values are part of the National Values and are used to refine braking performance for Conventional Passenger trains.",
       "properties": {
         "q_nvkvintset": {
           "type": "string",
-          "enum": ["freightTrains", "conventionalPassengerTrains"]
+          "enum": [
+            "freightTrains",
+            "conventionalPassengerTrains"
+          ],
+          "description": "Type of kv_int set"
         },
         "a_nvp12": {
           "type": "integer",
@@ -59,15 +65,17 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/ss026_NVKSubItem"
-           },
-          "maxItems": 31
+            "$ref": "#/definitions/ss026.NVKSubItem"
+          },
+          "maxItems": 31,
+          "description": "List of NVKSubItem"
         }
       },
       "additionalProperties": false
     },
-    "ss026_CorrectionFactor": {
+    "ss026.CorrectionFactor": {
       "type": "object",
+      "description": "Defines the correction factors used to adjust train operation parameters based on train length. These factors are part of the National Values and are used to determine the integrated correction factor Kr for specific train length intervals.",
       "properties": {
         "l_nvkrint": {
           "type": "integer",
@@ -84,16 +92,17 @@
     }
   },
   "type": "object",
+  "description": "Defines the integrated correction factors Kv, Kr, and Kt used for speed- and train length-dependent braking performance adjustments. It aggregates multiple correction factor sets, including train length steps, speed-dependent correction factors, and their associated validation parameters, as part of the National Values.",
   "properties": {
     "nvkItems": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "q_nvkvintset and other variables follows",
-        "$ref": "#/definitions/ss026_NVKItem"
-       },
+        "$ref": "#/definitions/ss026.NVKItem"
+      },
       "minItems": 1,
-      "maxItems": 32
+      "maxItems": 32,
+      "description": "q_nvkvintset and other variables follows"
     },
     "l_nvkrint": {
       "type": "integer",
@@ -109,10 +118,10 @@
       "type": "array",
       "items": {
         "type": "object",
-        "description": "integration correction factors",
-        "$ref": "#/definitions/ss026_CorrectionFactor"
-       },
-      "maxItems": 31
+        "$ref": "#/definitions/ss026.CorrectionFactor"
+      },
+      "maxItems": 31,
+      "description": "integration correction factors"
     },
     "m_nvktint": {
       "type": "integer",
@@ -120,6 +129,8 @@
       "description": "Integrated correction factor Kt."
     }
   },
-  "required": ["nvkItems"],
+  "required": [
+    "nvkItems"
+  ],
   "additionalProperties": false
 }

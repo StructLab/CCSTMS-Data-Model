@@ -1,23 +1,28 @@
 {
   "$id": "https://ERJU/infra_VerticalArc",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
-  "description": "Geometric primitive for a vertical arc.",
+  "description": "Defines the geometric primitive for a vertical arc.",
   "properties": {
-    "trackGeometryPos": {
+    "elementGeometryPos": {
       "type": "number",
-      "description": "position on the associated Track Edge"
+      "description": "position on the associated LinearElement"
     },
     "slope": {
       "type": "number",
-      "description": "The vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
+      "description": "Defines the vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
     },
     "radius": {
       "type": "number",
-      "description": "radius at pos, negative-counter-clockwise/sag-curve, positive-clockwise/crest-curve"
+      "description": "Defines the radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+    },
+    "arcType": {
+      "type": "string",
+      "enum": [
+        "circularArc",
+        "parabola"
+      ],
+      "description": "Defines the type of Arc. For more details seehttps://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcAlignmentVerticalSegmentTypeEnum.htm"
     }
   },
   "additionalProperties": false

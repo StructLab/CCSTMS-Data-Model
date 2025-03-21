@@ -1,9 +1,6 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_42",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "description": " Session Management (Packet to give the identity and telephone number of the RBC with which a session shall be established or terminated)",
   "properties": {
@@ -14,7 +11,7 @@
     "nid_c": {
       "type": "integer",
       "minimum": 0,
-      "description": "Identity number of the country or region (Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries. Comment : RBC ETCS identity :NID_C not relevant if NID_RBC has value âContact last known RBC) "
+      "description": "Identity number of the country or region (Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries. Comment : RBC ETCS identity :NID_C not relevant if NID_RBC has value \u00e2Contact last known RBC) "
     },
     "nid_rbc": {
       "type": "integer",
@@ -23,7 +20,7 @@
     },
     "nid_radio": {
       "type": "string",
-      "description": "Radio subscriber number (Quoted as a 16 digit decimal number. The number is to be entered âleft adjustedâ starting with the first digit to be dialed. Padding by the special value F shall be added after the least significant digit of the number. For further information about NID_RADIO refer to SUBSET-054.)"
+      "description": "Radio subscriber number (Quoted as a 16 digit decimal number. The number is to be entered \u00e2left adjusted\u00e2 starting with the first digit to be dialed. Padding by the special value F shall be added after the least significant digit of the number. For further information about NID_RADIO refer to SUBSET-054.)"
     },
     "q_sleepsession": {
       "type": "boolean",

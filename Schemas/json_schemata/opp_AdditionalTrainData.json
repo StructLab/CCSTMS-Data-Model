@@ -1,65 +1,96 @@
 {
   "$id": "https://ERJU/opp_AdditionalTrainData",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines dynamic train characteristics, which are not primary for the timetable (therefore 'additional')",
   "properties": {
     "maxAvailableTractiveEffort": {
       "type": "integer",
       "minimum": 0,
-      "description": "65535: unknown"
+      "description": "Defines the maximun available traction effort. Use 65535 if unknown"
     },
     "maxAvailableTractivePower": {
       "type": "integer",
       "minimum": 0,
-      "description": "65535 - unknown"
+      "description": "Defines the maximun available traction power. Use 65535 if unknown"
     },
     "maxAvailableDynamicBrakeForce": {
       "type": "integer",
       "minimum": 0,
-      "description": "65535: unknown"
+      "description": "Defines the maximun available dynamic brake force. Use 65535 if unknown"
     },
     "maxAvailableDynamicBrakePower": {
       "type": "integer",
       "minimum": 0,
-      "description": "65535 - unknown"
+      "description": "Defines the maximun available dynamic brake power. Use 65535 if unknown"
     },
     "maxAvailableServiceBrakeForce": {
       "type": "integer",
       "minimum": 0,
-      "description": "65535: unknown"
+      "description": "Defines the maximun available service brake force. Use 65535 if unknown"
     },
     "regenerativeBrakeState": {
       "type": "string",
-      "enum": ["activeState", "inactiveState", "undefinedState"]
+      "enum": [
+        "activeState",
+        "inactiveState",
+        "undefinedState"
+      ],
+      "description": "Defines the state of the regenerative brake"
     },
     "magneticShoeBrakeState": {
       "type": "string",
-      "enum": ["activeState", "inactiveState", "undefinedState"]
+      "enum": [
+        "activeState",
+        "inactiveState",
+        "undefinedState"
+      ],
+      "description": "Defines the state of magnetic shoe brake"
     },
     "eddyCurrentBrakeState": {
       "type": "string",
-      "enum": ["activeState", "inactiveState", "undefinedState"]
+      "enum": [
+        "activeState",
+        "inactiveState",
+        "undefinedState"
+      ],
+      "description": "Defines the state of eddy current brake"
     },
     "electroPneumaticBrakeState": {
       "type": "string",
-      "enum": ["activeState", "inactiveState", "undefinedState"]
+      "enum": [
+        "activeState",
+        "inactiveState",
+        "undefinedState"
+      ],
+      "description": "Defines the state of electro pneumatic brake"
     },
     "adhesionIndependentBrakeState": {
       "type": "string",
-      "enum": ["activeState", "inactiveState", "undefinedState"]
+      "enum": [
+        "activeState",
+        "inactiveState",
+        "undefinedState"
+      ],
+      "description": "Defines the adhesion independent brake state"
     },
     "availableAdhesionCategory": {
       "type": "string",
-      "description": "053 in Subset",
-      "enum": ["dryRailHigh", "dryRailMedium", "dryRailLow", "lowAdhesion", "veryLowAdhesion", "extremelyLowAdhesion", "unknownAdhesion"]
+      "enum": [
+        "dryRailHigh",
+        "dryRailMedium",
+        "dryRailLow",
+        "lowAdhesion",
+        "veryLowAdhesion",
+        "extremelyLowAdhesion",
+        "unknownAdhesion"
+      ],
+      "description": "Defines the available adhesion categories;053 in Subset"
     },
     "availableAdhesionPhysicalValue": {
       "type": "integer",
       "minimum": 0,
-      "description": "600 if unknown"
+      "description": "Defines the available adhesion value. 600 if unknown"
     }
   },
   "additionalProperties": false

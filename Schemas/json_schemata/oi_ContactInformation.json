@@ -1,0 +1,19 @@
+{
+  "$id": "https://ERJU/oi_ContactInformation",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Defines structure of Digital Register Transactor Contact Information",
+  "properties": {
+    "nidDRTA": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "defines national identifier for the Digital Register Transactor"
+    },
+    "nidC": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "defines country identifier for the Digital Register Transactor"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,8 +1,8 @@
 {
   "$id": "https://ERJU/ss026_PacketMgmt",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "ss026_ETCSPacket_0": {
+    "ss026.ETCSPacket_0": {
       "type": "object",
       "description": " Virtual Balise Cover marker (Indication to on-board that the telegram can be ignored according to a VBC)",
       "properties": {
@@ -14,20 +14,29 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_2": {
+    "ss026.ETCSPacket_2": {
       "type": "object",
       "description": " System Version order (This packet is used to tell the on-board which is the operated system version)",
       "properties": {
-        "m_version": {
+        "etcsMVersion": {
           "type": "string",
-          "description": "This gives the version of the ETCS system. Each part indicates the first and second number of the version respectively: The first number distinguishes not compatible versions (The three MSBs)_ The second number indicates compatibility within a version X. (The four LSBs)",
-          "enum": ["v1_0", "v1_1", "v2_0", "v2_1", "v_previous", "v_reserved", "v_invalid"]
+          "enum": [
+            "v1_0",
+            "v1_1",
+            "v2_0",
+            "v2_1",
+            "v_previous",
+            "v_reserved",
+            "v_invalid"
+          ],
+          "description": "This gives the version of the ETCS system. Each part indicates the first and second number of the version respectively: The first number distinguishes not compatible versions (The three MSBs)_ The second number indicates compatibility within a version X. (The four LSBs)"
         }
       },
       "additionalProperties": false
     },
-    "ss026_NVKSubItem": {
+    "ss026.NVKSubItem": {
       "type": "object",
+      "description": "Defines the speed-dependent correction factors used for braking calculations as part of the National Values. These factors determine the integrated correction factor Kv based on estimated train speed and emergency brake deceleration conditions",
       "properties": {
         "v_nvkvint": {
           "type": "integer",
@@ -47,12 +56,17 @@
       },
       "additionalProperties": false
     },
-    "ss026_NVKItem": {
+    "ss026.NVKItem": {
       "type": "object",
+      "description": "Defines the correction factor set Kv used for braking calculations based on speed and deceleration limits. This includes thresholds for selecting the appropriate Kv set, speed-dependent correction factors, and associated sub-items. These values are part of the National Values and are used to refine braking performance for Conventional Passenger trains.",
       "properties": {
         "q_nvkvintset": {
           "type": "string",
-          "enum": ["freightTrains", "conventionalPassengerTrains"]
+          "enum": [
+            "freightTrains",
+            "conventionalPassengerTrains"
+          ],
+          "description": "Type of kv_int set"
         },
         "a_nvp12": {
           "type": "integer",
@@ -83,15 +97,17 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/ss026_NVKSubItem"
-           },
-          "maxItems": 31
+            "$ref": "#/definitions/ss026.NVKSubItem"
+          },
+          "maxItems": 31,
+          "description": "List of NVKSubItem"
         }
       },
       "additionalProperties": false
     },
-    "ss026_CorrectionFactor": {
+    "ss026.CorrectionFactor": {
       "type": "object",
+      "description": "Defines the correction factors used to adjust train operation parameters based on train length. These factors are part of the National Values and are used to determine the integrated correction factor Kr for specific train length intervals.",
       "properties": {
         "l_nvkrint": {
           "type": "integer",
@@ -106,18 +122,19 @@
       },
       "additionalProperties": false
     },
-    "ss026_NVK": {
+    "ss026.NVK": {
       "type": "object",
+      "description": "Defines the integrated correction factors Kv, Kr, and Kt used for speed- and train length-dependent braking performance adjustments. It aggregates multiple correction factor sets, including train length steps, speed-dependent correction factors, and their associated validation parameters, as part of the National Values.",
       "properties": {
         "nvkItems": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "q_nvkvintset and other variables follows",
-            "$ref": "#/definitions/ss026_NVKItem"
-           },
+            "$ref": "#/definitions/ss026.NVKItem"
+          },
           "minItems": 1,
-          "maxItems": 32
+          "maxItems": 32,
+          "description": "q_nvkvintset and other variables follows"
         },
         "l_nvkrint": {
           "type": "integer",
@@ -133,10 +150,10 @@
           "type": "array",
           "items": {
             "type": "object",
-            "description": "integration correction factors",
-            "$ref": "#/definitions/ss026_CorrectionFactor"
-           },
-          "maxItems": 31
+            "$ref": "#/definitions/ss026.CorrectionFactor"
+          },
+          "maxItems": 31,
+          "description": "integration correction factors"
         },
         "m_nvktint": {
           "type": "integer",
@@ -144,12 +161,14 @@
           "description": "Integrated correction factor Kt."
         }
       },
-      "required": ["nvkItems"],
+      "required": [
+        "nvkItems"
+      ],
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_3": {
+    "ss026.ETCSPacket_3": {
       "type": "object",
-      "description": " National Values (Downloads a set of National Values to the train)",
+      "description": " National Values.Downloads a set of National Values to the train",
       "properties": {
         "d_validnv": {
           "type": "integer",
@@ -165,10 +184,10 @@
           "type": "array",
           "items": {
             "type": "integer",
-            "minimum": 0,
-            "description": "Identification of additional national area(s) to which the set applies."
-           },
-          "maxItems": 31
+            "minimum": 0
+          },
+          "maxItems": 31,
+          "description": "Identification of additional national area(s) to which the set applies."
         },
         "v_nvshunt": {
           "type": "integer",
@@ -207,7 +226,7 @@
         },
         "q_nvsbtsmperm": {
           "type": "boolean",
-          "description": "Permission to use service brake in target speed monitoring (This variable is part of the National Values.)"
+          "description": "Permission to use service brake in target speed     monitoring (This variable is part of the National Values.)"
         },
         "q_nvemrrls": {
           "type": "boolean",
@@ -228,12 +247,12 @@
         "v_nvallowovtrp": {
           "type": "integer",
           "minimum": 0,
-          "description": "Speed limit allowing the driver to select the âoverrideâ function (This variable is part of the National Values)"
+          "description": "Speed limit allowing the driver to select the \u00e2override\u00e2 function (This variable is part of the National Values)"
         },
         "v_nvsupovtrp": {
           "type": "integer",
           "minimum": 0,
-          "description": "Override speed limit to be supervised when theâoverrideâ function is active. (This variable is part of the National Values. Length of variable)"
+          "description": "Override speed limit to be supervised when the\u00e2override\u00e2 function is active. (This variable is part of the National Values. Length of variable)"
         },
         "d_nvovtrp": {
           "type": "integer",
@@ -252,8 +271,12 @@
         },
         "m_nvcontact": {
           "type": "string",
-          "description": "same enum values as M_NVCONTACT",
-          "enum": ["trainTrip", "applyServiceBrake", "noReaction"]
+          "enum": [
+            "trainTrip",
+            "applyServiceBrake",
+            "noReaction"
+          ],
+          "description": "same enum values as M_NVCONTACT"
         },
         "t_nvcontact": {
           "type": "integer",
@@ -309,14 +332,15 @@
         },
         "nVKs": {
           "type": "object",
-          "description": "exists only if Q_NVKINT is true.",
-          "$ref": "#/definitions/ss026_NVK"
+          "$ref": "#/definitions/ss026.NVK",
+          "description": "exists only if Q_NVKINT is true."
         }
       },
       "additionalProperties": false
     },
-    "ss026_LinkItem": {
+    "ss026.LinkItem": {
       "type": "object",
+      "description": "Defines the attributes for linking balise groups in railway signaling, ensuring proper navigation and train positioning. This includes linking distances, country and region qualifiers, balise group identity, link orientation, reaction to inconsistencies, and location accuracy to maintain safe and reliable operations.",
       "properties": {
         "d_link": {
           "type": "integer",
@@ -331,7 +355,7 @@
         "nid_bg": {
           "type": "integer",
           "minimum": 0,
-          "description": "Identity number of the balise group. Identity number of a balise group or loop within the country or region defined by NID_C."
+          "description": "Identity number of the balise group. Identity number of a balise group  or loop within the country or region defined by NID_C."
         },
         "q_linkorientation": {
           "type": "boolean",
@@ -339,8 +363,12 @@
         },
         "q_linkreaction": {
           "type": "string",
-          "description": "linking reaction. Qualifier for the reaction to be performed ifa linking or a balise group message consistency problem occurs with the balise group linked to.",
-          "enum": ["trainTrip", "applyServiceBrake", "noReaction"]
+          "enum": [
+            "trainTrip",
+            "applyServiceBrake",
+            "noReaction"
+          ],
+          "description": "linking reaction. Qualifier for the reaction to be performed ifa linking or a balise group message consistency problem occurs with the balise group linked to."
         },
         "q_locacc": {
           "type": "integer",
@@ -350,7 +378,7 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_5": {
+    "ss026.ETCSPacket_5": {
       "type": "object",
       "description": " Linking Information",
       "properties": {
@@ -358,16 +386,19 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/ss026_LinkItem"
-           },
+            "$ref": "#/definitions/ss026.LinkItem"
+          },
           "minItems": 1,
-          "maxItems": 33
+          "maxItems": 33,
+          "description": "List of Balise Group linking information"
         }
       },
-      "required": ["links"],
+      "required": [
+        "links"
+      ],
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_6": {
+    "ss026.ETCSPacket_6": {
       "type": "object",
       "description": " Virtual Balise Cover order(The packet sets/removes a Virtual Balise Cover)",
       "properties": {
@@ -383,17 +414,17 @@
         "nid_c": {
           "type": "integer",
           "minimum": 0,
-          "description": "Identity number of the country or region (Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries )"
+          "description": "Identity number of the country or region (Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political    boundaries )"
         },
         "t_vbc": {
           "type": "integer",
           "minimum": 0,
-          "description": "VBC validity period"
+          "description": "Virtual Balise Cover (VBC) validity period"
         }
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_16": {
+    "ss026.ETCSPacket_16": {
       "type": "object",
       "description": " Repositioning Information (Transmission of the update of an MA section)",
       "properties": {
@@ -405,7 +436,7 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_39": {
+    "ss026.ETCSPacket_39": {
       "type": "object",
       "description": " Track Condition Change of traction system (The packet gives information about change of the traction system)",
       "properties": {
@@ -417,17 +448,17 @@
         "m_voltage": {
           "type": "integer",
           "minimum": 0,
-          "description": "Special/Reserved values for Traction System voltage. It indicates the voltage of the traction system installed on a specific line or respectively that can be used by an engine. The identity of the traction system is given by M_VOLTAGE and, if M_VOLTAGE â 0, by the country identifier of the traction system (NID_CTRACTION). Note that values from 6 to 15 are currently unassigned"
+          "description": "Special/Reserved values for Traction System voltage. It indicates the voltage of the traction system installed on a specific line or respectively that can be used by an engine. The identity of the traction system is given by M_VOLTAGE and, if M_VOLTAGE \u00e2 0, by the country identifier of the traction system (NID_CTRACTION). Note that values from 6 to 15 are currently unassigned"
         },
         "nid_ctraction": {
           "type": "integer",
           "minimum": 0,
-          "description": "Country identifier of the traction system. It identifies the information, additional to M_VOLTAGE, required to fully define the traction system. Note that NID_CTRACTION given only if M_VOLTAGE â 0"
+          "description": "Country identifier of the traction system. It identifies the information, additional to M_VOLTAGE, required to fully define the traction system. Note that NID_CTRACTION given only if M_VOLTAGE \u00e2 0"
         }
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_40": {
+    "ss026.ETCSPacket_40": {
       "type": "object",
       "description": " Track Condition Change of allowed current consumption (The packet gives information about change of the allowed current consumption)",
       "properties": {
@@ -444,13 +475,20 @@
       },
       "additionalProperties": false
     },
-    "ss026_LevelTransitionWithAck": {
+    "ss026.LevelTransitionWithAck": {
       "type": "object",
+      "description": "Defines the parameters for level transitions requiring acknowledgment in ETCS operations. This includes the target ETCS level, the associated national system identity, and the length of the acknowledgment area required for a safe transition.",
       "properties": {
         "m_leveltr": {
           "type": "string",
-          "description": "Required level",
-          "enum": ["Level0", "LevelNTC", "Level1", "Level2", "Level3"]
+          "enum": [
+            "Level0",
+            "LevelNTC",
+            "Level1",
+            "Level2",
+            "Level3"
+          ],
+          "description": "Required level"
         },
         "nid_ntc": {
           "type": "integer",
@@ -465,9 +503,9 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_41": {
+    "ss026.ETCSPacket_41": {
       "type": "object",
-      "description": " Level Transition Order (Packet to identify where a level transition shall take place. In case of mixed levels, the successive M_LEVELTRâs go from the highest priority level to the lowest one)",
+      "description": "Level Transition Order (Packet to identify where a level transition shall take place. In case of mixed levels, the successive M_LEVELTR\u00e2\u0099s go from the highest priority level to the lowest one)",
       "properties": {
         "d_leveltr": {
           "type": "integer",
@@ -476,8 +514,14 @@
         },
         "m_leveltr": {
           "type": "string",
-          "description": "Required level",
-          "enum": ["Level0", "LevelNTC", "Level1", "Level2", "Level3"]
+          "enum": [
+            "Level0",
+            "LevelNTC",
+            "Level1",
+            "Level2",
+            "Level3"
+          ],
+          "description": "Required level"
         },
         "nid_ntc": {
           "type": "integer",
@@ -493,14 +537,15 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/ss026_LevelTransitionWithAck"
-           },
-          "maxItems": 32
+            "$ref": "#/definitions/ss026.LevelTransitionWithAck"
+          },
+          "maxItems": 32,
+          "description": "List of level transitions requiring acknowledgment in ETCS operation"
         }
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_42": {
+    "ss026.ETCSPacket_42": {
       "type": "object",
       "description": " Session Management (Packet to give the identity and telephone number of the RBC with which a session shall be established or terminated)",
       "properties": {
@@ -511,7 +556,7 @@
         "nid_c": {
           "type": "integer",
           "minimum": 0,
-          "description": "Identity number of the country or region (Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries. Comment : RBC ETCS identity :NID_C not relevant if NID_RBC has value âContact last known RBC) "
+          "description": "Identity number of the country or region (Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries. Comment : RBC ETCS identity :NID_C not relevant if NID_RBC has value \u00e2Contact last known RBC) "
         },
         "nid_rbc": {
           "type": "integer",
@@ -520,7 +565,7 @@
         },
         "nid_radio": {
           "type": "string",
-          "description": "Radio subscriber number (Quoted as a 16 digit decimal number. The number is to be entered âleft adjustedâ starting with the first digit to be dialed. Padding by the special value F shall be added after the least significant digit of the number. For further information about NID_RADIO refer to SUBSET-054.)"
+          "description": "Radio subscriber number (Quoted as a 16 digit decimal number. The number is to be entered \u00e2left adjusted\u00e2 starting with the first digit to be dialed. Padding by the special value F shall be added after the least significant digit of the number. For further information about NID_RADIO refer to SUBSET-054.)"
         },
         "q_sleepsession": {
           "type": "boolean",
@@ -529,7 +574,7 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_44": {
+    "ss026.ETCSPacket_44": {
       "type": "object",
       "description": " Data used by applications outside the ERTMS/ETCS system (Messages between trackside and on-board devices, which contain information used by applications outside the ERTMS/ETCS system)",
       "properties": {
@@ -545,13 +590,16 @@
         },
         "otherData": {
           "type": "string",
-          "contentEncoding": "base64"
+          "contentEncoding": "base64",
+          "description": "Other data, depending on the Identity of user system - NID_XUSER"
         }
       },
-      "required": ["otherData"],
+      "required": [
+        "otherData"
+      ],
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_45": {
+    "ss026.ETCSPacket_45": {
       "type": "object",
       "description": " Radio Network registration (Packet to give the identity of the Radio Network to which a registration shall be enforced)",
       "properties": {
@@ -560,16 +608,25 @@
           "description": "Identity of Radio Network. The NID_MN identifies the GSM-R network the calling mobile station has to register with. The NID_MN consists of up to 6 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be dialled first. In case the NID_MN is shorter than 6 digits, the remaining space is to be filled with special character F"
         }
       },
-      "required": ["nid_mn"],
+      "required": [
+        "nid_mn"
+      ],
       "additionalProperties": false
     },
-    "ss026_LevelTransition": {
+    "ss026.LevelTransition": {
       "type": "object",
+      "description": "Defines the parameters for level transitions in ETCS operations, specifying the required ETCS level and the associated national system identity to ensure seamless interoperability between signaling systems.",
       "properties": {
         "m_leveltr": {
           "type": "string",
-          "description": "Required level",
-          "enum": ["Level0", "LevelNTC", "Level1", "Level2", "Level3"]
+          "enum": [
+            "Level0",
+            "LevelNTC",
+            "Level1",
+            "Level2",
+            "Level3"
+          ],
+          "description": "Required level"
         },
         "nid_ntc": {
           "type": "integer",
@@ -579,14 +636,20 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_46": {
+    "ss026.ETCSPacket_46": {
       "type": "object",
-      "description": " Conditional Level Transition Order (Packet for a conditional level transition. The successive M_LEVELTRâs go from the highest priority level to the lowest one)",
+      "description": " Conditional Level Transition Order (Packet for a conditional level transition. The successive M_LEVELTR\u00e2\u0099s go from the highest priority level to the lowest one)",
       "properties": {
         "m_leveltr": {
           "type": "string",
-          "description": "Required level",
-          "enum": ["Level0", "LevelNTC", "Level1", "Level2", "Level3"]
+          "enum": [
+            "Level0",
+            "LevelNTC",
+            "Level1",
+            "Level2",
+            "Level3"
+          ],
+          "description": "Required level"
         },
         "nid_ntc": {
           "type": "integer",
@@ -597,15 +660,17 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/ss026_LevelTransition"
-           },
-          "maxItems": 31
+            "$ref": "#/definitions/ss026.LevelTransition"
+          },
+          "maxItems": 31,
+          "description": "List of level transitions parameters"
         }
       },
       "additionalProperties": false
     },
-    "ss026_CountryBalise": {
+    "ss026.CountryBalise": {
       "type": "object",
+      "description": "The new country's and balise group's identification number",
       "properties": {
         "nid_c": {
           "type": "integer",
@@ -619,7 +684,7 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_49": {
+    "ss026.ETCSPacket_49": {
       "type": "object",
       "description": " List of balises for SH Area (Used to list balise group(s) which the train can pass over in SH mode)",
       "properties": {
@@ -627,31 +692,48 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/ss026_CountryBalise"
-           },
-          "maxItems": 31
+            "$ref": "#/definitions/ss026.CountryBalise"
+          },
+          "maxItems": 31,
+          "description": "List of the additional country balises for Shunting Area "
         }
       },
       "additionalProperties": false
     },
-    "ss026_AxleLoadRestriction": {
+    "ss026.AxleLoadRestriction": {
       "type": "object",
+      "description": "Defines the restriction with respect to the axle load",
       "properties": {
         "m_axleLoadCat": {
           "type": "string",
-          "description": "Axle load category (The values allocated below correspond to a list of increasing axle load categories (i.e. B1 > HS17, B2 > B1, D2 > C4, â¦.etc) and it is used by the on-board equipment to compare its axle load category with the axle load category sent by trackside.For the underlying meaning of the axle load categories listed below (with the exception of HS17) refer to CR INF TSI.The category HS17 (axle load <= 17t) corresponds to a static load per axle only, as specified in HS RST TSI clause 4.2.3.2. The introduction of this artefact is necessary to ensure backward compatibility, without any negative performance impact, in case ASPs are used on lines operated with system version X = 1)",
-          "enum": ["A", "HS17", "B1", "B2", "C2", "C3", "C4", "D2", "D3", "D4", "D4XL", "E4", "E5"]
+          "enum": [
+            "AL_A",
+            "AL_HS17",
+            "AL_B1",
+            "AL_B2",
+            "AL_C2",
+            "AL_C3",
+            "AL_C4",
+            "AL_D2",
+            "AL_D3",
+            "AL_D4",
+            "AL_D4XL",
+            "AL_E4",
+            "AL_E5"
+          ],
+          "description": "Axle load category (The values allocated below correspond to a list of increasing axle load categories (i.e. B1 > HS17, B2 > B1, D2 > C4, \u00e2\u00a6.etc) and it is used by the on-board equipment to compare its axle load category with the axle load category sent by trackside.For the underlying meaning of the axle load categories listed below (with the exception of HS17) refer to CR INF TSI.The category HS17 (axle load <= 17t) corresponds to a static load per axle only, as specified in HS RST TSI clause 4.2.3.2. The introduction of this artefact is necessary to ensure backward compatibility, without any negative performance impact, in case ASPs are used on lines operated with system version X = 1)"
         },
         "v_axleLoad": {
           "type": "integer",
           "minimum": 0,
-          "description": "Speed restriction related to axleload. Comment : Speed restriction to be applied if the axle load category of the train M_AXLELOADCAT(n)"
+          "description": "Speed restriction related to axleload. Speed restriction to be applied if the axle load category of the train M_AXLELOADCAT(n)"
         }
       },
       "additionalProperties": false
     },
-    "ss026_AxleLoadSelection": {
+    "ss026.AxleLoadSelection": {
       "type": "object",
+      "description": "Defines the selection criteria for axle load-based speed restrictions in a railway network. It represents a structured profile containing axle load constraints, distances, and validity conditions necessary for safe train operations.",
       "properties": {
         "d_axleload": {
           "type": "integer",
@@ -671,14 +753,15 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/ss026_AxleLoadRestriction"
-           },
-          "maxItems": 31
+            "$ref": "#/definitions/ss026.AxleLoadRestriction"
+          },
+          "maxItems": 31,
+          "description": "List of axle load restrictions for the selection"
         }
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_51": {
+    "ss026.ETCSPacket_51": {
       "type": "object",
       "description": " Axle Load Speed Profile (This packet gives the speed restrictions for trains with axle load category higher than or equal to the specified value for the speed restriction)",
       "properties": {
@@ -709,23 +792,26 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/ss026_AxleLoadRestriction"
-           },
-          "maxItems": 31
+            "$ref": "#/definitions/ss026.AxleLoadRestriction"
+          },
+          "maxItems": 31,
+          "description": "List of axle load restrictions for the selection"
         },
         "axleLoadSelections": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/ss026_AxleLoadSelection"
-           },
-          "maxItems": 31
+            "$ref": "#/definitions/ss026.AxleLoadSelection"
+          },
+          "maxItems": 31,
+          "description": "List of the selection criteria for axle load-based restrictions"
         }
       },
       "additionalProperties": false
     },
-    "ss026_PBDSelection": {
+    "ss026.PBDSelection": {
       "type": "object",
+      "description": "Defines the selection criteria for Permitted Braking Distance (PBD) constraints, ensuring safe braking within defined limits. This includes parameters such as braking distance, gradient slope, speed restrictions, and braking mode qualifiers, which influence braking performance calculations.",
       "properties": {
         "d_pbd": {
           "type": "integer",
@@ -758,7 +844,7 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_52": {
+    "ss026.ETCSPacket_52": {
       "type": "object",
       "description": " Permitted Braking Distance Information (This packet requests the on-board calculation of speed restrictions which ensure a given permitted brake distance in case of an EB, or SB, intervention)",
       "properties": {
@@ -775,14 +861,15 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/ss026_PBDSelection"
-           },
-          "maxItems": 32
+            "$ref": "#/definitions/ss026.PBDSelection"
+          },
+          "maxItems": 32,
+          "description": "List of permitted braking distance constraints"
         }
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_65": {
+    "ss026.ETCSPacket_65": {
       "type": "object",
       "description": " Temporary Speed Restriction (Transmission of temporary speed restriction)",
       "properties": {
@@ -813,7 +900,7 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_66": {
+    "ss026.ETCSPacket_66": {
       "type": "object",
       "description": " Temporary Speed Restriction Revocation (Transmission of temporary speed restriction revocation)",
       "properties": {
@@ -825,8 +912,9 @@
       },
       "additionalProperties": false
     },
-    "ss026_DLTrackCond": {
+    "ss026.DLTrackCond": {
       "type": "object",
+      "description": "Defines the parameters for dynamic line track conditions, specifying the distance to track condition changes and the validity length of the condition. These parameters are used to manage integrity check alarms of balise transmission within the defined section.",
       "properties": {
         "d_trackcond": {
           "type": "integer",
@@ -841,7 +929,7 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_67": {
+    "ss026.ETCSPacket_67": {
       "type": "object",
       "description": " Track Condition Big Metal Masses.This packet gives details concerning where to ignore integrity check alarms of balise transmission due to big metal masses trackside",
       "properties": {
@@ -849,17 +937,21 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/ss026_DLTrackCond"
-           },
+            "$ref": "#/definitions/ss026.DLTrackCond"
+          },
           "minItems": 1,
-          "maxItems": 32
+          "maxItems": 32,
+          "description": "List of track condition (distance-length)"
         }
       },
-      "required": ["dlTrackConditions"],
+      "required": [
+        "dlTrackConditions"
+      ],
       "additionalProperties": false
     },
-    "ss026_DLMCondition": {
+    "ss026.DLMCondition": {
       "type": "object",
+      "description": "Defines the track conditions, specifying the distance to track condition changes, the validity length of the condition, and the type of track condition to ensure safe and efficient train movement.",
       "properties": {
         "d_trackcond": {
           "type": "integer",
@@ -879,9 +971,9 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_68": {
+    "ss026.ETCSPacket_68": {
       "type": "object",
-      "description": " Track Condition (The packet gives details concerning the track ahead to support the driver when e.g. lower pantograph)",
+      "description": " Track Condition.The packet gives details concerning the track ahead to support the driver when e.g. lower pantograph",
       "properties": {
         "q_trackinit": {
           "type": "boolean",
@@ -896,15 +988,17 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/ss026_DLMCondition"
-           },
-          "maxItems": 32
+            "$ref": "#/definitions/ss026.DLMCondition"
+          },
+          "maxItems": 32,
+          "description": "List the track condition parameters"
         }
       },
       "additionalProperties": false
     },
-    "ss026_TCSPCondition": {
+    "ss026.TCSPCondition": {
       "type": "object",
+      "description": "Defines the conditions related to track characteristics and platform parameters, ensuring accurate assessment of track suitability. This includes track condition change distances, validity lengths, platform height specifications, and platform positioning, as referenced in TSI infrastructure standards.",
       "properties": {
         "d_trackcond": {
           "type": "integer",
@@ -923,14 +1017,19 @@
         },
         "q_platform": {
           "type": "string",
-          "enum": ["ppLeft", "ppRight", "ppBoth"]
+          "enum": [
+            "ppLeft",
+            "ppRight",
+            "ppBoth"
+          ],
+          "description": "defines the platform position with respect to the direction of authorized movement"
         }
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_69": {
+    "ss026.ETCSPacket_69": {
       "type": "object",
-      "description": " Track Condition Station Platforms (The packet gives details concerning the location and height of station platforms for use by the trainâs door control system)",
+      "description": " Track Condition Station Platforms (The packet gives details concerning the location and height of station platforms for use by the train\u00e2\u0099s door control system)",
       "properties": {
         "q_trackinit": {
           "type": "boolean",
@@ -945,15 +1044,17 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/ss026_TCSPCondition"
-           },
-          "maxItems": 32
+            "$ref": "#/definitions/ss026.TCSPCondition"
+          },
+          "maxItems": 32,
+          "description": "List the conditions related to track characteristics and platform parameters"
         }
       },
       "additionalProperties": false
     },
-    "ss026_RouteSuitability": {
+    "ss026.RouteSuitability": {
       "type": "object",
+      "description": "Defines the parameters for route suitability assessment, ensuring compatibility between railway infrastructure and rolling stock. This includes route suitability changes, loading gauge constraints, axle load categories, traction system voltage, and country-specific traction system identifiers, allowing on-board systems to validate operational feasibility.",
       "properties": {
         "d_suitability": {
           "type": "integer",
@@ -962,23 +1063,46 @@
         },
         "q_suitability": {
           "type": "string",
-          "description": "Type of route suitability data",
-          "enum": ["LoadingGuage", "MaxAxleLoad", "TractionSystem"]
+          "enum": [
+            "LoadingGuage",
+            "MaxAxleLoad",
+            "TractionSystem"
+          ],
+          "description": "Type of route suitability data"
         },
-        "m_lineGuage": {
+        "m_lineGauge": {
           "type": "string",
-          "description": "defining which loading gauge(s) are permitted on a line (refer to TSI INF)",
-          "enum": ["g1", "gA", "gB", "gC"]
+          "enum": [
+            "g1",
+            "gA",
+            "gB",
+            "gC"
+          ],
+          "description": "defining which loading gauge(s) are permitted on a line (refer to TSI INF)"
         },
         "m_axleLoadCat": {
           "type": "string",
-          "description": "the values allocated below correspond to a list of increasing axle load categories (i.e. B1 > HS17, B2 > B1, D2 > C4, â¦.etc) and it is used by the on-board equipment to compare its axle load category with the axle load category sent by trackside. For the underlying meaning of the axle load categories listed below (with the exception of HS17) refer to CR INF TSI.)",
-          "enum": ["A", "HS17", "B1", "B2", "C2", "C3", "C4", "D2", "D3", "D4", "D4XL", "E4", "E5"]
+          "enum": [
+            "AL_A",
+            "AL_HS17",
+            "AL_B1",
+            "AL_B2",
+            "AL_C2",
+            "AL_C3",
+            "AL_C4",
+            "AL_D2",
+            "AL_D3",
+            "AL_D4",
+            "AL_D4XL",
+            "AL_E4",
+            "AL_E5"
+          ],
+          "description": "the values allocated below correspond to a list of increasing axle load categories (i.e. B1 > HS17, B2 > B1, D2 > C4, \u00e2\u00a6.etc) and it is used by the on-board equipment to compare its axle load category with the axle load category sent by trackside. For the underlying meaning of the axle load categories listed below (with the exception of HS17) refer to CR INF TSI.)"
         },
         "m_voltage": {
           "type": "integer",
           "minimum": 0,
-          "description": "Special/Reserved values for Traction System voltage. It indicates the voltage of the traction system installed on a specific line or respectively that can be used by an engine. The identity of the traction system is given by M_VOLTAGE and, if M_VOLTAGE â 0, by the country identifier of the traction system (NID_CTRACTION). Note that values from 6 to 15 are currently unassigned"
+          "description": "Special/Reserved values for Traction System voltage. It indicates the voltage of the traction system installed on a specific line or respectively that can be used by an engine. The identity of the traction system is given by M_VOLTAGE and, if M_VOLTAGE \u00e2 0, by the country identifier of the traction system (NID_CTRACTION). Note that values from 6 to 15 are currently unassigned"
         },
         "nid_ctraction": {
           "type": "integer",
@@ -988,7 +1112,7 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_70": {
+    "ss026.ETCSPacket_70": {
       "type": "object",
       "description": "Route suitability data (The packet gives the characteristics needed to enter a route)",
       "properties": {
@@ -1005,20 +1129,43 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/ss026_RouteSuitability"
-           },
-          "maxItems": 32
+            "$ref": "#/definitions/ss026.RouteSuitability"
+          },
+          "maxItems": 32,
+          "description": "Lists of RouteSuitabilities"
         }
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_72": {
+    "ss026.ETCSPacket_71": {
+      "type": "object",
+      "description": "Thispacket is used when the tracksiderequests a change of the adhesion factor to be used in the brake model.",
+      "properties": {
+        "d_adhesion": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Distance to start of area with reduced adhesion factor."
+        },
+        "l_adhesion": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Length of reduced adhesion (Length for which the reducedadhesion factor apply.)"
+        },
+        "m_adhesion": {
+          "type": "boolean",
+          "description": "Adhesion factor."
+        }
+      },
+      "additionalProperties": false
+    },
+    "ss026.ETCSPacket_72": {
       "type": "object",
       "description": " Packet for sending plain text messages",
       "properties": {
         "textMessageConfig": {
           "type": "object",
-          "$ref": "#/definitions/ss026_TextMessageConfig"
+          "$ref": "#/definitions/ss026.TextMessageConfig",
+          "description": "List of the configuration parameters for text message display and acknowledgment"
         },
         "l_text": {
           "type": "integer",
@@ -1030,16 +1177,23 @@
           "description": "Text string used to transmit plain text messages"
         }
       },
-      "required": ["textMessageConfig", "x_text"],
+      "required": [
+        "textMessageConfig",
+        "x_text"
+      ],
       "additionalProperties": false
     },
-    "ss026_TextMessageConfig": {
+    "ss026.TextMessageConfig": {
       "type": "object",
+      "description": "Defines the configuration parameters for text message display and acknowledgment in railway operations. This includes message classification, display conditions based on distance, mode, and level, as well as qualifiers for text confirmation, reporting, and national system identity. These parameters ensure proper handling of onboard text messages and their interaction with trackside signaling and RBC communication.",
       "properties": {
         "q_textclass": {
           "type": "string",
-          "description": "Class of message to be displayed (Q_TEXTCLASS specifies the class of the text message included in the same packet (either plain or fixed message))",
-          "enum": ["auxiliary", "important"]
+          "enum": [
+            "auxiliary",
+            "important"
+          ],
+          "description": "Class of message to be displayed (Q_TEXTCLASS specifies the class of the text message included in the same packet (either plain or fixed message))"
         },
         "q_textdisplay": {
           "type": "boolean",
@@ -1052,13 +1206,37 @@
         },
         "m_modetextdisplay": {
           "type": "string",
-          "description": "Onboard operating mode for text display (The text is displayed when entering / as long as in the defined mode)",
-          "enum": ["DOM_fullSupervision", "DOM_onSight", "DOM_staffResponsible", "DOM_spare", "DOM_unfitted", "DOM_spare1", "DOM_standBy", "DOM_trip", "DOM_postTrip", "DOM_spare2", "DOM_spare3", "DOM_spare4", "DOM_limitedSupervision", "DOM_spare5", "DOM_reversing", "DOM_notLimitedByMode"]
+          "enum": [
+            "DOM_fullSupervision",
+            "DOM_onSight",
+            "DOM_staffResponsible",
+            "DOM_spare",
+            "DOM_unfitted",
+            "DOM_spare1",
+            "DOM_standBy",
+            "DOM_trip",
+            "DOM_postTrip",
+            "DOM_spare2",
+            "DOM_spare3",
+            "DOM_spare4",
+            "DOM_limitedSupervision",
+            "DOM_spare5",
+            "DOM_reversing",
+            "DOM_notLimitedByMode"
+          ],
+          "description": "Onboard operating mode for text display (The text is displayed when entering / as long as in the defined mode)"
         },
         "m_leveltextdisplay": {
           "type": "string",
-          "description": "Onboard operating level for text display (The text is displayed when entering / as long as in the defined level)",
-          "enum": ["DOL_level0", "DOL_levelNTC", "DOL_level1", "DOL_level2", "DOL_level3", "DOL_notLimited"]
+          "enum": [
+            "DOL_level0",
+            "DOL_levelNTC",
+            "DOL_level1",
+            "DOL_level2",
+            "DOL_level3",
+            "DOL_notLimited"
+          ],
+          "description": "Onboard operating level for text display (The text is displayed when entering / as long as in the defined level)"
         },
         "nid_ntc": {
           "type": "integer",
@@ -1077,13 +1255,37 @@
         },
         "m_modetextdisplay_e": {
           "type": "string",
-          "description": "Onboard operating mode for text display. The text is displayed when entering / as long as in the defined mode. Comment : End event",
-          "enum": ["DOM_fullSupervision", "DOM_onSight", "DOM_staffResponsible", "DOM_spare", "DOM_unfitted", "DOM_spare1", "DOM_standBy", "DOM_trip", "DOM_postTrip", "DOM_spare2", "DOM_spare3", "DOM_spare4", "DOM_limitedSupervision", "DOM_spare5", "DOM_reversing", "DOM_notLimitedByMode"]
+          "enum": [
+            "DOM_fullSupervision",
+            "DOM_onSight",
+            "DOM_staffResponsible",
+            "DOM_spare",
+            "DOM_unfitted",
+            "DOM_spare1",
+            "DOM_standBy",
+            "DOM_trip",
+            "DOM_postTrip",
+            "DOM_spare2",
+            "DOM_spare3",
+            "DOM_spare4",
+            "DOM_limitedSupervision",
+            "DOM_spare5",
+            "DOM_reversing",
+            "DOM_notLimitedByMode"
+          ],
+          "description": "Onboard operating mode for text display. The text is displayed when entering / as long as in the defined mode. Comment : End event"
         },
         "m_leveltextdisplay_e": {
           "type": "string",
-          "description": "Onboard operating level for text display.The text is displayed when entering / as long as in the defined level.",
-          "enum": ["DOL_level0", "DOL_levelNTC", "DOL_level1", "DOL_level2", "DOL_level3", "DOL_notLimited"]
+          "enum": [
+            "DOL_level0",
+            "DOL_levelNTC",
+            "DOL_level1",
+            "DOL_level2",
+            "DOL_level3",
+            "DOL_notLimited"
+          ],
+          "description": "Onboard operating level for text display.The text is displayed when entering / as long as in the defined level."
         },
         "nid_ntc_e": {
           "type": "integer",
@@ -1121,13 +1323,14 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_76": {
+    "ss026.ETCSPacket_76": {
       "type": "object",
       "description": "Packet for sending fixed text messages",
       "properties": {
         "textMessageConfig": {
           "type": "object",
-          "$ref": "#/definitions/ss026_TextMessageConfig"
+          "$ref": "#/definitions/ss026.TextMessageConfig",
+          "description": "List of the configuration parameters for text message display and acknowledgment"
         },
         "q_text": {
           "type": "integer",
@@ -1135,11 +1338,14 @@
           "description": "Fixed message to be displayed (Q_TEXT is a pointer to select a fixed text message from the defined table. The language selected by the driver for the DMI shall be used additionally as a qualifier to choose the appropriate language table.)"
         }
       },
-      "required": ["textMessageConfig"],
+      "required": [
+        "textMessageConfig"
+      ],
       "additionalProperties": false
     },
-    "ss026_GeoPosItem": {
+    "ss026.GeoPosItem": {
       "type": "object",
+      "description": "Defines the parameters for geographical position referencing in railway operations. This includes balise group identity, position offsets, track kilometre references, and direction qualifiers to support accurate location tracking and reporting along the railway network.",
       "properties": {
         "nid_c": {
           "type": "integer",
@@ -1167,25 +1373,29 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_79": {
+    "ss026.ETCSPacket_79": {
       "type": "object",
-      "description": " Geographical Position Information",
+      "description": "Geographical Position Information. This packet gives geographical location information for one or multiple references to the train",
       "properties": {
         "geoPosItems": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/ss026_GeoPosItem"
-           },
+            "$ref": "#/definitions/ss026.GeoPosItem"
+          },
           "minItems": 1,
-          "maxItems": 32
+          "maxItems": 32,
+          "description": "List of Geographical Position Reference"
         }
       },
-      "required": ["geoPosItems"],
+      "required": [
+        "geoPosItems"
+      ],
       "additionalProperties": false
     },
-    "ss026_ModeProfileItem": {
+    "ss026.ModeProfileItem": {
       "type": "object",
+      "description": "Defines the parameters for mode profile transitions in railway operations, specifying the required mode, associated speed limits, and spatial constraints. This includes incremental distances, supervision qualifiers, and acknowledgment areas to ensure proper mode application within the movement authority framework.",
       "properties": {
         "d_mamode": {
           "type": "integer",
@@ -1194,8 +1404,12 @@
         },
         "m_mamode": {
           "type": "string",
-          "description": "Required mode for a part of the MA. None. Comment : OS, LS, SH",
-          "enum": ["OnSight", "Shunting", "LimitedSupervision"]
+          "enum": [
+            "OnSight",
+            "Shunting",
+            "LimitedSupervision"
+          ],
+          "description": "Required mode for a part of the MA. None. Comment : OS, LS, SH"
         },
         "v_mamode": {
           "type": "integer",
@@ -1219,7 +1433,7 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_80": {
+    "ss026.ETCSPacket_80": {
       "type": "object",
       "description": " Mode profile associated to an MA",
       "properties": {
@@ -1227,17 +1441,21 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/ss026_ModeProfileItem"
-           },
+            "$ref": "#/definitions/ss026.ModeProfileItem"
+          },
           "minItems": 1,
-          "maxItems": 32
+          "maxItems": 32,
+          "description": "List of mode profile transition items"
         }
       },
-      "required": ["modeProfiles"],
+      "required": [
+        "modeProfiles"
+      ],
       "additionalProperties": false
     },
-    "ss026_LXStatus": {
+    "ss026.LXStatus": {
       "type": "object",
+      "description": "Defines the status parameters for a Level Crossing (LX) in railway operations, including the permitted speed when the crossing is not protected, the requirement for stopping before the crossing, and the designated stopping area length to ensure safe passage.",
       "properties": {
         "v_lx": {
           "type": "integer",
@@ -1256,7 +1474,7 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_88": {
+    "ss026.ETCSPacket_88": {
       "type": "object",
       "description": " Level Crossing information",
       "properties": {
@@ -1281,13 +1499,13 @@
         },
         "lx_Status": {
           "type": "object",
-          "description": "Only required for the level crossings that are protected",
-          "$ref": "#/definitions/ss026_LXStatus"
+          "$ref": "#/definitions/ss026.LXStatus",
+          "description": "Only required for the level crossings that are protected"
         }
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_90": {
+    "ss026.ETCSPacket_90": {
       "type": "object",
       "description": "Track Ahead Free up to level 2/3 transition location (Notification to on-board that track ahead is free from the balise group transmitting this information up to the level 2/3 transition location)",
       "properties": {
@@ -1304,7 +1522,7 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_131": {
+    "ss026.ETCSPacket_131": {
       "type": "object",
       "description": " RBC transition order (Packet to order an RBC transition)",
       "properties": {
@@ -1316,7 +1534,7 @@
         "nid_c": {
           "type": "integer",
           "minimum": 0,
-          "description": "Identity number of the country or region.Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries. Comment : âAcceptingâ RBC identity"
+          "description": "Identity number of the country or region.Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries. Comment : \u00e2Accepting\u00e2 RBC identity"
         },
         "nid_rbc": {
           "type": "integer",
@@ -1325,28 +1543,30 @@
         },
         "nid_radio": {
           "type": "string",
-          "description": "Radio subscriber number (Quoted as a 16 digit decimal number. The number is to be entered âleft adjustedâ starting with the first digit to be dialled. Padding by the special value F shall be added after the least significant digit of the number. For further information about NID_RADIO refer to SUBSET-054.)"
+          "description": "Radio subscriber number (Quoted as a 16 digit decimal number. The number is to be entered \u00e2left adjusted\u00e2 starting with the first digit to be dialled. Padding by the special value F shall be added after the least significant digit of the number. For further information about NID_RADIO refer to SUBSET-054.)"
         },
         "q_sleepsession": {
           "type": "boolean",
           "description": "Session management for sleeping equipment. (Set to False when ignoring session establishment order; True when executing sessions establishment order.)"
         }
       },
-      "required": ["nid_radio"],
+      "required": [
+        "nid_radio"
+      ],
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_132": {
+    "ss026.ETCSPacket_132": {
       "type": "object",
       "description": " Danger for Shunting information (Transmission of the aspect of a shunting signal)",
       "properties": {
         "q_aspect": {
           "type": "boolean",
-          "description": "Aspect of âdanger for shuntingâ signal. (set to False to Stop if in SH mode, otherwise True to Go if in SH mode)"
+          "description": "Aspect of \u00e2danger for shunting\u00e2 signal. (set to False to Stop if in SH mode, otherwise True to Go if in SH mode)"
         }
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_133": {
+    "ss026.ETCSPacket_133": {
       "type": "object",
       "description": " Radio infill area information",
       "properties": {
@@ -1357,7 +1577,7 @@
         "nid_c": {
           "type": "integer",
           "minimum": 0,
-          "description": "Identity number of the country or region. Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries. Comment : RIU ETCS identity"
+          "description": "Identity number of the country or region. Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries."
         },
         "nid_riu": {
           "type": "integer",
@@ -1366,7 +1586,7 @@
         },
         "nid_radio": {
           "type": "string",
-          "description": "Radio subscriber number. (Quoted as a 16 digit decimal number. The number is to be entered âleft adjustedâ starting with the first digit to be dialled. Padding by the special value F shall be added after the least significant digit of the number.)"
+          "description": "Radio subscriber number. (Quoted as a 16 digit decimal number. The number is to be entered \u00e2left adjusted\u00e2 starting with the first digit to be dialled. Padding by the special value F shall be added after the least significant digit of the number.)"
         },
         "d_infill": {
           "type": "integer",
@@ -1384,12 +1604,14 @@
           "description": "Identity number of the balise group. Identity number of a balise group or loop within the country or region defined by NID_C."
         }
       },
-      "required": ["nid_radio"],
+      "required": [
+        "nid_radio"
+      ],
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_134": {
+    "ss026.ETCSPacket_134": {
       "type": "object",
-      "description": " EOLM Packet",
+      "description": "EOLM Packet. This packet announces a loop.",
       "properties": {
         "nid_loop": {
           "type": "integer",
@@ -1418,12 +1640,12 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_135": {
+    "ss026.ETCSPacket_135": {
       "type": "object",
       "description": " Stop Shunting on desk opening (Packet to stop Shunting on desk opening)",
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_137": {
+    "ss026.ETCSPacket_137": {
       "type": "object",
       "description": " Stop if in Staff Responsible (Information to stop a train in staff responsible.)",
       "properties": {
@@ -1434,7 +1656,7 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_138": {
+    "ss026.ETCSPacket_138": {
       "type": "object",
       "description": " Reversing area information (Used to send start and length of reversing area to the on-board)",
       "properties": {
@@ -1451,7 +1673,7 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_139": {
+    "ss026.ETCSPacket_139": {
       "type": "object",
       "description": " Reversing supervision information (Used to send supervision parameters (distance to run, speed) of reversing area to the on-board)",
       "properties": {
@@ -1468,7 +1690,7 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_141": {
+    "ss026.ETCSPacket_141": {
       "type": "object",
       "description": " Default Gradient for Temporary Speed Restriction (It defines a default gradient to be used for TSR supervision when no gradient profile (packet 21) is available)",
       "properties": {
@@ -1483,12 +1705,12 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_145": {
+    "ss026.ETCSPacket_145": {
       "type": "object",
       "description": " Inhibition of balise group message consistency reaction.Indication to on-board that the balise group message consistency reaction (service brake command) can be inhibited for this balise group message only, in case one or more balise telegram(s) of the group is/are missed or is/are detected but not decoded.",
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_180": {
+    "ss026.ETCSPacket_180": {
       "type": "object",
       "description": " LSSMA display toggle order (Used to toggle on/off the display of the Lowest Supervised Speed within the MA.)",
       "properties": {
@@ -1504,17 +1726,17 @@
       },
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_181": {
+    "ss026.ETCSPacket_181": {
       "type": "object",
       "description": " Generic LS function marker (Used to enable the generic toggling on/off of the display of the Lowest Supervised Speed within the MA.)",
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_254": {
+    "ss026.ETCSPacket_254": {
       "type": "object",
       "description": "Default balise, loop or RIU information (Indication to on-board that balise telegram, loop message or RIU information contains default information due to a fault of the trackside equipment.)",
       "additionalProperties": false
     },
-    "ss026_ETCSPacket_255": {
+    "ss026.ETCSPacket_255": {
       "type": "object",
       "description": " End of Information (This packet consists only of NID_PACKET containing 8 bit 1smessage/telegram when receiving eight bits set to one in the NID_PACKET field.)",
       "additionalProperties": false
@@ -1526,295 +1748,295 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_0"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_0"
+      }
     },
     "packets_2": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_2"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_2"
+      }
     },
     "packets_3": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_3"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_3"
+      }
     },
     "packets_5": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_5"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_5"
+      }
     },
     "packets_6": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_6"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_6"
+      }
     },
     "packets_16": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_16"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_16"
+      }
     },
     "packets_39": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_39"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_39"
+      }
     },
     "packets_40": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_40"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_40"
+      }
     },
     "packets_41": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_41"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_41"
+      }
     },
     "packets_42": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_42"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_42"
+      }
     },
     "packets_44": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_44"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_44"
+      }
     },
     "packets_45": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_45"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_45"
+      }
     },
     "packets_46": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_46"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_46"
+      }
     },
     "packets_49": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_49"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_49"
+      }
     },
     "packets_51": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_51"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_51"
+      }
     },
     "packets_52": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_52"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_52"
+      }
     },
     "packets_65": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_65"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_65"
+      }
     },
     "packets_66": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_66"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_66"
+      }
     },
     "packets_67": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_67"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_67"
+      }
     },
     "packets_68": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_68"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_68"
+      }
     },
     "packets_69": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_69"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_69"
+      }
     },
     "packets_70": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_70"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_70"
+      }
     },
     "packets_71": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_72"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_72"
+      }
     },
     "packets_76": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_76"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_76"
+      }
     },
     "packets_79": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_79"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_79"
+      }
     },
     "packets_80": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_80"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_80"
+      }
     },
     "packets_88": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_88"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_88"
+      }
     },
     "packets_90": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_90"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_90"
+      }
     },
     "packets_131": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_131"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_131"
+      }
     },
     "packets_132": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_132"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_132"
+      }
     },
     "packets_133": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_133"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_133"
+      }
     },
     "packets_134": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_134"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_134"
+      }
     },
     "packets_135": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_135"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_135"
+      }
     },
     "packets_137": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_137"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_137"
+      }
     },
     "packets_138": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_138"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_138"
+      }
     },
     "packets_139": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_139"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_139"
+      }
     },
     "packets_141": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_141"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_141"
+      }
     },
     "packets_145": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_145"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_145"
+      }
     },
     "packets_180": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_180"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_180"
+      }
     },
     "packets_181": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_181"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_181"
+      }
     },
     "packets_254": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_254"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_254"
+      }
     },
     "packets_255": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ETCSPacket_255"
-       }
+        "$ref": "#/definitions/ss026.ETCSPacket_255"
+      }
     }
   },
   "additionalProperties": false

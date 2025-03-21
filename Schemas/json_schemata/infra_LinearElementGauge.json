@@ -1,0 +1,65 @@
+{
+  "$id": "https://ERJU/infra_LinearElementGauge",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "infra.LinearElementSection": {
+      "type": "object",
+      "description": "Defines a directed linear object (with a linear extension) located on a LinearElement",
+      "properties": {
+        "onElement": {
+          "type": "string",
+          "description": "refers to linear element"
+        },
+        "startOffsetFromOrigin": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines the start offset from the origin"
+        },
+        "endOffsetFromOrigin": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines the end offset from the origin"
+        },
+        "appliesInBothDirections": {
+          "type": "boolean",
+          "description": "Defines if the section applies in both directions"
+        }
+      },
+      "required": [
+        "onElement"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines the inner distance between two rails, e.g. 1432 for EU-standard-rails",
+  "properties": {
+    "linearElementSections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/infra.LinearElementSection"
+      },
+      "minItems": 1,
+      "description": "composes of track edge sections"
+    },
+    "gauge": {
+      "type": "string",
+      "enum": [
+        "tgUnknown",
+        "tg750",
+        "tg1000mm",
+        "tg1435mm",
+        "tg1520mm",
+        "tg1524mm",
+        "tg1600mm",
+        "tg1668mm"
+      ],
+      "description": "defines different track gauges"
+    }
+  },
+  "required": [
+    "linearElementSections"
+  ],
+  "additionalProperties": false
+}

@@ -1,52 +1,76 @@
 {
   "$id": "https://ERJU/opp_DpsGroupState",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "opp_DPSState": {
+    "opp.DPSState": {
       "type": "object",
+      "description": "Defines state of a drive protection section",
       "properties": {
         "dps": {
-          "type": "string"
+          "type": "string",
+          "description": "refers to drive protection section"
         },
         "requestedDrivability": {
           "type": "string",
-          "enum": ["full", "none"]
+          "enum": [
+            "full",
+            "none"
+          ],
+          "description": "up to the operator, in accordance with the equipment manual"
         },
         "currentDrivability": {
           "type": "string",
-          "enum": ["full", "none"]
+          "enum": [
+            "full",
+            "none"
+          ],
+          "description": "Defines the current drivability states for DPS"
         }
       },
-      "required": ["dps"],
+      "required": [
+        "dps"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
+  "description": "Define drivability state of a drive protection section",
   "properties": {
     "dpsGroup": {
-      "type": "string"
+      "type": "string",
+      "description": "refers to dpsGroup"
     },
     "issuedAt": {
       "type": "string",
-      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+      "format": "date-time",
+      "description": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"
     },
     "operationalPlanMovement": {
-      "type": "string"
+      "type": "string",
+      "description": "Refers to the operational plan movement. if the new train was created in TrafficCS it does not have an operationalPlan (Movement) yet"
     },
     "dpsgState": {
       "type": "string",
-      "description": "common state of the drive protection section group",
-      "enum": ["ready", "processing", "disturbed"]
+      "enum": [
+        "ready",
+        "processing",
+        "disturbed",
+        "trailed"
+      ],
+      "description": "common state of the drive protection section group"
     },
     "dpsStates": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "States of drive protection sections",
-        "$ref": "#/definitions/opp_DPSState"
-       }
+        "$ref": "#/definitions/opp.DPSState"
+      },
+      "description": "Defines the states of drive protection sections"
     }
   },
-  "required": ["dpsGroup", "issuedAt"],
+  "required": [
+    "dpsGroup",
+    "issuedAt"
+  ],
   "additionalProperties": false
 }

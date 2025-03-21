@@ -1,9 +1,6 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_138",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "description": " Reversing area information (Used to send start and length of reversing area to the on-board)",
   "properties": {

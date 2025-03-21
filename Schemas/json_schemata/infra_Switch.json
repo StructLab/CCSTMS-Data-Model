@@ -1,0 +1,35 @@
+{
+  "$id": "https://ERJU/infra_Switch",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "A unit of track comprising two fixed rails (stock rails) and two movable rails (switch rails) used to direct vehicles from one track to another track.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing ; structure refers to EULYNX EU.SAS.77"
+    },
+    "reversalTime": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Defines the time in seconds to switch from one position to the other ; 0 means unknown"
+    },
+    "pointLeft": {
+      "type": "string",
+      "description": "NetRelation referencing the left side of the point in the facing direction of the simple point"
+    },
+    "pointRight": {
+      "type": "string",
+      "description": "NetRelation referencing the right side of the point in the facing direction of the simple point"
+    },
+    "name": {
+      "type": "string",
+      "description": "User-friendly name, only if different from id"
+    }
+  },
+  "required": [
+    "id",
+    "pointLeft",
+    "pointRight"
+  ],
+  "additionalProperties": false
+}

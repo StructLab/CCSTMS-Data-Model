@@ -1,0 +1,34 @@
+{
+  "$id": "https://ERJU/infra_NetRelation",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Defines a relation between two elements.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "elementA": {
+      "type": "string",
+      "description": "References the first linear element in an oriented relation."
+    },
+    "elementB": {
+      "type": "string",
+      "description": "References the second linear element in an oriented relation."
+    },
+    "isOnOriginOfElementA": {
+      "type": "boolean",
+      "description": "Determines if the position of the topological element A in a relation is the origin of element A."
+    },
+    "isOnOriginOfElementB": {
+      "type": "boolean",
+      "description": "Determines if the position of the topological element B in a relation is the origin of element B."
+    }
+  },
+  "required": [
+    "id",
+    "elementA",
+    "elementB"
+  ],
+  "additionalProperties": false
+}

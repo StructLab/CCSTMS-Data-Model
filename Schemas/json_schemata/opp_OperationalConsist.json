@@ -1,55 +1,72 @@
 {
   "$id": "https://ERJU/opp_OperationalConsist",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "opp_AnyClass": {
+    "opp.OnBoardExtension": {
       "type": "object",
+      "description": "A container class for a non-standard key-value-property. Messages need sometimes IM-specific information.",
       "properties": {
-        "className": {
-          "type": "string"
+        "contentType": {
+          "type": "string",
+          "description": "Defines the key-attribute in a key-value-pair. Used for annotation of IM-specific onboard-equipment"
         },
         "content": {
           "type": "string",
-          "contentEncoding": "base64"
+          "contentEncoding": "base64",
+          "description": "Defines the value-attribute in a key-value-pair. Used for annotation of IM-specific onboard-equipment"
         }
       },
-      "required": ["className", "content"],
+      "required": [
+        "contentType",
+        "content"
+      ],
       "additionalProperties": false
     },
-    "opp_SupportedOnBoardEquipment": {
+    "opp.SupportedOnBoardEquipment": {
       "type": "object",
+      "description": "Defines Onboard equipment installed and active on a train",
       "properties": {
         "trainProtectionType": {
           "type": "string",
-          "enum": ["Etcs"]
+          "enum": [
+            "Etcs"
+          ],
+          "description": "Defines the train protection type supported by the on board equipment"
         },
         "etcsSystemVersions": {
           "type": "array",
           "items": {
             "type": "string",
-            "pattern": "\\d+.\\d+"
-           },
-          "minItems": 1
+            "pattern": "\\\\d+.\\\\d+"
+          },
+          "minItems": 1,
+          "description": "Defines the supported etcs system versions"
         },
-        "anyClasses": {
+        "onboardExtensions": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/opp_AnyClass"
-           }
+            "$ref": "#/definitions/opp.OnBoardExtension"
+          }
         }
       },
-      "required": ["etcsSystemVersions"],
+      "required": [
+        "etcsSystemVersions"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
+  "description": "Defines a rolling-stock consist unit identified by the installed onboard equipment.",
   "properties": {
     "supportedOnBoardEquipment": {
       "type": "object",
-      "$ref": "#/definitions/opp_SupportedOnBoardEquipment"
+      "$ref": "#/definitions/opp.SupportedOnBoardEquipment",
+      "description": "Defines the list of supported onboard equipment for an operational consist"
     }
   },
-  "required": ["supportedOnBoardEquipment"],
+  "required": [
+    "supportedOnBoardEquipment"
+  ],
   "additionalProperties": false
 }

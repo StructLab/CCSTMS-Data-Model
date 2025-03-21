@@ -1,0 +1,30 @@
+{
+  "$id": "https://ERJU/infra_LinearElementSection",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Defines a directed linear object (with a linear extension) located on a LinearElement",
+  "properties": {
+    "onElement": {
+      "type": "string",
+      "description": "refers to linear element"
+    },
+    "startOffsetFromOrigin": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Defines the start offset from the origin"
+    },
+    "endOffsetFromOrigin": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Defines the end offset from the origin"
+    },
+    "appliesInBothDirections": {
+      "type": "boolean",
+      "description": "Defines if the section applies in both directions"
+    }
+  },
+  "required": [
+    "onElement"
+  ],
+  "additionalProperties": false
+}

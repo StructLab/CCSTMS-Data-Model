@@ -1,0 +1,47 @@
+{
+  "$id": "https://ERJU/infra_NetPointReference",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "infra.TopologicalCoordinate": {
+      "type": "object",
+      "description": "Defines a topological coordinates on the track",
+      "properties": {
+        "onLinearElement": {
+          "type": "string",
+          "description": "is positioned on linear element"
+        },
+        "offsetFromOrigin": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated NetElement"
+        }
+      },
+      "required": [
+        "onLinearElement"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Represents a point reference in the network.",
+  "properties": {
+    "hasTopoCoordinate": {
+      "type": "object",
+      "$ref": "#/definitions/infra.TopologicalCoordinate",
+      "description": "Defines the topological coordinate of a network point reference"
+    },
+    "appliesToDirection": {
+      "type": "string",
+      "enum": [
+        "both",
+        "same",
+        "opposite"
+      ],
+      "description": "The direction relative to the origin of the linear element towards the point reference applies"
+    }
+  },
+  "required": [
+    "hasTopoCoordinate"
+  ],
+  "additionalProperties": false
+}

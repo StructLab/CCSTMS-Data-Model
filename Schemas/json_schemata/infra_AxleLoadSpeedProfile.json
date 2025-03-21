@@ -1,21 +1,18 @@
 {
   "$id": "https://ERJU/infra_AxleLoadSpeedProfile",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
-  "description": "Defines the axle load speed profile for a section of track",
+  "description": "Defines the axle load speed profile for a section of track or a section of SegmentProfile",
   "properties": {
     "startPos": {
       "type": "integer",
       "minimum": 0,
-      "description": "start position on the associated TrackEdge"
+      "description": "Defines the start position on the associated Linear element"
     },
     "endPos": {
       "type": "integer",
       "minimum": 0,
-      "description": "end position on the associated TrackEdge"
+      "description": "Defines the end position on the associated Linear element"
     },
     "speed": {
       "type": "integer",
@@ -24,8 +21,22 @@
     },
     "axleLoadCategory": {
       "type": "string",
-      "description": "defines different axle load categories",
-      "enum": ["AL_A", "AL_HS17", "AL_B1", "AL_B2", "AL_C2", "AL_C3", "AL_C4", "AL_D2", "AL_D3", "AL_D4", "AL_D4XL", "AL_E4", "AL_E5"]
+      "enum": [
+        "AL_A",
+        "AL_HS17",
+        "AL_B1",
+        "AL_B2",
+        "AL_C2",
+        "AL_C3",
+        "AL_C4",
+        "AL_D2",
+        "AL_D3",
+        "AL_D4",
+        "AL_D4XL",
+        "AL_E4",
+        "AL_E5"
+      ],
+      "description": "defines different axle load categories"
     }
   },
   "additionalProperties": false

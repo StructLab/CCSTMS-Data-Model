@@ -1,14 +1,21 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_46",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "ss026_LevelTransition": {
+    "ss026.LevelTransition": {
       "type": "object",
+      "description": "Defines the parameters for level transitions in ETCS operations, specifying the required ETCS level and the associated national system identity to ensure seamless interoperability between signaling systems.",
       "properties": {
         "m_leveltr": {
           "type": "string",
-          "description": "Required level",
-          "enum": ["Level0", "LevelNTC", "Level1", "Level2", "Level3"]
+          "enum": [
+            "Level0",
+            "LevelNTC",
+            "Level1",
+            "Level2",
+            "Level3"
+          ],
+          "description": "Required level"
         },
         "nid_ntc": {
           "type": "integer",
@@ -20,12 +27,18 @@
     }
   },
   "type": "object",
-  "description": " Conditional Level Transition Order (Packet for a conditional level transition. The successive M_LEVELTRâs go from the highest priority level to the lowest one)",
+  "description": " Conditional Level Transition Order (Packet for a conditional level transition. The successive M_LEVELTR\u00e2\u0099s go from the highest priority level to the lowest one)",
   "properties": {
     "m_leveltr": {
       "type": "string",
-      "description": "Required level",
-      "enum": ["Level0", "LevelNTC", "Level1", "Level2", "Level3"]
+      "enum": [
+        "Level0",
+        "LevelNTC",
+        "Level1",
+        "Level2",
+        "Level3"
+      ],
+      "description": "Required level"
     },
     "nid_ntc": {
       "type": "integer",
@@ -36,9 +49,10 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_LevelTransition"
-       },
-      "maxItems": 31
+        "$ref": "#/definitions/ss026.LevelTransition"
+      },
+      "maxItems": 31,
+      "description": "List of level transitions parameters"
     }
   },
   "additionalProperties": false

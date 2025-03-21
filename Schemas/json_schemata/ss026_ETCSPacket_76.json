@@ -1,14 +1,18 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_76",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "ss026_TextMessageConfig": {
+    "ss026.TextMessageConfig": {
       "type": "object",
+      "description": "Defines the configuration parameters for text message display and acknowledgment in railway operations. This includes message classification, display conditions based on distance, mode, and level, as well as qualifiers for text confirmation, reporting, and national system identity. These parameters ensure proper handling of onboard text messages and their interaction with trackside signaling and RBC communication.",
       "properties": {
         "q_textclass": {
           "type": "string",
-          "description": "Class of message to be displayed (Q_TEXTCLASS specifies the class of the text message included in the same packet (either plain or fixed message))",
-          "enum": ["auxiliary", "important"]
+          "enum": [
+            "auxiliary",
+            "important"
+          ],
+          "description": "Class of message to be displayed (Q_TEXTCLASS specifies the class of the text message included in the same packet (either plain or fixed message))"
         },
         "q_textdisplay": {
           "type": "boolean",
@@ -21,13 +25,37 @@
         },
         "m_modetextdisplay": {
           "type": "string",
-          "description": "Onboard operating mode for text display (The text is displayed when entering / as long as in the defined mode)",
-          "enum": ["DOM_fullSupervision", "DOM_onSight", "DOM_staffResponsible", "DOM_spare", "DOM_unfitted", "DOM_spare1", "DOM_standBy", "DOM_trip", "DOM_postTrip", "DOM_spare2", "DOM_spare3", "DOM_spare4", "DOM_limitedSupervision", "DOM_spare5", "DOM_reversing", "DOM_notLimitedByMode"]
+          "enum": [
+            "DOM_fullSupervision",
+            "DOM_onSight",
+            "DOM_staffResponsible",
+            "DOM_spare",
+            "DOM_unfitted",
+            "DOM_spare1",
+            "DOM_standBy",
+            "DOM_trip",
+            "DOM_postTrip",
+            "DOM_spare2",
+            "DOM_spare3",
+            "DOM_spare4",
+            "DOM_limitedSupervision",
+            "DOM_spare5",
+            "DOM_reversing",
+            "DOM_notLimitedByMode"
+          ],
+          "description": "Onboard operating mode for text display (The text is displayed when entering / as long as in the defined mode)"
         },
         "m_leveltextdisplay": {
           "type": "string",
-          "description": "Onboard operating level for text display (The text is displayed when entering / as long as in the defined level)",
-          "enum": ["DOL_level0", "DOL_levelNTC", "DOL_level1", "DOL_level2", "DOL_level3", "DOL_notLimited"]
+          "enum": [
+            "DOL_level0",
+            "DOL_levelNTC",
+            "DOL_level1",
+            "DOL_level2",
+            "DOL_level3",
+            "DOL_notLimited"
+          ],
+          "description": "Onboard operating level for text display (The text is displayed when entering / as long as in the defined level)"
         },
         "nid_ntc": {
           "type": "integer",
@@ -46,13 +74,37 @@
         },
         "m_modetextdisplay_e": {
           "type": "string",
-          "description": "Onboard operating mode for text display. The text is displayed when entering / as long as in the defined mode. Comment : End event",
-          "enum": ["DOM_fullSupervision", "DOM_onSight", "DOM_staffResponsible", "DOM_spare", "DOM_unfitted", "DOM_spare1", "DOM_standBy", "DOM_trip", "DOM_postTrip", "DOM_spare2", "DOM_spare3", "DOM_spare4", "DOM_limitedSupervision", "DOM_spare5", "DOM_reversing", "DOM_notLimitedByMode"]
+          "enum": [
+            "DOM_fullSupervision",
+            "DOM_onSight",
+            "DOM_staffResponsible",
+            "DOM_spare",
+            "DOM_unfitted",
+            "DOM_spare1",
+            "DOM_standBy",
+            "DOM_trip",
+            "DOM_postTrip",
+            "DOM_spare2",
+            "DOM_spare3",
+            "DOM_spare4",
+            "DOM_limitedSupervision",
+            "DOM_spare5",
+            "DOM_reversing",
+            "DOM_notLimitedByMode"
+          ],
+          "description": "Onboard operating mode for text display. The text is displayed when entering / as long as in the defined mode. Comment : End event"
         },
         "m_leveltextdisplay_e": {
           "type": "string",
-          "description": "Onboard operating level for text display.The text is displayed when entering / as long as in the defined level.",
-          "enum": ["DOL_level0", "DOL_levelNTC", "DOL_level1", "DOL_level2", "DOL_level3", "DOL_notLimited"]
+          "enum": [
+            "DOL_level0",
+            "DOL_levelNTC",
+            "DOL_level1",
+            "DOL_level2",
+            "DOL_level3",
+            "DOL_notLimited"
+          ],
+          "description": "Onboard operating level for text display.The text is displayed when entering / as long as in the defined level."
         },
         "nid_ntc_e": {
           "type": "integer",
@@ -96,7 +148,8 @@
   "properties": {
     "textMessageConfig": {
       "type": "object",
-      "$ref": "#/definitions/ss026_TextMessageConfig"
+      "$ref": "#/definitions/ss026.TextMessageConfig",
+      "description": "List of the configuration parameters for text message display and acknowledgment"
     },
     "q_text": {
       "type": "integer",
@@ -104,6 +157,8 @@
       "description": "Fixed message to be displayed (Q_TEXT is a pointer to select a fixed text message from the defined table. The language selected by the driver for the DMI shall be used additionally as a qualifier to choose the appropriate language table.)"
     }
   },
-  "required": ["textMessageConfig"],
+  "required": [
+    "textMessageConfig"
+  ],
   "additionalProperties": false
 }

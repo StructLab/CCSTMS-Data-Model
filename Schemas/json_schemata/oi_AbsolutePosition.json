@@ -1,0 +1,21 @@
+{
+  "$id": "https://ERJU/oi_AbsolutePosition",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Defines absolute position description",
+  "properties": {
+    "x": {
+      "type": "number",
+      "description": "x/latitude coordinate value as per ETRS89"
+    },
+    "y": {
+      "type": "number",
+      "description": "y/longitude coordinate value as per ETRS89"
+    },
+    "z": {
+      "type": "number",
+      "description": "z/altitude coordinate value as per ETRS89"
+    }
+  },
+  "additionalProperties": false
+}

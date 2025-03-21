@@ -1,153 +1,226 @@
 {
   "$id": "https://ERJU/opp_TrainUnit",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "opp_PhysicalTrainUnitIdentifier": {
+    "opp.PhysicalTrainUnitIdentifier": {
       "type": "object",
+      "description": "Defines a set of possible identifiers for a physical train (ETCS-trainRunningNumber, OBU-ID etc).",
       "properties": {
         "trainRunningNumber": {
-          "type": "string"
+          "type": "string",
+          "description": "Defines the Train Running Number for ETCS same as SS026.NID_OPERATIONAL. To be usable for ETCS must contain a decimal number [0..99999999]. Mapping to uint32 by filling with F: '1233' -> 0x1233FFFF"
         },
         "additionalTrainRunningNumber": {
           "type": "string",
-          "description": "Distinction between Operational Train Units with the same trainRunningNumber. This may occur if a trainRunningNumber is reused for different spare trains."
+          "description": "Defines the distinction between Operational Train Units with the same trainRunningNumber. This may occur if a trainRunningNumber is reused for different spare trains."
         },
         "tafTapTsiTrainID": {
-          "type": "string"
+          "type": "string",
+          "description": "refers to taf tap tsi train id"
         },
         "leadingOnBoardUnitId": {
           "type": "string",
-          "description": "see NID_ENGINE"
+          "description": "Defines NID_ENGINE. To be usable with ETCS must contain a decimal number [0..16.777.215]"
         }
       },
       "additionalProperties": false
     },
-    "opp_OperationalTrainCategory": {
+    "opp.OperationalTrainCategory": {
       "type": "object",
+      "description": "Defines usage category for an OperationalTrain",
       "properties": {
         "trainCategoryType": {
           "type": "string",
-          "enum": ["trainCategoryUnknown", "interregional", "regional", "subUrban", "nightTrain", "motorRail", "mountainTrain", "historicTrain", "coachGroup", "tram", "underground", "highspeedTrain", "intercity"]
+          "enum": [
+            "trainCategoryUnknown",
+            "interregional",
+            "regional",
+            "subUrban",
+            "nightTrain",
+            "motorRail",
+            "mountainTrain",
+            "historicTrain",
+            "coachGroup",
+            "tram",
+            "underground",
+            "highspeedTrain",
+            "intercity"
+          ]
         },
         "description": {
           "type": "string",
-          "description": "for UI-purposes"
+          "description": "Defines the description for the operational train categoryfor UI-purposes"
         },
         "trainUsage": {
           "type": "string",
-          "description": "for UI-purposes",
-          "enum": ["trainUsageUndefined", "commercialPassengerTrain", "commercialCargoTrain", "locomotiveRunningLight", "lightRunning", "notInService", "engineeringTrain", "breakdownTrain", "mixedTrain", "specialTrain", "otherTrain"]
+          "enum": [
+            "trainUsageUndefined",
+            "commercialPassengerTrain",
+            "commercialCargoTrain",
+            "locomotiveRunningLight",
+            "lightRunning",
+            "notInService",
+            "engineeringTrain",
+            "breakdownTrain",
+            "mixedTrain",
+            "specialTrain",
+            "otherTrain"
+          ],
+          "description": "Defines the train usage type for UI-purposes"
         }
       },
-      "required": ["description"],
+      "required": [
+        "description"
+      ],
       "additionalProperties": false
     },
-    "opp_AnyClass": {
+    "opp.OnBoardExtension": {
       "type": "object",
+      "description": "A container class for a non-standard key-value-property. Messages need sometimes IM-specific information.",
       "properties": {
-        "className": {
-          "type": "string"
+        "contentType": {
+          "type": "string",
+          "description": "Defines the key-attribute in a key-value-pair. Used for annotation of IM-specific onboard-equipment"
         },
         "content": {
           "type": "string",
-          "contentEncoding": "base64"
+          "contentEncoding": "base64",
+          "description": "Defines the value-attribute in a key-value-pair. Used for annotation of IM-specific onboard-equipment"
         }
       },
-      "required": ["className", "content"],
+      "required": [
+        "contentType",
+        "content"
+      ],
       "additionalProperties": false
     },
-    "opp_SupportedOnBoardEquipment": {
+    "opp.SupportedOnBoardEquipment": {
       "type": "object",
+      "description": "Defines Onboard equipment installed and active on a train",
       "properties": {
         "trainProtectionType": {
           "type": "string",
-          "enum": ["Etcs"]
+          "enum": [
+            "Etcs"
+          ],
+          "description": "Defines the train protection type supported by the on board equipment"
         },
         "etcsSystemVersions": {
           "type": "array",
           "items": {
             "type": "string",
-            "pattern": "\\d+.\\d+"
-           },
-          "minItems": 1
+            "pattern": "\\\\d+.\\\\d+"
+          },
+          "minItems": 1,
+          "description": "Defines the supported etcs system versions"
         },
-        "anyClasses": {
+        "onboardExtensions": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/opp_AnyClass"
-           }
+            "$ref": "#/definitions/opp.OnBoardExtension"
+          }
         }
       },
-      "required": ["etcsSystemVersions"],
+      "required": [
+        "etcsSystemVersions"
+      ],
       "additionalProperties": false
     },
-    "opp_OperationalConsist": {
+    "opp.OperationalConsist": {
       "type": "object",
+      "description": "Defines a rolling-stock consist unit identified by the installed onboard equipment.",
       "properties": {
         "supportedOnBoardEquipment": {
           "type": "object",
-          "$ref": "#/definitions/opp_SupportedOnBoardEquipment"
+          "$ref": "#/definitions/opp.SupportedOnBoardEquipment",
+          "description": "Defines the list of supported onboard equipment for an operational consist"
         }
       },
-      "required": ["supportedOnBoardEquipment"],
+      "required": [
+        "supportedOnBoardEquipment"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
+  "description": "Defines rolling stock, which is used to implement part of a train movement.",
   "properties": {
     "physicalTrainUnit": {
       "type": "object",
-      "description": "to be used inPlan Execution user interface of Workbench (fallback level for TMS)",
-      "$ref": "#/definitions/opp_PhysicalTrainUnitIdentifier"
+      "$ref": "#/definitions/opp.PhysicalTrainUnitIdentifier",
+      "description": "Defines the physical train unit to be used in Plan Execution user interface of Workbench (fallback level for TMS)"
     },
     "operationalTrainCategory": {
       "type": "object",
-      "description": "to be used inPlan Execution user interface of Workbench (fallback level for TMS)",
-      "$ref": "#/definitions/opp_OperationalTrainCategory"
+      "$ref": "#/definitions/opp.OperationalTrainCategory",
+      "description": "Defines the category type for the train in operational plan. To be used inPlan Execution user interface of Workbench (fallback level for TMS)"
     },
     "operationalConsists": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "defines the sequnce of consists starting from train-head",
-        "$ref": "#/definitions/opp_OperationalConsist"
-       },
-      "minItems": 1
+        "$ref": "#/definitions/opp.OperationalConsist"
+      },
+      "minItems": 1,
+      "description": "Defines operational consists building the TrainUnit starting from the train-head."
     },
     "nominalRotatingMass": {
       "type": "integer",
       "minimum": 0,
-      "description": "special value 160=unknown"
+      "description": "Defines the nominal rotating mass of the train,special value 0=unknown"
     },
     "regularBrakeWeightPercentage": {
       "type": "integer",
       "minimum": 0,
-      "description": "use zero as undefined"
+      "description": "Defines the regular brake weight percentage. Use 0 if undefined"
     },
     "emergencyBrakeWeightPercentage": {
       "type": "integer",
       "minimum": 0,
-      "description": "use zero as undefined"
+      "description": "Defines the emergency brake weight percentage. Use zero if undefined"
     },
     "brakePosition": {
       "type": "string",
-      "enum": ["passengerTrainInP", "passengerTrainInR", "freightTrainInP", "freightTrainInG", "brakePositionUnknown"]
+      "enum": [
+        "passengerTrainInP",
+        "passengerTrainInR",
+        "freightTrainInP",
+        "freightTrainInG",
+        "brakePositionUnknown"
+      ],
+      "description": "Defines the active brake position for the train"
     },
     "brakeModelType": {
       "type": "string",
-      "enum": ["lambda", "gamma", "undefined"]
+      "enum": [
+        "lambda",
+        "gamma",
+        "undefined"
+      ],
+      "description": "Defines the applicable brake model type for the train"
     },
-    "usedGradeOfAutomation": {
+    "atoGradeAutomation": {
       "type": "string",
-      "enum": ["GoAUnknown", "GoA1", "GoA2", "GoA3", "GoA4"]
+      "enum": [
+        "GoAUnknown",
+        "GoA1",
+        "GoA2",
+        "GoA3",
+        "GoA4"
+      ],
+      "description": "Defines the ato grade of automation for the train"
     },
     "scheduledTrainLength": {
       "type": "integer",
       "minimum": 0,
-      "description": "Train length in meter"
+      "description": "Defines the scheduled train length in meters"
     }
   },
-  "required": ["physicalTrainUnit", "operationalTrainCategory", "operationalConsists"],
+  "required": [
+    "physicalTrainUnit",
+    "operationalTrainCategory",
+    "operationalConsists"
+  ],
   "additionalProperties": false
 }

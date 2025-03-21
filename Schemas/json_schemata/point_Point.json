@@ -1,0 +1,225 @@
+{
+  "$id": "https://ERJU/point_Point",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "generic.Subsystem": {
+      "type": "object",
+      "description": "A subsystem for operational or service functions.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "subsystemIdentification": {
+          "type": "string",
+          "description": "The technical identifier of the subsystem or adjacent systems (see Eu.SAS.77 in [Eu.Doc.16])."
+        },
+        "statusTechnical": {
+          "type": "string",
+          "enum": [
+            "Unknown",
+            "Ok",
+            "Warning",
+            "FailureNonCritical",
+            "FailureCritical"
+          ],
+          "description": "Technical Status of the system, that represents the aggregated status of all hierarchical lower systems. This allows to have a top level information on the status of the system which can be drilled down if the system is in any other state than Ok."
+        },
+        "statusTechnicalManufacturerSpecificMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Must be used by the supplier to describe the reasons for a StatusTechnical != OK, that cannot be explained by existing datapoints (NOT including IM and manufacturer specific diagnostic messages). This Information MUST be provided from the supplier. This should provide flexibility for future uses. Multiple states can be indicated at the same time if multiple diagnosis have not been included in the model during the design phase. The supplier specific reason may not overlap with reasons already covered in other attributes."
+        },
+        "isTimeSynchronised": {
+          "type": "boolean",
+          "description": "Indicates whether the last time synchronisation was successful or not. This is important for the subsystem communication and diagnostic data gathering. TRUE: Current time of this subsystem is synchronised."
+        }
+      },
+      "required": [
+        "id",
+        "subsystemIdentification"
+      ],
+      "additionalProperties": false
+    },
+    "generic.FieldElement": {
+      "type": "object",
+      "description": "Represents an EULYNX Field Element Subsystem.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "operationStatus": {
+          "type": "string",
+          "enum": [
+            "Unknown",
+            "Booting",
+            "InitialisingWaitingForPdiOrMaintenance",
+            "InitialisingWaitingForPdi",
+            "InitialisingWaitingForDataUpdate",
+            "InitialisingWaitingForNoMaintenanceTimeout",
+            "Operational",
+            "FallbackMode"
+          ],
+          "description": "Indicates the operations status of the logical EfeS according to the essential state machine (see Eu.Gen.3294 in [Eu.Doc.20])."
+        },
+        "fieldElementSpecificationRevision": {
+          "type": "string",
+          "description": "Indicates the version of the EULYNX field element subsystem Requirements specification for subsystem XX which was used for development and production of the EULYNX field element subsystem. For example the EULYNX field element subsystem is developed and produced based on Requirements specification for subsystem XX version 1.6 (1.A), the fieldElementSpecificationRevision has the value 1.6 (1.A)."
+        },
+        "basicDataReadable": {
+          "type": "string",
+          "enum": [
+            "Unknown",
+            "NotReadable",
+            "Incomplete",
+            "FormallyCorrect"
+          ],
+          "description": "Indicates the status of the basic data required for the subsystem functionality."
+        },
+        "subsystem": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/generic.Subsystem"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "id",
+        "fieldElementSpecificationRevision",
+        "subsystem"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "The class represents the Subsystem - Point.",
+  "properties": {
+    "movementStatus": {
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "MovingToLeft",
+        "MovingToRight",
+        "NotMoving"
+      ],
+      "description": "Reports the movement status of the point."
+    },
+    "position": {
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "Left",
+        "Right",
+        "NoEndposition",
+        "UnintendedPosition"
+      ],
+      "description": "Reports the position of the point."
+    },
+    "positionDegraded": {
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "DegradedLeft",
+        "DegradedRight",
+        "NotDegraded",
+        "NotApplicable"
+      ],
+      "description": "Reports the degraded point position."
+    },
+    "turnCounter": {
+      "type": "number",
+      "description": "The number of started point machine movement since the last reset."
+    },
+    "pSamplingInterval": {
+      "type": "number",
+      "description": "The time between measurements in the PointTurnEvent in [sec]."
+    },
+    "isUsingRedrive": {
+      "type": "boolean",
+      "description": "True: The Subsystem - Point is using redrive."
+    },
+    "lastCommandedPosition": {
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "Left",
+        "Right"
+      ],
+      "description": "Reports the last point position commanded at the point by the interlocking."
+    },
+    "driveCutoffPrinciple": {
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "Individual",
+        "Common"
+      ],
+      "description": "Reports whether the point uses individual drive or common drive as cut-off principle."
+    },
+    "aggregateAbleToMoveStatus": {
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "Able",
+        "NotAble"
+      ],
+      "description": "Reports the aggregated ability to move status, considering the ability to move of the Subsystem - Point and all the configured Point Machines."
+    },
+    "pointAbleToMoveStatus": {
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "Able",
+        "NotAble"
+      ],
+      "description": "Reports the ability to move status of the internal logic of the Subsystem - Point."
+    },
+    "pointOperationTimer": {
+      "type": "number",
+      "description": "Timer that defines the maximum time period the Point has to arrive to an End position, starting with the command moving to the point machine."
+    },
+    "operationalIdentifier": {
+      "type": "string",
+      "contentEncoding": "base64",
+      "description": "Operational identifier of the connected subsystem."
+    },
+    "pointMachine": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "pointTurnEvent": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "fieldElement": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/generic.FieldElement"
+      },
+      "minItems": 1
+    },
+    "equipment": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "operationalIdentifier",
+    "pointMachine",
+    "fieldElement",
+    "equipment"
+  ],
+  "additionalProperties": false
+}

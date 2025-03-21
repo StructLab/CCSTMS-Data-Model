@@ -1,20 +1,17 @@
 {
   "$id": "https://ERJU/infra_CurveSamplePoint",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
-  "description": "Curve (radius) of the track at a given location on the track.",
+  "description": "Defines curve (radius) of the track at a given location on the track.",
   "properties": {
     "pos": {
       "type": "integer",
       "minimum": 0,
-      "description": "position on the associated TrackEdge"
+      "description": "position on the associated LinearElement"
     },
     "sampleCurveRadius": {
       "type": "integer",
-      "description": "radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+      "description": "Defines the radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
     }
   },
   "additionalProperties": false

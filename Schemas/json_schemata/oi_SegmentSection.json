@@ -1,0 +1,29 @@
+{
+  "$id": "https://ERJU/oi_SegmentSection",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Defines sections with start and end references for use in segment profile",
+  "properties": {
+    "range": {
+      "type": "string",
+      "enum": [
+        "rtStart",
+        "rtEnd",
+        "rtStartEnd",
+        "rtWholeSP"
+      ],
+      "description": "defines range type"
+    },
+    "pStart": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Start Position on the segment profile"
+    },
+    "pEnd": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "End Position on the segment profile"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,96 @@
+{
+  "$id": "https://ERJU/infra_SampledLinearElementGeometry",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "infra.SlopeSamplePoint": {
+      "type": "object",
+      "description": "Defines the Slope (gradient) of the track at a given location on the track.",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated LinearElement"
+        },
+        "samplePointSlope": {
+          "type": "integer",
+          "description": "Defines the vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the LinearElement. Positive for rising slope and negative for falling slope."
+        }
+      },
+      "additionalProperties": false
+    },
+    "infra.CurveSamplePoint": {
+      "type": "object",
+      "description": "Defines curve (radius) of the track at a given location on the track.",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated LinearElement"
+        },
+        "sampleCurveRadius": {
+          "type": "integer",
+          "description": "Defines the radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+        }
+      },
+      "additionalProperties": false
+    },
+    "infra.CantSamplePoint": {
+      "type": "object",
+      "description": "Defines the cant(superelevation) of the track at a given location on the track.",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated LinearElement"
+        },
+        "samplePointCant": {
+          "type": "integer",
+          "description": "Defines the height of the outer rail minus the inner rail. Outer rail and inner rail are defined according to the direction of curve.Rollangle=(arcsin(cant/gauge), gauge is distance between centers of rail-heads, e.g. 1500mm for EU-standard gauge."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines the container sampled linear element geometry within INFRA Domain",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "slopes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/infra.SlopeSamplePoint"
+      },
+      "minItems": 1,
+      "description": "composes of slope sample points"
+    },
+    "curves": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/infra.CurveSamplePoint"
+      },
+      "minItems": 1,
+      "description": "composes of curve sample points"
+    },
+    "cants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/infra.CantSamplePoint"
+      },
+      "minItems": 1,
+      "description": "composes of cant sample points"
+    }
+  },
+  "required": [
+    "id",
+    "slopes",
+    "curves",
+    "cants"
+  ],
+  "additionalProperties": false
+}

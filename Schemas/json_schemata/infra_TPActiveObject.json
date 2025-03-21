@@ -1,11 +1,8 @@
 {
   "$id": "https://ERJU/infra_TPActiveObject",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
-  "description": "A functional object infront of which a TimingPoint is located and active",
+  "description": "Defines a functional object infront of which a TimingPoint is located and active",
   "properties": {
     "etcsMarker": {
       "type": "string",
@@ -23,15 +20,21 @@
   "oneOf": [
     {
       "type": "object",
-      "required": ["etcsMarker"]
+      "required": [
+        "etcsMarker"
+      ]
     },
     {
       "type": "object",
-      "required": ["stopLocation"]
+      "required": [
+        "stopLocation"
+      ]
     },
     {
       "type": "object",
-      "required": ["timeMeasurePoint"]
+      "required": [
+        "timeMeasurePoint"
+      ]
     }
   ],
   "additionalProperties": false

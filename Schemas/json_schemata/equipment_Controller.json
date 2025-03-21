@@ -1,27 +1,29 @@
 {
   "$id": "https://ERJU/equipment_Controller",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "description": "Controller",
   "properties": {
     "id": {
-      "type": "string",
-      "description": "globally unique key (e.g. uuid)"
+      "type": "string"
     },
     "statusTechnical": {
       "type": "string",
-      "description": "General technical status of the equipment.",
-      "enum": ["Unknown", "OK", "Warning", "FailureNonCritical", "FailureCritical"]
+      "enum": [
+        "Unknown",
+        "OK",
+        "Warning",
+        "FailureNonCritical",
+        "FailureCritical"
+      ],
+      "description": "General technical status of the equipment."
     },
-    "statusTechnicalManufacturerSpecificValue": {
+    "statusTechnicalManufacturerSpecificMessage": {
       "type": "array",
       "items": {
-        "type": "string",
-        "description": "Array of manufacturer-specific status codes."
-       }
+        "type": "string"
+      },
+      "description": "Array of manufacturer-specific status codes."
     },
     "systemDescription": {
       "type": "string"
@@ -31,23 +33,47 @@
     },
     "operationStatus": {
       "type": "string",
-      "enum": ["Unknown", "Booting", "Fallback"]
+      "enum": [
+        "Unknown",
+        "Booting",
+        "InOperation",
+        "Fallback"
+      ]
     },
     "coolingFanStatus": {
       "type": "string",
-      "enum": ["Unknown", "Normal", "Failure"]
+      "enum": [
+        "Unknown",
+        "Normal",
+        "Degraded",
+        "Failure"
+      ]
     },
     "temperatureStatus": {
       "type": "string",
-      "enum": ["Unknown", "Normal", "TooHigh"]
+      "enum": [
+        "Unknown",
+        "Normal",
+        "TooHigh"
+      ]
     },
     "cpuHealthStatus": {
       "type": "string",
-      "enum": ["Unknown", "Normal", "Degraded", "Failure"]
+      "enum": [
+        "Unknown",
+        "Normal",
+        "Degraded",
+        "Failure"
+      ]
     },
     "cpuLoadStatus": {
       "type": "string",
-      "enum": ["Unknown", "Normal", "High", "Critical"]
+      "enum": [
+        "Unknown",
+        "Normal",
+        "High",
+        "Critical"
+      ]
     },
     "ramSize": {
       "type": "integer",
@@ -55,20 +81,38 @@
     },
     "ramHealthStatus": {
       "type": "string",
-      "enum": ["Unknown", "Normal", "Degraded", "Failure"]
+      "enum": [
+        "Unknown",
+        "Normal",
+        "Degraded",
+        "Failure"
+      ]
     },
     "bootingLastDateTime": {
       "type": "string",
-      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+      "format": "date-time"
     },
     "bootingLastReason": {
       "type": "string",
-      "enum": ["Unknown", "OnSite", "RemoteMdm", "InternalMaintenanceOk", "InternalMaintenanceFailure", "InternalFailure"]
+      "enum": [
+        "Unknown",
+        "OnSite",
+        "RemoteMdm",
+        "InternalMaintenanceOk",
+        "InternalMaintenanceFailure",
+        "InternalFailure"
+      ]
     },
     "label": {
       "type": "string"
     }
   },
-  "required": ["id", "systemDescription", "operatingSystem", "bootingLastDateTime", "label"],
+  "required": [
+    "id",
+    "systemDescription",
+    "operatingSystem",
+    "bootingLastDateTime",
+    "label"
+  ],
   "additionalProperties": false
 }

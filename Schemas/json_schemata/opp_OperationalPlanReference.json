@@ -1,33 +1,40 @@
 {
   "$id": "https://ERJU/opp_OperationalPlanReference",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines a reference to one of possible OperationalPlans (movement, restriction, warning)",
   "properties": {
     "operationalPlanMovementRef": {
-      "type": "string"
+      "type": "string",
+      "description": "Refers the operational plan movement"
     },
     "operationalPlanRestrictionRef": {
-      "type": "string"
+      "type": "string",
+      "description": "Refers the operational plan restriction"
     },
     "operationalPlanWarningMeasureRef": {
-      "type": "string"
+      "type": "string",
+      "description": "Refers the operational plan warning measure"
     }
   },
   "oneOf": [
     {
       "type": "object",
-      "required": ["operationalPlanMovementRef"]
+      "required": [
+        "operationalPlanMovementRef"
+      ]
     },
     {
       "type": "object",
-      "required": ["operationalPlanRestrictionRef"]
+      "required": [
+        "operationalPlanRestrictionRef"
+      ]
     },
     {
       "type": "object",
-      "required": ["operationalPlanWarningMeasureRef"]
+      "required": [
+        "operationalPlanWarningMeasureRef"
+      ]
     }
   ],
   "additionalProperties": false

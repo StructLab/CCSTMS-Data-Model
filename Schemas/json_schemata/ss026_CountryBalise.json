@@ -1,10 +1,8 @@
 {
   "$id": "https://ERJU/ss026_CountryBalise",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "The new country's and balise group's identification number",
   "properties": {
     "nid_c": {
       "type": "integer",

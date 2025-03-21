@@ -1,0 +1,238 @@
+{
+  "$id": "https://ERJU/infra_LinearElementGeometry",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "infra.HorizontalLine": {
+      "type": "object",
+      "description": "Defines the geometric primitive for a horizontal linear segment",
+      "properties": {
+        "elementGeometryPos": {
+          "type": "number",
+          "description": "Defines the position on the associated Linear Element"
+        },
+        "azimuth": {
+          "type": "number",
+          "description": "Defines the azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
+        }
+      },
+      "additionalProperties": false
+    },
+    "infra.HorizontalArc": {
+      "type": "object",
+      "description": "Defines the geometric primitive for a horizontal arc of circle",
+      "properties": {
+        "elementGeometryPos": {
+          "type": "number",
+          "description": "position on the associated LinearElement"
+        },
+        "azimuth": {
+          "type": "number",
+          "description": "Defines the azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
+        },
+        "radius": {
+          "type": "number",
+          "description": "Defines the radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+        }
+      },
+      "additionalProperties": false
+    },
+    "infra.HorizontalTransition": {
+      "type": "object",
+      "description": "Defines a geometric primitive for a horizontal transition curve, a clothoid.",
+      "properties": {
+        "elementGeometryPos": {
+          "type": "number",
+          "description": "position on the associated Linear Element"
+        },
+        "azimuth": {
+          "type": "number",
+          "description": "Defines the azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
+        },
+        "radius": {
+          "type": "number",
+          "description": "Defines the radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+        },
+        "transitionType": {
+          "type": "string",
+          "enum": [
+            "clothoidCurve",
+            "biquadraticParabola",
+            "blossCurve",
+            "cosineCurve",
+            "cubicParabola",
+            "sineCurve",
+            "wienerBogen"
+          ],
+          "description": "defines different transition types"
+        }
+      },
+      "additionalProperties": false
+    },
+    "infra.HorizontalSegment": {
+      "type": "object",
+      "description": "Defines a curvi-linear geometric primitive, mathematically represents a horizontal segment of the centre line of a railway track",
+      "properties": {
+        "horizontalSegmentLine": {
+          "type": "object",
+          "$ref": "#/definitions/infra.HorizontalLine",
+          "description": "composes of lines"
+        },
+        "horizontalSegmentArc": {
+          "type": "object",
+          "$ref": "#/definitions/infra.HorizontalArc",
+          "description": "composes of arcs"
+        },
+        "horizontalSegmentTransition": {
+          "type": "object",
+          "$ref": "#/definitions/infra.HorizontalTransition",
+          "description": "composes of transition curves"
+        }
+      },
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "horizontalSegmentLine"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "horizontalSegmentArc"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "horizontalSegmentTransition"
+          ]
+        }
+      ],
+      "additionalProperties": false
+    },
+    "infra.VerticalLine": {
+      "type": "object",
+      "description": "Defines the geometric primitive for vertical linear segment",
+      "properties": {
+        "elementGeometryPos": {
+          "type": "number",
+          "description": "position on the associated LinearElement"
+        },
+        "slope": {
+          "type": "number",
+          "description": "Defines the vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
+        }
+      },
+      "additionalProperties": false
+    },
+    "infra.VerticalArc": {
+      "type": "object",
+      "description": "Defines the geometric primitive for a vertical arc.",
+      "properties": {
+        "elementGeometryPos": {
+          "type": "number",
+          "description": "position on the associated LinearElement"
+        },
+        "slope": {
+          "type": "number",
+          "description": "Defines the vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
+        },
+        "radius": {
+          "type": "number",
+          "description": "Defines the radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+        },
+        "arcType": {
+          "type": "string",
+          "enum": [
+            "circularArc",
+            "parabola"
+          ],
+          "description": "Defines the type of Arc. For more details seehttps://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcAlignmentVerticalSegmentTypeEnum.htm"
+        }
+      },
+      "additionalProperties": false
+    },
+    "infra.VerticalSegment": {
+      "type": "object",
+      "description": "Defines a curvi-linear geometric primitive, mathematically represents a vertical segment of the centre line of a railway track",
+      "properties": {
+        "verticalSegmentLine": {
+          "type": "object",
+          "$ref": "#/definitions/infra.VerticalLine",
+          "description": "composes of lines"
+        },
+        "verticalSegmentArc": {
+          "type": "object",
+          "$ref": "#/definitions/infra.VerticalArc",
+          "description": "composes of arcs"
+        }
+      },
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "verticalSegmentLine"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "verticalSegmentArc"
+          ]
+        }
+      ],
+      "additionalProperties": false
+    },
+    "infra.CantPoint": {
+      "type": "object",
+      "description": "Defines Cant (Superelevation) at the locations of start and end Cant Ramps on the track.",
+      "properties": {
+        "elementGeometryPos": {
+          "type": "number",
+          "description": "position on the associated track edge"
+        },
+        "appliedCant": {
+          "type": "number",
+          "description": "Height of the outer rail minus the inner rail. Outer rail and inner rail are defined according to the direction of curve. Rollangle=(arcsin(cant/gauge)), gauge is distance between middle of the railheads, e.g. 1500mm for EU-standard gauge '1435mm' ; The applied cant is defined for the start"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines the geometry of the linear element centre line as a list of parametrised curves. The geometry is smooth; no discontinuities in azimuth or inclination.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "horizontalAlignments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/infra.HorizontalSegment"
+      },
+      "description": "Defines a sequence of geometric primitives, i.e. arc, line or clothoid, that compose this track geometry"
+    },
+    "verticalAlignments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/infra.VerticalSegment"
+      },
+      "description": "Defines a sequence of geometric primitives, i.e. arc, line or clothoid, that compose this track geometry"
+    },
+    "cantPoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/infra.CantPoint"
+      },
+      "description": "Defines the cant points along the linear element. The linear element must be completely defined, at least at beginning and end. Empty means undefined"
+    }
+  },
+  "required": [
+    "id"
+  ],
+  "additionalProperties": false
+}

@@ -1,36 +1,67 @@
 {
   "$id": "https://ERJU/opp_EtcsDataAto",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines static train capability data reported by ATO",
   "properties": {
     "trainLength": {
       "type": "integer",
       "minimum": 0,
-      "description": "0 if unknown"
+      "description": "Defines the train length,0 if unknown"
     },
     "maximumSpeed": {
       "type": "integer",
       "minimum": 0,
-      "description": "0 if unknown"
+      "description": "Defines the maximum applicable speed, use 0 if unknown"
     },
     "cantDeficiencyCategory": {
       "type": "string",
-      "enum": ["CD_Undefined", "CD_80mm", "CD_100mm", "CD_130mm", "CD_150mm", "CD_165mm", "CD_180mm", "CD_210mm", "CD_225mm", "CD_245mm", "CD_275mm", "CD_300mm"]
+      "enum": [
+        "CD_Undefined",
+        "CD_80mm",
+        "CD_100mm",
+        "CD_130mm",
+        "CD_150mm",
+        "CD_165mm",
+        "CD_180mm",
+        "CD_210mm",
+        "CD_225mm",
+        "CD_245mm",
+        "CD_275mm",
+        "CD_300mm"
+      ],
+      "description": "Defines the cant deficiency category of the train"
     },
     "otherInternationalCategory": {
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["SSSP_freightTrainP", "SSSP_freightTrainG", "SSSP_passengerTrain"]
-       },
-      "maxItems": 15
+        "enum": [
+          "SSSP_freightTrainP",
+          "SSSP_freightTrainG",
+          "SSSP_passengerTrain"
+        ]
+      },
+      "maxItems": 15,
+      "description": "Defines other international train categories"
     },
     "axleLoadCategory": {
       "type": "string",
-      "enum": ["AL_A", "AL_HS17", "AL_B1", "AL_B2", "AL_C2", "AL_C3", "AL_C4", "AL_D2", "AL_D3", "AL_D4", "AL_D4XL", "AL_E4", "AL_E5"]
+      "enum": [
+        "AL_A",
+        "AL_HS17",
+        "AL_B1",
+        "AL_B2",
+        "AL_C2",
+        "AL_C3",
+        "AL_C4",
+        "AL_D2",
+        "AL_D3",
+        "AL_D4",
+        "AL_D4XL",
+        "AL_E4",
+        "AL_E5"
+      ]
     },
     "nominalRotatingMass": {
       "type": "integer",
@@ -40,16 +71,23 @@
     "brakePercentage": {
       "type": "integer",
       "minimum": 0,
-      "description": "255 if unknown"
+      "description": "Defines the brake percentage. 255 if unknown"
     },
     "preconfiguredBrakingModel": {
       "type": "integer",
       "minimum": 0,
-      "description": "255 if unknown"
+      "description": "Defines preconfigured braking model for the train. Use 255 if unknown"
     },
     "brakePosition": {
       "type": "string",
-      "enum": ["passengerTrainInP", "passengerTrainInR", "freightTrainInP", "freightTrainInG", "brakePositionUnknown"]
+      "enum": [
+        "passengerTrainInP",
+        "passengerTrainInR",
+        "freightTrainInP",
+        "freightTrainInG",
+        "brakePositionUnknown"
+      ],
+      "description": "Defines the active brake position for the train"
     }
   },
   "additionalProperties": false

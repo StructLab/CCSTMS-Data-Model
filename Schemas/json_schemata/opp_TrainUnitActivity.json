@@ -1,25 +1,31 @@
 {
   "$id": "https://ERJU/opp_TrainUnitActivity",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
-  "description": "if the train turns around, an additional MovementEvent must be integrated with the new position of train head",
+  "description": "Defines, what happens with the rolling stock at this location.",
   "properties": {
     "trainUnitActivityType": {
       "type": "string",
-      "enum": ["joinActivity", "splitActivity", "collectActivity", "dropActivity", "turnAroundActivity", "meetActivity"]
+      "enum": [
+        "joinActivity",
+        "splitActivity",
+        "collectActivity",
+        "dropActivity",
+        "turnAroundActivity",
+        "meetActivity",
+        "otherActivity"
+      ],
+      "description": "Defines the train unit activity type"
     },
     "actualTrainUnitIndex": {
       "type": "integer",
       "minimum": 0,
-      "description": "index of TrainUnit in OperationalMovement.operationalTrainUnits before the activity"
+      "description": "Defines the index of TrainUnit in OperationalMovement. operationalTrainUnits before the activity"
     },
     "targetTrainUnitIndex": {
       "type": "integer",
       "minimum": 0,
-      "description": "index of TrainUnit in OperationalMovement.operationalTrainUnits after the activity"
+      "description": "Defines the index of TrainUnit in OperationalMovement. operationalTrainUnits after the activity"
     }
   },
   "additionalProperties": false

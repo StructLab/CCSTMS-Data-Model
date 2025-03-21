@@ -1,8 +1,8 @@
 {
   "$id": "https://ERJU/map_MapArea",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "map_TrackEdgeCoordinate": {
+    "map.LinearElementCoordinate": {
       "type": "object",
       "properties": {
         "pos": {
@@ -42,32 +42,34 @@
       },
       "additionalProperties": false
     },
-    "map_TrackEdgeProjection": {
+    "map.LinearElementProjection": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identity of the object; used for referencing"
+        "linearElement": {
+          "type": "string"
         },
         "coordinates": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of coordinates",
-            "$ref": "#/definitions/map_TrackEdgeCoordinate"
-           },
-          "minItems": 2
+            "$ref": "#/definitions/map.LinearElementCoordinate"
+          },
+          "minItems": 2,
+          "description": "composes of coordinates"
         }
       },
-      "required": ["id", "coordinates"],
+      "required": [
+        "linearElement",
+        "coordinates"
+      ],
       "additionalProperties": false
     },
-    "map_FunctionalElementRef": {
+    "map.FunctionalElementRef": {
       "type": "object",
       "properties": {
-        "simplePoint": {
+        "switch": {
           "type": "string",
-          "description": "refers to simple point"
+          "description": "refers to switch/simple point"
         },
         "etcsMarker": {
           "type": "string",
@@ -93,38 +95,50 @@
       "oneOf": [
         {
           "type": "object",
-          "required": ["simplePoint"]
+          "required": [
+            "switch"
+          ]
         },
         {
           "type": "object",
-          "required": ["etcsMarker"]
+          "required": [
+            "etcsMarker"
+          ]
         },
         {
           "type": "object",
-          "required": ["stopLocation"]
+          "required": [
+            "stopLocation"
+          ]
         },
         {
           "type": "object",
-          "required": ["timingPoint"]
+          "required": [
+            "timingPoint"
+          ]
         },
         {
           "type": "object",
-          "required": ["operationalPoint"]
+          "required": [
+            "operationalPoint"
+          ]
         },
         {
           "type": "object",
-          "required": ["balise"]
+          "required": [
+            "balise"
+          ]
         }
       ],
       "additionalProperties": false
     },
-    "map_FunctionalElementProjection": {
+    "map.FunctionalElementProjection": {
       "type": "object",
       "properties": {
         "elementRef": {
           "type": "object",
-          "description": "composes of element refs",
-          "$ref": "#/definitions/map_FunctionalElementRef"
+          "$ref": "#/definitions/map.FunctionalElementRef",
+          "description": "composes of element refs"
         },
         "x": {
           "type": "number",
@@ -151,7 +165,9 @@
           "description": "absolute accuracy as 1sigma. Use 0.0 if not defined"
         }
       },
-      "required": ["elementRef"],
+      "required": [
+        "elementRef"
+      ],
       "additionalProperties": false
     }
   },
@@ -167,7 +183,7 @@
     },
     "versionTimestamp": {
       "type": "string",
-      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
+      "format": "date-time",
       "description": "version information which is valid since timestamp"
     },
     "areaId": {
@@ -179,23 +195,27 @@
       "minimum": 0,
       "description": "EPSG code, 1 - monitor coordinates"
     },
-    "trackEdgeProjections": {
+    "linearElementProjections": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "composes of track edges",
-        "$ref": "#/definitions/map_TrackEdgeProjection"
-       }
+        "$ref": "#/definitions/map.LinearElementProjection"
+      },
+      "description": "composes of track edges"
     },
     "functionalElements": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "composes of functional elements",
-        "$ref": "#/definitions/map_FunctionalElementProjection"
-       }
+        "$ref": "#/definitions/map.FunctionalElementProjection"
+      },
+      "description": "composes of functional elements"
     }
   },
-  "required": ["id", "versionTimestamp", "areaId"],
+  "required": [
+    "id",
+    "versionTimestamp",
+    "areaId"
+  ],
   "additionalProperties": false
 }

@@ -1,10 +1,8 @@
 {
   "$id": "https://ERJU/ss026_CorrectionFactor",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines the correction factors used to adjust train operation parameters based on train length. These factors are part of the National Values and are used to determine the integrated correction factor Kr for specific train length intervals.",
   "properties": {
     "l_nvkrint": {
       "type": "integer",

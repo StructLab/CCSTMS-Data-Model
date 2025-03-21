@@ -1,50 +1,60 @@
 {
   "$id": "https://ERJU/infra_TopoArea",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_TrackEdge": {
+    "infra.LinearElement": {
       "type": "object",
-      "description": "A track edge is an uninterrupted stretch of railway track, without divergence or convergence.",
+      "description": "A linear element is an uninterrupted stretch of railway track, without divergence or convergence.",
       "properties": {
         "id": {
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "trackEdgeLength": {
+        "lengthOfNetLinearElement": {
           "type": "integer",
           "minimum": 0,
-          "description": "Distance along the TrackEdge's track centre line. "
+          "description": "Defines the distance along the LinearElement's track centre line. "
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id"],
+      "required": [
+        "id"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackEdgeLink": {
+    "infra.NetRelation": {
       "type": "object",
-      "description": "Defines a relation between two track edges along which a train can run.",
+      "description": "Defines a relation between two elements.",
       "properties": {
         "id": {
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "trackEdgeA": {
+        "elementA": {
           "type": "string",
-          "description": "Connects to track edge A"
+          "description": "References the first linear element in an oriented relation."
         },
-        "trackEdgeB": {
+        "elementB": {
           "type": "string",
-          "description": "Connects to track edge B"
+          "description": "References the second linear element in an oriented relation."
         },
-        "startOfA": {
+        "isOnOriginOfElementA": {
           "type": "boolean",
-          "description": "True when linked to the start of track edge A, false when to the end"
+          "description": "Determines if the position of the topological element A in a relation is the origin of element A."
         },
-        "startOfB": {
+        "isOnOriginOfElementB": {
           "type": "boolean",
-          "description": "True when linked to the start of track edge B, false when to the end"
+          "description": "Determines if the position of the topological element B in a relation is the origin of element B."
         }
       },
-      "required": ["id", "trackEdgeA", "trackEdgeB"],
+      "required": [
+        "id",
+        "elementA",
+        "elementB"
+      ],
       "additionalProperties": false
     }
   },
@@ -57,26 +67,33 @@
     },
     "versionTimestamp": {
       "type": "string",
-      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
+      "format": "date-time",
       "description": "version information which is valid since timestamp"
     },
-    "trackEdges": {
+    "linearElements": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "composes of track edges",
-        "$ref": "#/definitions/infra_TrackEdge"
-       }
+        "$ref": "#/definitions/infra.LinearElement"
+      },
+      "description": "composes of linear elements = Edges in the graph"
     },
-    "trackEdgeLinks": {
+    "netRelations": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "composes of track edge links",
-        "$ref": "#/definitions/infra_TrackEdgeLink"
-       }
+        "$ref": "#/definitions/infra.NetRelation"
+      },
+      "description": "composes of net relations =links between edges in the graph"
+    },
+    "name": {
+      "type": "string",
+      "description": "User-friendly name, only if different from id"
     }
   },
-  "required": ["id", "versionTimestamp"],
+  "required": [
+    "id",
+    "versionTimestamp"
+  ],
   "additionalProperties": false
 }

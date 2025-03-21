@@ -1,9 +1,6 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_40",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "description": " Track Condition Change of allowed current consumption (The packet gives information about change of the allowed current consumption)",
   "properties": {

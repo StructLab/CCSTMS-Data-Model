@@ -1,0 +1,33 @@
+{
+  "$id": "https://ERJU/eng_Switch",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Defines the physical track asset Switch (Simple Point)",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "foulingPoints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "refers to fouling points"
+    },
+    "tipShift": {
+      "type": "number",
+      "description": "Defines the tip distance from the start of the switch on main and branching tracks"
+    },
+    "bladeLength": {
+      "type": "number",
+      "description": "Defines the length of the blade of switch along main and branching tracks"
+    }
+  },
+  "required": [
+    "id",
+    "foulingPoints"
+  ],
+  "additionalProperties": false
+}

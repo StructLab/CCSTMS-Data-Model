@@ -1,0 +1,73 @@
+{
+  "$id": "https://ERJU/oi_DigitalRegisterHandshakeRejection",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "oi.TrackTrainHeader": {
+      "type": "object",
+      "properties": {
+        "packetId": {
+          "type": "string",
+          "description": "defines the packet identifier"
+        },
+        "leadingOnBoardUnitId": {
+          "type": "string",
+          "description": "see NID_ENGINE. To be usable with ETCS must contain a decimal number [0..16.777.215]"
+        },
+        "issuedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"
+        }
+      },
+      "required": [
+        "packetId",
+        "issuedAt"
+      ],
+      "additionalProperties": false
+    },
+    "oi.ContactInformation": {
+      "type": "object",
+      "description": "Defines structure of Digital Register Transactor Contact Information",
+      "properties": {
+        "nidDRTA": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines national identifier for the Digital Register Transactor"
+        },
+        "nidC": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines country identifier for the Digital Register Transactor"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines structure of Handshake Rejection",
+  "properties": {
+    "trackTrainHeader": {
+      "type": "object",
+      "$ref": "#/definitions/oi.TrackTrainHeader",
+      "description": "defines header"
+    },
+    "rejectionReason": {
+      "type": "string",
+      "enum": [
+        "incompatibleSystemVersion",
+        "anotherDRTAInCharge",
+        "DRTAInChargeUnknown"
+      ],
+      "description": "defines the rejection reason"
+    },
+    "contactInformation": {
+      "type": "object",
+      "$ref": "#/definitions/oi.ContactInformation",
+      "description": "Defines the contact information of the DR Transactor ; To be defined when the reject reason states 'anotherDRTAInCharge'"
+    }
+  },
+  "required": [
+    "trackTrainHeader"
+  ],
+  "additionalProperties": false
+}

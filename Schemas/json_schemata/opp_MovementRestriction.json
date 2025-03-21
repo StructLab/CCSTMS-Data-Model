@@ -1,76 +1,94 @@
 {
   "$id": "https://ERJU/opp_MovementRestriction",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_DirTrackEdge": {
+    "infra.TopologicalCoordinate": {
       "type": "object",
+      "description": "Defines a topological coordinates on the track",
       "properties": {
-        "trackEdge": {
+        "onLinearElement": {
           "type": "string",
-          "description": "refers totrack edge"
+          "description": "is positioned on linear element"
         },
-        "sameDir": {
-          "type": "boolean",
-          "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
+        "offsetFromOrigin": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated NetElement"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onLinearElement"
+      ],
       "additionalProperties": false
     },
-    "infra_LinkedPath": {
+    "infra.NetLinearReference": {
       "type": "object",
       "description": "Defines a linked path on the topology",
       "properties": {
-        "dirTrackEdges": {
+        "startsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Definesthe starting coordinate of a linear reference"
+        },
+        "endsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Defines the ending coordinate of a linear reference."
+        },
+        "hasSequence": {
           "type": "array",
           "items": {
-            "type": "object",
-            "description": "composes of directed track edges",
-            "$ref": "#/definitions/infra_DirTrackEdge"
-           },
-          "minItems": 1
-        },
-        "skipFromPathStart": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [0..skipFromStart]"
-        },
-        "skipFromPathEnd": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]"
+            "type": "string"
+          },
+          "description": "Defines a sequence of linearElements from the start to the end excluding those defined in startAt- and endsAt-TopologicalCoodinates."
         }
       },
-      "required": ["dirTrackEdges"],
+      "required": [
+        "startsAt",
+        "endsAt"
+      ],
       "additionalProperties": false
     },
-    "opp_DPSGroupsList": {
+    "opp.DPSGroupsList": {
       "type": "object",
+      "description": "Defines a set of Drive-Protection-Section-Groups",
       "properties": {
         "dpsGroups": {
           "type": "array",
           "items": {
             "type": "string"
-           }
+          },
+          "description": "Defines the list of DPS Groups"
         }
       },
       "additionalProperties": false
     },
-    "opp_SpecificMovementRestriction": {
+    "opp.SpecificMovementRestriction": {
       "type": "object",
+      "description": "Defines single aspect of the train specific restriction",
       "properties": {
         "maxSpeed": {
           "type": "integer",
-          "minimum": 0
+          "minimum": 0,
+          "description": "Defines the maximum applicable speed"
         },
         "adhesionCategory": {
           "type": "string",
-          "enum": ["dryRailHigh", "dryRailMedium", "dryRailLow", "lowAdhesion", "veryLowAdhesion", "extremelyLowAdhesion", "unknownAdhesion"]
+          "enum": [
+            "dryRailHigh",
+            "dryRailMedium",
+            "dryRailLow",
+            "lowAdhesion",
+            "veryLowAdhesion",
+            "extremelyLowAdhesion",
+            "unknownAdhesion"
+          ],
+          "description": "Defines the different adhesion categories applicable for the train as per track conditions"
         },
         "maxCurrent": {
           "type": "integer",
           "minimum": 0,
-          "description": "electric current limitation, s. item 0.33 in SS126"
+          "description": "Defines max current value, s. item 0.33 in SS126"
         },
         "atoInhibition": {
           "type": "boolean",
@@ -78,54 +96,72 @@
         },
         "dasInhibition": {
           "type": "boolean",
-          "description": "Driver advisory system not available in this section"
+          "description": "Defines the Driver advisory system inhibition zone"
         },
         "excludedDPSGroupsForFlankProtection": {
           "type": "object",
-          "description": "List of DPSGroups to be excluded from flank protection calculation.",
-          "$ref": "#/definitions/opp_DPSGroupsList"
+          "$ref": "#/definitions/opp.DPSGroupsList",
+          "description": "Defines the list of DPSGroups to be excluded from flank protection calculation."
         }
       },
       "oneOf": [
         {
           "type": "object",
-          "required": ["maxSpeed"]
+          "required": [
+            "maxSpeed"
+          ]
         },
         {
           "type": "object",
-          "required": ["adhesionCategory"]
+          "required": [
+            "adhesionCategory"
+          ]
         },
         {
           "type": "object",
-          "required": ["maxCurrent"]
+          "required": [
+            "maxCurrent"
+          ]
         },
         {
           "type": "object",
-          "required": ["atoInhibition"]
+          "required": [
+            "atoInhibition"
+          ]
         },
         {
           "type": "object",
-          "required": ["dasInhibition"]
+          "required": [
+            "dasInhibition"
+          ]
         },
         {
           "type": "object",
-          "required": ["excludedDPSGroupsForFlankProtection"]
+          "required": [
+            "excludedDPSGroupsForFlankProtection"
+          ]
         }
       ],
       "additionalProperties": false
     }
   },
   "type": "object",
+  "description": "Defines train specific restriction along its path.",
   "properties": {
     "restrictedPath": {
       "type": "object",
-      "$ref": "#/definitions/infra_LinkedPath"
+      "$ref": "#/definitions/infra.NetLinearReference",
+      "description": "Defines the restricted path associated to a restriction of on an operational plan movement"
     },
     "specificRestriction": {
       "type": "object",
-      "$ref": "#/definitions/opp_SpecificMovementRestriction"
+      "$ref": "#/definitions/opp.SpecificMovementRestriction",
+      "description": "Defines the specific restriction active on the restriction path associated to an operational plan movement"
     }
   },
-  "required": ["restrictedPath", "specificRestriction"],
+  "required": [
+    "restrictedPath",
+    "specificRestriction"
+  ],
   "additionalProperties": false
 }

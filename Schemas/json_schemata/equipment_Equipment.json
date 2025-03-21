@@ -1,26 +1,31 @@
 {
   "$id": "https://ERJU/equipment_Equipment",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "equipment_Controller": {
+    "equipment.Controller": {
       "type": "object",
       "description": "Controller",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "type": "string"
         },
         "statusTechnical": {
           "type": "string",
-          "description": "General technical status of the equipment.",
-          "enum": ["Unknown", "OK", "Warning", "FailureNonCritical", "FailureCritical"]
+          "enum": [
+            "Unknown",
+            "OK",
+            "Warning",
+            "FailureNonCritical",
+            "FailureCritical"
+          ],
+          "description": "General technical status of the equipment."
         },
-        "statusTechnicalManufacturerSpecificValue": {
+        "statusTechnicalManufacturerSpecificMessage": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "Array of manufacturer-specific status codes."
-           }
+            "type": "string"
+          },
+          "description": "Array of manufacturer-specific status codes."
         },
         "systemDescription": {
           "type": "string"
@@ -30,23 +35,47 @@
         },
         "operationStatus": {
           "type": "string",
-          "enum": ["Unknown", "Booting", "Fallback"]
+          "enum": [
+            "Unknown",
+            "Booting",
+            "InOperation",
+            "Fallback"
+          ]
         },
         "coolingFanStatus": {
           "type": "string",
-          "enum": ["Unknown", "Normal", "Failure"]
+          "enum": [
+            "Unknown",
+            "Normal",
+            "Degraded",
+            "Failure"
+          ]
         },
         "temperatureStatus": {
           "type": "string",
-          "enum": ["Unknown", "Normal", "TooHigh"]
+          "enum": [
+            "Unknown",
+            "Normal",
+            "TooHigh"
+          ]
         },
         "cpuHealthStatus": {
           "type": "string",
-          "enum": ["Unknown", "Normal", "Degraded", "Failure"]
+          "enum": [
+            "Unknown",
+            "Normal",
+            "Degraded",
+            "Failure"
+          ]
         },
         "cpuLoadStatus": {
           "type": "string",
-          "enum": ["Unknown", "Normal", "High", "Critical"]
+          "enum": [
+            "Unknown",
+            "Normal",
+            "High",
+            "Critical"
+          ]
         },
         "ramSize": {
           "type": "integer",
@@ -54,51 +83,80 @@
         },
         "ramHealthStatus": {
           "type": "string",
-          "enum": ["Unknown", "Normal", "Degraded", "Failure"]
+          "enum": [
+            "Unknown",
+            "Normal",
+            "Degraded",
+            "Failure"
+          ]
         },
         "bootingLastDateTime": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+          "format": "date-time"
         },
         "bootingLastReason": {
           "type": "string",
-          "enum": ["Unknown", "OnSite", "RemoteMdm", "InternalMaintenanceOk", "InternalMaintenanceFailure", "InternalFailure"]
+          "enum": [
+            "Unknown",
+            "OnSite",
+            "RemoteMdm",
+            "InternalMaintenanceOk",
+            "InternalMaintenanceFailure",
+            "InternalFailure"
+          ]
         },
         "label": {
           "type": "string"
         }
       },
-      "required": ["id", "systemDescription", "operatingSystem", "bootingLastDateTime", "label"],
+      "required": [
+        "id",
+        "systemDescription",
+        "operatingSystem",
+        "bootingLastDateTime",
+        "label"
+      ],
       "additionalProperties": false
     },
-    "equipment_PhysicalNetworkInterface": {
+    "equipment.PhysicalNetworkInterface": {
       "type": "object",
       "description": "PhysicalNetworkInterface",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "type": "string"
         },
         "statusTechnical": {
           "type": "string",
-          "description": "General technical status of the equipment.",
-          "enum": ["Unknown", "OK", "Warning", "FailureNonCritical", "FailureCritical"]
+          "enum": [
+            "Unknown",
+            "OK",
+            "Warning",
+            "FailureNonCritical",
+            "FailureCritical"
+          ],
+          "description": "General technical status of the equipment."
         },
-        "statusTechnicalManufacturerSpecificValue": {
+        "statusTechnicalManufacturerSpecificMessage": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "Array of manufacturer-specific status codes."
-           }
+            "type": "string"
+          },
+          "description": "Array of manufacturer-specific status codes."
         },
         "macAddress": {
           "type": "string"
         },
         "operationStatus": {
           "type": "string",
-          "enum": ["Unknown", "NotAvialableNotConnected", "AvailableNotConnected", "Connected", "NotConnectedDisturbed"]
+          "enum": [
+            "Unknown",
+            "NotAvialableNotConnected",
+            "AvailableNotConnected",
+            "Connected",
+            "NotConnectedDisturbed"
+          ]
         },
-        "nominationalBandwidth": {
+        "nominalBandwidth": {
           "type": "integer",
           "minimum": 0
         },
@@ -106,28 +164,37 @@
           "type": "string"
         }
       },
-      "required": ["id", "macAddress", "label"],
+      "required": [
+        "id",
+        "macAddress",
+        "label"
+      ],
       "additionalProperties": false
     },
-    "equipment_StorageMediumFlash": {
+    "equipment.StorageMediumFlash": {
       "type": "object",
       "description": "StorageMediumFlash",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "type": "string"
         },
         "statusTechnical": {
           "type": "string",
-          "description": "General technical status of the equipment.",
-          "enum": ["Unknown", "OK", "Warning", "FailureNonCritical", "FailureCritical"]
+          "enum": [
+            "Unknown",
+            "OK",
+            "Warning",
+            "FailureNonCritical",
+            "FailureCritical"
+          ],
+          "description": "General technical status of the equipment."
         },
-        "statusTechnicalManufacturerSpecificValue": {
+        "statusTechnicalManufacturerSpecificMessage": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "Array of manufacturer-specific status codes."
-           }
+            "type": "string"
+          },
+          "description": "Array of manufacturer-specific status codes."
         },
         "memorySize": {
           "type": "integer",
@@ -135,46 +202,75 @@
         },
         "temperatureStatus": {
           "type": "string",
-          "enum": ["Unknown", "Normal", "TooHigh"]
+          "enum": [
+            "Unknown",
+            "Normal",
+            "TooHigh"
+          ]
         },
         "label": {
           "type": "string"
         },
         "wearStatus": {
           "type": "string",
-          "enum": ["Unknown", "Ok", "Warning", "Nok"]
+          "enum": [
+            "Unknown",
+            "Ok",
+            "Warning",
+            "Nok"
+          ]
         }
       },
-      "required": ["id", "label"],
+      "required": [
+        "id",
+        "label"
+      ],
       "additionalProperties": false
     },
-    "equipment_PowerSupply": {
+    "equipment.PowerSupply": {
       "type": "object",
       "description": "PowerSupply",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "type": "string"
         },
         "statusTechnical": {
           "type": "string",
-          "description": "General technical status of the equipment.",
-          "enum": ["Unknown", "OK", "Warning", "FailureNonCritical", "FailureCritical"]
+          "enum": [
+            "Unknown",
+            "OK",
+            "Warning",
+            "FailureNonCritical",
+            "FailureCritical"
+          ],
+          "description": "General technical status of the equipment."
         },
-        "statusTechnicalManufacturerSpecificValue": {
+        "statusTechnicalManufacturerSpecificMessage": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "Array of manufacturer-specific status codes."
-           }
+            "type": "string"
+          },
+          "description": "Array of manufacturer-specific status codes."
         },
         "inputVoltageStatus": {
           "type": "string",
-          "enum": ["Unknown", "NotUsed", "Undervoltage", "Nominal", "Overvoltage"]
+          "enum": [
+            "Unknown",
+            "NotUsed",
+            "Undervoltage",
+            "Nominal",
+            "Overvoltage"
+          ]
         },
         "outputVoltageStatus": {
           "type": "string",
-          "enum": ["Unknown", "NotUsed", "Undervoltage", "Nominal", "Overvoltage"]
+          "enum": [
+            "Unknown",
+            "NotUsed",
+            "Undervoltage",
+            "Nominal",
+            "Overvoltage"
+          ]
         },
         "outputPower": {
           "type": "integer",
@@ -186,7 +282,11 @@
         },
         "temperatureStatus": {
           "type": "string",
-          "enum": ["Unknown", "Normal", "TooHigh"]
+          "enum": [
+            "Unknown",
+            "Normal",
+            "TooHigh"
+          ]
         },
         "label": {
           "type": "string"
@@ -198,35 +298,47 @@
           "type": "number"
         }
       },
-      "required": ["id", "label"],
+      "required": [
+        "id",
+        "label"
+      ],
       "additionalProperties": false
     },
-    "equipment_PhysicalDigitalOutput": {
+    "equipment.PhysicalDigitalOutput": {
       "type": "object",
       "description": "PhysicalDigitalOutput",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "type": "string"
         },
         "statusTechnical": {
           "type": "string",
-          "description": "General technical status of the equipment.",
-          "enum": ["Unknown", "OK", "Warning", "FailureNonCritical", "FailureCritical"]
+          "enum": [
+            "Unknown",
+            "OK",
+            "Warning",
+            "FailureNonCritical",
+            "FailureCritical"
+          ],
+          "description": "General technical status of the equipment."
         },
-        "statusTechnicalManufacturerSpecificValue": {
+        "statusTechnicalManufacturerSpecificMessage": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "Array of manufacturer-specific status codes."
-           }
+            "type": "string"
+          },
+          "description": "Array of manufacturer-specific status codes."
         },
         "label": {
           "type": "string"
         },
         "physicalOutputValue": {
           "type": "string",
-          "enum": ["Unknown", "High", "Low"]
+          "enum": [
+            "Unknown",
+            "High",
+            "Low"
+          ]
         },
         "outputVoltage": {
           "type": "number"
@@ -235,28 +347,36 @@
           "type": "number"
         }
       },
-      "required": ["id", "label"],
+      "required": [
+        "id",
+        "label"
+      ],
       "additionalProperties": false
     },
-    "equipment_PhysicalAnalogOutput": {
+    "equipment.PhysicalAnalogOutput": {
       "type": "object",
       "description": "PhysicalAnalogOutput",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "type": "string"
         },
         "statusTechnical": {
           "type": "string",
-          "description": "General technical status of the equipment.",
-          "enum": ["Unknown", "OK", "Warning", "FailureNonCritical", "FailureCritical"]
+          "enum": [
+            "Unknown",
+            "OK",
+            "Warning",
+            "FailureNonCritical",
+            "FailureCritical"
+          ],
+          "description": "General technical status of the equipment."
         },
-        "statusTechnicalManufacturerSpecificValue": {
+        "statusTechnicalManufacturerSpecificMessage": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "Array of manufacturer-specific status codes."
-           }
+            "type": "string"
+          },
+          "description": "Array of manufacturer-specific status codes."
         },
         "label": {
           "type": "string"
@@ -268,66 +388,90 @@
           "type": "number"
         }
       },
-      "required": ["id", "label"],
+      "required": [
+        "id",
+        "label"
+      ],
       "additionalProperties": false
     },
-    "equipment_PhysicalSeparatedOutput": {
+    "equipment.PhysicalSeparatedOutput": {
       "type": "object",
       "description": "PhysicalSeparatedOutput",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "type": "string"
         },
         "statusTechnical": {
           "type": "string",
-          "description": "General technical status of the equipment.",
-          "enum": ["Unknown", "OK", "Warning", "FailureNonCritical", "FailureCritical"]
+          "enum": [
+            "Unknown",
+            "OK",
+            "Warning",
+            "FailureNonCritical",
+            "FailureCritical"
+          ],
+          "description": "General technical status of the equipment."
         },
-        "statusTechnicalManufacturerSpecificValue": {
+        "statusTechnicalManufacturerSpecificMessage": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "Array of manufacturer-specific status codes."
-           }
+            "type": "string"
+          },
+          "description": "Array of manufacturer-specific status codes."
         },
         "label": {
           "type": "string"
         },
         "outputValue": {
           "type": "string",
-          "enum": ["Unknown", "On", "Off"]
+          "enum": [
+            "Unknown",
+            "On",
+            "Off"
+          ]
         }
       },
-      "required": ["id", "label"],
+      "required": [
+        "id",
+        "label"
+      ],
       "additionalProperties": false
     },
-    "equipment_PhysicalDigitalInput": {
+    "equipment.PhysicalDigitalInput": {
       "type": "object",
       "description": "PhysicalDigitalInput",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "type": "string"
         },
         "statusTechnical": {
           "type": "string",
-          "description": "General technical status of the equipment.",
-          "enum": ["Unknown", "OK", "Warning", "FailureNonCritical", "FailureCritical"]
+          "enum": [
+            "Unknown",
+            "OK",
+            "Warning",
+            "FailureNonCritical",
+            "FailureCritical"
+          ],
+          "description": "General technical status of the equipment."
         },
-        "statusTechnicalManufacturerSpecificValue": {
+        "statusTechnicalManufacturerSpecificMessage": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "Array of manufacturer-specific status codes."
-           }
+            "type": "string"
+          },
+          "description": "Array of manufacturer-specific status codes."
         },
         "label": {
           "type": "string"
         },
         "physicalInputValue": {
           "type": "string",
-          "enum": ["Unknown", "High", "Low"]
+          "enum": [
+            "Unknown",
+            "High",
+            "Low"
+          ]
         },
         "inputVoltage": {
           "type": "number"
@@ -336,28 +480,36 @@
           "type": "number"
         }
       },
-      "required": ["id", "label"],
+      "required": [
+        "id",
+        "label"
+      ],
       "additionalProperties": false
     },
-    "equipment_PhysicalAnalogInput": {
+    "equipment.PhysicalAnalogInput": {
       "type": "object",
       "description": "PhysicalAnalogInput",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "type": "string"
         },
         "statusTechnical": {
           "type": "string",
-          "description": "General technical status of the equipment.",
-          "enum": ["Unknown", "OK", "Warning", "FailureNonCritical", "FailureCritical"]
+          "enum": [
+            "Unknown",
+            "OK",
+            "Warning",
+            "FailureNonCritical",
+            "FailureCritical"
+          ],
+          "description": "General technical status of the equipment."
         },
-        "statusTechnicalManufacturerSpecificValue": {
+        "statusTechnicalManufacturerSpecificMessage": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "Array of manufacturer-specific status codes."
-           }
+            "type": "string"
+          },
+          "description": "Array of manufacturer-specific status codes."
         },
         "label": {
           "type": "string"
@@ -369,85 +521,110 @@
           "type": "number"
         }
       },
-      "required": ["id", "label"],
+      "required": [
+        "id",
+        "label"
+      ],
       "additionalProperties": false
     },
-    "equipment_PhysicalSeparatedInput": {
+    "equipment.PhysicalSeparatedInput": {
       "type": "object",
       "description": "PhysicalSeparatedInput",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "type": "string"
         },
         "statusTechnical": {
           "type": "string",
-          "description": "General technical status of the equipment.",
-          "enum": ["Unknown", "OK", "Warning", "FailureNonCritical", "FailureCritical"]
+          "enum": [
+            "Unknown",
+            "OK",
+            "Warning",
+            "FailureNonCritical",
+            "FailureCritical"
+          ],
+          "description": "General technical status of the equipment."
         },
-        "statusTechnicalManufacturerSpecificValue": {
+        "statusTechnicalManufacturerSpecificMessage": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "Array of manufacturer-specific status codes."
-           }
+            "type": "string"
+          },
+          "description": "Array of manufacturer-specific status codes."
         },
         "label": {
           "type": "string"
         },
         "inputValue": {
           "type": "string",
-          "enum": ["Unknown", "On", "Off"]
+          "enum": [
+            "Unknown",
+            "On",
+            "Off"
+          ]
         }
       },
-      "required": ["id", "label"],
+      "required": [
+        "id",
+        "label"
+      ],
       "additionalProperties": false
     },
-    "equipment_InputSwitch": {
+    "equipment.InputSwitch": {
       "type": "object",
       "description": "InputSwitch",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "type": "string"
         },
         "label": {
           "type": "string"
         },
         "inputSwitchPosition": {
           "type": "string",
-          "enum": ["Unknown", "Position1", "Position2", "Position3"]
+          "enum": [
+            "Unknown",
+            "Position1",
+            "Position2",
+            "Position3"
+          ]
         },
-        "auxiliarySwitch": {
+        "auxiliaryInput": {
           "type": "object",
-          "$ref": "#/definitions/equipment_AuxiliarySwitch"
+          "$ref": "#/definitions/equipment.AuxiliaryInput",
+          "description": "refers to AuxiliarySwitch"
         }
       },
-      "required": ["id", "label", "auxiliarySwitch"],
+      "required": [
+        "id",
+        "label",
+        "auxiliaryInput"
+      ],
       "additionalProperties": false
     },
-    "equipment_AuxiliarySwitch": {
+    "equipment.AuxiliaryInput": {
       "type": "object",
-      "description": "AuxiliarySwitch",
+      "description": "AuxiliaryInput",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "type": "string"
         },
         "label": {
           "type": "string"
         }
       },
-      "required": ["id", "label"],
+      "required": [
+        "id",
+        "label"
+      ],
       "additionalProperties": false
     },
-    "equipment_InputButton": {
+    "equipment.InputButton": {
       "type": "object",
       "description": "InputButton",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "type": "string"
         },
         "label": {
           "type": "string"
@@ -455,12 +632,16 @@
         "isPressed": {
           "type": "boolean"
         },
-        "auxiliarySwitch": {
+        "auxiliaryInput": {
           "type": "object",
-          "$ref": "#/definitions/equipment_AuxiliarySwitch"
+          "$ref": "#/definitions/equipment.AuxiliaryInput"
         }
       },
-      "required": ["id", "label", "auxiliarySwitch"],
+      "required": [
+        "id",
+        "label",
+        "auxiliaryInput"
+      ],
       "additionalProperties": false
     }
   },
@@ -468,22 +649,27 @@
   "description": "May be used to define responsibilities for diagnostic information.",
   "properties": {
     "id": {
-      "type": "string",
-      "description": "globally unique key (e.g. uuid)"
+      "type": "string"
     },
     "statusTechnical": {
       "type": "string",
-      "description": "General technical status of the equipment.",
-      "enum": ["Unknown", "OK", "Warning", "FailureNonCritical", "FailureCritical"]
+      "enum": [
+        "Unknown",
+        "OK",
+        "Warning",
+        "FailureNonCritical",
+        "FailureCritical"
+      ],
+      "description": "General technical status of the equipment."
     },
-    "statusTechnicalManufacturerSpecificValue": {
+    "statusTechnicalManufacturerSpecificMessage": {
       "type": "array",
       "items": {
-        "type": "string",
-        "description": "Must be used by the supplier to describe the reasons for a StatusTechnical != OK, that cannot be explained by existing datapoints (NOT including IM and manufacturer specific diagnostic messages). This Information MUST be provided from the supplier. This should provide flexibility for future uses. Multiple states can be indicated at the same time if multiple diagnosis have not been included in the model during the design phase. The supplier specific reason may not overlap with reasons already covered in other attributes."
-       }
+        "type": "string"
+      },
+      "description": "Must be used by the supplier to describe the reasons for a StatusTechnical != OK, that cannot be explained by existing datapoints (NOT including IM and manufacturer specific diagnostic messages). This Information MUST be provided from the supplier. This should provide flexibility for future uses. Multiple states can be indicated at the same time if multiple diagnosis have not been included in the model during the design phase. The supplier specific reason may not overlap with reasons already covered in other attributes."
     },
-    "equipmentManufacturer": {
+    "manufacturer": {
       "type": "string"
     },
     "manufacturerModel": {
@@ -500,11 +686,17 @@
     },
     "replaceabityIndication": {
       "type": "string",
-      "enum": ["Unknown", "ReplacementNotNeeded", "ReplaceableAtOperation", "ReplaceableMaintenance", "ReplaceableRevalidation"]
+      "enum": [
+        "Unknown",
+        "ReplacementNotNeeded",
+        "ReplaceableAtOperation",
+        "ReplaceableMaintenance",
+        "ReplaceableRevalidation"
+      ]
     },
     "manufacturingDateTime": {
       "type": "string",
-      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+      "format": "date-time"
     },
     "label": {
       "type": "string"
@@ -516,94 +708,103 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/equipment_Equipment"
-       }
+        "$ref": "#/definitions/equipment.Equipment"
+      }
     },
     "controllers": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/equipment_Controller"
-       }
+        "$ref": "#/definitions/equipment.Controller"
+      }
     },
     "physicalNetworkInterfaces": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/equipment_PhysicalNetworkInterface"
-       }
+        "$ref": "#/definitions/equipment.PhysicalNetworkInterface"
+      }
     },
     "storageMediaFlash": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/equipment_StorageMediumFlash"
-       }
+        "$ref": "#/definitions/equipment.StorageMediumFlash"
+      }
     },
     "powerSupplies": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/equipment_PowerSupply"
-       }
+        "$ref": "#/definitions/equipment.PowerSupply"
+      }
     },
     "physicalDigitalOutputs": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/equipment_PhysicalDigitalOutput"
-       }
+        "$ref": "#/definitions/equipment.PhysicalDigitalOutput"
+      }
     },
     "physicalAnaloglOutputs": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/equipment_PhysicalAnalogOutput"
-       }
+        "$ref": "#/definitions/equipment.PhysicalAnalogOutput"
+      }
     },
     "physicalSeparatedOutputs": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/equipment_PhysicalSeparatedOutput"
-       }
+        "$ref": "#/definitions/equipment.PhysicalSeparatedOutput"
+      }
     },
     "physicalDigitalInputs": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/equipment_PhysicalDigitalInput"
-       }
+        "$ref": "#/definitions/equipment.PhysicalDigitalInput"
+      }
     },
     "physicalAnaloglInputs": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/equipment_PhysicalAnalogInput"
-       }
+        "$ref": "#/definitions/equipment.PhysicalAnalogInput"
+      }
     },
     "physicalSeparatedInputs": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/equipment_PhysicalSeparatedInput"
-       }
+        "$ref": "#/definitions/equipment.PhysicalSeparatedInput"
+      }
     },
     "inputSwitches": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/equipment_InputSwitch"
-       }
+        "$ref": "#/definitions/equipment.InputSwitch"
+      }
     },
     "inputButtons": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/equipment_InputButton"
-       }
+        "$ref": "#/definitions/equipment.InputButton"
+      }
     }
   },
-  "required": ["id", "equipmentManufacturer", "manufacturerModel", "serialNumber", "hardwareRevision", "softwareRevision", "manufacturingDateTime", "label"],
+  "required": [
+    "id",
+    "manufacturer",
+    "manufacturerModel",
+    "serialNumber",
+    "hardwareRevision",
+    "softwareRevision",
+    "manufacturingDateTime",
+    "label"
+  ],
   "additionalProperties": false
 }

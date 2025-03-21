@@ -1,9 +1,10 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_49",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "ss026_CountryBalise": {
+    "ss026.CountryBalise": {
       "type": "object",
+      "description": "The new country's and balise group's identification number",
       "properties": {
         "nid_c": {
           "type": "integer",
@@ -25,9 +26,10 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_CountryBalise"
-       },
-      "maxItems": 31
+        "$ref": "#/definitions/ss026.CountryBalise"
+      },
+      "maxItems": 31,
+      "description": "List of the additional country balises for Shunting Area "
     }
   },
   "additionalProperties": false

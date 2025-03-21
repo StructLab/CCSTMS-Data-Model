@@ -1,59 +1,67 @@
 {
   "$id": "https://ERJU/eng_KmArea",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "eng_KmSign": {
+    "eng.KilometricPost": {
       "type": "object",
-      "description": "An object that represent a physical sign that would be used to convey Kilometer information at specific location on a TrackEdge",
+      "description": "An object that represent a physical sign that would be used to convey Kilometer information at specific location on    a LinearElement",
       "properties": {
         "pos": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated trackEdge"
+          "description": "position on the associated LinearElement"
         },
-        "label": {
+        "kmPostName": {
           "type": "string",
-          "description": "example 44.50"
+          "description": "Defines the name of Kilometric Post (optional)"
+        },
+        "kilometerNumber": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines the kilometer number of the kilometric post"
         }
       },
-      "required": ["label"],
       "additionalProperties": false
     },
-    "eng_TrackEdgeKmSigns": {
+    "eng.LinearElementKmSigns": {
       "type": "object",
       "properties": {
-        "id": {
+        "linearElement": {
           "type": "string",
-          "description": "Identity of the object; used for referencing"
+          "description": "reference to the corresponding linear element"
         },
-        "kmSigns": {
+        "kilometricPosts": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "sorted by pos from 0 to length",
-            "$ref": "#/definitions/eng_KmSign"
-           }
+            "$ref": "#/definitions/eng.KilometricPost"
+          },
+          "description": "Defines the kilometre posts on the track. These are sorted by pos from 0 to length"
         }
       },
-      "required": ["id"],
+      "required": [
+        "linearElement"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
   "properties": {
-    "id": {
+    "onTopoArea": {
       "type": "string",
-      "description": "Identity of the object; used for referencing"
+      "description": "refrence to the corresponding Topo Area"
     },
-    "trackEdgeKmSigns": {
+    "linearElementKmSigns": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "composes of track edge km signs",
-        "$ref": "#/definitions/eng_TrackEdgeKmSigns"
-       }
+        "$ref": "#/definitions/eng.LinearElementKmSigns"
+      },
+      "description": "composes of linear element kilometer signs"
     }
   },
-  "required": ["id"],
+  "required": [
+    "onTopoArea"
+  ],
   "additionalProperties": false
 }

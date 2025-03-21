@@ -1,21 +1,25 @@
 {
   "$id": "https://ERJU/opp_WarningDevice",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines functional warning device which must be activated to implement warning measure",
   "properties": {
     "id": {
       "type": "string",
-      "description": "globally unique key (e.g. uuid)"
+      "description": "Defines the Identity of the object; used for referencing"
     },
     "deviceType": {
       "type": "string",
-      "description": "defines the different warning devices",
-      "enum": ["acousticalIndicator", "opticalIndicator", "hapticIndicator"]
+      "enum": [
+        "acousticalIndicator",
+        "opticalIndicator",
+        "hapticIndicator"
+      ],
+      "description": "Defines a functional warning device type used for securing the warning area"
     }
   },
-  "required": ["id"],
+  "required": [
+    "id"
+  ],
   "additionalProperties": false
 }

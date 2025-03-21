@@ -1,0 +1,66 @@
+{
+  "$id": "https://ERJU/map_LinearElementProjection",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "map.LinearElementCoordinate": {
+      "type": "object",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines position on the associated LinearElement"
+        },
+        "x": {
+          "type": "number",
+          "description": "Defines the x coordiante value, mapping to each EPSG-code"
+        },
+        "y": {
+          "type": "number",
+          "description": "Defines the y coordiante value, mapping to each EPSG-code"
+        },
+        "z": {
+          "type": "number",
+          "description": "Defines the z coordiante value, mapping to each EPSG-code"
+        },
+        "accPos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "absolute accuracy as 1sigma. Use 0 if not defined"
+        },
+        "accX": {
+          "type": "number",
+          "description": "absolute accuracy as 1sigma. Use 0.0 if not defined"
+        },
+        "accY": {
+          "type": "number",
+          "description": "absolute accuracy as 1sigma. Use 0.0 if not defined"
+        },
+        "accZ": {
+          "type": "number",
+          "description": "absolute accuracy as 1sigma. Use 0.0 if not defined"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "linearElement": {
+      "type": "string"
+    },
+    "coordinates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/map.LinearElementCoordinate"
+      },
+      "minItems": 2,
+      "description": "Defines a sequence of coordinates representing a mapping of a linear element"
+    }
+  },
+  "required": [
+    "linearElement",
+    "coordinates"
+  ],
+  "additionalProperties": false
+}

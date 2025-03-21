@@ -1,22 +1,23 @@
 {
   "$id": "https://ERJU/opp_RestrictedAspects",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "properties": {
     "temporarySpeedRestriction": {
       "type": "integer",
-      "minimum": 0,
-      "description": "use 0 if not defined"
+      "minimum": 0
     },
     "allowedDrivingModes": {
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["undefined", "onSight", "fullSupervision", "standBy"]
-       }
+        "enum": [
+          "undefined",
+          "onSight",
+          "fullSupervision",
+          "standBy"
+        ]
+      }
     },
     "nonStopping": {
       "type": "boolean",
@@ -32,8 +33,75 @@
     },
     "maxAdhesion": {
       "type": "string",
-      "enum": ["dryRailHigh", "dryRailMedium", "dryRailLow", "lowAdhesion", "veryLowAdhesion", "extremelyLowAdhesion", "unknownAdhesion"]
+      "enum": [
+        "dryRailHigh",
+        "dryRailMedium",
+        "dryRailLow",
+        "lowAdhesion",
+        "veryLowAdhesion",
+        "extremelyLowAdhesion",
+        "unknownAdhesion"
+      ]
+    },
+    "atoInhibition": {
+      "type": "boolean",
+      "description": "if true - ATO inhibition zone. Used by ATO SS126, ignored by TrafficCS"
+    },
+    "maxCurrent": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "for ATO, SS126. Ignored by TrafficCS"
     }
   },
+  "oneOf": [
+    {
+      "type": "object",
+      "required": [
+        "temporarySpeedRestriction"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "allowedDrivingModes"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "nonStopping"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "trackClosure"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "operationalRadioHole"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "maxAdhesion"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "atoInhibition"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "maxCurrent"
+      ]
+    }
+  ],
   "additionalProperties": false
 }

@@ -1,102 +1,82 @@
 {
   "$id": "https://ERJU/infra_FunctionalArea",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_TravelTimeMeasurementPoint": {
+    "infra.TravelTimeMeasurementPoint": {
       "type": "object",
-      "description": "normally the passing time through a OperationalPoint is measured at the middle of it",
+      "description": "Defines the passing time through an OperationalPoint measured at the middle of it",
       "properties": {
         "id": {
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "spotLocation": {
+        "topologicalCoordinate": {
           "type": "object",
-          "$ref": "#/definitions/infra_TrackEdgePoint"
+          "$ref": "#/definitions/infra.TopologicalCoordinate"
         }
       },
-      "required": ["id", "spotLocation"],
+      "required": [
+        "id",
+        "topologicalCoordinate"
+      ],
       "additionalProperties": false
     },
-    "infra_DirTrackEdge": {
-      "type": "object",
-      "properties": {
-        "trackEdge": {
-          "type": "string",
-          "description": "refers totrack edge"
-        },
-        "sameDir": {
-          "type": "boolean",
-          "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
-        }
-      },
-      "required": ["trackEdge"],
-      "additionalProperties": false
-    },
-    "infra_LinkedPath": {
-      "type": "object",
-      "description": "Defines a linked path on the topology",
-      "properties": {
-        "dirTrackEdges": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "description": "composes of directed track edges",
-            "$ref": "#/definitions/infra_DirTrackEdge"
-           },
-          "minItems": 1
-        },
-        "skipFromPathStart": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [0..skipFromStart]"
-        },
-        "skipFromPathEnd": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]"
-        }
-      },
-      "required": ["dirTrackEdges"],
-      "additionalProperties": false
-    },
-    "infra_PlatformEdge": {
+    "infra.PlatformEdge": {
       "type": "object",
       "description": "Platform for the purpose of RINF is understood as a platform edge. A platform concerns only the part of the structure neighbouring to the track (interfaced with trains).",
       "properties": {
         "platformId": {
           "type": "string",
-          "description": "Identity of the object; used for referencing"
+          "description": "Unique platform identification or unique platform number within an Operational Point."
         },
         "name": {
           "type": "string",
           "description": "User-friendly name, only if different from id"
         },
-        "linearLocation": {
+        "linearReference": {
           "type": "object",
-          "description": "composes of linked path",
-          "$ref": "#/definitions/infra_LinkedPath"
+          "$ref": "#/definitions/infra.NetLinearReference",
+          "description": "composes of linked path"
         },
         "stopLocations": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "add only, if stopLocation can be used on that PlatformEdge for passenger/freight exchange"
-           },
-          "minItems": 1
+            "type": "string"
+          },
+          "minItems": 1,
+          "description": "Defines the stop locations. Add only, if stopLocation can be used on that PlatformEdge for passenger/freight exchange"
         },
-        "height": {
+        "platformHeight": {
           "type": "string",
-          "description": "defines different platform heights",
-          "enum": ["PH_200mm", "PH_300_380mm", "PH_550mm", "PH_580mm", "PH_680mm", "PH_685mm", "PH_730mm", "PH_760mm", "PH_840mm", "PH_900mm", "PH_915mm", "PH_920mm", "PH_960mm", "PH_1100mm"]
+          "enum": [
+            "PH_200mm",
+            "PH_300_380mm",
+            "PH_550mm",
+            "PH_580mm",
+            "PH_680mm",
+            "PH_685mm",
+            "PH_730mm",
+            "PH_760mm",
+            "PH_840mm",
+            "PH_900mm",
+            "PH_915mm",
+            "PH_920mm",
+            "PH_960mm",
+            "PH_1100mm"
+          ],
+          "description": "Distance between the upper surface of platform and running surface of the neighbouring track. It is the nominal value expressed in millimetres."
         }
       },
-      "required": ["platformId", "linearLocation", "stopLocations"],
+      "required": [
+        "platformId",
+        "linearReference",
+        "stopLocations"
+      ],
       "additionalProperties": false
     },
-    "infra_Platform": {
+    "infra.Platform": {
       "type": "object",
-      "description": "Defines the container object platform",
+      "description": "Defines the object platform",
       "properties": {
         "id": {
           "type": "string",
@@ -110,55 +90,68 @@
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of platform edges",
-            "$ref": "#/definitions/infra_PlatformEdge"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.PlatformEdge"
+          },
+          "minItems": 1,
+          "description": "composes of platform edges"
         }
       },
-      "required": ["id", "platformEdges"],
+      "required": [
+        "id",
+        "platformEdges"
+      ],
       "additionalProperties": false
     },
-    "infra_OperationalPoint": {
+    "infra.OperationalPoint": {
       "type": "object",
       "description": "An operational point (OP) means any location for train service operations, where train services may begin and end or change route, and where passenger or freight services may be provided; operational point also means any location at boundaries between Member States or infrastructure managers. In https://eur-lex.europa.eu/eli/reg_impl/2019/773/oj 2.1.2 Principal locations (stations, yards, junctions, freight terminals).",
       "properties": {
-        "uopId": {
+        "uopid": {
           "type": "string",
-          "description": "Identity of the object; used for referencing"
+          "description": "Code composed of country code and alphanumeric operational point code."
         },
         "opName": {
           "type": "string",
-          "description": "User-friendly name, only if different from id"
+          "description": "Name normally related to the town or village or to traffic control purpose."
         },
         "travelTimeMeasurementPoints": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "used to measure/define timestamps for passing trains. Stopping-timingPoints can be found via platforms.platformEdges.stopLocations and timingPoint.stopLocation",
-            "$ref": "#/definitions/infra_TravelTimeMeasurementPoint"
-           }
+            "$ref": "#/definitions/infra.TravelTimeMeasurementPoint"
+          },
+          "description": "Defined to measure/define timestamps for passing trains. Stopping-timingPoints can be found via platforms.platformEdges.stopLocations and timingPoint.stopLocation"
         },
-        "operationalPointType": {
+        "opType": {
           "type": "string",
-          "description": "Defines the type of Operational Point",
-          "enum": ["station", "depot", "siding", "trainTechnicalServices", "shuntingYard", "borderPoint", "technicalChange"]
+          "enum": [
+            "station",
+            "depot",
+            "siding",
+            "trainTechnicalServices",
+            "shuntingYard",
+            "borderPoint",
+            "technicalChange"
+          ],
+          "description": "Defines the Type of operational point in relation to the dominating operational functions."
         },
         "platforms": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "the sequence of platforms is according to the real location, so neighbours are the same in array and reality",
-            "$ref": "#/definitions/infra_Platform"
-           }
+            "$ref": "#/definitions/infra.Platform"
+          },
+          "description": "Defines the sequence of platforms is according to the real location, so neighbours are the same in array and reality"
         }
       },
-      "required": ["uopId"],
+      "required": [
+        "uopid"
+      ],
       "additionalProperties": false
     },
-    "infra_SimplePoint": {
+    "infra.Switch": {
       "type": "object",
-      "description": "Defines the physical track asset Simple Point",
+      "description": "A unit of track comprising two fixed rails (stock rails) and two movable rails (switch rails) used to direct vehicles from one track to another track.",
       "properties": {
         "id": {
           "type": "string",
@@ -171,42 +164,58 @@
         },
         "pointLeft": {
           "type": "string",
-          "description": "Track Edge Link referencing the left side of the point in the facing direction of the simple point"
+          "description": "NetRelation referencing the left side of the point in the facing direction of the simple point"
         },
         "pointRight": {
           "type": "string",
-          "description": "Track Edge Link referencing the right side of the point in the facing direction of the simple point"
+          "description": "NetRelation referencing the right side of the point in the facing direction of the simple point"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "pointLeft", "pointRight"],
+      "required": [
+        "id",
+        "pointLeft",
+        "pointRight"
+      ],
       "additionalProperties": false
     },
-    "infra_SlipCrossing": {
+    "infra.SlipCrossing": {
       "type": "object",
-      "description": "Defines the physical track asset Slip Crossing ; 2 instances simple point define a single slip crossing and 4 instances of simple point defined a double slip crossing ; Reversal time is the maximum of reversal times of simple points",
+      "description": "Defines the physical track asset Slip Crossing ; 2 instances simple point define a single slip crossing and 4 instances of simple point defined a double slip crossing ; Reversal time is the maximum of known reversal times of simple points. If the reversal time of at least one simple point in the slip point is unknown, the reversal time of the slip point is unknown as well.",
       "properties": {
         "id": {
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "simplePoints": {
+        "switches": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "Consists of simple points"
-           },
+            "type": "string"
+          },
           "minItems": 2,
-          "maxItems": 4
+          "maxItems": 4,
+          "description": "Consists of simple points"
         },
         "crossing": {
           "type": "string",
           "description": "Consists of crossing"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "simplePoints", "crossing"],
+      "required": [
+        "id",
+        "switches",
+        "crossing"
+      ],
       "additionalProperties": false
     },
-    "infra_Derailer": {
+    "infra.Derailer": {
       "type": "object",
       "description": "Defines the physical track asset Derailer",
       "properties": {
@@ -214,10 +223,10 @@
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "dirSpotLocation": {
+        "netPointReference": {
           "type": "object",
-          "description": "defines position on TrackEdge",
-          "$ref": "#/definitions/infra_DirTrackEdgePoint"
+          "$ref": "#/definitions/infra.NetPointReference",
+          "description": "Defines position on LinearElement"
         },
         "reversalTime": {
           "type": "integer",
@@ -226,13 +235,20 @@
         },
         "derailToRight": {
           "type": "boolean",
-          "description": "if false = derailToLeft, the side at which the train will be derailed"
+          "description": "Defines the side on which the derailer derails. If false = derailToLeft"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "dirSpotLocation"],
+      "required": [
+        "id",
+        "netPointReference"
+      ],
       "additionalProperties": false
     },
-    "infra_Crossing": {
+    "infra.Crossing": {
       "type": "object",
       "description": "Defines the physical track asset Crossing without possibility to switch between two track edges",
       "properties": {
@@ -240,25 +256,32 @@
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "trackEdgePoints": {
+        "topologicalCoordinates": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge points",
-            "$ref": "#/definitions/infra_TrackEdgePoint"
-           },
+            "$ref": "#/definitions/infra.TopologicalCoordinate"
+          },
           "minItems": 2,
-          "maxItems": 2
+          "maxItems": 2,
+          "description": "composes of topological coordinates"
         },
         "isSwitchable": {
           "type": "boolean",
           "description": "True: If the crossing is switchable ; False: If the crossing is not switchable ;https://commons.wikimedia.org/wiki/Category:Switched_diamond_crossings"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "trackEdgePoints"],
+      "required": [
+        "id",
+        "topologicalCoordinates"
+      ],
       "additionalProperties": false
     },
-    "infra_TrainDetector": {
+    "infra.TrainDetector": {
       "type": "object",
       "description": "Defines the train detector system for the train vacancy proving section",
       "properties": {
@@ -266,42 +289,55 @@
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "spotLocation": {
+        "topologicalCoordinate": {
           "type": "object",
-          "$ref": "#/definitions/infra_TrackEdgePoint"
+          "$ref": "#/definitions/infra.TopologicalCoordinate"
         },
         "trainDetectorType": {
           "type": "string",
-          "description": "Defines the train detection system applicable for the TVPS",
-          "enum": ["axleCounter", "trackCircuitBorder"]
+          "enum": [
+            "axleCounter",
+            "trackCircuitBorder"
+          ],
+          "description": "Defines the train detection system applicable for the TVPS"
         },
-        "countUpDir": {
+        "referenceDir": {
           "type": "string",
-          "description": "Direction in which axle counter counts up",
-          "enum": ["dirBoth", "dirSame", "dirReverse"]
+          "enum": [
+            "both",
+            "same",
+            "opposite"
+          ],
+          "description": "Reference direction corresponding to linear element in which the train detector detects trains: same/opposite for axleCounter, both for trackCircuit"
         }
       },
-      "required": ["id", "spotLocation"],
+      "required": [
+        "id",
+        "topologicalCoordinate"
+      ],
       "additionalProperties": false
     },
-    "infra_Balise": {
+    "infra.Balise": {
       "type": "object",
-      "description": "Defines a balise.",
+      "description": "Defines a technical device on the railway trackbed",
       "properties": {
         "id": {
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "spotLocation": {
+        "topologicalCoordinate": {
           "type": "object",
-          "description": "location on TrackEdge",
-          "$ref": "#/definitions/infra_TrackEdgePoint"
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "location on TrackEdge"
         }
       },
-      "required": ["id", "spotLocation"],
+      "required": [
+        "id",
+        "topologicalCoordinate"
+      ],
       "additionalProperties": false
     },
-    "infra_BaliseGroup": {
+    "infra.BaliseGroup": {
       "type": "object",
       "description": "Defines a group of balises.",
       "properties": {
@@ -323,27 +359,38 @@
           "type": "array",
           "items": {
             "type": "object",
-            "description": "Defines the balises within the balise group. ETCS-positionInGroup is equal to the position this array",
-            "$ref": "#/definitions/infra_Balise"
-           },
+            "$ref": "#/definitions/infra.Balise"
+          },
           "minItems": 1,
-          "maxItems": 8
+          "maxItems": 8,
+          "description": "Defines the balises within the balise group. ETCS-positionInGroup is equal to the position this array"
         },
         "bgFunction": {
           "type": "string",
-          "description": "to be clarified, if derivable from baliseTelegram",
-          "enum": ["location", "sessionManagement", "networkRegistration"]
+          "enum": [
+            "location",
+            "sessionManagement",
+            "networkRegistration"
+          ],
+          "description": "Defines the function of the balise. To be clarified, if derivable from baliseTelegram"
         },
         "linkOrientationDirection": {
           "type": "string",
-          "description": "defines linking orientation direction along the TrackEdge",
-          "enum": ["dirBoth", "dirSame", "dirReverse"]
+          "enum": [
+            "both",
+            "same",
+            "opposite"
+          ],
+          "description": "defines linking orientation direction along the LinearElement"
         }
       },
-      "required": ["id", "balises"],
+      "required": [
+        "id",
+        "balises"
+      ],
       "additionalProperties": false
     },
-    "infra_ETCSMarker": {
+    "infra.ETCSMarker": {
       "type": "object",
       "description": "Defines the ETCS Marker Boards ",
       "properties": {
@@ -351,45 +398,59 @@
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "dirSpotLocation": {
+        "netPointReference": {
           "type": "object",
-          "$ref": "#/definitions/infra_DirTrackEdgePoint"
+          "$ref": "#/definitions/infra.NetPointReference",
+          "description": "Defines position on LinearElement"
         },
         "markerFunctionStop": {
           "type": "boolean",
-          "description": "true=stop, false=location (when the ETCS marker is a location marker)"
+          "description": "Defines the function associated with the ETCS marker board. true=stop, false=location (when the ETCS marker is a location marker)"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "dirSpotLocation"],
+      "required": [
+        "id",
+        "netPointReference"
+      ],
       "additionalProperties": false
     },
-    "infra_StopTrainLimit": {
+    "infra.StopTrainLimit": {
       "type": "object",
+      "description": "Defines the different stop limits for train on the track",
       "properties": {
         "trainMaxLength": {
           "type": "integer",
           "minimum": 0,
-          "description": "use zero if not defined"
+          "description": "Defines the maximum train length associated with stop train limit. use zero if not defined"
         },
         "trainMaxAxles": {
           "type": "integer",
           "minimum": 0,
-          "description": "use zero if not defined"
+          "description": "Defines the maximum train axles associated with stop train limit. use zero if not defined"
         },
         "trainMaxWagons": {
           "type": "integer",
           "minimum": 0,
-          "description": "including Locomotives, use zero if not defined"
+          "description": "Defines the maximum train wagons associated with stope train limit. including Locomotives, use zero if not defined"
         },
         "trainMaxSize": {
           "type": "string",
-          "description": "use undefinedTrainSize if not defined",
-          "enum": ["undefinedTrainSize", "shortTrain", "halfTrain", "fullTrain"]
+          "enum": [
+            "undefinedTrainSize",
+            "shortTrain",
+            "halfTrain",
+            "fullTrain"
+          ],
+          "description": "Defines the size of train applicable for this stop train limit. use undefinedTrainSize if not defined"
         }
       },
       "additionalProperties": false
     },
-    "infra_StopLocation": {
+    "infra.StopLocation": {
       "type": "object",
       "description": "Defines the stop locations",
       "properties": {
@@ -397,54 +458,73 @@
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "dirSpotLocation": {
+        "netPointReference": {
           "type": "object",
-          "$ref": "#/definitions/infra_DirTrackEdgePoint"
+          "$ref": "#/definitions/infra.NetPointReference",
+          "description": "Defines position on LinearElement"
         },
         "stopTrainLimit": {
           "type": "object",
-          "description": "composes of stop train limits",
-          "$ref": "#/definitions/infra_StopTrainLimit"
+          "$ref": "#/definitions/infra.StopTrainLimit",
+          "description": "composes of stop train limits"
         },
         "trainLoadType": {
           "type": "string",
-          "description": "composes of train load types",
-          "enum": ["passengerTrain", "freightTrain", "anyTrain"]
+          "enum": [
+            "passengerTrain",
+            "freightTrain",
+            "anyTrain"
+          ],
+          "description": "composes of train load types"
         },
         "doorOpeningSide": {
           "type": "string",
-          "description": "defines different train opening sides",
-          "enum": ["noSide", "leftSide", "rightSide", "bothSides"]
+          "enum": [
+            "noSide",
+            "leftSide",
+            "rightSide",
+            "bothSides"
+          ],
+          "description": "defines different train opening sides"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "dirSpotLocation"],
+      "required": [
+        "id",
+        "netPointReference"
+      ],
       "additionalProperties": false
     },
-    "infra_TunnelTube": {
+    "infra.TunnelTube": {
       "type": "object",
       "description": "Defines the tunnels tubes within a tunnel. Main Use-Case identify emergency management with rescue into neighbour tube",
       "properties": {
-        "trackArea": {
+        "areaReference": {
           "type": "object",
-          "description": "composes of track area",
-          "$ref": "#/definitions/infra_TrackArea"
+          "$ref": "#/definitions/infra.NetAreaReference",
+          "description": "composes of track area"
         },
         "crossSection": {
           "type": "integer",
           "minimum": 0,
-          "description": "for calculation of air-resistance ; Standard Cross section dimensions corresponding to ATO Tunnel types will be defined later"
+          "description": "Defines the standard Cross section dimensions of a tunnel for calculation of air-resistance"
         }
       },
-      "required": ["trackArea"],
+      "required": [
+        "areaReference"
+      ],
       "additionalProperties": false
     },
-    "infra_Tunnel": {
+    "infra.Tunnel": {
       "type": "object",
       "description": "A railway tunnel is an excavation or a construction around the track provided to allow the railway to pass for example higher land, buildings or water.",
       "properties": {
         "tunnelIdentification": {
           "type": "string",
-          "description": "Identity of the object; used for referencing"
+          "description": "Unique tunnel identification or unique tunnel number within Member State"
         },
         "name": {
           "type": "string",
@@ -454,16 +534,19 @@
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of tunnel tubes",
-            "$ref": "#/definitions/infra_TunnelTube"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.TunnelTube"
+          },
+          "minItems": 1,
+          "description": "composes of tunnel tubes"
         }
       },
-      "required": ["tunnelIdentification", "tunnelTubes"],
+      "required": [
+        "tunnelIdentification",
+        "tunnelTubes"
+      ],
       "additionalProperties": false
     },
-    "infra_Bridge": {
+    "infra.Bridge": {
       "type": "object",
       "description": "Defines the civil infrastructure object bridge",
       "properties": {
@@ -475,16 +558,19 @@
           "type": "string",
           "description": "User-friendly name, only if different from id"
         },
-        "trackArea": {
+        "areaReference": {
           "type": "object",
-          "description": "composes of track area",
-          "$ref": "#/definitions/infra_TrackArea"
+          "$ref": "#/definitions/infra.NetAreaReference",
+          "description": "composes of track area"
         }
       },
-      "required": ["id", "trackArea"],
+      "required": [
+        "id",
+        "areaReference"
+      ],
       "additionalProperties": false
     },
-    "infra_Underpass": {
+    "infra.Underpass": {
       "type": "object",
       "description": "Defines the civil infrastructure object Underpass",
       "properties": {
@@ -496,35 +582,19 @@
           "type": "string",
           "description": "User-friendly name, only if different from id"
         },
-        "trackArea": {
+        "areaReference": {
           "type": "object",
-          "description": "composes of track area",
-          "$ref": "#/definitions/infra_TrackArea"
+          "$ref": "#/definitions/infra.NetAreaReference",
+          "description": "composes of track area"
         }
       },
-      "required": ["id", "trackArea"],
+      "required": [
+        "id",
+        "areaReference"
+      ],
       "additionalProperties": false
     },
-    "infra_LinkedArea": {
-      "type": "object",
-      "properties": {
-        "entireTrackEdges": {
-          "type": "array",
-          "items": {
-            "type": "string"
-           }
-        },
-        "trackEdgeSections": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           }
-        }
-      },
-      "additionalProperties": false
-    },
-    "infra_TvpSection": {
+    "infra.TvpSection": {
       "type": "object",
       "description": "Defines the train vacancy proving section",
       "properties": {
@@ -538,122 +608,152 @@
         },
         "linkedArea": {
           "type": "object",
-          "description": "composes of linked area",
-          "$ref": "#/definitions/infra_LinkedArea"
+          "$ref": "#/definitions/infra.NetAreaReference",
+          "description": "composes of linked area"
         },
         "trainDetectors": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "refers to train detectors"
-           }
+            "type": "string"
+          },
+          "description": "Defines the set of train detectors"
         }
       },
-      "required": ["id", "linkedArea"],
+      "required": [
+        "id",
+        "linkedArea"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackEdgeSection": {
+    "infra.NetLinearReference": {
       "type": "object",
-      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "description": "Defines a linked path on the topology",
       "properties": {
-        "trackEdge": {
-          "type": "string",
-          "description": "refers to track edge"
+        "startsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Definesthe starting coordinate of a linear reference"
         },
-        "skipFromStart": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [0..skipFromStart]."
+        "endsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Defines the ending coordinate of a linear reference."
         },
-        "skipFromEnd": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]."
+        "hasSequence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Defines a sequence of linearElements from the start to the end excluding those defined in startAt- and endsAt-TopologicalCoodinates."
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "startsAt",
+        "endsAt"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackArea": {
+    "infra.NetAreaReference": {
       "type": "object",
-      "description": "Defines a Track Area on the topology",
+      "description": "Represents an area reference in the network.",
       "properties": {
-        "trackEdgeSections": {
+        "includes": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge sections",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.NetLinearReference"
+          },
+          "minItems": 1,
+          "description": "List of linear references included in an network area reference."
         }
       },
-      "required": ["trackEdgeSections"],
+      "required": [
+        "includes"
+      ],
       "additionalProperties": false
     },
-    "infra_LevelCrossing": {
+    "infra.LevelCrossing": {
       "type": "object",
-      "description": "Defines the track asset level crossing",
+      "description": "A level crossing is an intersection where a railway line crosses a road or a path at the same level. It can be used for the implementation of the ETCS trackside or to identify potential collision scenarios",
       "properties": {
         "id": {
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "trackArea": {
+        "areaReference": {
           "type": "object",
-          "description": "composes of track area",
-          "$ref": "#/definitions/infra_TrackArea"
+          "$ref": "#/definitions/infra.NetAreaReference",
+          "description": "composes of track area"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "trackArea"],
+      "required": [
+        "id",
+        "areaReference"
+      ],
       "additionalProperties": false
     },
-    "infra_NationalBorder": {
+    "infra.NationalBorder": {
       "type": "object",
-      "description": "A border point is used to separate the railway network due to different reasons. Typical examples are country borders, the change of owning infrastructure manager or the border of a station",
+      "description": "Defines a border point is used to separate the railway network due to different reasons. Typical examples are country borders, the change of owning infrastructure manager or the border of a station",
       "properties": {
         "id": {
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "spotLocation": {
+        "topologicalCoordinate": {
           "type": "object",
-          "$ref": "#/definitions/infra_TrackEdgePoint"
+          "$ref": "#/definitions/infra.TopologicalCoordinate"
         },
         "fromCountryCode": {
           "type": "string",
-          "description": "starting part of the TrackEdge"
+          "description": "Defines the from country code for the national border in the direction of linear element"
         },
         "toCountryCode": {
           "type": "string",
-          "description": "ending part of the TrackEdge"
-        }
-      },
-      "required": ["id", "spotLocation", "fromCountryCode", "toCountryCode"],
-      "additionalProperties": false
-    },
-    "infra_DirTrackEdgePoint": {
-      "type": "object",
-      "description": "Defines a directed spot location (without spatial expansion) on a Track Edge",
-      "properties": {
-        "trackEdge": {
+          "description": "Defines the to country code for the national border in the direction of linear element"
+        },
+        "name": {
           "type": "string",
-          "description": "refers to track edge"
-        },
-        "pos": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "position on the associated Track Edge"
-        },
-        "sameDir": {
-          "type": "boolean",
-          "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "id",
+        "topologicalCoordinate",
+        "fromCountryCode",
+        "toCountryCode"
+      ],
       "additionalProperties": false
     },
-    "infra_BufferStop": {
+    "infra.NetPointReference": {
+      "type": "object",
+      "description": "Represents a point reference in the network.",
+      "properties": {
+        "hasTopoCoordinate": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Defines the topological coordinate of a network point reference"
+        },
+        "appliesToDirection": {
+          "type": "string",
+          "enum": [
+            "both",
+            "same",
+            "opposite"
+          ],
+          "description": "The direction relative to the origin of the linear element towards the point reference applies"
+        }
+      },
+      "required": [
+        "hasTopoCoordinate"
+      ],
+      "additionalProperties": false
+    },
+    "infra.BufferStop": {
       "type": "object",
       "description": "Defines the object Buffer stop on the track",
       "properties": {
@@ -661,38 +761,48 @@
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "dirSpotLocation": {
+        "netPointReference": {
           "type": "object",
-          "$ref": "#/definitions/infra_DirTrackEdgePoint"
+          "$ref": "#/definitions/infra.NetPointReference",
+          "description": "Defines position on LinearElement"
         },
         "isSwitchable": {
           "type": "boolean",
-          "description": "true - if switchable ; false - if not switchable"
+          "description": "Defines if the object is switchable"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "dirSpotLocation"],
+      "required": [
+        "id",
+        "netPointReference"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackEdgePoint": {
+    "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a non-directed spot location (without spatial expansion) on a Track Edge",
+      "description": "Defines a topological coordinates on the track",
       "properties": {
-        "trackEdge": {
+        "onLinearElement": {
           "type": "string",
-          "description": "is positioned on track edge"
+          "description": "is positioned on linear element"
         },
-        "pos": {
+        "offsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated Track Edge"
+          "description": "position on the associated NetElement"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onLinearElement"
+      ],
       "additionalProperties": false
     },
-    "infra_TPActiveObject": {
+    "infra.TPActiveObject": {
       "type": "object",
-      "description": "A functional object infront of which a TimingPoint is located and active",
+      "description": "Defines a functional object infront of which a TimingPoint is located and active",
       "properties": {
         "etcsMarker": {
           "type": "string",
@@ -710,20 +820,26 @@
       "oneOf": [
         {
           "type": "object",
-          "required": ["etcsMarker"]
+          "required": [
+            "etcsMarker"
+          ]
         },
         {
           "type": "object",
-          "required": ["stopLocation"]
+          "required": [
+            "stopLocation"
+          ]
         },
         {
           "type": "object",
-          "required": ["timeMeasurePoint"]
+          "required": [
+            "timeMeasurePoint"
+          ]
         }
       ],
       "additionalProperties": false
     },
-    "infra_TimingPoint": {
+    "infra.TimingPoint": {
       "type": "object",
       "description": "Defines a fixed point on the infrastructure",
       "properties": {
@@ -731,21 +847,30 @@
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "spotLocation": {
+        "topologicalCoordinate": {
           "type": "object",
-          "$ref": "#/definitions/infra_TrackEdgePoint"
+          "$ref": "#/definitions/infra.TopologicalCoordinate"
         },
         "activeObject": {
           "type": "object",
-          "description": "composes of active timing points object",
-          "$ref": "#/definitions/infra_TPActiveObject"
+          "$ref": "#/definitions/infra.TPActiveObject",
+          "description": "Defines the functional object infront of which a TimingPoint is located and is active"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "spotLocation", "activeObject"],
+      "required": [
+        "id",
+        "topologicalCoordinate",
+        "activeObject"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
+  "description": "Defines the container functional area within INFRA Domain",
   "properties": {
     "id": {
       "type": "string",
@@ -753,129 +878,149 @@
     },
     "versionTimestamp": {
       "type": "string",
-      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
+      "format": "date-time",
       "description": "version information which is valid since timestamp"
     },
     "opPoints": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_OperationalPoint"
-       }
+        "$ref": "#/definitions/infra.OperationalPoint"
+      },
+      "description": "Defines the set of operational points"
     },
-    "simplePoints": {
+    "switches": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_SimplePoint"
-       }
+        "$ref": "#/definitions/infra.Switch"
+      },
+      "description": "Defines the set of switches"
     },
     "slipCrossings": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_SlipCrossing"
-       }
+        "$ref": "#/definitions/infra.SlipCrossing"
+      },
+      "description": "Defines the set of slip crossings"
     },
     "derailers": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_Derailer"
-       }
+        "$ref": "#/definitions/infra.Derailer"
+      },
+      "description": "Defines the set of derailers"
     },
     "crossings": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_Crossing"
-       }
+        "$ref": "#/definitions/infra.Crossing"
+      },
+      "description": "Defines the set of crossings"
     },
     "trainDetectors": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_TrainDetector"
-       }
+        "$ref": "#/definitions/infra.TrainDetector"
+      },
+      "description": "Defines the set of train detectors"
     },
     "baliseGroups": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_BaliseGroup"
-       }
+        "$ref": "#/definitions/infra.BaliseGroup"
+      },
+      "description": "Defines the set of balise groups"
     },
     "etcsMarkers": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_ETCSMarker"
-       }
+        "$ref": "#/definitions/infra.ETCSMarker"
+      },
+      "description": "Defines the set of etcs markers"
     },
     "stopLocations": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_StopLocation"
-       }
+        "$ref": "#/definitions/infra.StopLocation"
+      },
+      "description": "Defines the set of stop locations where the train is allowed to stop"
     },
     "tunnels": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_Tunnel"
-       }
+        "$ref": "#/definitions/infra.Tunnel"
+      },
+      "description": "Defines the set of tunnels"
     },
     "bridges": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_Bridge"
-       }
+        "$ref": "#/definitions/infra.Bridge"
+      },
+      "description": "Defines the set of bridges"
     },
     "underpasses": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_Underpass"
-       }
+        "$ref": "#/definitions/infra.Underpass"
+      },
+      "description": "Defines the set of underpasses"
     },
     "tvps": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_TvpSection"
-       }
+        "$ref": "#/definitions/infra.TvpSection"
+      },
+      "description": "Defines the set of track vacancy proving sections"
     },
     "levelCrossings": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_LevelCrossing"
-       }
+        "$ref": "#/definitions/infra.LevelCrossing"
+      },
+      "description": "Defines the set of level crossings"
     },
     "nationalBorders": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_NationalBorder"
-       }
+        "$ref": "#/definitions/infra.NationalBorder"
+      },
+      "description": "Defines the set of national borders"
     },
     "bufferStops": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_BufferStop"
-       }
+        "$ref": "#/definitions/infra.BufferStop"
+      },
+      "description": "Defines the set of buffer stops"
     },
     "timingPoints": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_TimingPoint"
-       }
+        "$ref": "#/definitions/infra.TimingPoint"
+      },
+      "description": "Defines the set of timing points, at which TMS would calculate train positions"
     }
   },
-  "required": ["id", "versionTimestamp"],
+  "required": [
+    "id",
+    "versionTimestamp"
+  ],
   "additionalProperties": false
 }

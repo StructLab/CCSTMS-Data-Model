@@ -1,0 +1,1124 @@
+{
+  "$id": "https://ERJU/oi_OI",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "infra.LinearElementSection": {
+      "type": "object",
+      "description": "Defines a directed linear object (with a linear extension) located on a LinearElement",
+      "properties": {
+        "onElement": {
+          "type": "string",
+          "description": "refers to linear element"
+        },
+        "startOffsetFromOrigin": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines the start offset from the origin"
+        },
+        "endOffsetFromOrigin": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines the end offset from the origin"
+        },
+        "appliesInBothDirections": {
+          "type": "boolean",
+          "description": "Defines if the section applies in both directions"
+        }
+      },
+      "required": [
+        "onElement"
+      ],
+      "additionalProperties": false
+    },
+    "oi.AtoTSContactInfo": {
+      "type": "object",
+      "description": "Defines the ATO-TS contact information for a segment profile",
+      "properties": {
+        "nidATOTS": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines national identifier for the ATO-TS"
+        },
+        "nidSP": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines national identifier for the ATO-TS"
+        },
+        "spNidC": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines country identifier for the segment profile"
+        },
+        "atotsNidC": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines county identifier for the segment profile"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.StaticSpeedProfileStart": {
+      "type": "object",
+      "description": "Defines the static speed profile for a section of track",
+      "properties": {
+        "speed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines the applicable speed for the section of track ; Resolution as defined in SS126 = 5 km/h"
+        },
+        "specificStaticSpeedProfile": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/infra.SpecificStaticSpeedLimit"
+          },
+          "description": "composes of specific static speed profiles"
+        },
+        "trainEndApplicability": {
+          "type": "string",
+          "enum": [
+            "lengthDelay",
+            "noLengthDelay"
+          ],
+          "description": "Indicates if a speed limit given for a profile element is to be applied until the front of the train (no train length delay) or the end of the train (train length delay) has left the element."
+        }
+      },
+      "additionalProperties": false
+    },
+    "infra.SpeedLimitCategory": {
+      "type": "object",
+      "description": "Defines the different applicable speed limit categories on the sections of track",
+      "properties": {
+        "otherCategoryReplacesCantDeficiencySSP": {
+          "type": "string",
+          "enum": [
+            "SSSP_freightTrainP",
+            "SSSP_freightTrainG",
+            "SSSP_passengerTrain"
+          ],
+          "description": "is of type other Category Replaces Cant Deficiency SSP"
+        },
+        "otherCategoryDoesNotReplaceCantDeficiencySSP": {
+          "type": "string",
+          "enum": [
+            "SSSP_freightTrainP",
+            "SSSP_freightTrainG",
+            "SSSP_passengerTrain"
+          ],
+          "description": "is of type other Category Replaces Cant Deficiency SSP"
+        },
+        "cantDeficiencyCategory": {
+          "type": "string",
+          "enum": [
+            "CD_Undefined",
+            "CD_80mm",
+            "CD_100mm",
+            "CD_130mm",
+            "CD_150mm",
+            "CD_165mm",
+            "CD_180mm",
+            "CD_210mm",
+            "CD_225mm",
+            "CD_245mm",
+            "CD_275mm",
+            "CD_300mm"
+          ],
+          "description": "is of type Cant Deficiency Category"
+        }
+      },
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "otherCategoryReplacesCantDeficiencySSP"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "otherCategoryDoesNotReplaceCantDeficiencySSP"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "cantDeficiencyCategory"
+          ]
+        }
+      ],
+      "additionalProperties": false
+    },
+    "infra.SpecificStaticSpeedLimit": {
+      "type": "object",
+      "description": "Defines the specific static speed profile for a section of track",
+      "properties": {
+        "speed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines the applicablespeed for the section of track ; Resolution min 5 kmph"
+        },
+        "specificLimitCategory": {
+          "type": "object",
+          "$ref": "#/definitions/infra.SpeedLimitCategory",
+          "description": "defines different specific speed limit categories"
+        }
+      },
+      "required": [
+        "specificLimitCategory"
+      ],
+      "additionalProperties": false
+    },
+    "oi.StaticSpeedProfileChange": {
+      "type": "object",
+      "description": "Defines the static speed profile for a section of track",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated segment profile"
+        },
+        "speed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines the applicable speed for the section of track ; Resolution as defined in SS126 = 5 km/h"
+        },
+        "specificStaticSpeedProfile": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/infra.SpecificStaticSpeedLimit"
+          },
+          "description": "composes of specific static speed profiles"
+        },
+        "trainEndApplicability": {
+          "type": "string",
+          "enum": [
+            "lengthDelay",
+            "noLengthDelay"
+          ],
+          "description": "Indicates if a speed limit given for a profile element is to be applied until the front of the train (no train length delay) or the end of the train (train length delay) has left the element."
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.GradientChange": {
+      "type": "object",
+      "description": "Defines the gradient at a given location in segment profile",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Position on the associated segment profile"
+        },
+        "gradientValue": {
+          "type": "integer",
+          "description": "Required resolution is 0.1 permill; positiv: uphill, negative: downhill"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.CurveChange": {
+      "type": "object",
+      "description": "Defines the curve at a given location in segment profile",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Position on the associated segment profile"
+        },
+        "curve": {
+          "type": "string",
+          "enum": [
+            "cr_R_7000",
+            "cr_7000_4500",
+            "cr_4500_2800",
+            "cr_2800_2000",
+            "cr_2000_1500",
+            "cr_1500_1250",
+            "cr_1250_1075",
+            "cr_1075_925",
+            "cr_925_825",
+            "cr_825_725",
+            "cr_725_625",
+            "cr_625_525",
+            "cr_525_475",
+            "cr_475_425",
+            "cr_425_375",
+            "cr_375_325",
+            "cr_325_300",
+            "cr_300_275",
+            "cr_275_250",
+            "cr_250_225",
+            "cr_225_200",
+            "cr_200_175",
+            "cr_175_150",
+            "cr_R_150"
+          ],
+          "description": "defines curve radius"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.VoltageStart": {
+      "type": "object",
+      "description": "Defines the power voltage information for a segment profile",
+      "properties": {
+        "voltageType": {
+          "type": "string",
+          "enum": [
+            "vtNotFitted",
+            "vtAC25kv50Hz",
+            "vtAC15kv16_7Hz",
+            "vtDC3kv",
+            "vtDC1_5kv",
+            "vtDC600v",
+            "vtDC650v",
+            "vtDC750v",
+            "vtDC850v"
+          ],
+          "description": "defines the voltage type"
+        },
+        "nid_c": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines the country identifier for voltage"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.VoltageChange": {
+      "type": "object",
+      "description": "Defines the power voltage information for a segment profile",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Position on the associated segment profile"
+        },
+        "voltageType": {
+          "type": "string",
+          "enum": [
+            "vtNotFitted",
+            "vtAC25kv50Hz",
+            "vtAC15kv16_7Hz",
+            "vtDC3kv",
+            "vtDC1_5kv",
+            "vtDC600v",
+            "vtDC650v",
+            "vtDC750v",
+            "vtDC850v"
+          ],
+          "description": "defines the voltage type"
+        },
+        "nid_c": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines the country identifier for voltage"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.CurrentChange": {
+      "type": "object",
+      "description": "Defines the current limitation information for a segment profile",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Position on the associated segment profile"
+        },
+        "currentValue": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defined current limitation in Ampere ; Resolution as defined in SS126 = 10A"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.Balise": {
+      "type": "object",
+      "description": "Defines a technical device on the railway trackbed",
+      "properties": {
+        "n_pig": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines the position of a balise in a balise group"
+        },
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Position on the associated segment profile"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.BaliseGroup": {
+      "type": "object",
+      "description": "Defines a technical device group on the railway trackbed",
+      "properties": {
+        "nid_bg": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines national identifier for the balise group"
+        },
+        "balises": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.Balise"
+          },
+          "minItems": 1,
+          "maxItems": 8,
+          "description": "Defines the balises within the balise group"
+        },
+        "nidCQualifier": {
+          "type": "boolean",
+          "description": "true if same NID_C as in segment profile is to be used; false if new country id is to be used for the balise"
+        },
+        "nid_c": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "to be defined when countyIdQualifier is false ; defines the new NID_C for the balise group"
+        }
+      },
+      "required": [
+        "balises"
+      ],
+      "additionalProperties": false
+    },
+    "oi.TimingPoint": {
+      "type": "object",
+      "description": "Defines a fixed point on the infrastructure",
+      "properties": {
+        "nidTP": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines national identifier for the timing point"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
+        },
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Position on the associated segment profile"
+        },
+        "stopLocationTolerance": {
+          "type": "string",
+          "enum": [
+            "T_Undefined",
+            "T_10cm",
+            "T_20cm",
+            "T_30cm",
+            "T_40cm",
+            "T_50cm",
+            "T_1m",
+            "T_150cm",
+            "T_2m",
+            "T_250cm",
+            "T_3m",
+            "T_5m",
+            "T_750cm",
+            "T_10m",
+            "T_15m",
+            "T_20m",
+            "T_25m",
+            "T_30m",
+            "T_50m",
+            "T_75m",
+            "T_100m"
+          ],
+          "description": "Defines the required stopping tolerance for a Timing Point"
+        },
+        "stoppingPointReachDistance": {
+          "type": "string",
+          "enum": [
+            "T_Undefined",
+            "T_10cm",
+            "T_20cm",
+            "T_30cm",
+            "T_40cm",
+            "T_50cm",
+            "T_1m",
+            "T_150cm",
+            "T_2m",
+            "T_250cm",
+            "T_3m",
+            "T_5m",
+            "T_750cm",
+            "T_10m",
+            "T_15m",
+            "T_20m",
+            "T_25m",
+            "T_30m",
+            "T_50m",
+            "T_75m",
+            "T_100m"
+          ],
+          "description": "Defines the distance from a stopping point to consider it as reached"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "oi.Tunnel": {
+      "type": "object",
+      "description": "Defines the tunnel information for a segment profile",
+      "properties": {
+        "segmentSection": {
+          "type": "object",
+          "$ref": "#/definitions/oi.SegmentSection",
+          "description": "composes of segment sections"
+        },
+        "tunnelType": {
+          "type": "string",
+          "enum": [
+            "singleTrackTunnel",
+            "doubleTrackTunnel",
+            "wideCrossSectionTunnel"
+          ],
+          "description": "defines the tunnel type"
+        }
+      },
+      "required": [
+        "segmentSection"
+      ],
+      "additionalProperties": false
+    },
+    "oi.AxleLoadSpeedProfile": {
+      "type": "object",
+      "description": "Defines the axle load speed profile for a section of SegmentProfile",
+      "properties": {
+        "segmentSection": {
+          "type": "object",
+          "$ref": "#/definitions/oi.SegmentSection",
+          "description": "composes of segment sections"
+        },
+        "speed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines the applicablespeed for the section of track ; Resolution as defined in SS126 = 5 km/h"
+        },
+        "trainEndApplicability": {
+          "type": "string",
+          "enum": [
+            "lengthDelay",
+            "noLengthDelay"
+          ],
+          "description": "Indicates if a speed limit given for a profile element is to be applied until the front of the train (no train length delay) or the end of the train (train length delay) has left the element."
+        },
+        "axleLoadCategory": {
+          "type": "string",
+          "enum": [
+            "AL_A",
+            "AL_HS17",
+            "AL_B1",
+            "AL_B2",
+            "AL_C2",
+            "AL_C3",
+            "AL_C4",
+            "AL_D2",
+            "AL_D3",
+            "AL_D4",
+            "AL_D4XL",
+            "AL_E4",
+            "AL_E5"
+          ],
+          "description": "value indicating the suitable Axle load category."
+        }
+      },
+      "required": [
+        "segmentSection"
+      ],
+      "additionalProperties": false
+    },
+    "oi.UnprotectedLX": {
+      "type": "object",
+      "description": "Defines the unprotected LX information for a segment profile",
+      "properties": {
+        "pNominal": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Position on the segment profile associated for nominal direction of Segment profile"
+        },
+        "pReverse": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Position on the segment profile associated for reverse direction of Segment profile"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.PermittedBrakingDistance": {
+      "type": "object",
+      "description": "Defines the permitted braking distance information for a segment profile",
+      "properties": {
+        "segmentSection": {
+          "type": "object",
+          "$ref": "#/definitions/oi.SegmentSection",
+          "description": "composes for segment sections"
+        },
+        "distance": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines the permitted braking distance value"
+        },
+        "byEmergencyBrake": {
+          "type": "boolean",
+          "description": "true if Braking is to be achieved using Emergency      brake ; false if braking is to be achieved by service brake"
+        },
+        "gradientValue": {
+          "type": "integer",
+          "description": "defines gradient value to be used for permitted braking distance"
+        }
+      },
+      "required": [
+        "segmentSection"
+      ],
+      "additionalProperties": false
+    },
+    "oi.SegmentSection": {
+      "type": "object",
+      "description": "Defines sections with start and end references for use in segment profile",
+      "properties": {
+        "range": {
+          "type": "string",
+          "enum": [
+            "rtStart",
+            "rtEnd",
+            "rtStartEnd",
+            "rtWholeSP"
+          ],
+          "description": "defines range type"
+        },
+        "pStart": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Start Position on the segment profile"
+        },
+        "pEnd": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "End Position on the segment profile"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.LimitedDynamicBrakeForce": {
+      "type": "object",
+      "description": "Defines the limited dynamic brake force information for a segment profile",
+      "properties": {
+        "segmentSection": {
+          "type": "object",
+          "$ref": "#/definitions/oi.SegmentSection",
+          "description": "composes of segment sections"
+        },
+        "dynamicBrakeForceLimit": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "the defined range corresponds to the constraints from SS126"
+        }
+      },
+      "required": [
+        "segmentSection"
+      ],
+      "additionalProperties": false
+    },
+    "oi.DrivingProfile": {
+      "type": "object",
+      "description": "Defines the driving profile description for the Segment Profile",
+      "properties": {
+        "eoaOffset": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines EoA offset for the segment profile"
+        },
+        "utcOffset": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "UTC time offset in minutes ; Resolution in15 min"
+        },
+        "startAltitude": {
+          "type": "integer",
+          "description": "Altitude at the beginning of the SP in ETRS89"
+        },
+        "atotsContactInfoDir": {
+          "type": "boolean",
+          "description": "true if contact info exists fornominal direction ; false if contact info exists for reverse direction ; undefined if no contact info exists"
+        },
+        "atotsContactInfo": {
+          "type": "object",
+          "$ref": "#/definitions/oi.AtoTSContactInfo",
+          "description": "Is onlydefined when 'atotsContactInfoDir' is true or false"
+        },
+        "staticSpeedProfileStart": {
+          "type": "object",
+          "$ref": "#/definitions/oi.StaticSpeedProfileStart",
+          "description": "composes of static speed profile"
+        },
+        "staticSpeedProfileChanges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.StaticSpeedProfileChange"
+          },
+          "description": "composes of static speed profile changes"
+        },
+        "gradientStart": {
+          "type": "integer",
+          "description": "Required resolution is 0.1 permill;positiv: uphill, negative: downhill"
+        },
+        "gradientChanges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.GradientChange"
+          },
+          "description": "composes of gradient changes"
+        },
+        "curveStart": {
+          "type": "string",
+          "enum": [
+            "cr_R_7000",
+            "cr_7000_4500",
+            "cr_4500_2800",
+            "cr_2800_2000",
+            "cr_2000_1500",
+            "cr_1500_1250",
+            "cr_1250_1075",
+            "cr_1075_925",
+            "cr_925_825",
+            "cr_825_725",
+            "cr_725_625",
+            "cr_625_525",
+            "cr_525_475",
+            "cr_475_425",
+            "cr_425_375",
+            "cr_375_325",
+            "cr_325_300",
+            "cr_300_275",
+            "cr_275_250",
+            "cr_250_225",
+            "cr_225_200",
+            "cr_200_175",
+            "cr_175_150",
+            "cr_R_150"
+          ],
+          "description": "defines the curve radius at start of segment profile"
+        },
+        "curveChanges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.CurveChange"
+          },
+          "description": "composes of curve changes"
+        },
+        "voltageStart": {
+          "type": "object",
+          "$ref": "#/definitions/oi.VoltageStart",
+          "description": "composes of voltage start"
+        },
+        "voltageChanges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.VoltageChange"
+          },
+          "description": "composes of voltage changes"
+        },
+        "currentStart": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defined current limitation in Ampere ; Resolution as defined in SS126 = 10A"
+        },
+        "currentChanges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.CurrentChange"
+          },
+          "description": "composes of current limitation changes"
+        },
+        "baliseGroups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.BaliseGroup"
+          },
+          "description": "Defines the balise groups"
+        },
+        "timingPoints": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.TimingPoint"
+          },
+          "description": "Defines the set of timing points"
+        },
+        "platformAreas": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.SegmentSection"
+          },
+          "description": "composes of platform areas"
+        },
+        "tunnels": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.Tunnel"
+          },
+          "description": "Defines the set of tunnels"
+        },
+        "axleLoadSpeedProfiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.AxleLoadSpeedProfile"
+          },
+          "description": "composes of axle load speed profiles"
+        },
+        "unprotectedLXs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.UnprotectedLX"
+          },
+          "description": "composes of unprotected level crossings"
+        },
+        "permittedBrakingDistances": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.PermittedBrakingDistance"
+          },
+          "description": "composes of permitted braking distances"
+        },
+        "switchOffEddyCurrentBrakeServiceBrakes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.SegmentSection"
+          },
+          "description": "composes of switch Off Eddy Current Brake Service Brakes"
+        },
+        "switchOffEddyCurrentBrakeEmergencyBrakes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.SegmentSection"
+          },
+          "description": "composes of switch Off Eddy Emergency Brake Service Brakes"
+        },
+        "switchOffRegenerativeBrakes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.SegmentSection"
+          },
+          "description": "composes of switch Off Regenerative Brakes"
+        },
+        "switchOffMagneticShoeBrakes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.SegmentSection"
+          },
+          "description": "composes of switch Off Magnetic Shoe Brakes"
+        },
+        "dynamicBrakeForceInhibitions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.SegmentSection"
+          },
+          "description": "composes of Dynamic Brake Force Inhibitions"
+        },
+        "limitedDynamicBrakeForces": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.LimitedDynamicBrakeForce"
+          },
+          "description": "composes of Limited Dynamic Brake Forces"
+        }
+      },
+      "required": [
+        "staticSpeedProfileStart",
+        "voltageStart"
+      ],
+      "additionalProperties": false
+    },
+    "map.LinearElementCoordinate": {
+      "type": "object",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines position on the associated LinearElement"
+        },
+        "x": {
+          "type": "number",
+          "description": "Defines the x coordiante value, mapping to each EPSG-code"
+        },
+        "y": {
+          "type": "number",
+          "description": "Defines the y coordiante value, mapping to each EPSG-code"
+        },
+        "z": {
+          "type": "number",
+          "description": "Defines the z coordiante value, mapping to each EPSG-code"
+        },
+        "accPos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "absolute accuracy as 1sigma. Use 0 if not defined"
+        },
+        "accX": {
+          "type": "number",
+          "description": "absolute accuracy as 1sigma. Use 0.0 if not defined"
+        },
+        "accY": {
+          "type": "number",
+          "description": "absolute accuracy as 1sigma. Use 0.0 if not defined"
+        },
+        "accZ": {
+          "type": "number",
+          "description": "absolute accuracy as 1sigma. Use 0.0 if not defined"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.Attitude": {
+      "type": "object",
+      "properties": {
+        "rollAngle": {
+          "type": "integer",
+          "description": "Defines roll angle at a position in radians as the difference between the right rail minus the left rail. Right/left with respect to the direction of the linear element."
+        },
+        "curvature": {
+          "type": "integer",
+          "description": "curvature at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+        },
+        "azimuth": {
+          "type": "number",
+          "description": "The azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
+        },
+        "pitch": {
+          "type": "integer",
+          "description": "Defines pitch in radians at a point as a height difference between current point and the next"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.GeometryProfile": {
+      "type": "object",
+      "description": "Defines the geometry profile description for the Segment Profile",
+      "properties": {
+        "linearElementCoordinates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/map.LinearElementCoordinate"
+          },
+          "description": "composes of linear element coordinates"
+        },
+        "attitudes": {
+          "type": "object",
+          "$ref": "#/definitions/oi.Attitude",
+          "description": "composes of geometry values for the linear element coordinates"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.SegmentDescription": {
+      "type": "object",
+      "description": "Defines the segment profile description for all the layers of the segment profiles ",
+      "properties": {
+        "drivingProfile": {
+          "type": "object",
+          "$ref": "#/definitions/oi.DrivingProfile",
+          "description": "Defines the Driving Profile Layer"
+        },
+        "geometryProfile": {
+          "type": "object",
+          "$ref": "#/definitions/oi.GeometryProfile",
+          "description": "Defines the Geometry Profile Layer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.AdjacentSegmentProfile": {
+      "type": "object",
+      "description": "Defines properties of adjacent segment profile",
+      "properties": {
+        "nidSP": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines national identifier for the segment profile"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines the version of the segment profile"
+        },
+        "nidC": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines country identifier for the segment profile"
+        },
+        "linkType": {
+          "type": "string",
+          "enum": [
+            "pointLeft",
+            "pointRight",
+            "pointTip",
+            "simpleConnector"
+          ],
+          "description": "Defines the type of link associated with the segment profile"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.SegmentProfile": {
+      "type": "object",
+      "description": "Defines base properties of a segment profile",
+      "properties": {
+        "nidSP": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines national identifier for the segment profile"
+        },
+        "length": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines the length of the segment profile"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines the version of the segment profile"
+        },
+        "nidC": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines country identifier for the segment profile"
+        },
+        "segmentDescription": {
+          "type": "object",
+          "$ref": "#/definitions/oi.SegmentDescription",
+          "description": "contains segment profile descriptions"
+        },
+        "adjacentSegmentProfiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.AdjacentSegmentProfile"
+          },
+          "minItems": 1,
+          "maxItems": 4,
+          "description": "contains adjacent segment profile links"
+        }
+      },
+      "required": [
+        "segmentDescription",
+        "adjacentSegmentProfiles"
+      ],
+      "additionalProperties": false
+    },
+    "oi.OISegment": {
+      "type": "object",
+      "description": "Defines the topology reference information for a segment profile.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identity of the object; used for referencing"
+        },
+        "linearElementSection": {
+          "type": "object",
+          "$ref": "#/definitions/infra.LinearElementSection",
+          "description": "composes of LinearElementSection. The direction is defined by startsAt -> endsAt"
+        },
+        "segmentProfile": {
+          "type": "object",
+          "$ref": "#/definitions/oi.SegmentProfile",
+          "description": "composes of segment profiles"
+        }
+      },
+      "required": [
+        "id",
+        "linearElementSection",
+        "segmentProfile"
+      ],
+      "additionalProperties": false
+    },
+    "oi.TimingPointMapping": {
+      "type": "object",
+      "description": "main Use-Case map from infra (timetable) to ato (journeyProfile)",
+      "properties": {
+        "infraTimingPoint": {
+          "type": "string",
+          "description": "refers to infra timing point"
+        },
+        "atoTimingPoint": {
+          "type": "string",
+          "description": "refers to ato timing point"
+        }
+      },
+      "required": [
+        "infraTimingPoint",
+        "atoTimingPoint"
+      ],
+      "additionalProperties": false
+    },
+    "oi.OIArea": {
+      "type": "object",
+      "description": "Defines OI Area with collection of OI segments with boarder of the infra.Area",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identity of the object; used for referencing"
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.OISegment"
+          },
+          "minItems": 1,
+          "description": "composes of segments"
+        },
+        "timingPointsMapping": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.TimingPointMapping"
+          },
+          "description": "composes of segments"
+        }
+      },
+      "required": [
+        "id",
+        "segments"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "oiAreas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/oi.OIArea"
+      },
+      "description": "composes of OI areas"
+    }
+  },
+  "additionalProperties": false
+}

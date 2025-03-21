@@ -1,9 +1,6 @@
 {
   "$id": "https://ERJU/eng_LevelCrossing",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "description": "Defines the track asset level crossing",
   "properties": {
@@ -14,12 +11,15 @@
     "dangerPoints": {
       "type": "array",
       "items": {
-        "type": "string",
-        "description": "refers to danger points"
-       },
-      "minItems": 1
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "refers to danger points"
     }
   },
-  "required": ["id", "dangerPoints"],
+  "required": [
+    "id",
+    "dangerPoints"
+  ],
   "additionalProperties": false
 }

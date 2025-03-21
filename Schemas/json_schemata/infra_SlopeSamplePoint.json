@@ -1,20 +1,17 @@
 {
   "$id": "https://ERJU/infra_SlopeSamplePoint",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
-  "description": "Slope (gradient) of the track at a given location on the track.",
+  "description": "Defines the Slope (gradient) of the track at a given location on the track.",
   "properties": {
     "pos": {
       "type": "integer",
       "minimum": 0,
-      "description": "position on the associated TrackEdge"
+      "description": "position on the associated LinearElement"
     },
     "samplePointSlope": {
       "type": "integer",
-      "description": "The vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
+      "description": "Defines the vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the LinearElement. Positive for rising slope and negative for falling slope."
     }
   },
   "additionalProperties": false

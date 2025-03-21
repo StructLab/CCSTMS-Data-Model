@@ -1,0 +1,25 @@
+{
+  "$id": "https://ERJU/infra_LinearElement",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "A linear element is an uninterrupted stretch of railway track, without divergence or convergence.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "lengthOfNetLinearElement": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Defines the distance along the LinearElement's track centre line. "
+    },
+    "name": {
+      "type": "string",
+      "description": "User-friendly name, only if different from id"
+    }
+  },
+  "required": [
+    "id"
+  ],
+  "additionalProperties": false
+}

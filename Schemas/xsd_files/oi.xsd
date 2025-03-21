@@ -1,0 +1,605 @@
+<?xml version="1.0" ?>
+<xs:schema targetNamespace="https://erju.org/oi" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:oi="https://erju.org/oi" elementFormDefault="qualified" version="1.0" xmlns:infra="https://erju.org/infra" xmlns:ss026="https://erju.org/ss026" xmlns:map="https://erju.org/map">
+	<xs:import namespace="https://erju.org/infra" schemaLocation="infra.xsd"/>
+	<xs:import namespace="https://erju.org/ss026" schemaLocation="ss026.xsd"/>
+	<xs:import namespace="https://erju.org/map" schemaLocation="map.xsd"/>
+	<xs:simpleType name="RangeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="rtStart"/>
+			<xs:enumeration value="rtEnd"/>
+			<xs:enumeration value="rtStartEnd"/>
+			<xs:enumeration value="rtWholeSP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TunnelType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="singleTrackTunnel"/>
+			<xs:enumeration value="doubleTrackTunnel"/>
+			<xs:enumeration value="wideCrossSectionTunnel"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LinkType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="pointLeft"/>
+			<xs:enumeration value="pointRight"/>
+			<xs:enumeration value="pointTip"/>
+			<xs:enumeration value="simpleConnector"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CurveRadius">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="cr_R_7000"/>
+			<xs:enumeration value="cr_7000_4500"/>
+			<xs:enumeration value="cr_4500_2800"/>
+			<xs:enumeration value="cr_2800_2000"/>
+			<xs:enumeration value="cr_2000_1500"/>
+			<xs:enumeration value="cr_1500_1250"/>
+			<xs:enumeration value="cr_1250_1075"/>
+			<xs:enumeration value="cr_1075_925"/>
+			<xs:enumeration value="cr_925_825"/>
+			<xs:enumeration value="cr_825_725"/>
+			<xs:enumeration value="cr_725_625"/>
+			<xs:enumeration value="cr_625_525"/>
+			<xs:enumeration value="cr_525_475"/>
+			<xs:enumeration value="cr_475_425"/>
+			<xs:enumeration value="cr_425_375"/>
+			<xs:enumeration value="cr_375_325"/>
+			<xs:enumeration value="cr_325_300"/>
+			<xs:enumeration value="cr_300_275"/>
+			<xs:enumeration value="cr_275_250"/>
+			<xs:enumeration value="cr_250_225"/>
+			<xs:enumeration value="cr_225_200"/>
+			<xs:enumeration value="cr_200_175"/>
+			<xs:enumeration value="cr_175_150"/>
+			<xs:enumeration value="cr_R_150"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StopLocationTolerance">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="T_Undefined"/>
+			<xs:enumeration value="T_10cm"/>
+			<xs:enumeration value="T_20cm"/>
+			<xs:enumeration value="T_30cm"/>
+			<xs:enumeration value="T_40cm"/>
+			<xs:enumeration value="T_50cm"/>
+			<xs:enumeration value="T_1m"/>
+			<xs:enumeration value="T_150cm"/>
+			<xs:enumeration value="T_2m"/>
+			<xs:enumeration value="T_250cm"/>
+			<xs:enumeration value="T_3m"/>
+			<xs:enumeration value="T_5m"/>
+			<xs:enumeration value="T_750cm"/>
+			<xs:enumeration value="T_10m"/>
+			<xs:enumeration value="T_15m"/>
+			<xs:enumeration value="T_20m"/>
+			<xs:enumeration value="T_25m"/>
+			<xs:enumeration value="T_30m"/>
+			<xs:enumeration value="T_50m"/>
+			<xs:enumeration value="T_75m"/>
+			<xs:enumeration value="T_100m"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RejectReason">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="incompatibleSystemVersion"/>
+			<xs:enumeration value="anotherDRTAInCharge"/>
+			<xs:enumeration value="DRTAInChargeUnknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TerminationReason">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DRTATerminationRequest"/>
+			<xs:enumeration value="lastSPLeft"/>
+			<xs:enumeration value="DRTAHandoverCancelled"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="OI">
+		<xs:sequence>
+			<xs:element name="oiAreas" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="oiArea" type="oi:OIArea" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="oI" type="oi:OI"/>
+	<xs:complexType name="OIArea">
+		<xs:sequence>
+			<xs:element name="segments" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="segment" type="oi:OISegment" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="timingPointsMapping" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="timingPointsMappingItem" type="oi:TimingPointMapping" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:element name="oIArea" type="oi:OIArea"/>
+	<xs:complexType name="TimingPointMapping">
+		<xs:sequence/>
+		<xs:attribute name="infraTimingPoint" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Reference to infra:TimingPoint</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="atoTimingPoint" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Reference to oi:TimingPoint</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="timingPointMapping" type="oi:TimingPointMapping"/>
+	<xs:complexType name="OISegment">
+		<xs:sequence>
+			<xs:element name="linearElementSection" type="infra:LinearElementSection" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="segmentProfile" type="oi:SegmentProfile" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:element name="oISegment" type="oi:OISegment"/>
+	<xs:complexType name="SegmentProfile">
+		<xs:sequence>
+			<xs:element name="segmentDescription" type="oi:SegmentDescription" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="adjacentSegmentProfiles" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="adjacentSegmentProfile" type="oi:AdjacentSegmentProfile" minOccurs="1" maxOccurs="4"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="nidSP" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="length" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="version" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="nidC" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="segmentProfile" type="oi:SegmentProfile"/>
+	<xs:complexType name="AdjacentSegmentProfile">
+		<xs:sequence/>
+		<xs:attribute name="nidSP" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="version" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="nidC" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="linkType" type="oi:LinkType" use="required"/>
+	</xs:complexType>
+	<xs:element name="adjacentSegmentProfile" type="oi:AdjacentSegmentProfile"/>
+	<xs:complexType name="SegmentDescription">
+		<xs:sequence>
+			<xs:element name="drivingProfile" type="oi:DrivingProfile" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="geometryProfile" type="oi:GeometryProfile" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="segmentDescription" type="oi:SegmentDescription"/>
+	<xs:complexType name="DrivingProfile">
+		<xs:sequence>
+			<xs:element name="atotsContactInfo" type="oi:AtoTSContactInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="staticSpeedProfileStart" type="oi:StaticSpeedProfileStart" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="staticSpeedProfileChanges" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="staticSpeedProfileChange" type="oi:StaticSpeedProfileChange" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="gradientChanges" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="gradientChange" type="oi:GradientChange" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="curveChanges" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="curveChange" type="oi:CurveChange" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="voltageStart" type="oi:VoltageStart" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="voltageChanges" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="voltageChange" type="oi:VoltageChange" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="currentChanges" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="currentChange" type="oi:CurrentChange" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="baliseGroups" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="baliseGroup" type="oi:BaliseGroup" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="timingPoints" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="timingPoint" type="oi:TimingPoint" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="platformAreas" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="platformArea" type="oi:SegmentSection" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="tunnels" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="tunnel" type="oi:Tunnel" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="axleLoadSpeedProfiles" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="axleLoadSpeedProfile" type="oi:AxleLoadSpeedProfile" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="unprotectedLXs" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="unprotectedLX" type="oi:UnprotectedLX" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="permittedBrakingDistances" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="permittedBrakingDistance" type="oi:PermittedBrakingDistance" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="switchOffEddyCurrentBrakeServiceBrakes" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="switchOffEddyCurrentBrakeServiceBrake" type="oi:SegmentSection" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="switchOffEddyCurrentBrakeEmergencyBrakes" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="switchOffEddyCurrentBrakeEmergencyBrake" type="oi:SegmentSection" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="switchOffRegenerativeBrakes" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="switchOffRegenerativeBrake" type="oi:SegmentSection" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="switchOffMagneticShoeBrakes" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="switchOffMagneticShoeBrake" type="oi:SegmentSection" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="dynamicBrakeForceInhibitions" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="dynamicBrakeForceInhibition" type="oi:SegmentSection" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="limitedDynamicBrakeForces" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="limitedDynamicBrakeForce" type="oi:LimitedDynamicBrakeForce" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="eoaOffset" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="utcOffset" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="startAltitude" type="xs:int" use="required"/>
+		<xs:attribute name="atotsContactInfoDir" type="xs:boolean" use="required"/>
+		<xs:attribute name="gradientStart" type="xs:int" use="required"/>
+		<xs:attribute name="curveStart" type="oi:CurveRadius" use="required"/>
+		<xs:attribute name="currentStart" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="drivingProfile" type="oi:DrivingProfile"/>
+	<xs:complexType name="GeometryProfile">
+		<xs:sequence>
+			<xs:element name="linearElementCoordinates" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="linearElementCoordinate" type="map:LinearElementCoordinate" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="attitudes" type="oi:Attitude" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="geometryProfile" type="oi:GeometryProfile"/>
+	<xs:complexType name="Attitude">
+		<xs:sequence/>
+		<xs:attribute name="rollAngle" type="xs:int" use="required"/>
+		<xs:attribute name="curvature" type="xs:int" use="required"/>
+		<xs:attribute name="azimuth" type="xs:decimal" use="required"/>
+		<xs:attribute name="pitch" type="xs:int" use="required"/>
+	</xs:complexType>
+	<xs:element name="attitude" type="oi:Attitude"/>
+	<xs:complexType name="AtoTSContactInfo">
+		<xs:sequence/>
+		<xs:attribute name="nidATOTS" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="nidSP" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="spNidC" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="atotsNidC" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="atoTSContactInfo" type="oi:AtoTSContactInfo"/>
+	<xs:complexType name="StaticSpeedProfileStart">
+		<xs:sequence>
+			<xs:element name="specificStaticSpeedProfile" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="specificStaticSpeedProfileItem" type="infra:SpecificStaticSpeedLimit" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="speed" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="trainEndApplicability" type="infra:TrainEndApplicability" use="required"/>
+	</xs:complexType>
+	<xs:element name="staticSpeedProfileStart" type="oi:StaticSpeedProfileStart"/>
+	<xs:complexType name="StaticSpeedProfileChange">
+		<xs:sequence>
+			<xs:element name="specificStaticSpeedProfile" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="specificStaticSpeedProfileItem" type="infra:SpecificStaticSpeedLimit" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="pos" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="speed" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="trainEndApplicability" type="infra:TrainEndApplicability" use="required"/>
+	</xs:complexType>
+	<xs:element name="staticSpeedProfileChange" type="oi:StaticSpeedProfileChange"/>
+	<xs:complexType name="AxleLoadSpeedProfile">
+		<xs:sequence>
+			<xs:element name="segmentSection" type="oi:SegmentSection" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="speed" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="trainEndApplicability" type="infra:TrainEndApplicability" use="required"/>
+		<xs:attribute name="axleLoadCategory" type="infra:LoadCapabilityLineCategories" use="required"/>
+	</xs:complexType>
+	<xs:element name="axleLoadSpeedProfile" type="oi:AxleLoadSpeedProfile"/>
+	<xs:complexType name="GradientChange">
+		<xs:sequence/>
+		<xs:attribute name="pos" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="gradientValue" type="xs:int" use="required"/>
+	</xs:complexType>
+	<xs:element name="gradientChange" type="oi:GradientChange"/>
+	<xs:complexType name="CurveChange">
+		<xs:sequence/>
+		<xs:attribute name="pos" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="curve" type="oi:CurveRadius" use="required"/>
+	</xs:complexType>
+	<xs:element name="curveChange" type="oi:CurveChange"/>
+	<xs:complexType name="TimingPoint">
+		<xs:sequence/>
+		<xs:attribute name="nidTP" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="pos" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="stopLocationTolerance" type="oi:StopLocationTolerance" use="required"/>
+		<xs:attribute name="stoppingPointReachDistance" type="oi:StopLocationTolerance" use="required"/>
+	</xs:complexType>
+	<xs:element name="timingPoint" type="oi:TimingPoint"/>
+	<xs:complexType name="BaliseGroup">
+		<xs:sequence>
+			<xs:element name="balises" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="balise" type="oi:Balise" minOccurs="1" maxOccurs="8"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="nid_bg" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="nidCQualifier" type="xs:boolean" use="required"/>
+		<xs:attribute name="nid_c" type="xs:unsignedInt"/>
+	</xs:complexType>
+	<xs:element name="baliseGroup" type="oi:BaliseGroup"/>
+	<xs:complexType name="Balise">
+		<xs:sequence/>
+		<xs:attribute name="n_pig" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="pos" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="balise" type="oi:Balise"/>
+	<xs:complexType name="PermittedBrakingDistance">
+		<xs:sequence>
+			<xs:element name="segmentSection" type="oi:SegmentSection" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="distance" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="byEmergencyBrake" type="xs:boolean" use="required"/>
+		<xs:attribute name="gradientValue" type="xs:int" use="required"/>
+	</xs:complexType>
+	<xs:element name="permittedBrakingDistance" type="oi:PermittedBrakingDistance"/>
+	<xs:complexType name="VoltageStart">
+		<xs:sequence/>
+		<xs:attribute name="voltageType" type="infra:EnergySupplySystems" use="required"/>
+		<xs:attribute name="nid_c" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="voltageStart" type="oi:VoltageStart"/>
+	<xs:complexType name="VoltageChange">
+		<xs:sequence/>
+		<xs:attribute name="pos" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="voltageType" type="infra:EnergySupplySystems" use="required"/>
+		<xs:attribute name="nid_c" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="voltageChange" type="oi:VoltageChange"/>
+	<xs:complexType name="CurrentChange">
+		<xs:sequence/>
+		<xs:attribute name="pos" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="currentValue" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="currentChange" type="oi:CurrentChange"/>
+	<xs:complexType name="Tunnel">
+		<xs:sequence>
+			<xs:element name="segmentSection" type="oi:SegmentSection" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="tunnelType" type="oi:TunnelType" use="required"/>
+	</xs:complexType>
+	<xs:element name="tunnel" type="oi:Tunnel"/>
+	<xs:complexType name="UnprotectedLX">
+		<xs:sequence/>
+		<xs:attribute name="pNominal" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="pReverse" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="unprotectedLX" type="oi:UnprotectedLX"/>
+	<xs:complexType name="LimitedDynamicBrakeForce">
+		<xs:sequence>
+			<xs:element name="segmentSection" type="oi:SegmentSection" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="dynamicBrakeForceLimit" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="limitedDynamicBrakeForce" type="oi:LimitedDynamicBrakeForce"/>
+	<xs:complexType name="SegmentSection">
+		<xs:sequence/>
+		<xs:attribute name="range" type="oi:RangeType" use="required"/>
+		<xs:attribute name="pStart" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="pEnd" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="segmentSection" type="oi:SegmentSection"/>
+	<xs:complexType name="MapAreaRequest">
+		<xs:sequence>
+			<xs:element name="trackTrainHeader" type="oi:TrackTrainHeader" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="relativePosition" type="oi:RelativePosition" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="absolutePosition" type="oi:AbsolutePosition" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="mapAreaRadius" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="mapAreaRequest" type="oi:MapAreaRequest"/>
+	<xs:complexType name="RelativePosition">
+		<xs:sequence/>
+		<xs:attribute name="nidSP" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="version" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="nidC" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="pos" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="relativePosition" type="oi:RelativePosition"/>
+	<xs:complexType name="AbsolutePosition">
+		<xs:sequence/>
+		<xs:attribute name="x" type="xs:decimal"/>
+		<xs:attribute name="y" type="xs:decimal"/>
+		<xs:attribute name="z" type="xs:decimal"/>
+	</xs:complexType>
+	<xs:element name="absolutePosition" type="oi:AbsolutePosition"/>
+	<xs:complexType name="MapArea">
+		<xs:sequence>
+			<xs:element name="trackTrainHeader" type="oi:TrackTrainHeader" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="segmentProfileList" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="segmentProfileListItem" type="oi:SegmentProfileList" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="mapArea" type="oi:MapArea"/>
+	<xs:complexType name="SegmentProfileList">
+		<xs:sequence/>
+		<xs:attribute name="nidSP" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="version" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="nidC" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="segmentProfileList" type="oi:SegmentProfileList"/>
+	<xs:complexType name="SegmentProfileRequest">
+		<xs:sequence>
+			<xs:element name="trackTrainHeader" type="oi:TrackTrainHeader" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="nidSP" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="nidC" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="segmentProfileRequest" type="oi:SegmentProfileRequest"/>
+	<xs:complexType name="SegmentProfilePacket">
+		<xs:sequence>
+			<xs:element name="trackTrainHeader" type="oi:TrackTrainHeader" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="segmentProfiles" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="segmentProfile" type="oi:SegmentProfile" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="segmentProfilePacket" type="oi:SegmentProfilePacket"/>
+	<xs:complexType name="DigitalRegisterHandshakeRequest">
+		<xs:sequence>
+			<xs:element name="trackTrainheader" type="oi:TrackTrainHeader" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="relativePosition" type="oi:RelativePosition" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="absolutePosition" type="oi:AbsolutePosition" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="handingOver" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	<xs:element name="digitalRegisterHandshakeRequest" type="oi:DigitalRegisterHandshakeRequest"/>
+	<xs:complexType name="DigitalRegisterHandshakeAcknowledgement">
+		<xs:sequence>
+			<xs:element name="trackTrainHeader" type="oi:TrackTrainHeader" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="nidDRTA" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="nidC" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="timeOutResponse" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="systemVersion" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="digitalRegisterHandshakeAcknowledgement" type="oi:DigitalRegisterHandshakeAcknowledgement"/>
+	<xs:complexType name="DigitalRegisterHandshakeRejection">
+		<xs:sequence>
+			<xs:element name="trackTrainHeader" type="oi:TrackTrainHeader" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="contactInformation" type="oi:ContactInformation" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="rejectionReason" type="oi:RejectReason" use="required"/>
+	</xs:complexType>
+	<xs:element name="digitalRegisterHandshakeRejection" type="oi:DigitalRegisterHandshakeRejection"/>
+	<xs:complexType name="ContactInformation">
+		<xs:sequence/>
+		<xs:attribute name="nidDRTA" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="nidC" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="contactInformation" type="oi:ContactInformation"/>
+	<xs:complexType name="DigitalRegisterSessionTerminationRequest">
+		<xs:sequence>
+			<xs:element name="trackTrainHeader" type="oi:TrackTrainHeader" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="digitalRegisterSessionTerminationRequest" type="oi:DigitalRegisterSessionTerminationRequest"/>
+	<xs:complexType name="DigitalRegisterSessionTermination">
+		<xs:sequence>
+			<xs:element name="trackTrainHeader" type="oi:TrackTrainHeader" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="terminationReason" type="oi:TerminationReason" use="required"/>
+	</xs:complexType>
+	<xs:element name="digitalRegisterSessionTermination" type="oi:DigitalRegisterSessionTermination"/>
+	<xs:complexType name="TrackTrainHeader">
+		<xs:sequence/>
+		<xs:attribute name="packetId" type="xs:string" use="required"/>
+		<xs:attribute name="leadingOnBoardUnitId" type="xs:string"/>
+		<xs:attribute name="issuedAt" type="xs:dateTime" use="required"/>
+	</xs:complexType>
+	<xs:element name="trackTrainHeader" type="oi:TrackTrainHeader"/>
+</xs:schema>

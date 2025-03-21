@@ -1,28 +1,33 @@
 {
   "$id": "https://ERJU/infra_HorizontalTransition",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
-  "description": "Geometric primitive for a horizontal transition curve, a clothoid.",
+  "description": "Defines a geometric primitive for a horizontal transition curve, a clothoid.",
   "properties": {
-    "trackGeometryPos": {
+    "elementGeometryPos": {
       "type": "number",
-      "description": "position on the associated Track Edge"
+      "description": "position on the associated Linear Element"
     },
     "azimuth": {
       "type": "number",
-      "description": "The azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
+      "description": "Defines the azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
     },
     "radius": {
       "type": "number",
-      "description": "radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+      "description": "Defines the radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
     },
     "transitionType": {
       "type": "string",
-      "description": "defines different transition types",
-      "enum": ["clothoidCurve", "biquadraticParabola", "blossCurve", "cosineCurve", "cubicParabola", "sineCurve", "wienerBogen"]
+      "enum": [
+        "clothoidCurve",
+        "biquadraticParabola",
+        "blossCurve",
+        "cosineCurve",
+        "cubicParabola",
+        "sineCurve",
+        "wienerBogen"
+      ],
+      "description": "defines different transition types"
     }
   },
   "additionalProperties": false

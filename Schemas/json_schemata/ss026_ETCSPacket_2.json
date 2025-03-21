@@ -1,16 +1,21 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_2",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "description": " System Version order (This packet is used to tell the on-board which is the operated system version)",
   "properties": {
-    "m_version": {
+    "etcsMVersion": {
       "type": "string",
-      "description": "This gives the version of the ETCS system. Each part indicates the first and second number of the version respectively: The first number distinguishes not compatible versions (The three MSBs)_ The second number indicates compatibility within a version X. (The four LSBs)",
-      "enum": ["v1_0", "v1_1", "v2_0", "v2_1", "v_previous", "v_reserved", "v_invalid"]
+      "enum": [
+        "v1_0",
+        "v1_1",
+        "v2_0",
+        "v2_1",
+        "v_previous",
+        "v_reserved",
+        "v_invalid"
+      ],
+      "description": "This gives the version of the ETCS system. Each part indicates the first and second number of the version respectively: The first number distinguishes not compatible versions (The three MSBs)_ The second number indicates compatibility within a version X. (The four LSBs)"
     }
   },
   "additionalProperties": false

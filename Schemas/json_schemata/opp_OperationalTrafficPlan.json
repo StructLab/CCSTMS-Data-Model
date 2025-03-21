@@ -1,405 +1,501 @@
 {
   "$id": "https://ERJU/opp_OperationalTrafficPlan",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "opp_PhysicalTrainUnitIdentifier": {
+    "opp.PhysicalTrainUnitIdentifier": {
       "type": "object",
+      "description": "Defines a set of possible identifiers for a physical train (ETCS-trainRunningNumber, OBU-ID etc).",
       "properties": {
         "trainRunningNumber": {
-          "type": "string"
+          "type": "string",
+          "description": "Defines the Train Running Number for ETCS same as SS026.NID_OPERATIONAL. To be usable for ETCS must contain a decimal number [0..99999999]. Mapping to uint32 by filling with F: '1233' -> 0x1233FFFF"
         },
         "additionalTrainRunningNumber": {
           "type": "string",
-          "description": "Distinction between Operational Train Units with the same trainRunningNumber. This may occur if a trainRunningNumber is reused for different spare trains."
+          "description": "Defines the distinction between Operational Train Units with the same trainRunningNumber. This may occur if a trainRunningNumber is reused for different spare trains."
         },
         "tafTapTsiTrainID": {
-          "type": "string"
+          "type": "string",
+          "description": "refers to taf tap tsi train id"
         },
         "leadingOnBoardUnitId": {
           "type": "string",
-          "description": "see NID_ENGINE"
+          "description": "Defines NID_ENGINE. To be usable with ETCS must contain a decimal number [0..16.777.215]"
         }
       },
       "additionalProperties": false
     },
-    "opp_OperationalTrainCategory": {
+    "opp.OperationalTrainCategory": {
       "type": "object",
+      "description": "Defines usage category for an OperationalTrain",
       "properties": {
         "trainCategoryType": {
           "type": "string",
-          "enum": ["trainCategoryUnknown", "interregional", "regional", "subUrban", "nightTrain", "motorRail", "mountainTrain", "historicTrain", "coachGroup", "tram", "underground", "highspeedTrain", "intercity"]
+          "enum": [
+            "trainCategoryUnknown",
+            "interregional",
+            "regional",
+            "subUrban",
+            "nightTrain",
+            "motorRail",
+            "mountainTrain",
+            "historicTrain",
+            "coachGroup",
+            "tram",
+            "underground",
+            "highspeedTrain",
+            "intercity"
+          ]
         },
         "description": {
           "type": "string",
-          "description": "for UI-purposes"
+          "description": "Defines the description for the operational train categoryfor UI-purposes"
         },
         "trainUsage": {
           "type": "string",
-          "description": "for UI-purposes",
-          "enum": ["trainUsageUndefined", "commercialPassengerTrain", "commercialCargoTrain", "locomotiveRunningLight", "lightRunning", "notInService", "engineeringTrain", "breakdownTrain", "mixedTrain", "specialTrain", "otherTrain"]
+          "enum": [
+            "trainUsageUndefined",
+            "commercialPassengerTrain",
+            "commercialCargoTrain",
+            "locomotiveRunningLight",
+            "lightRunning",
+            "notInService",
+            "engineeringTrain",
+            "breakdownTrain",
+            "mixedTrain",
+            "specialTrain",
+            "otherTrain"
+          ],
+          "description": "Defines the train usage type for UI-purposes"
         }
       },
-      "required": ["description"],
+      "required": [
+        "description"
+      ],
       "additionalProperties": false
     },
-    "opp_AnyClass": {
+    "opp.OnBoardExtension": {
       "type": "object",
+      "description": "A container class for a non-standard key-value-property. Messages need sometimes IM-specific information.",
       "properties": {
-        "className": {
-          "type": "string"
+        "contentType": {
+          "type": "string",
+          "description": "Defines the key-attribute in a key-value-pair. Used for annotation of IM-specific onboard-equipment"
         },
         "content": {
           "type": "string",
-          "contentEncoding": "base64"
+          "contentEncoding": "base64",
+          "description": "Defines the value-attribute in a key-value-pair. Used for annotation of IM-specific onboard-equipment"
         }
       },
-      "required": ["className", "content"],
+      "required": [
+        "contentType",
+        "content"
+      ],
       "additionalProperties": false
     },
-    "opp_SupportedOnBoardEquipment": {
+    "opp.SupportedOnBoardEquipment": {
       "type": "object",
+      "description": "Defines Onboard equipment installed and active on a train",
       "properties": {
         "trainProtectionType": {
           "type": "string",
-          "enum": ["Etcs"]
+          "enum": [
+            "Etcs"
+          ],
+          "description": "Defines the train protection type supported by the on board equipment"
         },
         "etcsSystemVersions": {
           "type": "array",
           "items": {
             "type": "string",
-            "pattern": "\\d+.\\d+"
-           },
-          "minItems": 1
+            "pattern": "\\\\d+.\\\\d+"
+          },
+          "minItems": 1,
+          "description": "Defines the supported etcs system versions"
         },
-        "anyClasses": {
+        "onboardExtensions": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/opp_AnyClass"
-           }
+            "$ref": "#/definitions/opp.OnBoardExtension"
+          }
         }
       },
-      "required": ["etcsSystemVersions"],
+      "required": [
+        "etcsSystemVersions"
+      ],
       "additionalProperties": false
     },
-    "opp_OperationalConsist": {
+    "opp.OperationalConsist": {
       "type": "object",
+      "description": "Defines a rolling-stock consist unit identified by the installed onboard equipment.",
       "properties": {
         "supportedOnBoardEquipment": {
           "type": "object",
-          "$ref": "#/definitions/opp_SupportedOnBoardEquipment"
+          "$ref": "#/definitions/opp.SupportedOnBoardEquipment",
+          "description": "Defines the list of supported onboard equipment for an operational consist"
         }
       },
-      "required": ["supportedOnBoardEquipment"],
+      "required": [
+        "supportedOnBoardEquipment"
+      ],
       "additionalProperties": false
     },
-    "opp_TrainUnit": {
+    "opp.TrainUnit": {
       "type": "object",
+      "description": "Defines rolling stock, which is used to implement part of a train movement.",
       "properties": {
         "physicalTrainUnit": {
           "type": "object",
-          "description": "to be used inPlan Execution user interface of Workbench (fallback level for TMS)",
-          "$ref": "#/definitions/opp_PhysicalTrainUnitIdentifier"
+          "$ref": "#/definitions/opp.PhysicalTrainUnitIdentifier",
+          "description": "Defines the physical train unit to be used in Plan Execution user interface of Workbench (fallback level for TMS)"
         },
         "operationalTrainCategory": {
           "type": "object",
-          "description": "to be used inPlan Execution user interface of Workbench (fallback level for TMS)",
-          "$ref": "#/definitions/opp_OperationalTrainCategory"
+          "$ref": "#/definitions/opp.OperationalTrainCategory",
+          "description": "Defines the category type for the train in operational plan. To be used inPlan Execution user interface of Workbench (fallback level for TMS)"
         },
         "operationalConsists": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "defines the sequnce of consists starting from train-head",
-            "$ref": "#/definitions/opp_OperationalConsist"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/opp.OperationalConsist"
+          },
+          "minItems": 1,
+          "description": "Defines operational consists building the TrainUnit starting from the train-head."
         },
         "nominalRotatingMass": {
           "type": "integer",
           "minimum": 0,
-          "description": "special value 160=unknown"
+          "description": "Defines the nominal rotating mass of the train,special value 0=unknown"
         },
         "regularBrakeWeightPercentage": {
           "type": "integer",
           "minimum": 0,
-          "description": "use zero as undefined"
+          "description": "Defines the regular brake weight percentage. Use 0 if undefined"
         },
         "emergencyBrakeWeightPercentage": {
           "type": "integer",
           "minimum": 0,
-          "description": "use zero as undefined"
+          "description": "Defines the emergency brake weight percentage. Use zero if undefined"
         },
         "brakePosition": {
           "type": "string",
-          "enum": ["passengerTrainInP", "passengerTrainInR", "freightTrainInP", "freightTrainInG", "brakePositionUnknown"]
+          "enum": [
+            "passengerTrainInP",
+            "passengerTrainInR",
+            "freightTrainInP",
+            "freightTrainInG",
+            "brakePositionUnknown"
+          ],
+          "description": "Defines the active brake position for the train"
         },
         "brakeModelType": {
           "type": "string",
-          "enum": ["lambda", "gamma", "undefined"]
+          "enum": [
+            "lambda",
+            "gamma",
+            "undefined"
+          ],
+          "description": "Defines the applicable brake model type for the train"
         },
-        "usedGradeOfAutomation": {
+        "atoGradeAutomation": {
           "type": "string",
-          "enum": ["GoAUnknown", "GoA1", "GoA2", "GoA3", "GoA4"]
+          "enum": [
+            "GoAUnknown",
+            "GoA1",
+            "GoA2",
+            "GoA3",
+            "GoA4"
+          ],
+          "description": "Defines the ato grade of automation for the train"
         },
         "scheduledTrainLength": {
           "type": "integer",
           "minimum": 0,
-          "description": "Train length in meter"
+          "description": "Defines the scheduled train length in meters"
         }
       },
-      "required": ["physicalTrainUnit", "operationalTrainCategory", "operationalConsists"],
+      "required": [
+        "physicalTrainUnit",
+        "operationalTrainCategory",
+        "operationalConsists"
+      ],
       "additionalProperties": false
     },
-    "infra_DirTrackEdgePoint": {
+    "infra.NetPointReference": {
       "type": "object",
-      "description": "Defines a directed spot location (without spatial expansion) on a Track Edge",
+      "description": "Represents a point reference in the network.",
       "properties": {
-        "trackEdge": {
+        "hasTopoCoordinate": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Defines the topological coordinate of a network point reference"
+        },
+        "appliesToDirection": {
           "type": "string",
-          "description": "refers to track edge"
-        },
-        "pos": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "position on the associated Track Edge"
-        },
-        "sameDir": {
-          "type": "boolean",
-          "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
+          "enum": [
+            "both",
+            "same",
+            "opposite"
+          ],
+          "description": "The direction relative to the origin of the linear element towards the point reference applies"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "hasTopoCoordinate"
+      ],
       "additionalProperties": false
     },
-    "opp_TrainUnitActivity": {
+    "opp.TrainUnitActivity": {
       "type": "object",
-      "description": "if the train turns around, an additional MovementEvent must be integrated with the new position of train head",
+      "description": "Defines, what happens with the rolling stock at this location.",
       "properties": {
         "trainUnitActivityType": {
           "type": "string",
-          "enum": ["joinActivity", "splitActivity", "collectActivity", "dropActivity", "turnAroundActivity", "meetActivity"]
+          "enum": [
+            "joinActivity",
+            "splitActivity",
+            "collectActivity",
+            "dropActivity",
+            "turnAroundActivity",
+            "meetActivity",
+            "otherActivity"
+          ],
+          "description": "Defines the train unit activity type"
         },
         "actualTrainUnitIndex": {
           "type": "integer",
           "minimum": 0,
-          "description": "index of TrainUnit in OperationalMovement.operationalTrainUnits before the activity"
+          "description": "Defines the index of TrainUnit in OperationalMovement. operationalTrainUnits before the activity"
         },
         "targetTrainUnitIndex": {
           "type": "integer",
           "minimum": 0,
-          "description": "index of TrainUnit in OperationalMovement.operationalTrainUnits after the activity"
+          "description": "Defines the index of TrainUnit in OperationalMovement. operationalTrainUnits after the activity"
         }
       },
       "additionalProperties": false
     },
-    "opp_DoorActivity": {
+    "opp.DoorActivity": {
       "type": "object",
+      "description": "Defines which doors shall be open and how they shall be open.",
       "properties": {
         "openingDoorSide": {
           "type": "string",
-          "description": "noneSide if the doors are kept closed",
-          "enum": ["doorSideLeft", "doorSideRight", "doorSideBoth", "doorNoneSide", "doorSideUnknown"]
+          "enum": [
+            "doorSideLeft",
+            "doorSideRight",
+            "doorSideBoth",
+            "doorNoneSide",
+            "doorSideUnknown"
+          ],
+          "description": "Defines the door opening side. noneSide if the doors are kept closed.noneSide if the doors are kept closed"
         },
         "centralisedOpening": {
           "type": "boolean",
-          "description": "true - centralised opening, false - opening byby passengers/driver"
+          "description": "Defines if the doors can be centrally opened. true - centralised opening, false - opening by passengers/driver"
         },
         "automaticClosing": {
           "type": "boolean",
-          "description": "true by ATO, false - without ATO"
+          "description": "Defines if automatic closing of doors is performed by ATO or not. True by ATO, false - without ATO"
         }
       },
       "additionalProperties": false
     },
-    "opp_AdditionalEventTime": {
+    "opp.AdditionalEventTime": {
       "type": "object",
+      "description": "Definestimes not required for ATO, but useful for CDAS (e.g. published arrival, plannedArrival etc.)",
       "properties": {
         "timeValue": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+          "format": "date-time",
+          "description": "Defines the time value in UTC"
         },
         "timeType": {
           "type": "string",
-          "enum": ["plannedArrival", "plannedDeparture", "plannedMinDwellTime", "publishedArrival", "publishedDeparture"]
+          "enum": [
+            "plannedArrival",
+            "plannedDeparture",
+            "plannedMinDwellTime",
+            "publishedArrival",
+            "publishedDeparture"
+          ],
+          "description": "Defines the time type for a stop description"
         }
       },
-      "required": ["timeValue"],
+      "required": [
+        "timeValue"
+      ],
       "additionalProperties": false
     },
-    "opp_StopDescription": {
+    "opp.StopDescription": {
       "type": "object",
+      "description": "Defines activities to be implemented by the train when it stopps.",
       "properties": {
         "trainUnitActivities": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "sequence of changes of TrainUnit during the stop",
-            "$ref": "#/definitions/opp_TrainUnitActivity"
-           }
+            "$ref": "#/definitions/opp.TrainUnitActivity"
+          },
+          "description": "Defines the sequence of changes of TrainUnit during the stop"
         },
         "doorActivity": {
           "type": "object",
-          "description": "if the attribute is not provided, the doors remain closed",
-          "$ref": "#/definitions/opp_DoorActivity"
+          "$ref": "#/definitions/opp.DoorActivity",
+          "description": "Defines the door activity. If the attribute is not provided, the doors remain closed"
         },
         "relaxedCoupler": {
           "type": "boolean",
-          "description": "true - request for coupler relaxation, false -not, see Q_Relaxed_Coupler in SS126"
+          "description": "Defines the state of coupler. true - request for coupler relaxation, false -not, see Q_Relaxed_Coupler in SS126"
         },
         "holdTrain": {
           "type": "boolean",
-          "description": "see JP in SS126"
+          "description": "Defines, that if the train shall be hold until the next update. See JP in SS126"
         },
         "scheduledDeparture": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
-          "description": "see departure in SS126. In the last station it is 'end of mission'."
+          "format": "date-time",
+          "description": "Defines the scheduled departure time. see departure in SS126. In the last station it is 'end of mission', in UTC."
         },
         "scheduledMinDwellTime": {
           "type": "integer",
           "minimum": 0,
-          "description": "the train has to wait after actual arrival this number of seconds before departure. ActualEarliestDeparture = max(departure, arrival + minDwellTime) will be calculated by ATO-OB, see minDwellTime in SS126"
+          "description": "Defines if the train has to wait after actual arrival this number of seconds before departure. ActualEarliestDeparture = max(departure, arrival + minDwellTime) will be calculated by ATO-OB, see minDwellTime in SS126"
         },
         "additionalEventTimes": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "Additional times for C-DAS. They will be ignored by ATO (not part of SS126).",
-            "$ref": "#/definitions/opp_AdditionalEventTime"
-           },
-          "maxItems": 4
+            "$ref": "#/definitions/opp.AdditionalEventTime"
+          },
+          "maxItems": 4,
+          "description": "Defines the state of coupler. true - request for coupler relaxation, false -not, see Q_Relaxed_Coupler in SS126"
         }
       },
-      "required": ["scheduledDeparture"],
+      "required": [
+        "scheduledDeparture"
+      ],
       "additionalProperties": false
     },
-    "opp_MovementEvent": {
+    "opp.MovementEvent": {
       "type": "object",
+      "description": "Defines an operational activity on a specific point in space and time for a train run.",
       "properties": {
         "id": {
           "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "description": "Defines the Identity of the object; used for referencing"
         },
         "plannedType": {
           "type": "string",
-          "enum": ["pass", "stop"]
+          "enum": [
+            "pass",
+            "stop"
+          ],
+          "description": "Defines if stop or pass was planned"
         },
         "scheduledType": {
           "type": "string",
-          "enum": ["pass", "stop"]
+          "enum": [
+            "pass",
+            "stop"
+          ],
+          "description": "Defines if stop or pass is scheduled"
         },
         "alignment": {
           "type": "string",
-          "description": "train-alignment at position (head, center, end)",
-          "enum": ["head", "center", "rear"]
+          "enum": [
+            "head",
+            "center",
+            "rear"
+          ],
+          "description": "Defines the train-alignment at position (head, center, end)"
         },
         "position": {
           "type": "object",
-          "$ref": "#/definitions/infra_DirTrackEdgePoint"
+          "$ref": "#/definitions/infra.NetPointReference",
+          "description": "Defines position on a linearElement for the movement event"
         },
-        "trackPathToNextEvent": {
+        "pathToNextEvent": {
           "type": "array",
           "items": {
-            "type": "object",
-            "description": "this event.position is on the [0]-element and nextEvent.position is on the [last]-element. Must be provided in each MovementEvent except the last one.",
-            "$ref": "#/definitions/infra_DirTrackEdge"
-           }
+            "type": "string"
+          },
+          "description": "Defines the path-part after the LinearElement of the position-value. Must be provided in each MovementEvent except the last one."
         },
         "stopDescription": {
           "type": "object",
-          "$ref": "#/definitions/opp_StopDescription"
+          "$ref": "#/definitions/opp.StopDescription",
+          "description": "Defines the stop description in case of a stop of the train"
         },
         "scheduledArrival": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
-          "description": "equal to scheduledDeparture for a passing train, see latestArrival inSS126. In the first station it is time of 'start of mission'"
+          "format": "date-time",
+          "description": "Defines the scheduled arrival time. equal to scheduledDeparture for a passing train, see latestArrival inSS126. In the first station it is time of 'start of mission', in UTC"
         },
         "scheduledArrivalWindow": {
           "type": "integer",
           "minimum": 0,
-          "description": "scheduledEaliestArrival = scheduledArrival - scheduledArrivalWindow. For passing trains scheduledEarliestDeparture = scheduledEarliestArrival, see arrivalWindow in SS126. In the first station it is a time window for 'start of mission'."
+          "description": "Defines the scheduled arrival window. scheduledEaliestArrival = scheduledArrival - scheduledArrivalWindow. For passing trains scheduledEarliestDeparture = scheduledEarliestArrival, see arrivalWindow in SS126. In the first station it is a time window for 'start of mission'."
         },
         "startsAfterEvents": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/opp_OperationalEventRef"
-           }
+            "$ref": "#/definitions/opp.OperationalEventRef"
+          },
+          "description": "Defines the set of operational events, which must be finished before the current event starts."
         }
       },
-      "required": ["id", "position", "scheduledArrival"],
+      "required": [
+        "id",
+        "position",
+        "scheduledArrival"
+      ],
       "additionalProperties": false
     },
-    "infra_DirTrackEdge": {
+    "opp.DPSGroupsList": {
       "type": "object",
-      "properties": {
-        "trackEdge": {
-          "type": "string",
-          "description": "refers totrack edge"
-        },
-        "sameDir": {
-          "type": "boolean",
-          "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
-        }
-      },
-      "required": ["trackEdge"],
-      "additionalProperties": false
-    },
-    "infra_LinkedPath": {
-      "type": "object",
-      "description": "Defines a linked path on the topology",
-      "properties": {
-        "dirTrackEdges": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "description": "composes of directed track edges",
-            "$ref": "#/definitions/infra_DirTrackEdge"
-           },
-          "minItems": 1
-        },
-        "skipFromPathStart": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [0..skipFromStart]"
-        },
-        "skipFromPathEnd": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]"
-        }
-      },
-      "required": ["dirTrackEdges"],
-      "additionalProperties": false
-    },
-    "opp_DPSGroupsList": {
-      "type": "object",
+      "description": "Defines a set of Drive-Protection-Section-Groups",
       "properties": {
         "dpsGroups": {
           "type": "array",
           "items": {
             "type": "string"
-           }
+          },
+          "description": "Defines the list of DPS Groups"
         }
       },
       "additionalProperties": false
     },
-    "opp_SpecificMovementRestriction": {
+    "opp.SpecificMovementRestriction": {
       "type": "object",
+      "description": "Defines single aspect of the train specific restriction",
       "properties": {
         "maxSpeed": {
           "type": "integer",
-          "minimum": 0
+          "minimum": 0,
+          "description": "Defines the maximum applicable speed"
         },
         "adhesionCategory": {
           "type": "string",
-          "enum": ["dryRailHigh", "dryRailMedium", "dryRailLow", "lowAdhesion", "veryLowAdhesion", "extremelyLowAdhesion", "unknownAdhesion"]
+          "enum": [
+            "dryRailHigh",
+            "dryRailMedium",
+            "dryRailLow",
+            "lowAdhesion",
+            "veryLowAdhesion",
+            "extremelyLowAdhesion",
+            "unknownAdhesion"
+          ],
+          "description": "Defines the different adhesion categories applicable for the train as per track conditions"
         },
         "maxCurrent": {
           "type": "integer",
           "minimum": 0,
-          "description": "electric current limitation, s. item 0.33 in SS126"
+          "description": "Defines max current value, s. item 0.33 in SS126"
         },
         "atoInhibition": {
           "type": "boolean",
@@ -407,455 +503,701 @@
         },
         "dasInhibition": {
           "type": "boolean",
-          "description": "Driver advisory system not available in this section"
+          "description": "Defines the Driver advisory system inhibition zone"
         },
         "excludedDPSGroupsForFlankProtection": {
           "type": "object",
-          "description": "List of DPSGroups to be excluded from flank protection calculation.",
-          "$ref": "#/definitions/opp_DPSGroupsList"
+          "$ref": "#/definitions/opp.DPSGroupsList",
+          "description": "Defines the list of DPSGroups to be excluded from flank protection calculation."
         }
       },
       "oneOf": [
         {
           "type": "object",
-          "required": ["maxSpeed"]
+          "required": [
+            "maxSpeed"
+          ]
         },
         {
           "type": "object",
-          "required": ["adhesionCategory"]
+          "required": [
+            "adhesionCategory"
+          ]
         },
         {
           "type": "object",
-          "required": ["maxCurrent"]
+          "required": [
+            "maxCurrent"
+          ]
         },
         {
           "type": "object",
-          "required": ["atoInhibition"]
+          "required": [
+            "atoInhibition"
+          ]
         },
         {
           "type": "object",
-          "required": ["dasInhibition"]
+          "required": [
+            "dasInhibition"
+          ]
         },
         {
           "type": "object",
-          "required": ["excludedDPSGroupsForFlankProtection"]
+          "required": [
+            "excludedDPSGroupsForFlankProtection"
+          ]
         }
       ],
       "additionalProperties": false
     },
-    "opp_MovementRestriction": {
+    "opp.MovementRestriction": {
       "type": "object",
+      "description": "Defines train specific restriction along its path.",
       "properties": {
         "restrictedPath": {
           "type": "object",
-          "$ref": "#/definitions/infra_LinkedPath"
+          "$ref": "#/definitions/infra.NetLinearReference",
+          "description": "Defines the restricted path associated to a restriction of on an operational plan movement"
         },
         "specificRestriction": {
           "type": "object",
-          "$ref": "#/definitions/opp_SpecificMovementRestriction"
+          "$ref": "#/definitions/opp.SpecificMovementRestriction",
+          "description": "Defines the specific restriction active on the restriction path associated to an operational plan movement"
         }
       },
-      "required": ["restrictedPath", "specificRestriction"],
+      "required": [
+        "restrictedPath",
+        "specificRestriction"
+      ],
       "additionalProperties": false
     },
-    "opp_OperationalPlanMovement": {
+    "opp.OperationalPlanMovement": {
       "type": "object",
+      "description": "Defines a train run with a dedicated train number.",
       "properties": {
         "id": {
           "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "description": "Defines the Identity of the object; used for referencing"
         },
         "issuedAt": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
-          "description": "issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations"
+          "format": "date-time",
+          "description": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"
         },
         "configurationDataVersionRef": {
           "type": "string",
-          "description": "the movement-plan is valid only on this configuration version"
+          "description": "Defines the configuration data version for which the operational plan is valid"
+        },
+        "includesEndOfJourney": {
+          "type": "boolean",
+          "description": "Defines if the operational plan movement include the end of journey. if true, the movementEvents contains entire remaining path including the end position, otherwise the journey will continue after the last movementEvent of this object"
         },
         "operationalTrainUnits": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "defines train units used during the movement",
-            "$ref": "#/definitions/opp_TrainUnit"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/opp.TrainUnit"
+          },
+          "minItems": 1,
+          "description": "Defines the set of train units, which are active during some paths of the train movement. The same train unit can be used in not connected parts of the path"
         },
         "movementEvents": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "defines operational activities along the movement",
-            "$ref": "#/definitions/opp_MovementEvent"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/opp.MovementEvent"
+          },
+          "minItems": 1,
+          "description": "Defines times/operational activities sequence along the movement"
         },
         "movementRestrictions": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "defines restrictions valid for this movement along the movement",
-            "$ref": "#/definitions/opp_MovementRestriction"
-           }
+            "$ref": "#/definitions/opp.MovementRestriction"
+          },
+          "description": "Defines train specific restrictions, which are active along its path-sections"
         }
       },
-      "required": ["id", "issuedAt", "configurationDataVersionRef", "operationalTrainUnits", "movementEvents"],
+      "required": [
+        "id",
+        "issuedAt",
+        "configurationDataVersionRef",
+        "operationalTrainUnits",
+        "movementEvents"
+      ],
       "additionalProperties": false
     },
-    "infra_DirTrackEdgeSection": {
+    "infra.LinearElementSection": {
       "type": "object",
-      "description": "Defines a directed linear object (with a linear extension) located on a Track Edge",
+      "description": "Defines a directed linear object (with a linear extension) located on a LinearElement",
       "properties": {
-        "trackEdge": {
+        "onElement": {
           "type": "string",
-          "description": "refers totrack edge"
+          "description": "refers to linear element"
         },
-        "skipFromStart": {
+        "startOffsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [0..skipFromStart]"
+          "description": "Defines the start offset from the origin"
         },
-        "skipFromEnd": {
+        "endOffsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]"
+          "description": "Defines the end offset from the origin"
         },
-        "applicableDirection": {
-          "type": "string",
-          "description": "defines the applicable direction of the track edge",
-          "enum": ["dirBoth", "dirSame", "dirReverse"]
+        "appliesInBothDirections": {
+          "type": "boolean",
+          "description": "Defines if the section applies in both directions"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onElement"
+      ],
       "additionalProperties": false
     },
-    "opp_TrainGroupSpec": {
+    "opp.TrainGroupSpec": {
       "type": "object",
-      "description": "train characteristics known to interlocking for safety relevant restrictions",
+      "description": "Defines the train aspects, which define if the train belongs to the restricted group.",
       "properties": {
         "axleLoadCategories": {
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["AL_A", "AL_HS17", "AL_B1", "AL_B2", "AL_C2", "AL_C3", "AL_C4", "AL_D2", "AL_D3", "AL_D4", "AL_D4XL", "AL_E4", "AL_E5"]
-           }
+            "enum": [
+              "AL_A",
+              "AL_HS17",
+              "AL_B1",
+              "AL_B2",
+              "AL_C2",
+              "AL_C3",
+              "AL_C4",
+              "AL_D2",
+              "AL_D3",
+              "AL_D4",
+              "AL_D4XL",
+              "AL_E4",
+              "AL_E5"
+            ]
+          },
+          "description": "Trains with the listed Axle-Load-Category belong to the TrainGroup."
         },
         "cantDeficiencyCategories": {
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["CD_Undefined", "CD_80mm", "CD_100mm", "CD_130mm", "CD_150mm", "CD_165mm", "CD_180mm", "CD_210mm", "CD_225mm", "CD_245mm", "CD_275mm", "CD_300mm"]
-           }
+            "enum": [
+              "CD_Undefined",
+              "CD_80mm",
+              "CD_100mm",
+              "CD_130mm",
+              "CD_150mm",
+              "CD_165mm",
+              "CD_180mm",
+              "CD_210mm",
+              "CD_225mm",
+              "CD_245mm",
+              "CD_275mm",
+              "CD_300mm"
+            ]
+          },
+          "description": "Defines the different cant deficiency categories"
         }
       },
       "additionalProperties": false
     },
-    "opp_RestrictedAspects": {
+    "opp.RestrictedAspect": {
       "type": "object",
+      "description": "Defines single aspects of the infrastructure restriction",
       "properties": {
         "temporarySpeedRestriction": {
           "type": "integer",
           "minimum": 0,
-          "description": "use 0 if not defined"
+          "description": "Defines the temporary speed restriction on the track"
         },
         "allowedDrivingModes": {
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["undefined", "onSight", "fullSupervision", "standBy"]
-           }
+            "enum": [
+              "undefined",
+              "onSight",
+              "fullSupervision",
+              "standBy"
+            ]
+          },
+          "description": "Defines the allowed driving modes"
         },
         "nonStopping": {
           "type": "boolean",
-          "description": "if true, the trains defined in trainGroupSpec shall not stop within restriction area"
+          "description": "Defines the non stopping area. if true, the trains defined in trainGroupSpec shall not stop within restriction area"
         },
         "trackClosure": {
           "type": "boolean",
-          "description": "if true, the trains defined in trainGroupSpec shall not enter restriction area"
+          "description": "Defines track closure information. If true, the trains defined in trainGroupSpec shall not enter restriction area"
         },
         "operationalRadioHole": {
           "type": "boolean",
-          "description": "if true radio communication is restricted within restriction area"
+          "description": "Defines the presence of operational radio holes. if true radio communication is restricted within restriction area"
         },
         "maxAdhesion": {
           "type": "string",
-          "enum": ["dryRailHigh", "dryRailMedium", "dryRailLow", "lowAdhesion", "veryLowAdhesion", "extremelyLowAdhesion", "unknownAdhesion"]
-        }
-      },
-      "additionalProperties": false
-    },
-    "opp_SpecificRestriction": {
-      "type": "object",
-      "properties": {
-        "appliedToTrains": {
-          "type": "object",
-          "description": "if not provided the restriction is valid for all trains",
-          "$ref": "#/definitions/opp_TrainGroupSpec"
+          "enum": [
+            "dryRailHigh",
+            "dryRailMedium",
+            "dryRailLow",
+            "lowAdhesion",
+            "veryLowAdhesion",
+            "extremelyLowAdhesion",
+            "unknownAdhesion"
+          ],
+          "description": "Defines the maximum adhesion"
         },
-        "restrictedAspects": {
-          "type": "object",
-          "$ref": "#/definitions/opp_RestrictedAspects"
-        }
-      },
-      "required": ["restrictedAspects"],
-      "additionalProperties": false
-    },
-    "opp_RestrictionArea": {
-      "type": "object",
-      "properties": {
-        "dirTrackEdgeSections": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/infra_DirTrackEdgeSection"
-           },
-          "minItems": 1
+        "atoInhibition": {
+          "type": "boolean",
+          "description": "Defined the ato inhibition zones. Exmaples: train section is not contantly monitored, or stimulate driver's attention, or approaching overcrouded station"
         },
-        "specificRestrictions": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/opp_SpecificRestriction"
-           },
-          "minItems": 1
-        }
-      },
-      "required": ["dirTrackEdgeSections", "specificRestrictions"],
-      "additionalProperties": false
-    },
-    "opp_RestrictionEvent": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
-        },
-        "creationTime": {
-          "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
-          "description": "time when the restrictionArea shall be created=implemented=activated in interlocking"
-        },
-        "removalTime": {
-          "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
-        },
-        "restrictionArea": {
-          "type": "object",
-          "$ref": "#/definitions/opp_RestrictionArea"
-        },
-        "startsAfterEvents": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/opp_OperationalEventRef"
-           }
-        }
-      },
-      "required": ["id", "creationTime", "removalTime", "restrictionArea"],
-      "additionalProperties": false
-    },
-    "opp_OperationalPlanRestriction": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
-        },
-        "issuedAt": {
-          "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
-        },
-        "configurationDataVersionRef": {
-          "type": "string",
-          "description": "version of infrastructure data"
-        },
-        "restrictionEvents": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/opp_RestrictionEvent"
-           },
-          "minItems": 1
-        }
-      },
-      "required": ["id", "issuedAt", "configurationDataVersionRef", "restrictionEvents"],
-      "additionalProperties": false
-    },
-    "infra_TrackEdgeSection": {
-      "type": "object",
-      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
-      "properties": {
-        "trackEdge": {
-          "type": "string",
-          "description": "refers to track edge"
-        },
-        "skipFromStart": {
+        "maxCurrent": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [0..skipFromStart]."
-        },
-        "skipFromEnd": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]."
-        }
-      },
-      "required": ["trackEdge"],
-      "additionalProperties": false
-    },
-    "opp_WarningDevice": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
-        },
-        "deviceType": {
-          "type": "string",
-          "description": "defines the different warning devices",
-          "enum": ["acousticalIndicator", "opticalIndicator", "hapticIndicator"]
-        }
-      },
-      "required": ["id"],
-      "additionalProperties": false
-    },
-    "opp_WarningArea": {
-      "type": "object",
-      "properties": {
-        "trackEdgeSections": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "description": "protected area",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           },
-          "minItems": 1
-        },
-        "warningDevices": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/opp_WarningDevice"
-           },
-          "minItems": 1
-        }
-      },
-      "required": ["trackEdgeSections", "warningDevices"],
-      "additionalProperties": false
-    },
-    "opp_OperationalEventRef": {
-      "type": "object",
-      "properties": {
-        "movementEvent": {
-          "type": "string"
-        },
-        "restrictionEvent": {
-          "type": "string"
-        },
-        "warningMeasureEvent": {
-          "type": "string"
+          "description": "Defines max current value. For ATO, SS126. Ignored by TrafficCS"
         }
       },
       "oneOf": [
         {
           "type": "object",
-          "required": ["movementEvent"]
+          "required": [
+            "temporarySpeedRestriction"
+          ]
         },
         {
           "type": "object",
-          "required": ["restrictionEvent"]
+          "required": [
+            "allowedDrivingModes"
+          ]
         },
         {
           "type": "object",
-          "required": ["warningMeasureEvent"]
+          "required": [
+            "nonStopping"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "trackClosure"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "operationalRadioHole"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "maxAdhesion"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "atoInhibition"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "maxCurrent"
+          ]
         }
       ],
       "additionalProperties": false
     },
-    "opp_WarningMeasureEvent": {
+    "opp.SpecificRestriction": {
       "type": "object",
+      "description": "Defines single aspect of the infrastructure restriction.",
+      "properties": {
+        "appliedToTrains": {
+          "type": "object",
+          "$ref": "#/definitions/opp.TrainGroupSpec",
+          "description": "Defines the applicable trains that are affected by the specific restriction"
+        },
+        "restrictedAspects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/opp.RestrictedAspect"
+          },
+          "minItems": 1,
+          "description": "Defines the restricted aspects associated to a specific restriction"
+        }
+      },
+      "required": [
+        "restrictedAspects"
+      ],
+      "additionalProperties": false
+    },
+    "opp.RestrictionArea": {
+      "type": "object",
+      "description": "Defines a topological area, in which the restrictions must be applied.",
+      "properties": {
+        "linearElementSections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/infra.LinearElementSection"
+          },
+          "minItems": 1,
+          "description": "composes of linear element sections"
+        },
+        "specificRestrictions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/opp.SpecificRestriction"
+          },
+          "minItems": 1,
+          "description": "Defines the list of specific restrictions"
+        }
+      },
+      "required": [
+        "linearElementSections",
+        "specificRestrictions"
+      ],
+      "additionalProperties": false
+    },
+    "opp.RestrictionEvent": {
+      "type": "object",
+      "description": "Defines a part of temporary infrastructure restriction, especially if one Restriction plan contains several areas to be activate to different times.",
       "properties": {
         "id": {
           "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "description": "Defines the Identity of the object; used for referencing"
         },
         "creationTime": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
-          "description": "the same as activationTime"
+          "format": "date-time",
+          "description": "Defines the time when the restrictionArea shall be created=implemented=activated in interlocking, in UTC"
         },
         "removalTime": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+          "format": "date-time",
+          "description": "Defines the removal time in UTC"
         },
-        "warningArea": {
+        "restrictionArea": {
           "type": "object",
-          "$ref": "#/definitions/opp_WarningArea"
+          "$ref": "#/definitions/opp.RestrictionArea",
+          "description": "Defines the restriction area associated to a restriction event"
         },
         "startsAfterEvents": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/opp_OperationalEventRef"
-           }
+            "$ref": "#/definitions/opp.OperationalEventRef"
+          },
+          "description": "Defines the set of operational events, which must be finished before the current event starts."
         }
       },
-      "required": ["id", "creationTime", "removalTime", "warningArea"],
+      "required": [
+        "id",
+        "creationTime",
+        "removalTime",
+        "restrictionArea"
+      ],
       "additionalProperties": false
     },
-    "opp_OperationalPlanWarningMeasure": {
+    "opp.OperationalPlanRestriction": {
       "type": "object",
+      "description": "Defines a temporary infrastructure restriction",
       "properties": {
         "id": {
           "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "description": "Defines the Identity of the object; used for referencing"
         },
         "issuedAt": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+          "format": "date-time",
+          "description": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"
         },
         "configurationDataVersionRef": {
           "type": "string",
-          "description": "version of infrastructure data"
+          "description": "Defines the configuration data version for which the operational plan is valid"
+        },
+        "restrictionEvents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/opp.RestrictionEvent"
+          },
+          "minItems": 1,
+          "description": "Defines a set of restriction events assigned the the operational plan restriction"
+        }
+      },
+      "required": [
+        "id",
+        "issuedAt",
+        "configurationDataVersionRef",
+        "restrictionEvents"
+      ],
+      "additionalProperties": false
+    },
+    "infra.TopologicalCoordinate": {
+      "type": "object",
+      "description": "Defines a topological coordinates on the track",
+      "properties": {
+        "onLinearElement": {
+          "type": "string",
+          "description": "is positioned on linear element"
+        },
+        "offsetFromOrigin": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated NetElement"
+        }
+      },
+      "required": [
+        "onLinearElement"
+      ],
+      "additionalProperties": false
+    },
+    "infra.NetLinearReference": {
+      "type": "object",
+      "description": "Defines a linked path on the topology",
+      "properties": {
+        "startsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Definesthe starting coordinate of a linear reference"
+        },
+        "endsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Defines the ending coordinate of a linear reference."
+        },
+        "hasSequence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Defines a sequence of linearElements from the start to the end excluding those defined in startAt- and endsAt-TopologicalCoodinates."
+        }
+      },
+      "required": [
+        "startsAt",
+        "endsAt"
+      ],
+      "additionalProperties": false
+    },
+    "infra.NetAreaReference": {
+      "type": "object",
+      "description": "Represents an area reference in the network.",
+      "properties": {
+        "includes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/infra.NetLinearReference"
+          },
+          "minItems": 1,
+          "description": "List of linear references included in an network area reference."
+        }
+      },
+      "required": [
+        "includes"
+      ],
+      "additionalProperties": false
+    },
+    "opp.WarningDevice": {
+      "type": "object",
+      "description": "Defines functional warning device which must be activated to implement warning measure",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Defines the Identity of the object; used for referencing"
+        },
+        "deviceType": {
+          "type": "string",
+          "enum": [
+            "acousticalIndicator",
+            "opticalIndicator",
+            "hapticIndicator"
+          ],
+          "description": "Defines a functional warning device type used for securing the warning area"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "opp.WarningArea": {
+      "type": "object",
+      "description": "Defines area in which Warning measures shall be implemented.",
+      "properties": {
+        "trackArea": {
+          "type": "object",
+          "$ref": "#/definitions/infra.NetAreaReference",
+          "description": "protected area"
+        },
+        "warningDevices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/opp.WarningDevice"
+          },
+          "minItems": 1,
+          "description": "Defines the list of warning devices"
+        }
+      },
+      "required": [
+        "trackArea",
+        "warningDevices"
+      ],
+      "additionalProperties": false
+    },
+    "opp.OperationalEventRef": {
+      "type": "object",
+      "description": "Defines a reference to one of possible OperationalEvents (as a unit)",
+      "properties": {
+        "movementEvent": {
+          "type": "string",
+          "description": "refers a movement event including the movement plan"
+        },
+        "restrictionEvent": {
+          "type": "string",
+          "description": "Refers a restriction event including restriction plan"
+        },
+        "warningMeasureEvent": {
+          "type": "string",
+          "description": "Refers a warnning measure event including the warning plan"
+        }
+      },
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "movementEvent"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "restrictionEvent"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "warningMeasureEvent"
+          ]
+        }
+      ],
+      "additionalProperties": false
+    },
+    "opp.WarningMeasureEvent": {
+      "type": "object",
+      "description": "Defines planned activation/removal of warning area",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Defines the Identity of the object; used for referencing"
+        },
+        "creationTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Defines the time when the warningArea shall be created=implemented=activated in interlocking, in UTC"
+        },
+        "removalTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Defines the removal time in UTC"
+        },
+        "warningArea": {
+          "type": "object",
+          "$ref": "#/definitions/opp.WarningArea"
+        },
+        "startsAfterEvents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/opp.OperationalEventRef"
+          },
+          "description": "Defines the set of operational events, which must be finished before the current event starts."
+        }
+      },
+      "required": [
+        "id",
+        "creationTime",
+        "removalTime",
+        "warningArea"
+      ],
+      "additionalProperties": false
+    },
+    "opp.OperationalPlanWarningMeasure": {
+      "type": "object",
+      "description": "Defines a temporary warning area, required for e.g. a possession.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Defines the Identity of the object; used for referencing"
+        },
+        "issuedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"
+        },
+        "configurationDataVersionRef": {
+          "type": "string",
+          "description": "Defines the configuration data version for which the operational plan is valid"
         },
         "warningMeasureEvents": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/opp_WarningMeasureEvent"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/opp.WarningMeasureEvent"
+          },
+          "minItems": 1,
+          "description": "Defines the list of warning measures events"
         }
       },
-      "required": ["id", "issuedAt", "configurationDataVersionRef", "warningMeasureEvents"],
+      "required": [
+        "id",
+        "issuedAt",
+        "configurationDataVersionRef",
+        "warningMeasureEvents"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
-  "description": "main container for all plan-related objects",
+  "description": "Defines a container class for all OperationalPlans",
   "properties": {
     "operationalPlanMovements": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/opp_OperationalPlanMovement"
-       }
+        "$ref": "#/definitions/opp.OperationalPlanMovement"
+      },
+      "description": "Composes of operational plan movements"
     },
     "operationalPlanRestrictions": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/opp_OperationalPlanRestriction"
-       }
+        "$ref": "#/definitions/opp.OperationalPlanRestriction"
+      },
+      "description": "Composes of operational plan restrictions"
     },
     "operationalPlanWarningMeasures": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/opp_OperationalPlanWarningMeasure"
-       }
+        "$ref": "#/definitions/opp.OperationalPlanWarningMeasure"
+      },
+      "description": "Composes of operational plan warning measures"
     }
   },
   "additionalProperties": false

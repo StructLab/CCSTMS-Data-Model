@@ -1,0 +1,58 @@
+{
+  "$id": "https://ERJU/tp_Switch",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "An object to extend infra.Switch",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "routeRequiresPointRight": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "routes require this Switch/SimplePoint to allow travelling through pointRight"
+    },
+    "routeRequiresPointLeft": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "routes require this Switch/SimplePoint to allow travelling through pointLeft"
+    },
+    "transitLockingPointRight": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Transit that is locking the Switch/SimplePoint to right"
+    },
+    "transitLockingPointLeft": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Transit that is locking the Switch/SimplePoint to left"
+    },
+    "zoneLockingPointRight": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Zone (TvpSection of a single track) that is locking the Switch/SimplePoint to right"
+    },
+    "zoneLockingPointLeft": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Zone that is locking the Switch/SimplePoint to left"
+    }
+  },
+  "required": [
+    "id"
+  ],
+  "additionalProperties": false
+}

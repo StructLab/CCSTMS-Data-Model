@@ -1,9 +1,6 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_135",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "description": " Stop Shunting on desk opening (Packet to stop Shunting on desk opening)",
   "additionalProperties": false

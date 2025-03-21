@@ -1,57 +1,58 @@
 {
   "$id": "https://ERJU/infra_SampledGeometryArea",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_SlopeSamplePoint": {
+    "infra.SlopeSamplePoint": {
       "type": "object",
-      "description": "Slope (gradient) of the track at a given location on the track.",
+      "description": "Defines the Slope (gradient) of the track at a given location on the track.",
       "properties": {
         "pos": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated TrackEdge"
+          "description": "position on the associated LinearElement"
         },
         "samplePointSlope": {
           "type": "integer",
-          "description": "The vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
+          "description": "Defines the vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the LinearElement. Positive for rising slope and negative for falling slope."
         }
       },
       "additionalProperties": false
     },
-    "infra_CurveSamplePoint": {
+    "infra.CurveSamplePoint": {
       "type": "object",
-      "description": "Curve (radius) of the track at a given location on the track.",
+      "description": "Defines curve (radius) of the track at a given location on the track.",
       "properties": {
         "pos": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated TrackEdge"
+          "description": "position on the associated LinearElement"
         },
         "sampleCurveRadius": {
           "type": "integer",
-          "description": "radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+          "description": "Defines the radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
         }
       },
       "additionalProperties": false
     },
-    "infra_CantSamplePoint": {
+    "infra.CantSamplePoint": {
       "type": "object",
-      "description": "Cant(superelevation) of the track at a given location on the track.",
+      "description": "Defines the cant(superelevation) of the track at a given location on the track.",
       "properties": {
         "pos": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated TrackEdge"
+          "description": "position on the associated LinearElement"
         },
         "samplePointCant": {
           "type": "integer",
-          "description": "Defines appliedCant as the Height of the right rail minus the left rail. Right/left with respect to the direction of the track edge. Rollangle=(arcsin(cant/gauge), gauge is distance between centers of rail-heads, e.g. 1500mm for EU-standard gauge."
+          "description": "Defines the height of the outer rail minus the inner rail. Outer rail and inner rail are defined according to the direction of curve.Rollangle=(arcsin(cant/gauge), gauge is distance between centers of rail-heads, e.g. 1500mm for EU-standard gauge."
         }
       },
       "additionalProperties": false
     },
-    "infra_SampledTrackEdgeGeometry": {
+    "infra.SampledLinearElementGeometry": {
       "type": "object",
+      "description": "Defines the container sampled linear element geometry within INFRA Domain",
       "properties": {
         "id": {
           "type": "string",
@@ -61,35 +62,41 @@
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of slope sample points",
-            "$ref": "#/definitions/infra_SlopeSamplePoint"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.SlopeSamplePoint"
+          },
+          "minItems": 1,
+          "description": "composes of slope sample points"
         },
         "curves": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of curve sample points",
-            "$ref": "#/definitions/infra_CurveSamplePoint"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.CurveSamplePoint"
+          },
+          "minItems": 1,
+          "description": "composes of curve sample points"
         },
         "cants": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of cant sample points",
-            "$ref": "#/definitions/infra_CantSamplePoint"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.CantSamplePoint"
+          },
+          "minItems": 1,
+          "description": "composes of cant sample points"
         }
       },
-      "required": ["id", "slopes", "curves", "cants"],
+      "required": [
+        "id",
+        "slopes",
+        "curves",
+        "cants"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
+  "description": "Defines the container sampled geometry area within INFRA Domain",
   "properties": {
     "id": {
       "type": "string",
@@ -97,19 +104,23 @@
     },
     "versionTimestamp": {
       "type": "string",
-      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
+      "format": "date-time",
       "description": "version information which is valid since timestamp"
     },
-    "sampledTrackEdgeGeometries": {
+    "sampledLinearElementGeometries": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "composes of sampled track edge geometries",
-        "$ref": "#/definitions/infra_SampledTrackEdgeGeometry"
-       },
-      "minItems": 1
+        "$ref": "#/definitions/infra.SampledLinearElementGeometry"
+      },
+      "minItems": 1,
+      "description": "composes of sampled linear element geometries"
     }
   },
-  "required": ["id", "versionTimestamp", "sampledTrackEdgeGeometries"],
+  "required": [
+    "id",
+    "versionTimestamp",
+    "sampledLinearElementGeometries"
+  ],
   "additionalProperties": false
 }

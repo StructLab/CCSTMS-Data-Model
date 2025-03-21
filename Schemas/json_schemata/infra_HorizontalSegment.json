@@ -1,97 +1,111 @@
 {
   "$id": "https://ERJU/infra_HorizontalSegment",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_HorizontalLine": {
+    "infra.HorizontalLine": {
       "type": "object",
-      "description": "Geometric primitive for a horizontal linear segment",
+      "description": "Defines the geometric primitive for a horizontal linear segment",
       "properties": {
-        "trackGeometryPos": {
+        "elementGeometryPos": {
           "type": "number",
-          "description": "position on the associated Track Edge"
+          "description": "Defines the position on the associated Linear Element"
         },
         "azimuth": {
           "type": "number",
-          "description": "The azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
+          "description": "Defines the azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
         }
       },
       "additionalProperties": false
     },
-    "infra_HorizontalArc": {
+    "infra.HorizontalArc": {
       "type": "object",
-      "description": "Geometric primitive for a horizontal arc of circle",
+      "description": "Defines the geometric primitive for a horizontal arc of circle",
       "properties": {
-        "trackGeometryPos": {
+        "elementGeometryPos": {
           "type": "number",
-          "description": "position on the associated Track Edge"
+          "description": "position on the associated LinearElement"
         },
         "azimuth": {
           "type": "number",
-          "description": "The azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
+          "description": "Defines the azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
         },
         "radius": {
           "type": "number",
-          "description": "radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+          "description": "Defines the radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
         }
       },
       "additionalProperties": false
     },
-    "infra_HorizontalTransition": {
+    "infra.HorizontalTransition": {
       "type": "object",
-      "description": "Geometric primitive for a horizontal transition curve, a clothoid.",
+      "description": "Defines a geometric primitive for a horizontal transition curve, a clothoid.",
       "properties": {
-        "trackGeometryPos": {
+        "elementGeometryPos": {
           "type": "number",
-          "description": "position on the associated Track Edge"
+          "description": "position on the associated Linear Element"
         },
         "azimuth": {
           "type": "number",
-          "description": "The azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
+          "description": "Defines the azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
         },
         "radius": {
           "type": "number",
-          "description": "radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+          "description": "Defines the radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
         },
         "transitionType": {
           "type": "string",
-          "description": "defines different transition types",
-          "enum": ["clothoidCurve", "biquadraticParabola", "blossCurve", "cosineCurve", "cubicParabola", "sineCurve", "wienerBogen"]
+          "enum": [
+            "clothoidCurve",
+            "biquadraticParabola",
+            "blossCurve",
+            "cosineCurve",
+            "cubicParabola",
+            "sineCurve",
+            "wienerBogen"
+          ],
+          "description": "defines different transition types"
         }
       },
       "additionalProperties": false
     }
   },
   "type": "object",
-  "description": "A curvi-linear geometric primitive, mathematically represents a horizontal segment of the centre line of a railway track",
+  "description": "Defines a curvi-linear geometric primitive, mathematically represents a horizontal segment of the centre line of a railway track",
   "properties": {
     "horizontalSegmentLine": {
       "type": "object",
-      "description": "composes of lines",
-      "$ref": "#/definitions/infra_HorizontalLine"
+      "$ref": "#/definitions/infra.HorizontalLine",
+      "description": "composes of lines"
     },
     "horizontalSegmentArc": {
       "type": "object",
-      "description": "composes of arcs",
-      "$ref": "#/definitions/infra_HorizontalArc"
+      "$ref": "#/definitions/infra.HorizontalArc",
+      "description": "composes of arcs"
     },
     "horizontalSegmentTransition": {
       "type": "object",
-      "description": "composes of transition curves",
-      "$ref": "#/definitions/infra_HorizontalTransition"
+      "$ref": "#/definitions/infra.HorizontalTransition",
+      "description": "composes of transition curves"
     }
   },
   "oneOf": [
     {
       "type": "object",
-      "required": ["horizontalSegmentLine"]
+      "required": [
+        "horizontalSegmentLine"
+      ]
     },
     {
       "type": "object",
-      "required": ["horizontalSegmentArc"]
+      "required": [
+        "horizontalSegmentArc"
+      ]
     },
     {
       "type": "object",
-      "required": ["horizontalSegmentTransition"]
+      "required": [
+        "horizontalSegmentTransition"
+      ]
     }
   ],
   "additionalProperties": false

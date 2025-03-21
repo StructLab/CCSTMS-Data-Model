@@ -1,9 +1,6 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_254",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "description": "Default balise, loop or RIU information (Indication to on-board that balise telegram, loop message or RIU information contains default information due to a fault of the trackside equipment.)",
   "additionalProperties": false

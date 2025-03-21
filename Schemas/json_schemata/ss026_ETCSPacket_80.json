@@ -1,9 +1,10 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_80",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "ss026_ModeProfileItem": {
+    "ss026.ModeProfileItem": {
       "type": "object",
+      "description": "Defines the parameters for mode profile transitions in railway operations, specifying the required mode, associated speed limits, and spatial constraints. This includes incremental distances, supervision qualifiers, and acknowledgment areas to ensure proper mode application within the movement authority framework.",
       "properties": {
         "d_mamode": {
           "type": "integer",
@@ -12,8 +13,12 @@
         },
         "m_mamode": {
           "type": "string",
-          "description": "Required mode for a part of the MA. None. Comment : OS, LS, SH",
-          "enum": ["OnSight", "Shunting", "LimitedSupervision"]
+          "enum": [
+            "OnSight",
+            "Shunting",
+            "LimitedSupervision"
+          ],
+          "description": "Required mode for a part of the MA. None. Comment : OS, LS, SH"
         },
         "v_mamode": {
           "type": "integer",
@@ -45,12 +50,15 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_ModeProfileItem"
-       },
+        "$ref": "#/definitions/ss026.ModeProfileItem"
+      },
       "minItems": 1,
-      "maxItems": 32
+      "maxItems": 32,
+      "description": "List of mode profile transition items"
     }
   },
-  "required": ["modeProfiles"],
+  "required": [
+    "modeProfiles"
+  ],
   "additionalProperties": false
 }

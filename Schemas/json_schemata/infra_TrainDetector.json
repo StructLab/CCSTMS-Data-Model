@@ -1,22 +1,24 @@
 {
   "$id": "https://ERJU/infra_TrainDetector",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_TrackEdgePoint": {
+    "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a non-directed spot location (without spatial expansion) on a Track Edge",
+      "description": "Defines a topological coordinates on the track",
       "properties": {
-        "trackEdge": {
+        "onLinearElement": {
           "type": "string",
-          "description": "is positioned on track edge"
+          "description": "is positioned on linear element"
         },
-        "pos": {
+        "offsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated Track Edge"
+          "description": "position on the associated NetElement"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onLinearElement"
+      ],
       "additionalProperties": false
     }
   },
@@ -27,21 +29,31 @@
       "type": "string",
       "description": "Identity of the object; used for referencing"
     },
-    "spotLocation": {
+    "topologicalCoordinate": {
       "type": "object",
-      "$ref": "#/definitions/infra_TrackEdgePoint"
+      "$ref": "#/definitions/infra.TopologicalCoordinate"
     },
     "trainDetectorType": {
       "type": "string",
-      "description": "Defines the train detection system applicable for the TVPS",
-      "enum": ["axleCounter", "trackCircuitBorder"]
+      "enum": [
+        "axleCounter",
+        "trackCircuitBorder"
+      ],
+      "description": "Defines the train detection system applicable for the TVPS"
     },
-    "countUpDir": {
+    "referenceDir": {
       "type": "string",
-      "description": "Direction in which axle counter counts up",
-      "enum": ["dirBoth", "dirSame", "dirReverse"]
+      "enum": [
+        "both",
+        "same",
+        "opposite"
+      ],
+      "description": "Reference direction corresponding to linear element in which the train detector detects trains: same/opposite for axleCounter, both for trackCircuit"
     }
   },
-  "required": ["id", "spotLocation"],
+  "required": [
+    "id",
+    "topologicalCoordinate"
+  ],
   "additionalProperties": false
 }

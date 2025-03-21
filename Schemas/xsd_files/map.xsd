@@ -1,0 +1,116 @@
+<?xml version="1.0" ?>
+<xs:schema targetNamespace="https://erju.org/map" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:map="https://erju.org/map" elementFormDefault="qualified" version="1.0" xmlns:infra="https://erju.org/infra" xmlns:ss026="https://erju.org/ss026">
+	<xs:import namespace="https://erju.org/infra" schemaLocation="infra.xsd"/>
+	<xs:import namespace="https://erju.org/ss026" schemaLocation="ss026.xsd"/>
+	<xs:complexType name="Map">
+		<xs:sequence>
+			<xs:element name="linearElementProjections" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="linearElementProjection" type="map:LinearElementProjection" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="functionalElements" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="functionalElement" type="map:FunctionalElementProjection" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="name" type="xs:string"/>
+		<xs:attribute name="versionTimestamp" type="xs:dateTime" use="required"/>
+		<xs:attribute name="areaId" type="xs:string" use="required"/>
+		<xs:attribute name="epsg" type="xs:unsignedInt" use="required"/>
+	</xs:complexType>
+	<xs:element name="map" type="map:Map"/>
+	<xs:complexType name="LinearElementProjection">
+		<xs:sequence>
+			<xs:element name="coordinates" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="coordinate" type="map:LinearElementCoordinate" minOccurs="2" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="linearElement" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Reference to infra:LinearElement</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="linearElementProjection" type="map:LinearElementProjection"/>
+	<xs:complexType name="LinearElementCoordinate">
+		<xs:sequence/>
+		<xs:attribute name="pos" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="x" type="xs:decimal" use="required"/>
+		<xs:attribute name="y" type="xs:decimal" use="required"/>
+		<xs:attribute name="z" type="xs:decimal" use="required"/>
+		<xs:attribute name="accPos" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="accX" type="xs:decimal" use="required"/>
+		<xs:attribute name="accY" type="xs:decimal" use="required"/>
+		<xs:attribute name="accZ" type="xs:decimal" use="required"/>
+	</xs:complexType>
+	<xs:element name="linearElementCoordinate" type="map:LinearElementCoordinate"/>
+	<xs:complexType name="FunctionalElementProjection">
+		<xs:sequence>
+			<xs:element name="elementRef" type="map:FunctionalElementRef" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="x" type="xs:decimal" use="required"/>
+		<xs:attribute name="y" type="xs:decimal" use="required"/>
+		<xs:attribute name="z" type="xs:decimal" use="required"/>
+		<xs:attribute name="accX" type="xs:decimal" use="required"/>
+		<xs:attribute name="accY" type="xs:decimal" use="required"/>
+		<xs:attribute name="accZ" type="xs:decimal" use="required"/>
+	</xs:complexType>
+	<xs:element name="functionalElementProjection" type="map:FunctionalElementProjection"/>
+	<xs:complexType name="FunctionalElementRef">
+		<xs:choice>
+			<xs:element name="switch">
+				<xs:complexType>
+					<xs:attribute name="ref" type="xs:string" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="etcsMarker">
+				<xs:complexType>
+					<xs:attribute name="ref" type="xs:string" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="stopLocation">
+				<xs:complexType>
+					<xs:attribute name="ref" type="xs:string" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="timingPoint">
+				<xs:complexType>
+					<xs:attribute name="ref" type="xs:string" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="operationalPoint">
+				<xs:complexType>
+					<xs:attribute name="ref" type="xs:string" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="balise">
+				<xs:complexType>
+					<xs:attribute name="ref" type="xs:string" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="MapMgmt">
+		<xs:sequence>
+			<xs:element name="maps" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="map" type="map:Map" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="mapMgmt" type="map:MapMgmt"/>
+</xs:schema>

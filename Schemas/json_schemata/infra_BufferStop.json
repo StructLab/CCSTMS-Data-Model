@@ -1,26 +1,48 @@
 {
   "$id": "https://ERJU/infra_BufferStop",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_DirTrackEdgePoint": {
+    "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a directed spot location (without spatial expansion) on a Track Edge",
+      "description": "Defines a topological coordinates on the track",
       "properties": {
-        "trackEdge": {
+        "onLinearElement": {
           "type": "string",
-          "description": "refers to track edge"
+          "description": "is positioned on linear element"
         },
-        "pos": {
+        "offsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated Track Edge"
-        },
-        "sameDir": {
-          "type": "boolean",
-          "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
+          "description": "position on the associated NetElement"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onLinearElement"
+      ],
+      "additionalProperties": false
+    },
+    "infra.NetPointReference": {
+      "type": "object",
+      "description": "Represents a point reference in the network.",
+      "properties": {
+        "hasTopoCoordinate": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Defines the topological coordinate of a network point reference"
+        },
+        "appliesToDirection": {
+          "type": "string",
+          "enum": [
+            "both",
+            "same",
+            "opposite"
+          ],
+          "description": "The direction relative to the origin of the linear element towards the point reference applies"
+        }
+      },
+      "required": [
+        "hasTopoCoordinate"
+      ],
       "additionalProperties": false
     }
   },
@@ -31,15 +53,23 @@
       "type": "string",
       "description": "Identity of the object; used for referencing"
     },
-    "dirSpotLocation": {
+    "netPointReference": {
       "type": "object",
-      "$ref": "#/definitions/infra_DirTrackEdgePoint"
+      "$ref": "#/definitions/infra.NetPointReference",
+      "description": "Defines position on LinearElement"
     },
     "isSwitchable": {
       "type": "boolean",
-      "description": "true - if switchable ; false - if not switchable"
+      "description": "Defines if the object is switchable"
+    },
+    "name": {
+      "type": "string",
+      "description": "User-friendly name, only if different from id"
     }
   },
-  "required": ["id", "dirSpotLocation"],
+  "required": [
+    "id",
+    "netPointReference"
+  ],
   "additionalProperties": false
 }

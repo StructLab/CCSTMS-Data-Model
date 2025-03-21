@@ -1,12 +1,9 @@
 {
   "$id": "https://ERJU/tp_ProtectedInfraElement",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "properties": {
-    "simplePoint": {
+    "switch": {
       "type": "string"
     },
     "slipCrossing": {
@@ -25,23 +22,33 @@
   "oneOf": [
     {
       "type": "object",
-      "required": ["simplePoint"]
+      "required": [
+        "switch"
+      ]
     },
     {
       "type": "object",
-      "required": ["slipCrossing"]
+      "required": [
+        "slipCrossing"
+      ]
     },
     {
       "type": "object",
-      "required": ["crossing"]
+      "required": [
+        "crossing"
+      ]
     },
     {
       "type": "object",
-      "required": ["derailer"]
+      "required": [
+        "derailer"
+      ]
     },
     {
       "type": "object",
-      "required": ["levelCrossing"]
+      "required": [
+        "levelCrossing"
+      ]
     }
   ],
   "additionalProperties": false

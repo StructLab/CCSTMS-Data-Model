@@ -1,27 +1,33 @@
 {
   "$id": "https://ERJU/eng_Sleepers",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_TrackEdgeSection": {
+    "infra.LinearElementSection": {
       "type": "object",
-      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "description": "Defines a directed linear object (with a linear extension) located on a LinearElement",
       "properties": {
-        "trackEdge": {
+        "onElement": {
           "type": "string",
-          "description": "refers to track edge"
+          "description": "refers to linear element"
         },
-        "skipFromStart": {
+        "startOffsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [0..skipFromStart]."
+          "description": "Defines the start offset from the origin"
         },
-        "skipFromEnd": {
+        "endOffsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]."
+          "description": "Defines the end offset from the origin"
+        },
+        "appliesInBothDirections": {
+          "type": "boolean",
+          "description": "Defines if the section applies in both directions"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onElement"
+      ],
       "additionalProperties": false
     }
   },
@@ -32,21 +38,30 @@
       "type": "string",
       "description": "Identity of the object; used for referencing"
     },
-    "trackEdgeSection": {
+    "linearElementSection": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "composes of track edge sections",
-        "$ref": "#/definitions/infra_TrackEdgeSection"
-       },
-      "minItems": 1
+        "$ref": "#/definitions/infra.LinearElementSection"
+      },
+      "minItems": 1,
+      "description": "composes of track edge sections"
     },
     "sleepersType": {
       "type": "string",
-      "description": "defines sleeper types",
-      "enum": ["unknownSleepersType", "composite", "concrete", "steel", "wood"]
+      "enum": [
+        "unknownSleepersType",
+        "composite",
+        "concrete",
+        "steel",
+        "wood"
+      ],
+      "description": "defines sleepers type"
     }
   },
-  "required": ["id", "trackEdgeSection"],
+  "required": [
+    "id",
+    "linearElementSection"
+  ],
   "additionalProperties": false
 }

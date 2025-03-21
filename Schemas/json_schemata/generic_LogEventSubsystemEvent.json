@@ -1,0 +1,40 @@
+{
+  "$id": "https://ERJU/generic_LogEventSubsystemEvent",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "generic.LogEvent": {
+      "type": "object",
+      "description": "Logging the events.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "messageId": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Unique ID linked to a localized Text, available in the service function Diagnostics collector."
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "An event related to a subsystem.",
+  "properties": {
+    "logEvent": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/generic.LogEvent"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "logEvent"
+  ],
+  "additionalProperties": false
+}

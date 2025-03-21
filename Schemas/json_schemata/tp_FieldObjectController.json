@@ -1,8 +1,8 @@
 {
   "$id": "https://ERJU/tp_FieldObjectController",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "tp_ControlledInfraElement": {
+    "tp.ControlledInfraElement": {
       "type": "object",
       "properties": {
         "dpsGroup": {
@@ -15,11 +15,15 @@
       "oneOf": [
         {
           "type": "object",
-          "required": ["dpsGroup"]
+          "required": [
+            "dpsGroup"
+          ]
         },
         {
           "type": "object",
-          "required": ["tvpSection"]
+          "required": [
+            "tvpSection"
+          ]
         }
       ],
       "additionalProperties": false
@@ -36,24 +40,34 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/tp_ControlledInfraElement"
-       },
+        "$ref": "#/definitions/tp.ControlledInfraElement"
+      },
       "minItems": 1
     },
-    "rastaServerId": {
+    "rastaId": {
       "type": "string",
-      "description": "defines EULYNX RaSTA Server identifier for the field object controller"
+      "description": "defines EULYNX RaSTA identifier for the field object controller"
     },
-    "rastaOCId": {
+    "eulynxBaseline": {
       "type": "string",
-      "description": "defines EULYNX RaSTA OC identifier for the field object controller"
+      "description": "defines EULYNX baseline for the filed object controller"
     },
     "version": {
       "type": "integer",
       "minimum": 0,
       "description": "defines the EULYNX field object controller version"
+    },
+    "belongsToAoc": {
+      "type": "string",
+      "description": "defines the Area of Control to which this field object controller belongs to"
     }
   },
-  "required": ["id", "controlledInfraElements", "rastaServerId", "rastaOCId"],
+  "required": [
+    "id",
+    "controlledInfraElements",
+    "rastaId",
+    "eulynxBaseline",
+    "belongsToAoc"
+  ],
   "additionalProperties": false
 }

@@ -1,25 +1,41 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_51",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "ss026_AxleLoadRestriction": {
+    "ss026.AxleLoadRestriction": {
       "type": "object",
+      "description": "Defines the restriction with respect to the axle load",
       "properties": {
         "m_axleLoadCat": {
           "type": "string",
-          "description": "Axle load category (The values allocated below correspond to a list of increasing axle load categories (i.e. B1 > HS17, B2 > B1, D2 > C4, â¦.etc) and it is used by the on-board equipment to compare its axle load category with the axle load category sent by trackside.For the underlying meaning of the axle load categories listed below (with the exception of HS17) refer to CR INF TSI.The category HS17 (axle load <= 17t) corresponds to a static load per axle only, as specified in HS RST TSI clause 4.2.3.2. The introduction of this artefact is necessary to ensure backward compatibility, without any negative performance impact, in case ASPs are used on lines operated with system version X = 1)",
-          "enum": ["A", "HS17", "B1", "B2", "C2", "C3", "C4", "D2", "D3", "D4", "D4XL", "E4", "E5"]
+          "enum": [
+            "AL_A",
+            "AL_HS17",
+            "AL_B1",
+            "AL_B2",
+            "AL_C2",
+            "AL_C3",
+            "AL_C4",
+            "AL_D2",
+            "AL_D3",
+            "AL_D4",
+            "AL_D4XL",
+            "AL_E4",
+            "AL_E5"
+          ],
+          "description": "Axle load category (The values allocated below correspond to a list of increasing axle load categories (i.e. B1 > HS17, B2 > B1, D2 > C4, \u00e2\u00a6.etc) and it is used by the on-board equipment to compare its axle load category with the axle load category sent by trackside.For the underlying meaning of the axle load categories listed below (with the exception of HS17) refer to CR INF TSI.The category HS17 (axle load <= 17t) corresponds to a static load per axle only, as specified in HS RST TSI clause 4.2.3.2. The introduction of this artefact is necessary to ensure backward compatibility, without any negative performance impact, in case ASPs are used on lines operated with system version X = 1)"
         },
         "v_axleLoad": {
           "type": "integer",
           "minimum": 0,
-          "description": "Speed restriction related to axleload. Comment : Speed restriction to be applied if the axle load category of the train M_AXLELOADCAT(n)"
+          "description": "Speed restriction related to axleload. Speed restriction to be applied if the axle load category of the train M_AXLELOADCAT(n)"
         }
       },
       "additionalProperties": false
     },
-    "ss026_AxleLoadSelection": {
+    "ss026.AxleLoadSelection": {
       "type": "object",
+      "description": "Defines the selection criteria for axle load-based speed restrictions in a railway network. It represents a structured profile containing axle load constraints, distances, and validity conditions necessary for safe train operations.",
       "properties": {
         "d_axleload": {
           "type": "integer",
@@ -39,9 +55,10 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/ss026_AxleLoadRestriction"
-           },
-          "maxItems": 31
+            "$ref": "#/definitions/ss026.AxleLoadRestriction"
+          },
+          "maxItems": 31,
+          "description": "List of axle load restrictions for the selection"
         }
       },
       "additionalProperties": false
@@ -77,17 +94,19 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_AxleLoadRestriction"
-       },
-      "maxItems": 31
+        "$ref": "#/definitions/ss026.AxleLoadRestriction"
+      },
+      "maxItems": 31,
+      "description": "List of axle load restrictions for the selection"
     },
     "axleLoadSelections": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_AxleLoadSelection"
-       },
-      "maxItems": 31
+        "$ref": "#/definitions/ss026.AxleLoadSelection"
+      },
+      "maxItems": 31,
+      "description": "List of the selection criteria for axle load-based restrictions"
     }
   },
   "additionalProperties": false

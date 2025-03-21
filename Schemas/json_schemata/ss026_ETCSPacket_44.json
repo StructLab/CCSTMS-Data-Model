@@ -1,9 +1,6 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_44",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "description": " Data used by applications outside the ERTMS/ETCS system (Messages between trackside and on-board devices, which contain information used by applications outside the ERTMS/ETCS system)",
   "properties": {
@@ -19,9 +16,12 @@
     },
     "otherData": {
       "type": "string",
-      "contentEncoding": "base64"
+      "contentEncoding": "base64",
+      "description": "Other data, depending on the Identity of user system - NID_XUSER"
     }
   },
-  "required": ["otherData"],
+  "required": [
+    "otherData"
+  ],
   "additionalProperties": false
 }

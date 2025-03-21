@@ -1,126 +1,196 @@
 {
   "$id": "https://ERJU/opp_WarningMeasureEvent",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_TrackEdgeSection": {
+    "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "description": "Defines a topological coordinates on the track",
       "properties": {
-        "trackEdge": {
+        "onLinearElement": {
           "type": "string",
-          "description": "refers to track edge"
+          "description": "is positioned on linear element"
         },
-        "skipFromStart": {
+        "offsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [0..skipFromStart]."
-        },
-        "skipFromEnd": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]."
+          "description": "position on the associated NetElement"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onLinearElement"
+      ],
       "additionalProperties": false
     },
-    "opp_WarningDevice": {
+    "infra.NetLinearReference": {
       "type": "object",
+      "description": "Defines a linked path on the topology",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+        "startsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Definesthe starting coordinate of a linear reference"
         },
-        "deviceType": {
-          "type": "string",
-          "description": "defines the different warning devices",
-          "enum": ["acousticalIndicator", "opticalIndicator", "hapticIndicator"]
+        "endsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Defines the ending coordinate of a linear reference."
+        },
+        "hasSequence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Defines a sequence of linearElements from the start to the end excluding those defined in startAt- and endsAt-TopologicalCoodinates."
         }
       },
-      "required": ["id"],
+      "required": [
+        "startsAt",
+        "endsAt"
+      ],
       "additionalProperties": false
     },
-    "opp_WarningArea": {
+    "infra.NetAreaReference": {
       "type": "object",
+      "description": "Represents an area reference in the network.",
       "properties": {
-        "trackEdgeSections": {
+        "includes": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "protected area",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.NetLinearReference"
+          },
+          "minItems": 1,
+          "description": "List of linear references included in an network area reference."
+        }
+      },
+      "required": [
+        "includes"
+      ],
+      "additionalProperties": false
+    },
+    "opp.WarningDevice": {
+      "type": "object",
+      "description": "Defines functional warning device which must be activated to implement warning measure",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Defines the Identity of the object; used for referencing"
+        },
+        "deviceType": {
+          "type": "string",
+          "enum": [
+            "acousticalIndicator",
+            "opticalIndicator",
+            "hapticIndicator"
+          ],
+          "description": "Defines a functional warning device type used for securing the warning area"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "opp.WarningArea": {
+      "type": "object",
+      "description": "Defines area in which Warning measures shall be implemented.",
+      "properties": {
+        "trackArea": {
+          "type": "object",
+          "$ref": "#/definitions/infra.NetAreaReference",
+          "description": "protected area"
         },
         "warningDevices": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/opp_WarningDevice"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/opp.WarningDevice"
+          },
+          "minItems": 1,
+          "description": "Defines the list of warning devices"
         }
       },
-      "required": ["trackEdgeSections", "warningDevices"],
+      "required": [
+        "trackArea",
+        "warningDevices"
+      ],
       "additionalProperties": false
     },
-    "opp_OperationalEventRef": {
+    "opp.OperationalEventRef": {
       "type": "object",
+      "description": "Defines a reference to one of possible OperationalEvents (as a unit)",
       "properties": {
         "movementEvent": {
-          "type": "string"
+          "type": "string",
+          "description": "refers a movement event including the movement plan"
         },
         "restrictionEvent": {
-          "type": "string"
+          "type": "string",
+          "description": "Refers a restriction event including restriction plan"
         },
         "warningMeasureEvent": {
-          "type": "string"
+          "type": "string",
+          "description": "Refers a warnning measure event including the warning plan"
         }
       },
       "oneOf": [
         {
           "type": "object",
-          "required": ["movementEvent"]
+          "required": [
+            "movementEvent"
+          ]
         },
         {
           "type": "object",
-          "required": ["restrictionEvent"]
+          "required": [
+            "restrictionEvent"
+          ]
         },
         {
           "type": "object",
-          "required": ["warningMeasureEvent"]
+          "required": [
+            "warningMeasureEvent"
+          ]
         }
       ],
       "additionalProperties": false
     }
   },
   "type": "object",
+  "description": "Defines planned activation/removal of warning area",
   "properties": {
     "id": {
       "type": "string",
-      "description": "globally unique key (e.g. uuid)"
+      "description": "Defines the Identity of the object; used for referencing"
     },
     "creationTime": {
       "type": "string",
-      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
-      "description": "the same as activationTime"
+      "format": "date-time",
+      "description": "Defines the time when the warningArea shall be created=implemented=activated in interlocking, in UTC"
     },
     "removalTime": {
       "type": "string",
-      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+      "format": "date-time",
+      "description": "Defines the removal time in UTC"
     },
     "warningArea": {
       "type": "object",
-      "$ref": "#/definitions/opp_WarningArea"
+      "$ref": "#/definitions/opp.WarningArea"
     },
     "startsAfterEvents": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/opp_OperationalEventRef"
-       }
+        "$ref": "#/definitions/opp.OperationalEventRef"
+      },
+      "description": "Defines the set of operational events, which must be finished before the current event starts."
     }
   },
-  "required": ["id", "creationTime", "removalTime", "warningArea"],
+  "required": [
+    "id",
+    "creationTime",
+    "removalTime",
+    "warningArea"
+  ],
   "additionalProperties": false
 }

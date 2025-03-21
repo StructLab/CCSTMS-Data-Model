@@ -1,19 +1,27 @@
 {
   "$id": "https://ERJU/opp_EventHandling",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines, how the previous event was handled.",
   "properties": {
     "event": {
-      "type": "string"
+      "type": "string",
+      "description": "refers a movement event including the movement plan"
     },
     "passStopDepart": {
       "type": "string",
-      "enum": ["passedEvent", "stoppedAccurateAtEvent", "stoppedWithOvershootAtEvent", "stoppedWithUndershootAtEvent", "departedFromEvent"]
+      "enum": [
+        "passedEvent",
+        "stoppedAccurateAtEvent",
+        "stoppedWithOvershootAtEvent",
+        "stoppedWithUndershootAtEvent",
+        "departedFromEvent"
+      ],
+      "description": "Defines the result of the event handling action"
     }
   },
-  "required": ["event"],
+  "required": [
+    "event"
+  ],
   "additionalProperties": false
 }

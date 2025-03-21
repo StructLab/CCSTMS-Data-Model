@@ -1,9 +1,10 @@
 {
   "$id": "https://ERJU/ss026_NVKItem",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "ss026_NVKSubItem": {
+    "ss026.NVKSubItem": {
       "type": "object",
+      "description": "Defines the speed-dependent correction factors used for braking calculations as part of the National Values. These factors determine the integrated correction factor Kv based on estimated train speed and emergency brake deceleration conditions",
       "properties": {
         "v_nvkvint": {
           "type": "integer",
@@ -25,10 +26,15 @@
     }
   },
   "type": "object",
+  "description": "Defines the correction factor set Kv used for braking calculations based on speed and deceleration limits. This includes thresholds for selecting the appropriate Kv set, speed-dependent correction factors, and associated sub-items. These values are part of the National Values and are used to refine braking performance for Conventional Passenger trains.",
   "properties": {
     "q_nvkvintset": {
       "type": "string",
-      "enum": ["freightTrains", "conventionalPassengerTrains"]
+      "enum": [
+        "freightTrains",
+        "conventionalPassengerTrains"
+      ],
+      "description": "Type of kv_int set"
     },
     "a_nvp12": {
       "type": "integer",
@@ -59,9 +65,10 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_NVKSubItem"
-       },
-      "maxItems": 31
+        "$ref": "#/definitions/ss026.NVKSubItem"
+      },
+      "maxItems": 31,
+      "description": "List of NVKSubItem"
     }
   },
   "additionalProperties": false

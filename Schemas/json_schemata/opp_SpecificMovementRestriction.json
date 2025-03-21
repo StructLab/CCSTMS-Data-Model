@@ -1,34 +1,47 @@
 {
   "$id": "https://ERJU/opp_SpecificMovementRestriction",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "opp_DPSGroupsList": {
+    "opp.DPSGroupsList": {
       "type": "object",
+      "description": "Defines a set of Drive-Protection-Section-Groups",
       "properties": {
         "dpsGroups": {
           "type": "array",
           "items": {
             "type": "string"
-           }
+          },
+          "description": "Defines the list of DPS Groups"
         }
       },
       "additionalProperties": false
     }
   },
   "type": "object",
+  "description": "Defines single aspect of the train specific restriction",
   "properties": {
     "maxSpeed": {
       "type": "integer",
-      "minimum": 0
+      "minimum": 0,
+      "description": "Defines the maximum applicable speed"
     },
     "adhesionCategory": {
       "type": "string",
-      "enum": ["dryRailHigh", "dryRailMedium", "dryRailLow", "lowAdhesion", "veryLowAdhesion", "extremelyLowAdhesion", "unknownAdhesion"]
+      "enum": [
+        "dryRailHigh",
+        "dryRailMedium",
+        "dryRailLow",
+        "lowAdhesion",
+        "veryLowAdhesion",
+        "extremelyLowAdhesion",
+        "unknownAdhesion"
+      ],
+      "description": "Defines the different adhesion categories applicable for the train as per track conditions"
     },
     "maxCurrent": {
       "type": "integer",
       "minimum": 0,
-      "description": "electric current limitation, s. item 0.33 in SS126"
+      "description": "Defines max current value, s. item 0.33 in SS126"
     },
     "atoInhibition": {
       "type": "boolean",
@@ -36,38 +49,50 @@
     },
     "dasInhibition": {
       "type": "boolean",
-      "description": "Driver advisory system not available in this section"
+      "description": "Defines the Driver advisory system inhibition zone"
     },
     "excludedDPSGroupsForFlankProtection": {
       "type": "object",
-      "description": "List of DPSGroups to be excluded from flank protection calculation.",
-      "$ref": "#/definitions/opp_DPSGroupsList"
+      "$ref": "#/definitions/opp.DPSGroupsList",
+      "description": "Defines the list of DPSGroups to be excluded from flank protection calculation."
     }
   },
   "oneOf": [
     {
       "type": "object",
-      "required": ["maxSpeed"]
+      "required": [
+        "maxSpeed"
+      ]
     },
     {
       "type": "object",
-      "required": ["adhesionCategory"]
+      "required": [
+        "adhesionCategory"
+      ]
     },
     {
       "type": "object",
-      "required": ["maxCurrent"]
+      "required": [
+        "maxCurrent"
+      ]
     },
     {
       "type": "object",
-      "required": ["atoInhibition"]
+      "required": [
+        "atoInhibition"
+      ]
     },
     {
       "type": "object",
-      "required": ["dasInhibition"]
+      "required": [
+        "dasInhibition"
+      ]
     },
     {
       "type": "object",
-      "required": ["excludedDPSGroupsForFlankProtection"]
+      "required": [
+        "excludedDPSGroupsForFlankProtection"
+      ]
     }
   ],
   "additionalProperties": false

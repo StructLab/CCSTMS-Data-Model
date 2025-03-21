@@ -1,9 +1,10 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_79",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "ss026_GeoPosItem": {
+    "ss026.GeoPosItem": {
       "type": "object",
+      "description": "Defines the parameters for geographical position referencing in railway operations. This includes balise group identity, position offsets, track kilometre references, and direction qualifiers to support accurate location tracking and reporting along the railway network.",
       "properties": {
         "nid_c": {
           "type": "integer",
@@ -33,18 +34,21 @@
     }
   },
   "type": "object",
-  "description": " Geographical Position Information",
+  "description": "Geographical Position Information. This packet gives geographical location information for one or multiple references to the train",
   "properties": {
     "geoPosItems": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_GeoPosItem"
-       },
+        "$ref": "#/definitions/ss026.GeoPosItem"
+      },
       "minItems": 1,
-      "maxItems": 32
+      "maxItems": 32,
+      "description": "List of Geographical Position Reference"
     }
   },
-  "required": ["geoPosItems"],
+  "required": [
+    "geoPosItems"
+  ],
   "additionalProperties": false
 }

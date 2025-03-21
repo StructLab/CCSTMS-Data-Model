@@ -1,23 +1,32 @@
 {
   "$id": "https://ERJU/opp_DPSState",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines state of a drive protection section",
   "properties": {
     "dps": {
-      "type": "string"
+      "type": "string",
+      "description": "refers to drive protection section"
     },
     "requestedDrivability": {
       "type": "string",
-      "enum": ["full", "none"]
+      "enum": [
+        "full",
+        "none"
+      ],
+      "description": "up to the operator, in accordance with the equipment manual"
     },
     "currentDrivability": {
       "type": "string",
-      "enum": ["full", "none"]
+      "enum": [
+        "full",
+        "none"
+      ],
+      "description": "Defines the current drivability states for DPS"
     }
   },
-  "required": ["dps"],
+  "required": [
+    "dps"
+  ],
   "additionalProperties": false
 }

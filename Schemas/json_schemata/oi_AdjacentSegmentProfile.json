@@ -1,0 +1,34 @@
+{
+  "$id": "https://ERJU/oi_AdjacentSegmentProfile",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Defines properties of adjacent segment profile",
+  "properties": {
+    "nidSP": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "defines national identifier for the segment profile"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "defines the version of the segment profile"
+    },
+    "nidC": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "defines country identifier for the segment profile"
+    },
+    "linkType": {
+      "type": "string",
+      "enum": [
+        "pointLeft",
+        "pointRight",
+        "pointTip",
+        "simpleConnector"
+      ],
+      "description": "Defines the type of link associated with the segment profile"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,27 +1,29 @@
 {
   "$id": "https://ERJU/eng_FoulingPoint",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_TrackEdgePoint": {
+    "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a non-directed spot location (without spatial expansion) on a Track Edge",
+      "description": "Defines a topological coordinates on the track",
       "properties": {
-        "trackEdge": {
+        "onLinearElement": {
           "type": "string",
-          "description": "is positioned on track edge"
+          "description": "is positioned on linear element"
         },
-        "pos": {
+        "offsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated Track Edge"
+          "description": "position on the associated NetElement"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onLinearElement"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
-  "description": "the point on a railway track beyond which a train is not allowed to proceed if another train or object is occupying that portion of the track",
+  "description": "the point on a railway track beyond which a train is not allowed to proceed if another train or object is occupying that   portion of the track",
   "properties": {
     "id": {
       "type": "string",
@@ -31,16 +33,15 @@
       "type": "string",
       "description": "User-friendly name, only if different from id"
     },
-    "spotLocation": {
+    "topologicalCoordinate": {
       "type": "object",
-      "$ref": "#/definitions/infra_TrackEdgePoint"
-    },
-    "clearancePoint": {
-      "type": "integer",
-      "minimum": 0,
-      "description": "location along the TrackEdge from spotLocation, measured from start"
+      "$ref": "#/definitions/infra.TopologicalCoordinate",
+      "description": "Defines the point location on the linear element"
     }
   },
-  "required": ["id", "spotLocation"],
+  "required": [
+    "id",
+    "topologicalCoordinate"
+  ],
   "additionalProperties": false
 }

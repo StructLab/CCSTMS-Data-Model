@@ -1,9 +1,6 @@
 {
   "$id": "https://ERJU/opp_AnyClass",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "properties": {
     "className": {
@@ -14,6 +11,9 @@
       "contentEncoding": "base64"
     }
   },
-  "required": ["className", "content"],
+  "required": [
+    "className",
+    "content"
+  ],
   "additionalProperties": false
 }

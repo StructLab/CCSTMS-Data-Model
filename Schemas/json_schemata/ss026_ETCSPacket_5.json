@@ -1,9 +1,10 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_5",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "ss026_LinkItem": {
+    "ss026.LinkItem": {
       "type": "object",
+      "description": "Defines the attributes for linking balise groups in railway signaling, ensuring proper navigation and train positioning. This includes linking distances, country and region qualifiers, balise group identity, link orientation, reaction to inconsistencies, and location accuracy to maintain safe and reliable operations.",
       "properties": {
         "d_link": {
           "type": "integer",
@@ -18,7 +19,7 @@
         "nid_bg": {
           "type": "integer",
           "minimum": 0,
-          "description": "Identity number of the balise group. Identity number of a balise group or loop within the country or region defined by NID_C."
+          "description": "Identity number of the balise group. Identity number of a balise group  or loop within the country or region defined by NID_C."
         },
         "q_linkorientation": {
           "type": "boolean",
@@ -26,8 +27,12 @@
         },
         "q_linkreaction": {
           "type": "string",
-          "description": "linking reaction. Qualifier for the reaction to be performed ifa linking or a balise group message consistency problem occurs with the balise group linked to.",
-          "enum": ["trainTrip", "applyServiceBrake", "noReaction"]
+          "enum": [
+            "trainTrip",
+            "applyServiceBrake",
+            "noReaction"
+          ],
+          "description": "linking reaction. Qualifier for the reaction to be performed ifa linking or a balise group message consistency problem occurs with the balise group linked to."
         },
         "q_locacc": {
           "type": "integer",
@@ -45,12 +50,15 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_LinkItem"
-       },
+        "$ref": "#/definitions/ss026.LinkItem"
+      },
       "minItems": 1,
-      "maxItems": 33
+      "maxItems": 33,
+      "description": "List of Balise Group linking information"
     }
   },
-  "required": ["links"],
+  "required": [
+    "links"
+  ],
   "additionalProperties": false
 }

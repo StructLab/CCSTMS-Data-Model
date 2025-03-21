@@ -1,0 +1,22 @@
+{
+  "$id": "https://ERJU/opp_OnBoardExtension",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "A container class for a non-standard key-value-property. Messages need sometimes IM-specific information.",
+  "properties": {
+    "contentType": {
+      "type": "string",
+      "description": "Defines the key-attribute in a key-value-pair. Used for annotation of IM-specific onboard-equipment"
+    },
+    "content": {
+      "type": "string",
+      "contentEncoding": "base64",
+      "description": "Defines the value-attribute in a key-value-pair. Used for annotation of IM-specific onboard-equipment"
+    }
+  },
+  "required": [
+    "contentType",
+    "content"
+  ],
+  "additionalProperties": false
+}

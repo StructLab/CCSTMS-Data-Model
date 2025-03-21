@@ -1,20 +1,22 @@
 {
   "$id": "https://ERJU/equipment_InputButton",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "equipment_AuxiliarySwitch": {
+    "equipment.AuxiliaryInput": {
       "type": "object",
-      "description": "AuxiliarySwitch",
+      "description": "AuxiliaryInput",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "type": "string"
         },
         "label": {
           "type": "string"
         }
       },
-      "required": ["id", "label"],
+      "required": [
+        "id",
+        "label"
+      ],
       "additionalProperties": false
     }
   },
@@ -22,8 +24,7 @@
   "description": "InputButton",
   "properties": {
     "id": {
-      "type": "string",
-      "description": "globally unique key (e.g. uuid)"
+      "type": "string"
     },
     "label": {
       "type": "string"
@@ -31,11 +32,15 @@
     "isPressed": {
       "type": "boolean"
     },
-    "auxiliarySwitch": {
+    "auxiliaryInput": {
       "type": "object",
-      "$ref": "#/definitions/equipment_AuxiliarySwitch"
+      "$ref": "#/definitions/equipment.AuxiliaryInput"
     }
   },
-  "required": ["id", "label", "auxiliarySwitch"],
+  "required": [
+    "id",
+    "label",
+    "auxiliaryInput"
+  ],
   "additionalProperties": false
 }

@@ -1,0 +1,95 @@
+{
+  "$id": "https://ERJU/generic_FieldElement",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "generic.Subsystem": {
+      "type": "object",
+      "description": "A subsystem for operational or service functions.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "subsystemIdentification": {
+          "type": "string",
+          "description": "The technical identifier of the subsystem or adjacent systems (see Eu.SAS.77 in [Eu.Doc.16])."
+        },
+        "statusTechnical": {
+          "type": "string",
+          "enum": [
+            "Unknown",
+            "Ok",
+            "Warning",
+            "FailureNonCritical",
+            "FailureCritical"
+          ],
+          "description": "Technical Status of the system, that represents the aggregated status of all hierarchical lower systems. This allows to have a top level information on the status of the system which can be drilled down if the system is in any other state than Ok."
+        },
+        "statusTechnicalManufacturerSpecificMessage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Must be used by the supplier to describe the reasons for a StatusTechnical != OK, that cannot be explained by existing datapoints (NOT including IM and manufacturer specific diagnostic messages). This Information MUST be provided from the supplier. This should provide flexibility for future uses. Multiple states can be indicated at the same time if multiple diagnosis have not been included in the model during the design phase. The supplier specific reason may not overlap with reasons already covered in other attributes."
+        },
+        "isTimeSynchronised": {
+          "type": "boolean",
+          "description": "Indicates whether the last time synchronisation was successful or not. This is important for the subsystem communication and diagnostic data gathering. TRUE: Current time of this subsystem is synchronised."
+        }
+      },
+      "required": [
+        "id",
+        "subsystemIdentification"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Represents an EULYNX Field Element Subsystem.",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "operationStatus": {
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "Booting",
+        "InitialisingWaitingForPdiOrMaintenance",
+        "InitialisingWaitingForPdi",
+        "InitialisingWaitingForDataUpdate",
+        "InitialisingWaitingForNoMaintenanceTimeout",
+        "Operational",
+        "FallbackMode"
+      ],
+      "description": "Indicates the operations status of the logical EfeS according to the essential state machine (see Eu.Gen.3294 in [Eu.Doc.20])."
+    },
+    "fieldElementSpecificationRevision": {
+      "type": "string",
+      "description": "Indicates the version of the EULYNX field element subsystem Requirements specification for subsystem XX which was used for development and production of the EULYNX field element subsystem. For example the EULYNX field element subsystem is developed and produced based on Requirements specification for subsystem XX version 1.6 (1.A), the fieldElementSpecificationRevision has the value 1.6 (1.A)."
+    },
+    "basicDataReadable": {
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "NotReadable",
+        "Incomplete",
+        "FormallyCorrect"
+      ],
+      "description": "Indicates the status of the basic data required for the subsystem functionality."
+    },
+    "subsystem": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/generic.Subsystem"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "id",
+    "fieldElementSpecificationRevision",
+    "subsystem"
+  ],
+  "additionalProperties": false
+}

@@ -1,9 +1,6 @@
 {
   "$id": "https://ERJU/tp_VacantSection",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "properties": {
     "section": {
@@ -11,9 +8,16 @@
     },
     "proving": {
       "type": "string",
-      "enum": ["continuously", "oneOff", "staffAcknowledged", "none"]
+      "enum": [
+        "continuously",
+        "oneOff",
+        "staffAcknowledged",
+        "none"
+      ]
     }
   },
-  "required": ["section"],
+  "required": [
+    "section"
+  ],
   "additionalProperties": false
 }

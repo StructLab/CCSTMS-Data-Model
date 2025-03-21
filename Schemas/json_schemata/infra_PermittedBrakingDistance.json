@@ -1,61 +1,72 @@
 {
   "$id": "https://ERJU/infra_PermittedBrakingDistance",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_TrackEdgeSection": {
+    "infra.LinearElementSection": {
       "type": "object",
-      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "description": "Defines a directed linear object (with a linear extension) located on a LinearElement",
       "properties": {
-        "trackEdge": {
+        "onElement": {
           "type": "string",
-          "description": "refers to track edge"
+          "description": "refers to linear element"
         },
-        "skipFromStart": {
+        "startOffsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [0..skipFromStart]."
+          "description": "Defines the start offset from the origin"
         },
-        "skipFromEnd": {
+        "endOffsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]."
+          "description": "Defines the end offset from the origin"
+        },
+        "appliesInBothDirections": {
+          "type": "boolean",
+          "description": "Defines if the section applies in both directions"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onElement"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
-  "description": "Defines max allowed braking distance for a list of track sections",
+  "description": "Defines max allowed braking distance for a list of linear element sections or segment profile",
   "properties": {
-    "trackEdgeSections": {
+    "linearElementSections": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "composes of track edge sections",
-        "$ref": "#/definitions/infra_TrackEdgeSection"
-       },
-      "minItems": 1
+        "$ref": "#/definitions/infra.LinearElementSection"
+      },
+      "minItems": 1,
+      "description": "Defines the set of linear element sections composing the application area"
     },
     "distance": {
       "type": "integer",
       "minimum": 0,
-      "description": "defines the applicable permitted braking distance"
+      "description": "Defines the applicable permitted braking distance"
     },
     "brakeType": {
       "type": "string",
-      "description": "defines the applicable brake type for braking",
-      "enum": ["serviceBrake", "emergencyBrake"]
+      "enum": [
+        "serviceBrake",
+        "emergencyBrake"
+      ],
+      "description": "Defines the applicable brake type for permitted braking distance"
     },
     "gradientValue": {
       "type": "integer",
-      "description": "defines the gradient associated with the permitted braking distance"
+      "description": "Defines the gradient value.Required Resolution is 0.1 permill; positiv: uphill, negative: downhill"
     },
     "sameDir": {
       "type": "boolean",
-      "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
+      "description": "Defines the usage direction of the linear element ;true: active in same direction as linear element, false: active in opposite direction"
     }
   },
-  "required": ["trackEdgeSections"],
+  "required": [
+    "linearElementSections"
+  ],
   "additionalProperties": false
 }

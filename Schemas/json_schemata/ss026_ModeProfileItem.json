@@ -1,10 +1,8 @@
 {
   "$id": "https://ERJU/ss026_ModeProfileItem",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines the parameters for mode profile transitions in railway operations, specifying the required mode, associated speed limits, and spatial constraints. This includes incremental distances, supervision qualifiers, and acknowledgment areas to ensure proper mode application within the movement authority framework.",
   "properties": {
     "d_mamode": {
       "type": "integer",
@@ -13,8 +11,12 @@
     },
     "m_mamode": {
       "type": "string",
-      "description": "Required mode for a part of the MA. None. Comment : OS, LS, SH",
-      "enum": ["OnSight", "Shunting", "LimitedSupervision"]
+      "enum": [
+        "OnSight",
+        "Shunting",
+        "LimitedSupervision"
+      ],
+      "description": "Required mode for a part of the MA. None. Comment : OS, LS, SH"
     },
     "v_mamode": {
       "type": "integer",

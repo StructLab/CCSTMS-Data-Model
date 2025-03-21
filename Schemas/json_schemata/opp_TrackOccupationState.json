@@ -1,47 +1,94 @@
 {
   "$id": "https://ERJU/opp_TrackOccupationState",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "opp_PhysicalTrainUnitIdentifier": {
+    "opp.PhysicalTrainUnitIdentifier": {
       "type": "object",
+      "description": "Defines a set of possible identifiers for a physical train (ETCS-trainRunningNumber, OBU-ID etc).",
       "properties": {
         "trainRunningNumber": {
-          "type": "string"
+          "type": "string",
+          "description": "Defines the Train Running Number for ETCS same as SS026.NID_OPERATIONAL. To be usable for ETCS must contain a decimal number [0..99999999]. Mapping to uint32 by filling with F: '1233' -> 0x1233FFFF"
         },
         "additionalTrainRunningNumber": {
           "type": "string",
-          "description": "Distinction between Operational Train Units with the same trainRunningNumber. This may occur if a trainRunningNumber is reused for different spare trains."
+          "description": "Defines the distinction between Operational Train Units with the same trainRunningNumber. This may occur if a trainRunningNumber is reused for different spare trains."
         },
         "tafTapTsiTrainID": {
-          "type": "string"
+          "type": "string",
+          "description": "refers to taf tap tsi train id"
         },
         "leadingOnBoardUnitId": {
           "type": "string",
-          "description": "see NID_ENGINE"
+          "description": "Defines NID_ENGINE. To be usable with ETCS must contain a decimal number [0..16.777.215]"
         }
       },
       "additionalProperties": false
     },
-    "infra_TrackEdgeSection": {
+    "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "description": "Defines a topological coordinates on the track",
       "properties": {
-        "trackEdge": {
+        "onLinearElement": {
           "type": "string",
-          "description": "refers to track edge"
+          "description": "is positioned on linear element"
         },
-        "skipFromStart": {
+        "offsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [0..skipFromStart]."
-        },
-        "skipFromEnd": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]."
+          "description": "position on the associated NetElement"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onLinearElement"
+      ],
+      "additionalProperties": false
+    },
+    "infra.NetLinearReference": {
+      "type": "object",
+      "description": "Defines a linked path on the topology",
+      "properties": {
+        "startsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Definesthe starting coordinate of a linear reference"
+        },
+        "endsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Defines the ending coordinate of a linear reference."
+        },
+        "hasSequence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Defines a sequence of linearElements from the start to the end excluding those defined in startAt- and endsAt-TopologicalCoodinates."
+        }
+      },
+      "required": [
+        "startsAt",
+        "endsAt"
+      ],
+      "additionalProperties": false
+    },
+    "infra.NetAreaReference": {
+      "type": "object",
+      "description": "Represents an area reference in the network.",
+      "properties": {
+        "includes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/infra.NetLinearReference"
+          },
+          "minItems": 1,
+          "description": "List of linear references included in an network area reference."
+        }
+      },
+      "required": [
+        "includes"
+      ],
       "additionalProperties": false
     }
   },
@@ -50,45 +97,61 @@
   "properties": {
     "id": {
       "type": "string",
-      "description": "id of UnresolvedTrackboundObject"
+      "description": "Defines the Identity of the object; used for referencing"
     },
     "issuedAt": {
       "type": "string",
-      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+      "format": "date-time",
+      "description": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"
     },
     "operationalPlanMovement": {
-      "type": "string"
+      "type": "string",
+      "description": "Refers to the operational plan movement. if the new train was created in TrafficCS it does not have an operationalPlan (Movement) yet"
     },
     "trainUnitIdentifier": {
       "type": "object",
-      "$ref": "#/definitions/opp_PhysicalTrainUnitIdentifier"
+      "$ref": "#/definitions/opp.PhysicalTrainUnitIdentifier",
+      "description": "Defines the train unit identifier"
     },
     "occupationState": {
       "type": "string",
-      "enum": ["created", "updated", "removed"]
+      "enum": [
+        "created",
+        "updated",
+        "removed"
+      ],
+      "description": "Defines the occupation state of the track"
     },
     "creationReason": {
       "type": "string",
-      "enum": ["shorterLTrain", "toCommLoss", "systemInit", "ttdOccupation", "ttdFree"]
+      "enum": [
+        "shorterLTrain",
+        "toCommLoss",
+        "systemInit",
+        "ttdOccupation",
+        "ttdFree"
+      ],
+      "description": "Defines the creation reason"
     },
     "recordedTrainLength": {
       "type": "integer",
       "minimum": 0,
-      "description": "use 0 if not defined"
+      "description": "Defines the recorded train length. Use 0 if undefined"
     },
     "trackArea": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "$ref": "#/definitions/infra_TrackEdgeSection"
-       },
-      "minItems": 1
+      "type": "object",
+      "$ref": "#/definitions/infra.NetAreaReference",
+      "description": "composes of net area reference"
     },
     "associatedTrainObject": {
       "type": "string",
-      "description": "trainObjectId defined in MovementPermission"
+      "description": "Defines the trainObjectId defined in MovementPermission"
     }
   },
-  "required": ["id", "issuedAt", "trackArea"],
+  "required": [
+    "id",
+    "issuedAt",
+    "trackArea"
+  ],
   "additionalProperties": false
 }

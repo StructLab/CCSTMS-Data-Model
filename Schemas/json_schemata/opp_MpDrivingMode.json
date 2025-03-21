@@ -1,61 +1,76 @@
 {
   "$id": "https://ERJU/opp_MpDrivingMode",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_DirTrackEdge": {
+    "infra.TopologicalCoordinate": {
       "type": "object",
+      "description": "Defines a topological coordinates on the track",
       "properties": {
-        "trackEdge": {
+        "onLinearElement": {
           "type": "string",
-          "description": "refers totrack edge"
+          "description": "is positioned on linear element"
         },
-        "sameDir": {
-          "type": "boolean",
-          "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
+        "offsetFromOrigin": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated NetElement"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onLinearElement"
+      ],
       "additionalProperties": false
     },
-    "infra_LinkedPath": {
+    "infra.NetLinearReference": {
       "type": "object",
       "description": "Defines a linked path on the topology",
       "properties": {
-        "dirTrackEdges": {
+        "startsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Definesthe starting coordinate of a linear reference"
+        },
+        "endsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Defines the ending coordinate of a linear reference."
+        },
+        "hasSequence": {
           "type": "array",
           "items": {
-            "type": "object",
-            "description": "composes of directed track edges",
-            "$ref": "#/definitions/infra_DirTrackEdge"
-           },
-          "minItems": 1
-        },
-        "skipFromPathStart": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [0..skipFromStart]"
-        },
-        "skipFromPathEnd": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]"
+            "type": "string"
+          },
+          "description": "Defines a sequence of linearElements from the start to the end excluding those defined in startAt- and endsAt-TopologicalCoodinates."
         }
       },
-      "required": ["dirTrackEdges"],
+      "required": [
+        "startsAt",
+        "endsAt"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
+  "description": "Defines inside of a movement permission, which parts of the reserved path can be driven in which ETCS mode.",
   "properties": {
     "drivingMode": {
       "type": "string",
-      "enum": ["undefined", "onSight", "fullSupervision", "standBy"]
+      "enum": [
+        "undefined",
+        "onSight",
+        "fullSupervision",
+        "standBy"
+      ],
+      "description": "Defines the applicable driving mode along the associated path"
     },
     "path": {
       "type": "object",
-      "$ref": "#/definitions/infra_LinkedPath"
+      "$ref": "#/definitions/infra.NetLinearReference",
+      "description": "refers the applicable path"
     }
   },
-  "required": ["path"],
+  "required": [
+    "path"
+  ],
   "additionalProperties": false
 }

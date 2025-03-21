@@ -1,0 +1,51 @@
+{
+  "$id": "https://ERJU/generic_MotorTurnData_3AC_Power",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "generic.MotorTurnData": {
+      "type": "object",
+      "description": "To be implemented by one of the alternative underlying classes, depending on the implementation of the point machine.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "index": {
+          "type": "number",
+          "description": "Index of the motor. Must be identical to the index in the logical class representing the motor (e.g. PointMachine)."
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "One of the alternative implementations to collect turn data from a point machine.",
+  "properties": {
+    "power_L1": {
+      "type": "number",
+      "description": "One-dimensional array of power values in [W] for L1."
+    },
+    "power_L2": {
+      "type": "number",
+      "description": "One-dimensional array of power values in [W] for L2."
+    },
+    "power_L3": {
+      "type": "number",
+      "description": "One-dimensional array of power values in [W] for L3."
+    },
+    "motorTurnData": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/generic.MotorTurnData"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "motorTurnData"
+  ],
+  "additionalProperties": false
+}

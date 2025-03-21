@@ -1,14 +1,11 @@
 {
   "$id": "https://ERJU/map_FunctionalElementRef",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "properties": {
-    "simplePoint": {
+    "switch": {
       "type": "string",
-      "description": "refers to simple point"
+      "description": "refers to switch/simple point"
     },
     "etcsMarker": {
       "type": "string",
@@ -20,41 +17,53 @@
     },
     "timingPoint": {
       "type": "string",
-      "description": "refers to timing point"
+      "description": "Defines a reference to a timing point"
     },
     "operationalPoint": {
       "type": "string",
-      "description": "refers to operational point"
+      "description": "Defines a reference to an operational point (station, siding etc)."
     },
     "balise": {
       "type": "string",
-      "description": "refers to balise"
+      "description": "Defines a reference to a functional balise"
     }
   },
   "oneOf": [
     {
       "type": "object",
-      "required": ["simplePoint"]
+      "required": [
+        "switch"
+      ]
     },
     {
       "type": "object",
-      "required": ["etcsMarker"]
+      "required": [
+        "etcsMarker"
+      ]
     },
     {
       "type": "object",
-      "required": ["stopLocation"]
+      "required": [
+        "stopLocation"
+      ]
     },
     {
       "type": "object",
-      "required": ["timingPoint"]
+      "required": [
+        "timingPoint"
+      ]
     },
     {
       "type": "object",
-      "required": ["operationalPoint"]
+      "required": [
+        "operationalPoint"
+      ]
     },
     {
       "type": "object",
-      "required": ["balise"]
+      "required": [
+        "balise"
+      ]
     }
   ],
   "additionalProperties": false

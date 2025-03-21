@@ -1,30 +1,36 @@
 {
   "$id": "https://ERJU/tp_DriveProtectionSectionGroup",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_TrackEdgeSection": {
+    "infra.LinearElementSection": {
       "type": "object",
-      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "description": "Defines a directed linear object (with a linear extension) located on a LinearElement",
       "properties": {
-        "trackEdge": {
+        "onElement": {
           "type": "string",
-          "description": "refers to track edge"
+          "description": "refers to linear element"
         },
-        "skipFromStart": {
+        "startOffsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [0..skipFromStart]."
+          "description": "Defines the start offset from the origin"
         },
-        "skipFromEnd": {
+        "endOffsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]."
+          "description": "Defines the end offset from the origin"
+        },
+        "appliesInBothDirections": {
+          "type": "boolean",
+          "description": "Defines if the section applies in both directions"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onElement"
+      ],
       "additionalProperties": false
     },
-    "tp_DriveProtectionSection": {
+    "tp.DriveProtectionSection": {
       "type": "object",
       "description": "Defines a DPS for a section of track",
       "properties": {
@@ -35,22 +41,26 @@
         "name": {
           "type": "string"
         },
-        "trackEdgeSection": {
+        "linearElementSection": {
           "type": "object",
-          "$ref": "#/definitions/infra_TrackEdgeSection"
+          "$ref": "#/definitions/infra.LinearElementSection"
         },
         "maxFlankProtectionSpeed": {
           "type": "integer",
           "minimum": 0
         }
       },
-      "required": ["id", "name", "trackEdgeSection"],
+      "required": [
+        "id",
+        "name",
+        "linearElementSection"
+      ],
       "additionalProperties": false
     },
-    "tp_ProtectedInfraElement": {
+    "tp.ProtectedInfraElement": {
       "type": "object",
       "properties": {
-        "simplePoint": {
+        "switch": {
           "type": "string"
         },
         "slipCrossing": {
@@ -69,23 +79,33 @@
       "oneOf": [
         {
           "type": "object",
-          "required": ["simplePoint"]
+          "required": [
+            "switch"
+          ]
         },
         {
           "type": "object",
-          "required": ["slipCrossing"]
+          "required": [
+            "slipCrossing"
+          ]
         },
         {
           "type": "object",
-          "required": ["crossing"]
+          "required": [
+            "crossing"
+          ]
         },
         {
           "type": "object",
-          "required": ["derailer"]
+          "required": [
+            "derailer"
+          ]
         },
         {
           "type": "object",
-          "required": ["levelCrossing"]
+          "required": [
+            "levelCrossing"
+          ]
         }
       ],
       "additionalProperties": false
@@ -99,32 +119,37 @@
       "description": "Identity of the object; used for referencing"
     },
     "name": {
-      "type": "string"
+      "type": "string",
+      "description": "User-friendly name, only if different from id"
     },
     "driveProtectionSections": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/tp_DriveProtectionSection"
-       },
+        "$ref": "#/definitions/tp.DriveProtectionSection"
+      },
       "minItems": 1
     },
     "protectedInfraElements": {
       "type": "object",
-      "$ref": "#/definitions/tp_ProtectedInfraElement"
+      "$ref": "#/definitions/tp.ProtectedInfraElement"
     },
     "dependenciesType": {
       "type": "string",
-      "description": "defines dependencies between n drive protection sections",
-      "enum": ["Exclusive", "Equivalent", "Specific"]
+      "enum": [
+        "Exclusive",
+        "Equivalent",
+        "Specific"
+      ],
+      "description": "defines dependencies between n drive protection sections"
     },
     "dpsgDependencies": {
       "type": "array",
       "items": {
         "type": "integer",
-        "minimum": 0,
-        "description": "contains row-wise bit matrix with column = index of the element in DriveProtectionSectionGroup. 0 means not allowed to use ; 1 means allowed to use for rail traffic.Each line in the matrix contains a valid state of the DriveProtectionSectionGroup ; Use only if DPSDependencyType == Specific"
-       }
+        "minimum": 0
+      },
+      "description": "contains row-wise bit matrix with column = index of the element in DriveProtectionSectionGroup. 0 means not allowed to use ; 1 means allowed to use for rail traffic.Each line in the matrix contains a valid state of the DriveProtectionSectionGroup ; Use only if DPSDependencyType == Specific"
     },
     "runTime": {
       "type": "integer",
@@ -132,6 +157,10 @@
       "description": "Defines the total time required for the DPS(s) in a DPS Group to switch from one position to the other"
     }
   },
-  "required": ["id", "name", "driveProtectionSections", "protectedInfraElements"],
+  "required": [
+    "id",
+    "driveProtectionSections",
+    "protectedInfraElements"
+  ],
   "additionalProperties": false
 }

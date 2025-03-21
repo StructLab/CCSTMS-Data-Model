@@ -1,33 +1,40 @@
 {
   "$id": "https://ERJU/opp_OperationalEventRef",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines a reference to one of possible OperationalEvents (as a unit)",
   "properties": {
     "movementEvent": {
-      "type": "string"
+      "type": "string",
+      "description": "refers a movement event including the movement plan"
     },
     "restrictionEvent": {
-      "type": "string"
+      "type": "string",
+      "description": "Refers a restriction event including restriction plan"
     },
     "warningMeasureEvent": {
-      "type": "string"
+      "type": "string",
+      "description": "Refers a warnning measure event including the warning plan"
     }
   },
   "oneOf": [
     {
       "type": "object",
-      "required": ["movementEvent"]
+      "required": [
+        "movementEvent"
+      ]
     },
     {
       "type": "object",
-      "required": ["restrictionEvent"]
+      "required": [
+        "restrictionEvent"
+      ]
     },
     {
       "type": "object",
-      "required": ["warningMeasureEvent"]
+      "required": [
+        "warningMeasureEvent"
+      ]
     }
   ],
   "additionalProperties": false

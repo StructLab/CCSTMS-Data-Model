@@ -1,9 +1,10 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_52",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "ss026_PBDSelection": {
+    "ss026.PBDSelection": {
       "type": "object",
+      "description": "Defines the selection criteria for Permitted Braking Distance (PBD) constraints, ensuring safe braking within defined limits. This includes parameters such as braking distance, gradient slope, speed restrictions, and braking mode qualifiers, which influence braking performance calculations.",
       "properties": {
         "d_pbd": {
           "type": "integer",
@@ -53,9 +54,10 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_PBDSelection"
-       },
-      "maxItems": 32
+        "$ref": "#/definitions/ss026.PBDSelection"
+      },
+      "maxItems": 32,
+      "description": "List of permitted braking distance constraints"
     }
   },
   "additionalProperties": false

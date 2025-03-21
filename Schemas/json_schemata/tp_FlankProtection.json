@@ -1,17 +1,13 @@
 {
   "$id": "https://ERJU/tp_FlankProtection",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "description": "to be extended",
   "properties": {
     "id": {
-      "type": "string",
-      "description": "globally unique key (e.g. uuid)"
+      "type": "string"
     },
-    "simplePoint": {
+    "switch": {
       "type": "string"
     },
     "isLeftPosition": {
@@ -19,6 +15,9 @@
       "description": "if false - rightPosition"
     }
   },
-  "required": ["id", "simplePoint"],
+  "required": [
+    "id",
+    "switch"
+  ],
   "additionalProperties": false
 }

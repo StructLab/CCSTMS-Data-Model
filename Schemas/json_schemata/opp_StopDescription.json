@@ -1,106 +1,136 @@
 {
   "$id": "https://ERJU/opp_StopDescription",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "opp_TrainUnitActivity": {
+    "opp.TrainUnitActivity": {
       "type": "object",
-      "description": "if the train turns around, an additional MovementEvent must be integrated with the new position of train head",
+      "description": "Defines, what happens with the rolling stock at this location.",
       "properties": {
         "trainUnitActivityType": {
           "type": "string",
-          "enum": ["joinActivity", "splitActivity", "collectActivity", "dropActivity", "turnAroundActivity", "meetActivity"]
+          "enum": [
+            "joinActivity",
+            "splitActivity",
+            "collectActivity",
+            "dropActivity",
+            "turnAroundActivity",
+            "meetActivity",
+            "otherActivity"
+          ],
+          "description": "Defines the train unit activity type"
         },
         "actualTrainUnitIndex": {
           "type": "integer",
           "minimum": 0,
-          "description": "index of TrainUnit in OperationalMovement.operationalTrainUnits before the activity"
+          "description": "Defines the index of TrainUnit in OperationalMovement. operationalTrainUnits before the activity"
         },
         "targetTrainUnitIndex": {
           "type": "integer",
           "minimum": 0,
-          "description": "index of TrainUnit in OperationalMovement.operationalTrainUnits after the activity"
+          "description": "Defines the index of TrainUnit in OperationalMovement. operationalTrainUnits after the activity"
         }
       },
       "additionalProperties": false
     },
-    "opp_DoorActivity": {
+    "opp.DoorActivity": {
       "type": "object",
+      "description": "Defines which doors shall be open and how they shall be open.",
       "properties": {
         "openingDoorSide": {
           "type": "string",
-          "description": "noneSide if the doors are kept closed",
-          "enum": ["doorSideLeft", "doorSideRight", "doorSideBoth", "doorNoneSide", "doorSideUnknown"]
+          "enum": [
+            "doorSideLeft",
+            "doorSideRight",
+            "doorSideBoth",
+            "doorNoneSide",
+            "doorSideUnknown"
+          ],
+          "description": "Defines the door opening side. noneSide if the doors are kept closed.noneSide if the doors are kept closed"
         },
         "centralisedOpening": {
           "type": "boolean",
-          "description": "true - centralised opening, false - opening byby passengers/driver"
+          "description": "Defines if the doors can be centrally opened. true - centralised opening, false - opening by passengers/driver"
         },
         "automaticClosing": {
           "type": "boolean",
-          "description": "true by ATO, false - without ATO"
+          "description": "Defines if automatic closing of doors is performed by ATO or not. True by ATO, false - without ATO"
         }
       },
       "additionalProperties": false
     },
-    "opp_AdditionalEventTime": {
+    "opp.AdditionalEventTime": {
       "type": "object",
+      "description": "Definestimes not required for ATO, but useful for CDAS (e.g. published arrival, plannedArrival etc.)",
       "properties": {
         "timeValue": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+          "format": "date-time",
+          "description": "Defines the time value in UTC"
         },
         "timeType": {
           "type": "string",
-          "enum": ["plannedArrival", "plannedDeparture", "plannedMinDwellTime", "publishedArrival", "publishedDeparture"]
+          "enum": [
+            "plannedArrival",
+            "plannedDeparture",
+            "plannedMinDwellTime",
+            "publishedArrival",
+            "publishedDeparture"
+          ],
+          "description": "Defines the time type for a stop description"
         }
       },
-      "required": ["timeValue"],
+      "required": [
+        "timeValue"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
+  "description": "Defines activities to be implemented by the train when it stopps.",
   "properties": {
     "trainUnitActivities": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "sequence of changes of TrainUnit during the stop",
-        "$ref": "#/definitions/opp_TrainUnitActivity"
-       }
+        "$ref": "#/definitions/opp.TrainUnitActivity"
+      },
+      "description": "Defines the sequence of changes of TrainUnit during the stop"
     },
     "doorActivity": {
       "type": "object",
-      "description": "if the attribute is not provided, the doors remain closed",
-      "$ref": "#/definitions/opp_DoorActivity"
+      "$ref": "#/definitions/opp.DoorActivity",
+      "description": "Defines the door activity. If the attribute is not provided, the doors remain closed"
     },
     "relaxedCoupler": {
       "type": "boolean",
-      "description": "true - request for coupler relaxation, false -not, see Q_Relaxed_Coupler in SS126"
+      "description": "Defines the state of coupler. true - request for coupler relaxation, false -not, see Q_Relaxed_Coupler in SS126"
     },
     "holdTrain": {
       "type": "boolean",
-      "description": "see JP in SS126"
+      "description": "Defines, that if the train shall be hold until the next update. See JP in SS126"
     },
     "scheduledDeparture": {
       "type": "string",
-      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
-      "description": "see departure in SS126. In the last station it is 'end of mission'."
+      "format": "date-time",
+      "description": "Defines the scheduled departure time. see departure in SS126. In the last station it is 'end of mission', in UTC."
     },
     "scheduledMinDwellTime": {
       "type": "integer",
       "minimum": 0,
-      "description": "the train has to wait after actual arrival this number of seconds before departure. ActualEarliestDeparture = max(departure, arrival + minDwellTime) will be calculated by ATO-OB, see minDwellTime in SS126"
+      "description": "Defines if the train has to wait after actual arrival this number of seconds before departure. ActualEarliestDeparture = max(departure, arrival + minDwellTime) will be calculated by ATO-OB, see minDwellTime in SS126"
     },
     "additionalEventTimes": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "Additional times for C-DAS. They will be ignored by ATO (not part of SS126).",
-        "$ref": "#/definitions/opp_AdditionalEventTime"
-       },
-      "maxItems": 4
+        "$ref": "#/definitions/opp.AdditionalEventTime"
+      },
+      "maxItems": 4,
+      "description": "Defines the state of coupler. true - request for coupler relaxation, false -not, see Q_Relaxed_Coupler in SS126"
     }
   },
-  "required": ["scheduledDeparture"],
+  "required": [
+    "scheduledDeparture"
+  ],
   "additionalProperties": false
 }

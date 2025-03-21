@@ -1,0 +1,19 @@
+{
+  "$id": "https://ERJU/oi_CurrentChange",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Defines the current limitation information for a segment profile",
+  "properties": {
+    "pos": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Position on the associated segment profile"
+    },
+    "currentValue": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Defined current limitation in Ampere ; Resolution as defined in SS126 = 10A"
+    }
+  },
+  "additionalProperties": false
+}

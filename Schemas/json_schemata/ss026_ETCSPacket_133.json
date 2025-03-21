@@ -1,9 +1,6 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_133",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "description": " Radio infill area information",
   "properties": {
@@ -14,7 +11,7 @@
     "nid_c": {
       "type": "integer",
       "minimum": 0,
-      "description": "Identity number of the country or region. Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries. Comment : RIU ETCS identity"
+      "description": "Identity number of the country or region. Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries."
     },
     "nid_riu": {
       "type": "integer",
@@ -23,7 +20,7 @@
     },
     "nid_radio": {
       "type": "string",
-      "description": "Radio subscriber number. (Quoted as a 16 digit decimal number. The number is to be entered âleft adjustedâ starting with the first digit to be dialled. Padding by the special value F shall be added after the least significant digit of the number.)"
+      "description": "Radio subscriber number. (Quoted as a 16 digit decimal number. The number is to be entered \u00e2left adjusted\u00e2 starting with the first digit to be dialled. Padding by the special value F shall be added after the least significant digit of the number.)"
     },
     "d_infill": {
       "type": "integer",
@@ -41,6 +38,8 @@
       "description": "Identity number of the balise group. Identity number of a balise group or loop within the country or region defined by NID_C."
     }
   },
-  "required": ["nid_radio"],
+  "required": [
+    "nid_radio"
+  ],
   "additionalProperties": false
 }

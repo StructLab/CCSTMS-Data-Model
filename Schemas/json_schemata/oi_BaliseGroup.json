@@ -1,0 +1,55 @@
+{
+  "$id": "https://ERJU/oi_BaliseGroup",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "oi.Balise": {
+      "type": "object",
+      "description": "Defines a technical device on the railway trackbed",
+      "properties": {
+        "n_pig": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines the position of a balise in a balise group"
+        },
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Position on the associated segment profile"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines a technical device group on the railway trackbed",
+  "properties": {
+    "nid_bg": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "defines national identifier for the balise group"
+    },
+    "balises": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/oi.Balise"
+      },
+      "minItems": 1,
+      "maxItems": 8,
+      "description": "Defines the balises within the balise group"
+    },
+    "nidCQualifier": {
+      "type": "boolean",
+      "description": "true if same NID_C as in segment profile is to be used; false if new country id is to be used for the balise"
+    },
+    "nid_c": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "to be defined when countyIdQualifier is false ; defines the new NID_C for the balise group"
+    }
+  },
+  "required": [
+    "balises"
+  ],
+  "additionalProperties": false
+}

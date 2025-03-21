@@ -1,15 +1,19 @@
 {
   "$id": "https://ERJU/ss026_LevelTransitionWithAck",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines the parameters for level transitions requiring acknowledgment in ETCS operations. This includes the target ETCS level, the associated national system identity, and the length of the acknowledgment area required for a safe transition.",
   "properties": {
     "m_leveltr": {
       "type": "string",
-      "description": "Required level",
-      "enum": ["Level0", "LevelNTC", "Level1", "Level2", "Level3"]
+      "enum": [
+        "Level0",
+        "LevelNTC",
+        "Level1",
+        "Level2",
+        "Level3"
+      ],
+      "description": "Required level"
     },
     "nid_ntc": {
       "type": "integer",

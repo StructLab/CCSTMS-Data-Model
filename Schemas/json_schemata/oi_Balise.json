@@ -1,0 +1,19 @@
+{
+  "$id": "https://ERJU/oi_Balise",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Defines a technical device on the railway trackbed",
+  "properties": {
+    "n_pig": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Defines the position of a balise in a balise group"
+    },
+    "pos": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Position on the associated segment profile"
+    }
+  },
+  "additionalProperties": false
+}

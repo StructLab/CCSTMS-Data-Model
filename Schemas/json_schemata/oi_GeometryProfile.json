@@ -1,0 +1,86 @@
+{
+  "$id": "https://ERJU/oi_GeometryProfile",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "map.LinearElementCoordinate": {
+      "type": "object",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines position on the associated LinearElement"
+        },
+        "x": {
+          "type": "number",
+          "description": "Defines the x coordiante value, mapping to each EPSG-code"
+        },
+        "y": {
+          "type": "number",
+          "description": "Defines the y coordiante value, mapping to each EPSG-code"
+        },
+        "z": {
+          "type": "number",
+          "description": "Defines the z coordiante value, mapping to each EPSG-code"
+        },
+        "accPos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "absolute accuracy as 1sigma. Use 0 if not defined"
+        },
+        "accX": {
+          "type": "number",
+          "description": "absolute accuracy as 1sigma. Use 0.0 if not defined"
+        },
+        "accY": {
+          "type": "number",
+          "description": "absolute accuracy as 1sigma. Use 0.0 if not defined"
+        },
+        "accZ": {
+          "type": "number",
+          "description": "absolute accuracy as 1sigma. Use 0.0 if not defined"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.Attitude": {
+      "type": "object",
+      "properties": {
+        "rollAngle": {
+          "type": "integer",
+          "description": "Defines roll angle at a position in radians as the difference between the right rail minus the left rail. Right/left with respect to the direction of the linear element."
+        },
+        "curvature": {
+          "type": "integer",
+          "description": "curvature at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+        },
+        "azimuth": {
+          "type": "number",
+          "description": "The azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
+        },
+        "pitch": {
+          "type": "integer",
+          "description": "Defines pitch in radians at a point as a height difference between current point and the next"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines the geometry profile description for the Segment Profile",
+  "properties": {
+    "linearElementCoordinates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/map.LinearElementCoordinate"
+      },
+      "description": "composes of linear element coordinates"
+    },
+    "attitudes": {
+      "type": "object",
+      "$ref": "#/definitions/oi.Attitude",
+      "description": "composes of geometry values for the linear element coordinates"
+    }
+  },
+  "additionalProperties": false
+}

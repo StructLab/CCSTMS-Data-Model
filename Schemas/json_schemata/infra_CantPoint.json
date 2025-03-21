@@ -1,19 +1,16 @@
 {
   "$id": "https://ERJU/infra_CantPoint",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
-  "description": "Cant at a given location on the track.",
+  "description": "Defines Cant (Superelevation) at the locations of start and end Cant Ramps on the track.",
   "properties": {
-    "trackGeometryPos": {
+    "elementGeometryPos": {
       "type": "number",
       "description": "position on the associated track edge"
     },
     "appliedCant": {
       "type": "number",
-      "description": "Height of the right rail minus the left rail. Right/left with respect to the direction of the track edge. Rollangle=(arcsin(cant/gauge)), gauge is distance between middle of the railheads, e.g. 1500mm for EU-standard gauge '1435mm'"
+      "description": "Height of the outer rail minus the inner rail. Outer rail and inner rail are defined according to the direction of curve. Rollangle=(arcsin(cant/gauge)), gauge is distance between middle of the railheads, e.g. 1500mm for EU-standard gauge '1435mm' ; The applied cant is defined for the start"
     }
   },
   "additionalProperties": false

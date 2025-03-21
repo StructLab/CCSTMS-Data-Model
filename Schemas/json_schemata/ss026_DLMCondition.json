@@ -1,10 +1,8 @@
 {
   "$id": "https://ERJU/ss026_DLMCondition",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines the track conditions, specifying the distance to track condition changes, the validity length of the condition, and the type of track condition to ensure safe and efficient train movement.",
   "properties": {
     "d_trackcond": {
       "type": "integer",

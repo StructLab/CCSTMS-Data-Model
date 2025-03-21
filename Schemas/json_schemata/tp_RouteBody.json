@@ -1,47 +1,52 @@
 {
   "$id": "https://ERJU/tp_RouteBody",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_DirTrackEdge": {
+    "infra.TopologicalCoordinate": {
       "type": "object",
+      "description": "Defines a non-directed spot location (without spatial expansion) on a LinearElement",
       "properties": {
-        "trackEdge": {
+        "onLinearElement": {
           "type": "string",
-          "description": "refers totrack edge"
+          "description": "is positioned on linear element"
         },
-        "sameDir": {
-          "type": "boolean",
-          "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
+        "offsetFromOrigin": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated NetElement"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onLinearElement"
+      ],
       "additionalProperties": false
     },
-    "infra_LinkedPath": {
+    "infra.NetLinearReference": {
       "type": "object",
       "description": "Defines a linked path on the topology",
       "properties": {
-        "dirTrackEdges": {
+        "startsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Specifies the starting coordinate of a linear reference"
+        },
+        "endsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Specifies the ending coordinate of a linear reference."
+        },
+        "hasSequence": {
           "type": "array",
           "items": {
-            "type": "object",
-            "description": "composes of directed track edges",
-            "$ref": "#/definitions/infra_DirTrackEdge"
-           },
-          "minItems": 1
-        },
-        "skipFromPathStart": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [0..skipFromStart]"
-        },
-        "skipFromPathEnd": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]"
+            "type": "string"
+          },
+          "description": "defines a sequence of linearElements from the start to the end excluding those defined in startAt- and endsAt-TopologicalCoodinates."
         }
       },
-      "required": ["dirTrackEdges"],
+      "required": [
+        "startsAt",
+        "endsAt"
+      ],
       "additionalProperties": false
     }
   },
@@ -49,14 +54,16 @@
   "description": "part the train uses directly. It is reused by several routes, which differ in restrictions etc. To be extended",
   "properties": {
     "id": {
-      "type": "string",
-      "description": "globally unique key (e.g. uuid)"
+      "type": "string"
     },
     "path": {
       "type": "object",
-      "$ref": "#/definitions/infra_LinkedPath"
+      "$ref": "#/definitions/infra.NetLinearReference"
     }
   },
-  "required": ["id", "path"],
+  "required": [
+    "id",
+    "path"
+  ],
   "additionalProperties": false
 }

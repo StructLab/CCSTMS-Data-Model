@@ -1,19 +1,22 @@
 {
   "$id": "https://ERJU/opp_EventEstimation",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines forecast for events coming from ATO-Onboard",
   "properties": {
     "event": {
-      "type": "string"
+      "type": "string",
+      "description": "refers a movement event including the movement plan"
     },
     "arrival": {
       "type": "string",
-      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+      "format": "date-time",
+      "description": "Defines the arrival time in UTC"
     }
   },
-  "required": ["event", "arrival"],
+  "required": [
+    "event",
+    "arrival"
+  ],
   "additionalProperties": false
 }

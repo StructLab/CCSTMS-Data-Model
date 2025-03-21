@@ -1,0 +1,91 @@
+{
+  "$id": "https://ERJU/point_PointMachine",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Motor of a point.",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "index": {
+      "type": "string",
+      "description": "Index of the point machine."
+    },
+    "machineType": {
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "Drive",
+        "Downholder",
+        "DetectorOnly"
+      ],
+      "description": "The type of each point machine."
+    },
+    "position": {
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "Left",
+        "Right",
+        "NoEndposition",
+        "UnintendedPosition"
+      ],
+      "description": "Reports the position of the point machine."
+    },
+    "isCrucial": {
+      "type": "boolean",
+      "description": "True: Reaching end position of this PointMachine is a necessary condition for the point as a whole to reach a degraded end position."
+    },
+    "timeOffsetStartLeft": {
+      "type": "number",
+      "description": "Delay of this motor starting in [sec] compared to the PointMachine that starts first when moving to the left."
+    },
+    "timeOffsetStartRight": {
+      "type": "number",
+      "description": "Delay of this motor starting in [sec] compared to the PointMachine that starts first when moving to the right."
+    },
+    "ableToMoveStatus": {
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "Able",
+        "NotAble"
+      ],
+      "description": "Reports the ability to move status of the point machine."
+    },
+    "turnCounter": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The number of started point machine movement since the last reset."
+    },
+    "detectionCircuitLeft": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "detectionCircuitRight": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "equipment": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "id",
+    "index",
+    "detectionCircuitLeft",
+    "detectionCircuitRight",
+    "equipment"
+  ],
+  "additionalProperties": false
+}

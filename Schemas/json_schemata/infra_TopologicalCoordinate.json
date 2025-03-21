@@ -1,0 +1,21 @@
+{
+  "$id": "https://ERJU/infra_TopologicalCoordinate",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Defines a topological coordinates on the track",
+  "properties": {
+    "onLinearElement": {
+      "type": "string",
+      "description": "is positioned on linear element"
+    },
+    "offsetFromOrigin": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "position on the associated NetElement"
+    }
+  },
+  "required": [
+    "onLinearElement"
+  ],
+  "additionalProperties": false
+}

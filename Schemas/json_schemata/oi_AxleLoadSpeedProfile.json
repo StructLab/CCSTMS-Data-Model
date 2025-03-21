@@ -1,0 +1,78 @@
+{
+  "$id": "https://ERJU/oi_AxleLoadSpeedProfile",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "oi.SegmentSection": {
+      "type": "object",
+      "description": "Defines sections with start and end references for use in segment profile",
+      "properties": {
+        "range": {
+          "type": "string",
+          "enum": [
+            "rtStart",
+            "rtEnd",
+            "rtStartEnd",
+            "rtWholeSP"
+          ],
+          "description": "defines range type"
+        },
+        "pStart": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Start Position on the segment profile"
+        },
+        "pEnd": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "End Position on the segment profile"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines the axle load speed profile for a section of SegmentProfile",
+  "properties": {
+    "segmentSection": {
+      "type": "object",
+      "$ref": "#/definitions/oi.SegmentSection",
+      "description": "composes of segment sections"
+    },
+    "speed": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Defines the applicablespeed for the section of track ; Resolution as defined in SS126 = 5 km/h"
+    },
+    "trainEndApplicability": {
+      "type": "string",
+      "enum": [
+        "lengthDelay",
+        "noLengthDelay"
+      ],
+      "description": "Indicates if a speed limit given for a profile element is to be applied until the front of the train (no train length delay) or the end of the train (train length delay) has left the element."
+    },
+    "axleLoadCategory": {
+      "type": "string",
+      "enum": [
+        "AL_A",
+        "AL_HS17",
+        "AL_B1",
+        "AL_B2",
+        "AL_C2",
+        "AL_C3",
+        "AL_C4",
+        "AL_D2",
+        "AL_D3",
+        "AL_D4",
+        "AL_D4XL",
+        "AL_E4",
+        "AL_E5"
+      ],
+      "description": "value indicating the suitable Axle load category."
+    }
+  },
+  "required": [
+    "segmentSection"
+  ],
+  "additionalProperties": false
+}

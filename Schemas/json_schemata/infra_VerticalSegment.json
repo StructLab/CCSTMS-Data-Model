@@ -1,64 +1,76 @@
 {
   "$id": "https://ERJU/infra_VerticalSegment",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_VerticalLine": {
+    "infra.VerticalLine": {
       "type": "object",
-      "description": "Geometric primitive for vertical linear segment",
+      "description": "Defines the geometric primitive for vertical linear segment",
       "properties": {
-        "trackGeometryPos": {
+        "elementGeometryPos": {
           "type": "number",
-          "description": "position on the associated Track Edge"
+          "description": "position on the associated LinearElement"
         },
         "slope": {
           "type": "number",
-          "description": "The vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
+          "description": "Defines the vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
         }
       },
       "additionalProperties": false
     },
-    "infra_VerticalArc": {
+    "infra.VerticalArc": {
       "type": "object",
-      "description": "Geometric primitive for a vertical arc.",
+      "description": "Defines the geometric primitive for a vertical arc.",
       "properties": {
-        "trackGeometryPos": {
+        "elementGeometryPos": {
           "type": "number",
-          "description": "position on the associated Track Edge"
+          "description": "position on the associated LinearElement"
         },
         "slope": {
           "type": "number",
-          "description": "The vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
+          "description": "Defines the vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
         },
         "radius": {
           "type": "number",
-          "description": "radius at pos, negative-counter-clockwise/sag-curve, positive-clockwise/crest-curve"
+          "description": "Defines the radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+        },
+        "arcType": {
+          "type": "string",
+          "enum": [
+            "circularArc",
+            "parabola"
+          ],
+          "description": "Defines the type of Arc. For more details seehttps://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcAlignmentVerticalSegmentTypeEnum.htm"
         }
       },
       "additionalProperties": false
     }
   },
   "type": "object",
-  "description": "A curvi-linear geometric primitive, mathematically represents a vertical segment of the centre line of a railway track",
+  "description": "Defines a curvi-linear geometric primitive, mathematically represents a vertical segment of the centre line of a railway track",
   "properties": {
     "verticalSegmentLine": {
       "type": "object",
-      "description": "composes of lines",
-      "$ref": "#/definitions/infra_VerticalLine"
+      "$ref": "#/definitions/infra.VerticalLine",
+      "description": "composes of lines"
     },
     "verticalSegmentArc": {
       "type": "object",
-      "description": "composes of arcs",
-      "$ref": "#/definitions/infra_VerticalArc"
+      "$ref": "#/definitions/infra.VerticalArc",
+      "description": "composes of arcs"
     }
   },
   "oneOf": [
     {
       "type": "object",
-      "required": ["verticalSegmentLine"]
+      "required": [
+        "verticalSegmentLine"
+      ]
     },
     {
       "type": "object",
-      "required": ["verticalSegmentArc"]
+      "required": [
+        "verticalSegmentArc"
+      ]
     }
   ],
   "additionalProperties": false

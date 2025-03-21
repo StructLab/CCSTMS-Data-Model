@@ -1,55 +1,92 @@
 {
   "$id": "https://ERJU/opp_TrainUnitReportAtoCapabilities",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "opp_PhysicalTrainUnitIdentifier": {
+    "opp.PhysicalTrainUnitIdentifier": {
       "type": "object",
+      "description": "Defines a set of possible identifiers for a physical train (ETCS-trainRunningNumber, OBU-ID etc).",
       "properties": {
         "trainRunningNumber": {
-          "type": "string"
+          "type": "string",
+          "description": "Defines the Train Running Number for ETCS same as SS026.NID_OPERATIONAL. To be usable for ETCS must contain a decimal number [0..99999999]. Mapping to uint32 by filling with F: '1233' -> 0x1233FFFF"
         },
         "additionalTrainRunningNumber": {
           "type": "string",
-          "description": "Distinction between Operational Train Units with the same trainRunningNumber. This may occur if a trainRunningNumber is reused for different spare trains."
+          "description": "Defines the distinction between Operational Train Units with the same trainRunningNumber. This may occur if a trainRunningNumber is reused for different spare trains."
         },
         "tafTapTsiTrainID": {
-          "type": "string"
+          "type": "string",
+          "description": "refers to taf tap tsi train id"
         },
         "leadingOnBoardUnitId": {
           "type": "string",
-          "description": "see NID_ENGINE"
+          "description": "Defines NID_ENGINE. To be usable with ETCS must contain a decimal number [0..16.777.215]"
         }
       },
       "additionalProperties": false
     },
-    "opp_EtcsDataAto": {
+    "opp.EtcsDataAto": {
       "type": "object",
+      "description": "Defines static train capability data reported by ATO",
       "properties": {
         "trainLength": {
           "type": "integer",
           "minimum": 0,
-          "description": "0 if unknown"
+          "description": "Defines the train length,0 if unknown"
         },
         "maximumSpeed": {
           "type": "integer",
           "minimum": 0,
-          "description": "0 if unknown"
+          "description": "Defines the maximum applicable speed, use 0 if unknown"
         },
         "cantDeficiencyCategory": {
           "type": "string",
-          "enum": ["CD_Undefined", "CD_80mm", "CD_100mm", "CD_130mm", "CD_150mm", "CD_165mm", "CD_180mm", "CD_210mm", "CD_225mm", "CD_245mm", "CD_275mm", "CD_300mm"]
+          "enum": [
+            "CD_Undefined",
+            "CD_80mm",
+            "CD_100mm",
+            "CD_130mm",
+            "CD_150mm",
+            "CD_165mm",
+            "CD_180mm",
+            "CD_210mm",
+            "CD_225mm",
+            "CD_245mm",
+            "CD_275mm",
+            "CD_300mm"
+          ],
+          "description": "Defines the cant deficiency category of the train"
         },
         "otherInternationalCategory": {
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["SSSP_freightTrainP", "SSSP_freightTrainG", "SSSP_passengerTrain"]
-           },
-          "maxItems": 15
+            "enum": [
+              "SSSP_freightTrainP",
+              "SSSP_freightTrainG",
+              "SSSP_passengerTrain"
+            ]
+          },
+          "maxItems": 15,
+          "description": "Defines other international train categories"
         },
         "axleLoadCategory": {
           "type": "string",
-          "enum": ["AL_A", "AL_HS17", "AL_B1", "AL_B2", "AL_C2", "AL_C3", "AL_C4", "AL_D2", "AL_D3", "AL_D4", "AL_D4XL", "AL_E4", "AL_E5"]
+          "enum": [
+            "AL_A",
+            "AL_HS17",
+            "AL_B1",
+            "AL_B2",
+            "AL_C2",
+            "AL_C3",
+            "AL_C4",
+            "AL_D2",
+            "AL_D3",
+            "AL_D4",
+            "AL_D4XL",
+            "AL_E4",
+            "AL_E5"
+          ]
         },
         "nominalRotatingMass": {
           "type": "integer",
@@ -59,98 +96,146 @@
         "brakePercentage": {
           "type": "integer",
           "minimum": 0,
-          "description": "255 if unknown"
+          "description": "Defines the brake percentage. 255 if unknown"
         },
         "preconfiguredBrakingModel": {
           "type": "integer",
           "minimum": 0,
-          "description": "255 if unknown"
+          "description": "Defines preconfigured braking model for the train. Use 255 if unknown"
         },
         "brakePosition": {
           "type": "string",
-          "enum": ["passengerTrainInP", "passengerTrainInR", "freightTrainInP", "freightTrainInG", "brakePositionUnknown"]
+          "enum": [
+            "passengerTrainInP",
+            "passengerTrainInR",
+            "freightTrainInP",
+            "freightTrainInG",
+            "brakePositionUnknown"
+          ],
+          "description": "Defines the active brake position for the train"
         }
       },
       "additionalProperties": false
     },
-    "opp_AdditionalTrainData": {
+    "opp.AdditionalTrainData": {
       "type": "object",
+      "description": "Defines dynamic train characteristics, which are not primary for the timetable (therefore 'additional')",
       "properties": {
         "maxAvailableTractiveEffort": {
           "type": "integer",
           "minimum": 0,
-          "description": "65535: unknown"
+          "description": "Defines the maximun available traction effort. Use 65535 if unknown"
         },
         "maxAvailableTractivePower": {
           "type": "integer",
           "minimum": 0,
-          "description": "65535 - unknown"
+          "description": "Defines the maximun available traction power. Use 65535 if unknown"
         },
         "maxAvailableDynamicBrakeForce": {
           "type": "integer",
           "minimum": 0,
-          "description": "65535: unknown"
+          "description": "Defines the maximun available dynamic brake force. Use 65535 if unknown"
         },
         "maxAvailableDynamicBrakePower": {
           "type": "integer",
           "minimum": 0,
-          "description": "65535 - unknown"
+          "description": "Defines the maximun available dynamic brake power. Use 65535 if unknown"
         },
         "maxAvailableServiceBrakeForce": {
           "type": "integer",
           "minimum": 0,
-          "description": "65535: unknown"
+          "description": "Defines the maximun available service brake force. Use 65535 if unknown"
         },
         "regenerativeBrakeState": {
           "type": "string",
-          "enum": ["activeState", "inactiveState", "undefinedState"]
+          "enum": [
+            "activeState",
+            "inactiveState",
+            "undefinedState"
+          ],
+          "description": "Defines the state of the regenerative brake"
         },
         "magneticShoeBrakeState": {
           "type": "string",
-          "enum": ["activeState", "inactiveState", "undefinedState"]
+          "enum": [
+            "activeState",
+            "inactiveState",
+            "undefinedState"
+          ],
+          "description": "Defines the state of magnetic shoe brake"
         },
         "eddyCurrentBrakeState": {
           "type": "string",
-          "enum": ["activeState", "inactiveState", "undefinedState"]
+          "enum": [
+            "activeState",
+            "inactiveState",
+            "undefinedState"
+          ],
+          "description": "Defines the state of eddy current brake"
         },
         "electroPneumaticBrakeState": {
           "type": "string",
-          "enum": ["activeState", "inactiveState", "undefinedState"]
+          "enum": [
+            "activeState",
+            "inactiveState",
+            "undefinedState"
+          ],
+          "description": "Defines the state of electro pneumatic brake"
         },
         "adhesionIndependentBrakeState": {
           "type": "string",
-          "enum": ["activeState", "inactiveState", "undefinedState"]
+          "enum": [
+            "activeState",
+            "inactiveState",
+            "undefinedState"
+          ],
+          "description": "Defines the adhesion independent brake state"
         },
         "availableAdhesionCategory": {
           "type": "string",
-          "description": "053 in Subset",
-          "enum": ["dryRailHigh", "dryRailMedium", "dryRailLow", "lowAdhesion", "veryLowAdhesion", "extremelyLowAdhesion", "unknownAdhesion"]
+          "enum": [
+            "dryRailHigh",
+            "dryRailMedium",
+            "dryRailLow",
+            "lowAdhesion",
+            "veryLowAdhesion",
+            "extremelyLowAdhesion",
+            "unknownAdhesion"
+          ],
+          "description": "Defines the available adhesion categories;053 in Subset"
         },
         "availableAdhesionPhysicalValue": {
           "type": "integer",
           "minimum": 0,
-          "description": "600 if unknown"
+          "description": "Defines the available adhesion value. 600 if unknown"
         }
       },
       "additionalProperties": false
     },
-    "opp_DoorData": {
+    "opp.DoorData": {
       "type": "object",
+      "description": "Defines availability of a door and last open time.",
       "properties": {
         "doorState": {
           "type": "string",
-          "enum": ["doorStateUnknown", "doorStateBlocked", "doorStateAvailable"]
+          "enum": [
+            "doorStateUnknown",
+            "doorStateBlocked",
+            "doorStateAvailable"
+          ],
+          "description": "Defines the door state"
         },
         "lastPassengerExchangeTime": {
           "type": "integer",
           "minimum": 0,
-          "description": "255: unknown"
+          "description": "Defines the last passenger exchange time. Use 65535 if unknown"
         }
       },
       "additionalProperties": false
     },
-    "opp_PhysicalVehicle": {
+    "opp.PhysicalVehicle": {
       "type": "object",
+      "description": "Defines a single carrige inside of a physical consist.",
       "properties": {
         "evnIdentifier": {
           "type": "integer",
@@ -164,24 +249,30 @@
         },
         "vehicleOrientation": {
           "type": "string",
-          "enum": ["orientationUknown", "orientationSameAsTrainUnit", "orientationInverseToTrainUnit"]
+          "enum": [
+            "orientationUknown",
+            "orientationSameAsTrainUnit",
+            "orientationInverseToTrainUnit"
+          ],
+          "description": "Defines the orientation of the vehicle with respect to the train unit"
         },
         "doorDataLeft": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "left in respect of normal orientation",
-            "$ref": "#/definitions/opp_DoorData"
-           },
-          "maxItems": 7
+            "$ref": "#/definitions/opp.DoorData"
+          },
+          "maxItems": 7,
+          "description": "Defines the left door data. Left is with respect of normal orientation"
         },
         "doorDataRight": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/opp_DoorData"
-           },
-          "maxItems": 7
+            "$ref": "#/definitions/opp.DoorData"
+          },
+          "maxItems": 7,
+          "description": "Defines the right door data. Right is with respect of normal orientation"
         },
         "passengerLoad": {
           "type": "integer",
@@ -192,63 +283,71 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["pantographBlocked", "pantographLowered", "pantographRaised", "pantographStateUnknown"]
-           },
-          "maxItems": 7
+            "enum": [
+              "pantographBlocked",
+              "pantographLowered",
+              "pantographRaised",
+              "pantographStateUnknown"
+            ]
+          },
+          "maxItems": 7,
+          "description": "Defines the state of the pantograph"
         }
       },
       "additionalProperties": false
     },
-    "opp_PhysicalConsist": {
+    "opp.PhysicalConsist": {
       "type": "object",
+      "description": "Defines an un-splittable part of the train",
       "properties": {
         "evnIdentifier": {
           "type": "integer",
           "minimum": 0,
-          "description": "European vehicle number (EVN) 12 digits, 0=unknown"
+          "description": "Defines the european vehicle number (EVN) 12 digits,use 0 if unknown"
         },
         "passengerLoad": {
           "type": "integer",
           "minimum": 0,
-          "description": "255=unknown"
+          "description": "Defines hte passenger load. Use 255 if unknown"
         },
         "mass": {
           "type": "integer",
           "minimum": 0,
-          "description": "32767: unknown"
+          "description": "Defines the train mass including load. Use 0 if unknown"
         },
         "maxCurrentConsuption": {
           "type": "integer",
           "minimum": 0,
-          "description": "1023: unknown"
+          "description": "Defines the maximun current consumption. Use 1023 if unknown"
         },
         "physicalVehicles": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "empty=unknown",
-            "$ref": "#/definitions/opp_PhysicalVehicle"
-           },
-          "maxItems": 255
+            "$ref": "#/definitions/opp.PhysicalVehicle"
+          },
+          "maxItems": 255,
+          "description": "Defines the physical vehicles part of the physical consist. empty=unknown"
         }
       },
       "additionalProperties": false
     }
   },
   "type": "object",
-  "description": "source - ATO Train Capability Report",
+  "description": "Defines train capabilities reported by ATO from the train.",
   "properties": {
     "issuedAt": {
       "type": "string",
-      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+      "format": "date-time",
+      "description": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"
     },
     "operationalPlanMovement": {
       "type": "string",
-      "description": "if the new train was created in TrafficCS it does not have an operationalPlan (Movement) yet"
+      "description": "Refers to the operational plan movement. If the new train was created in TrafficCS it does not have an operationalPlan (Movement) yet"
     },
     "trainUnitIdentifier": {
       "type": "object",
-      "$ref": "#/definitions/opp_PhysicalTrainUnitIdentifier"
+      "$ref": "#/definitions/opp.PhysicalTrainUnitIdentifier"
     },
     "mass": {
       "type": "integer",
@@ -257,12 +356,12 @@
     },
     "outsideTemperature": {
       "type": "integer",
-      "description": "127 if unknown"
+      "description": "Defines the outside temperature. Use 127 if unknown"
     },
     "etcsData": {
       "type": "object",
-      "description": "not provided if invalid",
-      "$ref": "#/definitions/opp_EtcsDataAto"
+      "$ref": "#/definitions/opp.EtcsDataAto",
+      "description": "Defines the valid ETCS Data for the train. Not provided if invalid"
     },
     "passengerLoad": {
       "type": "integer",
@@ -277,22 +376,26 @@
     "elapsedStartPassengerExchange": {
       "type": "integer",
       "minimum": 0,
-      "description": "Time elapsed between standstill and the doors are released for operation or opening; 4096: unknown"
+      "description": "Defines the time elapsed between standstill and the doors are released for operation or opening; 4096: unknown"
     },
     "additionalTrainData": {
       "type": "object",
-      "$ref": "#/definitions/opp_AdditionalTrainData"
+      "$ref": "#/definitions/opp.AdditionalTrainData",
+      "description": "Defines additional train data as part of ATO capabilities report"
     },
     "physicalConsists": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "0-unknown",
-        "$ref": "#/definitions/opp_PhysicalConsist"
-       },
-      "maxItems": 255
+        "$ref": "#/definitions/opp.PhysicalConsist"
+      },
+      "maxItems": 255,
+      "description": "Defines the list of physical consists. Empty if unknown"
     }
   },
-  "required": ["issuedAt", "trainUnitIdentifier"],
+  "required": [
+    "issuedAt",
+    "trainUnitIdentifier"
+  ],
   "additionalProperties": false
 }

@@ -1,10 +1,8 @@
 {
   "$id": "https://ERJU/ss026_DLTrackCond",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines the parameters for dynamic line track conditions, specifying the distance to track condition changes and the validity length of the condition. These parameters are used to manage integrity check alarms of balise transmission within the defined section.",
   "properties": {
     "d_trackcond": {
       "type": "integer",

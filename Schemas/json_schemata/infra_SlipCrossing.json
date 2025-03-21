@@ -1,30 +1,35 @@
 {
   "$id": "https://ERJU/infra_SlipCrossing",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
-  "description": "Defines the physical track asset Slip Crossing ; 2 instances simple point define a single slip crossing and 4 instances of simple point defined a double slip crossing ; Reversal time is the maximum of reversal times of simple points",
+  "description": "Defines the physical track asset Slip Crossing ; 2 instances simple point define a single slip crossing and 4 instances of simple point defined a double slip crossing ; Reversal time is the maximum of known reversal times of simple points. If the reversal time of at least one simple point in the slip point is unknown, the reversal time of the slip point is unknown as well.",
   "properties": {
     "id": {
       "type": "string",
       "description": "Identity of the object; used for referencing"
     },
-    "simplePoints": {
+    "switches": {
       "type": "array",
       "items": {
-        "type": "string",
-        "description": "Consists of simple points"
-       },
+        "type": "string"
+      },
       "minItems": 2,
-      "maxItems": 4
+      "maxItems": 4,
+      "description": "Consists of simple points"
     },
     "crossing": {
       "type": "string",
       "description": "Consists of crossing"
+    },
+    "name": {
+      "type": "string",
+      "description": "User-friendly name, only if different from id"
     }
   },
-  "required": ["id", "simplePoints", "crossing"],
+  "required": [
+    "id",
+    "switches",
+    "crossing"
+  ],
   "additionalProperties": false
 }

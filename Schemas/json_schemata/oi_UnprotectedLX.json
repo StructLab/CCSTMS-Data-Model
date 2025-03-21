@@ -1,0 +1,19 @@
+{
+  "$id": "https://ERJU/oi_UnprotectedLX",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Defines the unprotected LX information for a segment profile",
+  "properties": {
+    "pNominal": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Position on the segment profile associated for nominal direction of Segment profile"
+    },
+    "pReverse": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Position on the segment profile associated for reverse direction of Segment profile"
+    }
+  },
+  "additionalProperties": false
+}

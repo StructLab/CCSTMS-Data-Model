@@ -1,43 +1,71 @@
 {
   "$id": "https://ERJU/infra_PropertiesArea",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_SpeedLimitCategory": {
+    "infra.SpeedLimitCategory": {
       "type": "object",
+      "description": "Defines the different applicable speed limit categories on the sections of track",
       "properties": {
         "otherCategoryReplacesCantDeficiencySSP": {
           "type": "string",
-          "description": "is of type other Category Replaces Cant Deficiency SSP",
-          "enum": ["SSSP_freightTrainP", "SSSP_freightTrainG", "SSSP_passengerTrain"]
+          "enum": [
+            "SSSP_freightTrainP",
+            "SSSP_freightTrainG",
+            "SSSP_passengerTrain"
+          ],
+          "description": "is of type other Category Replaces Cant Deficiency SSP"
         },
         "otherCategoryDoesNotReplaceCantDeficiencySSP": {
           "type": "string",
-          "description": "is of type other Category Replaces Cant Deficiency SSP",
-          "enum": ["SSSP_freightTrainP", "SSSP_freightTrainG", "SSSP_passengerTrain"]
+          "enum": [
+            "SSSP_freightTrainP",
+            "SSSP_freightTrainG",
+            "SSSP_passengerTrain"
+          ],
+          "description": "is of type other Category Replaces Cant Deficiency SSP"
         },
         "cantDeficiencyCategory": {
           "type": "string",
-          "description": "is of type Cant Deficiency Category",
-          "enum": ["CD_Undefined", "CD_80mm", "CD_100mm", "CD_130mm", "CD_150mm", "CD_165mm", "CD_180mm", "CD_210mm", "CD_225mm", "CD_245mm", "CD_275mm", "CD_300mm"]
+          "enum": [
+            "CD_Undefined",
+            "CD_80mm",
+            "CD_100mm",
+            "CD_130mm",
+            "CD_150mm",
+            "CD_165mm",
+            "CD_180mm",
+            "CD_210mm",
+            "CD_225mm",
+            "CD_245mm",
+            "CD_275mm",
+            "CD_300mm"
+          ],
+          "description": "is of type Cant Deficiency Category"
         }
       },
       "oneOf": [
         {
           "type": "object",
-          "required": ["otherCategoryReplacesCantDeficiencySSP"]
+          "required": [
+            "otherCategoryReplacesCantDeficiencySSP"
+          ]
         },
         {
           "type": "object",
-          "required": ["otherCategoryDoesNotReplaceCantDeficiencySSP"]
+          "required": [
+            "otherCategoryDoesNotReplaceCantDeficiencySSP"
+          ]
         },
         {
           "type": "object",
-          "required": ["cantDeficiencyCategory"]
+          "required": [
+            "cantDeficiencyCategory"
+          ]
         }
       ],
       "additionalProperties": false
     },
-    "infra_SpecificStaticSpeedLimit": {
+    "infra.SpecificStaticSpeedLimit": {
       "type": "object",
       "description": "Defines the specific static speed profile for a section of track",
       "properties": {
@@ -48,21 +76,23 @@
         },
         "specificLimitCategory": {
           "type": "object",
-          "description": "defines different specific speed limit categories",
-          "$ref": "#/definitions/infra_SpeedLimitCategory"
+          "$ref": "#/definitions/infra.SpeedLimitCategory",
+          "description": "defines different specific speed limit categories"
         }
       },
-      "required": ["specificLimitCategory"],
+      "required": [
+        "specificLimitCategory"
+      ],
       "additionalProperties": false
     },
-    "infra_StaticSpeedLimit": {
+    "infra.StaticSpeedLimit": {
       "type": "object",
-      "description": "Defines the static speed profile for a section of track",
+      "description": "Defines the static speed profile for a section of linear element",
       "properties": {
         "pos": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated TrackEdge"
+          "description": "position on the associated LinearElement"
         },
         "speed": {
           "type": "integer",
@@ -73,26 +103,26 @@
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of specific static speed profiles",
-            "$ref": "#/definitions/infra_SpecificStaticSpeedLimit"
-           }
+            "$ref": "#/definitions/infra.SpecificStaticSpeedLimit"
+          },
+          "description": "composes of specific static speed profiles"
         }
       },
       "additionalProperties": false
     },
-    "infra_AxleLoadSpeedProfile": {
+    "infra.AxleLoadSpeedProfile": {
       "type": "object",
-      "description": "Defines the axle load speed profile for a section of track",
+      "description": "Defines the axle load speed profile for a section of track or a section of SegmentProfile",
       "properties": {
         "startPos": {
           "type": "integer",
           "minimum": 0,
-          "description": "start position on the associated TrackEdge"
+          "description": "Defines the start position on the associated Linear element"
         },
         "endPos": {
           "type": "integer",
           "minimum": 0,
-          "description": "end position on the associated TrackEdge"
+          "description": "Defines the end position on the associated Linear element"
         },
         "speed": {
           "type": "integer",
@@ -101,39 +131,56 @@
         },
         "axleLoadCategory": {
           "type": "string",
-          "description": "defines different axle load categories",
-          "enum": ["AL_A", "AL_HS17", "AL_B1", "AL_B2", "AL_C2", "AL_C3", "AL_C4", "AL_D2", "AL_D3", "AL_D4", "AL_D4XL", "AL_E4", "AL_E5"]
+          "enum": [
+            "AL_A",
+            "AL_HS17",
+            "AL_B1",
+            "AL_B2",
+            "AL_C2",
+            "AL_C3",
+            "AL_C4",
+            "AL_D2",
+            "AL_D3",
+            "AL_D4",
+            "AL_D4XL",
+            "AL_E4",
+            "AL_E5"
+          ],
+          "description": "defines different axle load categories"
         }
       },
       "additionalProperties": false
     },
-    "infra_SpeedProfile": {
+    "infra.SpeedProfile": {
       "type": "object",
+      "description": "Defines the different applicable speed profiles on the sections of track",
       "properties": {
         "staticSpeedProfile": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of static speed profiles",
-            "$ref": "#/definitions/infra_StaticSpeedLimit"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.StaticSpeedLimit"
+          },
+          "minItems": 1,
+          "description": "composes of static speed profiles"
         },
         "axleLoadSpeedProfiles": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of axle load speed profiles",
-            "$ref": "#/definitions/infra_AxleLoadSpeedProfile"
-           }
+            "$ref": "#/definitions/infra.AxleLoadSpeedProfile"
+          },
+          "description": "composes of axle load speed profiles"
         }
       },
-      "required": ["staticSpeedProfile"],
+      "required": [
+        "staticSpeedProfile"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackEdgeSpeedProfile": {
+    "infra.LinearElementSpeedProfile": {
       "type": "object",
-      "description": "Defines the permitted speeds for a Track edge in both directions",
+      "description": "Defines the permitted speeds for a linear element in both directions",
       "properties": {
         "id": {
           "type": "string",
@@ -141,95 +188,133 @@
         },
         "sameDirProfile": {
           "type": "object",
-          "description": "speed profile valid in the same direction as the trackEdge",
-          "$ref": "#/definitions/infra_SpeedProfile"
+          "$ref": "#/definitions/infra.SpeedProfile",
+          "description": "Defines the speed profile valid in the same direction as the Linear element"
         },
         "oppositeDirProfile": {
           "type": "object",
-          "description": "valid in the opposite direction as the TrackEdge. Skip if the same in both directions.",
-          "$ref": "#/definitions/infra_SpeedProfile"
+          "$ref": "#/definitions/infra.SpeedProfile",
+          "description": "Defines the applicable speed profile for the opposite direction of travel with reference to linear element. valid in the opposite direction as the TrackEdge. Skip if the same in both directions."
         }
       },
-      "required": ["id", "sameDirProfile"],
+      "required": [
+        "id",
+        "sameDirProfile"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackEdgeGauge": {
+    "infra.LinearElementGauge": {
       "type": "object",
-      "description": "inner distance between two rails, e.g. 1432 for EU-standard-rails",
+      "description": "Defines the inner distance between two rails, e.g. 1432 for EU-standard-rails",
       "properties": {
-        "trackEdgeSections": {
+        "linearElementSections": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge sections",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.LinearElementSection"
+          },
+          "minItems": 1,
+          "description": "composes of track edge sections"
         },
         "gauge": {
           "type": "string",
-          "description": "defines different track gauges",
-          "enum": ["tgUnknown", "tg750", "tg1000mm", "tg1435mm", "tg1520mm", "tg1524mm", "tg1600mm", "tg1680mm"]
+          "enum": [
+            "tgUnknown",
+            "tg750",
+            "tg1000mm",
+            "tg1435mm",
+            "tg1520mm",
+            "tg1524mm",
+            "tg1600mm",
+            "tg1668mm"
+          ],
+          "description": "defines different track gauges"
         }
       },
-      "required": ["trackEdgeSections"],
+      "required": [
+        "linearElementSections"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackEdgeLoadingGauge": {
+    "infra.LinearElementLoadingGauge": {
       "type": "object",
+      "description": "Defines linear element loading gauge on the track",
       "properties": {
-        "trackEdgeSections": {
+        "linearElementSections": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge sections",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.LinearElementSection"
+          },
+          "minItems": 1,
+          "description": "composes of track edge sections"
         },
         "loadingGaugeType": {
           "type": "string",
-          "description": "defines different loafing gauges",
-          "enum": ["loadingGaugeIncompatible", "g1", "gA", "gB", "gC"]
+          "enum": [
+            "loadingGaugeIncompatible",
+            "g1",
+            "gA",
+            "gB",
+            "gC"
+          ],
+          "description": "defines different loafing gauges"
         }
       },
-      "required": ["trackEdgeSections"],
+      "required": [
+        "linearElementSections"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackCondition": {
+    "infra.TrackCondition": {
       "type": "object",
       "description": "Defines the TrackConditions for a section of track",
       "properties": {
-        "trackEdgeSections": {
+        "linearElementSections": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge sections",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.LinearElementSection"
+          },
+          "minItems": 1,
+          "description": "composes of track edge sections"
         },
         "conditionType": {
           "type": "string",
-          "description": "defines different track conditions",
-          "enum": ["powerlessLowPanthograph", "powerlessMainSwitch", "airTightness", "soundHorn", "nonStoppingArea", "tunnelStoppingArea", "bigMetalMasses", "radioHole", "switchOffRegenerativeBrake", "switchOffEddyCurrentBrakeForServiceBrake", "switchOffEddyCurrentBrakeForEmergencyBrake", "switchOffMagneticShoeBrake"]
+          "enum": [
+            "powerlessLowPanthograph",
+            "powerlessMainSwitch",
+            "airTightness",
+            "soundHorn",
+            "nonStoppingArea",
+            "tunnelStoppingArea",
+            "bigMetalMasses",
+            "radioHole",
+            "switchOffRegenerativeBrake",
+            "switchOffEddyCurrentBrakeForServiceBrake",
+            "switchOffEddyCurrentBrakeForEmergencyBrake",
+            "switchOffMagneticShoeBrake"
+          ],
+          "description": "defines different track conditions"
         }
       },
-      "required": ["trackEdgeSections"],
+      "required": [
+        "linearElementSections"
+      ],
       "additionalProperties": false
     },
-    "infra_CurrentLimitation": {
+    "infra.CurrentLimitation": {
       "type": "object",
       "description": "Defines max current for a list of track sections",
       "properties": {
-        "trackEdgeSections": {
+        "linearElementSections": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge sections",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.LinearElementSection"
+          },
+          "minItems": 1,
+          "description": "composes of track edge sections"
         },
         "maxCurrent": {
           "type": "integer",
@@ -237,91 +322,116 @@
           "description": "defines max current value"
         }
       },
-      "required": ["trackEdgeSections"],
+      "required": [
+        "linearElementSections"
+      ],
       "additionalProperties": false
     },
-    "infra_PermittedBrakingDistance": {
+    "infra.PermittedBrakingDistance": {
       "type": "object",
-      "description": "Defines max allowed braking distance for a list of track sections",
+      "description": "Defines max allowed braking distance for a list of linear element sections or segment profile",
       "properties": {
-        "trackEdgeSections": {
+        "linearElementSections": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge sections",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.LinearElementSection"
+          },
+          "minItems": 1,
+          "description": "Defines the set of linear element sections composing the application area"
         },
         "distance": {
           "type": "integer",
           "minimum": 0,
-          "description": "defines the applicable permitted braking distance"
+          "description": "Defines the applicable permitted braking distance"
         },
         "brakeType": {
           "type": "string",
-          "description": "defines the applicable brake type for braking",
-          "enum": ["serviceBrake", "emergencyBrake"]
+          "enum": [
+            "serviceBrake",
+            "emergencyBrake"
+          ],
+          "description": "Defines the applicable brake type for permitted braking distance"
         },
         "gradientValue": {
           "type": "integer",
-          "description": "defines the gradient associated with the permitted braking distance"
+          "description": "Defines the gradient value.Required Resolution is 0.1 permill; positiv: uphill, negative: downhill"
         },
         "sameDir": {
           "type": "boolean",
-          "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
+          "description": "Defines the usage direction of the linear element ;true: active in same direction as linear element, false: active in opposite direction"
         }
       },
-      "required": ["trackEdgeSections"],
+      "required": [
+        "linearElementSections"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackEdgeSection": {
+    "infra.LinearElementSection": {
       "type": "object",
-      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "description": "Defines a directed linear object (with a linear extension) located on a LinearElement",
       "properties": {
-        "trackEdge": {
+        "onElement": {
           "type": "string",
-          "description": "refers to track edge"
+          "description": "refers to linear element"
         },
-        "skipFromStart": {
+        "startOffsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [0..skipFromStart]."
+          "description": "Defines the start offset from the origin"
         },
-        "skipFromEnd": {
+        "endOffsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]."
+          "description": "Defines the end offset from the origin"
+        },
+        "appliesInBothDirections": {
+          "type": "boolean",
+          "description": "Defines if the section applies in both directions"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onElement"
+      ],
       "additionalProperties": false
     },
-    "infra_TractionSystem": {
+    "infra.TractionSystem": {
       "type": "object",
       "description": "Defines the equipped traction system on the track",
       "properties": {
-        "trackEdgeSections": {
+        "linearElementSections": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge sections",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.LinearElementSection"
+          },
+          "minItems": 1,
+          "description": "composes of track edge sections"
         },
         "voltageType": {
           "type": "string",
-          "description": "defines the different voltage types",
-          "enum": ["vtNotFitted", "vtAC25kv50Hz", "vtAC15kv16_7Hz", "vtDC3kv", "vtDC1_5kv", "vtDC600v", "vtDC650v", "vtDC750v", "vtDC850v"]
+          "enum": [
+            "vtNotFitted",
+            "vtAC25kv50Hz",
+            "vtAC15kv16_7Hz",
+            "vtDC3kv",
+            "vtDC1_5kv",
+            "vtDC600v",
+            "vtDC650v",
+            "vtDC750v",
+            "vtDC850v"
+          ],
+          "description": "defines the different voltage types"
         }
       },
-      "required": ["trackEdgeSections"],
+      "required": [
+        "linearElementSections"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
-  "description": "the object itself contains default-values for the area. Exceptions are in trackConditions etc.",
+  "description": "Defines the container properties area within INFRA Domain",
   "properties": {
     "id": {
       "type": "string",
@@ -329,89 +439,117 @@
     },
     "versionTimestamp": {
       "type": "string",
-      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
+      "format": "date-time",
       "description": "version information which is valid since timestamp"
     },
     "gauge": {
       "type": "string",
-      "description": "default gauge in the area. Deviations are covered in trackEdgeGauges",
-      "enum": ["tgUnknown", "tg750", "tg1000mm", "tg1435mm", "tg1520mm", "tg1524mm", "tg1600mm", "tg1680mm"]
+      "enum": [
+        "tgUnknown",
+        "tg750",
+        "tg1000mm",
+        "tg1435mm",
+        "tg1520mm",
+        "tg1524mm",
+        "tg1600mm",
+        "tg1668mm"
+      ],
+      "description": "Defines the default gauge in the area. Deviations are covered in trackEdgeGauges"
     },
     "loadingGaugeTypes": {
       "type": "array",
       "items": {
         "type": "string",
-        "description": "list of supported loading gauges per default",
-        "enum": ["loadingGaugeIncompatible", "g1", "gA", "gB", "gC"]
-       }
+        "enum": [
+          "loadingGaugeIncompatible",
+          "g1",
+          "gA",
+          "gB",
+          "gC"
+        ]
+      },
+      "description": "Defines a list of supported loading gauges per default"
     },
     "defaultVoltage": {
       "type": "string",
-      "description": "defines default Voltage",
-      "enum": ["vtNotFitted", "vtAC25kv50Hz", "vtAC15kv16_7Hz", "vtDC3kv", "vtDC1_5kv", "vtDC600v", "vtDC650v", "vtDC750v", "vtDC850v"]
+      "enum": [
+        "vtNotFitted",
+        "vtAC25kv50Hz",
+        "vtAC15kv16_7Hz",
+        "vtDC3kv",
+        "vtDC1_5kv",
+        "vtDC600v",
+        "vtDC650v",
+        "vtDC750v",
+        "vtDC850v"
+      ],
+      "description": "defines default Voltage"
     },
     "defaultMaxCurrent": {
       "type": "integer",
       "minimum": 0,
-      "description": "used in ATO & ETCS.packet40"
+      "description": "Defines the deafult maximun current for the section of track. Used in ATO & ETCS.packet40"
     },
-    "teSpeedProfiles": {
+    "linearElementSpeedProfiles": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "composes of track edge speed profiles",
-        "$ref": "#/definitions/infra_TrackEdgeSpeedProfile"
-       }
+        "$ref": "#/definitions/infra.LinearElementSpeedProfile"
+      },
+      "description": "composes of linear element speed profiles"
     },
-    "trackEdgeGauges": {
+    "linearElementGauges": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "composes of track edge gauges",
-        "$ref": "#/definitions/infra_TrackEdgeGauge"
-       }
+        "$ref": "#/definitions/infra.LinearElementGauge"
+      },
+      "description": "composes of linear element gauges"
     },
-    "trackEdgeLoadingGauges": {
+    "linearElementLoadingGauges": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "composes of track edge loading gauges",
-        "$ref": "#/definitions/infra_TrackEdgeLoadingGauge"
-       }
+        "$ref": "#/definitions/infra.LinearElementLoadingGauge"
+      },
+      "description": "composes of linear element loading gauges"
     },
     "trackConditions": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "composes of track conditions",
-        "$ref": "#/definitions/infra_TrackCondition"
-       }
+        "$ref": "#/definitions/infra.TrackCondition"
+      },
+      "description": "composes of track conditions"
     },
     "currentLimitations": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "composes of current limitation",
-        "$ref": "#/definitions/infra_CurrentLimitation"
-       }
+        "$ref": "#/definitions/infra.CurrentLimitation"
+      },
+      "description": "composes of current limitation"
     },
     "permittedBrakingDistances": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "composes of permitted braking distances",
-        "$ref": "#/definitions/infra_PermittedBrakingDistance"
-       }
+        "$ref": "#/definitions/infra.PermittedBrakingDistance"
+      },
+      "description": "composes of permitted braking distances"
     },
     "tractionSystems": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "composes of traction systems",
-        "$ref": "#/definitions/infra_TractionSystem"
-       }
+        "$ref": "#/definitions/infra.TractionSystem"
+      },
+      "description": "composes of traction systems"
     }
   },
-  "required": ["id", "versionTimestamp"],
+  "required": [
+    "id",
+    "versionTimestamp"
+  ],
   "additionalProperties": false
 }

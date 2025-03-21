@@ -1,9 +1,6 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_90",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "description": "Track Ahead Free up to level 2/3 transition location (Notification to on-board that track ahead is free from the balise group transmitting this information up to the level 2/3 transition location)",
   "properties": {

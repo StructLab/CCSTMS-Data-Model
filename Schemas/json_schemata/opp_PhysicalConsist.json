@@ -1,24 +1,31 @@
 {
   "$id": "https://ERJU/opp_PhysicalConsist",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "opp_DoorData": {
+    "opp.DoorData": {
       "type": "object",
+      "description": "Defines availability of a door and last open time.",
       "properties": {
         "doorState": {
           "type": "string",
-          "enum": ["doorStateUnknown", "doorStateBlocked", "doorStateAvailable"]
+          "enum": [
+            "doorStateUnknown",
+            "doorStateBlocked",
+            "doorStateAvailable"
+          ],
+          "description": "Defines the door state"
         },
         "lastPassengerExchangeTime": {
           "type": "integer",
           "minimum": 0,
-          "description": "255: unknown"
+          "description": "Defines the last passenger exchange time. Use 65535 if unknown"
         }
       },
       "additionalProperties": false
     },
-    "opp_PhysicalVehicle": {
+    "opp.PhysicalVehicle": {
       "type": "object",
+      "description": "Defines a single carrige inside of a physical consist.",
       "properties": {
         "evnIdentifier": {
           "type": "integer",
@@ -32,24 +39,30 @@
         },
         "vehicleOrientation": {
           "type": "string",
-          "enum": ["orientationUknown", "orientationSameAsTrainUnit", "orientationInverseToTrainUnit"]
+          "enum": [
+            "orientationUknown",
+            "orientationSameAsTrainUnit",
+            "orientationInverseToTrainUnit"
+          ],
+          "description": "Defines the orientation of the vehicle with respect to the train unit"
         },
         "doorDataLeft": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "left in respect of normal orientation",
-            "$ref": "#/definitions/opp_DoorData"
-           },
-          "maxItems": 7
+            "$ref": "#/definitions/opp.DoorData"
+          },
+          "maxItems": 7,
+          "description": "Defines the left door data. Left is with respect of normal orientation"
         },
         "doorDataRight": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/opp_DoorData"
-           },
-          "maxItems": 7
+            "$ref": "#/definitions/opp.DoorData"
+          },
+          "maxItems": 7,
+          "description": "Defines the right door data. Right is with respect of normal orientation"
         },
         "passengerLoad": {
           "type": "integer",
@@ -60,44 +73,51 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["pantographBlocked", "pantographLowered", "pantographRaised", "pantographStateUnknown"]
-           },
-          "maxItems": 7
+            "enum": [
+              "pantographBlocked",
+              "pantographLowered",
+              "pantographRaised",
+              "pantographStateUnknown"
+            ]
+          },
+          "maxItems": 7,
+          "description": "Defines the state of the pantograph"
         }
       },
       "additionalProperties": false
     }
   },
   "type": "object",
+  "description": "Defines an un-splittable part of the train",
   "properties": {
     "evnIdentifier": {
       "type": "integer",
       "minimum": 0,
-      "description": "European vehicle number (EVN) 12 digits, 0=unknown"
+      "description": "Defines the european vehicle number (EVN) 12 digits,use 0 if unknown"
     },
     "passengerLoad": {
       "type": "integer",
       "minimum": 0,
-      "description": "255=unknown"
+      "description": "Defines hte passenger load. Use 255 if unknown"
     },
     "mass": {
       "type": "integer",
       "minimum": 0,
-      "description": "32767: unknown"
+      "description": "Defines the train mass including load. Use 0 if unknown"
     },
     "maxCurrentConsuption": {
       "type": "integer",
       "minimum": 0,
-      "description": "1023: unknown"
+      "description": "Defines the maximun current consumption. Use 1023 if unknown"
     },
     "physicalVehicles": {
       "type": "array",
       "items": {
         "type": "object",
-        "description": "empty=unknown",
-        "$ref": "#/definitions/opp_PhysicalVehicle"
-       },
-      "maxItems": 255
+        "$ref": "#/definitions/opp.PhysicalVehicle"
+      },
+      "maxItems": 255,
+      "description": "Defines the physical vehicles part of the physical consist. empty=unknown"
     }
   },
   "additionalProperties": false

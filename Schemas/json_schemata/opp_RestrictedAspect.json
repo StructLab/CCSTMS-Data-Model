@@ -1,0 +1,111 @@
+{
+  "$id": "https://ERJU/opp_RestrictedAspect",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Defines single aspects of the infrastructure restriction",
+  "properties": {
+    "temporarySpeedRestriction": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Defines the temporary speed restriction on the track"
+    },
+    "allowedDrivingModes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "undefined",
+          "onSight",
+          "fullSupervision",
+          "standBy"
+        ]
+      },
+      "description": "Defines the allowed driving modes"
+    },
+    "nonStopping": {
+      "type": "boolean",
+      "description": "Defines the non stopping area. if true, the trains defined in trainGroupSpec shall not stop within restriction area"
+    },
+    "trackClosure": {
+      "type": "boolean",
+      "description": "Defines track closure information. If true, the trains defined in trainGroupSpec shall not enter restriction area"
+    },
+    "operationalRadioHole": {
+      "type": "boolean",
+      "description": "Defines the presence of operational radio holes. if true radio communication is restricted within restriction area"
+    },
+    "maxAdhesion": {
+      "type": "string",
+      "enum": [
+        "dryRailHigh",
+        "dryRailMedium",
+        "dryRailLow",
+        "lowAdhesion",
+        "veryLowAdhesion",
+        "extremelyLowAdhesion",
+        "unknownAdhesion"
+      ],
+      "description": "Defines the maximum adhesion"
+    },
+    "atoInhibition": {
+      "type": "boolean",
+      "description": "Defined the ato inhibition zones. Exmaples: train section is not contantly monitored, or stimulate driver's attention, or approaching overcrouded station"
+    },
+    "maxCurrent": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Defines max current value. For ATO, SS126. Ignored by TrafficCS"
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "required": [
+        "temporarySpeedRestriction"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "allowedDrivingModes"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "nonStopping"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "trackClosure"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "operationalRadioHole"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "maxAdhesion"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "atoInhibition"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "maxCurrent"
+      ]
+    }
+  ],
+  "additionalProperties": false
+}

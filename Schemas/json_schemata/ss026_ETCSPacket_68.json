@@ -1,9 +1,10 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_68",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "ss026_DLMCondition": {
+    "ss026.DLMCondition": {
       "type": "object",
+      "description": "Defines the track conditions, specifying the distance to track condition changes, the validity length of the condition, and the type of track condition to ensure safe and efficient train movement.",
       "properties": {
         "d_trackcond": {
           "type": "integer",
@@ -25,7 +26,7 @@
     }
   },
   "type": "object",
-  "description": " Track Condition (The packet gives details concerning the track ahead to support the driver when e.g. lower pantograph)",
+  "description": " Track Condition.The packet gives details concerning the track ahead to support the driver when e.g. lower pantograph",
   "properties": {
     "q_trackinit": {
       "type": "boolean",
@@ -40,9 +41,10 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_DLMCondition"
-       },
-      "maxItems": 32
+        "$ref": "#/definitions/ss026.DLMCondition"
+      },
+      "maxItems": 32,
+      "description": "List the track condition parameters"
     }
   },
   "additionalProperties": false

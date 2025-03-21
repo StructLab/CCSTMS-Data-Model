@@ -1,9 +1,6 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_6",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "description": " Virtual Balise Cover order(The packet sets/removes a Virtual Balise Cover)",
   "properties": {
@@ -19,12 +16,12 @@
     "nid_c": {
       "type": "integer",
       "minimum": 0,
-      "description": "Identity number of the country or region (Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political boundaries )"
+      "description": "Identity number of the country or region (Code used to identify the country or region in which the balise group, the RBC or the RIU is situated. These need not necessarily follow administrative or political    boundaries )"
     },
     "t_vbc": {
       "type": "integer",
       "minimum": 0,
-      "description": "VBC validity period"
+      "description": "Virtual Balise Cover (VBC) validity period"
     }
   },
   "additionalProperties": false

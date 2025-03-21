@@ -1,27 +1,29 @@
 {
   "$id": "https://ERJU/equipment_PhysicalAnalogOutput",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "description": "PhysicalAnalogOutput",
   "properties": {
     "id": {
-      "type": "string",
-      "description": "globally unique key (e.g. uuid)"
+      "type": "string"
     },
     "statusTechnical": {
       "type": "string",
-      "description": "General technical status of the equipment.",
-      "enum": ["Unknown", "OK", "Warning", "FailureNonCritical", "FailureCritical"]
+      "enum": [
+        "Unknown",
+        "OK",
+        "Warning",
+        "FailureNonCritical",
+        "FailureCritical"
+      ],
+      "description": "General technical status of the equipment."
     },
-    "statusTechnicalManufacturerSpecificValue": {
+    "statusTechnicalManufacturerSpecificMessage": {
       "type": "array",
       "items": {
-        "type": "string",
-        "description": "Array of manufacturer-specific status codes."
-       }
+        "type": "string"
+      },
+      "description": "Array of manufacturer-specific status codes."
     },
     "label": {
       "type": "string"
@@ -33,6 +35,9 @@
       "type": "number"
     }
   },
-  "required": ["id", "label"],
+  "required": [
+    "id",
+    "label"
+  ],
   "additionalProperties": false
 }

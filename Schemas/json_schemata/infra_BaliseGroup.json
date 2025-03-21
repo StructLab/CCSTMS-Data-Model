@@ -1,39 +1,44 @@
 {
   "$id": "https://ERJU/infra_BaliseGroup",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_TrackEdgePoint": {
+    "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a non-directed spot location (without spatial expansion) on a Track Edge",
+      "description": "Defines a topological coordinates on the track",
       "properties": {
-        "trackEdge": {
+        "onLinearElement": {
           "type": "string",
-          "description": "is positioned on track edge"
+          "description": "is positioned on linear element"
         },
-        "pos": {
+        "offsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated Track Edge"
+          "description": "position on the associated NetElement"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onLinearElement"
+      ],
       "additionalProperties": false
     },
-    "infra_Balise": {
+    "infra.Balise": {
       "type": "object",
-      "description": "Defines a balise.",
+      "description": "Defines a technical device on the railway trackbed",
       "properties": {
         "id": {
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "spotLocation": {
+        "topologicalCoordinate": {
           "type": "object",
-          "description": "location on TrackEdge",
-          "$ref": "#/definitions/infra_TrackEdgePoint"
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "location on TrackEdge"
         }
       },
-      "required": ["id", "spotLocation"],
+      "required": [
+        "id",
+        "topologicalCoordinate"
+      ],
       "additionalProperties": false
     }
   },
@@ -58,23 +63,34 @@
       "type": "array",
       "items": {
         "type": "object",
-        "description": "Defines the balises within the balise group. ETCS-positionInGroup is equal to the position this array",
-        "$ref": "#/definitions/infra_Balise"
-       },
+        "$ref": "#/definitions/infra.Balise"
+      },
       "minItems": 1,
-      "maxItems": 8
+      "maxItems": 8,
+      "description": "Defines the balises within the balise group. ETCS-positionInGroup is equal to the position this array"
     },
     "bgFunction": {
       "type": "string",
-      "description": "to be clarified, if derivable from baliseTelegram",
-      "enum": ["location", "sessionManagement", "networkRegistration"]
+      "enum": [
+        "location",
+        "sessionManagement",
+        "networkRegistration"
+      ],
+      "description": "Defines the function of the balise. To be clarified, if derivable from baliseTelegram"
     },
     "linkOrientationDirection": {
       "type": "string",
-      "description": "defines linking orientation direction along the TrackEdge",
-      "enum": ["dirBoth", "dirSame", "dirReverse"]
+      "enum": [
+        "both",
+        "same",
+        "opposite"
+      ],
+      "description": "defines linking orientation direction along the LinearElement"
     }
   },
-  "required": ["id", "balises"],
+  "required": [
+    "id",
+    "balises"
+  ],
   "additionalProperties": false
 }

@@ -1,0 +1,115 @@
+{
+  "$id": "https://ERJU/oi_StaticSpeedProfileStart",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "infra.SpeedLimitCategory": {
+      "type": "object",
+      "description": "Defines the different applicable speed limit categories on the sections of track",
+      "properties": {
+        "otherCategoryReplacesCantDeficiencySSP": {
+          "type": "string",
+          "enum": [
+            "SSSP_freightTrainP",
+            "SSSP_freightTrainG",
+            "SSSP_passengerTrain"
+          ],
+          "description": "is of type other Category Replaces Cant Deficiency SSP"
+        },
+        "otherCategoryDoesNotReplaceCantDeficiencySSP": {
+          "type": "string",
+          "enum": [
+            "SSSP_freightTrainP",
+            "SSSP_freightTrainG",
+            "SSSP_passengerTrain"
+          ],
+          "description": "is of type other Category Replaces Cant Deficiency SSP"
+        },
+        "cantDeficiencyCategory": {
+          "type": "string",
+          "enum": [
+            "CD_Undefined",
+            "CD_80mm",
+            "CD_100mm",
+            "CD_130mm",
+            "CD_150mm",
+            "CD_165mm",
+            "CD_180mm",
+            "CD_210mm",
+            "CD_225mm",
+            "CD_245mm",
+            "CD_275mm",
+            "CD_300mm"
+          ],
+          "description": "is of type Cant Deficiency Category"
+        }
+      },
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "otherCategoryReplacesCantDeficiencySSP"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "otherCategoryDoesNotReplaceCantDeficiencySSP"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "cantDeficiencyCategory"
+          ]
+        }
+      ],
+      "additionalProperties": false
+    },
+    "infra.SpecificStaticSpeedLimit": {
+      "type": "object",
+      "description": "Defines the specific static speed profile for a section of track",
+      "properties": {
+        "speed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines the applicablespeed for the section of track ; Resolution min 5 kmph"
+        },
+        "specificLimitCategory": {
+          "type": "object",
+          "$ref": "#/definitions/infra.SpeedLimitCategory",
+          "description": "defines different specific speed limit categories"
+        }
+      },
+      "required": [
+        "specificLimitCategory"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "description": "Defines the static speed profile for a section of track",
+  "properties": {
+    "speed": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Defines the applicable speed for the section of track ; Resolution as defined in SS126 = 5 km/h"
+    },
+    "specificStaticSpeedProfile": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/infra.SpecificStaticSpeedLimit"
+      },
+      "description": "composes of specific static speed profiles"
+    },
+    "trainEndApplicability": {
+      "type": "string",
+      "enum": [
+        "lengthDelay",
+        "noLengthDelay"
+      ],
+      "description": "Indicates if a speed limit given for a profile element is to be applied until the front of the train (no train length delay) or the end of the train (train length delay) has left the element."
+    }
+  },
+  "additionalProperties": false
+}

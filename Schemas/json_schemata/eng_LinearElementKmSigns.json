@@ -1,0 +1,46 @@
+{
+  "$id": "https://ERJU/eng_LinearElementKmSigns",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "eng.KilometricPost": {
+      "type": "object",
+      "description": "An object that represent a physical sign that would be used to convey Kilometer information at specific location on    a LinearElement",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated LinearElement"
+        },
+        "kmPostName": {
+          "type": "string",
+          "description": "Defines the name of Kilometric Post (optional)"
+        },
+        "kilometerNumber": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines the kilometer number of the kilometric post"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "linearElement": {
+      "type": "string",
+      "description": "reference to the corresponding linear element"
+    },
+    "kilometricPosts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/eng.KilometricPost"
+      },
+      "description": "Defines the kilometre posts on the track. These are sorted by pos from 0 to length"
+    }
+  },
+  "required": [
+    "linearElement"
+  ],
+  "additionalProperties": false
+}

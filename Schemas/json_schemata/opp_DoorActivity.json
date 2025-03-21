@@ -1,23 +1,27 @@
 {
   "$id": "https://ERJU/opp_DoorActivity",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines which doors shall be open and how they shall be open.",
   "properties": {
     "openingDoorSide": {
       "type": "string",
-      "description": "noneSide if the doors are kept closed",
-      "enum": ["doorSideLeft", "doorSideRight", "doorSideBoth", "doorNoneSide", "doorSideUnknown"]
+      "enum": [
+        "doorSideLeft",
+        "doorSideRight",
+        "doorSideBoth",
+        "doorNoneSide",
+        "doorSideUnknown"
+      ],
+      "description": "Defines the door opening side. noneSide if the doors are kept closed.noneSide if the doors are kept closed"
     },
     "centralisedOpening": {
       "type": "boolean",
-      "description": "true - centralised opening, false - opening byby passengers/driver"
+      "description": "Defines if the doors can be centrally opened. true - centralised opening, false - opening by passengers/driver"
     },
     "automaticClosing": {
       "type": "boolean",
-      "description": "true by ATO, false - without ATO"
+      "description": "Defines if automatic closing of doors is performed by ATO or not. True by ATO, false - without ATO"
     }
   },
   "additionalProperties": false

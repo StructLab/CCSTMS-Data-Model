@@ -1,53 +1,63 @@
 {
   "$id": "https://ERJU/infra_Infrastructure",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_TrackEdge": {
+    "infra.LinearElement": {
       "type": "object",
-      "description": "A track edge is an uninterrupted stretch of railway track, without divergence or convergence.",
+      "description": "A linear element is an uninterrupted stretch of railway track, without divergence or convergence.",
       "properties": {
         "id": {
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "trackEdgeLength": {
+        "lengthOfNetLinearElement": {
           "type": "integer",
           "minimum": 0,
-          "description": "Distance along the TrackEdge's track centre line. "
+          "description": "Defines the distance along the LinearElement's track centre line. "
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id"],
+      "required": [
+        "id"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackEdgeLink": {
+    "infra.NetRelation": {
       "type": "object",
-      "description": "Defines a relation between two track edges along which a train can run.",
+      "description": "Defines a relation between two elements.",
       "properties": {
         "id": {
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "trackEdgeA": {
+        "elementA": {
           "type": "string",
-          "description": "Connects to track edge A"
+          "description": "References the first linear element in an oriented relation."
         },
-        "trackEdgeB": {
+        "elementB": {
           "type": "string",
-          "description": "Connects to track edge B"
+          "description": "References the second linear element in an oriented relation."
         },
-        "startOfA": {
+        "isOnOriginOfElementA": {
           "type": "boolean",
-          "description": "True when linked to the start of track edge A, false when to the end"
+          "description": "Determines if the position of the topological element A in a relation is the origin of element A."
         },
-        "startOfB": {
+        "isOnOriginOfElementB": {
           "type": "boolean",
-          "description": "True when linked to the start of track edge B, false when to the end"
+          "description": "Determines if the position of the topological element B in a relation is the origin of element B."
         }
       },
-      "required": ["id", "trackEdgeA", "trackEdgeB"],
+      "required": [
+        "id",
+        "elementA",
+        "elementB"
+      ],
       "additionalProperties": false
     },
-    "infra_TopoArea": {
+    "infra.TopoArea": {
       "type": "object",
       "description": "Defines a container for rail network topology",
       "properties": {
@@ -57,237 +67,273 @@
         },
         "versionTimestamp": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
+          "format": "date-time",
           "description": "version information which is valid since timestamp"
         },
-        "trackEdges": {
+        "linearElements": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edges",
-            "$ref": "#/definitions/infra_TrackEdge"
-           }
+            "$ref": "#/definitions/infra.LinearElement"
+          },
+          "description": "composes of linear elements = Edges in the graph"
         },
-        "trackEdgeLinks": {
+        "netRelations": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge links",
-            "$ref": "#/definitions/infra_TrackEdgeLink"
-           }
+            "$ref": "#/definitions/infra.NetRelation"
+          },
+          "description": "composes of net relations =links between edges in the graph"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "versionTimestamp"],
+      "required": [
+        "id",
+        "versionTimestamp"
+      ],
       "additionalProperties": false
     },
-    "infra_HorizontalLine": {
+    "infra.HorizontalLine": {
       "type": "object",
-      "description": "Geometric primitive for a horizontal linear segment",
+      "description": "Defines the geometric primitive for a horizontal linear segment",
       "properties": {
-        "trackGeometryPos": {
+        "elementGeometryPos": {
           "type": "number",
-          "description": "position on the associated Track Edge"
+          "description": "Defines the position on the associated Linear Element"
         },
         "azimuth": {
           "type": "number",
-          "description": "The azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
+          "description": "Defines the azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
         }
       },
       "additionalProperties": false
     },
-    "infra_HorizontalArc": {
+    "infra.HorizontalArc": {
       "type": "object",
-      "description": "Geometric primitive for a horizontal arc of circle",
+      "description": "Defines the geometric primitive for a horizontal arc of circle",
       "properties": {
-        "trackGeometryPos": {
+        "elementGeometryPos": {
           "type": "number",
-          "description": "position on the associated Track Edge"
+          "description": "position on the associated LinearElement"
         },
         "azimuth": {
           "type": "number",
-          "description": "The azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
+          "description": "Defines the azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
         },
         "radius": {
           "type": "number",
-          "description": "radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+          "description": "Defines the radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
         }
       },
       "additionalProperties": false
     },
-    "infra_HorizontalTransition": {
+    "infra.HorizontalTransition": {
       "type": "object",
-      "description": "Geometric primitive for a horizontal transition curve, a clothoid.",
+      "description": "Defines a geometric primitive for a horizontal transition curve, a clothoid.",
       "properties": {
-        "trackGeometryPos": {
+        "elementGeometryPos": {
           "type": "number",
-          "description": "position on the associated Track Edge"
+          "description": "position on the associated Linear Element"
         },
         "azimuth": {
           "type": "number",
-          "description": "The azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
+          "description": "Defines the azimuth at pos, i.e. bearing measured clockwise with respect to geographic north"
         },
         "radius": {
           "type": "number",
-          "description": "radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+          "description": "Defines the radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
         },
         "transitionType": {
           "type": "string",
-          "description": "defines different transition types",
-          "enum": ["clothoidCurve", "biquadraticParabola", "blossCurve", "cosineCurve", "cubicParabola", "sineCurve", "wienerBogen"]
+          "enum": [
+            "clothoidCurve",
+            "biquadraticParabola",
+            "blossCurve",
+            "cosineCurve",
+            "cubicParabola",
+            "sineCurve",
+            "wienerBogen"
+          ],
+          "description": "defines different transition types"
         }
       },
       "additionalProperties": false
     },
-    "infra_HorizontalSegment": {
+    "infra.HorizontalSegment": {
       "type": "object",
-      "description": "A curvi-linear geometric primitive, mathematically represents a horizontal segment of the centre line of a railway track",
+      "description": "Defines a curvi-linear geometric primitive, mathematically represents a horizontal segment of the centre line of a railway track",
       "properties": {
         "horizontalSegmentLine": {
           "type": "object",
-          "description": "composes of lines",
-          "$ref": "#/definitions/infra_HorizontalLine"
+          "$ref": "#/definitions/infra.HorizontalLine",
+          "description": "composes of lines"
         },
         "horizontalSegmentArc": {
           "type": "object",
-          "description": "composes of arcs",
-          "$ref": "#/definitions/infra_HorizontalArc"
+          "$ref": "#/definitions/infra.HorizontalArc",
+          "description": "composes of arcs"
         },
         "horizontalSegmentTransition": {
           "type": "object",
-          "description": "composes of transition curves",
-          "$ref": "#/definitions/infra_HorizontalTransition"
+          "$ref": "#/definitions/infra.HorizontalTransition",
+          "description": "composes of transition curves"
         }
       },
       "oneOf": [
         {
           "type": "object",
-          "required": ["horizontalSegmentLine"]
+          "required": [
+            "horizontalSegmentLine"
+          ]
         },
         {
           "type": "object",
-          "required": ["horizontalSegmentArc"]
+          "required": [
+            "horizontalSegmentArc"
+          ]
         },
         {
           "type": "object",
-          "required": ["horizontalSegmentTransition"]
+          "required": [
+            "horizontalSegmentTransition"
+          ]
         }
       ],
       "additionalProperties": false
     },
-    "infra_VerticalLine": {
+    "infra.VerticalLine": {
       "type": "object",
-      "description": "Geometric primitive for vertical linear segment",
+      "description": "Defines the geometric primitive for vertical linear segment",
       "properties": {
-        "trackGeometryPos": {
+        "elementGeometryPos": {
           "type": "number",
-          "description": "position on the associated Track Edge"
+          "description": "position on the associated LinearElement"
         },
         "slope": {
           "type": "number",
-          "description": "The vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
+          "description": "Defines the vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
         }
       },
       "additionalProperties": false
     },
-    "infra_VerticalArc": {
+    "infra.VerticalArc": {
       "type": "object",
-      "description": "Geometric primitive for a vertical arc.",
+      "description": "Defines the geometric primitive for a vertical arc.",
       "properties": {
-        "trackGeometryPos": {
+        "elementGeometryPos": {
           "type": "number",
-          "description": "position on the associated Track Edge"
+          "description": "position on the associated LinearElement"
         },
         "slope": {
           "type": "number",
-          "description": "The vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
+          "description": "Defines the vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
         },
         "radius": {
           "type": "number",
-          "description": "radius at pos, negative-counter-clockwise/sag-curve, positive-clockwise/crest-curve"
+          "description": "Defines the radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+        },
+        "arcType": {
+          "type": "string",
+          "enum": [
+            "circularArc",
+            "parabola"
+          ],
+          "description": "Defines the type of Arc. For more details seehttps://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcAlignmentVerticalSegmentTypeEnum.htm"
         }
       },
       "additionalProperties": false
     },
-    "infra_VerticalSegment": {
+    "infra.VerticalSegment": {
       "type": "object",
-      "description": "A curvi-linear geometric primitive, mathematically represents a vertical segment of the centre line of a railway track",
+      "description": "Defines a curvi-linear geometric primitive, mathematically represents a vertical segment of the centre line of a railway track",
       "properties": {
         "verticalSegmentLine": {
           "type": "object",
-          "description": "composes of lines",
-          "$ref": "#/definitions/infra_VerticalLine"
+          "$ref": "#/definitions/infra.VerticalLine",
+          "description": "composes of lines"
         },
         "verticalSegmentArc": {
           "type": "object",
-          "description": "composes of arcs",
-          "$ref": "#/definitions/infra_VerticalArc"
+          "$ref": "#/definitions/infra.VerticalArc",
+          "description": "composes of arcs"
         }
       },
       "oneOf": [
         {
           "type": "object",
-          "required": ["verticalSegmentLine"]
+          "required": [
+            "verticalSegmentLine"
+          ]
         },
         {
           "type": "object",
-          "required": ["verticalSegmentArc"]
+          "required": [
+            "verticalSegmentArc"
+          ]
         }
       ],
       "additionalProperties": false
     },
-    "infra_CantPoint": {
+    "infra.CantPoint": {
       "type": "object",
-      "description": "Cant at a given location on the track.",
+      "description": "Defines Cant (Superelevation) at the locations of start and end Cant Ramps on the track.",
       "properties": {
-        "trackGeometryPos": {
+        "elementGeometryPos": {
           "type": "number",
           "description": "position on the associated track edge"
         },
         "appliedCant": {
           "type": "number",
-          "description": "Height of the right rail minus the left rail. Right/left with respect to the direction of the track edge. Rollangle=(arcsin(cant/gauge)), gauge is distance between middle of the railheads, e.g. 1500mm for EU-standard gauge '1435mm'"
+          "description": "Height of the outer rail minus the inner rail. Outer rail and inner rail are defined according to the direction of curve. Rollangle=(arcsin(cant/gauge)), gauge is distance between middle of the railheads, e.g. 1500mm for EU-standard gauge '1435mm' ; The applied cant is defined for the start"
         }
       },
       "additionalProperties": false
     },
-    "infra_TrackEdgeGeometry": {
+    "infra.LinearElementGeometry": {
       "type": "object",
-      "description": "Defines the geometry of the track edge centre line as a list of parametrised curves. The geometry is smooth; no discontinuities in azimuth or inclination.",
+      "description": "Defines the geometry of the linear element centre line as a list of parametrised curves. The geometry is smooth; no discontinuities in azimuth or inclination.",
       "properties": {
         "id": {
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "horizontalAlignment": {
+        "horizontalAlignments": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "Sequence of geometric primitives, i.e. arc, line or clothoid, that compose this track geometry",
-            "$ref": "#/definitions/infra_HorizontalSegment"
-           }
+            "$ref": "#/definitions/infra.HorizontalSegment"
+          },
+          "description": "Defines a sequence of geometric primitives, i.e. arc, line or clothoid, that compose this track geometry"
         },
-        "verticalAlignment": {
+        "verticalAlignments": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "Sequence of geometric primitives, i.e. arc, line or clothoid, that compose this track geometry",
-            "$ref": "#/definitions/infra_VerticalSegment"
-           }
+            "$ref": "#/definitions/infra.VerticalSegment"
+          },
+          "description": "Defines a sequence of geometric primitives, i.e. arc, line or clothoid, that compose this track geometry"
         },
         "cantPoints": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "trackEdge must be completely defined, at least at beginning and end. Empty means undefined",
-            "$ref": "#/definitions/infra_CantPoint"
-           }
+            "$ref": "#/definitions/infra.CantPoint"
+          },
+          "description": "Defines the cant points along the linear element. The linear element must be completely defined, at least at beginning and end. Empty means undefined"
         }
       },
-      "required": ["id"],
+      "required": [
+        "id"
+      ],
       "additionalProperties": false
     },
-    "infra_GeometryArea": {
+    "infra.GeometryArea": {
       "type": "object",
+      "description": "Defines the container geometry area within INFRA Domain",
       "properties": {
         "id": {
           "type": "string",
@@ -295,75 +341,79 @@
         },
         "versionTimestamp": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
+          "format": "date-time",
           "description": "version information which is valid since timestamp"
         },
         "alignment3d": {
           "type": "boolean",
-          "description": "if true, all positions and length calculated on 3d line. if false - on 2d projection"
+          "description": "Defines the 3d alignment information for the geometry area. if true, all positions and length calculated on 3d line. if false - on 2d projection"
         },
-        "trackEdgeGeometries": {
+        "linearElementGeometries": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge geometries",
-            "$ref": "#/definitions/infra_TrackEdgeGeometry"
-           }
+            "$ref": "#/definitions/infra.LinearElementGeometry"
+          },
+          "description": "composes of linear element geometries"
         }
       },
-      "required": ["id", "versionTimestamp"],
+      "required": [
+        "id",
+        "versionTimestamp"
+      ],
       "additionalProperties": false
     },
-    "infra_SlopeSamplePoint": {
+    "infra.SlopeSamplePoint": {
       "type": "object",
-      "description": "Slope (gradient) of the track at a given location on the track.",
+      "description": "Defines the Slope (gradient) of the track at a given location on the track.",
       "properties": {
         "pos": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated TrackEdge"
+          "description": "position on the associated LinearElement"
         },
         "samplePointSlope": {
           "type": "integer",
-          "description": "The vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the track edge. Positive for rising slope and negative for falling slope."
+          "description": "Defines the vertical slope at pos, between the horizon and the track centre line. Viewed in the direction of the LinearElement. Positive for rising slope and negative for falling slope."
         }
       },
       "additionalProperties": false
     },
-    "infra_CurveSamplePoint": {
+    "infra.CurveSamplePoint": {
       "type": "object",
-      "description": "Curve (radius) of the track at a given location on the track.",
+      "description": "Defines curve (radius) of the track at a given location on the track.",
       "properties": {
         "pos": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated TrackEdge"
+          "description": "position on the associated LinearElement"
         },
         "sampleCurveRadius": {
           "type": "integer",
-          "description": "radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
+          "description": "Defines the radius at pos, negative-counter-clockwise/left-curve, positive-clockwise/right-curve"
         }
       },
       "additionalProperties": false
     },
-    "infra_CantSamplePoint": {
+    "infra.CantSamplePoint": {
       "type": "object",
-      "description": "Cant(superelevation) of the track at a given location on the track.",
+      "description": "Defines the cant(superelevation) of the track at a given location on the track.",
       "properties": {
         "pos": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated TrackEdge"
+          "description": "position on the associated LinearElement"
         },
         "samplePointCant": {
           "type": "integer",
-          "description": "Defines appliedCant as the Height of the right rail minus the left rail. Right/left with respect to the direction of the track edge. Rollangle=(arcsin(cant/gauge), gauge is distance between centers of rail-heads, e.g. 1500mm for EU-standard gauge."
+          "description": "Defines the height of the outer rail minus the inner rail. Outer rail and inner rail are defined according to the direction of curve.Rollangle=(arcsin(cant/gauge), gauge is distance between centers of rail-heads, e.g. 1500mm for EU-standard gauge."
         }
       },
       "additionalProperties": false
     },
-    "infra_SampledTrackEdgeGeometry": {
+    "infra.SampledLinearElementGeometry": {
       "type": "object",
+      "description": "Defines the container sampled linear element geometry within INFRA Domain",
       "properties": {
         "id": {
           "type": "string",
@@ -373,35 +423,41 @@
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of slope sample points",
-            "$ref": "#/definitions/infra_SlopeSamplePoint"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.SlopeSamplePoint"
+          },
+          "minItems": 1,
+          "description": "composes of slope sample points"
         },
         "curves": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of curve sample points",
-            "$ref": "#/definitions/infra_CurveSamplePoint"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.CurveSamplePoint"
+          },
+          "minItems": 1,
+          "description": "composes of curve sample points"
         },
         "cants": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of cant sample points",
-            "$ref": "#/definitions/infra_CantSamplePoint"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.CantSamplePoint"
+          },
+          "minItems": 1,
+          "description": "composes of cant sample points"
         }
       },
-      "required": ["id", "slopes", "curves", "cants"],
+      "required": [
+        "id",
+        "slopes",
+        "curves",
+        "cants"
+      ],
       "additionalProperties": false
     },
-    "infra_SampledGeometryArea": {
+    "infra.SampledGeometryArea": {
       "type": "object",
+      "description": "Defines the container sampled geometry area within INFRA Domain",
       "properties": {
         "id": {
           "type": "string",
@@ -409,117 +465,101 @@
         },
         "versionTimestamp": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
+          "format": "date-time",
           "description": "version information which is valid since timestamp"
         },
-        "sampledTrackEdgeGeometries": {
+        "sampledLinearElementGeometries": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of sampled track edge geometries",
-            "$ref": "#/definitions/infra_SampledTrackEdgeGeometry"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.SampledLinearElementGeometry"
+          },
+          "minItems": 1,
+          "description": "composes of sampled linear element geometries"
         }
       },
-      "required": ["id", "versionTimestamp", "sampledTrackEdgeGeometries"],
+      "required": [
+        "id",
+        "versionTimestamp",
+        "sampledLinearElementGeometries"
+      ],
       "additionalProperties": false
     },
-    "infra_TravelTimeMeasurementPoint": {
+    "infra.TravelTimeMeasurementPoint": {
       "type": "object",
-      "description": "normally the passing time through a OperationalPoint is measured at the middle of it",
+      "description": "Defines the passing time through an OperationalPoint measured at the middle of it",
       "properties": {
         "id": {
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "spotLocation": {
+        "topologicalCoordinate": {
           "type": "object",
-          "$ref": "#/definitions/infra_TrackEdgePoint"
+          "$ref": "#/definitions/infra.TopologicalCoordinate"
         }
       },
-      "required": ["id", "spotLocation"],
+      "required": [
+        "id",
+        "topologicalCoordinate"
+      ],
       "additionalProperties": false
     },
-    "infra_DirTrackEdge": {
-      "type": "object",
-      "properties": {
-        "trackEdge": {
-          "type": "string",
-          "description": "refers totrack edge"
-        },
-        "sameDir": {
-          "type": "boolean",
-          "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
-        }
-      },
-      "required": ["trackEdge"],
-      "additionalProperties": false
-    },
-    "infra_LinkedPath": {
-      "type": "object",
-      "description": "Defines a linked path on the topology",
-      "properties": {
-        "dirTrackEdges": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "description": "composes of directed track edges",
-            "$ref": "#/definitions/infra_DirTrackEdge"
-           },
-          "minItems": 1
-        },
-        "skipFromPathStart": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [0..skipFromStart]"
-        },
-        "skipFromPathEnd": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]"
-        }
-      },
-      "required": ["dirTrackEdges"],
-      "additionalProperties": false
-    },
-    "infra_PlatformEdge": {
+    "infra.PlatformEdge": {
       "type": "object",
       "description": "Platform for the purpose of RINF is understood as a platform edge. A platform concerns only the part of the structure neighbouring to the track (interfaced with trains).",
       "properties": {
         "platformId": {
           "type": "string",
-          "description": "Identity of the object; used for referencing"
+          "description": "Unique platform identification or unique platform number within an Operational Point."
         },
         "name": {
           "type": "string",
           "description": "User-friendly name, only if different from id"
         },
-        "linearLocation": {
+        "linearReference": {
           "type": "object",
-          "description": "composes of linked path",
-          "$ref": "#/definitions/infra_LinkedPath"
+          "$ref": "#/definitions/infra.NetLinearReference",
+          "description": "composes of linked path"
         },
         "stopLocations": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "add only, if stopLocation can be used on that PlatformEdge for passenger/freight exchange"
-           },
-          "minItems": 1
+            "type": "string"
+          },
+          "minItems": 1,
+          "description": "Defines the stop locations. Add only, if stopLocation can be used on that PlatformEdge for passenger/freight exchange"
         },
-        "height": {
+        "platformHeight": {
           "type": "string",
-          "description": "defines different platform heights",
-          "enum": ["PH_200mm", "PH_300_380mm", "PH_550mm", "PH_580mm", "PH_680mm", "PH_685mm", "PH_730mm", "PH_760mm", "PH_840mm", "PH_900mm", "PH_915mm", "PH_920mm", "PH_960mm", "PH_1100mm"]
+          "enum": [
+            "PH_200mm",
+            "PH_300_380mm",
+            "PH_550mm",
+            "PH_580mm",
+            "PH_680mm",
+            "PH_685mm",
+            "PH_730mm",
+            "PH_760mm",
+            "PH_840mm",
+            "PH_900mm",
+            "PH_915mm",
+            "PH_920mm",
+            "PH_960mm",
+            "PH_1100mm"
+          ],
+          "description": "Distance between the upper surface of platform and running surface of the neighbouring track. It is the nominal value expressed in millimetres."
         }
       },
-      "required": ["platformId", "linearLocation", "stopLocations"],
+      "required": [
+        "platformId",
+        "linearReference",
+        "stopLocations"
+      ],
       "additionalProperties": false
     },
-    "infra_Platform": {
+    "infra.Platform": {
       "type": "object",
-      "description": "Defines the container object platform",
+      "description": "Defines the object platform",
       "properties": {
         "id": {
           "type": "string",
@@ -533,55 +573,68 @@
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of platform edges",
-            "$ref": "#/definitions/infra_PlatformEdge"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.PlatformEdge"
+          },
+          "minItems": 1,
+          "description": "composes of platform edges"
         }
       },
-      "required": ["id", "platformEdges"],
+      "required": [
+        "id",
+        "platformEdges"
+      ],
       "additionalProperties": false
     },
-    "infra_OperationalPoint": {
+    "infra.OperationalPoint": {
       "type": "object",
       "description": "An operational point (OP) means any location for train service operations, where train services may begin and end or change route, and where passenger or freight services may be provided; operational point also means any location at boundaries between Member States or infrastructure managers. In https://eur-lex.europa.eu/eli/reg_impl/2019/773/oj 2.1.2 Principal locations (stations, yards, junctions, freight terminals).",
       "properties": {
-        "uopId": {
+        "uopid": {
           "type": "string",
-          "description": "Identity of the object; used for referencing"
+          "description": "Code composed of country code and alphanumeric operational point code."
         },
         "opName": {
           "type": "string",
-          "description": "User-friendly name, only if different from id"
+          "description": "Name normally related to the town or village or to traffic control purpose."
         },
         "travelTimeMeasurementPoints": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "used to measure/define timestamps for passing trains. Stopping-timingPoints can be found via platforms.platformEdges.stopLocations and timingPoint.stopLocation",
-            "$ref": "#/definitions/infra_TravelTimeMeasurementPoint"
-           }
+            "$ref": "#/definitions/infra.TravelTimeMeasurementPoint"
+          },
+          "description": "Defined to measure/define timestamps for passing trains. Stopping-timingPoints can be found via platforms.platformEdges.stopLocations and timingPoint.stopLocation"
         },
-        "operationalPointType": {
+        "opType": {
           "type": "string",
-          "description": "Defines the type of Operational Point",
-          "enum": ["station", "depot", "siding", "trainTechnicalServices", "shuntingYard", "borderPoint", "technicalChange"]
+          "enum": [
+            "station",
+            "depot",
+            "siding",
+            "trainTechnicalServices",
+            "shuntingYard",
+            "borderPoint",
+            "technicalChange"
+          ],
+          "description": "Defines the Type of operational point in relation to the dominating operational functions."
         },
         "platforms": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "the sequence of platforms is according to the real location, so neighbours are the same in array and reality",
-            "$ref": "#/definitions/infra_Platform"
-           }
+            "$ref": "#/definitions/infra.Platform"
+          },
+          "description": "Defines the sequence of platforms is according to the real location, so neighbours are the same in array and reality"
         }
       },
-      "required": ["uopId"],
+      "required": [
+        "uopid"
+      ],
       "additionalProperties": false
     },
-    "infra_SimplePoint": {
+    "infra.Switch": {
       "type": "object",
-      "description": "Defines the physical track asset Simple Point",
+      "description": "A unit of track comprising two fixed rails (stock rails) and two movable rails (switch rails) used to direct vehicles from one track to another track.",
       "properties": {
         "id": {
           "type": "string",
@@ -594,42 +647,58 @@
         },
         "pointLeft": {
           "type": "string",
-          "description": "Track Edge Link referencing the left side of the point in the facing direction of the simple point"
+          "description": "NetRelation referencing the left side of the point in the facing direction of the simple point"
         },
         "pointRight": {
           "type": "string",
-          "description": "Track Edge Link referencing the right side of the point in the facing direction of the simple point"
+          "description": "NetRelation referencing the right side of the point in the facing direction of the simple point"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "pointLeft", "pointRight"],
+      "required": [
+        "id",
+        "pointLeft",
+        "pointRight"
+      ],
       "additionalProperties": false
     },
-    "infra_SlipCrossing": {
+    "infra.SlipCrossing": {
       "type": "object",
-      "description": "Defines the physical track asset Slip Crossing ; 2 instances simple point define a single slip crossing and 4 instances of simple point defined a double slip crossing ; Reversal time is the maximum of reversal times of simple points",
+      "description": "Defines the physical track asset Slip Crossing ; 2 instances simple point define a single slip crossing and 4 instances of simple point defined a double slip crossing ; Reversal time is the maximum of known reversal times of simple points. If the reversal time of at least one simple point in the slip point is unknown, the reversal time of the slip point is unknown as well.",
       "properties": {
         "id": {
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "simplePoints": {
+        "switches": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "Consists of simple points"
-           },
+            "type": "string"
+          },
           "minItems": 2,
-          "maxItems": 4
+          "maxItems": 4,
+          "description": "Consists of simple points"
         },
         "crossing": {
           "type": "string",
           "description": "Consists of crossing"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "simplePoints", "crossing"],
+      "required": [
+        "id",
+        "switches",
+        "crossing"
+      ],
       "additionalProperties": false
     },
-    "infra_Derailer": {
+    "infra.Derailer": {
       "type": "object",
       "description": "Defines the physical track asset Derailer",
       "properties": {
@@ -637,10 +706,10 @@
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "dirSpotLocation": {
+        "netPointReference": {
           "type": "object",
-          "description": "defines position on TrackEdge",
-          "$ref": "#/definitions/infra_DirTrackEdgePoint"
+          "$ref": "#/definitions/infra.NetPointReference",
+          "description": "Defines position on LinearElement"
         },
         "reversalTime": {
           "type": "integer",
@@ -649,13 +718,20 @@
         },
         "derailToRight": {
           "type": "boolean",
-          "description": "if false = derailToLeft, the side at which the train will be derailed"
+          "description": "Defines the side on which the derailer derails. If false = derailToLeft"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "dirSpotLocation"],
+      "required": [
+        "id",
+        "netPointReference"
+      ],
       "additionalProperties": false
     },
-    "infra_Crossing": {
+    "infra.Crossing": {
       "type": "object",
       "description": "Defines the physical track asset Crossing without possibility to switch between two track edges",
       "properties": {
@@ -663,25 +739,32 @@
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "trackEdgePoints": {
+        "topologicalCoordinates": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge points",
-            "$ref": "#/definitions/infra_TrackEdgePoint"
-           },
+            "$ref": "#/definitions/infra.TopologicalCoordinate"
+          },
           "minItems": 2,
-          "maxItems": 2
+          "maxItems": 2,
+          "description": "composes of topological coordinates"
         },
         "isSwitchable": {
           "type": "boolean",
           "description": "True: If the crossing is switchable ; False: If the crossing is not switchable ;https://commons.wikimedia.org/wiki/Category:Switched_diamond_crossings"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "trackEdgePoints"],
+      "required": [
+        "id",
+        "topologicalCoordinates"
+      ],
       "additionalProperties": false
     },
-    "infra_TrainDetector": {
+    "infra.TrainDetector": {
       "type": "object",
       "description": "Defines the train detector system for the train vacancy proving section",
       "properties": {
@@ -689,42 +772,55 @@
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "spotLocation": {
+        "topologicalCoordinate": {
           "type": "object",
-          "$ref": "#/definitions/infra_TrackEdgePoint"
+          "$ref": "#/definitions/infra.TopologicalCoordinate"
         },
         "trainDetectorType": {
           "type": "string",
-          "description": "Defines the train detection system applicable for the TVPS",
-          "enum": ["axleCounter", "trackCircuitBorder"]
+          "enum": [
+            "axleCounter",
+            "trackCircuitBorder"
+          ],
+          "description": "Defines the train detection system applicable for the TVPS"
         },
-        "countUpDir": {
+        "referenceDir": {
           "type": "string",
-          "description": "Direction in which axle counter counts up",
-          "enum": ["dirBoth", "dirSame", "dirReverse"]
+          "enum": [
+            "both",
+            "same",
+            "opposite"
+          ],
+          "description": "Reference direction corresponding to linear element in which the train detector detects trains: same/opposite for axleCounter, both for trackCircuit"
         }
       },
-      "required": ["id", "spotLocation"],
+      "required": [
+        "id",
+        "topologicalCoordinate"
+      ],
       "additionalProperties": false
     },
-    "infra_Balise": {
+    "infra.Balise": {
       "type": "object",
-      "description": "Defines a balise.",
+      "description": "Defines a technical device on the railway trackbed",
       "properties": {
         "id": {
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "spotLocation": {
+        "topologicalCoordinate": {
           "type": "object",
-          "description": "location on TrackEdge",
-          "$ref": "#/definitions/infra_TrackEdgePoint"
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "location on TrackEdge"
         }
       },
-      "required": ["id", "spotLocation"],
+      "required": [
+        "id",
+        "topologicalCoordinate"
+      ],
       "additionalProperties": false
     },
-    "infra_BaliseGroup": {
+    "infra.BaliseGroup": {
       "type": "object",
       "description": "Defines a group of balises.",
       "properties": {
@@ -746,27 +842,38 @@
           "type": "array",
           "items": {
             "type": "object",
-            "description": "Defines the balises within the balise group. ETCS-positionInGroup is equal to the position this array",
-            "$ref": "#/definitions/infra_Balise"
-           },
+            "$ref": "#/definitions/infra.Balise"
+          },
           "minItems": 1,
-          "maxItems": 8
+          "maxItems": 8,
+          "description": "Defines the balises within the balise group. ETCS-positionInGroup is equal to the position this array"
         },
         "bgFunction": {
           "type": "string",
-          "description": "to be clarified, if derivable from baliseTelegram",
-          "enum": ["location", "sessionManagement", "networkRegistration"]
+          "enum": [
+            "location",
+            "sessionManagement",
+            "networkRegistration"
+          ],
+          "description": "Defines the function of the balise. To be clarified, if derivable from baliseTelegram"
         },
         "linkOrientationDirection": {
           "type": "string",
-          "description": "defines linking orientation direction along the TrackEdge",
-          "enum": ["dirBoth", "dirSame", "dirReverse"]
+          "enum": [
+            "both",
+            "same",
+            "opposite"
+          ],
+          "description": "defines linking orientation direction along the LinearElement"
         }
       },
-      "required": ["id", "balises"],
+      "required": [
+        "id",
+        "balises"
+      ],
       "additionalProperties": false
     },
-    "infra_ETCSMarker": {
+    "infra.ETCSMarker": {
       "type": "object",
       "description": "Defines the ETCS Marker Boards ",
       "properties": {
@@ -774,45 +881,59 @@
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "dirSpotLocation": {
+        "netPointReference": {
           "type": "object",
-          "$ref": "#/definitions/infra_DirTrackEdgePoint"
+          "$ref": "#/definitions/infra.NetPointReference",
+          "description": "Defines position on LinearElement"
         },
         "markerFunctionStop": {
           "type": "boolean",
-          "description": "true=stop, false=location (when the ETCS marker is a location marker)"
+          "description": "Defines the function associated with the ETCS marker board. true=stop, false=location (when the ETCS marker is a location marker)"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "dirSpotLocation"],
+      "required": [
+        "id",
+        "netPointReference"
+      ],
       "additionalProperties": false
     },
-    "infra_StopTrainLimit": {
+    "infra.StopTrainLimit": {
       "type": "object",
+      "description": "Defines the different stop limits for train on the track",
       "properties": {
         "trainMaxLength": {
           "type": "integer",
           "minimum": 0,
-          "description": "use zero if not defined"
+          "description": "Defines the maximum train length associated with stop train limit. use zero if not defined"
         },
         "trainMaxAxles": {
           "type": "integer",
           "minimum": 0,
-          "description": "use zero if not defined"
+          "description": "Defines the maximum train axles associated with stop train limit. use zero if not defined"
         },
         "trainMaxWagons": {
           "type": "integer",
           "minimum": 0,
-          "description": "including Locomotives, use zero if not defined"
+          "description": "Defines the maximum train wagons associated with stope train limit. including Locomotives, use zero if not defined"
         },
         "trainMaxSize": {
           "type": "string",
-          "description": "use undefinedTrainSize if not defined",
-          "enum": ["undefinedTrainSize", "shortTrain", "halfTrain", "fullTrain"]
+          "enum": [
+            "undefinedTrainSize",
+            "shortTrain",
+            "halfTrain",
+            "fullTrain"
+          ],
+          "description": "Defines the size of train applicable for this stop train limit. use undefinedTrainSize if not defined"
         }
       },
       "additionalProperties": false
     },
-    "infra_StopLocation": {
+    "infra.StopLocation": {
       "type": "object",
       "description": "Defines the stop locations",
       "properties": {
@@ -820,54 +941,73 @@
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "dirSpotLocation": {
+        "netPointReference": {
           "type": "object",
-          "$ref": "#/definitions/infra_DirTrackEdgePoint"
+          "$ref": "#/definitions/infra.NetPointReference",
+          "description": "Defines position on LinearElement"
         },
         "stopTrainLimit": {
           "type": "object",
-          "description": "composes of stop train limits",
-          "$ref": "#/definitions/infra_StopTrainLimit"
+          "$ref": "#/definitions/infra.StopTrainLimit",
+          "description": "composes of stop train limits"
         },
         "trainLoadType": {
           "type": "string",
-          "description": "composes of train load types",
-          "enum": ["passengerTrain", "freightTrain", "anyTrain"]
+          "enum": [
+            "passengerTrain",
+            "freightTrain",
+            "anyTrain"
+          ],
+          "description": "composes of train load types"
         },
         "doorOpeningSide": {
           "type": "string",
-          "description": "defines different train opening sides",
-          "enum": ["noSide", "leftSide", "rightSide", "bothSides"]
+          "enum": [
+            "noSide",
+            "leftSide",
+            "rightSide",
+            "bothSides"
+          ],
+          "description": "defines different train opening sides"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "dirSpotLocation"],
+      "required": [
+        "id",
+        "netPointReference"
+      ],
       "additionalProperties": false
     },
-    "infra_TunnelTube": {
+    "infra.TunnelTube": {
       "type": "object",
       "description": "Defines the tunnels tubes within a tunnel. Main Use-Case identify emergency management with rescue into neighbour tube",
       "properties": {
-        "trackArea": {
+        "areaReference": {
           "type": "object",
-          "description": "composes of track area",
-          "$ref": "#/definitions/infra_TrackArea"
+          "$ref": "#/definitions/infra.NetAreaReference",
+          "description": "composes of track area"
         },
         "crossSection": {
           "type": "integer",
           "minimum": 0,
-          "description": "for calculation of air-resistance ; Standard Cross section dimensions corresponding to ATO Tunnel types will be defined later"
+          "description": "Defines the standard Cross section dimensions of a tunnel for calculation of air-resistance"
         }
       },
-      "required": ["trackArea"],
+      "required": [
+        "areaReference"
+      ],
       "additionalProperties": false
     },
-    "infra_Tunnel": {
+    "infra.Tunnel": {
       "type": "object",
       "description": "A railway tunnel is an excavation or a construction around the track provided to allow the railway to pass for example higher land, buildings or water.",
       "properties": {
         "tunnelIdentification": {
           "type": "string",
-          "description": "Identity of the object; used for referencing"
+          "description": "Unique tunnel identification or unique tunnel number within Member State"
         },
         "name": {
           "type": "string",
@@ -877,16 +1017,19 @@
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of tunnel tubes",
-            "$ref": "#/definitions/infra_TunnelTube"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.TunnelTube"
+          },
+          "minItems": 1,
+          "description": "composes of tunnel tubes"
         }
       },
-      "required": ["tunnelIdentification", "tunnelTubes"],
+      "required": [
+        "tunnelIdentification",
+        "tunnelTubes"
+      ],
       "additionalProperties": false
     },
-    "infra_Bridge": {
+    "infra.Bridge": {
       "type": "object",
       "description": "Defines the civil infrastructure object bridge",
       "properties": {
@@ -898,16 +1041,19 @@
           "type": "string",
           "description": "User-friendly name, only if different from id"
         },
-        "trackArea": {
+        "areaReference": {
           "type": "object",
-          "description": "composes of track area",
-          "$ref": "#/definitions/infra_TrackArea"
+          "$ref": "#/definitions/infra.NetAreaReference",
+          "description": "composes of track area"
         }
       },
-      "required": ["id", "trackArea"],
+      "required": [
+        "id",
+        "areaReference"
+      ],
       "additionalProperties": false
     },
-    "infra_Underpass": {
+    "infra.Underpass": {
       "type": "object",
       "description": "Defines the civil infrastructure object Underpass",
       "properties": {
@@ -919,35 +1065,19 @@
           "type": "string",
           "description": "User-friendly name, only if different from id"
         },
-        "trackArea": {
+        "areaReference": {
           "type": "object",
-          "description": "composes of track area",
-          "$ref": "#/definitions/infra_TrackArea"
+          "$ref": "#/definitions/infra.NetAreaReference",
+          "description": "composes of track area"
         }
       },
-      "required": ["id", "trackArea"],
+      "required": [
+        "id",
+        "areaReference"
+      ],
       "additionalProperties": false
     },
-    "infra_LinkedArea": {
-      "type": "object",
-      "properties": {
-        "entireTrackEdges": {
-          "type": "array",
-          "items": {
-            "type": "string"
-           }
-        },
-        "trackEdgeSections": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           }
-        }
-      },
-      "additionalProperties": false
-    },
-    "infra_TvpSection": {
+    "infra.TvpSection": {
       "type": "object",
       "description": "Defines the train vacancy proving section",
       "properties": {
@@ -961,100 +1091,152 @@
         },
         "linkedArea": {
           "type": "object",
-          "description": "composes of linked area",
-          "$ref": "#/definitions/infra_LinkedArea"
+          "$ref": "#/definitions/infra.NetAreaReference",
+          "description": "composes of linked area"
         },
         "trainDetectors": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "refers to train detectors"
-           }
+            "type": "string"
+          },
+          "description": "Defines the set of train detectors"
         }
       },
-      "required": ["id", "linkedArea"],
+      "required": [
+        "id",
+        "linkedArea"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackArea": {
+    "infra.NetLinearReference": {
       "type": "object",
-      "description": "Defines a Track Area on the topology",
+      "description": "Defines a linked path on the topology",
       "properties": {
-        "trackEdgeSections": {
+        "startsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Definesthe starting coordinate of a linear reference"
+        },
+        "endsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Defines the ending coordinate of a linear reference."
+        },
+        "hasSequence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Defines a sequence of linearElements from the start to the end excluding those defined in startAt- and endsAt-TopologicalCoodinates."
+        }
+      },
+      "required": [
+        "startsAt",
+        "endsAt"
+      ],
+      "additionalProperties": false
+    },
+    "infra.NetAreaReference": {
+      "type": "object",
+      "description": "Represents an area reference in the network.",
+      "properties": {
+        "includes": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge sections",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.NetLinearReference"
+          },
+          "minItems": 1,
+          "description": "List of linear references included in an network area reference."
         }
       },
-      "required": ["trackEdgeSections"],
+      "required": [
+        "includes"
+      ],
       "additionalProperties": false
     },
-    "infra_LevelCrossing": {
+    "infra.LevelCrossing": {
       "type": "object",
-      "description": "Defines the track asset level crossing",
+      "description": "A level crossing is an intersection where a railway line crosses a road or a path at the same level. It can be used for the implementation of the ETCS trackside or to identify potential collision scenarios",
       "properties": {
         "id": {
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "trackArea": {
+        "areaReference": {
           "type": "object",
-          "description": "composes of track area",
-          "$ref": "#/definitions/infra_TrackArea"
+          "$ref": "#/definitions/infra.NetAreaReference",
+          "description": "composes of track area"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "trackArea"],
+      "required": [
+        "id",
+        "areaReference"
+      ],
       "additionalProperties": false
     },
-    "infra_NationalBorder": {
+    "infra.NationalBorder": {
       "type": "object",
-      "description": "A border point is used to separate the railway network due to different reasons. Typical examples are country borders, the change of owning infrastructure manager or the border of a station",
+      "description": "Defines a border point is used to separate the railway network due to different reasons. Typical examples are country borders, the change of owning infrastructure manager or the border of a station",
       "properties": {
         "id": {
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "spotLocation": {
+        "topologicalCoordinate": {
           "type": "object",
-          "$ref": "#/definitions/infra_TrackEdgePoint"
+          "$ref": "#/definitions/infra.TopologicalCoordinate"
         },
         "fromCountryCode": {
           "type": "string",
-          "description": "starting part of the TrackEdge"
+          "description": "Defines the from country code for the national border in the direction of linear element"
         },
         "toCountryCode": {
           "type": "string",
-          "description": "ending part of the TrackEdge"
-        }
-      },
-      "required": ["id", "spotLocation", "fromCountryCode", "toCountryCode"],
-      "additionalProperties": false
-    },
-    "infra_DirTrackEdgePoint": {
-      "type": "object",
-      "description": "Defines a directed spot location (without spatial expansion) on a Track Edge",
-      "properties": {
-        "trackEdge": {
+          "description": "Defines the to country code for the national border in the direction of linear element"
+        },
+        "name": {
           "type": "string",
-          "description": "refers to track edge"
-        },
-        "pos": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "position on the associated Track Edge"
-        },
-        "sameDir": {
-          "type": "boolean",
-          "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "id",
+        "topologicalCoordinate",
+        "fromCountryCode",
+        "toCountryCode"
+      ],
       "additionalProperties": false
     },
-    "infra_BufferStop": {
+    "infra.NetPointReference": {
+      "type": "object",
+      "description": "Represents a point reference in the network.",
+      "properties": {
+        "hasTopoCoordinate": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Defines the topological coordinate of a network point reference"
+        },
+        "appliesToDirection": {
+          "type": "string",
+          "enum": [
+            "both",
+            "same",
+            "opposite"
+          ],
+          "description": "The direction relative to the origin of the linear element towards the point reference applies"
+        }
+      },
+      "required": [
+        "hasTopoCoordinate"
+      ],
+      "additionalProperties": false
+    },
+    "infra.BufferStop": {
       "type": "object",
       "description": "Defines the object Buffer stop on the track",
       "properties": {
@@ -1062,38 +1244,48 @@
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "dirSpotLocation": {
+        "netPointReference": {
           "type": "object",
-          "$ref": "#/definitions/infra_DirTrackEdgePoint"
+          "$ref": "#/definitions/infra.NetPointReference",
+          "description": "Defines position on LinearElement"
         },
         "isSwitchable": {
           "type": "boolean",
-          "description": "true - if switchable ; false - if not switchable"
+          "description": "Defines if the object is switchable"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "dirSpotLocation"],
+      "required": [
+        "id",
+        "netPointReference"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackEdgePoint": {
+    "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a non-directed spot location (without spatial expansion) on a Track Edge",
+      "description": "Defines a topological coordinates on the track",
       "properties": {
-        "trackEdge": {
+        "onLinearElement": {
           "type": "string",
-          "description": "is positioned on track edge"
+          "description": "is positioned on linear element"
         },
-        "pos": {
+        "offsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated Track Edge"
+          "description": "position on the associated NetElement"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onLinearElement"
+      ],
       "additionalProperties": false
     },
-    "infra_TPActiveObject": {
+    "infra.TPActiveObject": {
       "type": "object",
-      "description": "A functional object infront of which a TimingPoint is located and active",
+      "description": "Defines a functional object infront of which a TimingPoint is located and active",
       "properties": {
         "etcsMarker": {
           "type": "string",
@@ -1111,20 +1303,26 @@
       "oneOf": [
         {
           "type": "object",
-          "required": ["etcsMarker"]
+          "required": [
+            "etcsMarker"
+          ]
         },
         {
           "type": "object",
-          "required": ["stopLocation"]
+          "required": [
+            "stopLocation"
+          ]
         },
         {
           "type": "object",
-          "required": ["timeMeasurePoint"]
+          "required": [
+            "timeMeasurePoint"
+          ]
         }
       ],
       "additionalProperties": false
     },
-    "infra_TimingPoint": {
+    "infra.TimingPoint": {
       "type": "object",
       "description": "Defines a fixed point on the infrastructure",
       "properties": {
@@ -1132,21 +1330,30 @@
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "spotLocation": {
+        "topologicalCoordinate": {
           "type": "object",
-          "$ref": "#/definitions/infra_TrackEdgePoint"
+          "$ref": "#/definitions/infra.TopologicalCoordinate"
         },
         "activeObject": {
           "type": "object",
-          "description": "composes of active timing points object",
-          "$ref": "#/definitions/infra_TPActiveObject"
+          "$ref": "#/definitions/infra.TPActiveObject",
+          "description": "Defines the functional object infront of which a TimingPoint is located and is active"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
         }
       },
-      "required": ["id", "spotLocation", "activeObject"],
+      "required": [
+        "id",
+        "topologicalCoordinate",
+        "activeObject"
+      ],
       "additionalProperties": false
     },
-    "infra_FunctionalArea": {
+    "infra.FunctionalArea": {
       "type": "object",
+      "description": "Defines the container functional area within INFRA Domain",
       "properties": {
         "id": {
           "type": "string",
@@ -1154,168 +1361,216 @@
         },
         "versionTimestamp": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
+          "format": "date-time",
           "description": "version information which is valid since timestamp"
         },
         "opPoints": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_OperationalPoint"
-           }
+            "$ref": "#/definitions/infra.OperationalPoint"
+          },
+          "description": "Defines the set of operational points"
         },
-        "simplePoints": {
+        "switches": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_SimplePoint"
-           }
+            "$ref": "#/definitions/infra.Switch"
+          },
+          "description": "Defines the set of switches"
         },
         "slipCrossings": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_SlipCrossing"
-           }
+            "$ref": "#/definitions/infra.SlipCrossing"
+          },
+          "description": "Defines the set of slip crossings"
         },
         "derailers": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_Derailer"
-           }
+            "$ref": "#/definitions/infra.Derailer"
+          },
+          "description": "Defines the set of derailers"
         },
         "crossings": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_Crossing"
-           }
+            "$ref": "#/definitions/infra.Crossing"
+          },
+          "description": "Defines the set of crossings"
         },
         "trainDetectors": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_TrainDetector"
-           }
+            "$ref": "#/definitions/infra.TrainDetector"
+          },
+          "description": "Defines the set of train detectors"
         },
         "baliseGroups": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_BaliseGroup"
-           }
+            "$ref": "#/definitions/infra.BaliseGroup"
+          },
+          "description": "Defines the set of balise groups"
         },
         "etcsMarkers": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_ETCSMarker"
-           }
+            "$ref": "#/definitions/infra.ETCSMarker"
+          },
+          "description": "Defines the set of etcs markers"
         },
         "stopLocations": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_StopLocation"
-           }
+            "$ref": "#/definitions/infra.StopLocation"
+          },
+          "description": "Defines the set of stop locations where the train is allowed to stop"
         },
         "tunnels": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_Tunnel"
-           }
+            "$ref": "#/definitions/infra.Tunnel"
+          },
+          "description": "Defines the set of tunnels"
         },
         "bridges": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_Bridge"
-           }
+            "$ref": "#/definitions/infra.Bridge"
+          },
+          "description": "Defines the set of bridges"
         },
         "underpasses": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_Underpass"
-           }
+            "$ref": "#/definitions/infra.Underpass"
+          },
+          "description": "Defines the set of underpasses"
         },
         "tvps": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_TvpSection"
-           }
+            "$ref": "#/definitions/infra.TvpSection"
+          },
+          "description": "Defines the set of track vacancy proving sections"
         },
         "levelCrossings": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_LevelCrossing"
-           }
+            "$ref": "#/definitions/infra.LevelCrossing"
+          },
+          "description": "Defines the set of level crossings"
         },
         "nationalBorders": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_NationalBorder"
-           }
+            "$ref": "#/definitions/infra.NationalBorder"
+          },
+          "description": "Defines the set of national borders"
         },
         "bufferStops": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_BufferStop"
-           }
+            "$ref": "#/definitions/infra.BufferStop"
+          },
+          "description": "Defines the set of buffer stops"
         },
         "timingPoints": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_TimingPoint"
-           }
+            "$ref": "#/definitions/infra.TimingPoint"
+          },
+          "description": "Defines the set of timing points, at which TMS would calculate train positions"
         }
       },
-      "required": ["id", "versionTimestamp"],
+      "required": [
+        "id",
+        "versionTimestamp"
+      ],
       "additionalProperties": false
     },
-    "infra_SpeedLimitCategory": {
+    "infra.SpeedLimitCategory": {
       "type": "object",
+      "description": "Defines the different applicable speed limit categories on the sections of track",
       "properties": {
         "otherCategoryReplacesCantDeficiencySSP": {
           "type": "string",
-          "description": "is of type other Category Replaces Cant Deficiency SSP",
-          "enum": ["SSSP_freightTrainP", "SSSP_freightTrainG", "SSSP_passengerTrain"]
+          "enum": [
+            "SSSP_freightTrainP",
+            "SSSP_freightTrainG",
+            "SSSP_passengerTrain"
+          ],
+          "description": "is of type other Category Replaces Cant Deficiency SSP"
         },
         "otherCategoryDoesNotReplaceCantDeficiencySSP": {
           "type": "string",
-          "description": "is of type other Category Replaces Cant Deficiency SSP",
-          "enum": ["SSSP_freightTrainP", "SSSP_freightTrainG", "SSSP_passengerTrain"]
+          "enum": [
+            "SSSP_freightTrainP",
+            "SSSP_freightTrainG",
+            "SSSP_passengerTrain"
+          ],
+          "description": "is of type other Category Replaces Cant Deficiency SSP"
         },
         "cantDeficiencyCategory": {
           "type": "string",
-          "description": "is of type Cant Deficiency Category",
-          "enum": ["CD_Undefined", "CD_80mm", "CD_100mm", "CD_130mm", "CD_150mm", "CD_165mm", "CD_180mm", "CD_210mm", "CD_225mm", "CD_245mm", "CD_275mm", "CD_300mm"]
+          "enum": [
+            "CD_Undefined",
+            "CD_80mm",
+            "CD_100mm",
+            "CD_130mm",
+            "CD_150mm",
+            "CD_165mm",
+            "CD_180mm",
+            "CD_210mm",
+            "CD_225mm",
+            "CD_245mm",
+            "CD_275mm",
+            "CD_300mm"
+          ],
+          "description": "is of type Cant Deficiency Category"
         }
       },
       "oneOf": [
         {
           "type": "object",
-          "required": ["otherCategoryReplacesCantDeficiencySSP"]
+          "required": [
+            "otherCategoryReplacesCantDeficiencySSP"
+          ]
         },
         {
           "type": "object",
-          "required": ["otherCategoryDoesNotReplaceCantDeficiencySSP"]
+          "required": [
+            "otherCategoryDoesNotReplaceCantDeficiencySSP"
+          ]
         },
         {
           "type": "object",
-          "required": ["cantDeficiencyCategory"]
+          "required": [
+            "cantDeficiencyCategory"
+          ]
         }
       ],
       "additionalProperties": false
     },
-    "infra_SpecificStaticSpeedLimit": {
+    "infra.SpecificStaticSpeedLimit": {
       "type": "object",
       "description": "Defines the specific static speed profile for a section of track",
       "properties": {
@@ -1326,21 +1581,23 @@
         },
         "specificLimitCategory": {
           "type": "object",
-          "description": "defines different specific speed limit categories",
-          "$ref": "#/definitions/infra_SpeedLimitCategory"
+          "$ref": "#/definitions/infra.SpeedLimitCategory",
+          "description": "defines different specific speed limit categories"
         }
       },
-      "required": ["specificLimitCategory"],
+      "required": [
+        "specificLimitCategory"
+      ],
       "additionalProperties": false
     },
-    "infra_StaticSpeedLimit": {
+    "infra.StaticSpeedLimit": {
       "type": "object",
-      "description": "Defines the static speed profile for a section of track",
+      "description": "Defines the static speed profile for a section of linear element",
       "properties": {
         "pos": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated TrackEdge"
+          "description": "position on the associated LinearElement"
         },
         "speed": {
           "type": "integer",
@@ -1351,26 +1608,26 @@
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of specific static speed profiles",
-            "$ref": "#/definitions/infra_SpecificStaticSpeedLimit"
-           }
+            "$ref": "#/definitions/infra.SpecificStaticSpeedLimit"
+          },
+          "description": "composes of specific static speed profiles"
         }
       },
       "additionalProperties": false
     },
-    "infra_AxleLoadSpeedProfile": {
+    "infra.AxleLoadSpeedProfile": {
       "type": "object",
-      "description": "Defines the axle load speed profile for a section of track",
+      "description": "Defines the axle load speed profile for a section of track or a section of SegmentProfile",
       "properties": {
         "startPos": {
           "type": "integer",
           "minimum": 0,
-          "description": "start position on the associated TrackEdge"
+          "description": "Defines the start position on the associated Linear element"
         },
         "endPos": {
           "type": "integer",
           "minimum": 0,
-          "description": "end position on the associated TrackEdge"
+          "description": "Defines the end position on the associated Linear element"
         },
         "speed": {
           "type": "integer",
@@ -1379,39 +1636,56 @@
         },
         "axleLoadCategory": {
           "type": "string",
-          "description": "defines different axle load categories",
-          "enum": ["AL_A", "AL_HS17", "AL_B1", "AL_B2", "AL_C2", "AL_C3", "AL_C4", "AL_D2", "AL_D3", "AL_D4", "AL_D4XL", "AL_E4", "AL_E5"]
+          "enum": [
+            "AL_A",
+            "AL_HS17",
+            "AL_B1",
+            "AL_B2",
+            "AL_C2",
+            "AL_C3",
+            "AL_C4",
+            "AL_D2",
+            "AL_D3",
+            "AL_D4",
+            "AL_D4XL",
+            "AL_E4",
+            "AL_E5"
+          ],
+          "description": "defines different axle load categories"
         }
       },
       "additionalProperties": false
     },
-    "infra_SpeedProfile": {
+    "infra.SpeedProfile": {
       "type": "object",
+      "description": "Defines the different applicable speed profiles on the sections of track",
       "properties": {
         "staticSpeedProfile": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of static speed profiles",
-            "$ref": "#/definitions/infra_StaticSpeedLimit"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.StaticSpeedLimit"
+          },
+          "minItems": 1,
+          "description": "composes of static speed profiles"
         },
         "axleLoadSpeedProfiles": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of axle load speed profiles",
-            "$ref": "#/definitions/infra_AxleLoadSpeedProfile"
-           }
+            "$ref": "#/definitions/infra.AxleLoadSpeedProfile"
+          },
+          "description": "composes of axle load speed profiles"
         }
       },
-      "required": ["staticSpeedProfile"],
+      "required": [
+        "staticSpeedProfile"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackEdgeSpeedProfile": {
+    "infra.LinearElementSpeedProfile": {
       "type": "object",
-      "description": "Defines the permitted speeds for a Track edge in both directions",
+      "description": "Defines the permitted speeds for a linear element in both directions",
       "properties": {
         "id": {
           "type": "string",
@@ -1419,95 +1693,133 @@
         },
         "sameDirProfile": {
           "type": "object",
-          "description": "speed profile valid in the same direction as the trackEdge",
-          "$ref": "#/definitions/infra_SpeedProfile"
+          "$ref": "#/definitions/infra.SpeedProfile",
+          "description": "Defines the speed profile valid in the same direction as the Linear element"
         },
         "oppositeDirProfile": {
           "type": "object",
-          "description": "valid in the opposite direction as the TrackEdge. Skip if the same in both directions.",
-          "$ref": "#/definitions/infra_SpeedProfile"
+          "$ref": "#/definitions/infra.SpeedProfile",
+          "description": "Defines the applicable speed profile for the opposite direction of travel with reference to linear element. valid in the opposite direction as the TrackEdge. Skip if the same in both directions."
         }
       },
-      "required": ["id", "sameDirProfile"],
+      "required": [
+        "id",
+        "sameDirProfile"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackEdgeGauge": {
+    "infra.LinearElementGauge": {
       "type": "object",
-      "description": "inner distance between two rails, e.g. 1432 for EU-standard-rails",
+      "description": "Defines the inner distance between two rails, e.g. 1432 for EU-standard-rails",
       "properties": {
-        "trackEdgeSections": {
+        "linearElementSections": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge sections",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.LinearElementSection"
+          },
+          "minItems": 1,
+          "description": "composes of track edge sections"
         },
         "gauge": {
           "type": "string",
-          "description": "defines different track gauges",
-          "enum": ["tgUnknown", "tg750", "tg1000mm", "tg1435mm", "tg1520mm", "tg1524mm", "tg1600mm", "tg1680mm"]
+          "enum": [
+            "tgUnknown",
+            "tg750",
+            "tg1000mm",
+            "tg1435mm",
+            "tg1520mm",
+            "tg1524mm",
+            "tg1600mm",
+            "tg1668mm"
+          ],
+          "description": "defines different track gauges"
         }
       },
-      "required": ["trackEdgeSections"],
+      "required": [
+        "linearElementSections"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackEdgeLoadingGauge": {
+    "infra.LinearElementLoadingGauge": {
       "type": "object",
+      "description": "Defines linear element loading gauge on the track",
       "properties": {
-        "trackEdgeSections": {
+        "linearElementSections": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge sections",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.LinearElementSection"
+          },
+          "minItems": 1,
+          "description": "composes of track edge sections"
         },
         "loadingGaugeType": {
           "type": "string",
-          "description": "defines different loafing gauges",
-          "enum": ["loadingGaugeIncompatible", "g1", "gA", "gB", "gC"]
+          "enum": [
+            "loadingGaugeIncompatible",
+            "g1",
+            "gA",
+            "gB",
+            "gC"
+          ],
+          "description": "defines different loafing gauges"
         }
       },
-      "required": ["trackEdgeSections"],
+      "required": [
+        "linearElementSections"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackCondition": {
+    "infra.TrackCondition": {
       "type": "object",
       "description": "Defines the TrackConditions for a section of track",
       "properties": {
-        "trackEdgeSections": {
+        "linearElementSections": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge sections",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.LinearElementSection"
+          },
+          "minItems": 1,
+          "description": "composes of track edge sections"
         },
         "conditionType": {
           "type": "string",
-          "description": "defines different track conditions",
-          "enum": ["powerlessLowPanthograph", "powerlessMainSwitch", "airTightness", "soundHorn", "nonStoppingArea", "tunnelStoppingArea", "bigMetalMasses", "radioHole", "switchOffRegenerativeBrake", "switchOffEddyCurrentBrakeForServiceBrake", "switchOffEddyCurrentBrakeForEmergencyBrake", "switchOffMagneticShoeBrake"]
+          "enum": [
+            "powerlessLowPanthograph",
+            "powerlessMainSwitch",
+            "airTightness",
+            "soundHorn",
+            "nonStoppingArea",
+            "tunnelStoppingArea",
+            "bigMetalMasses",
+            "radioHole",
+            "switchOffRegenerativeBrake",
+            "switchOffEddyCurrentBrakeForServiceBrake",
+            "switchOffEddyCurrentBrakeForEmergencyBrake",
+            "switchOffMagneticShoeBrake"
+          ],
+          "description": "defines different track conditions"
         }
       },
-      "required": ["trackEdgeSections"],
+      "required": [
+        "linearElementSections"
+      ],
       "additionalProperties": false
     },
-    "infra_CurrentLimitation": {
+    "infra.CurrentLimitation": {
       "type": "object",
       "description": "Defines max current for a list of track sections",
       "properties": {
-        "trackEdgeSections": {
+        "linearElementSections": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge sections",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.LinearElementSection"
+          },
+          "minItems": 1,
+          "description": "composes of track edge sections"
         },
         "maxCurrent": {
           "type": "integer",
@@ -1515,91 +1827,116 @@
           "description": "defines max current value"
         }
       },
-      "required": ["trackEdgeSections"],
+      "required": [
+        "linearElementSections"
+      ],
       "additionalProperties": false
     },
-    "infra_PermittedBrakingDistance": {
+    "infra.PermittedBrakingDistance": {
       "type": "object",
-      "description": "Defines max allowed braking distance for a list of track sections",
+      "description": "Defines max allowed braking distance for a list of linear element sections or segment profile",
       "properties": {
-        "trackEdgeSections": {
+        "linearElementSections": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge sections",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.LinearElementSection"
+          },
+          "minItems": 1,
+          "description": "Defines the set of linear element sections composing the application area"
         },
         "distance": {
           "type": "integer",
           "minimum": 0,
-          "description": "defines the applicable permitted braking distance"
+          "description": "Defines the applicable permitted braking distance"
         },
         "brakeType": {
           "type": "string",
-          "description": "defines the applicable brake type for braking",
-          "enum": ["serviceBrake", "emergencyBrake"]
+          "enum": [
+            "serviceBrake",
+            "emergencyBrake"
+          ],
+          "description": "Defines the applicable brake type for permitted braking distance"
         },
         "gradientValue": {
           "type": "integer",
-          "description": "defines the gradient associated with the permitted braking distance"
+          "description": "Defines the gradient value.Required Resolution is 0.1 permill; positiv: uphill, negative: downhill"
         },
         "sameDir": {
           "type": "boolean",
-          "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
+          "description": "Defines the usage direction of the linear element ;true: active in same direction as linear element, false: active in opposite direction"
         }
       },
-      "required": ["trackEdgeSections"],
+      "required": [
+        "linearElementSections"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackEdgeSection": {
+    "infra.LinearElementSection": {
       "type": "object",
-      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "description": "Defines a directed linear object (with a linear extension) located on a LinearElement",
       "properties": {
-        "trackEdge": {
+        "onElement": {
           "type": "string",
-          "description": "refers to track edge"
+          "description": "refers to linear element"
         },
-        "skipFromStart": {
+        "startOffsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [0..skipFromStart]."
+          "description": "Defines the start offset from the origin"
         },
-        "skipFromEnd": {
+        "endOffsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]."
+          "description": "Defines the end offset from the origin"
+        },
+        "appliesInBothDirections": {
+          "type": "boolean",
+          "description": "Defines if the section applies in both directions"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onElement"
+      ],
       "additionalProperties": false
     },
-    "infra_TractionSystem": {
+    "infra.TractionSystem": {
       "type": "object",
       "description": "Defines the equipped traction system on the track",
       "properties": {
-        "trackEdgeSections": {
+        "linearElementSections": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge sections",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           },
-          "minItems": 1
+            "$ref": "#/definitions/infra.LinearElementSection"
+          },
+          "minItems": 1,
+          "description": "composes of track edge sections"
         },
         "voltageType": {
           "type": "string",
-          "description": "defines the different voltage types",
-          "enum": ["vtNotFitted", "vtAC25kv50Hz", "vtAC15kv16_7Hz", "vtDC3kv", "vtDC1_5kv", "vtDC600v", "vtDC650v", "vtDC750v", "vtDC850v"]
+          "enum": [
+            "vtNotFitted",
+            "vtAC25kv50Hz",
+            "vtAC15kv16_7Hz",
+            "vtDC3kv",
+            "vtDC1_5kv",
+            "vtDC600v",
+            "vtDC650v",
+            "vtDC750v",
+            "vtDC850v"
+          ],
+          "description": "defines the different voltage types"
         }
       },
-      "required": ["trackEdgeSections"],
+      "required": [
+        "linearElementSections"
+      ],
       "additionalProperties": false
     },
-    "infra_PropertiesArea": {
+    "infra.PropertiesArea": {
       "type": "object",
-      "description": "the object itself contains default-values for the area. Exceptions are in trackConditions etc.",
+      "description": "Defines the container properties area within INFRA Domain",
       "properties": {
         "id": {
           "type": "string",
@@ -1607,95 +1944,123 @@
         },
         "versionTimestamp": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
+          "format": "date-time",
           "description": "version information which is valid since timestamp"
         },
         "gauge": {
           "type": "string",
-          "description": "default gauge in the area. Deviations are covered in trackEdgeGauges",
-          "enum": ["tgUnknown", "tg750", "tg1000mm", "tg1435mm", "tg1520mm", "tg1524mm", "tg1600mm", "tg1680mm"]
+          "enum": [
+            "tgUnknown",
+            "tg750",
+            "tg1000mm",
+            "tg1435mm",
+            "tg1520mm",
+            "tg1524mm",
+            "tg1600mm",
+            "tg1668mm"
+          ],
+          "description": "Defines the default gauge in the area. Deviations are covered in trackEdgeGauges"
         },
         "loadingGaugeTypes": {
           "type": "array",
           "items": {
             "type": "string",
-            "description": "list of supported loading gauges per default",
-            "enum": ["loadingGaugeIncompatible", "g1", "gA", "gB", "gC"]
-           }
+            "enum": [
+              "loadingGaugeIncompatible",
+              "g1",
+              "gA",
+              "gB",
+              "gC"
+            ]
+          },
+          "description": "Defines a list of supported loading gauges per default"
         },
         "defaultVoltage": {
           "type": "string",
-          "description": "defines default Voltage",
-          "enum": ["vtNotFitted", "vtAC25kv50Hz", "vtAC15kv16_7Hz", "vtDC3kv", "vtDC1_5kv", "vtDC600v", "vtDC650v", "vtDC750v", "vtDC850v"]
+          "enum": [
+            "vtNotFitted",
+            "vtAC25kv50Hz",
+            "vtAC15kv16_7Hz",
+            "vtDC3kv",
+            "vtDC1_5kv",
+            "vtDC600v",
+            "vtDC650v",
+            "vtDC750v",
+            "vtDC850v"
+          ],
+          "description": "defines default Voltage"
         },
         "defaultMaxCurrent": {
           "type": "integer",
           "minimum": 0,
-          "description": "used in ATO & ETCS.packet40"
+          "description": "Defines the deafult maximun current for the section of track. Used in ATO & ETCS.packet40"
         },
-        "teSpeedProfiles": {
+        "linearElementSpeedProfiles": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge speed profiles",
-            "$ref": "#/definitions/infra_TrackEdgeSpeedProfile"
-           }
+            "$ref": "#/definitions/infra.LinearElementSpeedProfile"
+          },
+          "description": "composes of linear element speed profiles"
         },
-        "trackEdgeGauges": {
+        "linearElementGauges": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge gauges",
-            "$ref": "#/definitions/infra_TrackEdgeGauge"
-           }
+            "$ref": "#/definitions/infra.LinearElementGauge"
+          },
+          "description": "composes of linear element gauges"
         },
-        "trackEdgeLoadingGauges": {
+        "linearElementLoadingGauges": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track edge loading gauges",
-            "$ref": "#/definitions/infra_TrackEdgeLoadingGauge"
-           }
+            "$ref": "#/definitions/infra.LinearElementLoadingGauge"
+          },
+          "description": "composes of linear element loading gauges"
         },
         "trackConditions": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of track conditions",
-            "$ref": "#/definitions/infra_TrackCondition"
-           }
+            "$ref": "#/definitions/infra.TrackCondition"
+          },
+          "description": "composes of track conditions"
         },
         "currentLimitations": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of current limitation",
-            "$ref": "#/definitions/infra_CurrentLimitation"
-           }
+            "$ref": "#/definitions/infra.CurrentLimitation"
+          },
+          "description": "composes of current limitation"
         },
         "permittedBrakingDistances": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of permitted braking distances",
-            "$ref": "#/definitions/infra_PermittedBrakingDistance"
-           }
+            "$ref": "#/definitions/infra.PermittedBrakingDistance"
+          },
+          "description": "composes of permitted braking distances"
         },
         "tractionSystems": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "composes of traction systems",
-            "$ref": "#/definitions/infra_TractionSystem"
-           }
+            "$ref": "#/definitions/infra.TractionSystem"
+          },
+          "description": "composes of traction systems"
         }
       },
-      "required": ["id", "versionTimestamp"],
+      "required": [
+        "id",
+        "versionTimestamp"
+      ],
       "additionalProperties": false
     },
-    "infra_TrackUsageArea": {
+    "infra.TrackUsageArea": {
       "type": "object",
-      "description": "Preferred usage specification, most usable for TMS and planning",
+      "description": "Defines the preferred usage specification, most usable for TMS and planning",
       "properties": {
         "id": {
           "type": "string",
@@ -1703,85 +2068,95 @@
         },
         "versionTimestamp": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
+          "format": "date-time",
           "description": "version information which is valid since timestamp"
         },
         "secondaryTracks": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "all tracks except 'shuntingTracks' and 'secondaryTracks' are 'mainTracks'"
-           }
+            "type": "string"
+          },
+          "description": "Defines the list of secondary tracks. All tracks except 'shuntingTracks' and 'secondaryTracks' are 'mainTracks'"
         },
         "shuntingTracks": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "all tracks except 'shuntingTracks' and 'secondaryTracks' are 'mainTracks'"
-           }
+            "type": "string"
+          },
+          "description": "Defines the list of shunting tracks. All tracks except 'shuntingTracks' and 'secondaryTracks' are 'mainTracks'"
         },
         "preferredSameDir": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "track edges with preferred direction identical to the TrackEdge-Direction"
-           }
+            "type": "string"
+          },
+          "description": "Defines the list of linear elements with preferred direction identical to the Linear element-Direction"
         },
         "preferredOppositeDir": {
           "type": "array",
           "items": {
-            "type": "string",
-            "description": "track edges with preferred direction opposite to the TrackEdge-Direction"
-           }
+            "type": "string"
+          },
+          "description": "Defines the list of linear elements with preferred direction opposite to the Linear element-Direction"
         }
       },
-      "required": ["id", "versionTimestamp"],
+      "required": [
+        "id",
+        "versionTimestamp"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
+  "description": "Defines the Containter for Infrastructure (INFRA)",
   "properties": {
     "topoAreas": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_TopoArea"
-       }
+        "$ref": "#/definitions/infra.TopoArea"
+      },
+      "description": "Defines the set of topo areas"
     },
     "geometryAreas": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_GeometryArea"
-       }
+        "$ref": "#/definitions/infra.GeometryArea"
+      },
+      "description": "Defines the set of geometry areas"
     },
     "sampledGeometryAreas": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_SampledGeometryArea"
-       }
+        "$ref": "#/definitions/infra.SampledGeometryArea"
+      },
+      "description": "Defines the set of sampled geometry areas"
     },
     "functionalAreas": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_FunctionalArea"
-       }
+        "$ref": "#/definitions/infra.FunctionalArea"
+      },
+      "description": "Defines the set of functional areas"
     },
     "propertiesAreas": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_PropertiesArea"
-       }
+        "$ref": "#/definitions/infra.PropertiesArea"
+      },
+      "description": "Defines the set of properties areas"
     },
     "trackUsageAreas": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/infra_TrackUsageArea"
-       }
+        "$ref": "#/definitions/infra.TrackUsageArea"
+      },
+      "description": "Defines the set of track usage areas"
     }
   },
   "additionalProperties": false

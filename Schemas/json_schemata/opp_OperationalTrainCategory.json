@@ -1,25 +1,51 @@
 {
   "$id": "https://ERJU/opp_OperationalTrainCategory",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines usage category for an OperationalTrain",
   "properties": {
     "trainCategoryType": {
       "type": "string",
-      "enum": ["trainCategoryUnknown", "interregional", "regional", "subUrban", "nightTrain", "motorRail", "mountainTrain", "historicTrain", "coachGroup", "tram", "underground", "highspeedTrain", "intercity"]
+      "enum": [
+        "trainCategoryUnknown",
+        "interregional",
+        "regional",
+        "subUrban",
+        "nightTrain",
+        "motorRail",
+        "mountainTrain",
+        "historicTrain",
+        "coachGroup",
+        "tram",
+        "underground",
+        "highspeedTrain",
+        "intercity"
+      ]
     },
     "description": {
       "type": "string",
-      "description": "for UI-purposes"
+      "description": "Defines the description for the operational train categoryfor UI-purposes"
     },
     "trainUsage": {
       "type": "string",
-      "description": "for UI-purposes",
-      "enum": ["trainUsageUndefined", "commercialPassengerTrain", "commercialCargoTrain", "locomotiveRunningLight", "lightRunning", "notInService", "engineeringTrain", "breakdownTrain", "mixedTrain", "specialTrain", "otherTrain"]
+      "enum": [
+        "trainUsageUndefined",
+        "commercialPassengerTrain",
+        "commercialCargoTrain",
+        "locomotiveRunningLight",
+        "lightRunning",
+        "notInService",
+        "engineeringTrain",
+        "breakdownTrain",
+        "mixedTrain",
+        "specialTrain",
+        "otherTrain"
+      ],
+      "description": "Defines the train usage type for UI-purposes"
     }
   },
-  "required": ["description"],
+  "required": [
+    "description"
+  ],
   "additionalProperties": false
 }

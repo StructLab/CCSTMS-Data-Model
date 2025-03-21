@@ -1,11 +1,8 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_134",
-  "$schema": "http://json-schema.org/draft-08/schema#",
-  "definitions": {
-
-  },
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
-  "description": " EOLM Packet",
+  "description": "EOLM Packet. This packet announces a loop.",
   "properties": {
     "nid_loop": {
       "type": "integer",

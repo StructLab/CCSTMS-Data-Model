@@ -1,150 +1,214 @@
 {
   "$id": "https://ERJU/opp_TrainUnitReportAtoStatus",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "opp_PhysicalTrainUnitIdentifier": {
+    "opp.PhysicalTrainUnitIdentifier": {
       "type": "object",
+      "description": "Defines a set of possible identifiers for a physical train (ETCS-trainRunningNumber, OBU-ID etc).",
       "properties": {
         "trainRunningNumber": {
-          "type": "string"
+          "type": "string",
+          "description": "Defines the Train Running Number for ETCS same as SS026.NID_OPERATIONAL. To be usable for ETCS must contain a decimal number [0..99999999]. Mapping to uint32 by filling with F: '1233' -> 0x1233FFFF"
         },
         "additionalTrainRunningNumber": {
           "type": "string",
-          "description": "Distinction between Operational Train Units with the same trainRunningNumber. This may occur if a trainRunningNumber is reused for different spare trains."
+          "description": "Defines the distinction between Operational Train Units with the same trainRunningNumber. This may occur if a trainRunningNumber is reused for different spare trains."
         },
         "tafTapTsiTrainID": {
-          "type": "string"
+          "type": "string",
+          "description": "refers to taf tap tsi train id"
         },
         "leadingOnBoardUnitId": {
           "type": "string",
-          "description": "see NID_ENGINE"
+          "description": "Defines NID_ENGINE. To be usable with ETCS must contain a decimal number [0..16.777.215]"
         }
       },
       "additionalProperties": false
     },
-    "infra_DirTrackEdgePoint": {
+    "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a directed spot location (without spatial expansion) on a Track Edge",
+      "description": "Defines a topological coordinates on the track",
       "properties": {
-        "trackEdge": {
+        "onLinearElement": {
           "type": "string",
-          "description": "refers to track edge"
+          "description": "is positioned on linear element"
         },
-        "pos": {
+        "offsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "position on the associated Track Edge"
-        },
-        "sameDir": {
-          "type": "boolean",
-          "description": "usage direction of the TrackEdge ;true: active in same direction as trackEdge, false: active in opposite direction"
+          "description": "position on the associated NetElement"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onLinearElement"
+      ],
       "additionalProperties": false
     },
-    "opp_EventHandling": {
+    "infra.NetPointReference": {
       "type": "object",
+      "description": "Represents a point reference in the network.",
+      "properties": {
+        "hasTopoCoordinate": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Defines the topological coordinate of a network point reference"
+        },
+        "appliesToDirection": {
+          "type": "string",
+          "enum": [
+            "both",
+            "same",
+            "opposite"
+          ],
+          "description": "The direction relative to the origin of the linear element towards the point reference applies"
+        }
+      },
+      "required": [
+        "hasTopoCoordinate"
+      ],
+      "additionalProperties": false
+    },
+    "opp.EventHandling": {
+      "type": "object",
+      "description": "Defines, how the previous event was handled.",
       "properties": {
         "event": {
-          "type": "string"
+          "type": "string",
+          "description": "refers a movement event including the movement plan"
         },
         "passStopDepart": {
           "type": "string",
-          "enum": ["passedEvent", "stoppedAccurateAtEvent", "stoppedWithOvershootAtEvent", "stoppedWithUndershootAtEvent", "departedFromEvent"]
+          "enum": [
+            "passedEvent",
+            "stoppedAccurateAtEvent",
+            "stoppedWithOvershootAtEvent",
+            "stoppedWithUndershootAtEvent",
+            "departedFromEvent"
+          ],
+          "description": "Defines the result of the event handling action"
         }
       },
-      "required": ["event"],
+      "required": [
+        "event"
+      ],
       "additionalProperties": false
     },
-    "opp_EventEstimation": {
+    "opp.EventEstimation": {
       "type": "object",
+      "description": "Defines forecast for events coming from ATO-Onboard",
       "properties": {
         "event": {
-          "type": "string"
+          "type": "string",
+          "description": "refers a movement event including the movement plan"
         },
         "arrival": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+          "format": "date-time",
+          "description": "Defines the arrival time in UTC"
         }
       },
-      "required": ["event", "arrival"],
+      "required": [
+        "event",
+        "arrival"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
-  "description": "source ATO ss126 STR-frame",
+  "description": "Defines train position report from ATO with additional info (driverId, speed, etc.). Source is SS126.STR.",
   "properties": {
     "issuedAt": {
       "type": "string",
-      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+      "format": "date-time",
+      "description": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"
     },
     "operationalPlanMovement": {
       "type": "string",
-      "description": "if the new train was created in TrafficCS it does not have an operationalPlan (Movement) yet"
+      "description": "Refers to the operational plan movement. If the new train was created in TrafficCS it does not have an operationalPlan (Movement) yet"
     },
     "trainUnitIdentifier": {
       "type": "object",
-      "$ref": "#/definitions/opp_PhysicalTrainUnitIdentifier"
+      "$ref": "#/definitions/opp.PhysicalTrainUnitIdentifier"
     },
     "atoState": {
       "type": "string",
-      "enum": ["unknown", "CO", "NA", "AV", "RE", "EG", "DE", "FA"]
+      "enum": [
+        "unknown",
+        "CO",
+        "NA",
+        "AV",
+        "RE",
+        "EG",
+        "DE",
+        "FA"
+      ],
+      "description": "Defines the current ATO On-Board state"
     },
     "routingError": {
       "type": "boolean",
-      "description": "inconsistent path"
+      "description": "Defines if a routing error has occured (inconsistent path)"
     },
     "nextStoppingPointSkip": {
       "type": "boolean",
-      "description": "skip-request by the train driver. "
+      "description": "Defines the wish of the train driver to skip the next stop. "
     },
     "lowAdhesionReportedByDriver": {
-      "type": "boolean"
+      "type": "boolean",
+      "description": "Defines any low adhesion is reported by the driver"
     },
     "operationalConditionsFulfillment": {
-      "type": "boolean"
+      "type": "boolean",
+      "description": "Defines if the operational conditions are fullfilled for ATO"
     },
     "isMoving": {
       "type": "boolean",
-      "description": "speed != 0.0 ?"
+      "description": "Defines if the train is moving or not (v != 0)"
     },
     "unableToStopAtNextStoppingPoint": {
       "type": "boolean",
-      "description": "the train istoo close and/or too fast for stopping"
+      "description": "Defines if the the train is too close and/or too fast for stopping"
     },
     "isSlipping": {
       "type": "boolean",
-      "description": "bit7 from SS126"
+      "description": "Defines if the wheel slip occurs.bit7 from SS126"
     },
     "speed": {
       "type": "integer",
-      "minimum": 0
+      "minimum": 0,
+      "description": "current speed of the train"
     },
     "trainLength": {
       "type": "integer",
-      "minimum": 0
+      "minimum": 0,
+      "description": "Defines the train length"
     },
     "driverId": {
-      "type": "string"
+      "type": "string",
+      "description": "Defines the driver id for the train unit"
     },
     "frontPosition": {
       "type": "object",
-      "description": "the direction can be deduced from JP and STR in SS 126",
-      "$ref": "#/definitions/infra_DirTrackEdgePoint"
+      "$ref": "#/definitions/infra.NetPointReference",
+      "description": "Defines the train front position with respect to the track edge direction. This direction can be deduced from JP and STR in SS 126"
     },
     "eventHandling": {
       "type": "object",
-      "$ref": "#/definitions/opp_EventHandling"
+      "$ref": "#/definitions/opp.EventHandling",
+      "description": "defines how the previous event was handled"
     },
     "eventEstimations": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/opp_EventEstimation"
-       }
+        "$ref": "#/definitions/opp.EventEstimation"
+      },
+      "description": "Refers to event estimations"
     }
   },
-  "required": ["issuedAt", "trainUnitIdentifier", "frontPosition"],
+  "required": [
+    "issuedAt",
+    "trainUnitIdentifier",
+    "frontPosition"
+  ],
   "additionalProperties": false
 }

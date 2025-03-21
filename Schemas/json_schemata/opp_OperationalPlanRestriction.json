@@ -1,212 +1,358 @@
 {
   "$id": "https://ERJU/opp_OperationalPlanRestriction",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_DirTrackEdgeSection": {
+    "infra.LinearElementSection": {
       "type": "object",
-      "description": "Defines a directed linear object (with a linear extension) located on a Track Edge",
+      "description": "Defines a directed linear object (with a linear extension) located on a LinearElement",
       "properties": {
-        "trackEdge": {
+        "onElement": {
           "type": "string",
-          "description": "refers totrack edge"
+          "description": "refers to linear element"
         },
-        "skipFromStart": {
+        "startOffsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [0..skipFromStart]"
+          "description": "Defines the start offset from the origin"
         },
-        "skipFromEnd": {
+        "endOffsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]"
+          "description": "Defines the end offset from the origin"
         },
-        "applicableDirection": {
-          "type": "string",
-          "description": "defines the applicable direction of the track edge",
-          "enum": ["dirBoth", "dirSame", "dirReverse"]
+        "appliesInBothDirections": {
+          "type": "boolean",
+          "description": "Defines if the section applies in both directions"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onElement"
+      ],
       "additionalProperties": false
     },
-    "opp_TrainGroupSpec": {
+    "opp.TrainGroupSpec": {
       "type": "object",
-      "description": "train characteristics known to interlocking for safety relevant restrictions",
+      "description": "Defines the train aspects, which define if the train belongs to the restricted group.",
       "properties": {
         "axleLoadCategories": {
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["AL_A", "AL_HS17", "AL_B1", "AL_B2", "AL_C2", "AL_C3", "AL_C4", "AL_D2", "AL_D3", "AL_D4", "AL_D4XL", "AL_E4", "AL_E5"]
-           }
+            "enum": [
+              "AL_A",
+              "AL_HS17",
+              "AL_B1",
+              "AL_B2",
+              "AL_C2",
+              "AL_C3",
+              "AL_C4",
+              "AL_D2",
+              "AL_D3",
+              "AL_D4",
+              "AL_D4XL",
+              "AL_E4",
+              "AL_E5"
+            ]
+          },
+          "description": "Trains with the listed Axle-Load-Category belong to the TrainGroup."
         },
         "cantDeficiencyCategories": {
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["CD_Undefined", "CD_80mm", "CD_100mm", "CD_130mm", "CD_150mm", "CD_165mm", "CD_180mm", "CD_210mm", "CD_225mm", "CD_245mm", "CD_275mm", "CD_300mm"]
-           }
+            "enum": [
+              "CD_Undefined",
+              "CD_80mm",
+              "CD_100mm",
+              "CD_130mm",
+              "CD_150mm",
+              "CD_165mm",
+              "CD_180mm",
+              "CD_210mm",
+              "CD_225mm",
+              "CD_245mm",
+              "CD_275mm",
+              "CD_300mm"
+            ]
+          },
+          "description": "Defines the different cant deficiency categories"
         }
       },
       "additionalProperties": false
     },
-    "opp_RestrictedAspects": {
+    "opp.RestrictedAspect": {
       "type": "object",
+      "description": "Defines single aspects of the infrastructure restriction",
       "properties": {
         "temporarySpeedRestriction": {
           "type": "integer",
           "minimum": 0,
-          "description": "use 0 if not defined"
+          "description": "Defines the temporary speed restriction on the track"
         },
         "allowedDrivingModes": {
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["undefined", "onSight", "fullSupervision", "standBy"]
-           }
+            "enum": [
+              "undefined",
+              "onSight",
+              "fullSupervision",
+              "standBy"
+            ]
+          },
+          "description": "Defines the allowed driving modes"
         },
         "nonStopping": {
           "type": "boolean",
-          "description": "if true, the trains defined in trainGroupSpec shall not stop within restriction area"
+          "description": "Defines the non stopping area. if true, the trains defined in trainGroupSpec shall not stop within restriction area"
         },
         "trackClosure": {
           "type": "boolean",
-          "description": "if true, the trains defined in trainGroupSpec shall not enter restriction area"
+          "description": "Defines track closure information. If true, the trains defined in trainGroupSpec shall not enter restriction area"
         },
         "operationalRadioHole": {
           "type": "boolean",
-          "description": "if true radio communication is restricted within restriction area"
+          "description": "Defines the presence of operational radio holes. if true radio communication is restricted within restriction area"
         },
         "maxAdhesion": {
           "type": "string",
-          "enum": ["dryRailHigh", "dryRailMedium", "dryRailLow", "lowAdhesion", "veryLowAdhesion", "extremelyLowAdhesion", "unknownAdhesion"]
-        }
-      },
-      "additionalProperties": false
-    },
-    "opp_SpecificRestriction": {
-      "type": "object",
-      "properties": {
-        "appliedToTrains": {
-          "type": "object",
-          "description": "if not provided the restriction is valid for all trains",
-          "$ref": "#/definitions/opp_TrainGroupSpec"
+          "enum": [
+            "dryRailHigh",
+            "dryRailMedium",
+            "dryRailLow",
+            "lowAdhesion",
+            "veryLowAdhesion",
+            "extremelyLowAdhesion",
+            "unknownAdhesion"
+          ],
+          "description": "Defines the maximum adhesion"
         },
-        "restrictedAspects": {
-          "type": "object",
-          "$ref": "#/definitions/opp_RestrictedAspects"
-        }
-      },
-      "required": ["restrictedAspects"],
-      "additionalProperties": false
-    },
-    "opp_RestrictionArea": {
-      "type": "object",
-      "properties": {
-        "dirTrackEdgeSections": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/infra_DirTrackEdgeSection"
-           },
-          "minItems": 1
+        "atoInhibition": {
+          "type": "boolean",
+          "description": "Defined the ato inhibition zones. Exmaples: train section is not contantly monitored, or stimulate driver's attention, or approaching overcrouded station"
         },
-        "specificRestrictions": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/opp_SpecificRestriction"
-           },
-          "minItems": 1
-        }
-      },
-      "required": ["dirTrackEdgeSections", "specificRestrictions"],
-      "additionalProperties": false
-    },
-    "opp_OperationalEventRef": {
-      "type": "object",
-      "properties": {
-        "movementEvent": {
-          "type": "string"
-        },
-        "restrictionEvent": {
-          "type": "string"
-        },
-        "warningMeasureEvent": {
-          "type": "string"
+        "maxCurrent": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines max current value. For ATO, SS126. Ignored by TrafficCS"
         }
       },
       "oneOf": [
         {
           "type": "object",
-          "required": ["movementEvent"]
+          "required": [
+            "temporarySpeedRestriction"
+          ]
         },
         {
           "type": "object",
-          "required": ["restrictionEvent"]
+          "required": [
+            "allowedDrivingModes"
+          ]
         },
         {
           "type": "object",
-          "required": ["warningMeasureEvent"]
+          "required": [
+            "nonStopping"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "trackClosure"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "operationalRadioHole"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "maxAdhesion"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "atoInhibition"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "maxCurrent"
+          ]
         }
       ],
       "additionalProperties": false
     },
-    "opp_RestrictionEvent": {
+    "opp.SpecificRestriction": {
       "type": "object",
+      "description": "Defines single aspect of the infrastructure restriction.",
+      "properties": {
+        "appliedToTrains": {
+          "type": "object",
+          "$ref": "#/definitions/opp.TrainGroupSpec",
+          "description": "Defines the applicable trains that are affected by the specific restriction"
+        },
+        "restrictedAspects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/opp.RestrictedAspect"
+          },
+          "minItems": 1,
+          "description": "Defines the restricted aspects associated to a specific restriction"
+        }
+      },
+      "required": [
+        "restrictedAspects"
+      ],
+      "additionalProperties": false
+    },
+    "opp.RestrictionArea": {
+      "type": "object",
+      "description": "Defines a topological area, in which the restrictions must be applied.",
+      "properties": {
+        "linearElementSections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/infra.LinearElementSection"
+          },
+          "minItems": 1,
+          "description": "composes of linear element sections"
+        },
+        "specificRestrictions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/opp.SpecificRestriction"
+          },
+          "minItems": 1,
+          "description": "Defines the list of specific restrictions"
+        }
+      },
+      "required": [
+        "linearElementSections",
+        "specificRestrictions"
+      ],
+      "additionalProperties": false
+    },
+    "opp.OperationalEventRef": {
+      "type": "object",
+      "description": "Defines a reference to one of possible OperationalEvents (as a unit)",
+      "properties": {
+        "movementEvent": {
+          "type": "string",
+          "description": "refers a movement event including the movement plan"
+        },
+        "restrictionEvent": {
+          "type": "string",
+          "description": "Refers a restriction event including restriction plan"
+        },
+        "warningMeasureEvent": {
+          "type": "string",
+          "description": "Refers a warnning measure event including the warning plan"
+        }
+      },
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "movementEvent"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "restrictionEvent"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "warningMeasureEvent"
+          ]
+        }
+      ],
+      "additionalProperties": false
+    },
+    "opp.RestrictionEvent": {
+      "type": "object",
+      "description": "Defines a part of temporary infrastructure restriction, especially if one Restriction plan contains several areas to be activate to different times.",
       "properties": {
         "id": {
           "type": "string",
-          "description": "globally unique key (e.g. uuid)"
+          "description": "Defines the Identity of the object; used for referencing"
         },
         "creationTime": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$",
-          "description": "time when the restrictionArea shall be created=implemented=activated in interlocking"
+          "format": "date-time",
+          "description": "Defines the time when the restrictionArea shall be created=implemented=activated in interlocking, in UTC"
         },
         "removalTime": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+          "format": "date-time",
+          "description": "Defines the removal time in UTC"
         },
         "restrictionArea": {
           "type": "object",
-          "$ref": "#/definitions/opp_RestrictionArea"
+          "$ref": "#/definitions/opp.RestrictionArea",
+          "description": "Defines the restriction area associated to a restriction event"
         },
         "startsAfterEvents": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/opp_OperationalEventRef"
-           }
+            "$ref": "#/definitions/opp.OperationalEventRef"
+          },
+          "description": "Defines the set of operational events, which must be finished before the current event starts."
         }
       },
-      "required": ["id", "creationTime", "removalTime", "restrictionArea"],
+      "required": [
+        "id",
+        "creationTime",
+        "removalTime",
+        "restrictionArea"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
+  "description": "Defines a temporary infrastructure restriction",
   "properties": {
     "id": {
       "type": "string",
-      "description": "globally unique key (e.g. uuid)"
+      "description": "Defines the Identity of the object; used for referencing"
     },
     "issuedAt": {
       "type": "string",
-      "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+      "format": "date-time",
+      "description": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"
     },
     "configurationDataVersionRef": {
       "type": "string",
-      "description": "version of infrastructure data"
+      "description": "Defines the configuration data version for which the operational plan is valid"
     },
     "restrictionEvents": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/opp_RestrictionEvent"
-       },
-      "minItems": 1
+        "$ref": "#/definitions/opp.RestrictionEvent"
+      },
+      "minItems": 1,
+      "description": "Defines a set of restriction events assigned the the operational plan restriction"
     }
   },
-  "required": ["id", "issuedAt", "configurationDataVersionRef", "restrictionEvents"],
+  "required": [
+    "id",
+    "issuedAt",
+    "configurationDataVersionRef",
+    "restrictionEvents"
+  ],
   "additionalProperties": false
 }

@@ -1,46 +1,71 @@
 {
   "$id": "https://ERJU/infra_TvpSection",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "infra_TrackEdgeSection": {
+    "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a non-directed linear object (with a linear extension) located on a Track Edge",
+      "description": "Defines a topological coordinates on the track",
       "properties": {
-        "trackEdge": {
+        "onLinearElement": {
           "type": "string",
-          "description": "refers to track edge"
+          "description": "is positioned on linear element"
         },
-        "skipFromStart": {
+        "offsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "ignore section [0..skipFromStart]."
-        },
-        "skipFromEnd": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "ignore section [skipFromEnd, length]."
+          "description": "position on the associated NetElement"
         }
       },
-      "required": ["trackEdge"],
+      "required": [
+        "onLinearElement"
+      ],
       "additionalProperties": false
     },
-    "infra_LinkedArea": {
+    "infra.NetLinearReference": {
       "type": "object",
+      "description": "Defines a linked path on the topology",
       "properties": {
-        "entireTrackEdges": {
+        "startsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Definesthe starting coordinate of a linear reference"
+        },
+        "endsAt": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate",
+          "description": "Defines the ending coordinate of a linear reference."
+        },
+        "hasSequence": {
           "type": "array",
           "items": {
             "type": "string"
-           }
-        },
-        "trackEdgeSections": {
+          },
+          "description": "Defines a sequence of linearElements from the start to the end excluding those defined in startAt- and endsAt-TopologicalCoodinates."
+        }
+      },
+      "required": [
+        "startsAt",
+        "endsAt"
+      ],
+      "additionalProperties": false
+    },
+    "infra.NetAreaReference": {
+      "type": "object",
+      "description": "Represents an area reference in the network.",
+      "properties": {
+        "includes": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/infra_TrackEdgeSection"
-           }
+            "$ref": "#/definitions/infra.NetLinearReference"
+          },
+          "minItems": 1,
+          "description": "List of linear references included in an network area reference."
         }
       },
+      "required": [
+        "includes"
+      ],
       "additionalProperties": false
     }
   },
@@ -57,17 +82,20 @@
     },
     "linkedArea": {
       "type": "object",
-      "description": "composes of linked area",
-      "$ref": "#/definitions/infra_LinkedArea"
+      "$ref": "#/definitions/infra.NetAreaReference",
+      "description": "composes of linked area"
     },
     "trainDetectors": {
       "type": "array",
       "items": {
-        "type": "string",
-        "description": "refers to train detectors"
-       }
+        "type": "string"
+      },
+      "description": "Defines the set of train detectors"
     }
   },
-  "required": ["id", "linkedArea"],
+  "required": [
+    "id",
+    "linkedArea"
+  ],
   "additionalProperties": false
 }

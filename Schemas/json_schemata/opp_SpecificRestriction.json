@@ -1,75 +1,187 @@
 {
   "$id": "https://ERJU/opp_SpecificRestriction",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "opp_TrainGroupSpec": {
+    "opp.TrainGroupSpec": {
       "type": "object",
-      "description": "train characteristics known to interlocking for safety relevant restrictions",
+      "description": "Defines the train aspects, which define if the train belongs to the restricted group.",
       "properties": {
         "axleLoadCategories": {
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["AL_A", "AL_HS17", "AL_B1", "AL_B2", "AL_C2", "AL_C3", "AL_C4", "AL_D2", "AL_D3", "AL_D4", "AL_D4XL", "AL_E4", "AL_E5"]
-           }
+            "enum": [
+              "AL_A",
+              "AL_HS17",
+              "AL_B1",
+              "AL_B2",
+              "AL_C2",
+              "AL_C3",
+              "AL_C4",
+              "AL_D2",
+              "AL_D3",
+              "AL_D4",
+              "AL_D4XL",
+              "AL_E4",
+              "AL_E5"
+            ]
+          },
+          "description": "Trains with the listed Axle-Load-Category belong to the TrainGroup."
         },
         "cantDeficiencyCategories": {
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["CD_Undefined", "CD_80mm", "CD_100mm", "CD_130mm", "CD_150mm", "CD_165mm", "CD_180mm", "CD_210mm", "CD_225mm", "CD_245mm", "CD_275mm", "CD_300mm"]
-           }
+            "enum": [
+              "CD_Undefined",
+              "CD_80mm",
+              "CD_100mm",
+              "CD_130mm",
+              "CD_150mm",
+              "CD_165mm",
+              "CD_180mm",
+              "CD_210mm",
+              "CD_225mm",
+              "CD_245mm",
+              "CD_275mm",
+              "CD_300mm"
+            ]
+          },
+          "description": "Defines the different cant deficiency categories"
         }
       },
       "additionalProperties": false
     },
-    "opp_RestrictedAspects": {
+    "opp.RestrictedAspect": {
       "type": "object",
+      "description": "Defines single aspects of the infrastructure restriction",
       "properties": {
         "temporarySpeedRestriction": {
           "type": "integer",
           "minimum": 0,
-          "description": "use 0 if not defined"
+          "description": "Defines the temporary speed restriction on the track"
         },
         "allowedDrivingModes": {
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["undefined", "onSight", "fullSupervision", "standBy"]
-           }
+            "enum": [
+              "undefined",
+              "onSight",
+              "fullSupervision",
+              "standBy"
+            ]
+          },
+          "description": "Defines the allowed driving modes"
         },
         "nonStopping": {
           "type": "boolean",
-          "description": "if true, the trains defined in trainGroupSpec shall not stop within restriction area"
+          "description": "Defines the non stopping area. if true, the trains defined in trainGroupSpec shall not stop within restriction area"
         },
         "trackClosure": {
           "type": "boolean",
-          "description": "if true, the trains defined in trainGroupSpec shall not enter restriction area"
+          "description": "Defines track closure information. If true, the trains defined in trainGroupSpec shall not enter restriction area"
         },
         "operationalRadioHole": {
           "type": "boolean",
-          "description": "if true radio communication is restricted within restriction area"
+          "description": "Defines the presence of operational radio holes. if true radio communication is restricted within restriction area"
         },
         "maxAdhesion": {
           "type": "string",
-          "enum": ["dryRailHigh", "dryRailMedium", "dryRailLow", "lowAdhesion", "veryLowAdhesion", "extremelyLowAdhesion", "unknownAdhesion"]
+          "enum": [
+            "dryRailHigh",
+            "dryRailMedium",
+            "dryRailLow",
+            "lowAdhesion",
+            "veryLowAdhesion",
+            "extremelyLowAdhesion",
+            "unknownAdhesion"
+          ],
+          "description": "Defines the maximum adhesion"
+        },
+        "atoInhibition": {
+          "type": "boolean",
+          "description": "Defined the ato inhibition zones. Exmaples: train section is not contantly monitored, or stimulate driver's attention, or approaching overcrouded station"
+        },
+        "maxCurrent": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines max current value. For ATO, SS126. Ignored by TrafficCS"
         }
       },
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "temporarySpeedRestriction"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "allowedDrivingModes"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "nonStopping"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "trackClosure"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "operationalRadioHole"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "maxAdhesion"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "atoInhibition"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "maxCurrent"
+          ]
+        }
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
+  "description": "Defines single aspect of the infrastructure restriction.",
   "properties": {
     "appliedToTrains": {
       "type": "object",
-      "description": "if not provided the restriction is valid for all trains",
-      "$ref": "#/definitions/opp_TrainGroupSpec"
+      "$ref": "#/definitions/opp.TrainGroupSpec",
+      "description": "Defines the applicable trains that are affected by the specific restriction"
     },
     "restrictedAspects": {
-      "type": "object",
-      "$ref": "#/definitions/opp_RestrictedAspects"
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/opp.RestrictedAspect"
+      },
+      "minItems": 1,
+      "description": "Defines the restricted aspects associated to a specific restriction"
     }
   },
-  "required": ["restrictedAspects"],
+  "required": [
+    "restrictedAspects"
+  ],
   "additionalProperties": false
 }

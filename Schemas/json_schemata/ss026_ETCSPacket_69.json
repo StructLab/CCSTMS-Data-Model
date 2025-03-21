@@ -1,9 +1,10 @@
 {
   "$id": "https://ERJU/ss026_ETCSPacket_69",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "ss026_TCSPCondition": {
+    "ss026.TCSPCondition": {
       "type": "object",
+      "description": "Defines the conditions related to track characteristics and platform parameters, ensuring accurate assessment of track suitability. This includes track condition change distances, validity lengths, platform height specifications, and platform positioning, as referenced in TSI infrastructure standards.",
       "properties": {
         "d_trackcond": {
           "type": "integer",
@@ -22,14 +23,19 @@
         },
         "q_platform": {
           "type": "string",
-          "enum": ["ppLeft", "ppRight", "ppBoth"]
+          "enum": [
+            "ppLeft",
+            "ppRight",
+            "ppBoth"
+          ],
+          "description": "defines the platform position with respect to the direction of authorized movement"
         }
       },
       "additionalProperties": false
     }
   },
   "type": "object",
-  "description": " Track Condition Station Platforms (The packet gives details concerning the location and height of station platforms for use by the trainâs door control system)",
+  "description": " Track Condition Station Platforms (The packet gives details concerning the location and height of station platforms for use by the train\u00e2\u0099s door control system)",
   "properties": {
     "q_trackinit": {
       "type": "boolean",
@@ -44,9 +50,10 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/ss026_TCSPCondition"
-       },
-      "maxItems": 32
+        "$ref": "#/definitions/ss026.TCSPCondition"
+      },
+      "maxItems": 32,
+      "description": "List the conditions related to track characteristics and platform parameters"
     }
   },
   "additionalProperties": false

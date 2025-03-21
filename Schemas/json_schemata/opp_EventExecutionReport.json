@@ -1,70 +1,94 @@
 {
   "$id": "https://ERJU/opp_EventExecutionReport",
-  "$schema": "http://json-schema.org/draft-08/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "opp_MovementEventExecutionReport": {
+    "opp.MovementEventExecutionReport": {
       "type": "object",
+      "description": "Defines state of execution of a warning measure event (completed, failed, warning).",
       "properties": {
         "movementEvent": {
           "type": "string",
-          "description": "in json is a string with planId/eventId"
+          "description": "refers to a movement event. In json is a string with planId/eventId"
         },
         "operationalPlanIssuedAt": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+          "format": "date-time",
+          "description": "in UTC"
         },
         "issuedAt": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+          "format": "date-time",
+          "description": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"
         },
         "executionState": {
           "type": "string",
-          "enum": ["eventCompleted", "eventFailed", "eventWarning"]
+          "enum": [
+            "eventCompleted",
+            "eventFailed",
+            "eventWarning"
+          ],
+          "description": "Defines the type of execution result of the event"
         },
         "failureReason": {
           "type": "string",
-          "description": "informal error message in English"
+          "description": "Defines an informal error message in English"
         },
         "warning": {
           "type": "string",
-          "description": "informal warning message in English"
+          "description": "Defines an informal warning message in English"
         }
       },
-      "required": ["movementEvent", "operationalPlanIssuedAt", "issuedAt"],
+      "required": [
+        "movementEvent",
+        "operationalPlanIssuedAt",
+        "issuedAt"
+      ],
       "additionalProperties": false
     },
-    "opp_RestrictionEventExecutionReport": {
+    "opp.RestrictionEventExecutionReport": {
       "type": "object",
+      "description": "Defines how the restriction event was executed (success, failure ...)",
       "properties": {
         "restrictionEvent": {
           "type": "string",
-          "description": "in json is a string with planId/eventId"
+          "description": "refers to a restriction event including operational plan restriction"
         },
         "operationalPlanIssuedAt": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+          "format": "date-time",
+          "description": "in UTC"
         },
         "issuedAt": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+          "format": "date-time",
+          "description": "Defines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"
         },
         "executionState": {
           "type": "string",
-          "enum": ["eventCompleted", "eventFailed", "eventWarning"]
+          "enum": [
+            "eventCompleted",
+            "eventFailed",
+            "eventWarning"
+          ],
+          "description": "Defines the type of execution result of the event"
         },
         "failureReason": {
           "type": "string",
-          "description": "informal error message in English"
+          "description": "Defines an informal error message in English"
         },
         "warning": {
           "type": "string",
-          "description": "informal warning message in English"
+          "description": "Defines an informal warning message in English"
         }
       },
-      "required": ["restrictionEvent", "operationalPlanIssuedAt", "issuedAt"],
+      "required": [
+        "restrictionEvent",
+        "operationalPlanIssuedAt",
+        "issuedAt"
+      ],
       "additionalProperties": false
     },
-    "opp_WarningMeasureEventExecutionReport": {
+    "opp.WarningMeasureEventExecutionReport": {
       "type": "object",
       "properties": {
         "warningMeasureEvent": {
@@ -73,81 +97,110 @@
         },
         "operationalPlanIssuedAt": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+          "format": "date-time",
+          "description": "in UTC"
         },
         "issuedAt": {
           "type": "string",
-          "pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9]|60)(\\.\\d+)?(Z|[+-](2[0-3]|[01][0-9]):[0-5][0-9])?$"
+          "format": "date-time",
+          "description": "iDefines the issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"
         },
         "executionState": {
           "type": "string",
-          "enum": ["eventCompleted", "eventFailed", "eventWarning"]
+          "enum": [
+            "eventCompleted",
+            "eventFailed",
+            "eventWarning"
+          ],
+          "description": "Defines the type of execution result of the event"
         },
         "failureReason": {
           "type": "string",
-          "description": "informal error message in English"
+          "description": "Defines an informal error message in English"
         },
         "warning": {
           "type": "string",
-          "description": "informal warning message in English"
+          "description": "Defines an informal warning message in English"
         }
       },
-      "required": ["warningMeasureEvent", "operationalPlanIssuedAt", "issuedAt"],
+      "required": [
+        "warningMeasureEvent",
+        "operationalPlanIssuedAt",
+        "issuedAt"
+      ],
       "additionalProperties": false
     }
   },
   "type": "object",
+  "description": "Defines states of start/end of an event (success/failure, timestamp etc.)",
   "properties": {
     "arrivalReport": {
       "type": "object",
-      "description": "for passing only the departure report shall be sent",
-      "$ref": "#/definitions/opp_MovementEventExecutionReport"
+      "$ref": "#/definitions/opp.MovementEventExecutionReport",
+      "description": "Defines the arrival reports. For passing only the departure reports are to be sent"
     },
     "departureReport": {
       "type": "object",
-      "$ref": "#/definitions/opp_MovementEventExecutionReport"
+      "$ref": "#/definitions/opp.MovementEventExecutionReport",
+      "description": "Defines the result of departure attempt"
     },
     "creationRestrictionReport": {
       "type": "object",
-      "$ref": "#/definitions/opp_RestrictionEventExecutionReport"
+      "$ref": "#/definitions/opp.RestrictionEventExecutionReport",
+      "description": "Defines the result of creation of a restriction"
     },
     "removalRestrictionReport": {
       "type": "object",
-      "$ref": "#/definitions/opp_RestrictionEventExecutionReport"
+      "$ref": "#/definitions/opp.RestrictionEventExecutionReport",
+      "description": "Defines the result of removal of a restriction"
     },
     "creationWarningMeasureReport": {
       "type": "object",
-      "$ref": "#/definitions/opp_WarningMeasureEventExecutionReport"
+      "$ref": "#/definitions/opp.WarningMeasureEventExecutionReport",
+      "description": "Defines the result of creation of a warning measure"
     },
     "removalWarningMeasureReport": {
       "type": "object",
-      "$ref": "#/definitions/opp_WarningMeasureEventExecutionReport"
+      "$ref": "#/definitions/opp.WarningMeasureEventExecutionReport",
+      "description": "Defines the result of removal of warning measure"
     }
   },
   "oneOf": [
     {
       "type": "object",
-      "required": ["arrivalReport"]
+      "required": [
+        "arrivalReport"
+      ]
     },
     {
       "type": "object",
-      "required": ["departureReport"]
+      "required": [
+        "departureReport"
+      ]
     },
     {
       "type": "object",
-      "required": ["creationRestrictionReport"]
+      "required": [
+        "creationRestrictionReport"
+      ]
     },
     {
       "type": "object",
-      "required": ["removalRestrictionReport"]
+      "required": [
+        "removalRestrictionReport"
+      ]
     },
     {
       "type": "object",
-      "required": ["creationWarningMeasureReport"]
+      "required": [
+        "creationWarningMeasureReport"
+      ]
     },
     {
       "type": "object",
-      "required": ["removalWarningMeasureReport"]
+      "required": [
+        "removalWarningMeasureReport"
+      ]
     }
   ],
   "additionalProperties": false
