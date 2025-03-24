@@ -1902,6 +1902,13 @@
       "type": "array",
       "items": {
         "type": "object",
+        "$ref": "#/definitions/ss026.ETCSPacket_71"
+      }
+    },
+    "packets_72": {
+      "type": "array",
+      "items": {
+        "type": "object",
         "$ref": "#/definitions/ss026.ETCSPacket_72"
       }
     },

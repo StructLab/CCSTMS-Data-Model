@@ -951,10 +951,10 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="packets_71" minOccurs="0" maxOccurs="1">
+			<xs:element name="packets_72" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="packets_71Item" type="ss026:ETCSPacket_72" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="packets_72Item" type="ss026:ETCSPacket_72" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>

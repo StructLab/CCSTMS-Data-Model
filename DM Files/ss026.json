@@ -945,7 +945,7 @@
         {"intId": 21, "name": "packets_69", "composition": "ETCSPacket_69", "multiplicity": "*"}, 
         {"intId": 22, "name": "packets_70", "composition": "ETCSPacket_70", "multiplicity": "*"}, 
         {"intId": 23, "name": "packets_71", "composition": "ETCSPacket_71", "multiplicity": "*"}, 
-        {"intId": 24, "name": "packets_71", "composition": "ETCSPacket_72", "multiplicity": "*"}, 
+        {"intId": 24, "name": "packets_72", "composition": "ETCSPacket_72", "multiplicity": "*"}, 
         {"intId": 25, "name": "packets_76", "composition": "ETCSPacket_76", "multiplicity": "*"}, 
         {"intId": 26, "name": "packets_79", "composition": "ETCSPacket_79", "multiplicity": "*"}, 
         {"intId": 27, "name": "packets_80", "composition": "ETCSPacket_80", "multiplicity": "*"}, 
