@@ -1,0 +1,50 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-tempstatus: <http://data.europa.eu/949/concepts/temperature-status/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-tempstatus:TemperatureStatus a skos:ConceptScheme ;
+    rdfs:label "Temperature Status"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "Indicates the temperature status of the CPU"@en ;
+    skos:hiddenLabel "CCSTMS_TemperatureStatus" ;
+    skos:prefLabel "Temperature Status"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-tempstatus:Normal a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Normal_1" ;
+    skos:inScheme era-tempstatus:TemperatureStatus ;
+    skos:notation "Normal"^^xsd:string ;
+    skos:prefLabel "Normal"@en ;
+    skos:topConceptOf era-tempstatus:TemperatureStatus .
+
+era-tempstatus:TooHigh a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_TooHigh_2" ;
+    skos:inScheme era-tempstatus:TemperatureStatus ;
+    skos:notation "TooHigh"^^xsd:string ;
+    skos:prefLabel "Too High"@en ;
+    skos:topConceptOf era-tempstatus:TemperatureStatus .
+
+era-tempstatus:Unknown a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Unknown_0" ;
+    skos:inScheme era-tempstatus:TemperatureStatus ;
+    skos:notation "Unknown"^^xsd:string ;
+    skos:prefLabel "Unknown"@en ;
+    skos:topConceptOf era-tempstatus:TemperatureStatus .

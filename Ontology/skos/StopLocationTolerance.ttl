@@ -1,0 +1,197 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-slt: <http://data.europa.eu/949/concepts/stop-location-tolerance/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-slt:StopLocationTolerance a skos:ConceptScheme ;
+    rdfs:label "Stop Location Tolerance"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "List defining different stop location tolerances for a timing point of type stopping point. Warning: intId differ from SS126 by 1"@en ;
+    skos:hiddenLabel "CCSTMS_StopLocationTolerance" ;
+    skos:prefLabel "Stop Location Tolerance"@en .
+
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-slt:T_100m a skos:Concept ;
+    rdfs:comment "100m tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_100m_20" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_100m"^^xsd:string ;
+    skos:prefLabel "T_100M"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_10cm a skos:Concept ;
+    rdfs:comment "10cm tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_10cm_1" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_10cm"^^xsd:string ;
+    skos:prefLabel "T_10Cm"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_10m a skos:Concept ;
+    rdfs:comment "10m tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_10m_13" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_10m"^^xsd:string ;
+    skos:prefLabel "T_10M"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_150cm a skos:Concept ;
+    rdfs:comment "150cm tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_150cm_7" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_150cm"^^xsd:string ;
+    skos:prefLabel "T_150Cm"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_15m a skos:Concept ;
+    rdfs:comment "15m tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_15m_14" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_15m"^^xsd:string ;
+    skos:prefLabel "T_15M"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_1m a skos:Concept ;
+    rdfs:comment "1m tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_1m_6" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_1m"^^xsd:string ;
+    skos:prefLabel "T_1M"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_20cm a skos:Concept ;
+    rdfs:comment "20cm tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_20cm_2" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_20cm"^^xsd:string ;
+    skos:prefLabel "T_20Cm"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_20m a skos:Concept ;
+    rdfs:comment "20m tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_20m_15" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_20m"^^xsd:string ;
+    skos:prefLabel "T_20M"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_250cm a skos:Concept ;
+    rdfs:comment "250m tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_250cm_9" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_250cm"^^xsd:string ;
+    skos:prefLabel "T_250Cm"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_25m a skos:Concept ;
+    rdfs:comment "25m tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_25m_16" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_25m"^^xsd:string ;
+    skos:prefLabel "T_25M"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_2m a skos:Concept ;
+    rdfs:comment "2m tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_2m_8" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_2m"^^xsd:string ;
+    skos:prefLabel "T_2M"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_30cm a skos:Concept ;
+    rdfs:comment "30cm tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_30cm_3" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_30cm"^^xsd:string ;
+    skos:prefLabel "T_30Cm"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_30m a skos:Concept ;
+    rdfs:comment "30m tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_30m_17" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_30m"^^xsd:string ;
+    skos:prefLabel "T_30M"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_3m a skos:Concept ;
+    rdfs:comment "3m tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_3m_10" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_3m"^^xsd:string ;
+    skos:prefLabel "T_3M"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_40cm a skos:Concept ;
+    rdfs:comment "40cm tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_40cm_4" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_40cm"^^xsd:string ;
+    skos:prefLabel "T_40Cm"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_50cm a skos:Concept ;
+    rdfs:comment "50cm tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_50cm_5" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_50cm"^^xsd:string ;
+    skos:prefLabel "T_50Cm"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_50m a skos:Concept ;
+    rdfs:comment "50m tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_50m_18" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_50m"^^xsd:string ;
+    skos:prefLabel "T_50M"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_5m a skos:Concept ;
+    rdfs:comment "5m tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_5m_11" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_5m"^^xsd:string ;
+    skos:prefLabel "T_5M"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_750cm a skos:Concept ;
+    rdfs:comment "750cm tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_750cm_12" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_750cm"^^xsd:string ;
+    skos:prefLabel "T_750Cm"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_75m a skos:Concept ;
+    rdfs:comment "75m tolerance"@en ;
+    skos:hiddenLabel "CCSTMS_T_75m_19" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_75m"^^xsd:string ;
+    skos:prefLabel "T_75M"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .
+
+era-slt:T_Undefined a skos:Concept ;
+    rdfs:comment "tolerance is undefind"@en ;
+    skos:hiddenLabel "CCSTMS_T_Undefined_0" ;
+    skos:inScheme era-slt:StopLocationTolerance ;
+    skos:notation "T_Undefined"^^xsd:string ;
+    skos:prefLabel "T_Undefined"@en ;
+    skos:topConceptOf era-slt:StopLocationTolerance .

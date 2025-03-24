@@ -1,0 +1,51 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-dpsg-state: <http://data.europa.eu/949/concepts/dpsg-state/> .
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-dpsg-state:DPSGState a skos:ConceptScheme ;
+    rdfs:label "DPSG State"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "States of drive protection section group"@en ;
+    skos:hiddenLabel "CCSTMS_DPSGState" ;
+    skos:prefLabel "DPSG State"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-dpsg-state:disturbed a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_disturbed_2" ;
+    skos:inScheme era-dpsg-state:DPSGState ;
+    skos:notation "disturbed"^^xsd:string ;
+    skos:prefLabel "Disturbed"@en ;
+    skos:topConceptOf era-dpsg-state:DPSGState .
+
+era-dpsg-state:processing a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_processing_1" ;
+    skos:inScheme era-dpsg-state:DPSGState ;
+    skos:notation "processing"^^xsd:string ;
+    skos:prefLabel "Processing"@en ;
+    skos:topConceptOf era-dpsg-state:DPSGState .
+
+era-dpsg-state:ready a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_ready_0" ;
+    skos:inScheme era-dpsg-state:DPSGState ;
+    skos:notation "ready"^^xsd:string ;
+    skos:prefLabel "Ready"@en ;
+    skos:topConceptOf era-dpsg-state:DPSGState .

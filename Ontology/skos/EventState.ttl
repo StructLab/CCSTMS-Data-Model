@@ -1,0 +1,49 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-eventstate: <http://data.europa.eu/949/concepts/event-state/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-eventstate:EventState a skos:ConceptScheme ;
+    rdfs:label "Event State"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_EventState" ;
+    skos:prefLabel "Event State"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-eventstate:created a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_created_0" ;
+    skos:inScheme era-eventstate:EventState ;
+    skos:notation "created"^^xsd:string ;
+    skos:prefLabel "Created"@en ;
+    skos:topConceptOf era-eventstate:EventState .
+
+era-eventstate:removed a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_removed_2" ;
+    skos:inScheme era-eventstate:EventState ;
+    skos:notation "removed"^^xsd:string ;
+    skos:prefLabel "Removed"@en ;
+    skos:topConceptOf era-eventstate:EventState .
+
+era-eventstate:updated a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_updated_1" ;
+    skos:inScheme era-eventstate:EventState ;
+    skos:notation "updated"^^xsd:string ;
+    skos:prefLabel "Updated"@en ;
+    skos:topConceptOf era-eventstate:EventState .

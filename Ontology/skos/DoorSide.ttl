@@ -1,0 +1,64 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-doorside: <http://data.europa.eu/949/concepts/door-side/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-doorside:DoorSide a skos:ConceptScheme ;
+    rdfs:label "Door Side"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_DoorSide" ;
+    skos:prefLabel "Door Side"@en .	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-doorside:doorNoneSide a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_doorNoneSide_3" ;
+    skos:inScheme era-doorside:DoorSide ;
+    skos:notation "doorNoneSide"^^xsd:string ;
+    skos:prefLabel "DoorNoneSide"@en ;
+    skos:topConceptOf era-doorside:DoorSide .
+
+era-doorside:doorSideBoth a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_doorSideBoth_2" ;
+    skos:inScheme era-doorside:DoorSide ;
+    skos:notation "doorSideBoth"^^xsd:string ;
+    skos:prefLabel "DoorSideBoth"@en ;
+    skos:topConceptOf era-doorside:DoorSide .
+
+era-doorside:doorSideLeft a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_doorSideLeft_0" ;
+    skos:inScheme era-doorside:DoorSide ;
+    skos:notation "doorSideLeft"^^xsd:string ;
+    skos:prefLabel "DoorSideLeft"@en ;
+    skos:topConceptOf era-doorside:DoorSide .
+
+era-doorside:doorSideRight a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_doorSideRight_1" ;
+    skos:inScheme era-doorside:DoorSide ;
+    skos:notation "doorSideRight"^^xsd:string ;
+    skos:prefLabel "DoorSideRight"@en ;
+    skos:topConceptOf era-doorside:DoorSide .
+
+era-doorside:doorSideUnknown a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_doorSideUnknown_4" ;
+    skos:inScheme era-doorside:DoorSide ;
+    skos:notation "doorSideUnknown"^^xsd:string ;
+    skos:prefLabel "DoorSideUnknown"@en ;
+    skos:topConceptOf era-doorside:DoorSide .
+

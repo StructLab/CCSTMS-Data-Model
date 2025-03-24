@@ -1,0 +1,126 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix era: <http://data.europa.eu/949/> .
+@prefix era-skos: <http://data.europa.eu/949/concepts/> .
+@prefix era-op-types: <http://data.europa.eu/949/concepts/op-types/> .
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-op-types:OperationalPointTypes a skos:ConceptScheme ;
+    dct:issued "2020-09-01"^^xsd:date ;
+    dct:modified "2022-09-09"^^xsd:date ,
+				 "2024-09-04"^^xsd:date ,
+				 "2024-12-12"^^xsd:date ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    rdfs:comment "Controlled SKOS-based vocabularies defined by the European Union Agency for Railways to describe concepts related to the European railway infrastructure and the vehicles authorized to operate over it."@en ;
+    era:rinfIndex "1.2.0.0.0.4"; 
+    skos:hiddenLabel "CCSTMS_OperationalPointTypes" ;
+    rdfs:label "Operational Point Types"@en ;
+    skos:prefLabel "Operational Point Types"@en ;
+    dct:title "Concept scheme grouping the different existing types of Operational Points"@en .
+
+
+
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+########## Operational Point types ##########
+
+era-op-types:90 a skos:Concept ;
+  skos:inScheme era-op-types:OperationalPointTypes; skos:topConceptOf era-op-types:OperationalPointTypes; skos:notation "90"^^xsd:string ;
+  skos:definition "located exactly in the point where a border between Member States meets a railway line."@en;
+  skos:hiddenLabel "CCSTMS_borderPoint_5" ;
+  skos:prefLabel "border point"@en, "punto de frontera"@es .
+
+era-op-types:50 a skos:Concept ;
+  skos:inScheme era-op-types:OperationalPointTypes; skos:topConceptOf era-op-types:OperationalPointTypes; skos:notation "50"^^xsd:string ;  
+  skos:definition "group of tracks used by depot or workshop for rolling stock maintenance"@en;
+  skos:hiddenLabel "CCSTMS_depot_1" ;
+  skos:prefLabel "depot or workshop"@en, "depósito o taller"@es .
+
+era-op-types:140 a skos:Concept ;
+  skos:inScheme era-op-types:OperationalPointTypes; skos:topConceptOf era-op-types:OperationalPointTypes; skos:notation "140"^^xsd:string ; 
+  skos:definition "designated location on the main lines where the infrastructure responsibilities transition between IMs"@en;
+  skos:prefLabel "domestic border point"@en,"punto de frontera doméstico"@es .
+
+era-op-types:40 a skos:Concept ;
+  skos:inScheme era-op-types:OperationalPointTypes; skos:topConceptOf era-op-types:OperationalPointTypes; skos:notation "40"^^xsd:string ;  
+  skos:definition "station dominantly serving for loading and unloading of freight trains"@en;
+  skos:prefLabel "freight terminal"@en, "terminal de carga"@es .
+
+era-op-types:80 a skos:Concept ;
+  skos:inScheme era-op-types:OperationalPointTypes; skos:topConceptOf era-op-types:OperationalPointTypes; skos:notation "80"^^xsd:string ;  
+  skos:definition "consists of at least one turnout, normally used mostly for changing direction of trains, with reduced or not existing other functions"@en;
+  skos:prefLabel "junction"@en, "cruce"@es .
+
+era-op-types:70 a skos:Concept ;
+  skos:inScheme era-op-types:OperationalPointTypes; skos:topConceptOf era-op-types:OperationalPointTypes; skos:notation "70"^^xsd:string ;  
+  skos:definition "or halts - small operational point consisting of at least one platform, normally serving mostly for local passenger services, without routing, dispatching, or train management facilities"@en;
+  skos:prefLabel "passenger stop"@en, "parada de pasajeros"@es .
+
+era-op-types:30 a skos:Concept ;
+  skos:inScheme era-op-types:OperationalPointTypes; skos:topConceptOf era-op-types:OperationalPointTypes; skos:notation "30"^^xsd:string ; 
+  skos:definition "station with dominating function of service for passenger traffic, serving as a central hub for passengers, often integrating rail operations with intermodal transport networks and large-scale passenger facilities, including ticketing, waiting areas, and other passenger services"@en;
+  skos:prefLabel "passenger terminal"@en, "terminal de pasajeros"@es .
+
+era-op-types:130 a skos:Concept ;
+  skos:inScheme era-op-types:OperationalPointTypes; skos:topConceptOf era-op-types:OperationalPointTypes; skos:notation "130"^^xsd:string ;  
+  skos:definition "Operational Point allowing to provide more information on the private siding and on the way its is linked to the main network. Its use is left to the discretion of each Member State."@en;
+  skos:hiddenLabel "CCSTMS_siding_2" ;
+  owl:deprecated "true"^^xsd:boolean ;
+  skos:prefLabel "private siding"@en, "vía lateral privada"@es .
+
+era-op-types:100 a skos:Concept ;
+  skos:inScheme era-op-types:OperationalPointTypes; skos:topConceptOf era-op-types:OperationalPointTypes; skos:notation "100"^^xsd:string ;  
+  skos:definition "group of tracks used for shunting trains, mostly related to freight traffic"@en;
+  skos:hiddenLabel "CCSTMS_shuntingYard_4" ;
+  skos:prefLabel "shunting yard"@en, "patio de maniobras"@es .
+
+era-op-types:20 a skos:Concept ;
+  skos:inScheme era-op-types:OperationalPointTypes; skos:topConceptOf era-op-types:OperationalPointTypes; skos:notation "20"^^xsd:string ;  
+  skos:definition "Multifunctional Operational Point not so big and not so important like station"@en;
+  owl:deprecated "true"^^xsd:boolean ;
+  skos:prefLabel "small station"@en, "estación pequeña"@es .
+
+era-op-types:10 a skos:Concept ;
+  skos:inScheme era-op-types:OperationalPointTypes; skos:topConceptOf era-op-types:OperationalPointTypes; skos:notation "10"^^xsd:string ;  
+  skos:definition "large or major railway node with several functions, important for international traffic, basic for national railway system"@en;
+  skos:hiddenLabel "CCSTMS_station_0" ;
+  skos:prefLabel "station"@en, "estación"@es .
+
+era-op-types:120 a skos:Concept ;
+  skos:inScheme era-op-types:OperationalPointTypes; skos:topConceptOf era-op-types:OperationalPointTypes; skos:notation "120"^^xsd:string ;  
+  skos:definition "consists of only one switch and the area around it delimited and protected by entry signals, normally used for changing direction of trains, with reduced or not existing other function"@en;
+  skos:prefLabel "switch"@en, "intercambio"@es .
+
+era-op-types:110 a skos:Concept ;
+  skos:inScheme era-op-types:OperationalPointTypes; skos:topConceptOf era-op-types:OperationalPointTypes; skos:notation "110"^^xsd:string ; 
+  skos:definition "To describe a change on CCS or a type of contact line or gauge changeover facility – fixed installation allowing a train to travel across a break of gauge where two railway networks with different track gauges meet."@en;
+  skos:hiddenLabel "CCSTMS_technicalChange_6" ;
+  owl:deprecated "true"^^xsd:boolean ;
+  skos:prefLabel "technical change"@en, "cambio técnico"@es .
+
+era-op-types:60 a skos:Concept ;
+  skos:inScheme era-op-types:OperationalPointTypes; skos:topConceptOf era-op-types:OperationalPointTypes; skos:notation "60"^^xsd:string ; 
+  skos:definition "group of tracks for servicing trains (parking, washing, etc.)"@en;
+  skos:hiddenLabel "CCSTMS_trainTechnicalServices_3" ;
+  skos:prefLabel "train technical services"@en, "servicios técnicos para trenes"@es .
+
+era-op-types:150 a skos:Concept ;
+  skos:inScheme era-op-types:OperationalPointTypes; skos:topConceptOf era-op-types:OperationalPointTypes; skos:notation "150"^^xsd:string ; 
+  skos:definition "An over crossing describes a crossing, where something crosses over the railway line. From constructional point of view an over crossing can be a bridge or a tunnel."@en;
+  owl:deprecated "true"^^xsd:boolean ;
+  skos:prefLabel "over crossing"@en.

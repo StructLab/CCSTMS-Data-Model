@@ -1,0 +1,61 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-trainsize: <http://data.europa.eu/949/concepts/train-size/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-trainsize:TrainSize a skos:ConceptScheme ;
+    rdfs:label "Train Size"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "List defining different train sizes"@en ;
+    skos:hiddenLabel "CCSTMS_TrainSize" ;
+    skos:prefLabel "Train Size"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-trainsize:fullTrain a skos:Concept ;
+    rdfs:comment "defines a full train"@en ;
+    skos:hiddenLabel "CCSTMS_fullTrain_3" ;
+    skos:inScheme era-trainsize:TrainSize ;
+    skos:notation "fullTrain"^^xsd:string ;
+    skos:prefLabel "Full Train"@en ;
+    skos:topConceptOf era-trainsize:TrainSize .
+
+era-trainsize:halfTrain a skos:Concept ;
+    rdfs:comment "defines a half train"@en ;
+    skos:hiddenLabel "CCSTMS_halfTrain_2" ;
+    skos:inScheme era-trainsize:TrainSize ;
+    skos:notation "halfTrain"^^xsd:string ;
+    skos:prefLabel "Half Train"@en ;
+    skos:topConceptOf era-trainsize:TrainSize .
+
+era-trainsize:shortTrain a skos:Concept ;
+    rdfs:comment "defines a short train"@en ;
+    skos:hiddenLabel "CCSTMS_shortTrain_1" ;
+    skos:inScheme era-trainsize:TrainSize ;
+    skos:notation "shortTrain"^^xsd:string ;
+    skos:prefLabel "Short Train"@en ;
+    skos:topConceptOf era-trainsize:TrainSize .
+
+era-trainsize:undefinedTrainSize a skos:Concept ;
+    rdfs:comment "train size undefined"@en ;
+    skos:hiddenLabel "CCSTMS_undefinedTrainSize_0" ;
+    skos:inScheme era-trainsize:TrainSize ;
+    skos:notation "undefinedTrainSize"^^xsd:string ;
+    skos:prefLabel "UndefinedTrainSize"@en ;
+    skos:topConceptOf era-trainsize:TrainSize .

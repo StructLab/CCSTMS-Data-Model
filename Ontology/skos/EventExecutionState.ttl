@@ -1,0 +1,51 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-ees: <http://data.europa.eu/949/concepts/event-execution-state/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-ees:EventExecutionState a skos:ConceptScheme ;
+    rdfs:label "Event Execution State"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_EventExecutionState" ;
+    skos:prefLabel "Event Execution State"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-ees:eventCompleted a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_eventCompleted_0" ;
+    skos:inScheme era-ees:EventExecutionState ;
+    skos:notation "eventCompleted"^^xsd:string ;
+    skos:prefLabel "Event Completed"@en ;
+    skos:topConceptOf era-ees:EventExecutionState .
+
+era-ees:eventFailed a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_eventFailed_1" ;
+    skos:inScheme era-ees:EventExecutionState ;
+    skos:notation "eventFailed"^^xsd:string ;
+    skos:prefLabel "Event Failed"@en ;
+    skos:topConceptOf era-ees:EventExecutionState .
+
+era-ees:eventWarning a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_eventWarning_2" ;
+    skos:inScheme era-ees:EventExecutionState ;
+    skos:notation "eventWarning"^^xsd:string ;
+    skos:prefLabel "Event Warning"@en ;
+    skos:topConceptOf era-ees:EventExecutionState .
+

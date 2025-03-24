@@ -1,0 +1,54 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-mamode: <http://data.europa.eu/949/concepts/ma-mode/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-mamode:MAMode a skos:ConceptScheme ;
+    rdfs:label "MA Mode"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "Required mode for a part of the MA."@en ;
+    skos:hiddenLabel "CCSTMS_MAMode" ;
+    skos:prefLabel "MA Mode"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-mamode:LimitedSupervision a skos:Concept ;
+    rdfs:comment "Limited Supervision"@en ;
+    skos:hiddenLabel "CCSTMS_LimitedSupervision_2" ;
+    skos:inScheme era-mamode:MAMode ;
+    skos:notation "LimitedSupervision"^^xsd:string ;
+    skos:prefLabel "Limited Supervision"@en ;
+    skos:topConceptOf era-mamode:MAMode .
+
+era-mamode:OnSight a skos:Concept ;
+    rdfs:comment "On Sight"@en ;
+    skos:hiddenLabel "CCSTMS_OnSight_0" ;
+    skos:inScheme era-mamode:MAMode ;
+    skos:notation "OnSight"^^xsd:string ;
+    skos:prefLabel "On Sight"@en ;
+    skos:topConceptOf era-mamode:MAMode .
+
+era-mamode:Shunting a skos:Concept ;
+    rdfs:comment "Shunting"@en ;
+    skos:hiddenLabel "CCSTMS_Shunting_1" ;
+    skos:inScheme era-mamode:MAMode ;
+    skos:notation "Shunting"^^xsd:string ;
+    skos:prefLabel "Shunting"@en ;
+    skos:topConceptOf era-mamode:MAMode .

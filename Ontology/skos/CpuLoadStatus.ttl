@@ -1,0 +1,59 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-cpuload: <http://data.europa.eu/949/concepts/cpu-load-status/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-cpuload:CpuLoadStatus a skos:ConceptScheme ;
+    rdfs:label "CpuLoadStatus"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "Indicates the load status of the CPU"@en ;
+    skos:hiddenLabel "CCSTMS_CpuLoadStatus" ;
+    skos:prefLabel "CpuLoadStatus"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-cpuload:Critical a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Critical_3" ;
+    skos:inScheme era-cpuload:CpuLoadStatus ;
+    skos:notation "Critical"^^xsd:string ;
+    skos:prefLabel "Critical"@en ;
+    skos:topConceptOf era-cpuload:CpuLoadStatus .
+
+era-cpuload:High a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_High_2" ;
+    skos:inScheme era-cpuload:CpuLoadStatus ;
+    skos:notation "High"^^xsd:string ;
+    skos:prefLabel "High"@en ;
+    skos:topConceptOf era-cpuload:CpuLoadStatus .
+
+era-cpuload:Normal a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Normal_1" ;
+    skos:inScheme era-cpuload:CpuLoadStatus ;
+    skos:notation "Normal"^^xsd:string ;
+    skos:prefLabel "Normal"@en ;
+    skos:topConceptOf era-cpuload:CpuLoadStatus .
+
+era-cpuload:Unknown a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Unknown_0" ;
+    skos:inScheme era-cpuload:CpuLoadStatus ;
+    skos:notation "Unknown"^^xsd:string ;
+    skos:prefLabel "Unknown"@en ;
+    skos:topConceptOf era-cpuload:CpuLoadStatus .
+

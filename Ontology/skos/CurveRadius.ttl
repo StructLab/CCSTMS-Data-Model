@@ -1,0 +1,221 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-curve-rad: <http://data.europa.eu/949/concepts/curve-radius/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-curve-rad:CurveRadius a skos:ConceptScheme ;
+    rdfs:label "Curve Radius"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "List defining different curve radii for segment profile"@en ;
+    skos:hiddenLabel "CCSTMS_CurveRadius" ;
+    skos:prefLabel "Curve Radius"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-curve-rad:cr_1075_925 a skos:Concept ;
+    rdfs:comment "1075>=R>925"@en ;
+    skos:hiddenLabel "CCSTMS_cr_1075_925_7" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_1075_925"^^xsd:string ;
+    skos:prefLabel "Cr_1075_925"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_1250_1075 a skos:Concept ;
+    rdfs:comment "1250>=R>1075"@en ;
+    skos:hiddenLabel "CCSTMS_cr_1250_1075_6" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_1250_1075"^^xsd:string ;
+    skos:prefLabel "Cr_1250_1075"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_1500_1250 a skos:Concept ;
+    rdfs:comment "1500>=R>1250"@en ;
+    skos:hiddenLabel "CCSTMS_cr_1500_1250_5" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_1500_1250"^^xsd:string ;
+    skos:prefLabel "Cr_1500_1250"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_175_150 a skos:Concept ;
+    rdfs:comment "175>=R>150"@en ;
+    skos:hiddenLabel "CCSTMS_cr_175_150_22" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_175_150"^^xsd:string ;
+    skos:prefLabel "Cr_175_150"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_2000_1500 a skos:Concept ;
+    rdfs:comment "2000>=R>1500"@en ;
+    skos:hiddenLabel "CCSTMS_cr_2000_1500_4" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_2000_1500"^^xsd:string ;
+    skos:prefLabel "Cr_2000_1500"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_200_175 a skos:Concept ;
+    rdfs:comment "200>=R>175"@en ;
+    skos:hiddenLabel "CCSTMS_cr_200_175_21" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_200_175"^^xsd:string ;
+    skos:prefLabel "Cr_200_175"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_225_200 a skos:Concept ;
+    rdfs:comment "225>=R>200"@en ;
+    skos:hiddenLabel "CCSTMS_cr_225_200_20" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_225_200"^^xsd:string ;
+    skos:prefLabel "Cr_225_200"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_250_225 a skos:Concept ;
+    rdfs:comment "250>=R>225"@en ;
+    skos:hiddenLabel "CCSTMS_cr_250_225_19" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_250_225"^^xsd:string ;
+    skos:prefLabel "Cr_250_225"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_275_250 a skos:Concept ;
+    rdfs:comment "275>=R>250"@en ;
+    skos:hiddenLabel "CCSTMS_cr_275_250_18" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_275_250"^^xsd:string ;
+    skos:prefLabel "Cr_275_250"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_2800_2000 a skos:Concept ;
+    rdfs:comment "2800>=R>2000"@en ;
+    skos:hiddenLabel "CCSTMS_cr_2800_2000_3" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_2800_2000"^^xsd:string ;
+    skos:prefLabel "Cr_2800_2000"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_300_275 a skos:Concept ;
+    rdfs:comment "300>=R>275"@en ;
+    skos:hiddenLabel "CCSTMS_cr_300_275_17" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_300_275"^^xsd:string ;
+    skos:prefLabel "Cr_300_275"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_325_300 a skos:Concept ;
+    rdfs:comment "325>=R>300"@en ;
+    skos:hiddenLabel "CCSTMS_cr_325_300_16" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_325_300"^^xsd:string ;
+    skos:prefLabel "Cr_325_300"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_375_325 a skos:Concept ;
+    rdfs:comment "375>=R>325"@en ;
+    skos:hiddenLabel "CCSTMS_cr_375_325_15" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_375_325"^^xsd:string ;
+    skos:prefLabel "Cr_375_325"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_425_375 a skos:Concept ;
+    rdfs:comment "425>=R>375"@en ;
+    skos:hiddenLabel "CCSTMS_cr_425_375_14" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_425_375"^^xsd:string ;
+    skos:prefLabel "Cr_425_375"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_4500_2800 a skos:Concept ;
+    rdfs:comment "4500>=R>2800"@en ;
+    skos:hiddenLabel "CCSTMS_cr_4500_2800_2" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_4500_2800"^^xsd:string ;
+    skos:prefLabel "Cr_4500_2800"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_475_425 a skos:Concept ;
+    rdfs:comment "475>=R>425"@en ;
+    skos:hiddenLabel "CCSTMS_cr_475_425_13" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_475_425"^^xsd:string ;
+    skos:prefLabel "Cr_475_425"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_525_475 a skos:Concept ;
+    rdfs:comment "525>=R>475"@en ;
+    skos:hiddenLabel "CCSTMS_cr_525_475_12" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_525_475"^^xsd:string ;
+    skos:prefLabel "Cr_525_475"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_625_525 a skos:Concept ;
+    rdfs:comment "625>=R>525"@en ;
+    skos:hiddenLabel "CCSTMS_cr_625_525_11" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_625_525"^^xsd:string ;
+    skos:prefLabel "Cr_625_525"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_7000_4500 a skos:Concept ;
+    rdfs:comment "7000>=R>4500"@en ;
+    skos:hiddenLabel "CCSTMS_cr_7000_4500_1" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_7000_4500"^^xsd:string ;
+    skos:prefLabel "Cr_7000_4500"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_725_625 a skos:Concept ;
+    rdfs:comment "725>=R>625"@en ;
+    skos:hiddenLabel "CCSTMS_cr_725_625_10" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_725_625"^^xsd:string ;
+    skos:prefLabel "Cr_725_625"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_825_725 a skos:Concept ;
+    rdfs:comment "825>=R>725"@en ;
+    skos:hiddenLabel "CCSTMS_cr_825_725_9" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_825_725"^^xsd:string ;
+    skos:prefLabel "Cr_825_725"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_925_825 a skos:Concept ;
+    rdfs:comment "925>=R>825"@en ;
+    skos:hiddenLabel "CCSTMS_cr_925_825_8" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_925_825"^^xsd:string ;
+    skos:prefLabel "Cr_925_825"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_R_150 a skos:Concept ;
+    rdfs:comment "R=<150"@en ;
+    skos:hiddenLabel "CCSTMS_cr_R_150_23" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_R_150"^^xsd:string ;
+    skos:prefLabel "Cr_R_150"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .
+
+era-curve-rad:cr_R_7000 a skos:Concept ;
+    rdfs:comment "R>7000"@en ;
+    skos:hiddenLabel "CCSTMS_cr_R_7000_0" ;
+    skos:inScheme era-curve-rad:CurveRadius ;
+    skos:notation "cr_R_7000"^^xsd:string ;
+    skos:prefLabel "Cr_R_7000"@en ;
+    skos:topConceptOf era-curve-rad:CurveRadius .

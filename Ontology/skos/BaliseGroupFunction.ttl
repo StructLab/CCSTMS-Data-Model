@@ -1,0 +1,56 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-bgfunction: <http://data.europa.eu/949/concepts/balise-group-function/> .
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-bgfunction:BaliseGroupFunction a skos:ConceptScheme ;
+    rdfs:label "Balise Group Function"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_BaliseGroupFunction" ;
+    skos:prefLabel "Balise Group Function"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+era-bgfunction:location a skos:Concept ;
+    rdfs:comment "has a location function"@en ;
+    skos:hiddenLabel "CCSTMS_location_0" ;
+    skos:inScheme era-bgfunction:BaliseGroupFunction ;
+    skos:notation "location"^^xsd:string ;
+    skos:prefLabel "Location"@en ;
+    skos:topConceptOf era-bgfunction:BaliseGroupFunction .
+
+era-bgfunction:networkRegistration a skos:Concept ;
+    rdfs:comment "has a network registration function"@en ;
+    skos:hiddenLabel "CCSTMS_networkRegistration_2" ;
+    skos:inScheme era-bgfunction:BaliseGroupFunction ;
+    skos:notation "networkRegistration"^^xsd:string ;
+    skos:prefLabel "Network Registration"@en ;
+    skos:topConceptOf era-bgfunction:BaliseGroupFunction .
+
+era-bgfunction:sessionManagement a skos:Concept ;
+    rdfs:comment "has a session management function"@en ;
+    skos:hiddenLabel "CCSTMS_sessionManagement_1" ;
+    skos:inScheme era-bgfunction:BaliseGroupFunction ;
+    skos:notation "sessionManagement"^^xsd:string ;
+    skos:prefLabel "Session Management"@en ;
+    skos:topConceptOf era-bgfunction:BaliseGroupFunction .
+

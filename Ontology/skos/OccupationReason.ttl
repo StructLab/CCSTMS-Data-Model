@@ -1,0 +1,63 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-occupationreason: <http://data.europa.eu/949/concepts/occupation-reason/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-occupationreason:OccupationReason a skos:ConceptScheme ;
+    rdfs:label "Occupation Reason"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_OccupationReason" ;
+    skos:prefLabel "Occupation Reason"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-occupationreason:shorterLTrain a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_shorterLTrain_0" ;
+    skos:inScheme era-occupationreason:OccupationReason ;
+    skos:notation "shorterLTrain"^^xsd:string ;
+    skos:prefLabel "Shorter Ltrain"@en ;
+    skos:topConceptOf era-occupationreason:OccupationReason .
+
+era-occupationreason:systemInit a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_systemInit_2" ;
+    skos:inScheme era-occupationreason:OccupationReason ;
+    skos:notation "systemInit"^^xsd:string ;
+    skos:prefLabel "System Init"@en ;
+    skos:topConceptOf era-occupationreason:OccupationReason .
+
+era-occupationreason:toCommLoss a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_toCommLoss_1" ;
+    skos:inScheme era-occupationreason:OccupationReason ;
+    skos:notation "toCommLoss"^^xsd:string ;
+    skos:prefLabel "ToCommLoss"@en ;
+    skos:topConceptOf era-occupationreason:OccupationReason .
+
+era-occupationreason:ttdFree a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_ttdFree_4" ;
+    skos:inScheme era-occupationreason:OccupationReason ;
+    skos:notation "ttdFree"^^xsd:string ;
+    skos:prefLabel "Ttd Free"@en ;
+    skos:topConceptOf era-occupationreason:OccupationReason .
+
+era-occupationreason:ttdOccupation a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_ttdOccupation_3" ;
+    skos:inScheme era-occupationreason:OccupationReason ;
+    skos:notation "ttdOccupation"^^xsd:string ;
+    skos:prefLabel "Ttd Occupation"@en ;
+    skos:topConceptOf era-occupationreason:OccupationReason .

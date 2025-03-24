@@ -1,0 +1,52 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-alignment: <http://data.europa.eu/949/concepts/alignment-type/> .
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-alignment:AlignmentType a skos:ConceptScheme ;
+    rdfs:label "Alignment Type"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_AlignmentType" ;
+    skos:prefLabel "Alignment Type"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+era-alignment:center a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_center_1" ;
+    skos:inScheme era-alignment:AlignmentType ;
+    skos:notation "center"^^xsd:string ;
+    skos:prefLabel "Center"@en ;
+    skos:topConceptOf era-alignment:AlignmentType .
+
+era-alignment:head a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_head_0" ;
+    skos:inScheme era-alignment:AlignmentType ;
+    skos:notation "head"^^xsd:string ;
+    skos:prefLabel "Head"@en ;
+    skos:topConceptOf era-alignment:AlignmentType .
+
+era-alignment:rear a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_rear_2" ;
+    skos:inScheme era-alignment:AlignmentType ;
+    skos:notation "rear"^^xsd:string ;
+    skos:prefLabel "Rear"@en ;
+    skos:topConceptOf era-alignment:AlignmentType .

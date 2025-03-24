@@ -1,0 +1,73 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-dol: <http://data.europa.eu/949/concepts/display-operating-level/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-dol:DisplayOperatingLevel a skos:ConceptScheme ;
+    rdfs:label "Display Operating Level"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "Onboard operating level for text display.The text is displayed when entering / as long as in the defined level. Binary values 110 and 111 are spare"@en ;
+    skos:hiddenLabel "CCSTMS_DisplayOperatingLevel" ;
+    skos:prefLabel "Display Operating Level"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-dol:DOL_level0 a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOL_level0_0" ;
+    skos:inScheme era-dol:DisplayOperatingLevel ;
+    skos:notation "DOL_level0"^^xsd:string ;
+    skos:prefLabel "Dol_Level0"@en ;
+    skos:topConceptOf era-dol:DisplayOperatingLevel .
+
+era-dol:DOL_level1 a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOL_level1_2" ;
+    skos:inScheme era-dol:DisplayOperatingLevel ;
+    skos:notation "DOL_level1"^^xsd:string ;
+    skos:prefLabel "Dol_Level1"@en ;
+    skos:topConceptOf era-dol:DisplayOperatingLevel .
+
+era-dol:DOL_level2 a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOL_level2_3" ;
+    skos:inScheme era-dol:DisplayOperatingLevel ;
+    skos:notation "DOL_level2"^^xsd:string ;
+    skos:prefLabel "Dol_Level2"@en ;
+    skos:topConceptOf era-dol:DisplayOperatingLevel .
+
+era-dol:DOL_level3 a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOL_level3_4" ;
+    skos:inScheme era-dol:DisplayOperatingLevel ;
+    skos:notation "DOL_level3"^^xsd:string ;
+    skos:prefLabel "Dol_Level3"@en ;
+    skos:topConceptOf era-dol:DisplayOperatingLevel .
+
+era-dol:DOL_levelNTC a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOL_levelNTC_1" ;
+    skos:inScheme era-dol:DisplayOperatingLevel ;
+    skos:notation "DOL_levelNTC"^^xsd:string ;
+    skos:prefLabel "DOL_levelNT C"@en ;
+    skos:topConceptOf era-dol:DisplayOperatingLevel .
+
+era-dol:DOL_notLimited a skos:Concept ;
+    rdfs:comment "The display of the text shall not be limited by the level"@en ;
+    skos:hiddenLabel "CCSTMS_DOL_notLimited_5" ;
+    skos:inScheme era-dol:DisplayOperatingLevel ;
+    skos:notation "DOL_notLimited"^^xsd:string ;
+    skos:prefLabel "DOL_not Limited"@en ;
+    skos:topConceptOf era-dol:DisplayOperatingLevel .

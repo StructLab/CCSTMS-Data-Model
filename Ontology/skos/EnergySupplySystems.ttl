@@ -1,0 +1,193 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix era: <http://data.europa.eu/949/> .
+@prefix era-skos: <http://data.europa.eu/949/concepts/> .
+@prefix era-op-types: <http://data.europa.eu/949/concepts/op-types/> .
+
+@prefix era-ess:<http://data.europa.eu/949/concepts/energy-supply-systems/>.
+@prefix era-ess-rinf: <http://data.europa.eu/949/concepts/energy-supply-systems/rinf/> .
+@prefix era-ess-eratv: <http://data.europa.eu/949/concepts/energy-supply-systems/eratv/> .
+
+
+
+
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-ess:EnergySupplySystems a skos:ConceptScheme ;
+    dct:issued "2020-09-01"^^xsd:date ;
+    dct:modified "2022-09-09"^^xsd:date ,
+				 "2024-12-11"^^xsd:date ,
+         "2025-02-28"^^xsd:date ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    rdfs:comment "Controlled SKOS-based vocabularies defined by the European Union Agency for Railways to describe concepts related to the European railway infrastructure and the vehicles authorized to operate over it."@en ;
+    rdfs:label "Energy Supply Systems"@en ;
+    skos:scopeNote """
+     Revision 2025-02-28: 
+       - removed era-ess-rinf:DC50 ; DC (Specific case FR), removed others
+       - Harmonization of values from existing ERATV skos  
+
+    """@en ; 
+    skos:prefLabel "Energy Supply Systems"@en ;
+    skos:hiddenLabel "CCSTMS_EnergySupplySystems" ;
+    dct:title "Concept scheme grouping energy supply systems"@en .
+
+
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+########## Energy supply systems ##########
+
+## RINF values ##
+era-ess-rinf:DC80 a skos:Concept ; 
+    skos:inScheme era-ess:EnergySupplySystems ; 
+    skos:topConceptOf era-ess:EnergySupplySystems ;
+	  skos:hiddenLabel "CCSTMS_vtDC600v_5" ;
+    skos:notatioon "DC 600 V"^^xsd:string ; 
+    skos:prefLabel "DC 600 V" .
+
+era-ess-rinf:AC10 a skos:Concept;
+  skos:inScheme era-ess:EnergySupplySystems; 
+  skos:hiddenLabel "CCSTMS_vtAC25kv50Hz_1" ;
+  skos:notation "AC 25kV-50Hz"^^xsd:string ; 
+  skos:topConceptOf era-ess:EnergySupplySystems ;
+  skos:prefLabel "AC 25kV-50Hz" .
+
+era-ess-rinf:AC20 a skos:Concept;
+  skos:inScheme era-ess:EnergySupplySystems; 
+  skos:hiddenLabel "CCSTMS_vtAC15kv16_7Hz_2" , "15kV-16,7Hz" ;
+  skos:notation "AC 15kV-16.7Hz"^^xsd:string ; 
+  skos:topConceptOf era-ess:EnergySupplySystems ;
+  skos:altLabel "15kV-16 2/3Hz : 2646 kW , 1kV-16 2/3 Hz or 50 Hz";
+  skos:prefLabel "AC 15kV-16.7Hz" .
+
+era-ess-rinf:DC60 a skos:Concept;
+  skos:inScheme era-ess:EnergySupplySystems; 
+  skos:topConceptOf era-ess:EnergySupplySystems ;
+  skos:altLabel "DC750V",  "750V" , "DC 750V third rail", "Vía Urbana e Interurbana 750 Vdc"; 
+  skos:hiddenLabel "CCSTMS_vtDC750v_7" ;
+  skos:prefLabel "DC 750V" .
+
+era-ess-rinf:DC40 a skos:Concept;
+  skos:inScheme era-ess:EnergySupplySystems; 
+  skos:topConceptOf era-ess:EnergySupplySystems ;
+  skos:hiddenLabel "CCSTMS_vtDC1_5kv_4" ;
+  skos:prefLabel "DC 1.5kV"  ;
+  skos:altLabel "1500", "1.5kV Specific Case IE", "1.5kV (Specific Case IE)" .
+
+era-ess-rinf:DC90 a skos:Concept;
+  skos:inScheme era-ess:EnergySupplySystems;
+  skos:topConceptOf era-ess:EnergySupplySystems ;
+  skos:hiddenLabel "CCSTMS_vtDC850v_8" ;
+  skos:prefLabel "DC 850V" .
+
+era-ess-rinf:DC30 a skos:Concept;
+  skos:inScheme era-ess:EnergySupplySystems;
+  skos:hiddenLabel "CCSTMS_vtDC3kv_3" ;
+  skos:topConceptOf era-ess:EnergySupplySystems ;
+  skos:prefLabel "DC 3kV" ;
+  skos:altLabel "3000V DC" , "3kV (PL, CZ, SK)" .
+
+
+era-ess-rinf:DC70 a skos:Concept;
+  skos:inScheme era-ess:EnergySupplySystems; 
+  skos:topConceptOf era-ess:EnergySupplySystems ;
+  skos:hiddenLabel "CCSTMS_vtDC650v_6" ;
+  skos:prefLabel "DC 650V" .
+
+
+## ERATV values ##
+
+era-ess-eratv:other
+    skos:inScheme era-ess:EnergySupplySystems ; 
+    skos:topConceptOf era-ess:EnergySupplySystems ;
+    skos:altLabel "Others (specify nominal voltage and frequency and ranges)";
+    skos:altLabel "Others (The User must also specify nominal voltage, frequency, ranges and current type AC or DC)" ;
+    skos:altLabel "others";
+    skos:prefLabel "Other".
+    
+era-ess-eratv:1-2kv a skos:Concept;
+  skos:inScheme era-ess:EnergySupplySystems;
+  skos:topConceptOf era-ess:EnergySupplySystems ;
+  skos:prefLabel "1.2kV" .
+
+era-ess-eratv:1000v-ac-50hz
+  a skos:Concept;
+  skos:inScheme era-ess:EnergySupplySystems;
+  skos:topConceptOf era-ess:EnergySupplySystems ;
+  skos:prefLabel "1000V AC 50Hz" .
+
+era-ess-eratv:1000V-ac-16-2-3hz
+  a skos:Concept;
+  skos:inScheme era-ess:EnergySupplySystems;
+  skos:topConceptOf era-ess:EnergySupplySystems ;
+  skos:prefLabel "1000V AC 16 2/3Hz" .
+
+era-ess-eratv:1500v-ac-50hz
+  a skos:Concept;
+  skos:inScheme era-ess:EnergySupplySystems;
+  skos:topConceptOf era-ess:EnergySupplySystems ;
+  skos:prefLabel "1500V AC 50Hz" .
+
+era-ess-eratv:3x400v-50hz
+  a skos:Concept;
+  skos:inScheme era-ess:EnergySupplySystems;
+  skos:topConceptOf era-ess:EnergySupplySystems ;
+  skos:prefLabel "3x400V 50Hz" .
+
+era-ess-eratv:3x400-v-50-hz a skos:Concept;
+   skos:inScheme era-ess:EnergySupplySystems;
+   skos:topConceptOf era-ess:EnergySupplySystems ;
+   skos:prefLabel "3X400 V, 50 Hz" .
+
+
+era-ess-eratv:autonomous a skos:Concept;
+  skos:inScheme era-ess:EnergySupplySystems;
+  skos:topConceptOf era-ess:EnergySupplySystems ;
+  skos:prefLabel "Autonomous" .
+
+era-ess-eratv:dc-1-5kv-specific-case-fr a skos:Concept;
+  skos:inScheme era-ess:EnergySupplySystems;
+  skos:topConceptOf era-ess:EnergySupplySystems ;
+  skos:prefLabel "DC 1.5kV (Specific Case FR)" .
+
+
+era-ess-eratv:none-for-hauled-passenger-vehicles-and-special-vehicles a skos:Concept;
+  skos:inScheme era-ess:EnergySupplySystems;
+  skos:topConceptOf era-ess:EnergySupplySystems ;
+  skos:prefLabel "None (for hauled passenger vehicles and special vehicles)" .
+
+
+era-ess-eratv:three-phase
+   a skos:Concept;
+   skos:inScheme era-ess:EnergySupplySystems;
+   skos:topConceptOf era-ess:EnergySupplySystems ;
+   skos:prefLabel "Three-phase alternator 28V 100A, 2 Accumulators in series connection, 24V Vehicle electrical system voltage" .
+
+
+ era-ess-eratv:hybrid a skos:Concept;
+  skos:inScheme era-ess:EnergySupplySystems;
+  skos:topConceptOf era-ess:EnergySupplySystems ;
+  skos:prefLabel "hybrid" .
+
+
+era-ess-eratv:notFitted a skos:Concept ; 
+    skos:inScheme era-ess:EnergySupplySystems ; skos:topConceptOf era-ess:EnergySupplySystems ;
+    skos:definition "Line not fitted (not electrified) with any traction system"@en ;
+    skos:hiddenLabel "CCSTMS_vtNotFitted_0" ;
+    skos:prefLabel "Not Fitted"@en .

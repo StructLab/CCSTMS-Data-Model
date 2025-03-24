@@ -1,0 +1,52 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-activetstate: <http://data.europa.eu/949/concepts/active-state/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-activetstate:ActiveState a skos:ConceptScheme ;
+    rdfs:label "Active State"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_ActiveState" ;
+    skos:prefLabel "Active State"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+era-activetstate:activeState a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_activeState_0" ;
+    skos:inScheme era-activetstate:ActiveState ;
+    skos:notation "activeState"^^xsd:string ;
+    skos:prefLabel "Active State"@en ;
+    skos:topConceptOf era-activetstate:ActiveState .
+
+era-activetstate:inactiveState a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_inactiveState_1" ;
+    skos:inScheme era-activetstate:ActiveState ;
+    skos:notation "inactiveState"^^xsd:string ;
+    skos:prefLabel "Inactive State"@en ;
+    skos:topConceptOf era-activetstate:ActiveState .
+
+era-activetstate:undefinedState a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_undefinedState_2" ;
+    skos:inScheme era-activetstate:ActiveState ;
+    skos:notation "undefinedState"^^xsd:string ;
+    skos:prefLabel "Undefined State"@en ;
+    skos:topConceptOf era-activetstate:ActiveState .
+

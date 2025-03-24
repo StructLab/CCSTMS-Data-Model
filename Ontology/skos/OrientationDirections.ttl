@@ -1,0 +1,77 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix era: <http://data.europa.eu/949/> .
+@prefix era-skos: <http://data.europa.eu/949/concepts/> .
+
+@prefix era-orient: <http://data.europa.eu/949/concepts/orientations/> .
+
+
+
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+
+
+era-orient:OrientationDirections a skos:ConceptScheme ; 
+    dct:issued "2024-09-24"^^xsd:date ;
+    dct:modified "2025-02-10"^^xsd:date ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    rdfs:comment "Controlled SKOS-based vocabularies defined by the European Union Agency for Railways to describe concepts related to the European railway infrastructure and the vehicles authorized to operate over it."@en ;
+    rdfs:label "Directions of the orientation of a railway element"@en ;
+    skos:prefLabel "Directions of the orientation of a railway element"@en ;
+    skos:hiddenLabel "CCSTMS_OrientationDirections" ;
+    dct:title "Concept scheme grouping railway element orientation' directions"@en .
+
+
+
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+
+
+########## Orientation Directions ##########
+
+era-orient:00 a skos:Concept;
+  skos:inScheme era-orient:OrientationDirections; 
+  skos:topConceptOf era-orient:Directions ; 
+  skos:note "Value collected from TWG RINF group"@en;
+  skos:notation "Normal"^^xsd:string ;
+  skos:prefLabel "Normal"@en ;
+  skos:hiddenLabel "CCSTMS_same_1" ;
+  skos:definition "in the same direction as the linearElement."@en .
+
+
+
+era-orient:01 a skos:Concept;
+  skos:inScheme era-orient:OrientationDirections; 
+  skos:topConceptOf era-orient:Directions ; 
+  skos:note "Value collected from TWG RINF group"@en;
+  skos:notation "Opposite"^^xsd:string ;
+  skos:prefLabel "Opposite"@en ;
+  skos:hiddenLabel "CCSTMS_opposite_2" ;
+  skos:definition "in the opposite direction as the linearElement."@en .
+
+
+era-orient:02 a skos:Concept;
+  skos:inScheme era-orient:OrientationDirections; 
+  skos:topConceptOf era-orient:Directions ; 
+  skos:note "Value collected from TWG RINF group"@en;
+  skos:notation "Both"^^xsd:string ;
+  skos:prefLabel "Both"@en ;
+  skos:hiddenLabel "CCSTMS_both_0" ;
+  skos:definition "active in both directions."@en .

@@ -1,0 +1,53 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-bmt: <http://data.europa.eu/949/concepts/brake-model-type/> .
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-bmt:BrakeModelType a skos:ConceptScheme ;
+    rdfs:label "Brake Model Type"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_BrakeModelType" ;
+    skos:prefLabel "Brake Model Type"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+era-bmt:gamma a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_gamma_1" ;
+    skos:inScheme era-bmt:BrakeModelType ;
+    skos:notation "gamma"^^xsd:string ;
+    skos:prefLabel "Gamma"@en ;
+    skos:topConceptOf era-bmt:BrakeModelType .
+
+era-bmt:lambda a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_lambda_0" ;
+    skos:inScheme era-bmt:BrakeModelType ;
+    skos:notation "lambda"^^xsd:string ;
+    skos:prefLabel "Lambda"@en ;
+    skos:topConceptOf era-bmt:BrakeModelType .
+
+era-bmt:undefined a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_undefined_2" ;
+    skos:inScheme era-bmt:BrakeModelType ;
+    skos:notation "undefined"^^xsd:string ;
+    skos:prefLabel "Undefined"@en ;
+    skos:topConceptOf era-bmt:BrakeModelType .
+

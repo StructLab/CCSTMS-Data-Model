@@ -1,0 +1,64 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-bstype: <http://data.europa.eu/949/concepts/buffer-stop-type/> .
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-bstype:BufferStopType a skos:ConceptScheme ;
+    rdfs:label "BufferStop Type"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_BufferStopType" ;
+    skos:prefLabel "BufferStop Type"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+era-bstype:fixated a skos:Concept ;
+    rdfs:comment "is of type fixated"@en ;
+    skos:hiddenLabel "CCSTMS_fixated_2" ;
+    skos:inScheme era-bstype:BufferStopType ;
+    skos:notation "fixated"^^xsd:string ;
+    skos:prefLabel "Fixated"@en ;
+    skos:topConceptOf era-bstype:BufferStopType .
+
+era-bstype:friction a skos:Concept ;
+    rdfs:comment "is of type friction"@en ;
+    skos:hiddenLabel "CCSTMS_friction_0" ;
+    skos:inScheme era-bstype:BufferStopType ;
+    skos:notation "friction"^^xsd:string ;
+    skos:prefLabel "Friction"@en ;
+    skos:topConceptOf era-bstype:BufferStopType .
+
+era-bstype:hydraulic a skos:Concept ;
+    rdfs:comment "is of type hyraulic"@en ;
+    skos:hiddenLabel "CCSTMS_hydraulic_1" ;
+    skos:inScheme era-bstype:BufferStopType ;
+    skos:notation "hydraulic"^^xsd:string ;
+    skos:prefLabel "Hydraulic"@en ;
+    skos:topConceptOf era-bstype:BufferStopType .
+
+era-bstype:other a skos:Concept ;
+    rdfs:comment "is of type other"@en ;
+    skos:hiddenLabel "CCSTMS_other_3" ;
+    skos:inScheme era-bstype:BufferStopType ;
+    skos:notation "other"^^xsd:string ;
+    skos:prefLabel "Other"@en ;
+    skos:topConceptOf era-bstype:BufferStopType .
+

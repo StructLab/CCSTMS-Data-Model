@@ -1,0 +1,119 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-traincat: <http://data.europa.eu/949/concepts/train-category-type/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-traincat:TrainCategoryType a skos:ConceptScheme ;
+    rdfs:label "Train Category Type"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_TrainCategoryType" ;
+    skos:prefLabel "Train Category Type"@en .
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-traincat:coachGroup a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_coachGroup_8" ;
+    skos:inScheme era-traincat:TrainCategoryType ;
+    skos:notation "coachGroup"^^xsd:string ;
+    skos:prefLabel "Coach Group"@en ;
+    skos:topConceptOf era-traincat:TrainCategoryType .
+
+era-traincat:highspeedTrain a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_highspeedTrain_11" ;
+    skos:inScheme era-traincat:TrainCategoryType ;
+    skos:notation "highspeedTrain"^^xsd:string ;
+    skos:prefLabel "Highspeed Train"@en ;
+    skos:topConceptOf era-traincat:TrainCategoryType .
+
+era-traincat:historicTrain a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_historicTrain_7" ;
+    skos:inScheme era-traincat:TrainCategoryType ;
+    skos:notation "historicTrain"^^xsd:string ;
+    skos:prefLabel "Historic Train"@en ;
+    skos:topConceptOf era-traincat:TrainCategoryType .
+
+era-traincat:intercity a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_intercity_12" ;
+    skos:inScheme era-traincat:TrainCategoryType ;
+    skos:notation "intercity"^^xsd:string ;
+    skos:prefLabel "Intercity"@en ;
+    skos:topConceptOf era-traincat:TrainCategoryType .
+
+era-traincat:interregional a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_interregional_1" ;
+    skos:inScheme era-traincat:TrainCategoryType ;
+    skos:notation "interregional"^^xsd:string ;
+    skos:prefLabel "Interregional"@en ;
+    skos:topConceptOf era-traincat:TrainCategoryType .
+
+era-traincat:motorRail a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_motorRail_5" ;
+    skos:inScheme era-traincat:TrainCategoryType ;
+    skos:notation "motorRail"^^xsd:string ;
+    skos:prefLabel "Motor Rail"@en ;
+    skos:topConceptOf era-traincat:TrainCategoryType .
+
+era-traincat:mountainTrain a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_mountainTrain_6" ;
+    skos:inScheme era-traincat:TrainCategoryType ;
+    skos:notation "mountainTrain"^^xsd:string ;
+    skos:prefLabel "Mountain Train"@en ;
+    skos:topConceptOf era-traincat:TrainCategoryType .
+
+era-traincat:nightTrain a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_nightTrain_4" ;
+    skos:inScheme era-traincat:TrainCategoryType ;
+    skos:notation "nightTrain"^^xsd:string ;
+    skos:prefLabel "Night Train"@en ;
+    skos:topConceptOf era-traincat:TrainCategoryType .
+
+era-traincat:regional a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_regional_2" ;
+    skos:inScheme era-traincat:TrainCategoryType ;
+    skos:notation "regional"^^xsd:string ;
+    skos:prefLabel "Regional"@en ;
+    skos:topConceptOf era-traincat:TrainCategoryType .
+
+era-traincat:subUrban a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_subUrban_3" ;
+    skos:inScheme era-traincat:TrainCategoryType ;
+    skos:notation "subUrban"^^xsd:string ;
+    skos:prefLabel "Sub Urban"@en ;
+    skos:topConceptOf era-traincat:TrainCategoryType .
+
+era-traincat:trainCategoryUnknown a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_trainCategoryUnknown_0" ;
+    skos:inScheme era-traincat:TrainCategoryType ;
+    skos:notation "trainCategoryUnknown"^^xsd:string ;
+    skos:prefLabel "TrainCategoryUnknown"@en ;
+    skos:topConceptOf era-traincat:TrainCategoryType .
+
+era-traincat:tram a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_tram_9" ;
+    skos:inScheme era-traincat:TrainCategoryType ;
+    skos:notation "tram"^^xsd:string ;
+    skos:prefLabel "Tram"@en ;
+    skos:topConceptOf era-traincat:TrainCategoryType .
+
+era-traincat:underground a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_underground_10" ;
+    skos:inScheme era-traincat:TrainCategoryType ;
+    skos:notation "underground"^^xsd:string ;
+    skos:prefLabel "Underground"@en ;
+    skos:topConceptOf era-traincat:TrainCategoryType .

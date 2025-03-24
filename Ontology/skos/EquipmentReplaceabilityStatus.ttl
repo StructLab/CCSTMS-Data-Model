@@ -1,0 +1,64 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-ers: <http://data.europa.eu/949/concepts/equipment-replaceability-status/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-ers:EquipmentReplaceabilityStatus a skos:ConceptScheme ;
+    rdfs:label "Equipment Replaceability Status"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "Indicates when the equipment requests a replacement. The decision to act on this indication is up to the operator, in accordance with the equipment manual."@en ;
+    skos:hiddenLabel "CCSTMS_EquipmentReplaceabilityStatus" ;
+    skos:prefLabel "Equipment Replaceability Status"@en .
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-ers:ReplaceableAtOperation a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_ReplaceableAtOperation_2" ;
+    skos:inScheme era-ers:EquipmentReplaceabilityStatus ;
+    skos:notation "ReplaceableAtOperation"^^xsd:string ;
+    skos:prefLabel "ReplaceableAtOperation"@en ;
+    skos:topConceptOf era-ers:EquipmentReplaceabilityStatus .
+
+era-ers:ReplaceableMaintenance a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_ReplaceableMaintenance_3" ;
+    skos:inScheme era-ers:EquipmentReplaceabilityStatus ;
+    skos:notation "ReplaceableMaintenance"^^xsd:string ;
+    skos:prefLabel "Replaceable Maintenance"@en ;
+    skos:topConceptOf era-ers:EquipmentReplaceabilityStatus .
+
+era-ers:ReplaceableRevalidation a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_ReplaceableRevalidation_4" ;
+    skos:inScheme era-ers:EquipmentReplaceabilityStatus ;
+    skos:notation "ReplaceableRevalidation"^^xsd:string ;
+    skos:prefLabel "Replaceable Revalidation"@en ;
+    skos:topConceptOf era-ers:EquipmentReplaceabilityStatus .
+
+era-ers:ReplacementNotNeeded a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_ReplacementNotNeeded_1" ;
+    skos:inScheme era-ers:EquipmentReplaceabilityStatus ;
+    skos:notation "ReplacementNotNeeded"^^xsd:string ;
+    skos:prefLabel "ReplacementNotNeeded"@en ;
+    skos:topConceptOf era-ers:EquipmentReplaceabilityStatus .
+
+era-ers:Unknown a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Unknown_0" ;
+    skos:inScheme era-ers:EquipmentReplaceabilityStatus ;
+    skos:notation "Unknown"^^xsd:string ;
+    skos:prefLabel "Unknown"@en ;
+    skos:topConceptOf era-ers:EquipmentReplaceabilityStatus .

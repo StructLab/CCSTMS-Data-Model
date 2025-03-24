@@ -1,0 +1,64 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-pnios: <http://data.europa.eu/949/concepts/physical-network-interface-operational-status/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-pnios:PhysicalNetworkInterfaceOperationalStatus a skos:ConceptScheme ;
+    rdfs:label "Physical Network Interface Operational Status"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "can be replaced?"@en ;
+    skos:hiddenLabel "CCSTMS_PhysicalNetworkInterfaceOperationalStatus" ;
+    skos:prefLabel "Physical Network Interface Operational Status"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-pnios:AvailableNotConnected a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_AvailableNotConnected_2" ;
+    skos:inScheme era-pnios:PhysicalNetworkInterfaceOperationalStatus ;
+    skos:notation "AvailableNotConnected"^^xsd:string ;
+    skos:prefLabel "AvailableNotConnected"@en ;
+    skos:topConceptOf era-pnios:PhysicalNetworkInterfaceOperationalStatus .
+
+era-pnios:Connected a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Connected_3" ;
+    skos:inScheme era-pnios:PhysicalNetworkInterfaceOperationalStatus ;
+    skos:notation "Connected"^^xsd:string ;
+    skos:prefLabel "Connected"@en ;
+    skos:topConceptOf era-pnios:PhysicalNetworkInterfaceOperationalStatus .
+
+era-pnios:NotAvialableNotConnected a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_NotAvialableNotConnected_1" ;
+    skos:inScheme era-pnios:PhysicalNetworkInterfaceOperationalStatus ;
+    skos:notation "NotAvialableNotConnected"^^xsd:string ;
+    skos:prefLabel "NotAvialableNotConnected"@en ;
+    skos:topConceptOf era-pnios:PhysicalNetworkInterfaceOperationalStatus .
+
+era-pnios:NotConnectedDisturbed a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_NotConnectedDisturbed_4" ;
+    skos:inScheme era-pnios:PhysicalNetworkInterfaceOperationalStatus ;
+    skos:notation "NotConnectedDisturbed"^^xsd:string ;
+    skos:prefLabel "NotConnectedDisturbed"@en ;
+    skos:topConceptOf era-pnios:PhysicalNetworkInterfaceOperationalStatus .
+
+era-pnios:Unknown a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Unknown_0" ;
+    skos:inScheme era-pnios:PhysicalNetworkInterfaceOperationalStatus ;
+    skos:notation "Unknown"^^xsd:string ;
+    skos:prefLabel "Unknown"@en ;
+    skos:topConceptOf era-pnios:PhysicalNetworkInterfaceOperationalStatus .

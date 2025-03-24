@@ -1,0 +1,56 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-platformpos: <http://data.europa.eu/949/concepts/platform-position/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-platformpos:PlatformPosition a skos:ConceptScheme ;
+    rdfs:label "Platform Position"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "Platform position (relative to direction of authorised movement).None. Length of variable : 2 bits"@en ;
+    skos:hiddenLabel "CCSTMS_PlatformPosition" ;
+    skos:prefLabel "Platform Position"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-platformpos:ppBoth a skos:Concept ;
+    rdfs:comment "Platform on both sides"@en ;
+    skos:hiddenLabel "CCSTMS_ppBoth_2" ;
+    skos:inScheme era-platformpos:PlatformPosition ;
+    skos:notation "ppBoth"^^xsd:string ;
+    skos:prefLabel "Pp Both"@en ;
+    skos:topConceptOf era-platformpos:PlatformPosition .
+
+era-platformpos:ppLeft a skos:Concept ;
+    rdfs:comment "Platform on left side"@en ;
+    skos:hiddenLabel "CCSTMS_ppLeft_0" ;
+    skos:inScheme era-platformpos:PlatformPosition ;
+    skos:notation "ppLeft"^^xsd:string ;
+    skos:prefLabel "Pp Left"@en ;
+    skos:topConceptOf era-platformpos:PlatformPosition .
+
+era-platformpos:ppRight a skos:Concept ;
+    rdfs:comment "Platform on right side"@en ;
+    skos:hiddenLabel "CCSTMS_ppRight_1" ;
+    skos:inScheme era-platformpos:PlatformPosition ;
+    skos:notation "ppRight"^^xsd:string ;
+    skos:prefLabel "Pp Right"@en ;
+    skos:topConceptOf era-platformpos:PlatformPosition .
+
+
+

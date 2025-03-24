@@ -1,0 +1,51 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+@prefix era-route-typ: <http://data.europa.eu/949/concepts/route-type/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-route-typ:RouteType a skos:ConceptScheme ;
+    rdfs:label "Route Type"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "Eulynx.Taxonomy, https://dataprep.eulynx.eu/2021-05/EARoot/EA2/EA4/EA3021.htm"@en ;
+    skos:hiddenLabel "CCSTMS_RouteType" ;
+    skos:prefLabel "Route Type"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-route-typ:mainRoute a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_mainRoute_0" ;
+    skos:inScheme era-route-typ:RouteType ;
+    skos:notation "mainRoute"^^xsd:string ;
+    skos:prefLabel "Main Route"@en ;
+    skos:topConceptOf era-route-typ:RouteType .
+
+era-route-typ:onsightRoute a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_onsightRoute_1" ;
+    skos:inScheme era-route-typ:RouteType ;
+    skos:notation "onsightRoute"^^xsd:string ;
+    skos:prefLabel "Onsight Route"@en ;
+    skos:topConceptOf era-route-typ:RouteType .
+
+era-route-typ:shuntingRoute a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_shuntingRoute_2" ;
+    skos:inScheme era-route-typ:RouteType ;
+    skos:notation "shuntingRoute"^^xsd:string ;
+    skos:prefLabel "Shunting Route"@en ;
+    skos:topConceptOf era-route-typ:RouteType .

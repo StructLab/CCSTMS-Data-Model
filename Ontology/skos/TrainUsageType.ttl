@@ -1,0 +1,106 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-trainusage: <http://data.europa.eu/949/concepts/train-usage-type/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-trainusage:TrainUsageType a skos:ConceptScheme ;
+    rdfs:label "Train Usage Type"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_TrainUsageType" ;
+    skos:prefLabel "Train Usage Type"@en .
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-trainusage:breakdownTrain a skos:Concept ;
+    rdfs:comment "Hilfszug"@en ;
+    skos:hiddenLabel "CCSTMS_breakdownTrain_7" ;
+    skos:inScheme era-trainusage:TrainUsageType ;
+    skos:notation "breakdownTrain"^^xsd:string ;
+    skos:prefLabel "Breakdown Train"@en ;
+    skos:topConceptOf era-trainusage:TrainUsageType .
+
+era-trainusage:commercialCargoTrain a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_commercialCargoTrain_2" ;
+    skos:inScheme era-trainusage:TrainUsageType ;
+    skos:notation "commercialCargoTrain"^^xsd:string ;
+    skos:prefLabel "CommercialCargoTrain"@en ;
+    skos:topConceptOf era-trainusage:TrainUsageType .
+
+era-trainusage:commercialPassengerTrain a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_commercialPassengerTrain_1" ;
+    skos:inScheme era-trainusage:TrainUsageType ;
+    skos:notation "commercialPassengerTrain"^^xsd:string ;
+    skos:prefLabel "CommercialPassengerTrain"@en ;
+    skos:topConceptOf era-trainusage:TrainUsageType .
+
+era-trainusage:engineeringTrain a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_engineeringTrain_6" ;
+    skos:inScheme era-trainusage:TrainUsageType ;
+    skos:notation "engineeringTrain"^^xsd:string ;
+    skos:prefLabel "Engineering Train"@en ;
+    skos:topConceptOf era-trainusage:TrainUsageType .
+
+era-trainusage:lightRunning a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_lightRunning_4" ;
+    skos:inScheme era-trainusage:TrainUsageType ;
+    skos:notation "lightRunning"^^xsd:string ;
+    skos:prefLabel "Light Running"@en ;
+    skos:topConceptOf era-trainusage:TrainUsageType .
+
+era-trainusage:locomotiveRunningLight a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_locomotiveRunningLight_3" ;
+    skos:inScheme era-trainusage:TrainUsageType ;
+    skos:notation "locomotiveRunningLight"^^xsd:string ;
+    skos:prefLabel "LocomotiveRunningLight"@en ;
+    skos:topConceptOf era-trainusage:TrainUsageType .
+
+era-trainusage:mixedTrain a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_mixedTrain_8" ;
+    skos:inScheme era-trainusage:TrainUsageType ;
+    skos:notation "mixedTrain"^^xsd:string ;
+    skos:prefLabel "Mixed Train"@en ;
+    skos:topConceptOf era-trainusage:TrainUsageType .
+
+era-trainusage:notInService a skos:Concept ;
+    rdfs:comment "betriebsfahrt"@en ;
+    skos:hiddenLabel "CCSTMS_notInService_5" ;
+    skos:inScheme era-trainusage:TrainUsageType ;
+    skos:notation "notInService"^^xsd:string ;
+    skos:prefLabel "NotInService"@en ;
+    skos:topConceptOf era-trainusage:TrainUsageType .
+
+era-trainusage:otherTrain a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_otherTrain_10" ;
+    skos:inScheme era-trainusage:TrainUsageType ;
+    skos:notation "otherTrain"^^xsd:string ;
+    skos:prefLabel "Other Train"@en ;
+    skos:topConceptOf era-trainusage:TrainUsageType .
+
+era-trainusage:specialTrain a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_specialTrain_9" ;
+    skos:inScheme era-trainusage:TrainUsageType ;
+    skos:notation "specialTrain"^^xsd:string ;
+    skos:prefLabel "Special Train"@en ;
+    skos:topConceptOf era-trainusage:TrainUsageType .
+
+era-trainusage:trainUsageUndefined a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_trainUsageUndefined_0" ;
+    skos:inScheme era-trainusage:TrainUsageType ;
+    skos:notation "trainUsageUndefined"^^xsd:string ;
+    skos:prefLabel "TrainUsageUndefined"@en ;
+    skos:topConceptOf era-trainusage:TrainUsageType .

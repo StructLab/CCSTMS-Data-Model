@@ -1,0 +1,46 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+@prefix era-textclass: <http://data.europa.eu/949/concepts/text-class/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-textclass:TextClass a skos:ConceptScheme ;
+    rdfs:label "Text Class"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "Class of message to be displayed..Q_TEXTCLASS specifies the class of the text message included in the same packet (either plain or fixed message). Length of variable : 2 bits."@en ;
+    skos:hiddenLabel "CCSTMS_TextClass" ;
+    skos:prefLabel "Text Class"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-textclass:auxiliary a skos:Concept ;
+    rdfs:comment "Auxiliary Information"@en ;
+    skos:hiddenLabel "CCSTMS_auxiliary_0" ;
+    skos:inScheme era-textclass:TextClass ;
+    skos:notation "auxiliary"^^xsd:string ;
+    skos:prefLabel "Auxiliary"@en ;
+    skos:topConceptOf era-textclass:TextClass .
+
+era-textclass:important a skos:Concept ;
+    rdfs:comment "Important Information"@en ;
+    skos:hiddenLabel "CCSTMS_important_1" ;
+    skos:inScheme era-textclass:TextClass ;
+    skos:notation "important"^^xsd:string ;
+    skos:prefLabel "Important"@en ;
+    skos:topConceptOf era-textclass:TextClass .

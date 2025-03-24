@@ -1,0 +1,51 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-tunnel: <http://data.europa.eu/949/concepts/tunnel-type/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-tunnel:TunnelType a skos:ConceptScheme ;
+    rdfs:label "Tunnel Type"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "List defining tunnel types for segment profile"@en ;
+    skos:hiddenLabel "CCSTMS_TunnelType" ;
+    skos:prefLabel "Tunnel Type"@en .
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+era-tunnel:doubleTrackTunnel a skos:Concept ;
+    rdfs:comment "defines a double track tunnel"@en ;
+    skos:hiddenLabel "CCSTMS_doubleTrackTunnel_1" ;
+    skos:inScheme era-tunnel:TunnelType ;
+    skos:notation "doubleTrackTunnel"^^xsd:string ;
+    skos:prefLabel "DoubleTrackTunnel"@en ;
+    skos:topConceptOf era-tunnel:TunnelType .
+
+era-tunnel:singleTrackTunnel a skos:Concept ;
+    rdfs:comment "defines a single track tunnel"@en ;
+    skos:hiddenLabel "CCSTMS_singleTrackTunnel_0" ;
+    skos:inScheme era-tunnel:TunnelType ;
+    skos:notation "singleTrackTunnel"^^xsd:string ;
+    skos:prefLabel "SingleTrackTunnel"@en ;
+    skos:topConceptOf era-tunnel:TunnelType .
+
+era-tunnel:wideCrossSectionTunnel a skos:Concept ;
+    rdfs:comment "defines tunnel with more than two tracks"@en ;
+    skos:hiddenLabel "CCSTMS_wideCrossSectionTunnel_2" ;
+    skos:inScheme era-tunnel:TunnelType ;
+    skos:notation "wideCrossSectionTunnel"^^xsd:string ;
+    skos:prefLabel "WideCrossSectionTunnel"@en ;
+    skos:topConceptOf era-tunnel:TunnelType .

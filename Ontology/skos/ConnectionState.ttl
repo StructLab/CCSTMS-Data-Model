@@ -1,0 +1,53 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-connectionstate: <http://data.europa.eu/949/concepts/connection-state/> .
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-connectionstate:ConnectionState a skos:ConceptScheme ;
+    rdfs:label "Connection State"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_ConnectionState" ;
+    skos:prefLabel "Connection State"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+era-connectionstate:connectionEstablished a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_connectionEstablished_0" ;
+    skos:inScheme era-connectionstate:ConnectionState ;
+    skos:notation "connectionEstablished"^^xsd:string ;
+    skos:prefLabel "Connection Established"@en ;
+    skos:topConceptOf era-connectionstate:ConnectionState .
+
+era-connectionstate:connectionTerminated a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_connectionTerminated_1" ;
+    skos:inScheme era-connectionstate:ConnectionState ;
+    skos:notation "connectionTerminated"^^xsd:string ;
+    skos:prefLabel "Connection Terminated"@en ;
+    skos:topConceptOf era-connectionstate:ConnectionState .
+
+era-connectionstate:connectionUndefined a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_connectionUndefined_2" ;
+    skos:inScheme era-connectionstate:ConnectionState ;
+    skos:notation "connectionUndefined"^^xsd:string ;
+    skos:prefLabel "Connection Undefined"@en ;
+    skos:topConceptOf era-connectionstate:ConnectionState .
+

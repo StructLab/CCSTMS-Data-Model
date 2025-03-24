@@ -1,0 +1,85 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-adhesioncat: <http://data.europa.eu/949/concepts/adhesion-category/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-adhesioncat:AdhesionCategory a skos:ConceptScheme ;
+    rdfs:label "Adhesion Category"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_AdhesionCategory" ;
+    skos:prefLabel "Adhesion Category"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+
+era-adhesioncat:dryRailHigh a skos:Concept ;
+    rdfs:comment " Conditions where 100% of thebrake force of the vehicle can be appliedwith no axle sliding of more than2% (adhesion level typically above 0.15Âµ)"@en ;
+    skos:hiddenLabel "CCSTMS_dryRailHigh_0" ;
+    skos:inScheme era-adhesioncat:AdhesionCategory ;
+    skos:notation "dryRailHigh"^^xsd:string ;
+    skos:prefLabel "DryRailHigh"@en ;
+    skos:topConceptOf era-adhesioncat:AdhesionCategory .
+
+era-adhesioncat:dryRailLow a skos:Concept ;
+    rdfs:comment " Conditions where thewheel/rail adhesion is in the range 0.10 Ã¢0.08 (Typical autumn mornings due todew/dampness often combined with lightovernight rust)"@en ;
+    skos:hiddenLabel "CCSTMS_dryRailLow_2" ;
+    skos:inScheme era-adhesioncat:AdhesionCategory ;
+    skos:notation "dryRailLow"^^xsd:string ;
+    skos:prefLabel "DryRailLow"@en ;
+    skos:topConceptOf era-adhesioncat:AdhesionCategory .
+
+era-adhesioncat:dryRailMedium a skos:Concept ;
+    rdfs:comment "Conditions where the wheel/railadhesion is in the range 0.15 Ã¢ 0.10 (Damprails with some contamination)"@en ;
+    skos:hiddenLabel "CCSTMS_dryRailMedium_1" ;
+    skos:inScheme era-adhesioncat:AdhesionCategory ;
+    skos:notation "dryRailMedium"^^xsd:string ;
+    skos:prefLabel "DryRailMedium"@en ;
+    skos:topConceptOf era-adhesioncat:AdhesionCategory .
+
+era-adhesioncat:extremelyLowAdhesion a skos:Concept ;
+    rdfs:comment "Conditionswhere the wheel/rail adhesion is below 0.03"@en ;
+    skos:hiddenLabel "CCSTMS_extremelyLowAdhesion_5" ;
+    skos:inScheme era-adhesioncat:AdhesionCategory ;
+    skos:notation "extremelyLowAdhesion"^^xsd:string ;
+    skos:prefLabel "ExtremelyLowAdhesion"@en ;
+    skos:topConceptOf era-adhesioncat:AdhesionCategory .
+
+era-adhesioncat:lowAdhesion a skos:Concept ;
+    rdfs:comment "Conditions where thewheel/rail adhesion is in the range 0.08 Ã¢0.05"@en ;
+    skos:hiddenLabel "CCSTMS_lowAdhesion_3" ;
+    skos:inScheme era-adhesioncat:AdhesionCategory ;
+    skos:notation "lowAdhesion"^^xsd:string ;
+    skos:prefLabel "Low Adhesion"@en ;
+    skos:topConceptOf era-adhesioncat:AdhesionCategory .
+
+era-adhesioncat:unknownAdhesion a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_unknownAdhesion_255" ;
+    skos:inScheme era-adhesioncat:AdhesionCategory ;
+    skos:notation "unknownAdhesion"^^xsd:string ;
+    skos:prefLabel "Unknown Adhesion"@en ;
+    skos:topConceptOf era-adhesioncat:AdhesionCategory .
+
+era-adhesioncat:veryLowAdhesion a skos:Concept ;
+    rdfs:comment "Conditions where thewheel/rail adhesion is in the range 0.05-0.03"@en ;
+    skos:hiddenLabel "CCSTMS_veryLowAdhesion_4" ;
+    skos:inScheme era-adhesioncat:AdhesionCategory ;
+    skos:notation "veryLowAdhesion"^^xsd:string ;
+    skos:prefLabel "VeryLowAdhesion"@en ;
+    skos:topConceptOf era-adhesioncat:AdhesionCategory .

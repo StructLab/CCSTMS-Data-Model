@@ -1,0 +1,72 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-lgt: <http://data.europa.eu/949/concepts/loading-gauge-type/> .
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-lgt:LoadingGaugeType a skos:ConceptScheme ;
+    rdfs:label "Loading Gauge Type"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "Defining theloading guage profile of a train"@en ;
+    skos:hiddenLabel "CCSTMS_LoadingGaugeType" ;
+    skos:prefLabel "Loading Gauge Type"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+era-lgt:g1 a skos:Concept ;
+    rdfs:comment "belongs to type g1"@en ;
+    skos:hiddenLabel "CCSTMS_g1_1" ;
+    skos:inScheme era-lgt:LoadingGaugeType ;
+    skos:notation "g1"^^xsd:string ;
+    skos:prefLabel "G1"@en ;
+    skos:topConceptOf era-lgt:LoadingGaugeType .
+
+era-lgt:gA a skos:Concept ;
+    rdfs:comment "belongs to type gA"@en ;
+    skos:hiddenLabel "CCSTMS_gA_2" ;
+    skos:inScheme era-lgt:LoadingGaugeType ;
+    skos:notation "gA"^^xsd:string ;
+    skos:prefLabel "gA"@en ;
+    skos:topConceptOf era-lgt:LoadingGaugeType .
+
+era-lgt:gB a skos:Concept ;
+    rdfs:comment "belongs to type gB"@en ;
+    skos:hiddenLabel "CCSTMS_gB_3" ;
+    skos:inScheme era-lgt:LoadingGaugeType ;
+    skos:notation "gB"^^xsd:string ;
+    skos:prefLabel "gB"@en ;
+    skos:topConceptOf era-lgt:LoadingGaugeType .
+
+era-lgt:gC a skos:Concept ;
+    rdfs:comment "belongs to type gC"@en ;
+    skos:hiddenLabel "CCSTMS_gC_4" ;
+    skos:inScheme era-lgt:LoadingGaugeType ;
+    skos:notation "gC"^^xsd:string ;
+    skos:prefLabel "gC"@en ;
+    skos:topConceptOf era-lgt:LoadingGaugeType .
+
+era-lgt:loadingGaugeIncompatible a skos:Concept ;
+    rdfs:comment "The train does not fit to any of the interoperable loading gauge profiles"@en ;
+    skos:hiddenLabel "CCSTMS_loadingGaugeIncompatible_0" ;
+    skos:inScheme era-lgt:LoadingGaugeType ;
+    skos:notation "loadingGaugeIncompatible"^^xsd:string ;
+    skos:prefLabel "LoadingGaugeIncompatible"@en ;
+    skos:topConceptOf era-lgt:LoadingGaugeType .
+

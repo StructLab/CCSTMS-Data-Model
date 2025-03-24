@@ -1,0 +1,75 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-blr: <http://data.europa.eu/949/concepts/booting-last-reason/> .
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-blr:BootingLastReason a skos:ConceptScheme ;
+    rdfs:label "BootingLastReason"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "Indicates the type of the latest reset (The reason for the reset)."@en ;
+    skos:hiddenLabel "CCSTMS_BootingLastReason" ;
+    skos:prefLabel "BootingLastReason"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+	
+	
+era-blr:InternalFailure a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_InternalFailure_5" ;
+    skos:inScheme era-blr:BootingLastReason ;
+    skos:notation "InternalFailure"^^xsd:string ;
+    skos:prefLabel "Internal Failure"@en ;
+    skos:topConceptOf era-blr:BootingLastReason .
+
+era-blr:InternalMaintenanceFailure a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_InternalMaintenanceFailure_4" ;
+    skos:inScheme era-blr:BootingLastReason ;
+    skos:notation "InternalMaintenanceFailure"^^xsd:string ;
+    skos:prefLabel "InternalMaintenanceFailure"@en ;
+    skos:topConceptOf era-blr:BootingLastReason .
+
+era-blr:InternalMaintenanceOk a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_InternalMaintenanceOk_3" ;
+    skos:inScheme era-blr:BootingLastReason ;
+    skos:notation "InternalMaintenanceOk"^^xsd:string ;
+    skos:prefLabel "InternalMaintenanceOk"@en ;
+    skos:topConceptOf era-blr:BootingLastReason .
+
+era-blr:OnSite a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_OnSite_1" ;
+    skos:inScheme era-blr:BootingLastReason ;
+    skos:notation "OnSite"^^xsd:string ;
+    skos:prefLabel "On Site"@en ;
+    skos:topConceptOf era-blr:BootingLastReason .
+
+era-blr:RemoteMdm a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_RemoteMdm_2" ;
+    skos:inScheme era-blr:BootingLastReason ;
+    skos:notation "RemoteMdm"^^xsd:string ;
+    skos:prefLabel "Remote Mdm"@en ;
+    skos:topConceptOf era-blr:BootingLastReason .
+
+era-blr:Unknown a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Unknown_0" ;
+    skos:inScheme era-blr:BootingLastReason ;
+    skos:notation "Unknown"^^xsd:string ;
+    skos:prefLabel "Unknown"@en ;
+    skos:topConceptOf era-blr:BootingLastReason .
+

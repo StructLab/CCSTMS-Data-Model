@@ -1,0 +1,141 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-dom: <http://data.europa.eu/949/concepts/display-operating-mode/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-dom:DisplayOperatingMode a skos:ConceptScheme ;
+    rdfs:label "Display Operating Mode"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "Onboard operating mode for text display.The text is displayed when entering / as long as in the defined mode. "@en ;
+    skos:hiddenLabel "CCSTMS_DisplayOperatingMode" ;
+    skos:prefLabel "Display Operating Mode"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-dom:DOM_fullSupervision a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOM_fullSupervision_0" ;
+    skos:inScheme era-dom:DisplayOperatingMode ;
+    skos:notation "DOM_fullSupervision"^^xsd:string ;
+    skos:prefLabel "DOM_full Supervision"@en ;
+    skos:topConceptOf era-dom:DisplayOperatingMode .
+
+era-dom:DOM_limitedSupervision a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOM_limitedSupervision_12" ;
+    skos:inScheme era-dom:DisplayOperatingMode ;
+    skos:notation "DOM_limitedSupervision"^^xsd:string ;
+    skos:prefLabel "DOM_limited Supervision"@en ;
+    skos:topConceptOf era-dom:DisplayOperatingMode .
+
+era-dom:DOM_notLimitedByMode a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOM_notLimitedByMode_15" ;
+    skos:inScheme era-dom:DisplayOperatingMode ;
+    skos:notation "DOM_notLimitedByMode"^^xsd:string ;
+    skos:prefLabel "DOM_notLimitedBy Mode"@en ;
+    skos:topConceptOf era-dom:DisplayOperatingMode .
+
+era-dom:DOM_onSight a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOM_onSight_1" ;
+    skos:inScheme era-dom:DisplayOperatingMode ;
+    skos:notation "DOM_onSight"^^xsd:string ;
+    skos:prefLabel "DOM_on Sight"@en ;
+    skos:topConceptOf era-dom:DisplayOperatingMode .
+
+era-dom:DOM_postTrip a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOM_postTrip_8" ;
+    skos:inScheme era-dom:DisplayOperatingMode ;
+    skos:notation "DOM_postTrip"^^xsd:string ;
+    skos:prefLabel "DOM_post Trip"@en ;
+    skos:topConceptOf era-dom:DisplayOperatingMode .
+
+era-dom:DOM_reversing a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOM_reversing_14" ;
+    skos:inScheme era-dom:DisplayOperatingMode ;
+    skos:notation "DOM_reversing"^^xsd:string ;
+    skos:prefLabel "Dom_Reversing"@en ;
+    skos:topConceptOf era-dom:DisplayOperatingMode .
+
+era-dom:DOM_spare a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOM_spare_3" ;
+    skos:inScheme era-dom:DisplayOperatingMode ;
+    skos:notation "DOM_spare"^^xsd:string ;
+    skos:prefLabel "Dom_Spare"@en ;
+    skos:topConceptOf era-dom:DisplayOperatingMode .
+
+era-dom:DOM_spare1 a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOM_spare1_5" ;
+    skos:inScheme era-dom:DisplayOperatingMode ;
+    skos:notation "DOM_spare1"^^xsd:string ;
+    skos:prefLabel "Dom_Spare1"@en ;
+    skos:topConceptOf era-dom:DisplayOperatingMode .
+
+era-dom:DOM_spare2 a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOM_spare2_9" ;
+    skos:inScheme era-dom:DisplayOperatingMode ;
+    skos:notation "DOM_spare2"^^xsd:string ;
+    skos:prefLabel "Dom_Spare2"@en ;
+    skos:topConceptOf era-dom:DisplayOperatingMode .
+
+era-dom:DOM_spare3 a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOM_spare3_10" ;
+    skos:inScheme era-dom:DisplayOperatingMode ;
+    skos:notation "DOM_spare3"^^xsd:string ;
+    skos:prefLabel "Dom_Spare3"@en ;
+    skos:topConceptOf era-dom:DisplayOperatingMode .
+
+era-dom:DOM_spare4 a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOM_spare4_11" ;
+    skos:inScheme era-dom:DisplayOperatingMode ;
+    skos:notation "DOM_spare4"^^xsd:string ;
+    skos:prefLabel "Dom_Spare4"@en ;
+    skos:topConceptOf era-dom:DisplayOperatingMode .
+
+era-dom:DOM_spare5 a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOM_spare5_13" ;
+    skos:inScheme era-dom:DisplayOperatingMode ;
+    skos:notation "DOM_spare5"^^xsd:string ;
+    skos:prefLabel "Dom_Spare5"@en ;
+    skos:topConceptOf era-dom:DisplayOperatingMode .
+
+era-dom:DOM_staffResponsible a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOM_staffResponsible_2" ;
+    skos:inScheme era-dom:DisplayOperatingMode ;
+    skos:notation "DOM_staffResponsible"^^xsd:string ;
+    skos:prefLabel "DOM_staff Responsible"@en ;
+    skos:topConceptOf era-dom:DisplayOperatingMode .
+
+era-dom:DOM_standBy a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOM_standBy_6" ;
+    skos:inScheme era-dom:DisplayOperatingMode ;
+    skos:notation "DOM_standBy"^^xsd:string ;
+    skos:prefLabel "DOM_stand By"@en ;
+    skos:topConceptOf era-dom:DisplayOperatingMode .
+
+era-dom:DOM_trip a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOM_trip_7" ;
+    skos:inScheme era-dom:DisplayOperatingMode ;
+    skos:notation "DOM_trip"^^xsd:string ;
+    skos:prefLabel "Dom_Trip"@en ;
+    skos:topConceptOf era-dom:DisplayOperatingMode .
+
+era-dom:DOM_unfitted a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_DOM_unfitted_4" ;
+    skos:inScheme era-dom:DisplayOperatingMode ;
+    skos:notation "DOM_unfitted"^^xsd:string ;
+    skos:prefLabel "Dom_Unfitted"@en ;
+    skos:topConceptOf era-dom:DisplayOperatingMode .

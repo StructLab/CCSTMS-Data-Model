@@ -1,0 +1,69 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-statustechnical: <http://data.europa.eu/949/concepts/status-technical/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-statustechnical:StatusTechnical a skos:ConceptScheme ;
+    rdfs:label "Status Technical"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "Technical Status of the system, that represents the aggregated status of all hierarchical lower systems. This allows to have a top level information on the status of the system which can be drilled down if the system is in any other state than Ok."@en ;
+    skos:hiddenLabel "CCSTMS_StatusTechnical" ;
+    skos:prefLabel "Status Technical"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-statustechnical:FailureCritical a skos:Concept ;
+    rdfs:comment "At least one function is not available; operational consequences possible"@en ;
+    skos:hiddenLabel "CCSTMS_FailureCritical_4" ;
+    skos:inScheme era-statustechnical:StatusTechnical ;
+    skos:notation "FailureCritical"^^xsd:string ;
+    skos:prefLabel "Failure Critical"@en ;
+    skos:topConceptOf era-statustechnical:StatusTechnical .
+
+era-statustechnical:FailureNonCritical a skos:Concept ;
+    rdfs:comment "At least one error in one of the (sub)systems, but on this system level all functions are available"@en ;
+    skos:hiddenLabel "CCSTMS_FailureNonCritical_3" ;
+    skos:inScheme era-statustechnical:StatusTechnical ;
+    skos:notation "FailureNonCritical"^^xsd:string ;
+    skos:prefLabel "FailureNonCritical"@en ;
+    skos:topConceptOf era-statustechnical:StatusTechnical .
+
+era-statustechnical:OK a skos:Concept ;
+    rdfs:comment "System serves all primary functions and has no deviations, errors or failures"@en ;
+    skos:hiddenLabel "CCSTMS_OK_1" ;
+    skos:inScheme era-statustechnical:StatusTechnical ;
+    skos:notation "OK"^^xsd:string ;
+    skos:prefLabel "OK"@en ;
+    skos:topConceptOf era-statustechnical:StatusTechnical .
+
+era-statustechnical:Unknown a skos:Concept ;
+    rdfs:comment "The status unknown is used when the state is not yet established e.g. if connection to the system is lost"@en ;
+    skos:hiddenLabel "CCSTMS_Unknown_0" ;
+    skos:inScheme era-statustechnical:StatusTechnical ;
+    skos:notation "Unknown"^^xsd:string ;
+    skos:prefLabel "Unknown"@en ;
+    skos:topConceptOf era-statustechnical:StatusTechnical .
+
+era-statustechnical:Warning a skos:Concept ;
+    rdfs:comment "All subsystems are working as intended, but the system detects unexpected behaviour (e.g. deviation from expected values)."@en ;
+    skos:hiddenLabel "CCSTMS_Warning_2" ;
+    skos:inScheme era-statustechnical:StatusTechnical ;
+    skos:notation "Warning"^^xsd:string ;
+    skos:prefLabel "Warning"@en ;
+    skos:topConceptOf era-statustechnical:StatusTechnical .

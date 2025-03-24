@@ -1,0 +1,76 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-transtyp: <http://data.europa.eu/949/concepts/transition-type/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-transtyp:TransitionType a skos:ConceptScheme ;
+    rdfs:label "Transition Type"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_TransitionType" ;
+    skos:prefLabel "Transition Type"@en .
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-transtyp:biquadraticParabola a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_biquadraticParabola_1" ;
+    skos:inScheme era-transtyp:TransitionType ;
+    skos:notation "biquadraticParabola"^^xsd:string ;
+    skos:prefLabel "Biquadratic Parabola"@en ;
+    skos:topConceptOf era-transtyp:TransitionType .
+
+era-transtyp:blossCurve a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_blossCurve_2" ;
+    skos:inScheme era-transtyp:TransitionType ;
+    skos:notation "blossCurve"^^xsd:string ;
+    skos:prefLabel "Bloss Curve"@en ;
+    skos:topConceptOf era-transtyp:TransitionType .
+
+era-transtyp:clothoidCurve a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_clothoidCurve_0" ;
+    skos:inScheme era-transtyp:TransitionType ;
+    skos:notation "clothoidCurve"^^xsd:string ;
+    skos:prefLabel "Clothoid Curve"@en ;
+    skos:topConceptOf era-transtyp:TransitionType .
+
+era-transtyp:cosineCurve a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_cosineCurve_3" ;
+    skos:inScheme era-transtyp:TransitionType ;
+    skos:notation "cosineCurve"^^xsd:string ;
+    skos:prefLabel "Cosine Curve"@en ;
+    skos:topConceptOf era-transtyp:TransitionType .
+
+era-transtyp:cubicParabola a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_cubicParabola_4" ;
+    skos:inScheme era-transtyp:TransitionType ;
+    skos:notation "cubicParabola"^^xsd:string ;
+    skos:prefLabel "Cubic Parabola"@en ;
+    skos:topConceptOf era-transtyp:TransitionType .
+
+era-transtyp:sineCurve a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_sineCurve_5" ;
+    skos:inScheme era-transtyp:TransitionType ;
+    skos:notation "sineCurve"^^xsd:string ;
+    skos:prefLabel "Sine Curve"@en ;
+    skos:topConceptOf era-transtyp:TransitionType .
+
+era-transtyp:wienerBogen a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_wienerBogen_6" ;
+    skos:inScheme era-transtyp:TransitionType ;
+    skos:notation "wienerBogen"^^xsd:string ;
+    skos:prefLabel "Wiener Bogen"@en ;
+    skos:topConceptOf era-transtyp:TransitionType .

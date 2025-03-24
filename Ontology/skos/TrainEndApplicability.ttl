@@ -1,0 +1,45 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-tea: <http://data.europa.eu/949/concepts/train-end-applicability/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-tea:TrainEndApplicability a skos:ConceptScheme ;
+    rdfs:label "Train End Applicability"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "List of train end applicability types"@en ;
+    skos:hiddenLabel "CCSTMS_TrainEndApplicability" ;
+    skos:prefLabel "Train End Applicability"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-tea:lengthDelay a skos:Concept ;
+    rdfs:comment "Train length delay on validity end point of profile element"@en ;
+    skos:hiddenLabel "CCSTMS_lengthDelay_0" ;
+    skos:inScheme era-tea:TrainEndApplicability ;
+    skos:notation "lengthDelay"^^xsd:string ;
+    skos:prefLabel "Length Delay"@en ;
+    skos:topConceptOf era-tea:TrainEndApplicability .
+
+era-tea:noLengthDelay a skos:Concept ;
+    rdfs:comment "No Train length delay on validity end point of profile element."@en ;
+    skos:hiddenLabel "CCSTMS_noLengthDelay_1" ;
+    skos:inScheme era-tea:TrainEndApplicability ;
+    skos:notation "noLengthDelay"^^xsd:string ;
+    skos:prefLabel "NoLengthDelay"@en ;
+    skos:topConceptOf era-tea:TrainEndApplicability .

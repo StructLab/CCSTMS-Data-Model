@@ -1,0 +1,50 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-qdir: <http://data.europa.eu/949/concepts/q-dir/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-qdir:QDir a skos:ConceptScheme ;
+    rdfs:label "Q Dir"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "Validity direction of transmitted data. Qualifier to indicate the relevantvalidity direction of transmitted data, with reference to directionality of the balise group sending the information or to directionality of the LRBG, in case of information sent via radio."@en ;
+    skos:hiddenLabel "CCSTMS_QDir" ;
+    skos:prefLabel "Q Dir"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-qdir:both a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_both_2" ;
+    skos:inScheme era-qdir:QDir ;
+    skos:notation "both"^^xsd:string ;
+    skos:prefLabel "Both"@en ;
+    skos:topConceptOf era-qdir:QDir .
+
+era-qdir:nominal a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_nominal_1" ;
+    skos:inScheme era-qdir:QDir ;
+    skos:notation "nominal"^^xsd:string ;
+    skos:prefLabel "Nominal"@en ;
+    skos:topConceptOf era-qdir:QDir .
+
+era-qdir:reverse a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_reverse_0" ;
+    skos:inScheme era-qdir:QDir ;
+    skos:notation "reverse"^^xsd:string ;
+    skos:prefLabel "Reverse"@en ;
+    skos:topConceptOf era-qdir:QDir .

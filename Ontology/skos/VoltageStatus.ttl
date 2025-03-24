@@ -1,0 +1,63 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-voltstatus: <http://data.europa.eu/949/concepts/voltage-status/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-voltstatus:VoltageStatus a skos:ConceptScheme ;
+    rdfs:label "Voltage Status"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "voltage status"@en ;
+    skos:hiddenLabel "CCSTMS_VoltageStatus" ;
+    skos:prefLabel "Voltage Status"@en .
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-voltstatus:Nominal a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Nominal_3" ;
+    skos:inScheme era-voltstatus:VoltageStatus ;
+    skos:notation "Nominal"^^xsd:string ;
+    skos:prefLabel "Nominal"@en ;
+    skos:topConceptOf era-voltstatus:VoltageStatus .
+
+era-voltstatus:NotUsed a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_NotUsed_1" ;
+    skos:inScheme era-voltstatus:VoltageStatus ;
+    skos:notation "NotUsed"^^xsd:string ;
+    skos:prefLabel "Not Used"@en ;
+    skos:topConceptOf era-voltstatus:VoltageStatus .
+
+era-voltstatus:Overvoltage a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Overvoltage_4" ;
+    skos:inScheme era-voltstatus:VoltageStatus ;
+    skos:notation "Overvoltage"^^xsd:string ;
+    skos:prefLabel "Overvoltage"@en ;
+    skos:topConceptOf era-voltstatus:VoltageStatus .
+
+era-voltstatus:Undervoltage a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Undervoltage_2" ;
+    skos:inScheme era-voltstatus:VoltageStatus ;
+    skos:notation "Undervoltage"^^xsd:string ;
+    skos:prefLabel "Undervoltage"@en ;
+    skos:topConceptOf era-voltstatus:VoltageStatus .
+
+era-voltstatus:Unknown a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Unknown_0" ;
+    skos:inScheme era-voltstatus:VoltageStatus ;
+    skos:notation "Unknown"^^xsd:string ;
+    skos:prefLabel "Unknown"@en ;
+    skos:topConceptOf era-voltstatus:VoltageStatus .

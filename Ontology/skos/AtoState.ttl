@@ -1,0 +1,94 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+@prefix era-atostate: <http://data.europa.eu/949/concepts/ato-state/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-atostate:AtoState a skos:ConceptScheme ;
+    rdfs:label "Ato State"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_AtoState" ;
+    skos:prefLabel "Ato State"@en .
+	
+
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-atostate:AV a skos:Concept ;
+    rdfs:comment "State Available"@en ;
+    skos:hiddenLabel "CCSTMS_AV_3" ;
+    skos:inScheme era-atostate:AtoState ;
+    skos:notation "AV"^^xsd:string ;
+    skos:prefLabel "AV"@en ;
+    skos:topConceptOf era-atostate:AtoState .
+
+era-atostate:CO a skos:Concept ;
+    rdfs:comment "State Configuration"@en ;
+    skos:hiddenLabel "CCSTMS_CO_1" ;
+    skos:inScheme era-atostate:AtoState ;
+    skos:notation "CO"^^xsd:string ;
+    skos:prefLabel "CO"@en ;
+    skos:topConceptOf era-atostate:AtoState .
+
+era-atostate:DE a skos:Concept ;
+    rdfs:comment "State Disengaged"@en ;
+    skos:hiddenLabel "CCSTMS_DE_6" ;
+    skos:inScheme era-atostate:AtoState ;
+    skos:notation "DE"^^xsd:string ;
+    skos:prefLabel "DE"@en ;
+    skos:topConceptOf era-atostate:AtoState .
+
+era-atostate:EG a skos:Concept ;
+    rdfs:comment "State Engaged"@en ;
+    skos:hiddenLabel "CCSTMS_EG_5" ;
+    skos:inScheme era-atostate:AtoState ;
+    skos:notation "EG"^^xsd:string ;
+    skos:prefLabel "EG"@en ;
+    skos:topConceptOf era-atostate:AtoState .
+
+era-atostate:FA a skos:Concept ;
+    rdfs:comment "State Failure"@en ;
+    skos:hiddenLabel "CCSTMS_FA_7" ;
+    skos:inScheme era-atostate:AtoState ;
+    skos:notation "FA"^^xsd:string ;
+    skos:prefLabel "FA"@en ;
+    skos:topConceptOf era-atostate:AtoState .
+
+era-atostate:NA a skos:Concept ;
+    rdfs:comment "State Not Available"@en ;
+    skos:hiddenLabel "CCSTMS_NA_2" ;
+    skos:inScheme era-atostate:AtoState ;
+    skos:notation "NA"^^xsd:string ;
+    skos:prefLabel "NA"@en ;
+    skos:topConceptOf era-atostate:AtoState .
+
+era-atostate:RE a skos:Concept ;
+    rdfs:comment "State Ready"@en ;
+    skos:hiddenLabel "CCSTMS_RE_4" ;
+    skos:inScheme era-atostate:AtoState ;
+    skos:notation "RE"^^xsd:string ;
+    skos:prefLabel "RE"@en ;
+    skos:topConceptOf era-atostate:AtoState .
+
+era-atostate:unknown a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_unknown_0" ;
+    skos:inScheme era-atostate:AtoState ;
+    skos:notation "unknown"^^xsd:string ;
+    skos:prefLabel "Unknown"@en ;
+    skos:topConceptOf era-atostate:AtoState .
+

@@ -1,0 +1,67 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+@prefix era-mea: <http://data.europa.eu/949/concepts/movement-event-action/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-mea:MovementEventAction a skos:ConceptScheme ;
+    rdfs:label "Movement Event Action"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_MovementEventAction" ;
+    skos:prefLabel "Movement Event Action"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-mea:departedFromEvent a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_departedFromEvent_4" ;
+    skos:inScheme era-mea:MovementEventAction ;
+    skos:notation "departedFromEvent"^^xsd:string ;
+    skos:prefLabel "DepartedFromEvent"@en ;
+    skos:topConceptOf era-mea:MovementEventAction .
+
+era-mea:passedEvent a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_passedEvent_0" ;
+    skos:inScheme era-mea:MovementEventAction ;
+    skos:notation "passedEvent"^^xsd:string ;
+    skos:prefLabel "Passed Event"@en ;
+    skos:topConceptOf era-mea:MovementEventAction .
+
+era-mea:stoppedAccurateAtEvent a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_stoppedAccurateAtEvent_1" ;
+    skos:inScheme era-mea:MovementEventAction ;
+    skos:notation "stoppedAccurateAtEvent"^^xsd:string ;
+    skos:prefLabel "StoppedAccurateAtEvent"@en ;
+    skos:topConceptOf era-mea:MovementEventAction .
+
+era-mea:stoppedWithOvershootAtEvent a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_stoppedWithOvershootAtEvent_2" ;
+    skos:inScheme era-mea:MovementEventAction ;
+    skos:notation "stoppedWithOvershootAtEvent"^^xsd:string ;
+    skos:prefLabel "StoppedWithOvershootAtEvent"@en ;
+    skos:topConceptOf era-mea:MovementEventAction .
+
+era-mea:stoppedWithUndershootAtEvent a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_stoppedWithUndershootAtEvent_3" ;
+    skos:inScheme era-mea:MovementEventAction ;
+    skos:notation "stoppedWithUndershootAtEvent"^^xsd:string ;
+    skos:prefLabel "StoppedWithUndershootAtEvent"@en ;
+    skos:topConceptOf era-mea:MovementEventAction .
+
+
+

@@ -1,0 +1,52 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-coolingfan: <http://data.europa.eu/949/concepts/cooling-fan-status/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-coolingfan:CoolingFanStatus a skos:ConceptScheme ;
+    rdfs:label "CoolingFanStatus"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "Indicates the current status of the cooling fan"@en ;
+    skos:hiddenLabel "CCSTMS_CoolingFanStatus" ;
+    skos:prefLabel "CoolingFanStatus"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+era-coolingfan:Failure a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Failure_2" ;
+    skos:inScheme era-coolingfan:CoolingFanStatus ;
+    skos:notation "Failure"^^xsd:string ;
+    skos:prefLabel "Failure"@en ;
+    skos:topConceptOf era-coolingfan:CoolingFanStatus .
+
+era-coolingfan:Normal a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Normal_1" ;
+    skos:inScheme era-coolingfan:CoolingFanStatus ;
+    skos:notation "Normal"^^xsd:string ;
+    skos:prefLabel "Normal"@en ;
+    skos:topConceptOf era-coolingfan:CoolingFanStatus .
+
+era-coolingfan:Unknown a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Unknown_0" ;
+    skos:inScheme era-coolingfan:CoolingFanStatus ;
+    skos:notation "Unknown"^^xsd:string ;
+    skos:prefLabel "Unknown"@en ;
+    skos:topConceptOf era-coolingfan:CoolingFanStatus .

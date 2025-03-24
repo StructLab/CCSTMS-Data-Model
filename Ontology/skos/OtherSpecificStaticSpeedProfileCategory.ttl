@@ -1,0 +1,53 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-ossspc: <http://data.europa.eu/949/concepts/other-specific-static-speed-profile-category/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-ossspc:OtherSpecificStaticSpeedProfileCategory a skos:ConceptScheme ;
+    rdfs:label "Other Specific Static Speed Profile Category"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "List of other specific static speed profile categories "@en ;
+    skos:hiddenLabel "CCSTMS_OtherSpecificStaticSpeedProfileCategory" ;
+    skos:prefLabel "Other Specific Static Speed Profile Category"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-ossspc:SSSP_freightTrainG a skos:Concept ;
+    rdfs:comment "Other SSSP applies to Freight train of type G"@en ;
+    skos:hiddenLabel "CCSTMS_SSSP_freightTrainG_1" ;
+    skos:inScheme era-ossspc:OtherSpecificStaticSpeedProfileCategory ;
+    skos:notation "SSSP_freightTrainG"^^xsd:string ;
+    skos:prefLabel "SSSP_freightTrain G"@en ;
+    skos:topConceptOf era-ossspc:OtherSpecificStaticSpeedProfileCategory .
+
+era-ossspc:SSSP_freightTrainP a skos:Concept ;
+    rdfs:comment "Other SSSP applies to Freight train of type P"@en ;
+    skos:hiddenLabel "CCSTMS_SSSP_freightTrainP_0" ;
+    skos:inScheme era-ossspc:OtherSpecificStaticSpeedProfileCategory ;
+    skos:notation "SSSP_freightTrainP"^^xsd:string ;
+    skos:prefLabel "SSSP_freightTrain P"@en ;
+    skos:topConceptOf era-ossspc:OtherSpecificStaticSpeedProfileCategory .
+
+era-ossspc:SSSP_passengerTrain a skos:Concept ;
+    rdfs:comment "Other SSSP applies to Passenger train"@en ;
+    skos:hiddenLabel "CCSTMS_SSSP_passengerTrain_2" ;
+    skos:inScheme era-ossspc:OtherSpecificStaticSpeedProfileCategory ;
+    skos:notation "SSSP_passengerTrain"^^xsd:string ;
+    skos:prefLabel "SSSP_passenger Train"@en ;
+    skos:topConceptOf era-ossspc:OtherSpecificStaticSpeedProfileCategory .

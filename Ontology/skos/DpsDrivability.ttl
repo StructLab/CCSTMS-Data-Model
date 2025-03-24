@@ -1,0 +1,44 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-dpsd: <http://data.europa.eu/949/concepts/dps-drivability/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-dpsd:DpsDrivability a skos:ConceptScheme ;
+    rdfs:label "DPS Drivability"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "drivability of a drive protection section"@en ;
+    skos:hiddenLabel "CCSTMS_DpsDrivability" ;
+    skos:prefLabel "DPS Drivability"@en .
+
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-dpsd:full a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_full_0" ;
+    skos:inScheme era-dpsd:DpsDrivability ;
+    skos:notation "full"^^xsd:string ;
+    skos:prefLabel "Full"@en ;
+    skos:topConceptOf era-dpsd:DpsDrivability .
+
+era-dpsd:none a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_none_1" ;
+    skos:inScheme era-dpsd:DpsDrivability ;
+    skos:notation "none"^^xsd:string ;
+    skos:prefLabel "None"@en ;
+    skos:topConceptOf era-dpsd:DpsDrivability .
+

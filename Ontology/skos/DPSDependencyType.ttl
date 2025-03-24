@@ -1,0 +1,52 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-dpsdependency: <http://data.europa.eu/949/concepts/dps-dependency-type/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-dpsdependency:DPSDependencyType a skos:ConceptScheme ;
+    rdfs:label "DPS Dependency Type"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "Defines the type of DPS dependency"@en ;
+    skos:hiddenLabel "CCSTMS_DPSDependencyType" ;
+    skos:prefLabel "DPS Dependency Type"@en .	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+era-dpsdependency:Equivalent a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Equivalent_1" ;
+    skos:inScheme era-dpsdependency:DPSDependencyType ;
+    skos:notation "Equivalent"^^xsd:string ;
+    skos:prefLabel "Equivalent"@en ;
+    skos:topConceptOf era-dpsdependency:DPSDependencyType .
+
+era-dpsdependency:Exclusive a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Exclusive_0" ;
+    skos:inScheme era-dpsdependency:DPSDependencyType ;
+    skos:notation "Exclusive"^^xsd:string ;
+    skos:prefLabel "Exclusive"@en ;
+    skos:topConceptOf era-dpsdependency:DPSDependencyType .
+
+era-dpsdependency:Specific a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Specific_2" ;
+    skos:inScheme era-dpsdependency:DPSDependencyType ;
+    skos:notation "Specific"^^xsd:string ;
+    skos:prefLabel "Specific"@en ;
+    skos:topConceptOf era-dpsdependency:DPSDependencyType .
+

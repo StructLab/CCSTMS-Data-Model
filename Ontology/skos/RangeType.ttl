@@ -1,0 +1,62 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-rangetyp: <http://data.europa.eu/949/concepts/range-type/> .
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-rangetyp:RangeType a skos:ConceptScheme ;
+    rdfs:label "Range Type"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "List defining range types for segment profile"@en ;
+    skos:hiddenLabel "CCSTMS_RangeType" ;
+    skos:prefLabel "Range Type"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-rangetyp:rtEnd a skos:Concept ;
+    rdfs:comment "ends in a SP"@en ;
+    skos:hiddenLabel "CCSTMS_rtEnd_1" ;
+    skos:inScheme era-rangetyp:RangeType ;
+    skos:notation "rtEnd"^^xsd:string ;
+    skos:prefLabel "Rt End"@en ;
+    skos:topConceptOf era-rangetyp:RangeType .
+
+era-rangetyp:rtStart a skos:Concept ;
+    rdfs:comment "starts in a SP"@en ;
+    skos:hiddenLabel "CCSTMS_rtStart_0" ;
+    skos:inScheme era-rangetyp:RangeType ;
+    skos:notation "rtStart"^^xsd:string ;
+    skos:prefLabel "Rt Start"@en ;
+    skos:topConceptOf era-rangetyp:RangeType .
+
+era-rangetyp:rtStartEnd a skos:Concept ;
+    rdfs:comment "start and ends in a SP"@en ;
+    skos:hiddenLabel "CCSTMS_rtStartEnd_2" ;
+    skos:inScheme era-rangetyp:RangeType ;
+    skos:notation "rtStartEnd"^^xsd:string ;
+    skos:prefLabel "RtStartEnd"@en ;
+    skos:topConceptOf era-rangetyp:RangeType .
+
+era-rangetyp:rtWholeSP a skos:Concept ;
+    rdfs:comment "covers the entire SP"@en ;
+    skos:hiddenLabel "CCSTMS_rtWholeSP_3" ;
+    skos:inScheme era-rangetyp:RangeType ;
+    skos:notation "rtWholeSP"^^xsd:string ;
+    skos:prefLabel "RtWholeSP"@en ;
+    skos:topConceptOf era-rangetyp:RangeType .

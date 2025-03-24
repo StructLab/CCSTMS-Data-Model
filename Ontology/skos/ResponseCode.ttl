@@ -1,0 +1,42 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-responsecode: <http://data.europa.eu/949/concepts/response-code/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-responsecode:ResponseCode a skos:ConceptScheme ;
+    rdfs:label "Response Code"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_ResponseCode" ;
+    skos:prefLabel "Response Code"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-responsecode:accepted a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_accepted_0" ;
+    skos:inScheme era-responsecode:ResponseCode ;
+    skos:notation "accepted"^^xsd:string ;
+    skos:prefLabel "Accepted"@en ;
+    skos:topConceptOf era-responsecode:ResponseCode .
+
+era-responsecode:rejected a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_rejected_1" ;
+    skos:inScheme era-responsecode:ResponseCode ;
+    skos:notation "rejected"^^xsd:string ;
+    skos:prefLabel "Rejected"@en ;
+    skos:topConceptOf era-responsecode:ResponseCode .

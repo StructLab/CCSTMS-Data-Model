@@ -1,0 +1,84 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-tua: <http://data.europa.eu/949/concepts/train-unit-activity-type/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-tua:TrainUnitActivityType a skos:ConceptScheme ;
+    rdfs:label "Train Unit Activity Type"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_TrainUnitActivityType" ;
+    skos:prefLabel "Train Unit Activity Type"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-tua:collectActivity a skos:Concept ;
+    rdfs:comment "couple vehicles/parts"@en ;
+    skos:hiddenLabel "CCSTMS_collectActivity_2" ;
+    skos:inScheme era-tua:TrainUnitActivityType ;
+    skos:notation "collectActivity"^^xsd:string ;
+    skos:prefLabel "Collect Activity"@en ;
+    skos:topConceptOf era-tua:TrainUnitActivityType .
+
+era-tua:dropActivity a skos:Concept ;
+    rdfs:comment "uncouple vehicles/trainParts"@en ;
+    skos:hiddenLabel "CCSTMS_dropActivity_3" ;
+    skos:inScheme era-tua:TrainUnitActivityType ;
+    skos:notation "dropActivity"^^xsd:string ;
+    skos:prefLabel "Drop Activity"@en ;
+    skos:topConceptOf era-tua:TrainUnitActivityType .
+
+era-tua:joinActivity a skos:Concept ;
+    rdfs:comment "uncouple vehicles/parts for self-propelling train parts"@en ;
+    skos:hiddenLabel "CCSTMS_joinActivity_0" ;
+    skos:inScheme era-tua:TrainUnitActivityType ;
+    skos:notation "joinActivity"^^xsd:string ;
+    skos:prefLabel "Join Activity"@en ;
+    skos:topConceptOf era-tua:TrainUnitActivityType .
+
+era-tua:meetActivity a skos:Concept ;
+    rdfs:comment "Relevant for PE to request restricted MP in advance"@en ;
+    skos:hiddenLabel "CCSTMS_meetActivity_5" ;
+    skos:inScheme era-tua:TrainUnitActivityType ;
+    skos:notation "meetActivity"^^xsd:string ;
+    skos:prefLabel "Meet Activity"@en ;
+    skos:topConceptOf era-tua:TrainUnitActivityType .
+
+era-tua:otherActivity a skos:Concept ;
+    rdfs:comment "the change must be calculated by comparing TrainUnits before and after the activity"@en ;
+    skos:hiddenLabel "CCSTMS_otherActivity_6" ;
+    skos:inScheme era-tua:TrainUnitActivityType ;
+    skos:notation "otherActivity"^^xsd:string ;
+    skos:prefLabel "Other Activity"@en ;
+    skos:topConceptOf era-tua:TrainUnitActivityType .
+
+era-tua:splitActivity a skos:Concept ;
+    rdfs:comment "uncouple vehicles/parts for self-propelling train parts"@en ;
+    skos:hiddenLabel "CCSTMS_splitActivity_1" ;
+    skos:inScheme era-tua:TrainUnitActivityType ;
+    skos:notation "splitActivity"^^xsd:string ;
+    skos:prefLabel "Split Activity"@en ;
+    skos:topConceptOf era-tua:TrainUnitActivityType .
+
+era-tua:turnAroundActivity a skos:Concept ;
+    rdfs:comment "stop to change driving direction of a train. After TurnAround a new MovementEvent with changed train position will be inserted into the Movement"@en ;
+    skos:hiddenLabel "CCSTMS_turnAroundActivity_4" ;
+    skos:inScheme era-tua:TrainUnitActivityType ;
+    skos:notation "turnAroundActivity"^^xsd:string ;
+    skos:prefLabel "TurnAroundActivity"@en ;
+    skos:topConceptOf era-tua:TrainUnitActivityType .

@@ -1,0 +1,67 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-brake-pos: <http://data.europa.eu/949/concepts/brake-position/> .
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-brake-pos:BrakePosition a skos:ConceptScheme ;
+    rdfs:label "Brake Position"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_BrakePosition" ;
+    skos:prefLabel "Brake Position"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+era-brake-pos:brakePositionUnknown a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_brakePositionUnknown_4" ;
+    skos:inScheme era-brake-pos:BrakePosition ;
+    skos:notation "brakePositionUnknown"^^xsd:string ;
+    skos:prefLabel "BrakePositionUnknown"@en ;
+    skos:topConceptOf era-brake-pos:BrakePosition .
+
+era-brake-pos:freightTrainInG a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_freightTrainInG_3" ;
+    skos:inScheme era-brake-pos:BrakePosition ;
+    skos:notation "freightTrainInG"^^xsd:string ;
+    skos:prefLabel "FreightTrainInG"@en ;
+    skos:topConceptOf era-brake-pos:BrakePosition .
+
+era-brake-pos:freightTrainInP a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_freightTrainInP_2" ;
+    skos:inScheme era-brake-pos:BrakePosition ;
+    skos:notation "freightTrainInP"^^xsd:string ;
+    skos:prefLabel "FreightTrainInP"@en ;
+    skos:topConceptOf era-brake-pos:BrakePosition .
+
+era-brake-pos:passengerTrainInP a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_passengerTrainInP_0" ;
+    skos:inScheme era-brake-pos:BrakePosition ;
+    skos:notation "passengerTrainInP"^^xsd:string ;
+    skos:prefLabel "PassengerTrainInP"@en ;
+    skos:topConceptOf era-brake-pos:BrakePosition .
+
+era-brake-pos:passengerTrainInR a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_passengerTrainInR_1" ;
+    skos:inScheme era-brake-pos:BrakePosition ;
+    skos:notation "passengerTrainInR"^^xsd:string ;
+    skos:prefLabel "PassengerTrainInR"@en ;
+    skos:topConceptOf era-brake-pos:BrakePosition .
+

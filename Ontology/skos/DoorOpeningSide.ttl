@@ -1,0 +1,63 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-dos: <http://data.europa.eu/949/concepts/door-opening-side/> .
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-dos:DoorOpeningSide a skos:ConceptScheme ;
+    rdfs:label "Door Opening Side"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_DoorOpeningSide" ;
+    skos:prefLabel "Door Opening Side"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+era-dos:bothSides a skos:Concept ;
+    rdfs:comment "doors on both sides"@en ;
+    skos:hiddenLabel "CCSTMS_bothSides_3" ;
+    skos:inScheme era-dos:DoorOpeningSide ;
+    skos:notation "bothSides"^^xsd:string ;
+    skos:prefLabel "Both Sides"@en ;
+    skos:topConceptOf era-dos:DoorOpeningSide .
+
+era-dos:leftSide a skos:Concept ;
+    rdfs:comment "doors on the left side"@en ;
+    skos:hiddenLabel "CCSTMS_leftSide_1" ;
+    skos:inScheme era-dos:DoorOpeningSide ;
+    skos:notation "leftSide"^^xsd:string ;
+    skos:prefLabel "Left Side"@en ;
+    skos:topConceptOf era-dos:DoorOpeningSide .
+
+era-dos:noSide a skos:Concept ;
+    rdfs:comment "doors do not open in any side"@en ;
+    skos:hiddenLabel "CCSTMS_noSide_0" ;
+    skos:inScheme era-dos:DoorOpeningSide ;
+    skos:notation "noSide"^^xsd:string ;
+    skos:prefLabel "No Side"@en ;
+    skos:topConceptOf era-dos:DoorOpeningSide .
+
+era-dos:rightSide a skos:Concept ;
+    rdfs:comment "doors on the right side"@en ;
+    skos:hiddenLabel "CCSTMS_rightSide_2" ;
+    skos:inScheme era-dos:DoorOpeningSide ;
+    skos:notation "rightSide"^^xsd:string ;
+    skos:prefLabel "Right Side"@en ;
+    skos:topConceptOf era-dos:DoorOpeningSide .

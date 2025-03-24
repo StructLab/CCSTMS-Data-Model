@@ -1,0 +1,58 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+@prefix era-pantograph: <http://data.europa.eu/949/concepts/pantograph-state/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-pantograph:PantographState a skos:ConceptScheme ;
+    rdfs:label "Pantograph State"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_PantographState" ;
+    skos:prefLabel "Pantograph State"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-pantograph:pantographBlocked a skos:Concept ;
+    rdfs:comment "can not be used, defect"@en ;
+    skos:hiddenLabel "CCSTMS_pantographBlocked_0" ;
+    skos:inScheme era-pantograph:PantographState ;
+    skos:notation "pantographBlocked"^^xsd:string ;
+    skos:prefLabel "Pantograph Blocked"@en ;
+    skos:topConceptOf era-pantograph:PantographState .
+
+era-pantograph:pantographLowered a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_pantographLowered_1" ;
+    skos:inScheme era-pantograph:PantographState ;
+    skos:notation "pantographLowered"^^xsd:string ;
+    skos:prefLabel "Pantograph Lowered"@en ;
+    skos:topConceptOf era-pantograph:PantographState .
+
+era-pantograph:pantographRaised a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_pantographRaised_2" ;
+    skos:inScheme era-pantograph:PantographState ;
+    skos:notation "pantographRaised"^^xsd:string ;
+    skos:prefLabel "Pantograph Raised"@en ;
+    skos:topConceptOf era-pantograph:PantographState .
+
+era-pantograph:pantographStateUnknown a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_pantographStateUnknown_3" ;
+    skos:inScheme era-pantograph:PantographState ;
+    skos:notation "pantographStateUnknown"^^xsd:string ;
+    skos:prefLabel "PantographStateUnknown"@en ;
+    skos:topConceptOf era-pantograph:PantographState .

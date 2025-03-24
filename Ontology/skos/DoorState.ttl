@@ -1,0 +1,51 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-doorstate: <http://data.europa.eu/949/concepts/door-state/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-doorstate:DoorState a skos:ConceptScheme ;
+    rdfs:label "Door State"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_DoorState" ;
+    skos:prefLabel "Door State"@en .
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+era-doorstate:doorStateAvailable a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_doorStateAvailable_2" ;
+    skos:inScheme era-doorstate:DoorState ;
+    skos:notation "doorStateAvailable"^^xsd:string ;
+    skos:prefLabel "DoorStateAvailable"@en ;
+    skos:topConceptOf era-doorstate:DoorState .
+
+era-doorstate:doorStateBlocked a skos:Concept ;
+    rdfs:comment "defect"@en ;
+    skos:hiddenLabel "CCSTMS_doorStateBlocked_1" ;
+    skos:inScheme era-doorstate:DoorState ;
+    skos:notation "doorStateBlocked"^^xsd:string ;
+    skos:prefLabel "DoorStateBlocked"@en ;
+    skos:topConceptOf era-doorstate:DoorState .
+
+era-doorstate:doorStateUnknown a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_doorStateUnknown_0" ;
+    skos:inScheme era-doorstate:DoorState ;
+    skos:notation "doorStateUnknown"^^xsd:string ;
+    skos:prefLabel "DoorStateUnknown"@en ;
+    skos:topConceptOf era-doorstate:DoorState .

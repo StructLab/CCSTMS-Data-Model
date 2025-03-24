@@ -1,0 +1,48 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-vehicleorient: <http://data.europa.eu/949/concepts/vehicle-orientation/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-vehicleorient:VehicleOrientation a skos:ConceptScheme ;
+    rdfs:label "Vehicle Orientation"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_VehicleOrientation" ;
+    skos:prefLabel "Vehicle Orientation"@en .
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-vehicleorient:orientationInverseToTrainUnit a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_orientationInverseToTrainUnit_2" ;
+    skos:inScheme era-vehicleorient:VehicleOrientation ;
+    skos:notation "orientationInverseToTrainUnit"^^xsd:string ;
+    skos:prefLabel "OrientationInverseToTrainUnit"@en ;
+    skos:topConceptOf era-vehicleorient:VehicleOrientation .
+
+era-vehicleorient:orientationSameAsTrainUnit a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_orientationSameAsTrainUnit_1" ;
+    skos:inScheme era-vehicleorient:VehicleOrientation ;
+    skos:notation "orientationSameAsTrainUnit"^^xsd:string ;
+    skos:prefLabel "OrientationSameAsTrainUnit"@en ;
+    skos:topConceptOf era-vehicleorient:VehicleOrientation .
+
+era-vehicleorient:orientationUknown a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_orientationUknown_0" ;
+    skos:inScheme era-vehicleorient:VehicleOrientation ;
+    skos:notation "orientationUknown"^^xsd:string ;
+    skos:prefLabel "Orientation Uknown"@en ;
+    skos:topConceptOf era-vehicleorient:VehicleOrientation .

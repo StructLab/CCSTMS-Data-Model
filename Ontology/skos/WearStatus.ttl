@@ -1,0 +1,56 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-wearstatus: <http://data.europa.eu/949/concepts/wear-status/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-wearstatus:WearStatus a skos:ConceptScheme ;
+    rdfs:label "Wear Status"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "can be replaced?"@en ;
+    skos:hiddenLabel "CCSTMS_WearStatus" ;
+    skos:prefLabel "Wear Status"@en .
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-wearstatus:Nok a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Nok_3" ;
+    skos:inScheme era-wearstatus:WearStatus ;
+    skos:notation "Nok"^^xsd:string ;
+    skos:prefLabel "Nok"@en ;
+    skos:topConceptOf era-wearstatus:WearStatus .
+
+era-wearstatus:Ok a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Ok_1" ;
+    skos:inScheme era-wearstatus:WearStatus ;
+    skos:notation "Ok"^^xsd:string ;
+    skos:prefLabel "Ok"@en ;
+    skos:topConceptOf era-wearstatus:WearStatus .
+
+era-wearstatus:Unknown a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Unknown_0" ;
+    skos:inScheme era-wearstatus:WearStatus ;
+    skos:notation "Unknown"^^xsd:string ;
+    skos:prefLabel "Unknown"@en ;
+    skos:topConceptOf era-wearstatus:WearStatus .
+
+era-wearstatus:Warning a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Warning_2" ;
+    skos:inScheme era-wearstatus:WearStatus ;
+    skos:notation "Warning"^^xsd:string ;
+    skos:prefLabel "Warning"@en ;
+    skos:topConceptOf era-wearstatus:WearStatus .

@@ -1,0 +1,57 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-ram-health: <http://data.europa.eu/949/concepts/ram-health-status/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-ram-health:RamHealthStatus a skos:ConceptScheme ;
+    rdfs:label "RamHealthStatus"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "can be replaced?"@en ;
+    skos:hiddenLabel "CCSTMS_RamHealthStatus" ;
+    skos:prefLabel "RamHealthStatus"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-ram-health:Degraded a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Degraded_2" ;
+    skos:inScheme era-ram-health:RamHealthStatus ;
+    skos:notation "Degraded"^^xsd:string ;
+    skos:prefLabel "Degraded"@en ;
+    skos:topConceptOf era-ram-health:RamHealthStatus .
+
+era-ram-health:Failure a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Failure_3" ;
+    skos:inScheme era-ram-health:RamHealthStatus ;
+    skos:notation "Failure"^^xsd:string ;
+    skos:prefLabel "Failure"@en ;
+    skos:topConceptOf era-ram-health:RamHealthStatus .
+
+era-ram-health:Normal a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Normal_1" ;
+    skos:inScheme era-ram-health:RamHealthStatus ;
+    skos:notation "Normal"^^xsd:string ;
+    skos:prefLabel "Normal"@en ;
+    skos:topConceptOf era-ram-health:RamHealthStatus .
+
+era-ram-health:Unknown a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Unknown_0" ;
+    skos:inScheme era-ram-health:RamHealthStatus ;
+    skos:notation "Unknown"^^xsd:string ;
+    skos:prefLabel "Unknown"@en ;
+    skos:topConceptOf era-ram-health:RamHealthStatus .

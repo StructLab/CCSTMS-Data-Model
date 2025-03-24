@@ -1,0 +1,58 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-isp: <http://data.europa.eu/949/concepts/input-switch-position/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-isp:InputSwitchPosition a skos:ConceptScheme ;
+    rdfs:label "InputSwitchPosition"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "can be replaced?"@en ;
+    skos:hiddenLabel "CCSTMS_InputSwitchPosition" ;
+    skos:prefLabel "InputSwitchPosition"@en .
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-isp:Position1 a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Position1_1" ;
+    skos:inScheme era-isp:InputSwitchPosition ;
+    skos:notation "Position1"^^xsd:string ;
+    skos:prefLabel "Position1"@en ;
+    skos:topConceptOf era-isp:InputSwitchPosition .
+
+era-isp:Position2 a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Position2_2" ;
+    skos:inScheme era-isp:InputSwitchPosition ;
+    skos:notation "Position2"^^xsd:string ;
+    skos:prefLabel "Position2"@en ;
+    skos:topConceptOf era-isp:InputSwitchPosition .
+
+era-isp:Position3 a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Position3_3" ;
+    skos:inScheme era-isp:InputSwitchPosition ;
+    skos:notation "Position3"^^xsd:string ;
+    skos:prefLabel "Position3"@en ;
+    skos:topConceptOf era-isp:InputSwitchPosition .
+
+era-isp:Unknown a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_Unknown_0" ;
+    skos:inScheme era-isp:InputSwitchPosition ;
+    skos:notation "Unknown"^^xsd:string ;
+    skos:prefLabel "Unknown"@en ;
+    skos:topConceptOf era-isp:InputSwitchPosition .
+

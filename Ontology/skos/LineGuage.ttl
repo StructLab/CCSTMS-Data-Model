@@ -1,0 +1,61 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-linegauge: <http://data.europa.eu/949/concepts/line-guage/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-linegauge:LineGuage a skos:ConceptScheme ;
+    rdfs:label "Line Guage"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "Defining which loading guage(s) are permitted ona line (refer to TSI INF)"@en ;
+    skos:hiddenLabel "CCSTMS_LineGuage" ;
+    skos:prefLabel "Line Guage"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-linegauge:g1 a skos:Concept ;
+    rdfs:comment "xxxx xxx1"@en ;
+    skos:hiddenLabel "CCSTMS_g1_0" ;
+    skos:inScheme era-linegauge:LineGuage ;
+    skos:notation "g1"^^xsd:string ;
+    skos:prefLabel "G1"@en ;
+    skos:topConceptOf era-linegauge:LineGuage .
+
+era-linegauge:gA a skos:Concept ;
+    rdfs:comment "xxxx xx1x"@en ;
+    skos:hiddenLabel "CCSTMS_gA_1" ;
+    skos:inScheme era-linegauge:LineGuage ;
+    skos:notation "gA"^^xsd:string ;
+    skos:prefLabel "gA"@en ;
+    skos:topConceptOf era-linegauge:LineGuage .
+
+era-linegauge:gB a skos:Concept ;
+    rdfs:comment "xxxx x1xx"@en ;
+    skos:hiddenLabel "CCSTMS_gB_2" ;
+    skos:inScheme era-linegauge:LineGuage ;
+    skos:notation "gB"^^xsd:string ;
+    skos:prefLabel "gB"@en ;
+    skos:topConceptOf era-linegauge:LineGuage .
+
+era-linegauge:gC a skos:Concept ;
+    rdfs:comment "xxxx 1xxx"@en ;
+    skos:hiddenLabel "CCSTMS_gC_3" ;
+    skos:inScheme era-linegauge:LineGuage ;
+    skos:notation "gC"^^xsd:string ;
+    skos:prefLabel "gC"@en ;
+    skos:topConceptOf era-linegauge:LineGuage .

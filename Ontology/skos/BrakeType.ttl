@@ -1,0 +1,46 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix braketyp: <http://data.europa.eu/949/concepts/brake-type/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+braketyp:BrakeType a skos:ConceptScheme ;
+    rdfs:label "Brake Type"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_BrakeType" ;
+    skos:prefLabel "Brake Type"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+braketyp:emergencyBrake a skos:Concept ;
+    rdfs:comment "defines emergency brake"@en ;
+    skos:hiddenLabel "CCSTMS_emergencyBrake_1" ;
+    skos:inScheme braketyp:BrakeType ;
+    skos:notation "emergencyBrake"^^xsd:string ;
+    skos:prefLabel "Emergency Brake"@en ;
+    skos:topConceptOf braketyp:BrakeType .
+
+braketyp:serviceBrake a skos:Concept ;
+    rdfs:comment "defines service brake"@en ;
+    skos:hiddenLabel "CCSTMS_serviceBrake_0" ;
+    skos:inScheme braketyp:BrakeType ;
+    skos:notation "serviceBrake"^^xsd:string ;
+    skos:prefLabel "Service Brake"@en ;
+    skos:topConceptOf braketyp:BrakeType .
+

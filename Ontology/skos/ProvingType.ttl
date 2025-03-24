@@ -1,0 +1,58 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+@prefix era-proving: <http://data.europa.eu/949/concepts/proving-type/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-proving:ProvingType a skos:ConceptScheme ;
+    rdfs:label "Proving Type"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    rdfs:comment "Eulynx.ProvingTypes, https://dataprep.eulynx.eu/2021-05/EARoot/EA2/EA3/EA2942.htm"@en ;
+    skos:hiddenLabel "CCSTMS_ProvingType" ;
+    skos:prefLabel "Proving Type"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-proving:continuously a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_continuously_0" ;
+    skos:inScheme era-proving:ProvingType ;
+    skos:notation "continuously"^^xsd:string ;
+    skos:prefLabel "Continuously"@en ;
+    skos:topConceptOf era-proving:ProvingType .
+
+era-proving:none a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_none_3" ;
+    skos:inScheme era-proving:ProvingType ;
+    skos:notation "none"^^xsd:string ;
+    skos:prefLabel "None"@en ;
+    skos:topConceptOf era-proving:ProvingType .
+
+era-proving:oneOff a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_oneOff_1" ;
+    skos:inScheme era-proving:ProvingType ;
+    skos:notation "oneOff"^^xsd:string ;
+    skos:prefLabel "One Off"@en ;
+    skos:topConceptOf era-proving:ProvingType .
+
+era-proving:staffAcknowledged a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_staffAcknowledged_2" ;
+    skos:inScheme era-proving:ProvingType ;
+    skos:notation "staffAcknowledged"^^xsd:string ;
+    skos:prefLabel "Staff Acknowledged"@en ;
+    skos:topConceptOf era-proving:ProvingType .

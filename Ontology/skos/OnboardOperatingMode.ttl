@@ -1,0 +1,56 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-oom: <http://data.europa.eu/949/concepts/onboard-operating-mode/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+era-oom:OnboardOperatingMode a skos:ConceptScheme ;
+    rdfs:label "On board Operating Mode"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-03-06"^^xsd:date ;
+    skos:hiddenLabel "CCSTMS_OnboardOperatingMode" ;
+    skos:prefLabel "On board Operating Mode"@en .
+	
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-oom:fullSupervision a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_fullSupervision_2" ;
+    skos:inScheme era-oom:OnboardOperatingMode ;
+    skos:notation "fullSupervision"^^xsd:string ;
+    skos:prefLabel "Full Supervision"@en ;
+    skos:topConceptOf era-oom:OnboardOperatingMode .
+
+era-oom:onSight a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_onSight_1" ;
+    skos:inScheme era-oom:OnboardOperatingMode ;
+    skos:notation "onSight"^^xsd:string ;
+    skos:prefLabel "On Sight"@en ;
+    skos:topConceptOf era-oom:OnboardOperatingMode .
+
+era-oom:standBy a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_standBy_3" ;
+    skos:inScheme era-oom:OnboardOperatingMode ;
+    skos:notation "standBy"^^xsd:string ;
+    skos:prefLabel "Stand By"@en ;
+    skos:topConceptOf era-oom:OnboardOperatingMode .
+
+era-oom:undefined a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_undefined_0" ;
+    skos:inScheme era-oom:OnboardOperatingMode ;
+    skos:notation "undefined"^^xsd:string ;
+    skos:prefLabel "Undefined"@en ;
+    skos:topConceptOf era-oom:OnboardOperatingMode .
