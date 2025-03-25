@@ -22404,7 +22404,7 @@
   "@id" : "http://data.europa.eu/949/",
   "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ],
   "http://creativecommons.org/ns#license" : [ {
-    "@id" : "https://creativecommons.org/licenses/by/4.0/"
+    "@id" :"http://data.europa.eu/eli/dec_impl/2017/863/oj"
   } ],
   "http://purl.org/dc/terms/contributor" : [ {
     "@id" : "_:genid1"
