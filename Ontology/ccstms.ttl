@@ -13,7 +13,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix unit: <http://qudt.org/vocab/unit/> .
-@prefix wgs1: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @base <http://data.europa.eu/949/> .
 
@@ -758,23 +758,23 @@ owl:versionURI rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2003/01/geo/wgs84_pos#alt
-wgs1:alt rdf:type owl:AnnotationProperty ;
+wgs:alt rdf:type owl:AnnotationProperty ;
          rdfs:comment """The WGS84 altitude of a SpatialThing (decimal meters 
 above the local reference ellipsoid).""" ;
          rdfs:label "altitude" ;
-         rdfs:domain wgs1:SpatialThing .
+         rdfs:domain wgs:SpatialThing .
 
 
 ###  http://www.w3.org/2003/01/geo/wgs84_pos#lat
-wgs1:lat rdf:type owl:AnnotationProperty ;
+wgs:lat rdf:type owl:AnnotationProperty ;
          era:shaclShapeValidationRule <http://data.europa.eu/949/shapes/Lat> ;
          rdfs:comment "The WGS84 latitude of a SpatialThing (decimal degrees)." ;
          rdfs:label "latitude" ;
-         rdfs:domain wgs1:SpatialThing .
+         rdfs:domain wgs:SpatialThing .
 
 
 ###  http://www.w3.org/2003/01/geo/wgs84_pos#location
-wgs1:location rdf:type owl:AnnotationProperty ;
+wgs:location rdf:type owl:AnnotationProperty ;
               era:rinfIndex "1.1.0.0.1.1" ,
                             "1.1.1.0.1.1" ,
                             "1.1.1.3.14.6" ,
@@ -791,15 +791,15 @@ wgs1:location rdf:type owl:AnnotationProperty ;
  """ ;
               rdfs:label "Location" ;
               rdfs:subPropertyOf foaf:based_near ;
-              rdfs:range wgs1:SpatialThing .
+              rdfs:range wgs:SpatialThing .
 
 
 ###  http://www.w3.org/2003/01/geo/wgs84_pos#long
-wgs1:long rdf:type owl:AnnotationProperty ;
+wgs:long rdf:type owl:AnnotationProperty ;
           era:shaclShapeValidationRule <http://data.europa.eu/949/shapes/Long> ;
           rdfs:comment "The WGS84 longitude of a SpatialThing (decimal degrees)." ;
           rdfs:label "longitude" ;
-          rdfs:domain wgs1:SpatialThing .
+          rdfs:domain wgs:SpatialThing .
 
 
 ###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
@@ -2999,7 +2999,7 @@ era:endLocation rdf:type owl:ObjectProperty ;
                 rdfs:domain era:Tunnel ;
                 rdfs:range [ rdf:type owl:Class ;
                              owl:unionOf ( geo:Geometry
-                                           wgs1:Point
+                                           wgs:Point
                                          )
                            ] ;
                 era:XMLName "SOLTunnelEnd" ;
@@ -8856,7 +8856,7 @@ era:startLocation rdf:type owl:ObjectProperty ;
                   rdfs:domain era:Tunnel ;
                   rdfs:range [ rdf:type owl:Class ;
                                owl:unionOf ( geo:Geometry
-                                             wgs1:Point
+                                             wgs:Point
                                            )
                              ] ;
                   era:XMLName "SOLTunnelStart" ;
@@ -27608,8 +27608,8 @@ owl:ObjectProperty rdf:type owl:Class .
 
 
 ###  http://www.w3.org/2003/01/geo/wgs84_pos#Point
-wgs1:Point rdf:type owl:Class ;
-           rdfs:subClassOf wgs1:SpatialThing ;
+wgs:Point rdf:type owl:Class ;
+           rdfs:subClassOf wgs:SpatialThing ;
            rdfs:comment """ 
 Uniquely identified by lat/long/alt. i.e.
 
@@ -27624,7 +27624,7 @@ sameThing(P1, P2) :- type(P1, Point), type(P2, Point), spaciallyIntersects(P1, P
 
 
 ###  http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing
-wgs1:SpatialThing rdf:type owl:Class ;
+wgs:SpatialThing rdf:type owl:Class ;
                   rdfs:comment """Anything with spatial extent, i.e. size, shape, or position.
  e.g. people, places, bowling balls, as well as abstract areas like cubes.
 """ ;
