@@ -1,0 +1,301 @@
+<?xml version="1.0" ?>
+<trainProtection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="https://erju.org/tp"
+  xsi:schemaLocation="https://erju.org/tp tp.xsd">
+  <tpArea>
+    <tpAreaItem id="0ad3ab07-d2ed-4279-aaab-2b67c10c29fe">
+      <dpsGroups xmlns:infra="https://erju.org/infra">
+        <dpsGroup id="8E1C8B0D-AC04-488A-92DF-442B5F558355" name="DPSG_42W9" dependenciesType="Exclusive" runTime="0">
+          <driveProtectionSections>
+            <driveProtectionSection id="EBE7F52A-A169-4175-AADC-B8B992EEEFBF" name="DPS_1_42W9" maxFlankProtectionSpeed="0">
+              <linearElementSection onElement="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" startOffsetFromOrigin="1000" endOffsetFromOrigin="0" appliesInBothDirections="true"/>
+            </driveProtectionSection>
+            <driveProtectionSection id="C2CBC3C0-D133-4A65-B5DC-B43AF4AEC455" name="DPS_2_42W9" maxFlankProtectionSpeed="0">
+              <linearElementSection onElement="8A10825F-A0B5-44A8-8E27-BA3139AC53BB" startOffsetFromOrigin="1000" endOffsetFromOrigin="0" appliesInBothDirections="true"/>
+            </driveProtectionSection>
+          </driveProtectionSections>
+          <protectedInfraElements>
+            <switch ref="DEDEMIPDRPOI27##0000"/>
+          </protectedInfraElements>
+        </dpsGroup>
+        <dpsGroup id="0B63A5FD-51FD-4D32-A2D6-06D7867E0D6F" name="DPSG_42W11" dependenciesType="Exclusive" runTime="0">
+          <driveProtectionSections>
+            <driveProtectionSection id="ACA79F01-21B8-4C7D-AA17-B524B5C49AAA" name="DPS_1_42W11" maxFlankProtectionSpeed="0">
+              <linearElementSection onElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" startOffsetFromOrigin="1000" endOffsetFromOrigin="0" appliesInBothDirections="true"/>
+            </driveProtectionSection>
+            <driveProtectionSection id="36F46DD2-C937-4712-B2C0-C639A690D132" name="DPS_2_42W11" maxFlankProtectionSpeed="0">
+              <linearElementSection onElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" startOffsetFromOrigin="1000" endOffsetFromOrigin="0" appliesInBothDirections="true"/>
+            </driveProtectionSection>
+          </driveProtectionSections>
+          <protectedInfraElements>
+            <switch ref="DEDEMIPDRPOI27##0001"/>
+          </protectedInfraElements>
+        </dpsGroup>
+        <dpsGroup id="C9C3D1EE-6766-4DA3-A494-DA63FA59C54A" name="DPSG_42W1" dependenciesType="Exclusive" runTime="0">
+          <driveProtectionSections>
+            <driveProtectionSection id="93A50C8A-A4E0-4CFC-AD72-A0BDD59CB506" name="DPS_1_42W1" maxFlankProtectionSpeed="0">
+              <linearElementSection onElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" startOffsetFromOrigin="1000" endOffsetFromOrigin="0" appliesInBothDirections="true"/>
+            </driveProtectionSection>
+            <driveProtectionSection id="77467D0E-6C2B-4F36-8EE2-24369677F199" name="DPS_2_42W1" maxFlankProtectionSpeed="0">
+              <linearElementSection onElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" startOffsetFromOrigin="1000" endOffsetFromOrigin="0" appliesInBothDirections="true"/>
+            </driveProtectionSection>
+          </driveProtectionSections>
+          <protectedInfraElements>
+            <switch ref="DEDEMIPDRPOI27##0002"/>
+          </protectedInfraElements>
+        </dpsGroup>
+        <dpsGroup id="4EB2BFE2-1D69-463F-81F9-E7F9CD8506FD" name="DPSG_W7" dependenciesType="Exclusive" runTime="0">
+          <driveProtectionSections>
+            <driveProtectionSection id="2037A0C7-1726-4DE6-BE60-2CD66DFD95AF" name="DPS_1_W7" maxFlankProtectionSpeed="0">
+              <linearElementSection onElement="5735FE5B-E628-4641-B0B3-6FA58E127DC7" startOffsetFromOrigin="1000" endOffsetFromOrigin="0" appliesInBothDirections="true"/>
+            </driveProtectionSection>
+            <driveProtectionSection id="7D940E92-56C4-47B1-AFF4-58E927A9E0A1" name="DPS_2_W7" maxFlankProtectionSpeed="0">
+              <linearElementSection onElement="2CD5B052-0DA5-4483-AE57-2A1EE639E76F" startOffsetFromOrigin="1000" endOffsetFromOrigin="0" appliesInBothDirections="true"/>
+            </driveProtectionSection>
+          </driveProtectionSections>
+          <protectedInfraElements>
+            <switch ref="DEDEMIPDRPOI27##0003"/>
+          </protectedInfraElements>
+        </dpsGroup>
+        <dpsGroup id="6D617BBE-898A-4053-A81A-9B4FAC73D986" name="DPSG_42W10" dependenciesType="Exclusive" runTime="0">
+          <driveProtectionSections>
+            <driveProtectionSection id="B9A453F5-9D68-4651-ABED-19D621DA94EE" name="DPS_1_42W10" maxFlankProtectionSpeed="0">
+              <linearElementSection onElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" startOffsetFromOrigin="1000" endOffsetFromOrigin="0" appliesInBothDirections="true"/>
+            </driveProtectionSection>
+            <driveProtectionSection id="1563D691-8DBA-4401-A0A0-1C919611C268" name="DPS_2_42W10" maxFlankProtectionSpeed="0">
+              <linearElementSection onElement="7B854A8A-0C65-425F-AF3D-6D66659BCCD3" startOffsetFromOrigin="1000" endOffsetFromOrigin="0" appliesInBothDirections="true"/>
+            </driveProtectionSection>
+          </driveProtectionSections>
+          <protectedInfraElements>
+            <switch ref="DEDEMIPDRPOI27##0004"/>
+          </protectedInfraElements>
+        </dpsGroup>
+        <dpsGroup id="726474C2-11E4-4675-A129-0BA38BD568DA" name="DPSG_W6" dependenciesType="Exclusive" runTime="0">
+          <driveProtectionSections>
+            <driveProtectionSection id="399BF188-CE58-4254-81EE-C0D5C793F030" name="DPS_1_W6" maxFlankProtectionSpeed="0">
+              <linearElementSection onElement="5735FE5B-E628-4641-B0B3-6FA58E127DC7" startOffsetFromOrigin="1000" endOffsetFromOrigin="0" appliesInBothDirections="true"/>
+            </driveProtectionSection>
+            <driveProtectionSection id="04D1FFF9-4F29-4CF7-A963-50E6708A8EAA" name="DPS_2_W6" maxFlankProtectionSpeed="0">
+              <linearElementSection onElement="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" startOffsetFromOrigin="1000" endOffsetFromOrigin="0" appliesInBothDirections="true"/>
+            </driveProtectionSection>
+          </driveProtectionSections>
+          <protectedInfraElements>
+            <switch ref="DEDEMIPDRPOI27##0005"/>
+          </protectedInfraElements>
+        </dpsGroup>
+      </dpsGroups>
+      <allocationSections>
+        <allocationSection id="5F90531F-FCF6-4CD5-A66F-857AD7704287" name="AS on 87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4">
+          <linearReference>
+            <startsAt xmlns="https://erju.org/infra" onLinearElement="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" offsetFromOrigin="0"/>
+            <endsAt xmlns="https://erju.org/infra" onLinearElement="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" offsetFromOrigin="191855"/>
+            <hasSequence xmlns="https://erju.org/infra">
+              <hasSequenceItem ref="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4"/>
+            </hasSequence>
+          </linearReference>
+          <dependencies>
+            <dependency ref="0D6D7B08-E53C-4BAB-AFFB-B61E20402E06"/>
+          </dependencies>
+        </allocationSection>
+        <allocationSection id="0D6D7B08-E53C-4BAB-AFFB-B61E20402E06" name="AS on 8A10825F-A0B5-44A8-8E27-BA3139AC53BB">
+          <linearReference>
+            <startsAt xmlns="https://erju.org/infra" onLinearElement="8A10825F-A0B5-44A8-8E27-BA3139AC53BB" offsetFromOrigin="0"/>
+            <endsAt xmlns="https://erju.org/infra" onLinearElement="8A10825F-A0B5-44A8-8E27-BA3139AC53BB" offsetFromOrigin="135937"/>
+            <hasSequence xmlns="https://erju.org/infra">
+              <hasSequenceItem ref="8A10825F-A0B5-44A8-8E27-BA3139AC53BB"/>
+            </hasSequence>
+          </linearReference>
+          <dependencies>
+            <dependency ref="5F90531F-FCF6-4CD5-A66F-857AD7704287"/>
+          </dependencies>
+        </allocationSection>
+        <allocationSection id="A35A8508-3B1B-48B9-80D7-0C8DB8623984" name="AS on B30816E1-95C1-4F89-8F9E-E1C5807BDC3F">
+          <linearReference>
+            <startsAt xmlns="https://erju.org/infra" onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="0"/>
+            <endsAt xmlns="https://erju.org/infra" onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="0"/>
+            <hasSequence xmlns="https://erju.org/infra">
+              <hasSequenceItem ref="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F"/>
+            </hasSequence>
+          </linearReference>
+          <dependencies>
+            <dependency ref="E1481C4E-082B-42A2-A796-07BB817D5AD3"/>
+          </dependencies>
+        </allocationSection>
+        <allocationSection id="E1481C4E-082B-42A2-A796-07BB817D5AD3" name="AS on 1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A">
+          <linearReference>
+            <startsAt xmlns="https://erju.org/infra" onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="0"/>
+            <endsAt xmlns="https://erju.org/infra" onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="1024626"/>
+            <hasSequence xmlns="https://erju.org/infra">
+              <hasSequenceItem ref="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A"/>
+            </hasSequence>
+          </linearReference>
+          <dependencies>
+            <dependency ref="A35A8508-3B1B-48B9-80D7-0C8DB8623984"/>
+          </dependencies>
+        </allocationSection>
+        <allocationSection id="92709501-A260-4A52-B569-8A95EB22AA7A" name="AS on D3F6F81B-E94A-4707-AA72-4787A5436CA9">
+          <linearReference>
+            <startsAt xmlns="https://erju.org/infra" onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="0"/>
+            <endsAt xmlns="https://erju.org/infra" onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="389039"/>
+            <hasSequence xmlns="https://erju.org/infra">
+              <hasSequenceItem ref="D3F6F81B-E94A-4707-AA72-4787A5436CA9"/>
+            </hasSequence>
+          </linearReference>
+          <dependencies>
+            <dependency ref="A35A8508-3B1B-48B9-80D7-0C8DB8623984"/>
+          </dependencies>
+        </allocationSection>
+        <allocationSection id="E28B3C1E-E789-42D6-AAA0-9F9B44096C98" name="AS on B30816E1-95C1-4F89-8F9E-E1C5807BDC3F">
+          <linearReference>
+            <startsAt xmlns="https://erju.org/infra" onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="0"/>
+            <endsAt xmlns="https://erju.org/infra" onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="1411646"/>
+            <hasSequence xmlns="https://erju.org/infra">
+              <hasSequenceItem ref="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F"/>
+            </hasSequence>
+          </linearReference>
+          <dependencies>
+            <dependency ref="92709501-A260-4A52-B569-8A95EB22AA7A"/>
+          </dependencies>
+        </allocationSection>
+        <allocationSection id="1219DEAB-BD46-48B4-8E56-549D4659F6A0" name="AS on 5735FE5B-E628-4641-B0B3-6FA58E127DC7">
+          <linearReference>
+            <startsAt xmlns="https://erju.org/infra" onLinearElement="5735FE5B-E628-4641-B0B3-6FA58E127DC7" offsetFromOrigin="0"/>
+            <endsAt xmlns="https://erju.org/infra" onLinearElement="5735FE5B-E628-4641-B0B3-6FA58E127DC7" offsetFromOrigin="57225"/>
+            <hasSequence xmlns="https://erju.org/infra">
+              <hasSequenceItem ref="5735FE5B-E628-4641-B0B3-6FA58E127DC7"/>
+            </hasSequence>
+          </linearReference>
+          <dependencies>
+            <dependency ref="D492B8D5-5427-4B25-B312-D30050DD75EB"/>
+          </dependencies>
+        </allocationSection>
+        <allocationSection id="D492B8D5-5427-4B25-B312-D30050DD75EB" name="AS on 2CD5B052-0DA5-4483-AE57-2A1EE639E76F">
+          <linearReference>
+            <startsAt xmlns="https://erju.org/infra" onLinearElement="2CD5B052-0DA5-4483-AE57-2A1EE639E76F" offsetFromOrigin="0"/>
+            <endsAt xmlns="https://erju.org/infra" onLinearElement="2CD5B052-0DA5-4483-AE57-2A1EE639E76F" offsetFromOrigin="129047"/>
+            <hasSequence xmlns="https://erju.org/infra">
+              <hasSequenceItem ref="2CD5B052-0DA5-4483-AE57-2A1EE639E76F"/>
+            </hasSequence>
+          </linearReference>
+          <dependencies>
+            <dependency ref="1219DEAB-BD46-48B4-8E56-549D4659F6A0"/>
+          </dependencies>
+        </allocationSection>
+        <allocationSection id="49599AF2-41F4-4402-858E-B69709B25DB8" name="AS on D3F6F81B-E94A-4707-AA72-4787A5436CA9">
+          <linearReference>
+            <startsAt xmlns="https://erju.org/infra" onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="0"/>
+            <endsAt xmlns="https://erju.org/infra" onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="0"/>
+            <hasSequence xmlns="https://erju.org/infra">
+              <hasSequenceItem ref="D3F6F81B-E94A-4707-AA72-4787A5436CA9"/>
+            </hasSequence>
+          </linearReference>
+          <dependencies>
+            <dependency ref="410596C9-81D6-4C1D-9366-2FA241FF183D"/>
+          </dependencies>
+        </allocationSection>
+        <allocationSection id="410596C9-81D6-4C1D-9366-2FA241FF183D" name="AS on 7B854A8A-0C65-425F-AF3D-6D66659BCCD3">
+          <linearReference>
+            <startsAt xmlns="https://erju.org/infra" onLinearElement="7B854A8A-0C65-425F-AF3D-6D66659BCCD3" offsetFromOrigin="0"/>
+            <endsAt xmlns="https://erju.org/infra" onLinearElement="7B854A8A-0C65-425F-AF3D-6D66659BCCD3" offsetFromOrigin="47156"/>
+            <hasSequence xmlns="https://erju.org/infra">
+              <hasSequenceItem ref="7B854A8A-0C65-425F-AF3D-6D66659BCCD3"/>
+            </hasSequence>
+          </linearReference>
+          <dependencies>
+            <dependency ref="92709501-A260-4A52-B569-8A95EB22AA7A"/>
+          </dependencies>
+        </allocationSection>
+        <allocationSection id="C605FA0E-4095-4CE0-BEFE-90827FDCB73C" name="AS on 5735FE5B-E628-4641-B0B3-6FA58E127DC7">
+          <linearReference>
+            <startsAt xmlns="https://erju.org/infra" onLinearElement="5735FE5B-E628-4641-B0B3-6FA58E127DC7" offsetFromOrigin="0"/>
+            <endsAt xmlns="https://erju.org/infra" onLinearElement="5735FE5B-E628-4641-B0B3-6FA58E127DC7" offsetFromOrigin="0"/>
+            <hasSequence xmlns="https://erju.org/infra">
+              <hasSequenceItem ref="5735FE5B-E628-4641-B0B3-6FA58E127DC7"/>
+            </hasSequence>
+          </linearReference>
+          <dependencies>
+            <dependency ref="5F90531F-FCF6-4CD5-A66F-857AD7704287"/>
+          </dependencies>
+        </allocationSection>
+        <allocationSection id="3D7902C1-0B9E-4A32-83F7-ECE12DBE5D94" name="AS on 87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4">
+          <linearReference>
+            <startsAt xmlns="https://erju.org/infra" onLinearElement="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" offsetFromOrigin="0"/>
+            <endsAt xmlns="https://erju.org/infra" onLinearElement="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" offsetFromOrigin="0"/>
+            <hasSequence xmlns="https://erju.org/infra">
+              <hasSequenceItem ref="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4"/>
+            </hasSequence>
+          </linearReference>
+          <dependencies>
+            <dependency ref="1219DEAB-BD46-48B4-8E56-549D4659F6A0"/>
+          </dependencies>
+        </allocationSection>
+      </allocationSections>
+      <fieldObjectControllers>
+        <fieldObjectController id="145465F0-91B7-444F-90DB-5F3F37730DE9" rastaId="201" eulynxBaseline="SampleBaseline" version="1" belongsToAoc="19d97cdd-cf9e-4204-8f9e-86dd4ef531e5">
+          <controlledInfraElements>
+            <controlledInfraElement>
+              <dpsGroup ref="8E1C8B0D-AC04-488A-92DF-442B5F558355"/>
+            </controlledInfraElement>
+          </controlledInfraElements>
+        </fieldObjectController>
+        <fieldObjectController id="6D2400B0-4B33-429E-ACE8-07025B58404E" rastaId="201" eulynxBaseline="SampleBaseline" version="1" belongsToAoc="19d97cdd-cf9e-4204-8f9e-86dd4ef531e5">
+          <controlledInfraElements>
+            <controlledInfraElement>
+              <dpsGroup ref="0B63A5FD-51FD-4D32-A2D6-06D7867E0D6F"/>
+            </controlledInfraElement>
+          </controlledInfraElements>
+        </fieldObjectController>
+        <fieldObjectController id="D4408504-4FBF-4FE1-B42F-F8E3FE61988F" rastaId="201" eulynxBaseline="SampleBaseline" version="1" belongsToAoc="19d97cdd-cf9e-4204-8f9e-86dd4ef531e5">
+          <controlledInfraElements>
+            <controlledInfraElement>
+              <dpsGroup ref="C9C3D1EE-6766-4DA3-A494-DA63FA59C54A"/>
+            </controlledInfraElement>
+          </controlledInfraElements>
+        </fieldObjectController>
+        <fieldObjectController id="C686A1F5-0CA9-4E86-A478-53D1B8B2519D" rastaId="201" eulynxBaseline="SampleBaseline" version="1" belongsToAoc="19d97cdd-cf9e-4204-8f9e-86dd4ef531e5">
+          <controlledInfraElements>
+            <controlledInfraElement>
+              <dpsGroup ref="4EB2BFE2-1D69-463F-81F9-E7F9CD8506FD"/>
+            </controlledInfraElement>
+          </controlledInfraElements>
+        </fieldObjectController>
+        <fieldObjectController id="4B817926-17EE-4587-80F1-A7A2F0ACE766" rastaId="201" eulynxBaseline="SampleBaseline" version="1" belongsToAoc="19d97cdd-cf9e-4204-8f9e-86dd4ef531e5">
+          <controlledInfraElements>
+            <controlledInfraElement>
+              <dpsGroup ref="6D617BBE-898A-4053-A81A-9B4FAC73D986"/>
+            </controlledInfraElement>
+          </controlledInfraElements>
+        </fieldObjectController>
+        <fieldObjectController id="BF892E8C-20A4-4A25-BD06-8A3094AFF73F" rastaId="201" eulynxBaseline="SampleBaseline" version="1" belongsToAoc="19d97cdd-cf9e-4204-8f9e-86dd4ef531e5">
+          <controlledInfraElements>
+            <controlledInfraElement>
+              <dpsGroup ref="726474C2-11E4-4675-A129-0BA38BD568DA"/>
+            </controlledInfraElement>
+          </controlledInfraElements>
+        </fieldObjectController>
+      </fieldObjectControllers>
+      <areaOfControl id="19d97cdd-cf9e-4204-8f9e-86dd4ef531e5" name="Area1" iPAddress="192.168.1.1" rastaId="RAOC1" portNumber="8080">
+        <area>
+          <includes xmlns="https://erju.org/infra">
+            <include>
+              <startsAt onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="1000"/>
+              <endsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="12694943"/>
+              <hasSequence>
+                <hasSequenceItem ref="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A"/>
+                <hasSequenceItem ref="2CD5B052-0DA5-4483-AE57-2A1EE639E76F"/>
+                <hasSequenceItem ref="5735FE5B-E628-4641-B0B3-6FA58E127DC7"/>
+                <hasSequenceItem ref="642FEAF3-01F6-44A9-89A3-093D0803514C"/>
+                <hasSequenceItem ref="7B854A8A-0C65-425F-AF3D-6D66659BCCD3"/>
+                <hasSequenceItem ref="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4"/>
+                <hasSequenceItem ref="8A10825F-A0B5-44A8-8E27-BA3139AC53BB"/>
+                <hasSequenceItem ref="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F"/>
+                <hasSequenceItem ref="D3F6F81B-E94A-4707-AA72-4787A5436CA9"/>
+              </hasSequence>
+            </include>
+          </includes>
+        </area>
+      </areaOfControl>
+    </tpAreaItem>
+  </tpArea>
+</trainProtection>
