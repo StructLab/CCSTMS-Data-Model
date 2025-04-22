@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<infrastructure xmlns="https://erju.org/infra" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="https://erju.org/infra infra.xsd">
+<infrastructure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://erju.org/infra">
   <topoAreas>
     <topoArea id="0ad3ab07-d2ed-4279-aaab-2b67c10c29fe" versionTimestamp="2025-04-15T21:59:04+02:00">
       <linearElements>
@@ -2361,12 +2361,12 @@
         </baliseGroups>
       <etcsMarkers/>
       <bufferStops>
-        <bufferStop id="E7B9C1A4-F2D3-4B8A-9C12-5F3D8A6E4B29" isSwitchable="false">
+        <bufferStop id="1BB0101D-38D3-4DC1-AF1A-2118776FB6C3" isSwitchable="false">
           <netPointReference appliesToDirection="same">
             <hasTopoCoordinate onLinearElement="2CD5B052-0DA5-4483-AE57-2A1EE639E76F" offsetFromOrigin="0"/>
             </netPointReference>
           </bufferStop>
-        <bufferStop id="4A2F9D7B-3C8E-46A1-B5F4-1D9C7E2A0F56" isSwitchable="false">
+        <bufferStop id="3048781F-D0F1-4266-8893-78E3FFDA1265" isSwitchable="false">
           <netPointReference appliesToDirection="same">
             <hasTopoCoordinate onLinearElement="642FEAF3-01F6-44A9-89A3-093D0803514C" offsetFromOrigin="0"/>
             </netPointReference>
@@ -2377,63 +2377,63 @@
   <propertiesAreas>
     <propertiesArea id="0ad3ab07-d2ed-4279-aaab-2b67c10c29fe" versionTimestamp="2025-04-15T21:59:04+02:00" gauge="tg1435mm" defaultVoltage="vtAC15kv16_7Hz" defaultMaxCurrent="111">
       <linearElementSpeedProfiles>
-        <linearElementSpeedProfile id="C7C1905C-0704-4555-85E0-82A45BED6F10">
+        <linearElementSpeedProfile id="85699235-2FFB-487E-B52C-FADE58DA3020">
           <sameDirProfile>
             <staticSpeedProfile>
               <staticSpeedProfileItem pos="0" speed="0"/>
               </staticSpeedProfile>
             </sameDirProfile>
           </linearElementSpeedProfile>
-        <linearElementSpeedProfile id="1EA330DA-B455-4F1A-822A-78DE35E2D6C7">
+        <linearElementSpeedProfile id="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F">
           <sameDirProfile>
             <staticSpeedProfile>
               <staticSpeedProfileItem pos="0" speed="60"/>
               </staticSpeedProfile>
             </sameDirProfile>
           </linearElementSpeedProfile>
-        <linearElementSpeedProfile id="B1407459-CC34-41B2-88BB-E4EE2E94C524">
+        <linearElementSpeedProfile id="D3F6F81B-E94A-4707-AA72-4787A5436CA9">
           <sameDirProfile>
             <staticSpeedProfile>
               <staticSpeedProfileItem pos="0" speed="50"/>
               </staticSpeedProfile>
             </sameDirProfile>
           </linearElementSpeedProfile>
-        <linearElementSpeedProfile id="809AC185-80C5-4BF4-BEF0-1993148216B9">
+        <linearElementSpeedProfile id="7B854A8A-0C65-425F-AF3D-6D66659BCCD3">
           <sameDirProfile>
             <staticSpeedProfile>
               <staticSpeedProfileItem pos="0" speed="40"/>
               </staticSpeedProfile>
             </sameDirProfile>
           </linearElementSpeedProfile>
-        <linearElementSpeedProfile id="625FACC8-63BC-41B8-8093-9F2E80AA9DF5">
+        <linearElementSpeedProfile id="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4">
           <sameDirProfile>
             <staticSpeedProfile>
               <staticSpeedProfileItem pos="0" speed="60"/>
               </staticSpeedProfile>
             </sameDirProfile>
           </linearElementSpeedProfile>
-        <linearElementSpeedProfile id="D7BED650-EB3C-416D-BFBC-5F602DC90518">
+        <linearElementSpeedProfile id="642FEAF3-01F6-44A9-89A3-093D0803514C">
           <sameDirProfile>
             <staticSpeedProfile>
               <staticSpeedProfileItem pos="0" speed="0"/>
               </staticSpeedProfile>
             </sameDirProfile>
           </linearElementSpeedProfile>
-        <linearElementSpeedProfile id="6C2BF7F7-FB3A-43C7-BD45-D64BED11B9AD">
+        <linearElementSpeedProfile id="2CD5B052-0DA5-4483-AE57-2A1EE639E76F">
           <sameDirProfile>
             <staticSpeedProfile>
               <staticSpeedProfileItem pos="0" speed="0"/>
               </staticSpeedProfile>
             </sameDirProfile>
           </linearElementSpeedProfile>
-        <linearElementSpeedProfile id="D37D1280-93CA-4B3D-8FF4-3607F74C308F">
+        <linearElementSpeedProfile id="5735FE5B-E628-4641-B0B3-6FA58E127DC7">
           <sameDirProfile>
             <staticSpeedProfile>
               <staticSpeedProfileItem pos="0" speed="40"/>
               </staticSpeedProfile>
             </sameDirProfile>
           </linearElementSpeedProfile>
-        <linearElementSpeedProfile id="9359A3B0-894C-49F3-8C9C-A9A1D375DBC1">
+        <linearElementSpeedProfile id="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A">
           <sameDirProfile>
             <staticSpeedProfile>
               <staticSpeedProfileItem pos="0" speed="50"/>

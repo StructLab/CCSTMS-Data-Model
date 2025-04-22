@@ -1,8 +1,7 @@
 <?xml version="1.0" ?>
 <trainProtection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-  xmlns="https://erju.org/tp"
-  xsi:schemaLocation="https://erju.org/tp tp.xsd">
+  xmlns="https://erju.org/tp">
   <tpArea>
     <tpAreaItem id="0ad3ab07-d2ed-4279-aaab-2b67c10c29fe">
       <dpsGroups xmlns:infra="https://erju.org/infra">
@@ -275,7 +274,7 @@
           </controlledInfraElements>
         </fieldObjectController>
       </fieldObjectControllers>
-      <areaOfControl id="19d97cdd-cf9e-4204-8f9e-86dd4ef531e5" name="Area1" iPAddress="192.168.1.1" rastaId="RAOC1" portNumber="8080">
+      <areaOfControl id="19d97cdd-cf9e-4204-8f9e-86dd4ef531e5" name="Area1" iPAddress="192.168.1.1" rastaId="201" portNumber="8080">
         <area>
           <includes xmlns="https://erju.org/infra">
             <include>
