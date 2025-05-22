@@ -32,7 +32,7 @@ This repository contains all necessary documentation and data model files relate
 - **DM Docs**: Contains documentation specific to various data model categories within the project.
 - **DM Files**: Contains JSON files for each data model component, providing structured data representations.
 - **Ontology**: CCSTMS RDF and TTL files representing the extended ERA vocabulary "ontology" can be found [here](https://ext-era-doc.vercel.app/).
-    NOTE: Issues or questions specifically related to the extended ontology can be raised here --> [ERA-CCSTMS](https://github.com/StructLab/ERA-CCSTMS)
+    NOTE: Issues or questions specifically related to the extended ontology can be raised here --> [Extended ERA-Ontology]([https://github.com/StructLab/ERA-CCSTMS](https://gitlab.com/era-europa-eu/public/interoperable-data-programme/era-ontology/era-ontology/-/tree/ext-ccstms?ref_type=heads)) using appropriate tag.
 - **Schemas**: Schemas in XSD and JSON formats for validating and structuring the data models.
 
   
@@ -64,7 +64,7 @@ This repository follows *EUPL* license agreement for authorized usage. Please re
 
 ## Contributing
 
-We welcome feedback and contributions from domain experts and end-users. If you have suggestions, encounter any issues, or need clarification, please open an issue [here](https://github.com/StructLab/CCS-TMS-1.0/issues) or submit ontology related comment [here](https://github.com/StructLab/ERA-CCSTMS). Alternatively, you can also add comments directly on the relevant file/section in [Polarion](https://polarion.rail-research.europa.eu/polarion/#/project/SPT2TS/wiki/TCCS%20SD1%20-%20Data%20Model/TCCS%20SD1%20-%20Introduction%20to%20Data%20Model)
+We welcome feedback and contributions from domain experts and end-users. If you have suggestions, encounter any issues, or need clarification, please open an issue [here](https://github.com/StructLab/CCSTMS-Data-Model/issues). Alternatively, you can also add comments directly on the relevant file/section in [Polarion](https://polarion.rail-research.europa.eu/polarion/#/project/SPT2TS/wiki/TCCS%20SD1%20-%20Data%20Model/TCCS%20SD1%20-%20Introduction%20to%20Data%20Model)
 
 ---
 
