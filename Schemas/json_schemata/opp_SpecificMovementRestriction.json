@@ -2,6 +2,21 @@
   "$id": "https://ERJU/opp_SpecificMovementRestriction",
   "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
+    "opp.SpeedRestriction": {
+      "type": "object",
+      "properties": {
+        "maxSpeed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines maximum speed"
+        },
+        "restrictionEndsAtTrainFront": {
+          "type": "boolean",
+          "description": "normally false, but for disturbed level crossings, the train can accelerate as soon as the train-front passed the level crossing. In this case should be true"
+        }
+      },
+      "additionalProperties": false
+    },
     "opp.DPSGroupsList": {
       "type": "object",
       "description": "Defines a set of Drive-Protection-Section-Groups",
@@ -20,10 +35,9 @@
   "type": "object",
   "description": "Defines single aspect of the train specific restriction",
   "properties": {
-    "maxSpeed": {
-      "type": "integer",
-      "minimum": 0,
-      "description": "Defines the maximum applicable speed"
+    "speedRestriction": {
+      "type": "object",
+      "$ref": "#/definitions/opp.SpeedRestriction"
     },
     "adhesionCategory": {
       "type": "string",
@@ -61,7 +75,7 @@
     {
       "type": "object",
       "required": [
-        "maxSpeed"
+        "speedRestriction"
       ]
     },
     {

@@ -1,0 +1,1045 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix era-skos: <http://data.europa.eu/949/concepts/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+
+@prefix era-esc: <http://data.europa.eu/949/concepts/etcs-system-compatibilities/> .
+@prefix era-esc-eratv: <http://data.europa.eu/949/concepts/etcs-system-compatibilities/eratv/> .
+@prefix era-esc-rinf: <http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/> .
+
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+
+era-esc:ETCSSystemCompatibilities a skos:ConceptScheme;
+    dcterms:issued "2020-09-01"^^xsd:date ;
+    dcterms:modified "2022-09-09"^^xsd:date , 
+    "2024-04-18"^^xsd:date, "2024-11-26"^^xsd:date , "2025-04-30"^^xsd:date;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    rdfs:comment "Controlled SKOS-based vocabularies defined by the European Union Agency for Railways to describe concepts related to the European railway infrastructure and the vehicles authorized to operate over it."@en ;
+    dcterms:title "Concept scheme grouping ETCS System Compatibilities"@en;
+    rdfs:label "ETCS System Compatibilities" ;
+	  skos:changeNote """
+    Revision 2025-04-30:
+       - regenerated the code list fixing concepts without code
+       - removed skos:exactMatch axioms 
+    Revision 26/11/2024: 
+    - added a new value ESC-DE-05-B3-L2 as suggested by ERTMS colleagues """@en  .
+
+
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+
+########## ETCS System Compatibilities ##########
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/10>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "Not Defined"@en ;
+  skos:notation "10"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/101>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-01"@en ;
+  skos:notation "101"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/102>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-02"@en ;
+  skos:notation "102"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/103>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-03"@en ;
+  skos:notation "103"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/104>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-04"@en ;
+  skos:notation "104"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/105>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-05"@en ;
+  skos:notation "105"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/106>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-06"@en ;
+  skos:notation "106"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/107>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-07"@en ;
+  skos:notation "107"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/108>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-08"@en ;
+  skos:notation "108"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/109>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-09"@en ;
+  skos:notation "109"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/110>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-10"@en ;
+  skos:notation "110"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/111>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-11"@en ;
+  skos:notation "111"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/112>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-12"@en ;
+  skos:notation "112"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/113>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-13"@en ;
+  skos:notation "113"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/114>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-14"@en ;
+  skos:notation "114"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/115>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-15"@en ;
+  skos:notation "115"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/116>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-16"@en ;
+  skos:notation "116"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/117>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-17"@en ;
+  skos:notation "117"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/118>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-18"@en ;
+  skos:notation "118"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/119>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-19"@en ;
+  skos:notation "119"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/120>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-20"@en ;
+  skos:notation "120"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/121>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-21"@en ;
+  skos:notation "121"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/122>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-22"@en ;
+  skos:notation "122"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/123>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NL-23"@en ;
+  skos:notation "123"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/20>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-EU-0"@en ;
+  skos:notation "20"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/201>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-01-LB"@en ;
+  skos:notation "201"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/202>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-02-LB"@en ;
+  skos:notation "202"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/203>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-03-LB"@en ;
+  skos:notation "203"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/204>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-04-LB"@en ;
+  skos:notation "204"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/205>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-05-LB"@en ;
+  skos:notation "205"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/206>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-06-LB"@en ;
+  skos:notation "206"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/207>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-07-SF"@en ;
+  skos:notation "207"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/208>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-08-SF"@en ;
+  skos:notation "208"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/209>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-09-SF"@en ;
+  skos:notation "209"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/210>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-10-SF"@en ;
+  skos:notation "210"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/211>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-11-SF"@en ;
+  skos:notation "211"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/212>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-12-SF"@en ;
+  skos:notation "212"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/213>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-13-SF"@en ;
+  skos:notation "213"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/214>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-14-SF"@en ;
+  skos:notation "214"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/215>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-15-SF"@en ;
+  skos:notation "215"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/216>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-16-SF"@en ;
+  skos:notation "216"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/217>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-17-SF"@en ;
+  skos:notation "217"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/218>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-18-SF"@en ;
+  skos:notation "218"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/219>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-19-SF"@en ;
+  skos:notation "219"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/220>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-20-SF"@en ;
+  skos:notation "220"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/221>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-21-SF"@en ;
+  skos:notation "221"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/222>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-22-LB"@en ;
+  skos:notation "222"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/223>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-23-LB"@en ;
+  skos:notation "223"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/224>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-27-LGVEE"@en ;
+  skos:notation "224"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/225>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-28-LGVEE"@en ;
+  skos:notation "225"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/226>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-29-LGVEE"@en ;
+  skos:notation "226"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/227>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-30-LGVEE"@en ;
+  skos:notation "227"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/228>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-31-LGVEE"@en ;
+  skos:notation "228"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/229>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-32-LGVEE"@en ;
+  skos:notation "229"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/230>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-BE-02-L2FS"@en ;
+  skos:notation "230"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/231>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-BE-03-L1LS"@en ;
+  skos:notation "231"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/232>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-01-RFI-1.0_L2_AVp_RMNA_01"@en ;
+  skos:notation "232"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/233>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-02-RFI-1.0_L2_AVp_MIBO_01"@en ;
+  skos:notation "233"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/234>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-03-RFI-1.0_L2_AVp_BOFI_01"@en ;
+  skos:notation "234"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/235>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-04-RFI-1.0_L2_AVp_TOMI_01"@en ;
+  skos:notation "235"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/236>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-05-RFI-1.0_L2_AVp_TRBR_01"@en ;
+  skos:notation "236"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/237>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-06-RFI-1.0_L2_AVp_DD_01"@en ;
+  skos:notation "237"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/238>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-08-RFI-2.0_L1_Cs_DONO_01"@en ;
+  skos:notation "238"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/239>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-PL-01-L1"@en ;
+  skos:notation "239"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/240>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-PL-02-L1LS"@en ;
+  skos:notation "240"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/241>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-PL-03-L2"@en ;
+  skos:notation "241"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/242>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-PL-04-L2"@en ;
+  skos:notation "242"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/243>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NO-01"@en ;
+  skos:notation "243"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/244>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-07-RFI-2.0_L1_Cs_ISDO_01"@en ;
+  skos:notation "244"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/245>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-09-RFI-2.0_L1_Cs_CHIASSO_01"@en ;
+  skos:notation "245"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/246>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-10-RFI-2.1_L2_Cs_NOPD_01"@en ;
+  skos:notation "246"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/247>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-11-RFI-2.0_L1_Cs_PTLU_01"@en ;
+  skos:notation "247"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/248>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-BE-01-L1FS"@en ;
+  skos:notation "248"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/249>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-BE-04-LGV3_4"@en ;
+  skos:notation "249"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/250>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-DK-01-East"@en ;
+  skos:notation "250"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/251>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-DK-02-West"@en ;
+  skos:notation "251"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/252>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-AT-01"@en ;
+  skos:notation "252"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/253>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-24-AA"@en ;
+  skos:notation "253"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/254>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-25-AD"@en ;
+  skos:notation "254"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/255>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-26-AE"@en ;
+  skos:notation "255"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/256>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-33-SEA"@en ;
+  skos:notation "256"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/257>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-34-SEA"@en ;
+  skos:notation "257"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/258>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-35-BPL"@en ;
+  skos:notation "258"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/259>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-FR-36-BPL"@en ;
+  skos:notation "259"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/260>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-12-RFI-2.0_L1_Cs_ISDO_CH_01"@en ;
+  skos:notation "260"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/261>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-13-RFI-2.0_L1_Cs_PTLU_CH_01"@en ;
+  skos:notation "261"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/262>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-14-RFI_2.1_L1_Cs_VENTIMIGLIA_01"@en ;
+  skos:notation "262"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/263>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-15-RFI_2.1_L1_Cs_VENTIMIGLIA_FR_01"@en ;
+  skos:notation "263"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/264>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-16-RFI_2.1_L1_Cs_VIVO_01"@en ;
+  skos:notation "264"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/265>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-17-RFI_2.1_L2_Cs_MIMOCH_01"@en ;
+  skos:notation "265"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/266>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-PL-05-L2"@en ;
+  skos:notation "266"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/267>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-PL-06-L2"@en ;
+  skos:notation "267"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/268>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-CZ-01"@en ;
+  skos:notation "268"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/269>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-CZ-02"@en ;
+  skos:notation "269"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/270>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-RO-01"@en ;
+  skos:notation "270"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/271>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-DE-01-B2_L2"@en ;
+  skos:notation "271"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/272>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-DE-02-B3_L2"@en ;
+  skos:notation "272"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/273>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-NO-02"@en ;
+  skos:notation "273"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/274>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-18-RFI_2.1_L2_Cs_NOPD_02"@en ;
+  skos:notation "274"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/275>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-19-RFI_1.0_L2_AVp_AGGR01_01"@en ;
+  skos:notation "275"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/276>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-20-RFI_1.0_L2_AVp_AGGR02_01"@en ;
+  skos:notation "276"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/277>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-21-RFI_2.0_L1_Cs_AGGR03_01"@en ;
+  skos:notation "277"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/278>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-22-RFI_1.0_L1_Cs_AGGR04_01"@en ;
+  skos:notation "278"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/279>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-IT-23-RFI_2.1_L1_Cs_AGGR05_01"@en ;
+  skos:notation "279"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/280>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-CH-01-L1LS"@en ;
+  skos:notation "280"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/281>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-CH-02-L2"@en ;
+  skos:notation "281"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/282>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-CH-03-L1LSL2"@en ;
+  skos:notation "282"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/283>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-LU-01-RFN"@en ;
+  skos:notation "283"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/284>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-LU-02-MSM"@en ;
+  skos:notation "284"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/285>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-LU-03-IG"@en ;
+  skos:notation "285"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/30>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-SE-01-HiL2"@en ;
+  skos:notation "30"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/40>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-SE-02-BoL2"@en ;
+  skos:notation "40"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/50>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-SE-03-L3"@en ;
+  skos:notation "50"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/60>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-SE-04-HiL2B3"@en ;
+  skos:notation "60"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/70>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-SE-05-BoL2B3"@en ;
+  skos:notation "70"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/71>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-211"@en ;
+  skos:notation "71"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/72>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-221"@en ;
+  skos:notation "72"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/73>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-231"@en ;
+  skos:notation "73"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/74>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-232"@en ;
+  skos:notation "74"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/75>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-241"@en ;
+  skos:notation "75"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/76>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-251"@en ;
+  skos:notation "76"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/77>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-262"@en ;
+  skos:notation "77"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/78>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-271"@en ;
+  skos:notation "78"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/79>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-281"@en ;
+  skos:notation "79"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/80>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-292"@en ;
+  skos:notation "80"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/81>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-311"@en ;
+  skos:notation "81"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/82>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-312"@en ;
+  skos:notation "82"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/83>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-321"@en ;
+  skos:notation "83"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/84>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-332"@en ;
+  skos:notation "84"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/85>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-341"@en ;
+  skos:notation "85"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/86>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-351"@en ;
+  skos:notation "86"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/87>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-381"@en ;
+  skos:notation "87"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/88>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-412"@en ;
+  skos:notation "88"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/89>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-422"@en ;
+  skos:notation "89"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/90>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-432"@en ;
+  skos:notation "90"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/91>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-441"@en ;
+  skos:notation "91"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/92>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-511"@en ;
+  skos:notation "92"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/93>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-521"@en ;
+  skos:notation "93"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/94>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-ES-541"@en ;
+  skos:notation "94"^^xsd:token .
+
+<http://data.europa.eu/949/concepts/etcs-system-compatibilities/rinf/95>
+  a skos:Concept ;
+  skos:inScheme <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:topConceptOf <http://data.europa.eu/949/concepts/etcs-system-compatibilities/ETCSSystemCompatibilities> ;
+  skos:prefLabel "ESC-SE-07"@en ;
+  skos:notation "95"^^xsd:token .
+
+## ERATV legacy 
+
+era-esc-eratv:Not-applicable a skos:Concept;
+  skos:inScheme era-esc:ETCSSystemCompatibilities; 
+  skos:topConceptOf era-esc:ETCSSystemCompatibilities ;
+  skos:notation "Not applicable"^^xsd:token ;
+  skos:prefLabel "Not applicable"@en .
+
+era-esc-eratv:ESC-NP-CCS7-4a a skos:Concept;
+  skos:inScheme era-esc:ETCSSystemCompatibilities; 
+  skos:topConceptOf era-esc:ETCSSystemCompatibilities ;
+  skos:prefLabel "ESC-NP-CCS7.4a"@en .
+

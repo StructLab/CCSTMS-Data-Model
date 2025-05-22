@@ -96,13 +96,6 @@
       "intId": 8
     }, 
     {
-      "name": "LinkedArea", 
-      "attrs": [
-        {"intId": 1, "name": "includes", "composition": "NetLinearReference", "multiplicity": "1..*", 
-          "info": "List of linear references included in an network area reference."}], 
-      "intId": 9
-    }, 
-    {
       "name": "GeometryArea", "info": "Defines the container geometry area within INFRA Domain", 
       "attrs": [
         {"intId": 1, "name": "id", "dataType": "string", "key": "global", "sameKeyAs": "TopoArea", 

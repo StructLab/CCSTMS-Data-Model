@@ -4,6 +4,7 @@
   "definitions": {
     "oi.TrackTrainHeader": {
       "type": "object",
+      "description": "Defines the Track-Train Header packet",
       "properties": {
         "packetId": {
           "type": "string",

@@ -1,0 +1,740 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix era: <http://data.europa.eu/949/> .
+@prefix era-skos: <http://data.europa.eu/949/concepts/> .
+
+@prefix era-sctc: <http://data.europa.eu/949/concepts/standard-combined-transport-containers/> .
+
+
+
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+
+
+era-sctc:StandardCombinedTransportContainers a skos:ConceptScheme ; 
+    dct:issued "2025-02-20"^^xsd:date ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    rdfs:comment "Controlled SKOS-based vocabularies defined by the European Union Agency for Railways to describe concepts related to the European railway infrastructure and the vehicles authorized to operate over it."@en ;
+    rdfs:label "Standard combined transport profile numbers for roller units"@en ;
+    era:rinfIndex "1.1.1.1.3.8"; 
+    skos:prefLabel "Standard combined transport containers"@en ;
+    dct:title "Concept scheme grouping standard combined transport containers"@en .
+    
+
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+era-sctc:87  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 87" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 87"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:59  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 59" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 59"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:40  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 40" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 40"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:12  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 12" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 12"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:81  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 81" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 81"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:53  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 53" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 53"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:25  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 25" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 25"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:94  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 94" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 94"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:66  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 66" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 66"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:38  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 38" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 38"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:79  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 79" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 79"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:60  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 60" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 60"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:32  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 32" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 32"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:04  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 04" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 04"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:73  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 73" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 73"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:45  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 45" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 45"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:17  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 17" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 17"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:86  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 86" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 86"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:58  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 58" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 58"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:99  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 99" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 99"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:11  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 11" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 11"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:80  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 80" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 80"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:52  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 52" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 52"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:24  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 24" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 24"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:93  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 93" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 93"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:65  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 65" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 65"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:37  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 37" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 37"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:09  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 09" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 09"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:78  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 78" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 78"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:31  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 31" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 31"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:03  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 03" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 03"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:72  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 72" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 72"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:44  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 44" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 44"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:16  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 16" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 16"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:85  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 85" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 85"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:57  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 57" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 57"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:29  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 29" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 29"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:98  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 98" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 98"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:10  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 10" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 10"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:51  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 51" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 51"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:23  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 23" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 23"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:92  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 92" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 92"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:64  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 64" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 64"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:36  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 36" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 36"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:08  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 08" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 08"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:77  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 77" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 77"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:49  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 49" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 49"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:30  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 30" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 30"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:02  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 02" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 02"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:71  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 71" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 71"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:43  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 43" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 43"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:15  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 15" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 15"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:84  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 84" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 84"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:56  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 56" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 56"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:28  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 28" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 28"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:97  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 97" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 97"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:69  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 69" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 69"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:50  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 50" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 50"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:22  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 22" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 22"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:91  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 91" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 91"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:63  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 63" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 63"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:35  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 35" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 35"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:07  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 07" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 07"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:76  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 76" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 76"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:48  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 48" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 48"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:89  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 89" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 89"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:01  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 01" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 01"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:70  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 70" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 70"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:42  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 42" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 42"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:14  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 14" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 14"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:83  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 83" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 83"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:55  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 55" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 55"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:27  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 27" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 27"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:96  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 96" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 96"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:68  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 68" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 68"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:21  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 21" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 21"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:90  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 90" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 90"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:62  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 62" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 62"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:34  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 34" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 34"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:06  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 06" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 06"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:75  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 75" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 75"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:47  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 47" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 47"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:19  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 19" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 19"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:88  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 88" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 88"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:00  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 00" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 00"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:41  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 41" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 41"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:13  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 13" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 13"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:82  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 82" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 82"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:54  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 54" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 54"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:26  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 26" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 26"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:95  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 95" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 95"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:67  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 67" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 67"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:39  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 39" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 39"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:20  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 20" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 20"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:61  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 61" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 61"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:33  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 33" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 33"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:05  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 05" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 05"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:74  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 74" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 74"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:46  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 46" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 46"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .
+
+era-sctc:18  rdf:type      skos:Concept ;
+        skos:inScheme      era-sctc:StandardCombinedTransportContainers ;
+        skos:notation      "ISO 18" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "ISO 18"@en ;
+        skos:topConceptOf  era-sctc:StandardCombinedTransportContainers .

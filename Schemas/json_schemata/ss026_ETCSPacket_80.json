@@ -14,9 +14,9 @@
         "m_mamode": {
           "type": "string",
           "enum": [
-            "OnSight",
-            "Shunting",
-            "LimitedSupervision"
+            "onSight",
+            "shunting",
+            "limitedSupervision"
           ],
           "description": "Required mode for a part of the MA. None. Comment : OS, LS, SH"
         },

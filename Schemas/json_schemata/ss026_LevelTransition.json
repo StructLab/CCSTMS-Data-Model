@@ -7,11 +7,11 @@
     "m_leveltr": {
       "type": "string",
       "enum": [
-        "Level0",
-        "LevelNTC",
-        "Level1",
-        "Level2",
-        "Level3"
+        "level0",
+        "levelNTC",
+        "level1",
+        "level2",
+        "level3"
       ],
       "description": "Required level"
     },

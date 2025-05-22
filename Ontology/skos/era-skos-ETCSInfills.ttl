@@ -1,0 +1,80 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix era: <http://data.europa.eu/949/> .
+@prefix era-skos: <http://data.europa.eu/949/concepts/> .
+@prefix era-etcsinfill: <http://data.europa.eu/949/concepts/etcs-infills/> .
+@prefix era-etcsinfill-eratv: <http://data.europa.eu/949/concepts/etcs-infills/eratv/> .
+@prefix era-etcsinfill-rinf: <http://data.europa.eu/949/concepts/etcs-infills/rinf/> .
+
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+
+era-etcsinfill:ETCSInfills a skos:ConceptScheme ; 
+    dct:issued "2020-09-01"^^xsd:date ;
+    dct:modified "2022-09-09"^^xsd:date ;
+    dct:modified "2024-04-18"^^xsd:date , "2025-01-30"^^xsd:date ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    rdfs:comment "Controlled SKOS-based vocabularies defined by the European Union Agency for Railways to describe concepts related to the European railway infrastructure and the vehicles authorized to operate over it."@en ;
+    rdfs:label "ETCS Infills"@en ;
+    skos:changeNote """ Revision 025-01-30
+                      - removed skos:note for retrieved from RINF or ERATV 
+                      - Harmonization by removing exactMatch
+                      - added skos:notation and used unique URI from RINF if possible
+                    """ ;  
+    dct:title "Concept scheme grouping installed ETCS infills, terminology as per TSI BL4."@en .
+
+
+
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+########## ETCS Infill Line-Sides ##########
+
+## values RINF #
+
+era-etcsinfill-rinf:30 a skos:Concept;
+  skos:inScheme era-etcsinfill:ETCSInfills;  
+  skos:topConceptOf era-etcsinfill:ETCSInfills ;  
+  skos:notation "30"^^xsd:string ; 
+  skos:prefLabel "Radio infill"@en ;
+  skos:altLabel "Radio"@en, "GSM-R"@en .
+
+
+era-etcsinfill-rinf:20 a skos:Concept;
+  skos:inScheme era-etcsinfill:ETCSInfills;  
+  skos:notation "20"^^xsd:string ;   
+  skos:topConceptOf era-etcsinfill:ETCSInfills ;  
+  skos:altLabel "Euroloop infill"@en ;
+  skos:prefLabel "Euroloop"@en .
+
+era-etcsinfill-rinf:40 a skos:Concept;
+  skos:inScheme era-etcsinfill:ETCSInfills;  
+  skos:topConceptOf era-etcsinfill:ETCSInfills ;  
+  skos:notation "40"^^xsd:string ;
+  skos:altLabel "Euroloop & Radio infill"@en ;
+  skos:prefLabel "Euroloop & Radio"@en .
+
+era-etcsinfill-rinf:10 a skos:Concept;
+  skos:inScheme era-etcsinfill:ETCSInfills; 
+  skos:topConceptOf era-etcsinfill:ETCSInfills ;     
+  skos:prefLabel "None"@en .
+
+
+
+

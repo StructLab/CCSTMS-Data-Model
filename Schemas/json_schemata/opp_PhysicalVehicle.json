@@ -28,9 +28,8 @@
   "description": "Defines a single carrige inside of a physical consist.",
   "properties": {
     "evnIdentifier": {
-      "type": "integer",
-      "minimum": 0,
-      "description": "European vehicle number (EVN) [2018/1614/EU] 12 digits, 0: unknown"
+      "type": "string",
+      "description": "European vehicle number (EVN) [2018/1614/EU] 12 digits"
     },
     "mass": {
       "type": "integer",
@@ -84,5 +83,8 @@
       "description": "Defines the state of the pantograph"
     }
   },
+  "required": [
+    "evnIdentifier"
+  ],
   "additionalProperties": false
 }

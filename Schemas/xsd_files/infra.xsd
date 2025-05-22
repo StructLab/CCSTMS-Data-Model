@@ -183,6 +183,11 @@
 			<xs:enumeration value="shuntingYard"/>
 			<xs:enumeration value="borderPoint"/>
 			<xs:enumeration value="technicalChange"/>
+			<xs:enumeration value="domesticBorderPoint"/>
+			<xs:enumeration value="freightTerminal"/>
+			<xs:enumeration value="junction"/>
+			<xs:enumeration value="passengerStop"/>
+			<xs:enumeration value="passengerTerminal"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="TrainDetectionSystems">
@@ -472,12 +477,12 @@
 		<xs:sequence/>
 		<xs:attribute name="id" type="xs:string" use="required"/>
 		<xs:attribute name="reversalTime" type="xs:unsignedInt" use="required"/>
-		<xs:attribute name="pointLeft" type="xs:string" use="required">
+		<xs:attribute name="leftBranch" type="xs:string" use="required">
 			<xs:annotation>
 				<xs:documentation>Reference to infra:NetRelation</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="pointRight" type="xs:string" use="required">
+		<xs:attribute name="rightBranch" type="xs:string" use="required">
 			<xs:annotation>
 				<xs:documentation>Reference to infra:NetRelation</xs:documentation>
 			</xs:annotation>
@@ -551,6 +556,11 @@
 		<xs:attribute name="nid_c" type="xs:unsignedInt" use="required"/>
 		<xs:attribute name="bgFunction" type="infra:BaliseGroupFunction" use="required"/>
 		<xs:attribute name="linkOrientationDirection" type="infra:OrientationDirections" use="required"/>
+		<xs:attribute name="etcsMarker" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Reference to infra:ETCSMarker</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
 	<xs:element name="baliseGroup" type="infra:BaliseGroup"/>
 	<xs:complexType name="Balise">

@@ -172,6 +172,7 @@
     }
   },
   "type": "object",
+  "description": "Defines Map for an area",
   "properties": {
     "id": {
       "type": "string",

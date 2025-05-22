@@ -79,6 +79,123 @@
 			<xs:enumeration value="T_100m"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="UTCOffset">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="utc_Neg_1400"/>
+			<xs:enumeration value="utc_Neg_1345"/>
+			<xs:enumeration value="utc_Neg_1330"/>
+			<xs:enumeration value="utc_Neg_1315"/>
+			<xs:enumeration value="utc_Neg_1300"/>
+			<xs:enumeration value="utc_Neg_1245"/>
+			<xs:enumeration value="utc_Neg_1230"/>
+			<xs:enumeration value="utc_Neg_1215"/>
+			<xs:enumeration value="utc_Neg_1200"/>
+			<xs:enumeration value="utc_Neg_1145"/>
+			<xs:enumeration value="utc_Neg_1130"/>
+			<xs:enumeration value="utc_Neg_1115"/>
+			<xs:enumeration value="utc_Neg_1100"/>
+			<xs:enumeration value="utc_Neg_1045"/>
+			<xs:enumeration value="utc_Neg_1030"/>
+			<xs:enumeration value="utc_Neg_1015"/>
+			<xs:enumeration value="utc_Neg_1000"/>
+			<xs:enumeration value="utc_Neg_0945"/>
+			<xs:enumeration value="utc_Neg_0930"/>
+			<xs:enumeration value="utc_Neg_0915"/>
+			<xs:enumeration value="utc_Neg_0900"/>
+			<xs:enumeration value="utc_Neg_0845"/>
+			<xs:enumeration value="utc_Neg_0830"/>
+			<xs:enumeration value="utc_Neg_0815"/>
+			<xs:enumeration value="utc_Neg_0800"/>
+			<xs:enumeration value="utc_Neg_0745"/>
+			<xs:enumeration value="utc_Neg_0730"/>
+			<xs:enumeration value="utc_Neg_0715"/>
+			<xs:enumeration value="utc_Neg_0700"/>
+			<xs:enumeration value="utc_Neg_0645"/>
+			<xs:enumeration value="utc_Neg_0630"/>
+			<xs:enumeration value="utc_Neg_0615"/>
+			<xs:enumeration value="utc_Neg_0600"/>
+			<xs:enumeration value="utc_Neg_0545"/>
+			<xs:enumeration value="utc_Neg_0530"/>
+			<xs:enumeration value="utc_Neg_0515"/>
+			<xs:enumeration value="utc_Neg_0500"/>
+			<xs:enumeration value="utc_Neg_0445"/>
+			<xs:enumeration value="utc_Neg_0430"/>
+			<xs:enumeration value="utc_Neg_0415"/>
+			<xs:enumeration value="utc_Neg_0400"/>
+			<xs:enumeration value="utc_Neg_0345"/>
+			<xs:enumeration value="utc_Neg_0330"/>
+			<xs:enumeration value="utc_Neg_0315"/>
+			<xs:enumeration value="utc_Neg_0300"/>
+			<xs:enumeration value="utc_Neg_0245"/>
+			<xs:enumeration value="utc_Neg_0230"/>
+			<xs:enumeration value="utc_Neg_0215"/>
+			<xs:enumeration value="utc_Neg_0200"/>
+			<xs:enumeration value="utc_Neg_0145"/>
+			<xs:enumeration value="utc_Neg_0130"/>
+			<xs:enumeration value="utc_Neg_0115"/>
+			<xs:enumeration value="utc_Neg_0100"/>
+			<xs:enumeration value="utc_Neg_0045"/>
+			<xs:enumeration value="utc_Neg_0030"/>
+			<xs:enumeration value="utc_Neg_0015"/>
+			<xs:enumeration value="utc_Zero_0000"/>
+			<xs:enumeration value="utc_Pos_0015"/>
+			<xs:enumeration value="utc_Pos_0030"/>
+			<xs:enumeration value="utc_Pos_0045"/>
+			<xs:enumeration value="utc_Pos_0100"/>
+			<xs:enumeration value="utc_Pos_0115"/>
+			<xs:enumeration value="utc_Pos_0130"/>
+			<xs:enumeration value="utc_Pos_0145"/>
+			<xs:enumeration value="utc_Pos_0200"/>
+			<xs:enumeration value="utc_Pos_0215"/>
+			<xs:enumeration value="utc_Pos_0230"/>
+			<xs:enumeration value="utc_Pos_0245"/>
+			<xs:enumeration value="utc_Pos_0300"/>
+			<xs:enumeration value="utc_Pos_0315"/>
+			<xs:enumeration value="utc_Pos_0330"/>
+			<xs:enumeration value="utc_Pos_0345"/>
+			<xs:enumeration value="utc_Pos_0400"/>
+			<xs:enumeration value="utc_Pos_0415"/>
+			<xs:enumeration value="utc_Pos_0430"/>
+			<xs:enumeration value="utc_Pos_0445"/>
+			<xs:enumeration value="utc_Pos_0500"/>
+			<xs:enumeration value="utc_Pos_0515"/>
+			<xs:enumeration value="utc_Pos_0530"/>
+			<xs:enumeration value="utc_Pos_0545"/>
+			<xs:enumeration value="utc_Pos_0600"/>
+			<xs:enumeration value="utc_Pos_0615"/>
+			<xs:enumeration value="utc_Pos_0630"/>
+			<xs:enumeration value="utc_Pos_0645"/>
+			<xs:enumeration value="utc_Pos_0700"/>
+			<xs:enumeration value="utc_Pos_0715"/>
+			<xs:enumeration value="utc_Pos_0730"/>
+			<xs:enumeration value="utc_Pos_0745"/>
+			<xs:enumeration value="utc_Pos_0800"/>
+			<xs:enumeration value="utc_Pos_0815"/>
+			<xs:enumeration value="utc_Pos_0830"/>
+			<xs:enumeration value="utc_Pos_0845"/>
+			<xs:enumeration value="utc_Pos_0900"/>
+			<xs:enumeration value="utc_Pos_0915"/>
+			<xs:enumeration value="utc_Pos_0930"/>
+			<xs:enumeration value="utc_Pos_0945"/>
+			<xs:enumeration value="utc_Pos_1000"/>
+			<xs:enumeration value="utc_Pos_1015"/>
+			<xs:enumeration value="utc_Pos_1030"/>
+			<xs:enumeration value="utc_Pos_1045"/>
+			<xs:enumeration value="utc_Pos_1100"/>
+			<xs:enumeration value="utc_Pos_1115"/>
+			<xs:enumeration value="utc_Pos_1130"/>
+			<xs:enumeration value="utc_Pos_1145"/>
+			<xs:enumeration value="utc_Pos_1200"/>
+			<xs:enumeration value="utc_Pos_1215"/>
+			<xs:enumeration value="utc_Pos_1230"/>
+			<xs:enumeration value="utc_Pos_1245"/>
+			<xs:enumeration value="utc_Pos_1300"/>
+			<xs:enumeration value="utc_Pos_1315"/>
+			<xs:enumeration value="utc_Pos_1330"/>
+			<xs:enumeration value="utc_Pos_1345"/>
+			<xs:enumeration value="utc_Pos_1400"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:simpleType name="RejectReason">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="incompatibleSystemVersion"/>
@@ -99,6 +216,69 @@
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="oiArea" type="oi:OIArea" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="segmentProfilePackets" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="segmentProfilePacket" type="oi:SegmentProfilePacket" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="mapAreaRequests" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="mapAreaRequest" type="oi:MapAreaRequest" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="mapAreas" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="mapArea" type="oi:MapArea" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="segmentProfileRequests" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="segmentProfileRequest" type="oi:SegmentProfileRequest" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="digitalRegisterHandshakeRequests" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="digitalRegisterHandshakeRequest" type="oi:DigitalRegisterHandshakeRequest" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="digitalRegisterHandshakeAcknowledgements" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="digitalRegisterHandshakeAcknowledgement" type="oi:DigitalRegisterHandshakeAcknowledgement" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="digitalRegisterHandshakeRejections" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="digitalRegisterHandshakeRejection" type="oi:DigitalRegisterHandshakeRejection" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="digitalRegisterSessionTerminationRequests" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="digitalRegisterSessionTerminationRequest" type="oi:DigitalRegisterSessionTerminationRequest" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="digitalRegisterSessionTerminations" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="digitalRegisterSessionTermination" type="oi:DigitalRegisterSessionTermination" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -159,7 +339,7 @@
 			</xs:element>
 		</xs:sequence>
 		<xs:attribute name="nidSP" type="xs:unsignedInt" use="required"/>
-		<xs:attribute name="length" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="segmentProfileLength" type="xs:unsignedInt" use="required"/>
 		<xs:attribute name="version" type="xs:unsignedInt" use="required"/>
 		<xs:attribute name="nidC" type="xs:unsignedInt" use="required"/>
 	</xs:complexType>
@@ -312,7 +492,7 @@
 			</xs:element>
 		</xs:sequence>
 		<xs:attribute name="eoaOffset" type="xs:unsignedInt" use="required"/>
-		<xs:attribute name="utcOffset" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="utcOffset" type="oi:UTCOffset" use="required"/>
 		<xs:attribute name="startAltitude" type="xs:int" use="required"/>
 		<xs:attribute name="atotsContactInfoDir" type="xs:boolean" use="required"/>
 		<xs:attribute name="gradientStart" type="xs:int" use="required"/>
@@ -487,7 +667,7 @@
 	<xs:complexType name="MapAreaRequest">
 		<xs:sequence>
 			<xs:element name="trackTrainHeader" type="oi:TrackTrainHeader" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="relativePosition" type="oi:RelativePosition" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="relativePos" type="oi:RelativePosition" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="absolutePosition" type="oi:AbsolutePosition" minOccurs="1" maxOccurs="1"/>
 		</xs:sequence>
 		<xs:attribute name="mapAreaRadius" type="xs:unsignedInt" use="required"/>
@@ -552,7 +732,7 @@
 	<xs:complexType name="DigitalRegisterHandshakeRequest">
 		<xs:sequence>
 			<xs:element name="trackTrainheader" type="oi:TrackTrainHeader" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="relativePosition" type="oi:RelativePosition" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="relativePos" type="oi:RelativePosition" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="absolutePosition" type="oi:AbsolutePosition" minOccurs="1" maxOccurs="1"/>
 		</xs:sequence>
 		<xs:attribute name="handingOver" type="xs:boolean" use="required"/>

@@ -12,9 +12,9 @@
     "q_suitability": {
       "type": "string",
       "enum": [
-        "LoadingGuage",
-        "MaxAxleLoad",
-        "TractionSystem"
+        "loadingGuage",
+        "maxAxleLoad",
+        "tractionSystem"
       ],
       "description": "Type of route suitability data"
     },

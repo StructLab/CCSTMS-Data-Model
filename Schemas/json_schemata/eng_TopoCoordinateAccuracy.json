@@ -1,0 +1,41 @@
+{
+  "$id": "https://ERJU/eng_TopoCoordinateAccuracy",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "infra.TopologicalCoordinate": {
+      "type": "object",
+      "description": "Defines a topological coordinate on the track",
+      "properties": {
+        "onLinearElement": {
+          "type": "string",
+          "description": "is positioned on linear element"
+        },
+        "offsetFromOrigin": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated NetElement"
+        }
+      },
+      "required": [
+        "onLinearElement"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "topologicalCoordinate": {
+      "type": "object",
+      "$ref": "#/definitions/infra.TopologicalCoordinate"
+    },
+    "accuracy": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "defines absolute deviation as 1sigma the topological coordinate"
+    }
+  },
+  "required": [
+    "topologicalCoordinate"
+  ],
+  "additionalProperties": false
+}

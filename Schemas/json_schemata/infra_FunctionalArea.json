@@ -131,7 +131,12 @@
             "trainTechnicalServices",
             "shuntingYard",
             "borderPoint",
-            "technicalChange"
+            "technicalChange",
+            "domesticBorderPoint",
+            "freightTerminal",
+            "junction",
+            "passengerStop",
+            "passengerTerminal"
           ],
           "description": "Defines the Type of operational point in relation to the dominating operational functions."
         },
@@ -162,13 +167,13 @@
           "minimum": 0,
           "description": "Defines the time in seconds to switch from one position to the other ; 0 means unknown"
         },
-        "pointLeft": {
+        "leftBranch": {
           "type": "string",
-          "description": "NetRelation referencing the left side of the point in the facing direction of the simple point"
+          "description": "NetRelation referencing the left side of the switch in the facing direction of the switch"
         },
-        "pointRight": {
+        "rightBranch": {
           "type": "string",
-          "description": "NetRelation referencing the right side of the point in the facing direction of the simple point"
+          "description": "NetRelation referencing the right side of the switch in the facing direction of the switch"
         },
         "name": {
           "type": "string",
@@ -177,8 +182,8 @@
       },
       "required": [
         "id",
-        "pointLeft",
-        "pointRight"
+        "leftBranch",
+        "rightBranch"
       ],
       "additionalProperties": false
     },
@@ -382,6 +387,10 @@
             "opposite"
           ],
           "description": "defines linking orientation direction along the LinearElement"
+        },
+        "etcsMarker": {
+          "type": "string",
+          "description": "defines the etcs marker board reference for the balise"
         }
       },
       "required": [
@@ -783,7 +792,7 @@
     },
     "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a topological coordinates on the track",
+      "description": "Defines a topological coordinate on the track",
       "properties": {
         "onLinearElement": {
           "type": "string",

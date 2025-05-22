@@ -2,146 +2,61 @@
   "$id": "https://ERJU/eng_LocationAccuracyArea",
   "$schema": "https://json-schema.org/draft/2019-09/schema",
   "definitions": {
-    "eng.BaliseAccuracy": {
+    "infra.TopologicalCoordinate": {
       "type": "object",
+      "description": "Defines a topological coordinate on the track",
       "properties": {
-        "balise": {
+        "onLinearElement": {
           "type": "string",
-          "description": "Defines a reference to a functional balise"
+          "description": "is positioned on linear element"
         },
-        "accuracy": {
+        "offsetFromOrigin": {
           "type": "integer",
           "minimum": 0,
-          "description": "defines absolute deviation as 1sigma for balise"
+          "description": "position on the associated NetElement"
         }
       },
       "required": [
-        "balise"
+        "onLinearElement"
       ],
       "additionalProperties": false
     },
-    "eng.EtcsMarkerAccuracy": {
+    "eng.TopoCoordinateAccuracy": {
       "type": "object",
       "properties": {
-        "etcsMarker": {
-          "type": "string",
-          "description": "refers to ETCS Marker"
+        "topologicalCoordinate": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate"
         },
         "accuracy": {
           "type": "integer",
           "minimum": 0,
-          "description": "defines absolute deviation as 1sigma for etcsMarker"
+          "description": "defines absolute deviation as 1sigma the topological coordinate"
         }
       },
       "required": [
-        "etcsMarker"
-      ],
-      "additionalProperties": false
-    },
-    "eng.StopLocationAccuracy": {
-      "type": "object",
-      "properties": {
-        "stopLocation": {
-          "type": "string",
-          "description": "refers to stop locaton"
-        },
-        "accuracy": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "defines absolute deviation as 1sigma for stop location"
-        }
-      },
-      "required": [
-        "stopLocation"
-      ],
-      "additionalProperties": false
-    },
-    "eng.NationalBorderAccuracy": {
-      "type": "object",
-      "properties": {
-        "nationalBorder": {
-          "type": "string",
-          "description": "refers to National border"
-        },
-        "accuracy": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "defines absolute deviation as 1sigma for stop location"
-        }
-      },
-      "required": [
-        "nationalBorder"
-      ],
-      "additionalProperties": false
-    },
-    "eng.BufferStopAccuracy": {
-      "type": "object",
-      "properties": {
-        "bufferStop": {
-          "type": "string",
-          "description": "refers to buffer stop"
-        },
-        "accuracy": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "defines absolute deviation as 1sigma for stop location"
-        }
-      },
-      "required": [
-        "bufferStop"
+        "topologicalCoordinate"
       ],
       "additionalProperties": false
     }
   },
   "type": "object",
   "properties": {
-    "onTopoArea": {
+    "id": {
       "type": "string",
-      "description": "reference to the corresponding Topo Area"
+      "description": "Identity of the object; used for referencing"
     },
-    "baliseAccuracies": {
+    "coordinateAccuracies": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/eng.BaliseAccuracy"
+        "$ref": "#/definitions/eng.TopoCoordinateAccuracy"
       },
-      "description": "Defines the balise accuracies"
-    },
-    "etcsMarkerAccuracies": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "$ref": "#/definitions/eng.EtcsMarkerAccuracy"
-      },
-      "description": "Defines the ETCS Marker Accuracies"
-    },
-    "stopLocationAccuracies": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "$ref": "#/definitions/eng.StopLocationAccuracy"
-      },
-      "description": "Defines the Stop Location Accuracies"
-    },
-    "nationalBorderAccuracies": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "$ref": "#/definitions/eng.NationalBorderAccuracy"
-      },
-      "description": "Defines the National Border Accuracies"
-    },
-    "bufferStopAccuracies": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "$ref": "#/definitions/eng.BufferStopAccuracy"
-      },
-      "description": "Defines the BufferStop Accuracies"
+      "description": "Defines the accuracies for topological coordinates"
     }
   },
   "required": [
-    "onTopoArea"
+    "id"
   ],
   "additionalProperties": false
 }

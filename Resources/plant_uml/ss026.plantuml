@@ -75,7 +75,7 @@ class ETCSPacket_3 {
  d_nvovtrp: uint32
  t_nvovtrp: uint32
  d_nvpotrp: uint32
- m_nvcontact: ETCSReactionsNVContact
+ <b>mNvcontact: ETCSReactionsNVContact</b>
  t_nvcontact: uint32
  m_nvderun: boolean
  d_nvstff: uint32
@@ -87,6 +87,7 @@ class ETCSPacket_3 {
  m_nvavadh: uint32
  m_nvebcl: uint32
  q_nvkint: boolean
+ <s>m_nvcontact: ETCSReactionsNVContact</s>
 }
 
 class LinkItem {
@@ -481,47 +482,47 @@ ETCSPacket_76 *-- "1" TextMessageConfig
 ETCSPacket_79 *-- "1..32" GeoPosItem
 ETCSPacket_80 *-- "1..32" ModeProfileItem
 ETCSPacket_88 *-- "0..1" LXStatus
-PacketMgmt *-- "*" ETCSPacket_0
-PacketMgmt *-- "*" ETCSPacket_2
-PacketMgmt *-- "*" ETCSPacket_3
-PacketMgmt *-- "*" ETCSPacket_5
-PacketMgmt *-- "*" ETCSPacket_6
-PacketMgmt *-- "*" ETCSPacket_16
-PacketMgmt *-- "*" ETCSPacket_39
-PacketMgmt *-- "*" ETCSPacket_40
-PacketMgmt *-- "*" ETCSPacket_41
-PacketMgmt *-- "*" ETCSPacket_42
-PacketMgmt *-- "*" ETCSPacket_44
-PacketMgmt *-- "*" ETCSPacket_45
-PacketMgmt *-- "*" ETCSPacket_46
-PacketMgmt *-- "*" ETCSPacket_49
-PacketMgmt *-- "*" ETCSPacket_51
-PacketMgmt *-- "*" ETCSPacket_52
-PacketMgmt *-- "*" ETCSPacket_65
-PacketMgmt *-- "*" ETCSPacket_66
-PacketMgmt *-- "*" ETCSPacket_67
-PacketMgmt *-- "*" ETCSPacket_68
-PacketMgmt *-- "*" ETCSPacket_69
-PacketMgmt *-- "*" ETCSPacket_70
-PacketMgmt *-- "*" ETCSPacket_71
-PacketMgmt *-- "*" ETCSPacket_72
-PacketMgmt *-- "*" ETCSPacket_76
-PacketMgmt *-- "*" ETCSPacket_79
-PacketMgmt *-- "*" ETCSPacket_80
-PacketMgmt *-- "*" ETCSPacket_88
-PacketMgmt *-- "*" ETCSPacket_90
-PacketMgmt *-- "*" ETCSPacket_131
-PacketMgmt *-- "*" ETCSPacket_132
-PacketMgmt *-- "*" ETCSPacket_133
-PacketMgmt *-- "*" ETCSPacket_134
-PacketMgmt *-- "*" ETCSPacket_135
-PacketMgmt *-- "*" ETCSPacket_137
-PacketMgmt *-- "*" ETCSPacket_138
-PacketMgmt *-- "*" ETCSPacket_139
-PacketMgmt *-- "*" ETCSPacket_141
-PacketMgmt *-- "*" ETCSPacket_145
-PacketMgmt *-- "*" ETCSPacket_180
-PacketMgmt *-- "*" ETCSPacket_181
-PacketMgmt *-- "*" ETCSPacket_254
-PacketMgmt *-- "*" ETCSPacket_255
+PacketMgmt *-- "0..*" ETCSPacket_0
+PacketMgmt *-- "0..*" ETCSPacket_2
+PacketMgmt *-- "0..*" ETCSPacket_3
+PacketMgmt *-- "0..*" ETCSPacket_5
+PacketMgmt *-- "0..*" ETCSPacket_6
+PacketMgmt *-- "0..*" ETCSPacket_16
+PacketMgmt *-- "0..*" ETCSPacket_39
+PacketMgmt *-- "0..*" ETCSPacket_40
+PacketMgmt *-- "0..*" ETCSPacket_41
+PacketMgmt *-- "0..*" ETCSPacket_42
+PacketMgmt *-- "0..*" ETCSPacket_44
+PacketMgmt *-- "0..*" ETCSPacket_45
+PacketMgmt *-- "0..*" ETCSPacket_46
+PacketMgmt *-- "0..*" ETCSPacket_49
+PacketMgmt *-- "0..*" ETCSPacket_51
+PacketMgmt *-- "0..*" ETCSPacket_52
+PacketMgmt *-- "0..*" ETCSPacket_65
+PacketMgmt *-- "0..*" ETCSPacket_66
+PacketMgmt *-- "0..*" ETCSPacket_67
+PacketMgmt *-- "0..*" ETCSPacket_68
+PacketMgmt *-- "0..*" ETCSPacket_69
+PacketMgmt *-- "0..*" ETCSPacket_70
+PacketMgmt *-- "0..*" ETCSPacket_71
+PacketMgmt *-- "0..*" ETCSPacket_72
+PacketMgmt *-- "0..*" ETCSPacket_76
+PacketMgmt *-- "0..*" ETCSPacket_79
+PacketMgmt *-- "0..*" ETCSPacket_80
+PacketMgmt *-- "0..*" ETCSPacket_88
+PacketMgmt *-- "0..*" ETCSPacket_90
+PacketMgmt *-- "0..*" ETCSPacket_131
+PacketMgmt *-- "0..*" ETCSPacket_132
+PacketMgmt *-- "0..*" ETCSPacket_133
+PacketMgmt *-- "0..*" ETCSPacket_134
+PacketMgmt *-- "0..*" ETCSPacket_135
+PacketMgmt *-- "0..*" ETCSPacket_137
+PacketMgmt *-- "0..*" ETCSPacket_138
+PacketMgmt *-- "0..*" ETCSPacket_139
+PacketMgmt *-- "0..*" ETCSPacket_141
+PacketMgmt *-- "0..*" ETCSPacket_145
+PacketMgmt *-- "0..*" ETCSPacket_180
+PacketMgmt *-- "0..*" ETCSPacket_181
+PacketMgmt *-- "0..*" ETCSPacket_254
+PacketMgmt *-- "0..*" ETCSPacket_255
 @enduml

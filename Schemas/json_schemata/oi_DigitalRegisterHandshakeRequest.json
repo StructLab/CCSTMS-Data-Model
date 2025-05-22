@@ -4,6 +4,7 @@
   "definitions": {
     "oi.TrackTrainHeader": {
       "type": "object",
+      "description": "Defines the Track-Train Header packet",
       "properties": {
         "packetId": {
           "type": "string",
@@ -80,7 +81,7 @@
       "$ref": "#/definitions/oi.TrackTrainHeader",
       "description": "defines header"
     },
-    "relativePosition": {
+    "relativePos": {
       "type": "object",
       "$ref": "#/definitions/oi.RelativePosition",
       "description": "defines relative position of the train"
@@ -97,7 +98,7 @@
   },
   "required": [
     "trackTrainheader",
-    "relativePosition",
+    "relativePos",
     "absolutePosition"
   ],
   "additionalProperties": false

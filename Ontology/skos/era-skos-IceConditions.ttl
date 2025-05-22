@@ -1,0 +1,78 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix era: <http://data.europa.eu/949/> .
+@prefix era-skos: <http://data.europa.eu/949/concepts/> .
+
+
+@prefix era-ic: <http://data.europa.eu/949/concepts/ice-conditions/> .
+
+
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+
+era-ic:IceConditions a skos:ConceptScheme ; 
+    dct:issued "2020-09-01"^^xsd:date ;
+    dct:modified "2022-09-09"^^xsd:date ,
+                 "2025-02-14"^^xsd:date ; 
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    rdfs:comment "Controlled SKOS-based vocabularies defined by the European Union Agency for Railways to describe concepts related to the European railway infrastructure and the vehicles authorized to operate over it."@en ;
+    rdfs:label "Ice Conditions"@en ;
+    skos:prefLabel "Ice Conditions"@en ;
+    era:unitOfMeasure <http://qudt.org/vocab/unit/MilliM> ;
+    skos:changeNote """ Revision 14-02-2025: 
+           - Harmonized the values of the ice conditions as per the norm EN 50125-1:2014, 4.7 section "Snow and hail"
+           - Added unit of measure Millimeter 
+           - Renamed URI patterns
+       """@en ; 
+    dct:title "Concept scheme grouping ice, snow and hail conditions"@en .
+
+
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+########## Snow, ice, hail conditions ##########
+
+era-ic:S1 a skos:Concept;
+  skos:inScheme era-ic:IceConditions; skos:topConceptOf era-ic:IceConditions;  
+  skos:notation "S1"^^xsd:string ;
+  skos:prefLabel "S1"@en ;
+  skos:hiddenLabel "S 1"@en ; 
+  skos:altLabel "T1S1 (0 to 250)"@en .
+
+era-ic:S2 a skos:Concept;
+  skos:inScheme era-ic:IceConditions; skos:topConceptOf era-ic:IceConditions;  
+  skos:notation "S2"^^xsd:string ;
+  skos:prefLabel "S2"@en ;
+  skos:altLabel "S2 (250 to 400)"@en .
+
+era-ic:S3 a skos:Concept;
+  skos:inScheme era-ic:IceConditions; skos:topConceptOf era-ic:IceConditions;  
+  skos:notation "S3"^^xsd:string ;
+  skos:prefLabel "S3"@en ;
+  skos:altLabel "S3 (400 to 800)"@en .
+
+era-ic:Severe a skos:Concept;
+  skos:inScheme era-ic:IceConditions; skos:topConceptOf era-ic:IceConditions;  
+  skos:prefLabel "Severe"@en ; 
+  skos:notation "Severe"^^xsd:string .
+
+era-ic:Nominal a skos:Concept;
+  skos:inScheme era-ic:IceConditions; skos:topConceptOf era-ic:IceConditions;  
+  skos:prefLabel "Nominal"@en ; 
+  skos:notation "Nominal"^^xsd:string .

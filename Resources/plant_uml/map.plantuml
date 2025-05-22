@@ -52,13 +52,12 @@ class FunctionalElementRef << union >> {
  balise: *infra.Balise
 }
 
-class MapMgmt {
- <s>mapAreas: MapArea0..*</s>
+class MapSet {
 }
 
-Map *-- "*" LinearElementProjection
-Map *-- "*" FunctionalElementProjection
+Map *-- "0..*" LinearElementProjection
+Map *-- "0..*" FunctionalElementProjection
 LinearElementProjection *-- "2..*" LinearElementCoordinate
 FunctionalElementProjection *-- "1" FunctionalElementRef
-MapMgmt *-- "*" Map
+MapSet *-- "0..*" Map
 @enduml

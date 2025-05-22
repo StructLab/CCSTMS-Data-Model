@@ -124,27 +124,27 @@
         "maxAvailableTractiveEffort": {
           "type": "integer",
           "minimum": 0,
-          "description": "Defines the maximun available traction effort. Use 65535 if unknown"
+          "description": "Defines the maximum available traction effort. Use 65535 if unknown"
         },
         "maxAvailableTractivePower": {
           "type": "integer",
           "minimum": 0,
-          "description": "Defines the maximun available traction power. Use 65535 if unknown"
+          "description": "Defines the maximum available traction power. Use 65535 if unknown"
         },
         "maxAvailableDynamicBrakeForce": {
           "type": "integer",
           "minimum": 0,
-          "description": "Defines the maximun available dynamic brake force. Use 65535 if unknown"
+          "description": "Defines the maximum available dynamic brake force. Use 65535 if unknown"
         },
         "maxAvailableDynamicBrakePower": {
           "type": "integer",
           "minimum": 0,
-          "description": "Defines the maximun available dynamic brake power. Use 65535 if unknown"
+          "description": "Defines the maximum available dynamic brake power. Use 65535 if unknown"
         },
         "maxAvailableServiceBrakeForce": {
           "type": "integer",
           "minimum": 0,
-          "description": "Defines the maximun available service brake force. Use 65535 if unknown"
+          "description": "Defines the maximum available service brake force. Use 65535 if unknown"
         },
         "regenerativeBrakeState": {
           "type": "string",
@@ -238,9 +238,8 @@
       "description": "Defines a single carrige inside of a physical consist.",
       "properties": {
         "evnIdentifier": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "European vehicle number (EVN) [2018/1614/EU] 12 digits, 0: unknown"
+          "type": "string",
+          "description": "European vehicle number (EVN) [2018/1614/EU] 12 digits"
         },
         "mass": {
           "type": "integer",
@@ -294,6 +293,9 @@
           "description": "Defines the state of the pantograph"
         }
       },
+      "required": [
+        "evnIdentifier"
+      ],
       "additionalProperties": false
     },
     "opp.PhysicalConsist": {
@@ -301,9 +303,8 @@
       "description": "Defines an un-splittable part of the train",
       "properties": {
         "evnIdentifier": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "Defines the european vehicle number (EVN) 12 digits,use 0 if unknown"
+          "type": "string",
+          "description": "Defines the european vehicle number (EVN) 12 digits"
         },
         "passengerLoad": {
           "type": "integer",
@@ -318,7 +319,7 @@
         "maxCurrentConsuption": {
           "type": "integer",
           "minimum": 0,
-          "description": "Defines the maximun current consumption. Use 1023 if unknown"
+          "description": "Defines the maximum current consumption. Use 1023 if unknown"
         },
         "physicalVehicles": {
           "type": "array",
@@ -330,6 +331,9 @@
           "description": "Defines the physical vehicles part of the physical consist. empty=unknown"
         }
       },
+      "required": [
+        "evnIdentifier"
+      ],
       "additionalProperties": false
     }
   },

@@ -269,7 +269,7 @@
           "minimum": 0,
           "description": "Maximum distance for reversing in Post Trip mode. (Thisvariable is part of the National Values)"
         },
-        "m_nvcontact": {
+        "mNvcontact": {
           "type": "string",
           "enum": [
             "trainTrip",
@@ -482,11 +482,11 @@
         "m_leveltr": {
           "type": "string",
           "enum": [
-            "Level0",
-            "LevelNTC",
-            "Level1",
-            "Level2",
-            "Level3"
+            "level0",
+            "levelNTC",
+            "level1",
+            "level2",
+            "level3"
           ],
           "description": "Required level"
         },
@@ -515,11 +515,11 @@
         "m_leveltr": {
           "type": "string",
           "enum": [
-            "Level0",
-            "LevelNTC",
-            "Level1",
-            "Level2",
-            "Level3"
+            "level0",
+            "levelNTC",
+            "level1",
+            "level2",
+            "level3"
           ],
           "description": "Required level"
         },
@@ -620,11 +620,11 @@
         "m_leveltr": {
           "type": "string",
           "enum": [
-            "Level0",
-            "LevelNTC",
-            "Level1",
-            "Level2",
-            "Level3"
+            "level0",
+            "levelNTC",
+            "level1",
+            "level2",
+            "level3"
           ],
           "description": "Required level"
         },
@@ -643,11 +643,11 @@
         "m_leveltr": {
           "type": "string",
           "enum": [
-            "Level0",
-            "LevelNTC",
-            "Level1",
-            "Level2",
-            "Level3"
+            "level0",
+            "levelNTC",
+            "level1",
+            "level2",
+            "level3"
           ],
           "description": "Required level"
         },
@@ -1064,9 +1064,9 @@
         "q_suitability": {
           "type": "string",
           "enum": [
-            "LoadingGuage",
-            "MaxAxleLoad",
-            "TractionSystem"
+            "loadingGuage",
+            "maxAxleLoad",
+            "tractionSystem"
           ],
           "description": "Type of route suitability data"
         },
@@ -1405,9 +1405,9 @@
         "m_mamode": {
           "type": "string",
           "enum": [
-            "OnSight",
-            "Shunting",
-            "LimitedSupervision"
+            "onSight",
+            "shunting",
+            "limitedSupervision"
           ],
           "description": "Required mode for a part of the MA. None. Comment : OS, LS, SH"
         },

@@ -237,7 +237,7 @@
       "minimum": 0,
       "description": "Maximum distance for reversing in Post Trip mode. (Thisvariable is part of the National Values)"
     },
-    "m_nvcontact": {
+    "mNvcontact": {
       "type": "string",
       "enum": [
         "trainTrip",

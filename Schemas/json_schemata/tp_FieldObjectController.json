@@ -27,6 +27,41 @@
         }
       ],
       "additionalProperties": false
+    },
+    "tp.Controller": {
+      "type": "object",
+      "description": "Defines a controller",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identity of the object; used for referencing ; structure refers to EULYNX EU.SAS.77"
+        },
+        "iPAddress": {
+          "type": "string",
+          "description": "defines the ip address for communication purposes"
+        },
+        "rastaId": {
+          "type": "string",
+          "description": "defines EULYNX RaSTA identifier for the field object controller"
+        },
+        "portNumber": {
+          "type": "string",
+          "description": "defines the port number for communication purposes"
+        },
+        "eulynxBaseline": {
+          "type": "string",
+          "description": "defines EULYNX baseline for the filed object controller"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines the EULYNX field object controller version"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
     }
   },
   "type": "object",
@@ -44,30 +79,21 @@
       },
       "minItems": 1
     },
-    "rastaId": {
-      "type": "string",
-      "description": "defines EULYNX RaSTA identifier for the field object controller"
-    },
-    "eulynxBaseline": {
-      "type": "string",
-      "description": "defines EULYNX baseline for the filed object controller"
-    },
-    "version": {
-      "type": "integer",
-      "minimum": 0,
-      "description": "defines the EULYNX field object controller version"
-    },
     "belongsToAoc": {
       "type": "string",
       "description": "defines the Area of Control to which this field object controller belongs to"
+    },
+    "controlledBy": {
+      "type": "object",
+      "$ref": "#/definitions/tp.Controller",
+      "description": "composes of controller controlling the Field Object Controller"
     }
   },
   "required": [
     "id",
     "controlledInfraElements",
-    "rastaId",
-    "eulynxBaseline",
-    "belongsToAoc"
+    "belongsToAoc",
+    "controlledBy"
   ],
   "additionalProperties": false
 }

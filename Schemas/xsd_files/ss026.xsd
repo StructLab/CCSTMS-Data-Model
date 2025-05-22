@@ -34,11 +34,11 @@
 	</xs:simpleType>
 	<xs:simpleType name="ETCSLevels">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="Level0"/>
-			<xs:enumeration value="LevelNTC"/>
-			<xs:enumeration value="Level1"/>
-			<xs:enumeration value="Level2"/>
-			<xs:enumeration value="Level3"/>
+			<xs:enumeration value="level0"/>
+			<xs:enumeration value="levelNTC"/>
+			<xs:enumeration value="level1"/>
+			<xs:enumeration value="level2"/>
+			<xs:enumeration value="level3"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LoadCapabilityLineCategories">
@@ -103,16 +103,16 @@
 	</xs:simpleType>
 	<xs:simpleType name="MAMode">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="OnSight"/>
-			<xs:enumeration value="Shunting"/>
-			<xs:enumeration value="LimitedSupervision"/>
+			<xs:enumeration value="onSight"/>
+			<xs:enumeration value="shunting"/>
+			<xs:enumeration value="limitedSupervision"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="Q_Suitability">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="LoadingGuage"/>
-			<xs:enumeration value="MaxAxleLoad"/>
-			<xs:enumeration value="TractionSystem"/>
+			<xs:enumeration value="loadingGuage"/>
+			<xs:enumeration value="maxAxleLoad"/>
+			<xs:enumeration value="tractionSystem"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="LineGauge">
@@ -278,7 +278,7 @@
 		<xs:attribute name="d_nvovtrp" type="xs:unsignedInt" use="required"/>
 		<xs:attribute name="t_nvovtrp" type="xs:unsignedInt" use="required"/>
 		<xs:attribute name="d_nvpotrp" type="xs:unsignedInt" use="required"/>
-		<xs:attribute name="m_nvcontact" type="ss026:ETCSReactionsNVContact" use="required"/>
+		<xs:attribute name="mNvcontact" type="ss026:ETCSReactionsNVContact" use="required"/>
 		<xs:attribute name="t_nvcontact" type="xs:unsignedInt" use="required"/>
 		<xs:attribute name="m_nvderun" type="xs:boolean" use="required"/>
 		<xs:attribute name="d_nvstff" type="xs:unsignedInt" use="required"/>

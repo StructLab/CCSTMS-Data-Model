@@ -4,7 +4,7 @@
   "definitions": {
     "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a topological coordinates on the track",
+      "description": "Defines a topological coordinate on the track",
       "properties": {
         "onLinearElement": {
           "type": "string",
@@ -259,7 +259,7 @@
       "items": {
         "type": "string"
       },
-      "description": "Defines the path-part after the LinearElement of the position-value. Must be provided in each MovementEvent except the last one."
+      "description": "Defines the path-part after the LinearElement of the position-value and beforethe linear element of the nextEvent (excluding). The path must be reconstructable without graph-search algorithms."
     },
     "stopDescription": {
       "type": "object",

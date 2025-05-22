@@ -52,14 +52,28 @@
       },
       "additionalProperties": false
     },
+    "opp.SpeedRestriction": {
+      "type": "object",
+      "properties": {
+        "maxSpeed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines maximum speed"
+        },
+        "restrictionEndsAtTrainFront": {
+          "type": "boolean",
+          "description": "normally false, but for disturbed level crossings, the train can accelerate as soon as the train-front passed the level crossing. In this case should be true"
+        }
+      },
+      "additionalProperties": false
+    },
     "opp.RestrictedAspect": {
       "type": "object",
       "description": "Defines single aspects of the infrastructure restriction",
       "properties": {
-        "temporarySpeedRestriction": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "Defines the temporary speed restriction on the track"
+        "speedRestriction": {
+          "type": "object",
+          "$ref": "#/definitions/opp.SpeedRestriction"
         },
         "allowedDrivingModes": {
           "type": "array",
@@ -113,7 +127,7 @@
         {
           "type": "object",
           "required": [
-            "temporarySpeedRestriction"
+            "speedRestriction"
           ]
         },
         {

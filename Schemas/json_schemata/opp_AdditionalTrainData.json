@@ -7,27 +7,27 @@
     "maxAvailableTractiveEffort": {
       "type": "integer",
       "minimum": 0,
-      "description": "Defines the maximun available traction effort. Use 65535 if unknown"
+      "description": "Defines the maximum available traction effort. Use 65535 if unknown"
     },
     "maxAvailableTractivePower": {
       "type": "integer",
       "minimum": 0,
-      "description": "Defines the maximun available traction power. Use 65535 if unknown"
+      "description": "Defines the maximum available traction power. Use 65535 if unknown"
     },
     "maxAvailableDynamicBrakeForce": {
       "type": "integer",
       "minimum": 0,
-      "description": "Defines the maximun available dynamic brake force. Use 65535 if unknown"
+      "description": "Defines the maximum available dynamic brake force. Use 65535 if unknown"
     },
     "maxAvailableDynamicBrakePower": {
       "type": "integer",
       "minimum": 0,
-      "description": "Defines the maximun available dynamic brake power. Use 65535 if unknown"
+      "description": "Defines the maximum available dynamic brake power. Use 65535 if unknown"
     },
     "maxAvailableServiceBrakeForce": {
       "type": "integer",
       "minimum": 0,
-      "description": "Defines the maximun available service brake force. Use 65535 if unknown"
+      "description": "Defines the maximum available service brake force. Use 65535 if unknown"
     },
     "regenerativeBrakeState": {
       "type": "string",

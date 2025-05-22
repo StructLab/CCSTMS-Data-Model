@@ -101,7 +101,7 @@
 			</xs:element>
 		</xs:choice>
 	</xs:complexType>
-	<xs:complexType name="MapMgmt">
+	<xs:complexType name="MapSet">
 		<xs:sequence>
 			<xs:element name="maps" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
@@ -112,5 +112,5 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="mapMgmt" type="map:MapMgmt"/>
+	<xs:element name="mapSet" type="map:MapSet"/>
 </xs:schema>

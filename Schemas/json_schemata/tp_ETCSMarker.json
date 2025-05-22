@@ -1,0 +1,49 @@
+{
+  "$id": "https://ERJU/tp_ETCSMarker",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "description": "Defines the ETCS Marker Boards ",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identity of the object; used for referencing"
+    },
+    "markerType": {
+      "type": "string",
+      "enum": [
+        "exit",
+        "entry",
+        "intermediate"
+      ],
+      "description": "Defines the type of marker board associated"
+    },
+    "acknowledgementDistance": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "description": "tbd"
+    },
+    "maxTransitionSpeed": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "description": "tbd"
+    },
+    "offsetTransitionUnreachable": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "description": "tbd"
+    }
+  },
+  "required": [
+    "id"
+  ],
+  "additionalProperties": false
+}

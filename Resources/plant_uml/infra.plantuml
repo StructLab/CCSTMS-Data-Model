@@ -52,7 +52,7 @@ class LinearElementSection {
 class NetLinearReference {
  startsAt: TopologicalCoordinate
  endsAt: TopologicalCoordinate
- hasSequence: *LinearElement[*]
+ hasSequence: *LinearElement[0..*]
 }
 
 class NetAreaReference {
@@ -139,9 +139,11 @@ class CurveSamplePoint {
 class Switch {
  id: string
  reversalTime: uint32
- pointLeft: *NetRelation
- pointRight: *NetRelation
+ <b>leftBranch: *NetRelation</b>
+ <b>rightBranch: *NetRelation</b>
  <b>name: string[0..1]</b>
+ <s>pointLeft: *NetRelation</s>
+ <s>pointRight: *NetRelation</s>
 }
 
 class SlipCrossing {
@@ -172,6 +174,7 @@ class BaliseGroup {
  nid_c: uint32
  bgFunction: BaliseGroupFunction
  linkOrientationDirection: OrientationDirections
+ <b>etcsMarker: *ETCSMarker[0..1]</b>
 }
 
 class Balise {
@@ -183,7 +186,7 @@ class PropertiesArea {
  id: string
  versionTimestamp: timestamp
  gauge: NominalTrackGauges
- loadingGaugeTypes: LoadingGaugeType[*]
+ loadingGaugeTypes: LoadingGaugeType[0..*]
  defaultVoltage: EnergySupplySystems
  defaultMaxCurrent: uint32
 }
@@ -224,10 +227,10 @@ class TractionSystem {
 class TrackUsageArea {
  id: string
  versionTimestamp: timestamp
- secondaryTracks: *LinearElement[*]
- shuntingTracks: *LinearElement[*]
- preferredSameDir: *LinearElement[*]
- preferredOppositeDir: *LinearElement[*]
+ secondaryTracks: *LinearElement[0..*]
+ shuntingTracks: *LinearElement[0..*]
+ preferredSameDir: *LinearElement[0..*]
+ preferredOppositeDir: *LinearElement[0..*]
 }
 
 class LinearElementSpeedProfile {
@@ -401,13 +404,13 @@ SampledLinearElementGeometry *-- "1..*" SlopeSamplePoint
 SampledLinearElementGeometry *-- "1..*" CurveSamplePoint
 SampledLinearElementGeometry *-- "1..*" CantSamplePoint
 BaliseGroup *-- "1..8" Balise
-PropertiesArea *-- "*" LinearElementSpeedProfile
-PropertiesArea *-- "*" LinearElementGauge
-PropertiesArea *-- "*" LinearElementLoadingGauge
-PropertiesArea *-- "*" TrackCondition
-PropertiesArea *-- "*" CurrentLimitation
-PropertiesArea *-- "*" PermittedBrakingDistance
-PropertiesArea *-- "*" TractionSystem
+PropertiesArea *-- "0..*" LinearElementSpeedProfile
+PropertiesArea *-- "0..*" LinearElementGauge
+PropertiesArea *-- "0..*" LinearElementLoadingGauge
+PropertiesArea *-- "0..*" TrackCondition
+PropertiesArea *-- "0..*" CurrentLimitation
+PropertiesArea *-- "0..*" PermittedBrakingDistance
+PropertiesArea *-- "0..*" TractionSystem
 LinearElementSpeedProfile *-- "1" SpeedProfile
 LinearElementSpeedProfile *-- "0..1" SpeedProfile
 SpeedProfile *-- "1..*" StaticSpeedLimit
@@ -421,27 +424,27 @@ OperationalPoint *-- "0..*" TravelTimeMeasurementPoint
 OperationalPoint *-- "0..*" Platform
 TimingPoint *-- "1" TPActiveObject
 Tunnel *-- "1..*" TunnelTube
-FunctionalArea *-- "*" OperationalPoint
-FunctionalArea *-- "*" Switch
-FunctionalArea *-- "*" SlipCrossing
-FunctionalArea *-- "*" Derailer
-FunctionalArea *-- "*" Crossing
-FunctionalArea *-- "*" TrainDetector
-FunctionalArea *-- "*" BaliseGroup
-FunctionalArea *-- "*" ETCSMarker
-FunctionalArea *-- "*" StopLocation
-FunctionalArea *-- "*" Tunnel
-FunctionalArea *-- "*" Bridge
-FunctionalArea *-- "*" Underpass
-FunctionalArea *-- "*" TvpSection
-FunctionalArea *-- "*" LevelCrossing
-FunctionalArea *-- "*" NationalBorder
-FunctionalArea *-- "*" BufferStop
-FunctionalArea *-- "*" TimingPoint
-Infrastructure *-- "*" TopoArea
-Infrastructure *-- "*" GeometryArea
-Infrastructure *-- "*" SampledGeometryArea
-Infrastructure *-- "*" FunctionalArea
-Infrastructure *-- "*" PropertiesArea
-Infrastructure *-- "*" TrackUsageArea
+FunctionalArea *-- "0..*" OperationalPoint
+FunctionalArea *-- "0..*" Switch
+FunctionalArea *-- "0..*" SlipCrossing
+FunctionalArea *-- "0..*" Derailer
+FunctionalArea *-- "0..*" Crossing
+FunctionalArea *-- "0..*" TrainDetector
+FunctionalArea *-- "0..*" BaliseGroup
+FunctionalArea *-- "0..*" ETCSMarker
+FunctionalArea *-- "0..*" StopLocation
+FunctionalArea *-- "0..*" Tunnel
+FunctionalArea *-- "0..*" Bridge
+FunctionalArea *-- "0..*" Underpass
+FunctionalArea *-- "0..*" TvpSection
+FunctionalArea *-- "0..*" LevelCrossing
+FunctionalArea *-- "0..*" NationalBorder
+FunctionalArea *-- "0..*" BufferStop
+FunctionalArea *-- "0..*" TimingPoint
+Infrastructure *-- "0..*" TopoArea
+Infrastructure *-- "0..*" GeometryArea
+Infrastructure *-- "0..*" SampledGeometryArea
+Infrastructure *-- "0..*" FunctionalArea
+Infrastructure *-- "0..*" PropertiesArea
+Infrastructure *-- "0..*" TrackUsageArea
 @enduml

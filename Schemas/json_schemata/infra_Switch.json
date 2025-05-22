@@ -13,13 +13,13 @@
       "minimum": 0,
       "description": "Defines the time in seconds to switch from one position to the other ; 0 means unknown"
     },
-    "pointLeft": {
+    "leftBranch": {
       "type": "string",
-      "description": "NetRelation referencing the left side of the point in the facing direction of the simple point"
+      "description": "NetRelation referencing the left side of the switch in the facing direction of the switch"
     },
-    "pointRight": {
+    "rightBranch": {
       "type": "string",
-      "description": "NetRelation referencing the right side of the point in the facing direction of the simple point"
+      "description": "NetRelation referencing the right side of the switch in the facing direction of the switch"
     },
     "name": {
       "type": "string",
@@ -28,8 +28,8 @@
   },
   "required": [
     "id",
-    "pointLeft",
-    "pointRight"
+    "leftBranch",
+    "rightBranch"
   ],
   "additionalProperties": false
 }

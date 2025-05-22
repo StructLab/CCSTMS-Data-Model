@@ -137,9 +137,9 @@
     "dependenciesType": {
       "type": "string",
       "enum": [
-        "Exclusive",
-        "Equivalent",
-        "Specific"
+        "exclusive",
+        "equivalent",
+        "specific"
       ],
       "description": "defines dependencies between n drive protection sections"
     },

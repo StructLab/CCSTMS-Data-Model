@@ -423,7 +423,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Defines the path-part after the LinearElement of the position-value. Must be provided in each MovementEvent except the last one."
+          "description": "Defines the path-part after the LinearElement of the position-value and beforethe linear element of the nextEvent (excluding). The path must be reconstructable without graph-search algorithms."
         },
         "stopDescription": {
           "type": "object",
@@ -474,10 +474,9 @@
       "type": "object",
       "description": "Defines single aspect of the train specific restriction",
       "properties": {
-        "maxSpeed": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "Defines the maximum applicable speed"
+        "speedRestriction": {
+          "type": "object",
+          "$ref": "#/definitions/opp.SpeedRestriction"
         },
         "adhesionCategory": {
           "type": "string",
@@ -515,7 +514,7 @@
         {
           "type": "object",
           "required": [
-            "maxSpeed"
+            "speedRestriction"
           ]
         },
         {
@@ -707,14 +706,28 @@
       },
       "additionalProperties": false
     },
+    "opp.SpeedRestriction": {
+      "type": "object",
+      "properties": {
+        "maxSpeed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines maximum speed"
+        },
+        "restrictionEndsAtTrainFront": {
+          "type": "boolean",
+          "description": "normally false, but for disturbed level crossings, the train can accelerate as soon as the train-front passed the level crossing. In this case should be true"
+        }
+      },
+      "additionalProperties": false
+    },
     "opp.RestrictedAspect": {
       "type": "object",
       "description": "Defines single aspects of the infrastructure restriction",
       "properties": {
-        "temporarySpeedRestriction": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "Defines the temporary speed restriction on the track"
+        "speedRestriction": {
+          "type": "object",
+          "$ref": "#/definitions/opp.SpeedRestriction"
         },
         "allowedDrivingModes": {
           "type": "array",
@@ -768,7 +781,7 @@
         {
           "type": "object",
           "required": [
-            "temporarySpeedRestriction"
+            "speedRestriction"
           ]
         },
         {
@@ -885,7 +898,7 @@
         "removalTime": {
           "type": "string",
           "format": "date-time",
-          "description": "Defines the removal time in UTC"
+          "description": "Defines the removal time in UTC. E.g. removal 10:04:20 means, that restriction is active until 10:04:19.999999. The relation is creationTime <= active < removalTime"
         },
         "restrictionArea": {
           "type": "object",
@@ -946,7 +959,7 @@
     },
     "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a topological coordinates on the track",
+      "description": "Defines a topological coordinate on the track",
       "properties": {
         "onLinearElement": {
           "type": "string",

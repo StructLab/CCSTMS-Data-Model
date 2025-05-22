@@ -4,7 +4,7 @@
   "definitions": {
     "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a topological coordinates on the track",
+      "description": "Defines a topological coordinate on the track",
       "properties": {
         "onLinearElement": {
           "type": "string",
@@ -86,6 +86,10 @@
         "opposite"
       ],
       "description": "defines linking orientation direction along the LinearElement"
+    },
+    "etcsMarker": {
+      "type": "string",
+      "description": "defines the etcs marker board reference for the balise"
     }
   },
   "required": [

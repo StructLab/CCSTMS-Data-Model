@@ -87,7 +87,7 @@
           "type": "string",
           "description": "Identity of the object; used for referencing"
         },
-        "m_version": {
+        "etcsMVersion": {
           "type": "string",
           "enum": [
             "v1_0",
@@ -381,7 +381,7 @@
           "minimum": 0,
           "description": "Maximum distance for reversing in Post Trip mode. (Thisvariable is part of the National Values)"
         },
-        "m_nvcontact": {
+        "mNvcontact": {
           "type": "string",
           "enum": [
             "trainTrip",
@@ -594,11 +594,11 @@
         "m_leveltr": {
           "type": "string",
           "enum": [
-            "Level0",
-            "LevelNTC",
-            "Level1",
-            "Level2",
-            "Level3"
+            "level0",
+            "levelNTC",
+            "level1",
+            "level2",
+            "level3"
           ],
           "description": "Required level"
         },
@@ -627,11 +627,11 @@
         "m_leveltr": {
           "type": "string",
           "enum": [
-            "Level0",
-            "LevelNTC",
-            "Level1",
-            "Level2",
-            "Level3"
+            "level0",
+            "levelNTC",
+            "level1",
+            "level2",
+            "level3"
           ],
           "description": "Required level"
         },
@@ -732,11 +732,11 @@
         "m_leveltr": {
           "type": "string",
           "enum": [
-            "Level0",
-            "LevelNTC",
-            "Level1",
-            "Level2",
-            "Level3"
+            "level0",
+            "levelNTC",
+            "level1",
+            "level2",
+            "level3"
           ],
           "description": "Required level"
         },
@@ -755,11 +755,11 @@
         "m_leveltr": {
           "type": "string",
           "enum": [
-            "Level0",
-            "LevelNTC",
-            "Level1",
-            "Level2",
-            "Level3"
+            "level0",
+            "levelNTC",
+            "level1",
+            "level2",
+            "level3"
           ],
           "description": "Required level"
         },
@@ -1176,9 +1176,9 @@
         "q_suitability": {
           "type": "string",
           "enum": [
-            "LoadingGuage",
-            "MaxAxleLoad",
-            "TractionSystem"
+            "loadingGuage",
+            "maxAxleLoad",
+            "tractionSystem"
           ],
           "description": "Type of route suitability data"
         },
@@ -1517,9 +1517,9 @@
         "m_mamode": {
           "type": "string",
           "enum": [
-            "OnSight",
-            "Shunting",
-            "LimitedSupervision"
+            "onSight",
+            "shunting",
+            "limitedSupervision"
           ],
           "description": "Required mode for a part of the MA. None. Comment : OS, LS, SH"
         },
@@ -2535,25 +2535,6 @@
       ],
       "additionalProperties": false
     },
-    "infra.TopologicalCoordinate": {
-      "type": "object",
-      "description": "Defines a topological coordinates on the track",
-      "properties": {
-        "onLinearElement": {
-          "type": "string",
-          "description": "is positioned on linear element"
-        },
-        "offsetFromOrigin": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "position on the associated NetElement"
-        }
-      },
-      "required": [
-        "onLinearElement"
-      ],
-      "additionalProperties": false
-    },
     "eng.FoulingPoint": {
       "type": "object",
       "description": "the point on a railway track beyond which a train is not allowed to proceed if another train or object is occupying that   portion of the track",
@@ -2650,9 +2631,9 @@
     "eng.EngArea": {
       "type": "object",
       "properties": {
-        "onTopoArea": {
+        "id": {
           "type": "string",
-          "description": "refrence to the corresponding Topo Area"
+          "description": "Identity of the object; used for referencing"
         },
         "defaultSleepersType": {
           "type": "string",
@@ -2689,7 +2670,7 @@
           },
           "description": "Defines the list of level crossings"
         },
-        "baliseGroup": {
+        "baliseGroups": {
           "type": "array",
           "items": {
             "type": "object",
@@ -2739,175 +2720,89 @@
         }
       },
       "required": [
-        "onTopoArea"
+        "id"
       ],
       "additionalProperties": false
     },
-    "eng.BaliseAccuracy": {
+    "infra.TopologicalCoordinate": {
+      "type": "object",
+      "description": "Defines a topological coordinate on the track",
+      "properties": {
+        "onLinearElement": {
+          "type": "string",
+          "description": "is positioned on linear element"
+        },
+        "offsetFromOrigin": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated NetElement"
+        }
+      },
+      "required": [
+        "onLinearElement"
+      ],
+      "additionalProperties": false
+    },
+    "eng.TopoCoordinateAccuracy": {
       "type": "object",
       "properties": {
-        "balise": {
-          "type": "string",
-          "description": "Defines a reference to a functional balise"
+        "topologicalCoordinate": {
+          "type": "object",
+          "$ref": "#/definitions/infra.TopologicalCoordinate"
         },
         "accuracy": {
           "type": "integer",
           "minimum": 0,
-          "description": "defines absolute deviation as 1sigma for balise"
+          "description": "defines absolute deviation as 1sigma the topological coordinate"
         }
       },
       "required": [
-        "balise"
-      ],
-      "additionalProperties": false
-    },
-    "eng.EtcsMarkerAccuracy": {
-      "type": "object",
-      "properties": {
-        "etcsMarker": {
-          "type": "string",
-          "description": "refers to ETCS Marker"
-        },
-        "accuracy": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "defines absolute deviation as 1sigma for etcsMarker"
-        }
-      },
-      "required": [
-        "etcsMarker"
-      ],
-      "additionalProperties": false
-    },
-    "eng.StopLocationAccuracy": {
-      "type": "object",
-      "properties": {
-        "stopLocation": {
-          "type": "string",
-          "description": "refers to stop locaton"
-        },
-        "accuracy": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "defines absolute deviation as 1sigma for stop location"
-        }
-      },
-      "required": [
-        "stopLocation"
-      ],
-      "additionalProperties": false
-    },
-    "eng.NationalBorderAccuracy": {
-      "type": "object",
-      "properties": {
-        "nationalBorder": {
-          "type": "string",
-          "description": "refers to National border"
-        },
-        "accuracy": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "defines absolute deviation as 1sigma for stop location"
-        }
-      },
-      "required": [
-        "nationalBorder"
-      ],
-      "additionalProperties": false
-    },
-    "eng.BufferStopAccuracy": {
-      "type": "object",
-      "properties": {
-        "bufferStop": {
-          "type": "string",
-          "description": "refers to buffer stop"
-        },
-        "accuracy": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "defines absolute deviation as 1sigma for stop location"
-        }
-      },
-      "required": [
-        "bufferStop"
+        "topologicalCoordinate"
       ],
       "additionalProperties": false
     },
     "eng.LocationAccuracyArea": {
       "type": "object",
       "properties": {
-        "onTopoArea": {
+        "id": {
           "type": "string",
-          "description": "reference to the corresponding Topo Area"
+          "description": "Identity of the object; used for referencing"
         },
-        "baliseAccuracies": {
+        "coordinateAccuracies": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/eng.BaliseAccuracy"
+            "$ref": "#/definitions/eng.TopoCoordinateAccuracy"
           },
-          "description": "Defines the balise accuracies"
-        },
-        "etcsMarkerAccuracies": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/eng.EtcsMarkerAccuracy"
-          },
-          "description": "Defines the ETCS Marker Accuracies"
-        },
-        "stopLocationAccuracies": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/eng.StopLocationAccuracy"
-          },
-          "description": "Defines the Stop Location Accuracies"
-        },
-        "nationalBorderAccuracies": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/eng.NationalBorderAccuracy"
-          },
-          "description": "Defines the National Border Accuracies"
-        },
-        "bufferStopAccuracies": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/eng.BufferStopAccuracy"
-          },
-          "description": "Defines the BufferStop Accuracies"
+          "description": "Defines the accuracies for topological coordinates"
         }
       },
       "required": [
-        "onTopoArea"
+        "id"
       ],
       "additionalProperties": false
     },
     "eng.KilometricPost": {
       "type": "object",
-      "description": "An object that represent a physical sign that would be used to convey Kilometer information at specific location on    a LinearElement",
+      "description": "An object that represents Kilometer information at specific location ona LinearElement",
       "properties": {
         "pos": {
           "type": "integer",
           "minimum": 0,
           "description": "position on the associated LinearElement"
         },
+        "kilometer": {
+          "type": "integer",
+          "description": "Defines exact kilometer value"
+        },
         "kmPostName": {
           "type": "string",
-          "description": "Defines the name of Kilometric Post (optional)"
-        },
-        "kilometerNumber": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "Defines the kilometer number of the kilometric post"
+          "description": "Name of the Kilometric Post."
         }
       },
       "additionalProperties": false
     },
-    "eng.LinearElementKmSigns": {
+    "eng.LinearElementKm": {
       "type": "object",
       "properties": {
         "linearElement": {
@@ -2920,7 +2815,7 @@
             "type": "object",
             "$ref": "#/definitions/eng.KilometricPost"
           },
-          "description": "Defines the kilometre posts on the track. These are sorted by pos from 0 to length"
+          "description": "Defines the kilometre points on the track. These are sorted by pos from 0 to length"
         }
       },
       "required": [
@@ -2931,21 +2826,21 @@
     "eng.KmArea": {
       "type": "object",
       "properties": {
-        "onTopoArea": {
+        "id": {
           "type": "string",
-          "description": "refrence to the corresponding Topo Area"
+          "description": "Identity of the object; used for referencing"
         },
-        "linearElementKmSigns": {
+        "linearElementKm": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/eng.LinearElementKmSigns"
+            "$ref": "#/definitions/eng.LinearElementKm"
           },
-          "description": "composes of linear element kilometer signs"
+          "description": "composes of linear element kilometer"
         }
       },
       "required": [
-        "onTopoArea"
+        "id"
       ],
       "additionalProperties": false
     }

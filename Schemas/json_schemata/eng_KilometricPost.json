@@ -2,21 +2,20 @@
   "$id": "https://ERJU/eng_KilometricPost",
   "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
-  "description": "An object that represent a physical sign that would be used to convey Kilometer information at specific location on    a LinearElement",
+  "description": "An object that represents Kilometer information at specific location ona LinearElement",
   "properties": {
     "pos": {
       "type": "integer",
       "minimum": 0,
       "description": "position on the associated LinearElement"
     },
+    "kilometer": {
+      "type": "integer",
+      "description": "Defines exact kilometer value"
+    },
     "kmPostName": {
       "type": "string",
-      "description": "Defines the name of Kilometric Post (optional)"
-    },
-    "kilometerNumber": {
-      "type": "integer",
-      "minimum": 0,
-      "description": "Defines the kilometer number of the kilometric post"
+      "description": "Name of the Kilometric Post."
     }
   },
   "additionalProperties": false

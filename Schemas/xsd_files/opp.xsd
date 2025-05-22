@@ -368,6 +368,12 @@
 		<xs:attribute name="content" type="xs:base64Binary" use="required"/>
 	</xs:complexType>
 	<xs:element name="onBoardExtension" type="opp:OnBoardExtension"/>
+	<xs:complexType name="SpeedRestriction">
+		<xs:sequence/>
+		<xs:attribute name="maxSpeed" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="restrictionEndsAtTrainFront" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	<xs:element name="speedRestriction" type="opp:SpeedRestriction"/>
 	<xs:complexType name="MovementRestriction">
 		<xs:sequence>
 			<xs:element name="restrictedPath" type="infra:NetLinearReference" minOccurs="1" maxOccurs="1"/>
@@ -377,11 +383,7 @@
 	<xs:element name="movementRestriction" type="opp:MovementRestriction"/>
 	<xs:complexType name="SpecificMovementRestriction">
 		<xs:choice>
-			<xs:element name="maxSpeed">
-				<xs:complexType>
-					<xs:attribute name="value" type="xs:unsignedInt" use="required"/>
-				</xs:complexType>
-			</xs:element>
+			<xs:element name="speedRestriction" type="opp:SpeedRestriction"/>
 			<xs:element name="adhesionCategory">
 				<xs:complexType>
 					<xs:attribute name="value" type="opp:AdhesionCategory" use="required"/>
@@ -608,11 +610,7 @@
 	<xs:element name="trainGroupSpec" type="opp:TrainGroupSpec"/>
 	<xs:complexType name="RestrictedAspect">
 		<xs:choice>
-			<xs:element name="temporarySpeedRestriction">
-				<xs:complexType>
-					<xs:attribute name="value" type="xs:unsignedInt" use="required"/>
-				</xs:complexType>
-			</xs:element>
+			<xs:element name="speedRestriction" type="opp:SpeedRestriction"/>
 			<xs:element name="allowedDrivingModes">
 				<xs:complexType>
 					<xs:attribute name="value" type="opp:OnboardOperatingMode" use="required"/>
@@ -1003,7 +1001,7 @@
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
-		<xs:attribute name="evnIdentifier" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="evnIdentifier" type="xs:string" use="required"/>
 		<xs:attribute name="passengerLoad" type="xs:unsignedInt" use="required"/>
 		<xs:attribute name="mass" type="xs:unsignedInt" use="required"/>
 		<xs:attribute name="maxCurrentConsuption" type="xs:unsignedInt" use="required"/>
@@ -1037,7 +1035,7 @@
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
-		<xs:attribute name="evnIdentifier" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="evnIdentifier" type="xs:string" use="required"/>
 		<xs:attribute name="mass" type="xs:unsignedInt" use="required"/>
 		<xs:attribute name="vehicleOrientation" type="opp:VehicleOrientation" use="required"/>
 		<xs:attribute name="passengerLoad" type="xs:unsignedInt" use="required"/>

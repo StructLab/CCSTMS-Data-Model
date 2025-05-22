@@ -36,9 +36,10 @@ class LevelCrossing {
 
 class BaliseGroup {
  id: string
- m_version: ss026.ETCSMVersions
+ <b>etcsMVersion: ss026.ETCSMVersions</b>
  q_link: boolean
  q_updown: boolean
+ <s>m_version: ss026.ETCSMVersions</s>
 }
 
 class Balise {
@@ -74,60 +75,38 @@ class FoulingPoint {
 }
 
 class EngArea {
- <b>onTopoArea: *infra.TopoArea</b>
+ id: string
  defaultSleepersType: SleepersType
- <s>id: string</s>
+ <s>baliseGroup: BaliseGroup0..*</s>
 }
 
 class LocationAccuracyArea {
- <b>onTopoArea: *infra.TopoArea</b>
- <s>id: string</s>
+ id: string
+ <s>baliseAccuracies: BaliseAccuracy0..*</s>
+ <s>etcsMarkerAccuracies: EtcsMarkerAccuracy0..*</s>
+ <s>stopLocationAccuracies: StopLocationAccuracy0..*</s>
+ <s>nationalBorderAccuracies: NationalBorderAccuracy0..*</s>
+ <s>bufferStopAccuracies: BufferStopAccuracy0..*</s>
 }
 
-class BaliseAccuracy {
- <b>balise: *infra.Balise</b>
- accuracy: uint32
- <s>baliseId: string</s>
+class TopoCoordinateAccuracy {
+ <b>accuracy: uint32</b>
 }
 
-class EtcsMarkerAccuracy {
- <b>etcsMarker: *infra.ETCSMarker</b>
- accuracy: uint32
- <s>markerId: string</s>
-}
-
-class StopLocationAccuracy {
- <b>stopLocation: *infra.StopLocation</b>
- accuracy: uint32
- <s>stopLocationId: string</s>
-}
-
-class NationalBorderAccuracy {
- <b>nationalBorder: *infra.NationalBorder</b>
- accuracy: uint32
- <s>nationalBorderId: string</s>
-}
-
-class BufferStopAccuracy {
- <b>bufferStop: *infra.BufferStop</b>
- accuracy: uint32
- <s>bufferStopId: string</s>
-}
-
-class LinearElementKmSigns {
+class LinearElementKm {
  <b>linearElement: *infra.LinearElement</b>
- <s>id: string</s>
 }
 
 class KilometricPost {
  pos: uint32
+ <b>kilometer: int32</b>
  kmPostName: string[0..1]
- kilometerNumber: uint32
+ <s>kilometerNumber: uint32</s>
 }
 
 class KmArea {
- <b>onTopoArea: *infra.TopoArea</b>
- <s>id: string</s>
+ id: string
+ <s>linearElementKmSigns: LinearElementKmSigns0..*</s>
 }
 
 class ETCSEngineering {
@@ -147,14 +126,11 @@ EngArea *-- "0..*" Sleepers
 EngArea *-- "0..*" DangerPoint
 EngArea *-- "0..*" FoulingPoint
 EngArea *-- "0..*" BufferStop
-LocationAccuracyArea *-- "*" BaliseAccuracy
-LocationAccuracyArea *-- "*" EtcsMarkerAccuracy
-LocationAccuracyArea *-- "*" StopLocationAccuracy
-LocationAccuracyArea *-- "*" NationalBorderAccuracy
-LocationAccuracyArea *-- "*" BufferStopAccuracy
-LinearElementKmSigns *-- "*" KilometricPost
-KmArea *-- "*" LinearElementKmSigns
-ETCSEngineering *-- "*" EngArea
-ETCSEngineering *-- "*" LocationAccuracyArea
-ETCSEngineering *-- "*" KmArea
+LocationAccuracyArea *-- "0..*" TopoCoordinateAccuracy
+TopoCoordinateAccuracy *-- "1" infra.TopologicalCoordinate
+LinearElementKm *-- "0..*" KilometricPost
+KmArea *-- "0..*" LinearElementKm
+ETCSEngineering *-- "0..*" EngArea
+ETCSEngineering *-- "0..*" LocationAccuracyArea
+ETCSEngineering *-- "0..*" KmArea
 @enduml

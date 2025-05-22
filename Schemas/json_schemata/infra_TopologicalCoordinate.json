@@ -2,7 +2,7 @@
   "$id": "https://ERJU/infra_TopologicalCoordinate",
   "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
-  "description": "Defines a topological coordinates on the track",
+  "description": "Defines a topological coordinate on the track",
   "properties": {
     "onLinearElement": {
       "type": "string",

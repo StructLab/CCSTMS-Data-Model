@@ -1,0 +1,935 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix era-utcoffset: <http://data.europa.eu/949/concepts/utc-offset/> .
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+era-utcoffset:UTCOffset a skos:ConceptScheme ;
+    rdfs:label "UTC Offset"@en ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:issued "2025-02-19"^^xsd:date ;
+    dct:modified "2025-05-22"^^xsd:date ;
+    rdfs:comment "List defining different UTC Offsets"@en ;
+    skos:hiddenLabel "CCSTMS_UTCOffset" ;
+    skos:prefLabel "UTC Offset"@en .
+
+	
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+	
+era-utcoffset:utc_Neg_0015 a skos:Concept ;
+    rdfs:comment "UTC is -00:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0015_55" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0015"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0015"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0030 a skos:Concept ;
+    rdfs:comment "UTC is -00:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0030_54" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0030"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0030"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0045 a skos:Concept ;
+    rdfs:comment "UTC is -00:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0045_53" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0045"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0045"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0100 a skos:Concept ;
+    rdfs:comment "UTC is -01:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0100_52" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0100"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0100"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0115 a skos:Concept ;
+    rdfs:comment "UTC is -01:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0115_51" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0115"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0115"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0130 a skos:Concept ;
+    rdfs:comment "UTC is -01:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0130_50" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0130"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0130"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0145 a skos:Concept ;
+    rdfs:comment "UTC is -01:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0145_49" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0145"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0145"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0200 a skos:Concept ;
+    rdfs:comment "UTC is -02:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0200_48" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0200"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0200"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0215 a skos:Concept ;
+    rdfs:comment "UTC is -02:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0215_47" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0215"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0215"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0230 a skos:Concept ;
+    rdfs:comment "UTC is -02:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0230_46" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0230"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0230"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0245 a skos:Concept ;
+    rdfs:comment "UTC is -02:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0245_45" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0245"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0245"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0300 a skos:Concept ;
+    rdfs:comment "UTC is -03:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0300_44" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0300"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0300"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0315 a skos:Concept ;
+    rdfs:comment "UTC is -03:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0315_43" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0315"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0315"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0330 a skos:Concept ;
+    rdfs:comment "UTC is -03:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0330_42" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0330"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0330"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0345 a skos:Concept ;
+    rdfs:comment "UTC is -03:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0345_41" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0345"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0345"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0400 a skos:Concept ;
+    rdfs:comment "UTC is -04:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0400_40" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0400"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0400"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0415 a skos:Concept ;
+    rdfs:comment "UTC is -04:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0415_39" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0415"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0415"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0430 a skos:Concept ;
+    rdfs:comment "UTC is -04:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0430_38" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0430"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0430"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0445 a skos:Concept ;
+    rdfs:comment "UTC is -04:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0445_37" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0445"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0445"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0500 a skos:Concept ;
+    rdfs:comment "UTC is -05:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0500_36" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0500"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0500"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0515 a skos:Concept ;
+    rdfs:comment "UTC is -05:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0515_35" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0515"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0515"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0530 a skos:Concept ;
+    rdfs:comment "UTC is -05:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0530_34" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0530"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0530"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0545 a skos:Concept ;
+    rdfs:comment "UTC is -05:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0545_33" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0545"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0545"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0600 a skos:Concept ;
+    rdfs:comment "UTC is -06:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0600_32" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0600"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0600"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0615 a skos:Concept ;
+    rdfs:comment "UTC is -06:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0615_31" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0615"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0615"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0630 a skos:Concept ;
+    rdfs:comment "UTC is -06:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0630_30" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0630"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0630"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0645 a skos:Concept ;
+    rdfs:comment "UTC is -06:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0645_29" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0645"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0645"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0700 a skos:Concept ;
+    rdfs:comment "UTC is -07:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0700_28" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0700"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0700"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0715 a skos:Concept ;
+    rdfs:comment "UTC is -07:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0715_27" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0715"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0715"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0730 a skos:Concept ;
+    rdfs:comment "UTC is -07:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0730_26" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0730"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0730"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0745 a skos:Concept ;
+    rdfs:comment "UTC is -07:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0745_25" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0745"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0745"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0800 a skos:Concept ;
+    rdfs:comment "UTC is -08:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0800_24" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0800"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0800"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0815 a skos:Concept ;
+    rdfs:comment "UTC is -08:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0815_23" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0815"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0815"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0830 a skos:Concept ;
+    rdfs:comment "UTC is -08:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0830_22" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0830"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0830"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0845 a skos:Concept ;
+    rdfs:comment "UTC is -08:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0845_21" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0845"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0845"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0900 a skos:Concept ;
+    rdfs:comment "UTC is -09:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0900_20" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0900"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0900"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0915 a skos:Concept ;
+    rdfs:comment "UTC is -09:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0915_19" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0915"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0915"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0930 a skos:Concept ;
+    rdfs:comment "UTC is -09:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0930_18" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0930"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0930"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_0945 a skos:Concept ;
+    rdfs:comment "UTC is -09:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_0945_17" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_0945"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_0945"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_1000 a skos:Concept ;
+    rdfs:comment "UTC is -10:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_1000_16" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_1000"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_1000"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_1015 a skos:Concept ;
+    rdfs:comment "UTC is -10:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_1015_15" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_1015"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_1015"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_1030 a skos:Concept ;
+    rdfs:comment "UTC is -10:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_1030_14" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_1030"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_1030"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_1045 a skos:Concept ;
+    rdfs:comment "UTC is -10:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_1045_13" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_1045"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_1045"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_1100 a skos:Concept ;
+    rdfs:comment "UTC is -11:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_1100_12" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_1100"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_1100"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_1115 a skos:Concept ;
+    rdfs:comment "UTC is -11:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_1115_11" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_1115"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_1115"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_1130 a skos:Concept ;
+    rdfs:comment "UTC is -11:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_1130_10" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_1130"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_1130"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_1145 a skos:Concept ;
+    rdfs:comment "UTC is -11:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_1145_9" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_1145"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_1145"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_1200 a skos:Concept ;
+    rdfs:comment "UTC is -12:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_1200_8" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_1200"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_1200"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_1215 a skos:Concept ;
+    rdfs:comment "UTC is -12:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_1215_7" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_1215"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_1215"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_1230 a skos:Concept ;
+    rdfs:comment "UTC is -12:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_1230_6" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_1230"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_1230"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_1245 a skos:Concept ;
+    rdfs:comment "UTC is -12:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_1245_5" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_1245"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_1245"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_1300 a skos:Concept ;
+    rdfs:comment "UTC is -13:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_1300_4" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_1300"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_1300"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_1315 a skos:Concept ;
+    rdfs:comment "UTC is -13:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_1315_3" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_1315"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_1315"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_1330 a skos:Concept ;
+    rdfs:comment "UTC is -13:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_1330_2" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_1330"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_1330"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_1345 a skos:Concept ;
+    rdfs:comment "UTC is -13:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_1345_1" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_1345"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_1345"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Neg_1400 a skos:Concept ;
+    rdfs:comment "UTC is -14:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Neg_1400_0" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Neg_1400"^^xsd:string ;
+    skos:prefLabel "Utc_Neg_1400"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0015 a skos:Concept ;
+    rdfs:comment "UTC is +00:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0015_57" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0015"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0015"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0030 a skos:Concept ;
+    rdfs:comment "UTC is +00:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0030_58" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0030"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0030"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0045 a skos:Concept ;
+    rdfs:comment "UTC is +00:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0045_59" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0045"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0045"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0100 a skos:Concept ;
+    rdfs:comment "UTC is +01:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0100_60" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0100"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0100"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0115 a skos:Concept ;
+    rdfs:comment "UTC is +01:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0115_61" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0115"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0115"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0130 a skos:Concept ;
+    rdfs:comment "UTC is +01:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0130_62" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0130"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0130"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0145 a skos:Concept ;
+    rdfs:comment "UTC is +01:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0145_63" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0145"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0145"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0200 a skos:Concept ;
+    rdfs:comment "UTC is +02:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0200_64" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0200"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0200"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0215 a skos:Concept ;
+    rdfs:comment "UTC is +02:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0215_65" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0215"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0215"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0230 a skos:Concept ;
+    rdfs:comment "UTC is +02:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0230_66" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0230"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0230"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0245 a skos:Concept ;
+    rdfs:comment "UTC is +02:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0245_67" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0245"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0245"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0300 a skos:Concept ;
+    rdfs:comment "UTC is +03:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0300_68" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0300"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0300"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0315 a skos:Concept ;
+    rdfs:comment "UTC is +03:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0315_69" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0315"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0315"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0330 a skos:Concept ;
+    rdfs:comment "UTC is +03:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0330_70" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0330"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0330"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0345 a skos:Concept ;
+    rdfs:comment "UTC is +03:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0345_71" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0345"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0345"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0400 a skos:Concept ;
+    rdfs:comment "UTC is +04:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0400_72" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0400"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0400"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0415 a skos:Concept ;
+    rdfs:comment "UTC is +04:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0415_73" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0415"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0415"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0430 a skos:Concept ;
+    rdfs:comment "UTC is +04:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0430_74" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0430"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0430"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0445 a skos:Concept ;
+    rdfs:comment "UTC is +04:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0445_75" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0445"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0445"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0500 a skos:Concept ;
+    rdfs:comment "UTC is +05:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0500_76" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0500"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0500"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0515 a skos:Concept ;
+    rdfs:comment "UTC is +05:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0515_77" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0515"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0515"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0530 a skos:Concept ;
+    rdfs:comment "UTC is +05:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0530_78" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0530"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0530"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0545 a skos:Concept ;
+    rdfs:comment "UTC is +05:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0545_79" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0545"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0545"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0600 a skos:Concept ;
+    rdfs:comment "UTC is +06:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0600_80" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0600"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0600"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0615 a skos:Concept ;
+    rdfs:comment "UTC is +06:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0615_81" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0615"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0615"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0630 a skos:Concept ;
+    rdfs:comment "UTC is +06:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0630_82" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0630"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0630"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0645 a skos:Concept ;
+    rdfs:comment "UTC is +06:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0645_83" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0645"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0645"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0700 a skos:Concept ;
+    rdfs:comment "UTC is +07:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0700_84" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0700"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0700"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0715 a skos:Concept ;
+    rdfs:comment "UTC is +07:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0715_85" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0715"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0715"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0730 a skos:Concept ;
+    rdfs:comment "UTC is +07:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0730_86" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0730"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0730"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0745 a skos:Concept ;
+    rdfs:comment "UTC is +07:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0745_87" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0745"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0745"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0800 a skos:Concept ;
+    rdfs:comment "UTC is +08:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0800_88" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0800"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0800"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0815 a skos:Concept ;
+    rdfs:comment "UTC is +08:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0815_89" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0815"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0815"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0830 a skos:Concept ;
+    rdfs:comment "UTC is +08:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0830_90" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0830"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0830"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0845 a skos:Concept ;
+    rdfs:comment "UTC is +08:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0845_91" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0845"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0845"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0900 a skos:Concept ;
+    rdfs:comment "UTC is +09:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0900_92" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0900"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0900"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0915 a skos:Concept ;
+    rdfs:comment "UTC is +09:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0915_93" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0915"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0915"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0930 a skos:Concept ;
+    rdfs:comment "UTC is +09:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0930_94" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0930"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0930"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_0945 a skos:Concept ;
+    rdfs:comment "UTC is +09:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_0945_95" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_0945"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_0945"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_1000 a skos:Concept ;
+    rdfs:comment "UTC is +10:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_1000_96" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_1000"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_1000"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_1015 a skos:Concept ;
+    rdfs:comment "UTC is +10:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_1015_97" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_1015"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_1015"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_1030 a skos:Concept ;
+    rdfs:comment "UTC is +10:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_1030_98" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_1030"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_1030"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_1045 a skos:Concept ;
+    rdfs:comment "UTC is +10:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_1045_99" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_1045"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_1045"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_1100 a skos:Concept ;
+    rdfs:comment "UTC is +11:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_1100_100" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_1100"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_1100"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_1115 a skos:Concept ;
+    rdfs:comment "UTC is +11:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_1115_101" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_1115"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_1115"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_1130 a skos:Concept ;
+    rdfs:comment "UTC is +11:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_1130_102" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_1130"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_1130"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_1145 a skos:Concept ;
+    rdfs:comment "UTC is +11:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_1145_103" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_1145"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_1145"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_1200 a skos:Concept ;
+    rdfs:comment "UTC is +12:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_1200_104" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_1200"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_1200"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_1215 a skos:Concept ;
+    rdfs:comment "UTC is +12:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_1215_105" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_1215"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_1215"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_1230 a skos:Concept ;
+    rdfs:comment "UTC is +12:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_1230_106" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_1230"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_1230"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_1245 a skos:Concept ;
+    rdfs:comment "UTC is +12:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_1245_107" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_1245"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_1245"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_1300 a skos:Concept ;
+    rdfs:comment "UTC is +13:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_1300_108" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_1300"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_1300"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_1315 a skos:Concept ;
+    rdfs:comment "UTC is +13:15"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_1315_109" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_1315"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_1315"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_1330 a skos:Concept ;
+    rdfs:comment "UTC is +13:30"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_1330_110" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_1330"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_1330"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_1345 a skos:Concept ;
+    rdfs:comment "UTC is +13:45"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_1345_111" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_1345"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_1345"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Pos_1400 a skos:Concept ;
+    rdfs:comment "UTC is +14:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Pos_1400_112" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Pos_1400"^^xsd:string ;
+    skos:prefLabel "Utc_Pos_1400"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .
+
+era-utcoffset:utc_Zero_0000 a skos:Concept ;
+    rdfs:comment "UTC is ±00:00"@en ;
+    skos:hiddenLabel "CCSTMS_utc_Zero_0000_56" ;
+    skos:inScheme era-utcoffset:UTCOffset ;
+    skos:notation "utc_Zero_0000"^^xsd:string ;
+    skos:prefLabel "Utc_Zero_0000"@en ;
+    skos:topConceptOf era-utcoffset:UTCOffset .

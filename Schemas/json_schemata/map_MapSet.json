@@ -1,0 +1,236 @@
+{
+  "$id": "https://ERJU/map_MapSet",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "map.LinearElementCoordinate": {
+      "type": "object",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines position on the associated LinearElement"
+        },
+        "x": {
+          "type": "number",
+          "description": "Defines the x coordiante value, mapping to each EPSG-code"
+        },
+        "y": {
+          "type": "number",
+          "description": "Defines the y coordiante value, mapping to each EPSG-code"
+        },
+        "z": {
+          "type": "number",
+          "description": "Defines the z coordiante value, mapping to each EPSG-code"
+        },
+        "accPos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "absolute accuracy as 1sigma. Use 0 if not defined"
+        },
+        "accX": {
+          "type": "number",
+          "description": "absolute accuracy as 1sigma. Use 0.0 if not defined"
+        },
+        "accY": {
+          "type": "number",
+          "description": "absolute accuracy as 1sigma. Use 0.0 if not defined"
+        },
+        "accZ": {
+          "type": "number",
+          "description": "absolute accuracy as 1sigma. Use 0.0 if not defined"
+        }
+      },
+      "additionalProperties": false
+    },
+    "map.LinearElementProjection": {
+      "type": "object",
+      "properties": {
+        "linearElement": {
+          "type": "string"
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/map.LinearElementCoordinate"
+          },
+          "minItems": 2,
+          "description": "Defines a sequence of coordinates representing a mapping of a linear element"
+        }
+      },
+      "required": [
+        "linearElement",
+        "coordinates"
+      ],
+      "additionalProperties": false
+    },
+    "map.FunctionalElementRef": {
+      "type": "object",
+      "properties": {
+        "switch": {
+          "type": "string",
+          "description": "refers to switch/simple point"
+        },
+        "etcsMarker": {
+          "type": "string",
+          "description": "refers to ETCS marker"
+        },
+        "stopLocation": {
+          "type": "string",
+          "description": "refers to stop location"
+        },
+        "timingPoint": {
+          "type": "string",
+          "description": "Defines a reference to a timing point"
+        },
+        "operationalPoint": {
+          "type": "string",
+          "description": "Defines a reference to an operational point (station, siding etc)."
+        },
+        "balise": {
+          "type": "string",
+          "description": "Defines a reference to a functional balise"
+        }
+      },
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "switch"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "etcsMarker"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "stopLocation"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "timingPoint"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "operationalPoint"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "balise"
+          ]
+        }
+      ],
+      "additionalProperties": false
+    },
+    "map.FunctionalElementProjection": {
+      "type": "object",
+      "properties": {
+        "elementRef": {
+          "type": "object",
+          "$ref": "#/definitions/map.FunctionalElementRef",
+          "description": "Defines reference container for which the coodinate is defined"
+        },
+        "x": {
+          "type": "number",
+          "description": "todo: mapping to each EPSG-code"
+        },
+        "y": {
+          "type": "number",
+          "description": "todo: mapping to each EPSG-code"
+        },
+        "z": {
+          "type": "number",
+          "description": "todo: mapping to each EPSG-code"
+        },
+        "accX": {
+          "type": "number",
+          "description": "absolute accuracy as 1sigma. Use 0.0 if not defined"
+        },
+        "accY": {
+          "type": "number",
+          "description": "absolute accuracy as 1sigma. Use 0.0 if not defined"
+        },
+        "accZ": {
+          "type": "number",
+          "description": "absolute accuracy as 1sigma. Use 0.0 if not defined"
+        }
+      },
+      "required": [
+        "elementRef"
+      ],
+      "additionalProperties": false
+    },
+    "map.Map": {
+      "type": "object",
+      "description": "Defines Map for an area",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identity of the object; used for referencing"
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name, only if different from id"
+        },
+        "versionTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Defines the version information which is valid since timestamp"
+        },
+        "areaId": {
+          "type": "string",
+          "description": "Defines the areaIds for a Map. There could be several maps representing one area"
+        },
+        "epsg": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Defines the applicable EPSG code for the map area. Use 1 for monitor coordinates"
+        },
+        "linearElementProjections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/map.LinearElementProjection"
+          },
+          "description": "Defines container for projections of linearElements on same mapping system"
+        },
+        "functionalElements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/map.FunctionalElementProjection"
+          },
+          "description": "Defines a container for a reference to a functional element of the infrastructure"
+        }
+      },
+      "required": [
+        "id",
+        "versionTimestamp",
+        "areaId"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "maps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/map.Map"
+      },
+      "description": "Defines container for all Maps in a system"
+    }
+  },
+  "additionalProperties": false
+}

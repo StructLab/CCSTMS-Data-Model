@@ -1,0 +1,45 @@
+{
+  "$id": "https://ERJU/eng_LinearElementKm",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "definitions": {
+    "eng.KilometricPost": {
+      "type": "object",
+      "description": "An object that represents Kilometer information at specific location ona LinearElement",
+      "properties": {
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated LinearElement"
+        },
+        "kilometer": {
+          "type": "integer",
+          "description": "Defines exact kilometer value"
+        },
+        "kmPostName": {
+          "type": "string",
+          "description": "Name of the Kilometric Post."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "linearElement": {
+      "type": "string",
+      "description": "reference to the corresponding linear element"
+    },
+    "kilometricPosts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/eng.KilometricPost"
+      },
+      "description": "Defines the kilometre points on the track. These are sorted by pos from 0 to length"
+    }
+  },
+  "required": [
+    "linearElement"
+  ],
+  "additionalProperties": false
+}

@@ -2,6 +2,7 @@
   "$id": "https://ERJU/oi_Attitude",
   "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines the geometry values for the linear element coordinates",
   "properties": {
     "rollAngle": {
       "type": "integer",

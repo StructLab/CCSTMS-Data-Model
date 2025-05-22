@@ -119,7 +119,7 @@
 	<xs:complexType name="BaliseGroup">
 		<xs:sequence/>
 		<xs:attribute name="id" type="xs:string" use="required"/>
-		<xs:attribute name="m_version" type="ss026:ETCSMVersions" use="required"/>
+		<xs:attribute name="etcsMVersion" type="ss026:ETCSMVersions" use="required"/>
 		<xs:attribute name="q_link" type="xs:boolean" use="required"/>
 		<xs:attribute name="q_updown" type="xs:boolean" use="required"/>
 	</xs:complexType>
@@ -201,10 +201,10 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="baliseGroup" minOccurs="0" maxOccurs="1">
+			<xs:element name="baliseGroups" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="baliseGroupItem" type="eng:BaliseGroup" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="baliseGroup" type="eng:BaliseGroup" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -244,110 +244,31 @@
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
-		<xs:attribute name="onTopoArea" type="xs:string" use="required">
-			<xs:annotation>
-				<xs:documentation>Reference to infra:TopoArea</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
+		<xs:attribute name="id" type="xs:string" use="required"/>
 		<xs:attribute name="defaultSleepersType" type="eng:SleepersType" use="required"/>
 	</xs:complexType>
 	<xs:element name="engArea" type="eng:EngArea"/>
 	<xs:complexType name="LocationAccuracyArea">
 		<xs:sequence>
-			<xs:element name="baliseAccuracies" minOccurs="0" maxOccurs="1">
+			<xs:element name="coordinateAccuracies" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="baliseAccuracy" type="eng:BaliseAccuracy" minOccurs="0" maxOccurs="unbounded"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="etcsMarkerAccuracies" minOccurs="0" maxOccurs="1">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="etcsMarkerAccuracy" type="eng:EtcsMarkerAccuracy" minOccurs="0" maxOccurs="unbounded"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="stopLocationAccuracies" minOccurs="0" maxOccurs="1">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="stopLocationAccuracy" type="eng:StopLocationAccuracy" minOccurs="0" maxOccurs="unbounded"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="nationalBorderAccuracies" minOccurs="0" maxOccurs="1">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="nationalBorderAccuracy" type="eng:NationalBorderAccuracy" minOccurs="0" maxOccurs="unbounded"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="bufferStopAccuracies" minOccurs="0" maxOccurs="1">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="bufferStopAccuracy" type="eng:BufferStopAccuracy" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="coordinateAccuracy" type="eng:TopoCoordinateAccuracy" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
-		<xs:attribute name="onTopoArea" type="xs:string" use="required">
-			<xs:annotation>
-				<xs:documentation>Reference to infra:TopoArea</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
+		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>
 	<xs:element name="locationAccuracyArea" type="eng:LocationAccuracyArea"/>
-	<xs:complexType name="BaliseAccuracy">
-		<xs:sequence/>
-		<xs:attribute name="balise" type="xs:string" use="required">
-			<xs:annotation>
-				<xs:documentation>Reference to infra:Balise</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
+	<xs:complexType name="TopoCoordinateAccuracy">
+		<xs:sequence>
+			<xs:element name="topologicalCoordinate" type="infra:TopologicalCoordinate" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
 		<xs:attribute name="accuracy" type="xs:unsignedInt" use="required"/>
 	</xs:complexType>
-	<xs:element name="baliseAccuracy" type="eng:BaliseAccuracy"/>
-	<xs:complexType name="EtcsMarkerAccuracy">
-		<xs:sequence/>
-		<xs:attribute name="etcsMarker" type="xs:string" use="required">
-			<xs:annotation>
-				<xs:documentation>Reference to infra:ETCSMarker</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="accuracy" type="xs:unsignedInt" use="required"/>
-	</xs:complexType>
-	<xs:element name="etcsMarkerAccuracy" type="eng:EtcsMarkerAccuracy"/>
-	<xs:complexType name="StopLocationAccuracy">
-		<xs:sequence/>
-		<xs:attribute name="stopLocation" type="xs:string" use="required">
-			<xs:annotation>
-				<xs:documentation>Reference to infra:StopLocation</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="accuracy" type="xs:unsignedInt" use="required"/>
-	</xs:complexType>
-	<xs:element name="stopLocationAccuracy" type="eng:StopLocationAccuracy"/>
-	<xs:complexType name="NationalBorderAccuracy">
-		<xs:sequence/>
-		<xs:attribute name="nationalBorder" type="xs:string" use="required">
-			<xs:annotation>
-				<xs:documentation>Reference to infra:NationalBorder</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="accuracy" type="xs:unsignedInt" use="required"/>
-	</xs:complexType>
-	<xs:element name="nationalBorderAccuracy" type="eng:NationalBorderAccuracy"/>
-	<xs:complexType name="BufferStopAccuracy">
-		<xs:sequence/>
-		<xs:attribute name="bufferStop" type="xs:string" use="required">
-			<xs:annotation>
-				<xs:documentation>Reference to infra:BufferStop</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="accuracy" type="xs:unsignedInt" use="required"/>
-	</xs:complexType>
-	<xs:element name="bufferStopAccuracy" type="eng:BufferStopAccuracy"/>
-	<xs:complexType name="LinearElementKmSigns">
+	<xs:element name="topoCoordinateAccuracy" type="eng:TopoCoordinateAccuracy"/>
+	<xs:complexType name="LinearElementKm">
 		<xs:sequence>
 			<xs:element name="kilometricPosts" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
@@ -363,29 +284,25 @@
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
-	<xs:element name="linearElementKmSigns" type="eng:LinearElementKmSigns"/>
+	<xs:element name="linearElementKm" type="eng:LinearElementKm"/>
 	<xs:complexType name="KilometricPost">
 		<xs:sequence/>
 		<xs:attribute name="pos" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="kilometer" type="xs:int" use="required"/>
 		<xs:attribute name="kmPostName" type="xs:string"/>
-		<xs:attribute name="kilometerNumber" type="xs:unsignedInt" use="required"/>
 	</xs:complexType>
 	<xs:element name="kilometricPost" type="eng:KilometricPost"/>
 	<xs:complexType name="KmArea">
 		<xs:sequence>
-			<xs:element name="linearElementKmSigns" minOccurs="0" maxOccurs="1">
+			<xs:element name="linearElementKm" minOccurs="0" maxOccurs="1">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="linearElementKmSign" type="eng:LinearElementKmSigns" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="linearElementKmItem" type="eng:LinearElementKm" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
-		<xs:attribute name="onTopoArea" type="xs:string" use="required">
-			<xs:annotation>
-				<xs:documentation>Reference to infra:TopoArea</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
+		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>
 	<xs:element name="kmArea" type="eng:KmArea"/>
 	<xs:complexType name="ETCSEngineering">

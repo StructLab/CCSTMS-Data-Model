@@ -27,7 +27,7 @@
     },
     "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a topological coordinates on the track",
+      "description": "Defines a topological coordinate on the track",
       "properties": {
         "onLinearElement": {
           "type": "string",
@@ -93,7 +93,7 @@
     }
   },
   "type": "object",
-  "description": "sent by low-level system on each track occupation registered, contains CMD.UnresolvedTrackboundObject",
+  "description": "Defines occupation state of a part of the infrastructure graph,sent by low-level system on each track occupation registered, contains CMD.UnresolvedTrackboundObject",
   "properties": {
     "id": {
       "type": "string",
@@ -106,7 +106,7 @@
     },
     "operationalPlanMovement": {
       "type": "string",
-      "description": "Refers to the operational plan movement. if the new train was created in TrafficCS it does not have an operationalPlan (Movement) yet"
+      "description": "Refers to the operational plan movement. If the new train was created in TrafficCS it does not have an operationalPlan (Movement) yet"
     },
     "trainUnitIdentifier": {
       "type": "object",

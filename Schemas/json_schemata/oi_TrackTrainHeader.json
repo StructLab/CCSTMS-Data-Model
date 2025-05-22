@@ -2,6 +2,7 @@
   "$id": "https://ERJU/oi_TrackTrainHeader",
   "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
+  "description": "Defines the Track-Train Header packet",
   "properties": {
     "packetId": {
       "type": "string",

@@ -23,7 +23,7 @@
     },
     "infra.TopologicalCoordinate": {
       "type": "object",
-      "description": "Defines a topological coordinates on the track",
+      "description": "Defines a topological coordinate on the track",
       "properties": {
         "onLinearElement": {
           "type": "string",
@@ -178,7 +178,12 @@
         "trainTechnicalServices",
         "shuntingYard",
         "borderPoint",
-        "technicalChange"
+        "technicalChange",
+        "domesticBorderPoint",
+        "freightTerminal",
+        "junction",
+        "passengerStop",
+        "passengerTerminal"
       ],
       "description": "Defines the Type of operational point in relation to the dominating operational functions."
     },

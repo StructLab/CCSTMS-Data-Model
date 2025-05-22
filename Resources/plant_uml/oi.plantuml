@@ -29,9 +29,10 @@ class OISegment {
 
 class SegmentProfile {
  nidSP: uint32
- length: uint32
+ <b>segmentProfileLength: uint32</b>
  version: uint32
  nidC: uint32
+ <s>length: uint32</s>
 }
 
 class AdjacentSegmentProfile {
@@ -46,7 +47,7 @@ class SegmentDescription {
 
 class DrivingProfile {
  eoaOffset: uint32
- utcOffset: uint32
+ utcOffset: UTCOffset
  startAltitude: int32
  atotsContactInfoDir: boolean
  gradientStart: int32
@@ -175,6 +176,7 @@ class MapAreaRequest {
  <b>trackTrainHeader: TrackTrainHeader</b>
  <b>mapAreaRadius: uint32</b>
  <s>packetHeader: PacketHeader</s>
+ <s>relativePosition: RelativePosition</s>
 }
 
 class RelativePosition {
@@ -251,9 +253,18 @@ class TrackTrainHeader {
  <b>issuedAt: timestamp</b>
 }
 
-OI *-- "*" OIArea
+OI *-- "0..*" OIArea
+OI *-- "0..*" SegmentProfilePacket
+OI *-- "0..*" MapAreaRequest
+OI *-- "0..*" MapArea
+OI *-- "0..*" SegmentProfileRequest
+OI *-- "0..*" DigitalRegisterHandshakeRequest
+OI *-- "0..*" DigitalRegisterHandshakeAcknowledgement
+OI *-- "0..*" DigitalRegisterHandshakeRejection
+OI *-- "0..*" DigitalRegisterSessionTerminationRequest
+OI *-- "0..*" DigitalRegisterSessionTermination
 OIArea *-- "1..*" OISegment
-OIArea *-- "*" TimingPointMapping
+OIArea *-- "0..*" TimingPointMapping
 OISegment *-- "1" infra.LinearElementSection
 OISegment *-- "1" SegmentProfile
 SegmentProfile *-- "1" SegmentDescription
@@ -262,7 +273,7 @@ SegmentDescription *-- "0..1" DrivingProfile
 SegmentDescription *-- "0..1" GeometryProfile
 DrivingProfile *-- "0..1" AtoTSContactInfo
 DrivingProfile *-- "1" StaticSpeedProfileStart
-DrivingProfile *-- "*" StaticSpeedProfileChange
+DrivingProfile *-- "0..*" StaticSpeedProfileChange
 DrivingProfile *-- "0..*" GradientChange
 DrivingProfile *-- "0..*" CurveChange
 DrivingProfile *-- "1" VoltageStart
@@ -275,7 +286,7 @@ DrivingProfile *-- "0..*" AxleLoadSpeedProfile
 DrivingProfile *-- "0..*" UnprotectedLX
 DrivingProfile *-- "0..*" PermittedBrakingDistance
 DrivingProfile *-- "0..*" LimitedDynamicBrakeForce
-GeometryProfile *-- "*" map.LinearElementCoordinate
+GeometryProfile *-- "0..*" map.LinearElementCoordinate
 GeometryProfile *-- "0..1" Attitude
 StaticSpeedProfileStart *-- "0..*" infra.SpecificStaticSpeedLimit
 StaticSpeedProfileChange *-- "0..*" infra.SpecificStaticSpeedLimit

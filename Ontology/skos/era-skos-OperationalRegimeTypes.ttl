@@ -1,0 +1,79 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix era: <http://data.europa.eu/949/> .
+@prefix era-skos: <http://data.europa.eu/949/concepts/> .
+
+@prefix era-regtype: <http://data.europa.eu/949/concepts/operational-regime-types/> .
+
+
+
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+
+
+era-regtype:OperationalRegimeTypes a skos:ConceptScheme ; 
+    dct:issued "2024-09-24"^^xsd:date ;
+    dct:modified "2025-02-25"^^xsd:date ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    rdfs:comment "Controlled SKOS-based vocabularies defined by the European Union Agency for Railways to describe concepts related to the European railway infrastructure and the vehicles authorized to operate over it."@en ;
+    rdfs:label "Operational regime types"@en ;
+    skos:prefLabel "Operational regime types"@en ;
+    dct:title "Concept scheme grouping Operational regime types"@en .
+
+
+
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+## To be generated when values are available under the condition the scheme is relevant.
+## Work to do by the CCS 2024 members"
+
+
+########## Operational Regime Types ##########
+
+era-regtype:10 a skos:Concept;
+  skos:inScheme era-regtype:OperationalRegimeTypes; skos:topConceptOf era-regtype:OperationalRegimeTypes ; 
+  skos:note "Value collected from TWG RINF Route Book members"@en;
+  skos:prefLabel "Mono-directional single track line"@en .
+
+era-regtype:20 a skos:Concept;
+  skos:inScheme era-regtype:OperationalRegimeTypes; skos:topConceptOf era-regtype:OperationalRegimeTypes ; 
+  skos:note "Value collected from TWG RINF Route Book members"@en;
+  skos:prefLabel "Bi-directional single track line"@en ;
+  rdfs:comment "Safety installations prevent the dispatch of two trains in opposite directions from meeting each other"@en .
+
+era-regtype:30 a skos:Concept;
+  skos:inScheme era-regtype:OperationalRegimeTypes; skos:topConceptOf era-regtype:OperationalRegimeTypes ; 
+  skos:note "Value collected from TWG RINF Route Book members"@en;
+  skos:prefLabel "Reversible multiple track line"@en ;
+  rdfs:comment "One or more tracks are used by trains in both directions. On these tracks, safety installations prevent the dispatch of two trains in opposite directions from meeting each other. On reversible lines, trains in the same direction can run on any of these tracks."@en .
+
+era-regtype:40 a skos:Concept;
+  skos:inScheme era-regtype:OperationalRegimeTypes; skos:topConceptOf era-regtype:OperationalRegimeTypes ; 
+  skos:note "Value collected from TWG RINF Route Book members"@en;
+  skos:prefLabel "Double or multiple track line"@en ;
+  rdfs:comment "Each track is normally assigned to train traffic in a specific direction, indicated by the IM. On a double-track (or more) line, trains normally use the left (or right) track in the direction of travel. Tracks can still be used in the opposite direction, with specific provisions indicated by the IM."@en .
+
+
+
+
+
+
+
+

@@ -46,20 +46,35 @@ class ControlledInfraElement << union >> {
 
 class FieldObjectController {
  id: string
- <b>rastaId: string</b>
- <b>eulynxBaseline: string</b>
- version: uint32
  <b>belongsToAoc: *AreaOfControl</b>
  <s>rastaServerId: string</s>
  <s>rastaOCId: string</s>
+ <s>version: uint32</s>
 }
 
 class AreaOfControl {
  id: string
  name: string[0..1]
- <b>iPAddress: string</b>
- <b>rastaId: string</b>
- <b>portNumber: uint32</b>
+}
+
+class Controller {
+ <b>id: string</b>
+ <b>iPAddress: string[0..1]</b>
+ <b>rastaId: string[0..1]</b>
+ <b>portNumber: string[0..1]</b>
+ <b>eulynxBaseline: string[0..1]</b>
+ <b>version: uint32</b>
+}
+
+class RBCConfigurationPacket {
+}
+
+class ETCSMarker {
+ <b>id: string</b>
+ <b>markerType: MarkerFunction</b>
+ <b>acknowledgementDistance: uint32[0..*]</b>
+ <b>maxTransitionSpeed: uint32[0..*]</b>
+ <b>offsetTransitionUnreachable: uint32[0..*]</b>
 }
 
 class TrainProtectionArea {
@@ -77,10 +92,30 @@ DriveProtectionSectionGroup *-- "1" ProtectedInfraElement
 DriveProtectionSection *-- "1" infra.LinearElementSection
 AllocationSection *-- "1" infra.NetLinearReference
 FieldObjectController *-- "1..*" ControlledInfraElement
+FieldObjectController *-- "1" Controller
 AreaOfControl *-- "1" infra.NetAreaReference
-TrainProtectionArea *-- "*" DriveProtectionSectionGroup
-TrainProtectionArea *-- "*" AllocationSection
-TrainProtectionArea *-- "*" FieldObjectController
-TrainProtectionArea *-- "1" AreaOfControl
-TrainProtection *-- "*" TrainProtectionArea
+AreaOfControl *-- "0..1" Controller
+RBCConfigurationPacket *-- "1" AreaOfControl
+RBCConfigurationPacket *-- "1..*" infra.TopoArea
+RBCConfigurationPacket *-- "1..*" infra.Switch
+RBCConfigurationPacket *-- "0..*" infra.SlipCrossing
+RBCConfigurationPacket *-- "0..*" infra.Crossing
+RBCConfigurationPacket *-- "0..*" eng.BaliseGroup
+RBCConfigurationPacket *-- "0..*" ETCSMarker
+RBCConfigurationPacket *-- "1..*" infra.SampledLinearElementGeometry
+RBCConfigurationPacket *-- "1..*" infra.LinearElementSpeedProfile
+RBCConfigurationPacket *-- "1..*" map.Map
+RBCConfigurationPacket *-- "0..*" infra.Bridge
+RBCConfigurationPacket *-- "0..*" infra.LevelCrossing
+RBCConfigurationPacket *-- "0..*" infra.TrackCondition
+RBCConfigurationPacket *-- "0..*" infra.PlatformEdge
+RBCConfigurationPacket *-- "1..*" eng.FoulingPoint
+TrainProtectionArea *-- "0..*" DriveProtectionSectionGroup
+TrainProtectionArea *-- "0..*" AllocationSection
+TrainProtectionArea *-- "0..*" FieldObjectController
+TrainProtectionArea *-- "0..*" AreaOfControl
+TrainProtectionArea *-- "0..*" RBCConfigurationPacket
+TrainProtectionArea *-- "0..*" ETCSMarker
+TrainProtectionArea *-- "0..*" Controller
+TrainProtection *-- "0..*" TrainProtectionArea
 @enduml

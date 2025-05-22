@@ -44,6 +44,7 @@
     },
     "oi.Attitude": {
       "type": "object",
+      "description": "Defines the geometry values for the linear element coordinates",
       "properties": {
         "rollAngle": {
           "type": "integer",

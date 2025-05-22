@@ -4,26 +4,25 @@
   "definitions": {
     "eng.KilometricPost": {
       "type": "object",
-      "description": "An object that represent a physical sign that would be used to convey Kilometer information at specific location on    a LinearElement",
+      "description": "An object that represents Kilometer information at specific location ona LinearElement",
       "properties": {
         "pos": {
           "type": "integer",
           "minimum": 0,
           "description": "position on the associated LinearElement"
         },
+        "kilometer": {
+          "type": "integer",
+          "description": "Defines exact kilometer value"
+        },
         "kmPostName": {
           "type": "string",
-          "description": "Defines the name of Kilometric Post (optional)"
-        },
-        "kilometerNumber": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "Defines the kilometer number of the kilometric post"
+          "description": "Name of the Kilometric Post."
         }
       },
       "additionalProperties": false
     },
-    "eng.LinearElementKmSigns": {
+    "eng.LinearElementKm": {
       "type": "object",
       "properties": {
         "linearElement": {
@@ -36,7 +35,7 @@
             "type": "object",
             "$ref": "#/definitions/eng.KilometricPost"
           },
-          "description": "Defines the kilometre posts on the track. These are sorted by pos from 0 to length"
+          "description": "Defines the kilometre points on the track. These are sorted by pos from 0 to length"
         }
       },
       "required": [
@@ -47,21 +46,21 @@
   },
   "type": "object",
   "properties": {
-    "onTopoArea": {
+    "id": {
       "type": "string",
-      "description": "refrence to the corresponding Topo Area"
+      "description": "Identity of the object; used for referencing"
     },
-    "linearElementKmSigns": {
+    "linearElementKm": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "#/definitions/eng.LinearElementKmSigns"
+        "$ref": "#/definitions/eng.LinearElementKm"
       },
-      "description": "composes of linear element kilometer signs"
+      "description": "composes of linear element kilometer"
     }
   },
   "required": [
-    "onTopoArea"
+    "id"
   ],
   "additionalProperties": false
 }

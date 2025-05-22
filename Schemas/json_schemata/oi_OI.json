@@ -30,6 +30,83 @@
       ],
       "additionalProperties": false
     },
+    "oi.OISegment": {
+      "type": "object",
+      "description": "Defines the topology reference information for a segment profile.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identity of the object; used for referencing"
+        },
+        "linearElementSection": {
+          "type": "object",
+          "$ref": "#/definitions/infra.LinearElementSection",
+          "description": "composes of LinearElementSection. The direction is defined by startsAt -> endsAt"
+        },
+        "segmentProfile": {
+          "type": "object",
+          "$ref": "#/definitions/oi.SegmentProfile",
+          "description": "composes of segment profiles"
+        }
+      },
+      "required": [
+        "id",
+        "linearElementSection",
+        "segmentProfile"
+      ],
+      "additionalProperties": false
+    },
+    "oi.TimingPointMapping": {
+      "type": "object",
+      "description": "main Use-Case map from infra (timetable) to ato (journeyProfile)",
+      "properties": {
+        "infraTimingPoint": {
+          "type": "string",
+          "description": "refers to infra timing point"
+        },
+        "atoTimingPoint": {
+          "type": "string",
+          "description": "refers to ato timing point"
+        }
+      },
+      "required": [
+        "infraTimingPoint",
+        "atoTimingPoint"
+      ],
+      "additionalProperties": false
+    },
+    "oi.OIArea": {
+      "type": "object",
+      "description": "Defines OI Area with collection of OI segments with boarder of the infra.Area",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identity of the object; used for referencing"
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.OISegment"
+          },
+          "minItems": 1,
+          "description": "composes of segments"
+        },
+        "timingPointsMapping": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.TimingPointMapping"
+          },
+          "description": "composes of segments"
+        }
+      },
+      "required": [
+        "id",
+        "segments"
+      ],
+      "additionalProperties": false
+    },
     "oi.AtoTSContactInfo": {
       "type": "object",
       "description": "Defines the ATO-TS contact information for a segment profile",
@@ -637,9 +714,123 @@
           "description": "defines EoA offset for the segment profile"
         },
         "utcOffset": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "UTC time offset in minutes ; Resolution in15 min"
+          "type": "string",
+          "enum": [
+            "utc_Neg_1400",
+            "utc_Neg_1345",
+            "utc_Neg_1330",
+            "utc_Neg_1315",
+            "utc_Neg_1300",
+            "utc_Neg_1245",
+            "utc_Neg_1230",
+            "utc_Neg_1215",
+            "utc_Neg_1200",
+            "utc_Neg_1145",
+            "utc_Neg_1130",
+            "utc_Neg_1115",
+            "utc_Neg_1100",
+            "utc_Neg_1045",
+            "utc_Neg_1030",
+            "utc_Neg_1015",
+            "utc_Neg_1000",
+            "utc_Neg_0945",
+            "utc_Neg_0930",
+            "utc_Neg_0915",
+            "utc_Neg_0900",
+            "utc_Neg_0845",
+            "utc_Neg_0830",
+            "utc_Neg_0815",
+            "utc_Neg_0800",
+            "utc_Neg_0745",
+            "utc_Neg_0730",
+            "utc_Neg_0715",
+            "utc_Neg_0700",
+            "utc_Neg_0645",
+            "utc_Neg_0630",
+            "utc_Neg_0615",
+            "utc_Neg_0600",
+            "utc_Neg_0545",
+            "utc_Neg_0530",
+            "utc_Neg_0515",
+            "utc_Neg_0500",
+            "utc_Neg_0445",
+            "utc_Neg_0430",
+            "utc_Neg_0415",
+            "utc_Neg_0400",
+            "utc_Neg_0345",
+            "utc_Neg_0330",
+            "utc_Neg_0315",
+            "utc_Neg_0300",
+            "utc_Neg_0245",
+            "utc_Neg_0230",
+            "utc_Neg_0215",
+            "utc_Neg_0200",
+            "utc_Neg_0145",
+            "utc_Neg_0130",
+            "utc_Neg_0115",
+            "utc_Neg_0100",
+            "utc_Neg_0045",
+            "utc_Neg_0030",
+            "utc_Neg_0015",
+            "utc_Zero_0000",
+            "utc_Pos_0015",
+            "utc_Pos_0030",
+            "utc_Pos_0045",
+            "utc_Pos_0100",
+            "utc_Pos_0115",
+            "utc_Pos_0130",
+            "utc_Pos_0145",
+            "utc_Pos_0200",
+            "utc_Pos_0215",
+            "utc_Pos_0230",
+            "utc_Pos_0245",
+            "utc_Pos_0300",
+            "utc_Pos_0315",
+            "utc_Pos_0330",
+            "utc_Pos_0345",
+            "utc_Pos_0400",
+            "utc_Pos_0415",
+            "utc_Pos_0430",
+            "utc_Pos_0445",
+            "utc_Pos_0500",
+            "utc_Pos_0515",
+            "utc_Pos_0530",
+            "utc_Pos_0545",
+            "utc_Pos_0600",
+            "utc_Pos_0615",
+            "utc_Pos_0630",
+            "utc_Pos_0645",
+            "utc_Pos_0700",
+            "utc_Pos_0715",
+            "utc_Pos_0730",
+            "utc_Pos_0745",
+            "utc_Pos_0800",
+            "utc_Pos_0815",
+            "utc_Pos_0830",
+            "utc_Pos_0845",
+            "utc_Pos_0900",
+            "utc_Pos_0915",
+            "utc_Pos_0930",
+            "utc_Pos_0945",
+            "utc_Pos_1000",
+            "utc_Pos_1015",
+            "utc_Pos_1030",
+            "utc_Pos_1045",
+            "utc_Pos_1100",
+            "utc_Pos_1115",
+            "utc_Pos_1130",
+            "utc_Pos_1145",
+            "utc_Pos_1200",
+            "utc_Pos_1215",
+            "utc_Pos_1230",
+            "utc_Pos_1245",
+            "utc_Pos_1300",
+            "utc_Pos_1315",
+            "utc_Pos_1330",
+            "utc_Pos_1345",
+            "utc_Pos_1400"
+          ],
+          "description": "Defines UTC time offset"
         },
         "startAltitude": {
           "type": "integer",
@@ -896,6 +1087,7 @@
     },
     "oi.Attitude": {
       "type": "object",
+      "description": "Defines the geometry values for the linear element coordinates",
       "properties": {
         "rollAngle": {
           "type": "integer",
@@ -994,7 +1186,7 @@
           "minimum": 0,
           "description": "defines national identifier for the segment profile"
         },
-        "length": {
+        "segmentProfileLength": {
           "type": "integer",
           "minimum": 0,
           "description": "defines the length of the segment profile"
@@ -1031,85 +1223,359 @@
       ],
       "additionalProperties": false
     },
-    "oi.OISegment": {
+    "oi.SegmentProfilePacket": {
       "type": "object",
-      "description": "Defines the topology reference information for a segment profile.",
+      "description": "Defines the Segment Profile Packet",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identity of the object; used for referencing"
-        },
-        "linearElementSection": {
+        "trackTrainHeader": {
           "type": "object",
-          "$ref": "#/definitions/infra.LinearElementSection",
-          "description": "composes of LinearElementSection. The direction is defined by startsAt -> endsAt"
+          "$ref": "#/definitions/oi.TrackTrainHeader",
+          "description": "defines header"
         },
-        "segmentProfile": {
-          "type": "object",
-          "$ref": "#/definitions/oi.SegmentProfile",
-          "description": "composes of segment profiles"
-        }
-      },
-      "required": [
-        "id",
-        "linearElementSection",
-        "segmentProfile"
-      ],
-      "additionalProperties": false
-    },
-    "oi.TimingPointMapping": {
-      "type": "object",
-      "description": "main Use-Case map from infra (timetable) to ato (journeyProfile)",
-      "properties": {
-        "infraTimingPoint": {
-          "type": "string",
-          "description": "refers to infra timing point"
-        },
-        "atoTimingPoint": {
-          "type": "string",
-          "description": "refers to ato timing point"
-        }
-      },
-      "required": [
-        "infraTimingPoint",
-        "atoTimingPoint"
-      ],
-      "additionalProperties": false
-    },
-    "oi.OIArea": {
-      "type": "object",
-      "description": "Defines OI Area with collection of OI segments with boarder of the infra.Area",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identity of the object; used for referencing"
-        },
-        "segments": {
+        "segmentProfiles": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/oi.OISegment"
+            "$ref": "#/definitions/oi.SegmentProfile"
           },
           "minItems": 1,
-          "description": "composes of segments"
-        },
-        "timingPointsMapping": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/oi.TimingPointMapping"
-          },
-          "description": "composes of segments"
+          "description": "defines segment profile"
         }
       },
       "required": [
-        "id",
-        "segments"
+        "trackTrainHeader",
+        "segmentProfiles"
+      ],
+      "additionalProperties": false
+    },
+    "oi.MapAreaRequest": {
+      "type": "object",
+      "description": "Defines structure of Map Area Request",
+      "properties": {
+        "trackTrainHeader": {
+          "type": "object",
+          "$ref": "#/definitions/oi.TrackTrainHeader",
+          "description": "defines header"
+        },
+        "mapAreaRadius": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines the radius value covering the requested map area"
+        },
+        "relativePos": {
+          "type": "object",
+          "$ref": "#/definitions/oi.RelativePosition",
+          "description": "defines relative position of the train"
+        },
+        "absolutePosition": {
+          "type": "object",
+          "$ref": "#/definitions/oi.AbsolutePosition",
+          "description": "defines absolute position of the train"
+        }
+      },
+      "required": [
+        "trackTrainHeader",
+        "relativePos",
+        "absolutePosition"
+      ],
+      "additionalProperties": false
+    },
+    "oi.SegmentProfileList": {
+      "type": "object",
+      "description": "Defines List of Segment Profiles",
+      "properties": {
+        "nidSP": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines national identifier for the segment profile"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines the version of the segment profile"
+        },
+        "nidC": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines country identifier for the segment profile"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.MapArea": {
+      "type": "object",
+      "description": "Defines structure of Map Area",
+      "properties": {
+        "trackTrainHeader": {
+          "type": "object",
+          "$ref": "#/definitions/oi.TrackTrainHeader",
+          "description": "defines header"
+        },
+        "segmentProfileList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/oi.SegmentProfileList"
+          },
+          "minItems": 1,
+          "description": "defines list of Segment Profiles"
+        }
+      },
+      "required": [
+        "trackTrainHeader",
+        "segmentProfileList"
+      ],
+      "additionalProperties": false
+    },
+    "oi.SegmentProfileRequest": {
+      "type": "object",
+      "description": "Defines the Segment Profile Request",
+      "properties": {
+        "trackTrainHeader": {
+          "type": "object",
+          "$ref": "#/definitions/oi.TrackTrainHeader",
+          "description": "defines header"
+        },
+        "nidSP": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines national identifier for the segment profile"
+        },
+        "nidC": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines country identifier for the segment profile"
+        }
+      },
+      "required": [
+        "trackTrainHeader"
+      ],
+      "additionalProperties": false
+    },
+    "oi.RelativePosition": {
+      "type": "object",
+      "description": "Defines relative position description",
+      "properties": {
+        "nidSP": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines national identifier for the segment profile"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines the version of the segment profile"
+        },
+        "nidC": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines country identifier for the segment profile"
+        },
+        "pos": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "position on the associated on the segment profile"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.AbsolutePosition": {
+      "type": "object",
+      "description": "Defines absolute position description",
+      "properties": {
+        "x": {
+          "type": "number",
+          "description": "x/latitude coordinate value as per ETRS89"
+        },
+        "y": {
+          "type": "number",
+          "description": "y/longitude coordinate value as per ETRS89"
+        },
+        "z": {
+          "type": "number",
+          "description": "z/altitude coordinate value as per ETRS89"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.DigitalRegisterHandshakeRequest": {
+      "type": "object",
+      "description": "Defines structure of Handshake Request",
+      "properties": {
+        "trackTrainheader": {
+          "type": "object",
+          "$ref": "#/definitions/oi.TrackTrainHeader",
+          "description": "defines header"
+        },
+        "relativePos": {
+          "type": "object",
+          "$ref": "#/definitions/oi.RelativePosition",
+          "description": "defines relative position of the train"
+        },
+        "absolutePosition": {
+          "type": "object",
+          "$ref": "#/definitions/oi.AbsolutePosition",
+          "description": "defines absolute position of the train"
+        },
+        "handingOver": {
+          "type": "boolean",
+          "description": "True - Defines if the Handshake Request is due to a handing over DR-TA"
+        }
+      },
+      "required": [
+        "trackTrainheader",
+        "relativePos",
+        "absolutePosition"
+      ],
+      "additionalProperties": false
+    },
+    "oi.DigitalRegisterHandshakeAcknowledgement": {
+      "type": "object",
+      "description": "Defines structure of Handshake Acknowledgement",
+      "properties": {
+        "trackTrainHeader": {
+          "type": "object",
+          "$ref": "#/definitions/oi.TrackTrainHeader",
+          "description": "defines header"
+        },
+        "nidDRTA": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines national identifier for the Digital Register Transactor"
+        },
+        "nidC": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines country identifier for the Digital Register Transactor"
+        },
+        "timeOutResponse": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines the maximum time after which repository should consider that the request has not been answered "
+        },
+        "systemVersion": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines the system version to be used for DR Transactor"
+        }
+      },
+      "required": [
+        "trackTrainHeader"
+      ],
+      "additionalProperties": false
+    },
+    "oi.ContactInformation": {
+      "type": "object",
+      "description": "Defines structure of Digital Register Transactor Contact Information",
+      "properties": {
+        "nidDRTA": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines national identifier for the Digital Register Transactor"
+        },
+        "nidC": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "defines country identifier for the Digital Register Transactor"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oi.DigitalRegisterHandshakeRejection": {
+      "type": "object",
+      "description": "Defines structure of Handshake Rejection",
+      "properties": {
+        "trackTrainHeader": {
+          "type": "object",
+          "$ref": "#/definitions/oi.TrackTrainHeader",
+          "description": "defines header"
+        },
+        "rejectionReason": {
+          "type": "string",
+          "enum": [
+            "incompatibleSystemVersion",
+            "anotherDRTAInCharge",
+            "DRTAInChargeUnknown"
+          ],
+          "description": "defines the rejection reason"
+        },
+        "contactInformation": {
+          "type": "object",
+          "$ref": "#/definitions/oi.ContactInformation",
+          "description": "Defines the contact information of the DR Transactor ; To be defined when the reject reason states 'anotherDRTAInCharge'"
+        }
+      },
+      "required": [
+        "trackTrainHeader"
+      ],
+      "additionalProperties": false
+    },
+    "oi.DigitalRegisterSessionTerminationRequest": {
+      "type": "object",
+      "description": "Defines structure of session termination request",
+      "properties": {
+        "trackTrainHeader": {
+          "type": "object",
+          "$ref": "#/definitions/oi.TrackTrainHeader",
+          "description": "defines header"
+        }
+      },
+      "required": [
+        "trackTrainHeader"
+      ],
+      "additionalProperties": false
+    },
+    "oi.TrackTrainHeader": {
+      "type": "object",
+      "description": "Defines the Track-Train Header packet",
+      "properties": {
+        "packetId": {
+          "type": "string",
+          "description": "defines the packet identifier"
+        },
+        "leadingOnBoardUnitId": {
+          "type": "string",
+          "description": "see NID_ENGINE. To be usable with ETCS must contain a decimal number [0..16.777.215]"
+        },
+        "issuedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "issue-point in time with microsecond-precision builds a version-id for acknowledgements and validity-estimations, in UTC"
+        }
+      },
+      "required": [
+        "packetId",
+        "issuedAt"
+      ],
+      "additionalProperties": false
+    },
+    "oi.DigitalRegisterSessionTermination": {
+      "type": "object",
+      "description": "Defines structure of session termination",
+      "properties": {
+        "trackTrainHeader": {
+          "type": "object",
+          "$ref": "#/definitions/oi.TrackTrainHeader",
+          "description": "defines header"
+        },
+        "terminationReason": {
+          "type": "string",
+          "enum": [
+            "DRTATerminationRequest",
+            "lastSPLeft",
+            "DRTAHandoverCancelled"
+          ],
+          "description": "defines the termination reason"
+        }
+      },
+      "required": [
+        "trackTrainHeader"
       ],
       "additionalProperties": false
     }
   },
   "type": "object",
+  "description": "Defines the domain On-Board Infrastructure",
   "properties": {
     "oiAreas": {
       "type": "array",
@@ -1118,6 +1584,78 @@
         "$ref": "#/definitions/oi.OIArea"
       },
       "description": "composes of OI areas"
+    },
+    "segmentProfilePackets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/oi.SegmentProfilePacket"
+      },
+      "description": "composes of segment profile packets"
+    },
+    "mapAreaRequests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/oi.MapAreaRequest"
+      },
+      "description": "composes of map area requests"
+    },
+    "mapAreas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/oi.MapArea"
+      },
+      "description": "composes of map areas"
+    },
+    "segmentProfileRequests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/oi.SegmentProfileRequest"
+      },
+      "description": "composes of segment profile requests"
+    },
+    "digitalRegisterHandshakeRequests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/oi.DigitalRegisterHandshakeRequest"
+      },
+      "description": "composes of digital register handshake requests"
+    },
+    "digitalRegisterHandshakeAcknowledgements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/oi.DigitalRegisterHandshakeAcknowledgement"
+      },
+      "description": "composes of digital register handshake acknowledgement"
+    },
+    "digitalRegisterHandshakeRejections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/oi.DigitalRegisterHandshakeRejection"
+      },
+      "description": "composes of digital register handshake rejection"
+    },
+    "digitalRegisterSessionTerminationRequests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/oi.DigitalRegisterSessionTerminationRequest"
+      },
+      "description": "composes of digital register session termination requests"
+    },
+    "digitalRegisterSessionTerminations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "#/definitions/oi.DigitalRegisterSessionTermination"
+      },
+      "description": "composes of digital register session termination"
     }
   },
   "additionalProperties": false

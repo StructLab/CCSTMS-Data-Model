@@ -103,13 +103,14 @@ infrastructure.SampledGeometryArea -- infra.SampledLinearElementGeometry: sample
 infrastructure.SampledLinearElementGeometry -- infra.SlopeSamplePoint: slopes
 infrastructure.SampledLinearElementGeometry -- infra.CurveSamplePoint: curves
 infrastructure.SampledLinearElementGeometry -- infra.CantSamplePoint: cants
-infrastructure.Switch -- infra.NetRelation: pointLeft
-infrastructure.Switch -- infra.NetRelation: pointRight
+infrastructure.Switch -- infra.NetRelation: leftBranch
+infrastructure.Switch -- infra.NetRelation: rightBranch
 infrastructure.SlipCrossing -- infra.Switch: switches
 infrastructure.SlipCrossing -- infra.Crossing: crossing
 infrastructure.Derailer -- infra.NetPointReference: netPointReference
 infrastructure.Crossing -- infra.TopologicalCoordinate: topologicalCoordinates
 infrastructure.BaliseGroup -- infra.Balise: balises
+infrastructure.BaliseGroup -- infra.ETCSMarker: etcsMarker
 infrastructure.Balise -- infra.TopologicalCoordinate: topologicalCoordinate
 infrastructure.PropertiesArea -- infra.LinearElementSpeedProfile: linearElementSpeedProfiles
 infrastructure.PropertiesArea -- infra.LinearElementGauge: linearElementGauges

@@ -1,0 +1,17 @@
+{
+  "$id": "https://ERJU/opp_SpeedRestriction",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "properties": {
+    "maxSpeed": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "defines maximum speed"
+    },
+    "restrictionEndsAtTrainFront": {
+      "type": "boolean",
+      "description": "normally false, but for disturbed level crossings, the train can accelerate as soon as the train-front passed the level crossing. In this case should be true"
+    }
+  },
+  "additionalProperties": false
+}

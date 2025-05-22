@@ -27,23 +27,23 @@ era-q-suitability:Q_Suitability a skos:ConceptScheme ;
 #
 #################################################################
 
-era-q-suitability:LoadingGuage a skos:Concept ;
-    skos:hiddenLabel "CCSTMS_LoadingGuage_0" ;
+era-q-suitability:loadingGuage a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_loadingGuage_0" ;
     skos:inScheme era-q-suitability:Q_Suitability ;
-    skos:notation "LoadingGuage"^^xsd:string ;
+    skos:notation "loadingGuage"^^xsd:string ;
     skos:prefLabel "Loading Guage"@en ;
     skos:topConceptOf era-q-suitability:Q_Suitability .
 
-era-q-suitability:MaxAxleLoad a skos:Concept ;
-    skos:hiddenLabel "CCSTMS_MaxAxleLoad_1" ;
+era-q-suitability:maxAxleLoad a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_maxAxleLoad_1" ;
     skos:inScheme era-q-suitability:Q_Suitability ;
-    skos:notation "MaxAxleLoad"^^xsd:string ;
+    skos:notation "maxAxleLoad"^^xsd:string ;
     skos:prefLabel "MaxAxleLoad"@en ;
     skos:topConceptOf era-q-suitability:Q_Suitability .
 
-era-q-suitability:TractionSystem a skos:Concept ;
-    skos:hiddenLabel "CCSTMS_TractionSystem_2" ;
+era-q-suitability:tractionSystem a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_tractionSystem_2" ;
     skos:inScheme era-q-suitability:Q_Suitability ;
-    skos:notation "TractionSystem"^^xsd:string ;
+    skos:notation "tractionSystem"^^xsd:string ;
     skos:prefLabel "Traction System"@en ;
     skos:topConceptOf era-q-suitability:Q_Suitability .

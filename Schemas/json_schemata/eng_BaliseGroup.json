@@ -8,7 +8,7 @@
       "type": "string",
       "description": "Identity of the object; used for referencing"
     },
-    "m_version": {
+    "etcsMVersion": {
       "type": "string",
       "enum": [
         "v1_0",

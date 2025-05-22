@@ -29,26 +29,26 @@ era-mamode:MAMode a skos:ConceptScheme ;
 #
 #################################################################
 
-era-mamode:LimitedSupervision a skos:Concept ;
+era-mamode:limitedSupervision a skos:Concept ;
     rdfs:comment "Limited Supervision"@en ;
-    skos:hiddenLabel "CCSTMS_LimitedSupervision_2" ;
+    skos:hiddenLabel "CCSTMS_limitedSupervision_2" ;
     skos:inScheme era-mamode:MAMode ;
-    skos:notation "LimitedSupervision"^^xsd:string ;
+    skos:notation "limitedSupervision"^^xsd:string ;
     skos:prefLabel "Limited Supervision"@en ;
     skos:topConceptOf era-mamode:MAMode .
 
-era-mamode:OnSight a skos:Concept ;
+era-mamode:onSight a skos:Concept ;
     rdfs:comment "On Sight"@en ;
-    skos:hiddenLabel "CCSTMS_OnSight_0" ;
+    skos:hiddenLabel "CCSTMS_onSight_0" ;
     skos:inScheme era-mamode:MAMode ;
-    skos:notation "OnSight"^^xsd:string ;
-    skos:prefLabel "On Sight"@en ;
+    skos:notation "onSight"^^xsd:string ;
+    skos:prefLabel "On-Sight"@en ;
     skos:topConceptOf era-mamode:MAMode .
 
-era-mamode:Shunting a skos:Concept ;
+era-mamode:shunting a skos:Concept ;
     rdfs:comment "Shunting"@en ;
-    skos:hiddenLabel "CCSTMS_Shunting_1" ;
+    skos:hiddenLabel "CCSTMS_shunting_1" ;
     skos:inScheme era-mamode:MAMode ;
-    skos:notation "Shunting"^^xsd:string ;
+    skos:notation "shunting"^^xsd:string ;
     skos:prefLabel "Shunting"@en ;
     skos:topConceptOf era-mamode:MAMode .

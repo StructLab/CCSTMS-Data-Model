@@ -29,24 +29,24 @@ era-dpsdependency:DPSDependencyType a skos:ConceptScheme ;
 #################################################################
 
 
-era-dpsdependency:Equivalent a skos:Concept ;
-    skos:hiddenLabel "CCSTMS_Equivalent_1" ;
+era-dpsdependency:equivalent a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_equivalent_1" ;
     skos:inScheme era-dpsdependency:DPSDependencyType ;
-    skos:notation "Equivalent"^^xsd:string ;
+    skos:notation "equivalent"^^xsd:string ;
     skos:prefLabel "Equivalent"@en ;
     skos:topConceptOf era-dpsdependency:DPSDependencyType .
 
-era-dpsdependency:Exclusive a skos:Concept ;
-    skos:hiddenLabel "CCSTMS_Exclusive_0" ;
+era-dpsdependency:exclusive a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_exclusive_0" ;
     skos:inScheme era-dpsdependency:DPSDependencyType ;
-    skos:notation "Exclusive"^^xsd:string ;
+    skos:notation "exclusive"^^xsd:string ;
     skos:prefLabel "Exclusive"@en ;
     skos:topConceptOf era-dpsdependency:DPSDependencyType .
 
-era-dpsdependency:Specific a skos:Concept ;
-    skos:hiddenLabel "CCSTMS_Specific_2" ;
+era-dpsdependency:specific a skos:Concept ;
+    skos:hiddenLabel "CCSTMS_specific_2" ;
     skos:inScheme era-dpsdependency:DPSDependencyType ;
-    skos:notation "Specific"^^xsd:string ;
+    skos:notation "specific"^^xsd:string ;
     skos:prefLabel "Specific"@en ;
     skos:topConceptOf era-dpsdependency:DPSDependencyType .
 

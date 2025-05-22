@@ -4,6 +4,7 @@
   "definitions": {
     "oi.TrackTrainHeader": {
       "type": "object",
+      "description": "Defines the Track-Train Header packet",
       "properties": {
         "packetId": {
           "type": "string",
@@ -85,7 +86,7 @@
       "minimum": 0,
       "description": "defines the radius value covering the requested map area"
     },
-    "relativePosition": {
+    "relativePos": {
       "type": "object",
       "$ref": "#/definitions/oi.RelativePosition",
       "description": "defines relative position of the train"
@@ -98,7 +99,7 @@
   },
   "required": [
     "trackTrainHeader",
-    "relativePosition",
+    "relativePos",
     "absolutePosition"
   ],
   "additionalProperties": false

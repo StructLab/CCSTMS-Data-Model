@@ -53,19 +53,24 @@ class OnBoardExtension {
  <b>content: bytes</b>
 }
 
+class SpeedRestriction {
+ <b>maxSpeed: uint32</b>
+ <b>restrictionEndsAtTrainFront: boolean</b>
+}
+
 class MovementRestriction {
 }
 
 class SpecificMovementRestriction << union >> {
- maxSpeed: uint32
  adhesionCategory: AdhesionCategory
  maxCurrent: uint32
  atoInhibition: boolean
  dasInhibition: boolean
+ <s>maxSpeed: uint32</s>
 }
 
 class DPSGroupsList {
- dpsGroups: *tp.DriveProtectionSectionGroup[*]
+ dpsGroups: *tp.DriveProtectionSectionGroup[0..*]
 }
 
 class MovementEvent {
@@ -131,13 +136,12 @@ class RestrictionArea {
 }
 
 class TrainGroupSpec {
- axleLoadCategories: infra.LoadCapabilityLineCategories[*]
- cantDeficiencyCategories: infra.CantDeficiencies[*]
+ axleLoadCategories: infra.LoadCapabilityLineCategories[0..*]
+ cantDeficiencyCategories: infra.CantDeficiencies[0..*]
 }
 
 class RestrictedAspect << union >> {
- <b>temporarySpeedRestriction: uint32</b>
- <b>allowedDrivingModes: OnboardOperatingMode[*]</b>
+ <b>allowedDrivingModes: OnboardOperatingMode[0..*]</b>
  <b>nonStopping: boolean</b>
  <b>trackClosure: boolean</b>
  <b>operationalRadioHole: boolean</b>
@@ -316,14 +320,14 @@ class AdditionalTrainData {
 }
 
 class PhysicalConsist {
- evnIdentifier: uint64
+ evnIdentifier: string
  passengerLoad: uint32
  mass: uint32
  maxCurrentConsuption: uint32
 }
 
 class PhysicalVehicle {
- evnIdentifier: uint64
+ evnIdentifier: string
  mass: uint32
  vehicleOrientation: VehicleOrientation
  passengerLoad: uint32
@@ -369,23 +373,24 @@ class WarningAreaState {
  warningState: EventState
 }
 
-OperationalTrafficPlan *-- "*" OperationalPlanMovement
-OperationalTrafficPlan *-- "*" OperationalPlanRestriction
-OperationalTrafficPlan *-- "*" OperationalPlanWarningMeasure
+OperationalTrafficPlan *-- "0..*" OperationalPlanMovement
+OperationalTrafficPlan *-- "0..*" OperationalPlanRestriction
+OperationalTrafficPlan *-- "0..*" OperationalPlanWarningMeasure
 OperationalPlanMovement *-- "1..*" TrainUnit
 OperationalPlanMovement *-- "1..*" MovementEvent
-OperationalPlanMovement *-- "*" MovementRestriction
+OperationalPlanMovement *-- "0..*" MovementRestriction
 TrainUnit *-- "1" OperationalTrainCategory
 TrainUnit *-- "1..*" OperationalConsist
 OperationalConsist *-- "1" SupportedOnBoardEquipment
-SupportedOnBoardEquipment *-- "*" OnBoardExtension
+SupportedOnBoardEquipment *-- "0..*" OnBoardExtension
 MovementRestriction *-- "1" infra.NetLinearReference
 MovementRestriction *-- "1" SpecificMovementRestriction
+SpecificMovementRestriction *-- "1" SpeedRestriction
 SpecificMovementRestriction *-- "1" DPSGroupsList
 MovementEvent *-- "1" infra.NetPointReference
 MovementEvent *-- "0..1" StopDescription
 MovementEvent *-- "0..*" OperationalEventRef
-StopDescription *-- "*" TrainUnitActivity
+StopDescription *-- "0..*" TrainUnitActivity
 StopDescription *-- "0..1" DoorActivity
 StopDescription *-- "0..4" AdditionalEventTime
 OperationalPlanRestriction *-- "1..*" RestrictionEvent
@@ -393,6 +398,7 @@ RestrictionEvent *-- "1" RestrictionArea
 RestrictionEvent *-- "0..*" OperationalEventRef
 RestrictionArea *-- "1..*" infra.LinearElementSection
 RestrictionArea *-- "1..*" SpecificRestriction
+RestrictedAspect *-- "1" SpeedRestriction
 SpecificRestriction *-- "0..1" TrainGroupSpec
 SpecificRestriction *-- "1..*" RestrictedAspect
 OperationalPlanWarningMeasure *-- "1..*" WarningMeasureEvent
@@ -411,7 +417,7 @@ TrainUnitReportPE *-- "1" TrainObject
 TrainObject *-- "0..1" MovementPermission
 TrainObject *-- "1" infra.NetLinearReference
 MovementPermission *-- "1" infra.NetLinearReference
-MovementPermission *-- "*" infra.NetLinearReference
+MovementPermission *-- "0..*" infra.NetLinearReference
 MovementPermission *-- "1" infra.NetLinearReference
 MovementPermission *-- "1..*" MpDrivingMode
 MovementPermission *-- "1..*" MpSpeed
@@ -419,7 +425,7 @@ MpSpeed *-- "1" infra.NetLinearReference
 MpDrivingMode *-- "1" infra.NetLinearReference
 TrainUnitReportAtoStatus *-- "1" infra.NetPointReference
 TrainUnitReportAtoStatus *-- "0..1" EventHandling
-TrainUnitReportAtoStatus *-- "*" EventEstimation
+TrainUnitReportAtoStatus *-- "0..*" EventEstimation
 TrainUnitReportAtoCapabilities *-- "0..1" EtcsDataAto
 TrainUnitReportAtoCapabilities *-- "0..1" AdditionalTrainData
 TrainUnitReportAtoCapabilities *-- "0..255" PhysicalConsist
@@ -427,7 +433,7 @@ PhysicalConsist *-- "0..255" PhysicalVehicle
 PhysicalVehicle *-- "0..7" DoorData
 PhysicalVehicle *-- "0..7" DoorData
 TrackOccupationState *-- "1" infra.NetAreaReference
-DpsGroupState *-- "*" DPSState
+DpsGroupState *-- "0..*" DPSState
 RestrictionAreaState *-- "0..1" RestrictionArea
 WarningAreaState *-- "0..1" WarningArea
 @enduml

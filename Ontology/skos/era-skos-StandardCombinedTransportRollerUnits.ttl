@@ -1,0 +1,283 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix era: <http://data.europa.eu/949/> .
+@prefix era-skos: <http://data.europa.eu/949/concepts/> .
+
+@prefix era-sctru: <http://data.europa.eu/949/concepts/standard-combined-transport-roller-units/> .
+
+
+
+
+
+#################################################################
+#
+#    Concept Schemes
+#
+#################################################################
+
+
+
+
+era-sctru:StandardCombinedTransportRollerUnits a skos:ConceptScheme ; 
+    dct:issued "2025-02-20"^^xsd:date ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    rdfs:comment "Controlled SKOS-based vocabularies defined by the European Union Agency for Railways to describe concepts related to the European railway infrastructure and the vehicles authorized to operate over it."@en ;
+    rdfs:label "Standard combined transport profile numbers for roller units"@en ;
+    era:rinfIndex "1.1.1.1.3.9"; 
+    skos:prefLabel "Standard combined transport profile numbers for roller units"@en ;
+    dct:title "Concept scheme grouping standard combined transport profile numbers for roller units"@en .
+
+
+
+#################################################################
+#
+#    Concept instances
+#
+#################################################################
+
+
+########## Standard Combined Transport Roller Units ##########
+
+era-sctru:23  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 384" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 384"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:29  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 405" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 405"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:04  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 38" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 38"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:32  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 422" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 422"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:13  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 90" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 90"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:19  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 365" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 365"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:22  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 380" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 380"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:28  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 400" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 400"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:03  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 32" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 32"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:09  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 60" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 60"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:31  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 420" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 420"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:12  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 80" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 80"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:18  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 364" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 364"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:21  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 375" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 375"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:27  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 395" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 395"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:02  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 30" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 30"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:08  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 59" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 59"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:30  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 410" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 410"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:11  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 70" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 70"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:17  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 357" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 357"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:20  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 371" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 371"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:26  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 390" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 390"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:01  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 25" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 25"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:07  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 55" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 55"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:10  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 65" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 65"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:16  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 351" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 351"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:25  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 389" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 389"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:00  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 22" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 22"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:06  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 50" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 50"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:15  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 349" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 349"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:24  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 385" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 385"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:05  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 45" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 45"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+era-sctru:14  rdf:type     skos:Concept ;
+        skos:inScheme      era-sctru:StandardCombinedTransportRollerUnits ;
+        skos:notation      "B 341" ;
+        skos:note          "Value proposed by ERA FIRST unit"@en ;
+        skos:prefLabel     "B 341"@en ;
+        skos:topConceptOf  era-sctru:StandardCombinedTransportRollerUnits .
+
+
+
+
+
+
+
+
