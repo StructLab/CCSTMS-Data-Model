@@ -1,0 +1,3092 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<infrastructure xmlns="https://erju.org/infra" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <topoAreas>
+    <topoArea id="0ad3ab07-d2ed-4279-aaab-2b67c10c29fe" versionTimestamp="2025-04-15T21:59:04+02:00">
+      <linearElements>
+        <linearElement id="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" lengthOfNetLinearElement="12694943" name="LE_42W11" />
+        <linearElement id="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" lengthOfNetLinearElement="1024626" name="LE_42W11_42W10" />
+        <linearElement id="2CD5B052-0DA5-4483-AE57-2A1EE639E76F" lengthOfNetLinearElement="129047" name="LE_W7" />
+        <linearElement id="5735FE5B-E628-4641-B0B3-6FA58E127DC7" lengthOfNetLinearElement="57225" name="LE_W7_W6" />
+        <linearElement id="642FEAF3-01F6-44A9-89A3-093D0803514C" lengthOfNetLinearElement="208000" name="LE_W6" />
+        <linearElement id="7B854A8A-0C65-425F-AF3D-6D66659BCCD3" lengthOfNetLinearElement="47156" name="LE_42W9_42W10" />
+        <linearElement id="85699235-2FFB-487E-B52C-FADE58DA3020" lengthOfNetLinearElement="10265180" name="LE_42W1" />
+        <linearElement id="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" lengthOfNetLinearElement="191855" name="LE_42W9_W6" />
+        <linearElement id="8A10825F-A0B5-44A8-8E27-BA3139AC53BB" lengthOfNetLinearElement="135937" name="LE_42W9_W7" />
+        <linearElement id="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" lengthOfNetLinearElement="1411646" name="LE_42W11_42W1" />
+        <linearElement id="D3F6F81B-E94A-4707-AA72-4787A5436CA9" lengthOfNetLinearElement="389039" name="LE_42W1_42W10" />
+      </linearElements>
+      <netRelations>
+        <netRelation id="7B854A8A-0C65-425F-AF3D-6D66659BCCD3_8A10825F-A0B5-44A8-8E27-BA3139AC53BB" elementA="7B854A8A-0C65-425F-AF3D-6D66659BCCD3" elementB="8A10825F-A0B5-44A8-8E27-BA3139AC53BB" isOnOriginOfElementA="false" isOnOriginOfElementB="true" />
+        <netRelation id="7B854A8A-0C65-425F-AF3D-6D66659BCCD3_87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" elementA="7B854A8A-0C65-425F-AF3D-6D66659BCCD3" elementB="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" isOnOriginOfElementA="false" isOnOriginOfElementB="true" />
+        <netRelation id="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA_1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" elementA="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" elementB="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" isOnOriginOfElementA="false" isOnOriginOfElementB="true" />
+        <netRelation id="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA_B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" elementA="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" elementB="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" isOnOriginOfElementA="false" isOnOriginOfElementB="false" />
+        <netRelation id="85699235-2FFB-487E-B52C-FADE58DA3020_B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" elementA="85699235-2FFB-487E-B52C-FADE58DA3020" elementB="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" isOnOriginOfElementA="false" isOnOriginOfElementB="true" />
+        <netRelation id="85699235-2FFB-487E-B52C-FADE58DA3020_D3F6F81B-E94A-4707-AA72-4787A5436CA9" elementA="85699235-2FFB-487E-B52C-FADE58DA3020" elementB="D3F6F81B-E94A-4707-AA72-4787A5436CA9" isOnOriginOfElementA="false" isOnOriginOfElementB="true" />
+        <netRelation id="8A10825F-A0B5-44A8-8E27-BA3139AC53BB_2CD5B052-0DA5-4483-AE57-2A1EE639E76F" elementA="8A10825F-A0B5-44A8-8E27-BA3139AC53BB" elementB="2CD5B052-0DA5-4483-AE57-2A1EE639E76F" isOnOriginOfElementA="false" isOnOriginOfElementB="true" />
+        <netRelation id="8A10825F-A0B5-44A8-8E27-BA3139AC53BB_5735FE5B-E628-4641-B0B3-6FA58E127DC7" elementA="8A10825F-A0B5-44A8-8E27-BA3139AC53BB" elementB="5735FE5B-E628-4641-B0B3-6FA58E127DC7" isOnOriginOfElementA="false" isOnOriginOfElementB="true" />
+        <netRelation id="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A_7B854A8A-0C65-425F-AF3D-6D66659BCCD3" elementA="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" elementB="7B854A8A-0C65-425F-AF3D-6D66659BCCD3" isOnOriginOfElementA="false" isOnOriginOfElementB="true" />
+        <netRelation id="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A_D3F6F81B-E94A-4707-AA72-4787A5436CA9" elementA="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" elementB="D3F6F81B-E94A-4707-AA72-4787A5436CA9" isOnOriginOfElementA="false" isOnOriginOfElementB="false" />
+        <netRelation id="642FEAF3-01F6-44A9-89A3-093D0803514C_87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" elementA="642FEAF3-01F6-44A9-89A3-093D0803514C" elementB="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" isOnOriginOfElementA="true" isOnOriginOfElementB="false" />
+        <netRelation id="642FEAF3-01F6-44A9-89A3-093D0803514C_5735FE5B-E628-4641-B0B3-6FA58E127DC7" elementA="642FEAF3-01F6-44A9-89A3-093D0803514C" elementB="5735FE5B-E628-4641-B0B3-6FA58E127DC7" isOnOriginOfElementA="true" isOnOriginOfElementB="false" />
+      </netRelations>
+    </topoArea>
+  </topoAreas>
+  <geometryAreas>
+    <geometryArea id="0ad3ab07-d2ed-4279-aaab-2b67c10c29fe" versionTimestamp="2025-04-15T21:59:04+02:00" alignment3d="true">
+      <linearElementGeometries>
+        <linearElementGeometry id="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA">
+          <horizontalAlignments>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="0" azimuth="85.07334599999996" radius="-300.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="33197.15" azimuth="85.07334599999996" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="45272.75" azimuth="91.77338700000001" radius="260.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="75676.55" azimuth="91.77338700000001" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="81762.91" azimuth="85.43318400000004" radius="-190.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="102787.8" azimuth="85.43318400000004" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="114879.55" azimuth="81.73397700000004" radius="-250.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="131020.39000000001" azimuth="81.73397700000004" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="137730.98" azimuth="88.15756499999998" radius="200.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="160153.51" azimuth="94.49775" radius="190.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="181178.38" azimuth="94.49775" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="191213.04" azimuth="99.23314499999998" radius="538.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="235677.74" azimuth="99.23314499999998" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="444989.45" azimuth="100.24424099999999" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="459989.45" azimuth="104.82775199999998" radius="425.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="493988.31" azimuth="105.83885699999996" radius="425.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="508988.31" azimuth="105.83885699999996" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="562522.74" azimuth="123.17221799999999" radius="303.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="654187.5800000001" azimuth="123.17221799999999" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="755234.0" azimuth="125.18606700000004" radius="400.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="769293.36" azimuth="125.18606700000004" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="814417.21" azimuth="125.12877300000002" radius="-20000.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="834416.9299999999" azimuth="125.12877300000002" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="992515.72" azimuth="125.15736600000002" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="1360255.59" azimuth="120.60198000000003" radius="-1000.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="1439762.16" azimuth="120.60198000000003" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="1574132.9700000002" azimuth="121.86145799999997" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="1598132.9700000002" azimuth="143.669304" radius="545.9" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="1805912.7600000002" azimuth="145.92587400000002" radius="545.9" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="1848912.7600000002" azimuth="145.92587400000002" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="2305158.6900000004" azimuth="143.52752700000002" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="2329269.45" azimuth="123.16245300000003" radius="-288.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="2431635.5100000002" azimuth="120.77512199999995" radius="-288.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="2455635.5100000002" azimuth="120.77512199999995" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="3057617.6599999997" azimuth="120.80568600000004" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="3451689.1799999997" azimuth="117.08920800000004" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="3475689.1799999997" azimuth="108.59915699999999" radius="-185.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="3503102.3299999996" azimuth="101.08305899999999" radius="-215.73" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="3531401.9499999993" azimuth="92.45586600000001" radius="-185.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="3559257.9499999997" azimuth="88.73937899999999" radius="-185.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="3583257.9499999997" azimuth="88.73937899999999" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="3787146.21" azimuth="88.822449" radius="20000.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="3816143.4899999998" azimuth="88.822449" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="3923184.15" azimuth="86.83301699999998" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="3978184.15" azimuth="68.13775799999996" radius="-792.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="4236608.88" azimuth="66.14831700000002" radius="-792.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="4291608.88" azimuth="66.14831700000002" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="0" azimuth="0" radius="0" transitionType="blossCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="4643288.92" azimuth="48.95077500000002" radius="-279.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="0" azimuth="0" radius="0" transitionType="blossCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="4742031.8" azimuth="45.870363" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="0" azimuth="0" radius="0" transitionType="blossCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="5026494.8" azimuth="66.579183" radius="194.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="0" azimuth="0" radius="0" transitionType="blossCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="5123613.609999999" azimuth="74.55333600000006" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="5513219.399999999" azimuth="81.34613999999999" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="5559219.399999999" azimuth="107.03788199999997" radius="194.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="5646210.079999999" azimuth="115.30737900000003" radius="194.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="5702210.079999999" azimuth="107.03788199999997" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="5758210.079999999" azimuth="86.39273700000001" radius="-194.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="5828113.289999999" azimuth="77.00471999999996" radius="-194.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="5873113.289999999" azimuth="70.39048500000001" radius="-470.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="5927370.209999999" azimuth="68.561892" radius="-470.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="5957370.209999999" azimuth="68.561892" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="6028830.449999999" azimuth="75.05935199999999" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="6072830.449999999" azimuth="81.36526500000002" radius="194.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="6094181.879999999" azimuth="87.86272500000001" radius="194.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="6138181.879999999" azimuth="87.86272500000001" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="6263754.069999999" azimuth="90.10962" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="6287754.069999999" azimuth="94.36263300000002" radius="306.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="6310468.189999999" azimuth="96.60952800000001" radius="306.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="6334468.189999999" azimuth="96.60952800000001" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="6680737.869999999" azimuth="96.19587900000005" radius="-4000.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="6709615.789999999" azimuth="96.19587900000005" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="6826637.739999999" azimuth="102.34727100000003" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="6882637.739999999" azimuth="117.14349600000003" radius="260.8" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="6949987.469999999" azimuth="124.43672700000002" radius="260.8" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="6996987.469999999" azimuth="127.73936700000002" radius="632.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="7033417.18" azimuth="134.93241" radius="632.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="7073417.18" azimuth="149.93849699999998" radius="213.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="7129203.089999999" azimuth="158.41181699999993" radius="213.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="7192203.089999999" azimuth="153.732663" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="7241203.089999999" azimuth="149.25802499999998" radius="-300.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="7264632.26" azimuth="144.68120999999996" radius="-300.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="7294632.26" azimuth="140.51054700000003" radius="-502.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="7331173.749999999" azimuth="132.06742200000002" radius="-502.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="7373173.749999999" azimuth="99.53455500000001" radius="-199.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="7486167.059999999" azimuth="68.684436" radius="-203.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="7595469.609999999" azimuth="53.44990200000001" radius="-196.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="7647584.6" azimuth="21.682484999999986" radius="-203.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="7760137.149999999" azimuth="14.254064999999969" radius="-203.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="7788137.149999999" azimuth="315.39856499999996" radius="-230.7" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="8025117.31" azimuth="307.930842" radius="-230.7" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="8053117.26" azimuth="275.199831" radius="-201.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="8167941.300000001" azimuth="266.220639" radius="-201.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="8230941.300000001" azimuth="275.15538000000004" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="8293941.300000001" azimuth="291.395223" radius="202.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="8351195.92" azimuth="312.43208400000003" radius="196.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="8423159.77" azimuth="320.587965" radius="196.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="8478959.77" azimuth="320.587965" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="8785889.540000001" azimuth="327.98620800000003" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="8835989.540000001" azimuth="348.656661" radius="194.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="8905978.420000002" azimuth="356.040135" radius="194.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="8955978.420000002" azimuth="356.040135" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="8999412.600000001" azimuth="348.87816000000004" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="9049412.600000001" azimuth="310.162293" radius="-200.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="9184556.46" azimuth="303.000327" radius="-200.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="9234556.46" azimuth="303.000327" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="9310083.750000002" azimuth="310.234644" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="9360083.750000002" azimuth="340.750566" radius="198.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="9465539.230000002" azimuth="348.708312" radius="198.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="9520539.230000002" azimuth="348.70832099999996" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="9821178.890000002" azimuth="359.073387" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="9893178.890000002" azimuth="62.20725299999998" radius="199.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="10112455.790000003" azimuth="73.00420199999996" radius="199.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="10187455.790000003" azimuth="73.00420199999996" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="10286628.360000005" azimuth="64.53683999999998" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="10346628.360000005" azimuth="45.04645800000003" radius="-203.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="10415683.160000004" azimuth="36.57909599999999" radius="-203.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="10475683.160000004" azimuth="36.57909599999999" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="10542335.570000004" azimuth="41.67419400000006" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="10595335.570000004" azimuth="109.53404100000006" radius="298.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="10948280.140000004" azimuth="113.76393299999995" radius="298.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="10992280.140000004" azimuth="113.76393299999995" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="11093876.770000005" azimuth="109.63862999999998" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="11129876.770000005" azimuth="78.42960899999997" radius="-250.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="11266051.820000004" azimuth="74.30431500000003" radius="-250.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="11302051.820000004" azimuth="74.30431500000003" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="11940463.740000004" azimuth="77.26912199999998" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="11981963.740000004" azimuth="119.20131000000003" radius="401.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="12275437.510000005" azimuth="122.16611699999999" radius="401.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="12316937.510000005" azimuth="122.16611699999999" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="0" azimuth="0" radius="0" transitionType="blossCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="12509046.610000005" azimuth="92.59538400000002" radius="-304.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="0" azimuth="0" radius="0" transitionType="blossCurve" />
+            </horizontalAlignment>
+          </horizontalAlignments>
+          <cantPoints>
+            <cantPoint elementGeometryPos="0.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="1574133.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="1598133.0" appliedCant="30.0" />
+            <cantPoint elementGeometryPos="1805913.0" appliedCant="30.0" />
+            <cantPoint elementGeometryPos="1848913.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="2305159.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="2329269.0" appliedCant="50.0" />
+            <cantPoint elementGeometryPos="2431636.0" appliedCant="50.0" />
+            <cantPoint elementGeometryPos="2455636.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="3451689.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="3475689.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="3559258.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="3583258.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="3923184.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="3978184.0" appliedCant="30.0" />
+            <cantPoint elementGeometryPos="4236609.0" appliedCant="30.0" />
+            <cantPoint elementGeometryPos="4291609.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="4613289.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="4643289.0" appliedCant="50.0" />
+            <cantPoint elementGeometryPos="4712032.0" appliedCant="50.0" />
+            <cantPoint elementGeometryPos="4742032.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="4972495.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="5026495.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="5069614.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="5123614.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="5513219.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="5559219.0" appliedCant="95.0" />
+            <cantPoint elementGeometryPos="5646210.0" appliedCant="95.0" />
+            <cantPoint elementGeometryPos="5702210.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="5758210.0" appliedCant="95.0" />
+            <cantPoint elementGeometryPos="5828113.0" appliedCant="95.0" />
+            <cantPoint elementGeometryPos="5873113.0" appliedCant="60.0" />
+            <cantPoint elementGeometryPos="5927370.0" appliedCant="60.0" />
+            <cantPoint elementGeometryPos="5957370.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="6028830.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="6072830.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="6094182.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="6138182.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="6263754.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="6287754.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="6310468.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="6334468.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="6826638.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="6882638.0" appliedCant="70.0" />
+            <cantPoint elementGeometryPos="6949987.0" appliedCant="70.0" />
+            <cantPoint elementGeometryPos="6996987.0" appliedCant="35.0" />
+            <cantPoint elementGeometryPos="7033417.0" appliedCant="35.0" />
+            <cantPoint elementGeometryPos="7073417.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="7129203.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="7192203.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="7241203.0" appliedCant="70.0" />
+            <cantPoint elementGeometryPos="7264632.0" appliedCant="70.0" />
+            <cantPoint elementGeometryPos="7294632.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="7331174.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="7373174.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="7760137.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="7788137.0" appliedCant="70.0" />
+            <cantPoint elementGeometryPos="8025117.0" appliedCant="70.0" />
+            <cantPoint elementGeometryPos="8053117.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="8167941.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="8230941.000000001" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="8293941.000000001" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="8351196.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="8423160.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="8478960.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="8785890.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="8835990.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="8905978.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="8955978.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="8999413.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="9049413.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="9184556.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="9234556.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="9310084.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="9360084.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="9465539.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="9520539.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="9821179.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="9893179.0" appliedCant="95.0" />
+            <cantPoint elementGeometryPos="10112456.0" appliedCant="95.0" />
+            <cantPoint elementGeometryPos="10187456.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="10286628.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="10346628.0" appliedCant="80.0" />
+            <cantPoint elementGeometryPos="10415683.0" appliedCant="80.0" />
+            <cantPoint elementGeometryPos="10475683.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="10542336.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="10595336.0" appliedCant="50.0" />
+            <cantPoint elementGeometryPos="10948280.0" appliedCant="50.0" />
+            <cantPoint elementGeometryPos="10992280.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="11093877.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="11129877.0" appliedCant="60.0" />
+            <cantPoint elementGeometryPos="11266052.0" appliedCant="60.0" />
+            <cantPoint elementGeometryPos="11302052.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="11940464.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="11981964.0" appliedCant="60.0" />
+            <cantPoint elementGeometryPos="12275438.0" appliedCant="60.0" />
+            <cantPoint elementGeometryPos="12316938.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="12451047.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="12509047.0" appliedCant="85.0" />
+            <cantPoint elementGeometryPos="12636943.0" appliedCant="85.0" />
+            <cantPoint elementGeometryPos="12694943.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="12694943.0" appliedCant="0.0" />
+          </cantPoints>
+        </linearElementGeometry>
+        <linearElementGeometry id="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A">
+          <horizontalAlignments>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="0" azimuth="87.12966599999999" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="78521.95" azimuth="92.196639" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="130521.95" azimuth="114.882318" radius="294.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="246928.25" azimuth="119.94929100000002" radius="294.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="298928.25" azimuth="119.94929100000002" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="869809.98" azimuth="114.710823" radius="-0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="908209.98" azimuth="90.64851300000004" radius="-210.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="996402.95" azimuth="86.78414700000002" radius="-210.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="1016902.95" azimuth="85.97961900000001" radius="-550.0" />
+            </horizontalAlignment>
+          </horizontalAlignments>
+          <cantPoints>
+            <cantPoint elementGeometryPos="78522.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="130521.99999999999" appliedCant="70.0" />
+            <cantPoint elementGeometryPos="246928.0" appliedCant="70.0" />
+            <cantPoint elementGeometryPos="298928.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="869810.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="908210.0" appliedCant="80.0" />
+            <cantPoint elementGeometryPos="996403.0" appliedCant="80.0" />
+            <cantPoint elementGeometryPos="1016903.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="1024626.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="1024626.0" appliedCant="40.0" />
+          </cantPoints>
+        </linearElementGeometry>
+        <linearElementGeometry id="2CD5B052-0DA5-4483-AE57-2A1EE639E76F">
+          <horizontalAlignments>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="0" azimuth="60.959843999999975" />
+            </horizontalAlignment>
+          </horizontalAlignments>
+          <cantPoints>
+            <cantPoint elementGeometryPos="129047.0" appliedCant="0.0" />
+          </cantPoints>
+        </linearElementGeometry>
+        <linearElementGeometry id="5735FE5B-E628-4641-B0B3-6FA58E127DC7">
+          <horizontalAlignments>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="0" azimuth="54.61964999999998" radius="-190.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="21024.87" azimuth="54.61964999999998" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="36200.06" azimuth="60.959843999999975" radius="190.0" />
+            </horizontalAlignment>
+          </horizontalAlignments>
+          <cantPoints>
+            <cantPoint elementGeometryPos="21025.0" appliedCant="0.0" />
+          </cantPoints>
+        </linearElementGeometry>
+        <linearElementGeometry id="642FEAF3-01F6-44A9-89A3-093D0803514C">
+          <horizontalAlignments>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="0" azimuth="60.959843999999975" />
+            </horizontalAlignment>
+          </horizontalAlignments>
+          <cantPoints>
+            <cantPoint elementGeometryPos="0.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="208000.0" appliedCant="0.0" />
+          </cantPoints>
+        </linearElementGeometry>
+        <linearElementGeometry id="7B854A8A-0C65-425F-AF3D-6D66659BCCD3">
+          <horizontalAlignments>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="0" azimuth="85.97961900000001" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="37131.079999999994" azimuth="82.95664500000004" radius="-190.0" />
+            </horizontalAlignment>
+          </horizontalAlignments>
+          <cantPoints>
+            <cantPoint elementGeometryPos="33231.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="37131.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="47156.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="47156.0" appliedCant="23.0" />
+          </cantPoints>
+        </linearElementGeometry>
+        <linearElementGeometry id="85699235-2FFB-487E-B52C-FADE58DA3020">
+          <horizontalAlignments>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="0" azimuth="207.86275799999999" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="35217.5" azimuth="207.86275799999999" radius="-500.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="76788.24" azimuth="203.09910299999999" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="174533.56000000003" azimuth="203.11288199999998" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="257528.72999999998" azimuth="203.11288199999998" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="289528.73" azimuth="201.141414" radius="-465.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="482024.19" azimuth="177.42275099999998" radius="-465.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="514024.19" azimuth="175.08459600000003" radius="-2500.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="575329.79" azimuth="173.67957" radius="-2500.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="605329.79" azimuth="170.37222300000002" radius="-290.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="635777.01" azimuth="164.356713" radius="-290.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="685777.01" azimuth="159.41742299999999" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="792963.61" azimuth="159.41742299999999" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="837963.61" azimuth="165.95472600000002" radius="197.2" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="945559.1000000001" azimuth="197.216217" radius="197.2" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="990559.1000000001" azimuth="203.75351999999998" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="1113947.81" azimuth="203.75351999999998" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="1143947.81" azimuth="206.61830999999998" radius="300.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="1179048.3900000001" azimuth="213.322023" radius="300.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="1221048.3900000001" azimuth="217.332729" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="1768862.49" azimuth="217.332729" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="1824862.49" azimuth="209.24255699999998" radius="-198.3" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="2031778.99" azimuth="149.457168" radius="-198.3" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="2085778.9899999998" azimuth="141.65592299999997" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="2139778.9899999998" azimuth="149.39085599999999" radius="200.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="2324851.3999999994" azimuth="202.41019799999998" radius="195.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="2384173.09" azimuth="219.840363" radius="295.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="2463072.82" azimuth="235.16450099999997" radius="220.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="2511684.34" azimuth="247.824657" radius="220.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="2565684.34" azimuth="254.856411" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="2802496.6299999994" azimuth="254.856411" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="2860496.6299999994" azimuth="262.121733" radius="228.7" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="2969918.34" azimuth="289.534941" radius="228.7" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="3024918.34" azimuth="296.424468" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="3129560.7899999996" azimuth="296.424468" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="3179560.7899999996" azimuth="290.671884" radius="-249.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="3382340.7899999996" azimuth="244.011483" radius="-245.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="3472497.0" azimuth="222.92752499999997" radius="-245.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="3522497.0" azimuth="217.081017" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="3628512.21" azimuth="217.081017" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="3673512.21" azimuth="223.552683" radius="199.2" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="4141108.65" azimuth="358.047171" radius="199.2" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="4191108.65" azimuth="5.237909999999999" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="4461038.41" azimuth="5.237909999999999" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="4511038.41" azimuth="0.46325700000000003" radius="-300.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="4690806.91" azimuth="326.130003" radius="-300.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="4740806.91" azimuth="321.35535899999996" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="4785440.17" azimuth="321.35535899999996" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="4820440.17" azimuth="322.806411" radius="691.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="4969085.46" azimuth="335.131659" radius="691.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="5004085.46" azimuth="336.58271099999996" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="5100357.5200000005" azimuth="336.58271099999996" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="5150357.5200000005" azimuth="342.477333" radius="243.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="5208465.260000001" azimuth="356.17827600000004" radius="243.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="5267465.260000001" azimuth="3.1339349999999997" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="5627561.700000001" azimuth="3.1339349999999997" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="5672561.700000001" azimuth="357.300657" radius="-221.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="5715986.130000001" azimuth="346.042575" radius="-253.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="5802305.800000001" azimuth="326.494143" radius="-253.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="5847305.800000001" azimuth="321.398667" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="6476292.110000001" azimuth="321.398667" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="6506292.110000001" azimuth="319.82172299999996" radius="-545.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="6538650.0600000005" azimuth="316.41992999999997" radius="-1090.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="6575639.48" azimuth="314.475588" radius="-482.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="6604955.850000001" azimuth="310.990725" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="6638186.93" azimuth="310.990725" radius="-260.3594" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="6677440.67" azimuth="302.352381" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="7013531.05" azimuth="302.352381" radius="-323.626" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="7031561.319999999" azimuth="299.160243" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="7037653.069999999" azimuth="299.160243" radius="-190.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="7058677.9399999995" azimuth="292.820049" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="7082262.27" azimuth="292.820049" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="7091908.869999999" azimuth="292.434363" radius="-716.52188" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="7118262.27" azimuth="287.44857" radius="-192.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="7179111.9799999995" azimuth="269.290071" radius="-256.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="7196138.669999999" azimuth="265.47929999999997" radius="-256.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="7236138.669999999" azimuth="261.003069" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="7602533.93" azimuth="261.003069" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="7642533.93" azimuth="257.24597400000005" radius="-305.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="7793446.51" azimuth="228.896289" radius="-305.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="7838446.51" azimuth="224.66954700000002" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="7925694.539999999" azimuth="224.66954700000002" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="7965694.539999999" azimuth="227.53433700000002" radius="400.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="8128143.739999999" azimuth="250.80346799999998" radius="405.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="8170599.999999999" azimuth="256.809807" radius="395.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="8291303.339999999" azimuth="274.31813700000004" radius="395.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="8331303.339999999" azimuth="277.219188" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="8884714.1" azimuth="277.219188" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="8917714.1" azimuth="275.608665" radius="-587.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="9044259.459999999" azimuth="263.256849" radius="-587.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="9089259.459999999" azimuth="261.06066899999996" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="9236341.27" azimuth="261.06066899999996" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="9276341.27" azimuth="259.134759" radius="-595.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="9445251.709999999" azimuth="242.869464" radius="-595.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="9495251.709999999" azimuth="240.46207199999998" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="9578676.859999998" azimuth="240.46207199999998" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="9628676.859999998" azimuth="237.53881800000002" radius="-490.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="9866161.419999998" azimuth="209.769714" radius="-490.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="9929161.419999998" azimuth="206.08641" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="10072043.709999997" azimuth="206.08641" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="10105643.709999999" azimuth="210.38359499999999" radius="224.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="10121648.579999998" azimuth="214.477398" radius="224.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="10139648.579999998" azimuth="217.978668" radius="430.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="10156602.11" azimuth="220.23765899999998" radius="430.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="10174602.11" azimuth="223.857828" radius="213.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="10217179.74" azimuth="235.310958" radius="213.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="10259179.74" azimuth="240.959844" />
+            </horizontalAlignment>
+          </horizontalAlignments>
+          <cantPoints>
+            <cantPoint elementGeometryPos="0.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="257529.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="289529.0" appliedCant="50.0" />
+            <cantPoint elementGeometryPos="482024.0" appliedCant="50.0" />
+            <cantPoint elementGeometryPos="514024.0" appliedCant="20.0" />
+            <cantPoint elementGeometryPos="575330.0" appliedCant="20.0" />
+            <cantPoint elementGeometryPos="605330.0" appliedCant="70.0" />
+            <cantPoint elementGeometryPos="635777.0" appliedCant="70.0" />
+            <cantPoint elementGeometryPos="685777.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="792964.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="837964.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="945559.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="990559.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="1113948.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="1143948.0" appliedCant="50.0" />
+            <cantPoint elementGeometryPos="1179048.0" appliedCant="50.0" />
+            <cantPoint elementGeometryPos="1221048.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="1768862.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="1824862.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="2031779.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="2085779.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="2139779.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="2511684.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="2565684.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="2802497.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="2860497.0" appliedCant="65.0" />
+            <cantPoint elementGeometryPos="2969918.0" appliedCant="65.0" />
+            <cantPoint elementGeometryPos="3024918.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="3129561.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="3179561.0" appliedCant="65.0" />
+            <cantPoint elementGeometryPos="3472497.0" appliedCant="65.0" />
+            <cantPoint elementGeometryPos="3522497.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="3628512.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="3673512.0" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="4141109.0000000005" appliedCant="90.0" />
+            <cantPoint elementGeometryPos="4191109.0000000005" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="4461038.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="4511038.0" appliedCant="75.0" />
+            <cantPoint elementGeometryPos="4690807.0" appliedCant="75.0" />
+            <cantPoint elementGeometryPos="4740807.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="4785440.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="4820440.0" appliedCant="30.0" />
+            <cantPoint elementGeometryPos="4969085.0" appliedCant="30.0" />
+            <cantPoint elementGeometryPos="5004085.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="5100358.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="5150358.0" appliedCant="80.0" />
+            <cantPoint elementGeometryPos="5208465.0" appliedCant="80.0" />
+            <cantPoint elementGeometryPos="5267465.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="5627562.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="5672562.0" appliedCant="80.0" />
+            <cantPoint elementGeometryPos="5802306.0" appliedCant="80.0" />
+            <cantPoint elementGeometryPos="5847306.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="7082262.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="7091909.0" appliedCant="16.0" />
+            <cantPoint elementGeometryPos="7118262.0" appliedCant="60.0" />
+            <cantPoint elementGeometryPos="7196139.0" appliedCant="60.0" />
+            <cantPoint elementGeometryPos="7236139.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="7602534.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="7642534.0" appliedCant="65.0" />
+            <cantPoint elementGeometryPos="7793447.0" appliedCant="65.0" />
+            <cantPoint elementGeometryPos="7838447.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="7925695.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="7965695.0" appliedCant="50.0" />
+            <cantPoint elementGeometryPos="8291303.0" appliedCant="50.0" />
+            <cantPoint elementGeometryPos="8331303.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="8884714.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="8917714.0" appliedCant="65.0" />
+            <cantPoint elementGeometryPos="9044259.0" appliedCant="65.0" />
+            <cantPoint elementGeometryPos="9089259.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="9236341.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="9276341.0" appliedCant="60.0" />
+            <cantPoint elementGeometryPos="9445252.0" appliedCant="60.0" />
+            <cantPoint elementGeometryPos="9495252.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="9578677.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="9628677.0" appliedCant="70.0" />
+            <cantPoint elementGeometryPos="9866161.0" appliedCant="70.0" />
+            <cantPoint elementGeometryPos="9929161.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="10072044.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="10105644.0" appliedCant="70.0" />
+            <cantPoint elementGeometryPos="10121649.0" appliedCant="70.0" />
+            <cantPoint elementGeometryPos="10139649.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="10156602.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="10174602.0" appliedCant="70.0" />
+            <cantPoint elementGeometryPos="10217180.0" appliedCant="70.0" />
+            <cantPoint elementGeometryPos="10259180.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="10265180.0" appliedCant="0.0" />
+          </cantPoints>
+        </linearElementGeometry>
+        <linearElementGeometry id="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4">
+          <horizontalAlignments>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="0" azimuth="76.61645100000004" radius="-190.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="21024.87" azimuth="76.61645100000004" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="43867.94" azimuth="60.959843999999975" radius="-190.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="95787.22" azimuth="60.95985299999995" />
+            </horizontalAlignment>
+          </horizontalAlignments>
+          <cantPoints>
+            <cantPoint elementGeometryPos="13975.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="21025.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="95787.0" appliedCant="0.0" />
+          </cantPoints>
+        </linearElementGeometry>
+        <linearElementGeometry id="8A10825F-A0B5-44A8-8E27-BA3139AC53BB">
+          <horizontalAlignments>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="0" azimuth="82.95664500000004" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="27138.05" azimuth="60.959843999999975" radius="-190.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="100082.2" azimuth="60.959843999999975" />
+            </horizontalAlignment>
+          </horizontalAlignments>
+          <cantPoints>
+            <cantPoint elementGeometryPos="13975.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="100082.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="135937.0" appliedCant="0.0" />
+          </cantPoints>
+        </linearElementGeometry>
+        <linearElementGeometry id="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F">
+          <horizontalAlignments>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="0" azimuth="240.959844" radius="500.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="41570.61" azimuth="245.723481" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="54163.21" azimuth="245.723481" radius="-500.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="95733.82" azimuth="240.959844" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="194992.34000000003" azimuth="240.959844" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="272489.51" azimuth="247.385691" radius="345.5" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="314833.92" azimuth="254.40785100000002" radius="387.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="385481.22000000003" azimuth="264.867264" radius="387.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="421481.22000000003" azimuth="272.443248" radius="210.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="503096.14" azimuth="294.710823" radius="210.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="541496.14" azimuth="299.949291" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="1110205.98" azimuth="299.949291" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="1162405.98" azimuth="294.931107" radius="-298.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="1272555.15" azimuth="273.752973" radius="-298.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="1302555.15" azimuth="269.09693100000004" radius="-485.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="1346291.8199999998" azimuth="263.930067" radius="-485.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="1361291.8199999998" azimuth="263.04405299999996" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="1375992.2399999998" azimuth="263.04405299999996" radius="500.0" />
+            </horizontalAlignment>
+          </horizontalAlignments>
+          <cantPoints>
+            <cantPoint elementGeometryPos="54163.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="194992.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="272490.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="314834.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="385481.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="421481.0" appliedCant="80.0" />
+            <cantPoint elementGeometryPos="503096.0" appliedCant="80.0" />
+            <cantPoint elementGeometryPos="541496.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="1110206.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="1162406.0" appliedCant="60.0" />
+            <cantPoint elementGeometryPos="1272555.0" appliedCant="60.0" />
+            <cantPoint elementGeometryPos="1302555.0" appliedCant="25.0" />
+            <cantPoint elementGeometryPos="1346292.0" appliedCant="25.0" />
+            <cantPoint elementGeometryPos="1361292.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="1375992.0" appliedCant="0.0" />
+          </cantPoints>
+        </linearElementGeometry>
+        <linearElementGeometry id="D3F6F81B-E94A-4707-AA72-4787A5436CA9">
+          <horizontalAlignments>
+            <horizontalAlignment>
+              <horizontalSegmentLine elementGeometryPos="0" azimuth="240.959844" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="194601.58000000002" azimuth="240.959844" radius="0.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="272601.58" azimuth="247.34422799999996" radius="350.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentTransition elementGeometryPos="322157.99000000005" azimuth="255.45672" radius="350.0" transitionType="clothoidCurve" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="339557.99" azimuth="257.711724" radius="600.0" />
+            </horizontalAlignment>
+            <horizontalAlignment>
+              <horizontalSegmentArc elementGeometryPos="351939.23" azimuth="258.894045" radius="300.0" />
+            </horizontalAlignment>
+          </horizontalAlignments>
+          <cantPoints>
+            <cantPoint elementGeometryPos="194602.0" appliedCant="0.0" />
+            <cantPoint elementGeometryPos="272602.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="322158.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="339558.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="351939.0" appliedCant="40.0" />
+            <cantPoint elementGeometryPos="355842.0" appliedCant="40.0" />
+          </cantPoints>
+        </linearElementGeometry>
+      </linearElementGeometries>
+    </geometryArea>
+  </geometryAreas>
+  <sampledGeometryAreas>
+    <sampledGeometryArea id="0ad3ab07-d2ed-4279-aaab-2b67c10c29fe" versionTimestamp="2025-04-15T21:59:04+02:00">
+      <sampledLinearElementGeometries>
+        <sampledLinearElementGeometry id="85699235-2FFB-487E-B52C-FADE58DA3020">
+          <slopes>
+            <slope pos="0" samplePointSlope="240" />
+            <slope pos="104742" samplePointSlope="258" />
+            <slope pos="128517" samplePointSlope="277" />
+            <slope pos="233369" samplePointSlope="262" />
+            <slope pos="259889" samplePointSlope="248" />
+            <slope pos="461130" samplePointSlope="244" />
+            <slope pos="708930" samplePointSlope="249" />
+            <slope pos="934630" samplePointSlope="250" />
+            <slope pos="1032130" samplePointSlope="239" />
+            <slope pos="1053130" samplePointSlope="229" />
+            <slope pos="1073952" samplePointSlope="244" />
+            <slope pos="1102308" samplePointSlope="260" />
+            <slope pos="1165030" samplePointSlope="262" />
+            <slope pos="1239150" samplePointSlope="0" />
+            <slope pos="1246630" samplePointSlope="318" />
+            <slope pos="1281648" samplePointSlope="247" />
+            <slope pos="1379148" samplePointSlope="251" />
+            <slope pos="1619148" samplePointSlope="250" />
+            <slope pos="2129689" samplePointSlope="240" />
+            <slope pos="2149871" samplePointSlope="231" />
+            <slope pos="2204145" samplePointSlope="238" />
+            <slope pos="2224152" samplePointSlope="246" />
+            <slope pos="2371358" samplePointSlope="257" />
+            <slope pos="2396978" samplePointSlope="267" />
+            <slope pos="2607433" samplePointSlope="257" />
+            <slope pos="2638832" samplePointSlope="246" />
+            <slope pos="2808467" samplePointSlope="116" />
+            <slope pos="2912527" samplePointSlope="-14" />
+            <slope pos="3029494" samplePointSlope="-130" />
+            <slope pos="3157801" samplePointSlope="-247" />
+            <slope pos="3199144" samplePointSlope="-258" />
+            <slope pos="3219152" samplePointSlope="-269" />
+            <slope pos="3279102" samplePointSlope="-259" />
+            <slope pos="3299195" samplePointSlope="-248" />
+            <slope pos="3628508" samplePointSlope="-251" />
+            <slope pos="3835413" samplePointSlope="-241" />
+            <slope pos="3929148" samplePointSlope="-249" />
+            <slope pos="4119128" samplePointSlope="-255" />
+            <slope pos="4139168" samplePointSlope="-261" />
+            <slope pos="4239148" samplePointSlope="-256" />
+            <slope pos="4259149" samplePointSlope="-252" />
+            <slope pos="4422983" samplePointSlope="-241" />
+            <slope pos="4511038" samplePointSlope="-250" />
+            <slope pos="5168554" samplePointSlope="-257" />
+            <slope pos="5189377" samplePointSlope="-265" />
+            <slope pos="5256825" samplePointSlope="-258" />
+            <slope pos="5278097" samplePointSlope="-251" />
+            <slope pos="5438575" samplePointSlope="-142" />
+            <slope pos="5481954" samplePointSlope="-34" />
+            <slope pos="5607363" samplePointSlope="-49" />
+            <slope pos="5627440" samplePointSlope="-65" />
+            <slope pos="5656972" samplePointSlope="-142" />
+            <slope pos="5687813" samplePointSlope="-219" />
+            <slope pos="5837046" samplePointSlope="-232" />
+            <slope pos="5857308" samplePointSlope="-244" />
+            <slope pos="5974803" samplePointSlope="-129" />
+            <slope pos="6020603" samplePointSlope="-15" />
+            <slope pos="6122145" samplePointSlope="22" />
+            <slope pos="6142865" samplePointSlope="59" />
+            <slope pos="6197080" samplePointSlope="166" />
+            <slope pos="6423990" samplePointSlope="81" />
+            <slope pos="6483842" samplePointSlope="-5" />
+            <slope pos="6594451" samplePointSlope="6" />
+            <slope pos="6615461" samplePointSlope="16" />
+            <slope pos="6753913" samplePointSlope="8" />
+            <slope pos="6774565" samplePointSlope="0" />
+            <slope pos="6970109" samplePointSlope="-9" />
+            <slope pos="7061956" samplePointSlope="7" />
+            <slope pos="7082262" samplePointSlope="22" />
+            <slope pos="7144984" samplePointSlope="8" />
+            <slope pos="7165234" samplePointSlope="-5" />
+            <slope pos="7236129" samplePointSlope="0" />
+            <slope pos="7256143" samplePointSlope="6" />
+            <slope pos="7370252" samplePointSlope="142" />
+            <slope pos="7866709" samplePointSlope="157" />
+            <slope pos="7887806" samplePointSlope="173" />
+            <slope pos="7905394" samplePointSlope="150" />
+            <slope pos="7925995" samplePointSlope="128" />
+            <slope pos="7990511" samplePointSlope="144" />
+            <slope pos="8010698" samplePointSlope="158" />
+            <slope pos="8128139" samplePointSlope="151" />
+            <slope pos="8148148" samplePointSlope="144" />
+            <slope pos="8236853" samplePointSlope="133" />
+            <slope pos="8256947" samplePointSlope="121" />
+            <slope pos="8312283" samplePointSlope="155" />
+            <slope pos="8382678" samplePointSlope="147" />
+            <slope pos="8402801" samplePointSlope="138" />
+            <slope pos="8633805" samplePointSlope="141" />
+            <slope pos="8992662" samplePointSlope="149" />
+            <slope pos="9012718" samplePointSlope="155" />
+            <slope pos="9089249" samplePointSlope="149" />
+            <slope pos="9109259" samplePointSlope="144" />
+            <slope pos="9309109" samplePointSlope="141" />
+            <slope pos="9404109" samplePointSlope="134" />
+            <slope pos="9495281" samplePointSlope="142" />
+            <slope pos="9515223" samplePointSlope="150" />
+            <slope pos="9578677" samplePointSlope="142" />
+            <slope pos="9972712" samplePointSlope="134" />
+            <slope pos="9992712" samplePointSlope="126" />
+            <slope pos="10043725" samplePointSlope="76" />
+            <slope pos="10064055" samplePointSlope="25" />
+            <slope pos="10207037" samplePointSlope="9" />
+            <slope pos="10227330" samplePointSlope="-6" />
+            <slope pos="10265180" samplePointSlope="-6" />
+          </slopes>
+        </sampledLinearElementGeometry>
+        <sampledLinearElementGeometry id="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA">
+          <slopes>
+            <slope pos="45273" samplePointSlope="-3" />
+            <slope pos="113500" samplePointSlope="7" />
+            <slope pos="133501" samplePointSlope="18" />
+            <slope pos="140080" samplePointSlope="29" />
+            <slope pos="160141" samplePointSlope="12" />
+            <slope pos="192290" samplePointSlope="-5" />
+            <slope pos="212315" samplePointSlope="-12" />
+            <slope pos="283299" samplePointSlope="-19" />
+            <slope pos="303306" samplePointSlope="-9" />
+            <slope pos="366601" samplePointSlope="0" />
+            <slope pos="416461" samplePointSlope="-8" />
+            <slope pos="553451" samplePointSlope="-2" />
+            <slope pos="615831" samplePointSlope="5" />
+            <slope pos="636631" samplePointSlope="-1" />
+            <slope pos="733831" samplePointSlope="-8" />
+            <slope pos="819321" samplePointSlope="-16" />
+            <slope pos="847881" samplePointSlope="2" />
+            <slope pos="893895" samplePointSlope="20" />
+            <slope pos="914306" samplePointSlope="12" />
+            <slope pos="1046601" samplePointSlope="4" />
+            <slope pos="1179103" samplePointSlope="2" />
+            <slope pos="1199298" samplePointSlope="14" />
+            <slope pos="1236568" samplePointSlope="26" />
+            <slope pos="1256668" samplePointSlope="11" />
+            <slope pos="1334598" samplePointSlope="-2" />
+            <slope pos="1354639" samplePointSlope="-11" />
+            <slope pos="1454858" samplePointSlope="-19" />
+            <slope pos="1474979" samplePointSlope="-10" />
+            <slope pos="1522365" samplePointSlope="0" />
+            <slope pos="1542472" samplePointSlope="10" />
+            <slope pos="1604282" samplePointSlope="19" />
+            <slope pos="1624475" samplePointSlope="3" />
+            <slope pos="1795864" samplePointSlope="-12" />
+            <slope pos="1815963" samplePointSlope="8" />
+            <slope pos="1838713" samplePointSlope="30" />
+            <slope pos="1859113" samplePointSlope="-5" />
+            <slope pos="1938546" samplePointSlope="-40" />
+            <slope pos="1958691" samplePointSlope="-59" />
+            <slope pos="2031960" samplePointSlope="-77" />
+            <slope pos="2052097" samplePointSlope="-96" />
+            <slope pos="2332997" samplePointSlope="-115" />
+            <slope pos="2353280" samplePointSlope="-151" />
+            <slope pos="2394420" samplePointSlope="-186" />
+            <slope pos="2414817" samplePointSlope="-146" />
+            <slope pos="2523582" samplePointSlope="-105" />
+            <slope pos="2543654" samplePointSlope="-118" />
+            <slope pos="2626095" samplePointSlope="-131" />
+            <slope pos="2646161" samplePointSlope="-123" />
+            <slope pos="2789738" samplePointSlope="-115" />
+            <slope pos="2809739" samplePointSlope="-125" />
+            <slope pos="2888611" samplePointSlope="-134" />
+            <slope pos="2908626" samplePointSlope="-109" />
+            <slope pos="2967995" samplePointSlope="-84" />
+            <slope pos="2988002" samplePointSlope="-94" />
+            <slope pos="3106616" samplePointSlope="-105" />
+            <slope pos="3126621" samplePointSlope="-91" />
+            <slope pos="3146616" samplePointSlope="-77" />
+            <slope pos="3166621" samplePointSlope="-55" />
+            <slope pos="3202988" samplePointSlope="-32" />
+            <slope pos="3222989" samplePointSlope="-20" />
+            <slope pos="3326618" samplePointSlope="-8" />
+            <slope pos="3346619" samplePointSlope="1" />
+            <slope pos="3413798" samplePointSlope="12" />
+            <slope pos="3433799" samplePointSlope="-5" />
+            <slope pos="3455619" samplePointSlope="-22" />
+            <slope pos="3475718" samplePointSlope="-27" />
+            <slope pos="3580638" samplePointSlope="-33" />
+            <slope pos="3605822" samplePointSlope="-64" />
+            <slope pos="3652617" samplePointSlope="-94" />
+            <slope pos="3672619" samplePointSlope="-106" />
+            <slope pos="3766615" samplePointSlope="-119" />
+            <slope pos="3786621" samplePointSlope="-87" />
+            <slope pos="3901546" samplePointSlope="-56" />
+            <slope pos="3921690" samplePointSlope="-106" />
+            <slope pos="3972304" samplePointSlope="-157" />
+            <slope pos="3992327" samplePointSlope="-178" />
+            <slope pos="4051612" samplePointSlope="-199" />
+            <slope pos="4071621" samplePointSlope="-189" />
+            <slope pos="4352611" samplePointSlope="-179" />
+            <slope pos="4593215" samplePointSlope="-188" />
+            <slope pos="4613247" samplePointSlope="-176" />
+            <slope pos="4643199" samplePointSlope="-165" />
+            <slope pos="4663260" samplePointSlope="-171" />
+            <slope pos="4856594" samplePointSlope="-178" />
+            <slope pos="4876602" samplePointSlope="-167" />
+            <slope pos="4932235" samplePointSlope="-156" />
+            <slope pos="4952494" samplePointSlope="-108" />
+            <slope pos="4988935" samplePointSlope="-60" />
+            <slope pos="5009765" samplePointSlope="-18" />
+            <slope pos="5081614" samplePointSlope="24" />
+            <slope pos="5103104" samplePointSlope="9" />
+            <slope pos="5278412" samplePointSlope="-5" />
+            <slope pos="5314633" samplePointSlope="-96" />
+            <slope pos="5610187" samplePointSlope="-186" />
+            <slope pos="5632742" samplePointSlope="-197" />
+            <slope pos="5851673" samplePointSlope="-208" />
+            <slope pos="5871883" samplePointSlope="-194" />
+            <slope pos="5973180" samplePointSlope="-180" />
+            <slope pos="6009306" samplePointSlope="-178" />
+            <slope pos="6030150" samplePointSlope="-190" />
+            <slope pos="6070390" samplePointSlope="-201" />
+            <slope pos="6093117" samplePointSlope="-167" />
+            <slope pos="6115432" samplePointSlope="-134" />
+            <slope pos="6138172" samplePointSlope="-165" />
+            <slope pos="6242456" samplePointSlope="-197" />
+            <slope pos="6263764" samplePointSlope="-185" />
+            <slope pos="6385967" samplePointSlope="-173" />
+            <slope pos="6415024" samplePointSlope="-100" />
+            <slope pos="6521319" samplePointSlope="-28" />
+            <slope pos="6623397" samplePointSlope="-28" />
+            <slope pos="6644546" samplePointSlope="-62" />
+            <slope pos="6669433" samplePointSlope="-96" />
+            <slope pos="6692078" samplePointSlope="-153" />
+            <slope pos="6709708" samplePointSlope="-209" />
+            <slope pos="6730117" samplePointSlope="-227" />
+            <slope pos="6804044" samplePointSlope="-244" />
+            <slope pos="6826758" samplePointSlope="-280" />
+            <slope pos="6850508" samplePointSlope="-315" />
+            <slope pos="6871098" samplePointSlope="-279" />
+            <slope pos="6930639" samplePointSlope="-244" />
+            <slope pos="6950797" samplePointSlope="-253" />
+            <slope pos="7011326" samplePointSlope="-262" />
+            <slope pos="7033467" samplePointSlope="-247" />
+            <slope pos="7108870" samplePointSlope="-232" />
+            <slope pos="7128968" samplePointSlope="-246" />
+            <slope pos="7308778" samplePointSlope="-259" />
+            <slope pos="7332094" samplePointSlope="-232" />
+            <slope pos="7402644" samplePointSlope="-205" />
+            <slope pos="7426121" samplePointSlope="-244" />
+            <slope pos="7505414" samplePointSlope="-283" />
+            <slope pos="7525643" samplePointSlope="-273" />
+            <slope pos="7603281" samplePointSlope="-263" />
+            <slope pos="7624146" samplePointSlope="-257" />
+            <slope pos="7670942" samplePointSlope="-250" />
+            <slope pos="7693727" samplePointSlope="-269" />
+            <slope pos="7720177" samplePointSlope="-288" />
+            <slope pos="7742987" samplePointSlope="-269" />
+            <slope pos="7873837" samplePointSlope="-250" />
+            <slope pos="7900830" samplePointSlope="-216" />
+            <slope pos="7906238" samplePointSlope="-183" />
+            <slope pos="7932437" samplePointSlope="-215" />
+            <slope pos="8002272" samplePointSlope="-248" />
+            <slope pos="8022424" samplePointSlope="-264" />
+            <slope pos="8072275" samplePointSlope="-281" />
+            <slope pos="8092439" samplePointSlope="-260" />
+            <slope pos="8220501" samplePointSlope="-239" />
+            <slope pos="8241401" samplePointSlope="-248" />
+            <slope pos="8377326" samplePointSlope="-258" />
+            <slope pos="8397388" samplePointSlope="-251" />
+            <slope pos="8492357" samplePointSlope="-244" />
+            <slope pos="8785890" samplePointSlope="-250" />
+            <slope pos="8835990" samplePointSlope="-247" />
+            <slope pos="8955978" samplePointSlope="-255" />
+            <slope pos="8999413" samplePointSlope="-264" />
+            <slope pos="9244556" samplePointSlope="-255" />
+            <slope pos="9360084" samplePointSlope="-245" />
+            <slope pos="9419557" samplePointSlope="-238" />
+            <slope pos="9607383" samplePointSlope="-245" />
+            <slope pos="9712147" samplePointSlope="-237" />
+            <slope pos="9732619" samplePointSlope="-255" />
+            <slope pos="9893179" samplePointSlope="-273" />
+            <slope pos="9913175" samplePointSlope="-261" />
+            <slope pos="10092462" samplePointSlope="-249" />
+            <slope pos="10112466" samplePointSlope="-243" />
+            <slope pos="10266627" samplePointSlope="-237" />
+            <slope pos="10286627" samplePointSlope="-253" />
+            <slope pos="10346628" samplePointSlope="-269" />
+            <slope pos="10366627" samplePointSlope="-256" />
+            <slope pos="10481265" samplePointSlope="-243" />
+            <slope pos="10501409" samplePointSlope="-252" />
+            <slope pos="10677284" samplePointSlope="-261" />
+            <slope pos="10697389" samplePointSlope="-249" />
+            <slope pos="10770097" samplePointSlope="-236" />
+            <slope pos="10790097" samplePointSlope="-243" />
+            <slope pos="11073877" samplePointSlope="-250" />
+            <slope pos="11093877" samplePointSlope="-238" />
+            <slope pos="11197104" samplePointSlope="-226" />
+            <slope pos="11217570" samplePointSlope="-252" />
+            <slope pos="11246047" samplePointSlope="-277" />
+            <slope pos="11266047" samplePointSlope="-265" />
+            <slope pos="11497283" samplePointSlope="-253" />
+            <slope pos="11517391" samplePointSlope="-245" />
+            <slope pos="11645697" samplePointSlope="-237" />
+            <slope pos="11665697" samplePointSlope="-250" />
+            <slope pos="11930419" samplePointSlope="-262" />
+            <slope pos="11950514" samplePointSlope="-253" />
+            <slope pos="12099278" samplePointSlope="-244" />
+            <slope pos="12119396" samplePointSlope="-251" />
+            <slope pos="12162447" samplePointSlope="-258" />
+            <slope pos="12192227" samplePointSlope="-183" />
+            <slope pos="12223950" samplePointSlope="-109" />
+            <slope pos="12244724" samplePointSlope="-73" />
+            <slope pos="12274130" samplePointSlope="-38" />
+            <slope pos="12294548" samplePointSlope="-11" />
+            <slope pos="12420338" samplePointSlope="16" />
+            <slope pos="12440395" samplePointSlope="5" />
+            <slope pos="12643453" samplePointSlope="-6" />
+          </slopes>
+        </sampledLinearElementGeometry>
+        <sampledLinearElementGeometry id="7B854A8A-0C65-425F-AF3D-6D66659BCCD3">
+          <slopes>
+            <slope pos="0" samplePointSlope="16" />
+            <slope pos="266" samplePointSlope="0" />
+            <slope pos="37186" samplePointSlope="-17" />
+          </slopes>
+        </sampledLinearElementGeometry>
+        <sampledLinearElementGeometry id="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4">
+          <slopes>
+            <slope pos="0" samplePointSlope="-17" />
+            <slope pos="138" samplePointSlope="0" />
+            <slope pos="9990" samplePointSlope="-16" />
+            <slope pos="34007" samplePointSlope="-11" />
+            <slope pos="53729" samplePointSlope="-5" />
+          </slopes>
+        </sampledLinearElementGeometry>
+        <sampledLinearElementGeometry id="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A">
+          <slopes>
+            <slope pos="0" samplePointSlope="-6" />
+            <slope pos="147395" samplePointSlope="0" />
+            <slope pos="434914" samplePointSlope="-5" />
+            <slope pos="454935" samplePointSlope="1" />
+            <slope pos="632394" samplePointSlope="7" />
+            <slope pos="910437" samplePointSlope="-2" />
+            <slope pos="930437" samplePointSlope="7" />
+            <slope pos="1022360" samplePointSlope="16" />
+          </slopes>
+        </sampledLinearElementGeometry>
+        <sampledLinearElementGeometry id="2CD5B052-0DA5-4483-AE57-2A1EE639E76F">
+          <slopes>
+            <slope pos="0" samplePointSlope="-5" />
+            <slope pos="129047" samplePointSlope="0" />
+          </slopes>
+        </sampledLinearElementGeometry>
+        <sampledLinearElementGeometry id="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F">
+          <slopes>
+            <slope pos="0" samplePointSlope="-6" />
+            <slope pos="193320" samplePointSlope="0" />
+            <slope pos="326752" samplePointSlope="-14" />
+            <slope pos="347002" samplePointSlope="-28" />
+            <slope pos="365527" samplePointSlope="-5" />
+            <slope pos="385811" samplePointSlope="16" />
+            <slope pos="421061" samplePointSlope="25" />
+            <slope pos="441589" samplePointSlope="34" />
+            <slope pos="479118" samplePointSlope="16" />
+            <slope pos="499682" samplePointSlope="-2" />
+            <slope pos="776841" samplePointSlope="7" />
+            <slope pos="954324" samplePointSlope="1" />
+            <slope pos="974298" samplePointSlope="-5" />
+            <slope pos="1263548" samplePointSlope="0" />
+          </slopes>
+        </sampledLinearElementGeometry>
+        <sampledLinearElementGeometry id="642FEAF3-01F6-44A9-89A3-093D0803514C">
+          <slopes>
+            <slope pos="0" samplePointSlope="-5" />
+            <slope pos="208000" samplePointSlope="0" />
+          </slopes>
+        </sampledLinearElementGeometry>
+        <sampledLinearElementGeometry id="D3F6F81B-E94A-4707-AA72-4787A5436CA9">
+          <slopes>
+            <slope pos="0" samplePointSlope="-6" />
+            <slope pos="193181" samplePointSlope="0" />
+            <slope pos="371211" samplePointSlope="8" />
+          </slopes>
+        </sampledLinearElementGeometry>
+        <sampledLinearElementGeometry id="8A10825F-A0B5-44A8-8E27-BA3139AC53BB">
+          <slopes>
+            <slope pos="0" samplePointSlope="-17" />
+            <slope pos="9970" samplePointSlope="-22" />
+            <slope pos="34529" samplePointSlope="-11" />
+            <slope pos="54063" samplePointSlope="-5" />
+          </slopes>
+        </sampledLinearElementGeometry>
+      </sampledLinearElementGeometries>
+    </sampledGeometryArea>
+  </sampledGeometryAreas>
+  <functionalAreas>
+    <functionalArea id="0ad3ab07-d2ed-4279-aaab-2b67c10c29fe" versionTimestamp="2025-04-15T21:59:04+02:00">
+      <opPoints>
+        <opPoint uopid="Scheibenberg_ID" opName="Scheibenberg" opType="station">
+          <platforms>
+            <platform id="144C54EA-70F8-4432-A44D-B53226E2B1F4" name="Bahnsteig 1">
+              <platformEdges>
+                <platformEdge platformId="1" name="('1',)" platformHeight="PH_550mm">
+                  <linearReference>
+                    <startsAt offsetFromOrigin="6197" onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" />
+                    <endsAt offsetFromOrigin="292839" onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" />
+                  </linearReference>
+                </platformEdge>
+              </platformEdges>
+            </platform>
+          </platforms>
+        </opPoint>
+      </opPoints>
+      <switches>
+        <switch id="DEDEMIPDRPOI27##0000" reversalTime="0" pointLeft="7B854A8A-0C65-425F-AF3D-6D66659BCCD3_87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" pointRight="7B854A8A-0C65-425F-AF3D-6D66659BCCD3_8A10825F-A0B5-44A8-8E27-BA3139AC53BB" name="42W9" />
+        <switch id="DEDEMIPDRPOI27##0001" reversalTime="0" pointLeft="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA_B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" pointRight="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA_1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" name="42W11" />
+        <switch id="DEDEMIPDRPOI27##0002" reversalTime="0" pointLeft="85699235-2FFB-487E-B52C-FADE58DA3020_D3F6F81B-E94A-4707-AA72-4787A5436CA9" pointRight="85699235-2FFB-487E-B52C-FADE58DA3020_B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" name="42W1" />
+        <switch id="DEDEMIPDRPOI27##0003" reversalTime="0" pointLeft="8A10825F-A0B5-44A8-8E27-BA3139AC53BB_5735FE5B-E628-4641-B0B3-6FA58E127DC7" pointRight="8A10825F-A0B5-44A8-8E27-BA3139AC53BB_2CD5B052-0DA5-4483-AE57-2A1EE639E76F" name="W7" />
+        <switch id="DEDEMIPDRPOI27##0004" reversalTime="0" pointLeft="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A_D3F6F81B-E94A-4707-AA72-4787A5436CA9" pointRight="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A_7B854A8A-0C65-425F-AF3D-6D66659BCCD3" name="42W10" />
+        <switch id="DEDEMIPDRPOI27##0005" reversalTime="0" pointLeft="642FEAF3-01F6-44A9-89A3-093D0803514C_5735FE5B-E628-4641-B0B3-6FA58E127DC7" pointRight="642FEAF3-01F6-44A9-89A3-093D0803514C_87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" name="W6" />
+      </switches>
+      <trainDetectors>
+        <trainDetector id="40055124-1334-4348-8DB7-3AA62980C1C0" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="7208148" />
+        </trainDetector>
+        <trainDetector id="643C37FA-80AC-422E-A34C-36342866E464" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="7723948" />
+        </trainDetector>
+        <trainDetector id="E61E72E6-23F6-49ED-8F84-703AD5F054F6" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="8223949" />
+        </trainDetector>
+        <trainDetector id="B01208EF-27D4-4DB8-82C0-7FDF5438C22F" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="8723949" />
+        </trainDetector>
+        <trainDetector id="3A700B51-DE8C-4442-98B1-F5D2B4E350EF" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="9223950" />
+        </trainDetector>
+        <trainDetector id="69680CB2-A2A6-419D-92BD-8F4E1C759056" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="9723949" />
+        </trainDetector>
+        <trainDetector id="F729D3A2-EAB3-46CF-8F1B-9BA9A201C82C" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="10159181" />
+        </trainDetector>
+        <trainDetector id="90871B0B-0AE1-4508-A88C-E5A5898F7834" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="12692337" />
+        </trainDetector>
+        <trainDetector id="0E9388A3-5146-41DF-B588-6425AEAAFBB6" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="12622340" />
+        </trainDetector>
+        <trainDetector id="4A990A7C-EF68-42EA-99A9-C35067C83067" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="12145352" />
+        </trainDetector>
+        <trainDetector id="EF8BD643-EA82-44BD-AFBD-682CBCC8BBF7" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="11645364" />
+        </trainDetector>
+        <trainDetector id="8ABBA3DD-37A2-4DF2-9EFB-A6A7F09E2EA3" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="11145375" />
+        </trainDetector>
+        <trainDetector id="9A8FBBDA-F8B4-44F8-BF51-77E916B1C307" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="10145401" />
+        </trainDetector>
+        <trainDetector id="E0ECA0A1-BB76-45B2-9A7A-757DD934892B" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="9645458" />
+        </trainDetector>
+        <trainDetector id="2870D6BC-B3FA-4DF3-91DE-AF9328C6D894" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="9145459" />
+        </trainDetector>
+        <trainDetector id="04B9F55F-9284-4168-B6E7-31E4AEDDEE01" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="8757457" />
+        </trainDetector>
+        <trainDetector id="68AEF030-4004-42C8-B68B-F3392B15E145" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="8257468" />
+        </trainDetector>
+        <trainDetector id="32874603-4575-4F16-80F9-0BC776753D1C" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="7757123" />
+        </trainDetector>
+        <trainDetector id="85E78A74-E4BC-4F31-8A3F-B42B8BDDE713" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="7257163" />
+        </trainDetector>
+        <trainDetector id="EC0B3EEC-D770-44BB-8378-EEA105C57F6C" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="6762156" />
+        </trainDetector>
+        <trainDetector id="4462B353-96DB-44B4-B888-6D4FB8C24F90" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="6524161" />
+        </trainDetector>
+        <trainDetector id="00D1546F-7998-4807-8DB4-DAA55DFC781B" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="642FEAF3-01F6-44A9-89A3-093D0803514C" offsetFromOrigin="43000" />
+        </trainDetector>
+        <trainDetector id="D72ED986-06E5-44E3-ACFF-967CAB6E54D1" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" offsetFromOrigin="140812" />
+        </trainDetector>
+        <trainDetector id="3ADE4328-22D0-4D0C-9288-38188DA8D4EE" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="135001" />
+        </trainDetector>
+        <trainDetector id="463D0184-B888-4937-B2BD-D64F6E012104" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="1015405" />
+        </trainDetector>
+        <trainDetector id="63C21316-7D06-4843-85FC-C6E7B832F5BD" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="959421" />
+        </trainDetector>
+        <trainDetector id="0183D04B-35A3-4F55-8966-C9977D232447" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="688061" />
+        </trainDetector>
+        <trainDetector id="578084B8-2B26-4A16-8F09-3FB845738881" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="416728" />
+        </trainDetector>
+        <trainDetector id="C3C7EB02-793C-4864-B9F2-20D8C282CA56" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="145395" />
+        </trainDetector>
+        <trainDetector id="CE2DA3D1-A12B-4A4F-8CC4-ADBBD1073CB4" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="135340" />
+        </trainDetector>
+        <trainDetector id="0B4FE901-C8D2-4E1C-A73B-B06CDE8A9D1B" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="281712" />
+        </trainDetector>
+        <trainDetector id="CF992686-67D7-4B2D-836C-115D1FD95C89" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="451235" />
+        </trainDetector>
+        <trainDetector id="BAE44738-EC66-497B-A776-99F824C23D20" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="856841" />
+        </trainDetector>
+        <trainDetector id="976B786C-C136-401D-9E4A-5DD37A8D83C2" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="1265575" />
+        </trainDetector>
+        <trainDetector id="7B3D3D70-D987-418E-960C-C3CB7FBA7BED" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="8A10825F-A0B5-44A8-8E27-BA3139AC53BB" offsetFromOrigin="132947" />
+        </trainDetector>
+        <trainDetector id="67188466-EB6D-4016-8BEC-AF98C729D358" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="10215181" />
+        </trainDetector>
+        <trainDetector id="FB011FAB-6C6A-4B21-8841-207D352F9EC2" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="332245" />
+        </trainDetector>
+        <trainDetector id="3ECCC0D5-C4AF-4CF4-B0FD-4D6B8AF96136" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" offsetFromOrigin="86312" />
+        </trainDetector>
+        <trainDetector id="97CC9CD4-902D-4EA8-AD30-3B82C4F1E75F" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="8A10825F-A0B5-44A8-8E27-BA3139AC53BB" offsetFromOrigin="87130" />
+        </trainDetector>
+        <trainDetector id="DABC75D2-9FFD-46C6-B393-B97593C7FEF7" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="75395" />
+        </trainDetector>
+        <trainDetector id="C552AD4C-C86A-422D-8E6B-49977F8279AE" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="1336140" />
+        </trainDetector>
+        <trainDetector id="F50DFB6C-5E52-4003-A276-6DD5F60186FC" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="642FEAF3-01F6-44A9-89A3-093D0803514C" offsetFromOrigin="3000" />
+        </trainDetector>
+        <trainDetector id="1B098E95-FE1B-4ADF-B915-9FFF1C507DF1" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="2CD5B052-0DA5-4483-AE57-2A1EE639E76F" offsetFromOrigin="57046" />
+        </trainDetector>
+        <trainDetector id="DBEEB7A7-FA7C-4E89-8FBC-A577C9359DA5" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="282215" />
+        </trainDetector>
+        <trainDetector id="74724F3B-0A0E-4F05-A14E-AE04BC22F3E4" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="70329" />
+        </trainDetector>
+        <trainDetector id="4E6BDBA4-C699-4EB0-83D4-512E1434A4AE" trainDetectorType="axleCounter" referenceDir="both">
+          <topologicalCoordinate onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="70200" />
+        </trainDetector>
+      </trainDetectors>
+      <baliseGroups>
+        <baliseGroup id="0BD0E4C0-4886-4EED-A873-E0AA2A7CE8F3" nid_bg="9154" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="39FB3189-CADD-4B21-9179-2AC8864D5D69">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="10153181" />
+            </balise>
+            <balise id="E9224726-2FA5-494D-9EAC-808342B7653E">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="10156181" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="776F3EC6-2ADC-442C-81C7-31E33E32C61B" nid_bg="9151" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="E4D57C1E-C376-454A-9A7F-33C8F588459B">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="9720949" />
+            </balise>
+            <balise id="B1F75BD0-DF5F-44DC-BC30-910DDECF9515">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="9723949" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="6F54EEC0-0760-4BB6-9ACA-FE0D23CF2988" nid_bg="9152" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="1923A9D6-0771-4E30-9252-194A7A038F98">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="9947181" />
+            </balise>
+            <balise id="2C39B18A-2C99-409E-AA25-D3B4714AFB2E">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="9950181" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="6F007071-3840-437A-8809-2FD1C02BF702" nid_bg="9150" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="95ACE39B-4D1D-44B0-A2B6-841345B10F0F">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="9470950" />
+            </balise>
+            <balise id="14AE338B-6374-4BB0-8715-4D1AC7850700">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="9473950" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="735EB842-9F02-461C-85D7-93115FCF46CC" nid_bg="9148" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="DA1EA17D-4E97-46AC-A696-1282DAA42254">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="8970950" />
+            </balise>
+            <balise id="26F7E532-B8B3-4C29-9EBC-FA61220AB6E4">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="8973950" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="B0991C16-6781-45DD-AA71-3CB2BDCB22BC" nid_bg="9149" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="0AEF8195-95E4-4DDF-BF5B-343CF21CF33A">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="9220950" />
+            </balise>
+            <balise id="E0718B3D-8A67-4DB8-9CB8-5BE436ABFCE0">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="9223950" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="93DCF3BF-78E1-4DF3-A927-B6BC2ED81AA7" nid_bg="9146" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="2750CF32-D74C-41B5-8556-1573CD72BBD7">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="8470949" />
+            </balise>
+            <balise id="2FA0D80C-66B4-43F3-BD8E-A0C9D83BEE62">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="8473949" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="67558068-0027-46EF-8CFB-8D4E127547CB" nid_bg="9144" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="60E5363B-6727-468B-A994-36AE7E0E0707">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="7970949" />
+            </balise>
+            <balise id="E8570A08-BC48-4DD5-BBC9-11EB3DBDB24C">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="7973949" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="DAF7C523-E43A-4897-BFA4-4768DB33BB8D" nid_bg="9145" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="59542BF1-5E39-4EE5-AB93-6BA76E90D788">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="8220949" />
+            </balise>
+            <balise id="BCC9E23E-B441-4687-9AE2-DF7DEB916AB5">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="8223949" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="99C40940-B729-4D38-B3AE-DAC701317675" nid_bg="9142" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="A026E5E3-E1FD-4CDB-B6D7-93BED04EA647">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="7462948" />
+            </balise>
+            <balise id="F4ABCB33-1DFD-421C-B135-F3BBEA113359">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="7465948" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="86527904-BE56-40AD-A7DF-ACED577012D7" nid_bg="9143" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="1C632B4D-D398-46AD-BD3D-AAEC9E37FF1D">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="7720948" />
+            </balise>
+            <balise id="F3142952-DBEB-4045-9AB9-CFEA6AA2A2DB">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="7723948" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="8225F773-E65B-4668-AB87-BAABB2A55355" nid_bg="9147" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="59125A50-7444-4306-B264-1C06F01BBD2A">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="8720949" />
+            </balise>
+            <balise id="49163F11-9116-4228-9AD9-15308D3F6A92">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="8723949" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="5441A402-FE7A-4146-9C79-302EEB7F48B7" nid_bg="9141" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="C1E1593A-E53E-47FD-A66B-6A5EC4D0E1D6">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="7205148" />
+            </balise>
+            <balise id="8CD3DA68-5A45-4250-A2A6-42E3350ED4E7">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="7208148" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="64396DC9-8358-49F7-846E-C4DEBBDDFB4C" nid_bg="9220" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="6D6DCD60-A426-465F-919E-65F34059BB88">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="7007156" />
+            </balise>
+            <balise id="5BA3FEFC-3CDE-4E67-BDB7-AC9BE705FCEA">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="7004156" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="E171D215-AF4A-4235-B5B7-2F981588FEE5" nid_bg="9221" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="C18B4CD5-2EEA-4FEB-B8EE-89F437BC2C5C">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="6765156" />
+            </balise>
+            <balise id="CCC30879-3081-4619-A9AB-978BBC13AA23">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="6762156" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="226FF30A-A443-43C4-92DF-AD6EB85A7266" nid_bg="9219" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="F911916D-B76E-400B-B1F9-441E605957D4">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="7260163" />
+            </balise>
+            <balise id="AA9217CE-9598-4C9D-907D-1345CA9B35A0">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="7257163" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="E24FD789-8C45-4EA8-BCBB-0702BFBB2B43" nid_bg="9218" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="1C9593C1-0B34-43C2-89AC-9B352FC060F5">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="7510123" />
+            </balise>
+            <balise id="64BCD33D-89FE-4EEF-9DA6-7051482D0A4C">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="7507123" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="4A82FEAC-91F3-4004-835B-992491827E0F" nid_bg="9217" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="DFD681D4-80F4-48C7-BD3C-59A41E6BCE2F">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="7760123" />
+            </balise>
+            <balise id="01A7F30B-668B-4098-B20D-4CCC861C42C9">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="7757123" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="A7882D33-C089-4BB3-B3F4-51BC0EC0A29B" nid_bg="9216" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="E68BB7D8-FE1C-454E-874B-CC780CD40DF3">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="8010468" />
+            </balise>
+            <balise id="766233CC-89DC-4C0F-83D8-84745D912611">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="8007468" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="422A80A0-D4B9-4BAE-9A4E-42A85ECF2FE1" nid_bg="9215" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="03EF3B9B-43FE-4C45-BA0C-560B1C8D4077">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="8260468" />
+            </balise>
+            <balise id="E21A094E-E371-429F-8715-CCE340AC7932">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="8257468" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="5DEDCDE6-1392-44A7-9B3E-1CCA2734D8D7" nid_bg="9214" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="D08C2869-15AB-4017-8A9B-22CCF79F813D">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="8510457" />
+            </balise>
+            <balise id="F8922FA2-3538-4163-92E3-243E4196D4B8">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="8507457" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="ED6A1674-5EA0-405A-A07A-9871FDAD3ECF" nid_bg="9213" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="ED1EF1CA-B01D-46FA-9A1C-A1810560975D">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="8760457" />
+            </balise>
+            <balise id="0CD5D044-3671-4B54-A385-477742DA470E">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="8757457" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="A3C41EBE-2F32-4D27-B72B-E53E480ABFEF" nid_bg="9212" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="4D2E270C-10DE-4101-814B-F41EC331FCB6">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="8954459" />
+            </balise>
+            <balise id="E775EAD7-821F-4752-A56C-C0FDEA5DB809">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="8951459" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="DB44FC10-6A1E-4E2A-A992-876291D45906" nid_bg="9211" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="0EE7833F-D732-4DB5-98BA-97FFF7AAC9DA">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="9148459" />
+            </balise>
+            <balise id="81442DA7-82EE-4F9E-868C-327CEB0AD3AA">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="9145459" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="FA77F6F6-8528-4691-9CE3-A61487771294" nid_bg="9210" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="F5878065-41A2-4623-89F7-87EEE07DC4B2">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="9398458" />
+            </balise>
+            <balise id="88F94F25-30DF-4F20-AA44-2B1E2B972DFD">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="9395458" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="4D6A6F76-AE71-40A5-BB87-EB66A073AE66" nid_bg="9209" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="AD6A42F4-9EEE-4B9E-8DFA-36396E5A3134">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="9648458" />
+            </balise>
+            <balise id="50903DDE-11C3-463C-AA93-7040887F01FF">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="9645458" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="1ABBB5A6-58E5-4DC9-8FDD-6C4725CECD6D" nid_bg="9208" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="CB050DC6-7F81-49C6-A05B-23782E69D025">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="9898401" />
+            </balise>
+            <balise id="DBDD0B5B-0B72-4150-ADC6-ED5A35B48511">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="9895401" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="950C5B7A-AAFD-47AD-977F-9167BCBB3669" nid_bg="9207" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="5237032E-E0C0-4185-AAE8-30C4D171A03C">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="10148401" />
+            </balise>
+            <balise id="A5FF1C40-0E37-4433-A8CC-3548DFD34C60">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="10145401" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="8D0383CD-DD4E-4E8D-98B8-0D1240F7FD69" nid_bg="9206" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="FB597B40-4DD4-4BD3-B296-670A30CAA648">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="10398387" />
+            </balise>
+            <balise id="E6F96420-E80F-4219-B5EC-04A1CB55ADAB">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="10395387" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="5536EECA-7964-49BF-A6B3-869B9F65EFDC" nid_bg="9205" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="78559A26-CD48-47AC-A0F6-04642AD3CF45">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="10648387" />
+            </balise>
+            <balise id="18D178D4-AB45-488E-9C6E-1DA4B0F29CB9">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="10645387" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="D1FE7B3B-9649-42E7-9453-C26D9DF6F667" nid_bg="9204" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="7F68D6BC-3FAD-4D9E-93FB-E8A205C942A9">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="10898375" />
+            </balise>
+            <balise id="26D32EBF-C76B-4440-805A-172839BD4A46">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="10895375" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="C6558A98-28CB-4C77-B551-99A5997AD18E" nid_bg="9203" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="4B3AE724-2F95-4C0C-85A8-F6283F9740B4">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="11148375" />
+            </balise>
+            <balise id="BCF78A2C-53F3-4ADB-B114-10E88AE85249">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="11145375" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="33D8AA2C-D38C-4FE8-9100-4A335A241B57" nid_bg="9202" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="3A5308AC-2EA6-4BE5-BF9E-876B2CB485A5">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="11398364" />
+            </balise>
+            <balise id="55523BBE-47E3-4728-B99A-BD3578137323">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="11395364" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="C8B5587B-4DD8-4CE7-9215-E3016233B717" nid_bg="9201" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="D70630A2-39A6-43A3-AEE0-6B58B4245FFF">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="11648364" />
+            </balise>
+            <balise id="60A65CCE-E0B8-4CAE-A3D8-1BBA3FA3C75C">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="11645364" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="A9FADB3D-8B8C-486C-990B-37F1C15CF550" nid_bg="9200" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="E3CBDE4F-2773-4FF5-8693-94BE1B2670DA">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="11898352" />
+            </balise>
+            <balise id="AA00E155-C2C0-4466-9878-02B33A5435A1">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="11895352" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="431B1A72-A33A-45C7-B3B5-7CBD1CEA9ED0" nid_bg="9199" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="30CB3922-9685-4BCD-AD08-1719BCA0F686">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="12148352" />
+            </balise>
+            <balise id="B428E0B0-0FA5-41C9-BEC1-30C22A596A85">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="12145352" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="3D11FB59-B3FF-40CA-9FD5-8D5147D01F68" nid_bg="9198" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="4E50BEC4-3AA3-4063-B691-C0D2C9B82D7E">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="12386340" />
+            </balise>
+            <balise id="27723633-6296-46B8-A4DC-663095BE205D">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="12383340" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="C3A7CCD2-3F29-4ED5-B923-BEBF4D9D061D" nid_bg="9196" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="57EBB289-2452-4793-93FD-C1836D9A478B">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="12616340" />
+            </balise>
+            <balise id="248F8A82-5F15-4F93-9159-935926FD54BF">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="12619340" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="62EA207F-7122-4989-A4CF-A1F75E405442" nid_bg="9197" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="9C20C8CE-1737-4EF9-8E8E-51D9ED56BBF1">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="12572340" />
+            </balise>
+            <balise id="73332CEA-29A9-4DB8-B3E5-A45D90F9F2D5">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="12575340" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="9B2C65C5-E7E3-4D11-A3EE-1BDC996C808A" nid_bg="9153" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="82AE9E50-7528-4BDE-B517-D6F68246A089">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="10109181" />
+            </balise>
+            <balise id="512D1FE2-56CB-4135-9BD7-675E11997A0B">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="10112181" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="BECFE09A-5C2F-4AFA-820E-6951E11EC0E0" nid_bg="9164" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="87BF3562-149E-4826-A7F5-B6FE6AD9A9BD">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="1259575" />
+            </balise>
+            <balise id="02F99FC4-727D-44BD-805F-6520A68372D1">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="1262575" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="43420FC6-F520-4771-A5FB-CC4455FB29A0" nid_bg="9185" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="1BD6A70C-764E-46C9-9950-B37F24A84F6B">
+              <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="151395" />
+            </balise>
+            <balise id="56A51203-BD1E-4E8A-8317-70CFF3CFD515">
+              <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="148395" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="C42E7404-CAF2-475F-A935-FC2A6B9FA497" nid_bg="9162" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="90FB425B-7768-4359-B5CC-82EE5F1988E1">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="965575" />
+            </balise>
+            <balise id="990AFB8D-780F-4D1B-BE55-7B0C84409B0A">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="968575" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="D2A92FD3-79B0-46FE-99AB-5B359B942942" nid_bg="9184" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="1937B7CE-F661-471B-9787-F8942952CADB">
+              <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="195395" />
+            </balise>
+            <balise id="70C874C6-86A4-4E44-8353-93B30A2DFB9E">
+              <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="192395" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="0B0C0863-FBB3-4EA5-AE04-E9BECD523708" nid_bg="9163" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="6819DDC2-58AB-45DD-AE46-DE798A470C0D">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="1215575" />
+            </balise>
+            <balise id="1C76FFEA-19FF-4252-8357-679C694E8873">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="1218575" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="926239F2-93DA-402B-BB5E-B8BD3D8579FC" nid_bg="9173" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="9C7E81F4-685A-449A-B5CB-76659F2C70B6">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="1336678" />
+            </balise>
+            <balise id="97BDB6A7-6664-42B6-94BF-BDAFBF6284EE">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="1339678" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="28E3A007-F06A-402E-8440-D6CFA71E9715" nid_bg="9186" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="A392E19D-4201-4390-ACEB-2E8990B10BF5">
+              <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="74947" />
+            </balise>
+            <balise id="E3E47059-3FFE-4187-A7F3-D700F763800E">
+              <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="71947" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="52D43E16-B244-43DB-808E-8A363218AB65" nid_bg="9179" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="E333FCFE-CFC5-421D-85E7-647448B672FA">
+              <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="953421" />
+            </balise>
+            <balise id="268310F9-F31B-4201-82B9-BC36966A0641">
+              <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="956421" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="F8827382-739F-4126-B15F-1749ABB95F76" nid_bg="9181" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="F902ACF8-6393-4D82-9434-2284381DD99A">
+              <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="788395" />
+            </balise>
+            <balise id="123C4060-C90C-42F0-B0AE-15EFE77A861E">
+              <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="791395" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="CBA92D49-62E6-4363-92F6-0180BE687911" nid_bg="9180" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="C78699A5-96F1-4883-AD81-3DBE586C7B45">
+              <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="909421" />
+            </balise>
+            <balise id="35C327B6-8194-4F3F-BD81-68E35D1B7DA7">
+              <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="912421" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="4E9A485D-A080-4D8F-B086-B3BB4DBF4DE1" nid_bg="9156" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="F8E1FB13-D675-49B8-AE93-D90A5A39619C">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="67329" />
+            </balise>
+            <balise id="091CB0E6-6DD4-4CD6-B043-DCA2E241C52C">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="70329" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="98A9AFC1-8C1F-4270-AA7D-1D48B26DDCC2" nid_bg="9174" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="99982DC7-60F5-4B0A-97D8-1A33C8843737">
+              <topologicalCoordinate onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="67200" />
+            </balise>
+            <balise id="72DED940-2B34-4F42-8263-8DC32ABD8BD5">
+              <topologicalCoordinate onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="70200" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="AC4C28AC-5738-48E5-811F-0DB76A00D04A" nid_bg="9157" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="70EF972E-C0B1-4123-9490-BAE05B8225F8">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="141340" />
+            </balise>
+            <balise id="AC242896-882B-41F4-8820-29EDD8EBF2D0">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="138340" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="B135289B-C80E-4397-822D-0BE5ED72EC63" nid_bg="9175" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="9964D037-16A0-497F-8F1E-5653ACE51053">
+              <topologicalCoordinate onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="141001" />
+            </balise>
+            <balise id="E00A9BB6-D13B-45AD-BF1D-939261C34AD8">
+              <topologicalCoordinate onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="138001" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="54A43C4A-207C-45D2-9A78-0600C4C273B6" nid_bg="9158" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="B9668DD4-DA93-466F-8E5B-66B1D17A0CD4">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="209323" />
+            </balise>
+            <balise id="6B266B77-E604-4625-B4C1-94E92D02711C">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="212323" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="3E31958C-8E05-4375-944F-05356049FF5E" nid_bg="9176" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="D6C5FD0B-1DF1-44B9-889E-B995FB2E326B">
+              <topologicalCoordinate onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="208196" />
+            </balise>
+            <balise id="175CA29C-9341-4B98-9B21-0E6CAE8D3EE7">
+              <topologicalCoordinate onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="211196" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="2F0850F3-D953-4B9F-A3AD-6D73E26F67B9" nid_bg="9159" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="12CF5C9A-234A-4AA5-B93B-CF699E165199">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="366731" />
+            </balise>
+            <balise id="CE9568DB-420B-43E2-9F56-6E313DF870C9">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="363731" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="635FF76C-7D57-497E-B8EA-486A6C556C4F" nid_bg="9177" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="95C6F0BB-B763-4A5B-BC85-4D84FE3C6FB5">
+              <topologicalCoordinate onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="276215" />
+            </balise>
+            <balise id="0D75966A-A777-4A39-970F-0FD72F641F33">
+              <topologicalCoordinate onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="279215" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="D07BB47D-6181-416C-8555-6363A54A77AE" nid_bg="9155" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="41A97336-D790-404E-81CF-232AFB3DE5A9">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="10262380" />
+            </balise>
+            <balise id="CA4B0EC5-AA8C-4776-B0B8-A340E68746F6">
+              <topologicalCoordinate onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="10265380" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="2525500A-FD2F-4C2D-A05A-957A9DB0EFA6" nid_bg="9178" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="A7A039CB-B2CE-4464-A3B3-9D93C76060E6">
+              <topologicalCoordinate onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="332245" />
+            </balise>
+            <balise id="14B8A665-235E-4B23-9043-93B7282380DD">
+              <topologicalCoordinate onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="335245" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="40F1383A-8764-4FC4-809D-9BAA8D474B32" nid_bg="9190" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="F38598A8-95DF-4DF4-9062-77EDB354F69D">
+              <topologicalCoordinate onLinearElement="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" offsetFromOrigin="86312" />
+            </balise>
+            <balise id="05D35B6B-E91D-4295-97DC-A68DDB04DC03">
+              <topologicalCoordinate onLinearElement="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" offsetFromOrigin="83312" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="C6E11ACC-1462-4D96-B2EC-2FCC4FBE79FB" nid_bg="9195" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="4C18F054-2D4A-422E-97B7-75C44A6D5D00">
+              <topologicalCoordinate onLinearElement="8A10825F-A0B5-44A8-8E27-BA3139AC53BB" offsetFromOrigin="87130" />
+            </balise>
+            <balise id="A7DBE4A2-5E12-4E9D-9C2B-47396110FC8D">
+              <topologicalCoordinate onLinearElement="8A10825F-A0B5-44A8-8E27-BA3139AC53BB" offsetFromOrigin="84130" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="2779882D-5B1D-48CD-A8E6-E94589B3AA00" nid_bg="9193" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="36A27E32-5A0F-43C1-8DA0-BCEC9A5FEB4C">
+              <topologicalCoordinate onLinearElement="2CD5B052-0DA5-4483-AE57-2A1EE639E76F" offsetFromOrigin="51133" />
+            </balise>
+            <balise id="6BC94452-18B8-42B9-8F4A-9CE8B64A9E0F">
+              <topologicalCoordinate onLinearElement="2CD5B052-0DA5-4483-AE57-2A1EE639E76F" offsetFromOrigin="48133" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="C148E5DC-0564-4518-A287-2A4D375C7A26" nid_bg="9189" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="3AD3A2A1-154E-4125-AC98-31423D7E4B80">
+              <topologicalCoordinate onLinearElement="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" offsetFromOrigin="143854" />
+            </balise>
+            <balise id="AE58624E-0A81-4520-9C47-D1F487D66BDB">
+              <topologicalCoordinate onLinearElement="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" offsetFromOrigin="140854" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="EE0DEBA5-996A-4A6A-988E-F5726BB86C21" nid_bg="9188" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="763F6A4C-C4FB-4A31-881D-022679AD03CE">
+              <topologicalCoordinate onLinearElement="642FEAF3-01F6-44A9-89A3-093D0803514C" offsetFromOrigin="7985" />
+            </balise>
+            <balise id="60BFE601-CC9C-4D4F-8935-23ABE79548BA">
+              <topologicalCoordinate onLinearElement="642FEAF3-01F6-44A9-89A3-093D0803514C" offsetFromOrigin="4985" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="FC6F456D-8FA1-49AE-A5CD-78FEEC4B5749" nid_bg="9194" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="31861315-D076-4413-9248-B17EC5A11667">
+              <topologicalCoordinate onLinearElement="8A10825F-A0B5-44A8-8E27-BA3139AC53BB" offsetFromOrigin="130947" />
+            </balise>
+            <balise id="81CE07AC-2B82-47C3-8D6A-5337EEA72B0C">
+              <topologicalCoordinate onLinearElement="8A10825F-A0B5-44A8-8E27-BA3139AC53BB" offsetFromOrigin="127947" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="0C0A9DD6-6F26-46DF-B075-7629C149A8FC" nid_bg="9161" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="F8A08B6E-1E12-415D-804D-310E293D395C">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="756841" />
+            </balise>
+            <balise id="05E9F06E-DE5C-4CED-9515-ACF177DD4218">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="759841" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="B74FDF8B-D2FD-4A08-8A85-7C9358ECB6D7" nid_bg="9160" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="C3C76F05-9DEA-4DCF-BD16-34994674D769">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="500202" />
+            </balise>
+            <balise id="9242AECB-CF29-446C-AB5B-A038F0C9801F">
+              <topologicalCoordinate onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="497202" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="3AB42B13-FBD5-4F00-A78D-2DEEE1E30AB5" nid_bg="9182" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="80C03D66-6AC7-4413-8AA3-37732ED92876">
+              <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="552395" />
+            </balise>
+            <balise id="9170E7FF-9DD8-4DD0-9CAE-CF21A80AF12B">
+              <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="555395" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="B2B94B70-480A-450F-A68F-15110CACB11E" nid_bg="9183" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="13D27E5F-1240-4625-8EDE-15EF92AE937C">
+              <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="316394" />
+            </balise>
+            <balise id="88D8C89D-D530-4C90-9ABC-6CC0EF99D29A">
+              <topologicalCoordinate onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="319394" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="91EBF03E-777E-47C9-B5D0-C20B8A3E5AEB" nid_bg="9191" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="21B91BF7-4849-45ED-989D-50CBC580D1EA">
+              <topologicalCoordinate onLinearElement="5735FE5B-E628-4641-B0B3-6FA58E127DC7" offsetFromOrigin="30145" />
+            </balise>
+            <balise id="24FB9E3C-3FF2-4078-B2D6-921BD1565585">
+              <topologicalCoordinate onLinearElement="5735FE5B-E628-4641-B0B3-6FA58E127DC7" offsetFromOrigin="27145" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="373EFDCF-8AE2-46B2-AEDE-835DB8975FB0" nid_bg="9192" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="992CF978-CDBB-4E2A-B7C7-9D2B9B3BB894">
+              <topologicalCoordinate onLinearElement="2CD5B052-0DA5-4483-AE57-2A1EE639E76F" offsetFromOrigin="100047" />
+            </balise>
+            <balise id="E4884B9E-9F2E-4DA5-8C1A-BC3C02F04E74">
+              <topologicalCoordinate onLinearElement="2CD5B052-0DA5-4483-AE57-2A1EE639E76F" offsetFromOrigin="97047" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="92A7D79F-97C2-46FA-82B8-2618351AD110" nid_bg="9187" nid_c="127" bgFunction="location" linkOrientationDirection="opposite">
+          <balises>
+            <balise id="473D263E-BB24-4A61-B732-F830466CF196">
+              <topologicalCoordinate onLinearElement="642FEAF3-01F6-44A9-89A3-093D0803514C" offsetFromOrigin="56000" />
+            </balise>
+            <balise id="FE9FC7C9-2BDA-4A99-9514-479AE167CE0B">
+              <topologicalCoordinate onLinearElement="642FEAF3-01F6-44A9-89A3-093D0803514C" offsetFromOrigin="53000" />
+            </balise>
+          </balises>
+        </baliseGroup>
+        <baliseGroup id="849337B1-0C30-4977-B016-109800779F50" nid_bg="9222" nid_c="127" bgFunction="location" linkOrientationDirection="same">
+          <balises>
+            <balise id="15F89A42-C776-4D47-827A-1F89A9DEE0C8">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="6662161" />
+            </balise>
+            <balise id="A4BDD668-944C-4435-8B67-094D5A1C43E4">
+              <topologicalCoordinate onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="6665161" />
+            </balise>
+          </balises>
+        </baliseGroup>
+      </baliseGroups>
+      <etcsMarkers />
+      <tvps>
+        <tvp id="DEDEMIPDRTVP27##0000" name="42GG102">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="7208148" />
+                <endsAt onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="7723948" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="40055124-1334-4348-8DB7-3AA62980C1C0" />
+            <trainDetector ref="643C37FA-80AC-422E-A34C-36342866E464" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0001" name="42GG112">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="7723948" />
+                <endsAt onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="8223949" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="643C37FA-80AC-422E-A34C-36342866E464" />
+            <trainDetector ref="E61E72E6-23F6-49ED-8F84-703AD5F054F6" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0002" name="42GG122">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="8223949" />
+                <endsAt onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="8723949" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="E61E72E6-23F6-49ED-8F84-703AD5F054F6" />
+            <trainDetector ref="B01208EF-27D4-4DB8-82C0-7FDF5438C22F" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0003" name="42GG132">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="8723949" />
+                <endsAt onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="9223950" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="B01208EF-27D4-4DB8-82C0-7FDF5438C22F" />
+            <trainDetector ref="3A700B51-DE8C-4442-98B1-F5D2B4E350EF" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0004" name="42GG142">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="9223950" />
+                <endsAt onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="9723949" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="3A700B51-DE8C-4442-98B1-F5D2B4E350EF" />
+            <trainDetector ref="69680CB2-A2A6-419D-92BD-8F4E1C759056" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0005" name="42GG152">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="9723949" />
+                <endsAt onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="10159181" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="69680CB2-A2A6-419D-92BD-8F4E1C759056" />
+            <trainDetector ref="F729D3A2-EAB3-46CF-8F1B-9BA9A201C82C" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0006" name="42GG162">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="10159181" />
+                <endsAt onLinearElement="85699235-2FFB-487E-B52C-FADE58DA3020" offsetFromOrigin="10215181" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="F729D3A2-EAB3-46CF-8F1B-9BA9A201C82C" />
+            <trainDetector ref="67188466-EB6D-4016-8BEC-AF98C729D358" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0007" name="42GG213">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="135340" />
+                <endsAt onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="281712" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="CE2DA3D1-A12B-4A4F-8CC4-ADBBD1073CB4" />
+            <trainDetector ref="0B4FE901-C8D2-4E1C-A73B-B06CDE8A9D1B" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0008" name="42GG211">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="642FEAF3-01F6-44A9-89A3-093D0803514C" offsetFromOrigin="3000" />
+                <endsAt onLinearElement="642FEAF3-01F6-44A9-89A3-093D0803514C" offsetFromOrigin="43000" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="00D1546F-7998-4807-8DB4-DAA55DFC781B" />
+            <trainDetector ref="F50DFB6C-5E52-4003-A276-6DD5F60186FC" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0009" name="42GG212">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="135001" />
+                <endsAt onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="282215" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="3ADE4328-22D0-4D0C-9288-38188DA8D4EE" />
+            <trainDetector ref="DBEEB7A7-FA7C-4E89-8FBC-A577C9359DA5" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0010" name="42GG226">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="8A10825F-A0B5-44A8-8E27-BA3139AC53BB" offsetFromOrigin="87130" />
+                <endsAt onLinearElement="8A10825F-A0B5-44A8-8E27-BA3139AC53BB" offsetFromOrigin="132947" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="7B3D3D70-D987-418E-960C-C3CB7FBA7BED" />
+            <trainDetector ref="97CC9CD4-902D-4EA8-AD30-3B82C4F1E75F" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0011" name="42GG221">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" offsetFromOrigin="86312" />
+                <endsAt onLinearElement="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4" offsetFromOrigin="140812" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="D72ED986-06E5-44E3-ACFF-967CAB6E54D1" />
+            <trainDetector ref="3ECCC0D5-C4AF-4CF4-B0FD-4D6B8AF96136" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0012" name="42GG222">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="282215" />
+                <endsAt onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="332245" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="FB011FAB-6C6A-4B21-8841-207D352F9EC2" />
+            <trainDetector ref="DBEEB7A7-FA7C-4E89-8FBC-A577C9359DA5" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0013" name="42GG232">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="959421" />
+                <endsAt onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="1015405" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="463D0184-B888-4937-B2BD-D64F6E012104" />
+            <trainDetector ref="63C21316-7D06-4843-85FC-C6E7B832F5BD" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0014" name="42GG223">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="281712" />
+                <endsAt onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="451235" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="0B4FE901-C8D2-4E1C-A73B-B06CDE8A9D1B" />
+            <trainDetector ref="CF992686-67D7-4B2D-836C-115D1FD95C89" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0015" name="42GG242">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="688061" />
+                <endsAt onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="959421" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="63C21316-7D06-4843-85FC-C6E7B832F5BD" />
+            <trainDetector ref="0183D04B-35A3-4F55-8966-C9977D232447" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0016" name="42GG252">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="416728" />
+                <endsAt onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="688061" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="0183D04B-35A3-4F55-8966-C9977D232447" />
+            <trainDetector ref="578084B8-2B26-4A16-8F09-3FB845738881" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0017" name="42GG262">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="145395" />
+                <endsAt onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="416728" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="578084B8-2B26-4A16-8F09-3FB845738881" />
+            <trainDetector ref="C3C7EB02-793C-4864-B9F2-20D8C282CA56" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0018" name="42GG272">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="75395" />
+                <endsAt onLinearElement="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A" offsetFromOrigin="145395" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="C3C7EB02-793C-4864-B9F2-20D8C282CA56" />
+            <trainDetector ref="DABC75D2-9FFD-46C6-B393-B97593C7FEF7" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0019" name="42GG302">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="12622340" />
+                <endsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="12692337" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="90871B0B-0AE1-4508-A88C-E5A5898F7834" />
+            <trainDetector ref="0E9388A3-5146-41DF-B588-6425AEAAFBB6" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0020" name="42GG312">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="12145352" />
+                <endsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="12622340" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="0E9388A3-5146-41DF-B588-6425AEAAFBB6" />
+            <trainDetector ref="4A990A7C-EF68-42EA-99A9-C35067C83067" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0021" name="42GG322">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="11645364" />
+                <endsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="12145352" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="4A990A7C-EF68-42EA-99A9-C35067C83067" />
+            <trainDetector ref="EF8BD643-EA82-44BD-AFBD-682CBCC8BBF7" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0022" name="42GG332">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="11145375" />
+                <endsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="11645364" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="EF8BD643-EA82-44BD-AFBD-682CBCC8BBF7" />
+            <trainDetector ref="8ABBA3DD-37A2-4DF2-9EFB-A6A7F09E2EA3" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0023" name="42GG362">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="9645458" />
+                <endsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="10145401" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="9A8FBBDA-F8B4-44F8-BF51-77E916B1C307" />
+            <trainDetector ref="E0ECA0A1-BB76-45B2-9A7A-757DD934892B" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0024" name="42GG372">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="9145459" />
+                <endsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="9645458" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="E0ECA0A1-BB76-45B2-9A7A-757DD934892B" />
+            <trainDetector ref="2870D6BC-B3FA-4DF3-91DE-AF9328C6D894" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0025" name="42GG382">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="8757457" />
+                <endsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="9145459" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="2870D6BC-B3FA-4DF3-91DE-AF9328C6D894" />
+            <trainDetector ref="04B9F55F-9284-4168-B6E7-31E4AEDDEE01" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0026" name="42GG392">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="8257468" />
+                <endsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="8757457" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="04B9F55F-9284-4168-B6E7-31E4AEDDEE01" />
+            <trainDetector ref="68AEF030-4004-42C8-B68B-F3392B15E145" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0027" name="42GG402">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="7757123" />
+                <endsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="8257468" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="68AEF030-4004-42C8-B68B-F3392B15E145" />
+            <trainDetector ref="32874603-4575-4F16-80F9-0BC776753D1C" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0028" name="42GG412">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="7257163" />
+                <endsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="7757123" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="32874603-4575-4F16-80F9-0BC776753D1C" />
+            <trainDetector ref="85E78A74-E4BC-4F31-8A3F-B42B8BDDE713" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0029" name="42GG422">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="6762156" />
+                <endsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="7257163" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="85E78A74-E4BC-4F31-8A3F-B42B8BDDE713" />
+            <trainDetector ref="EC0B3EEC-D770-44BB-8378-EEA105C57F6C" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0030" name="42GG432">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="6524161" />
+                <endsAt onLinearElement="1A9C3557-1642-4C2A-B948-63F5E6A0B6AA" offsetFromOrigin="6762156" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="EC0B3EEC-D770-44BB-8378-EEA105C57F6C" />
+            <trainDetector ref="4462B353-96DB-44B4-B888-6D4FB8C24F90" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0031" name="42GG233">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="451235" />
+                <endsAt onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="856841" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="CF992686-67D7-4B2D-836C-115D1FD95C89" />
+            <trainDetector ref="BAE44738-EC66-497B-A776-99F824C23D20" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0032" name="42GG203">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="70329" />
+                <endsAt onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="135340" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="CE2DA3D1-A12B-4A4F-8CC4-ADBBD1073CB4" />
+            <trainDetector ref="74724F3B-0A0E-4F05-A14E-AE04BC22F3E4" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0033" name="42GG202">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="70200" />
+                <endsAt onLinearElement="D3F6F81B-E94A-4707-AA72-4787A5436CA9" offsetFromOrigin="135001" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="3ADE4328-22D0-4D0C-9288-38188DA8D4EE" />
+            <trainDetector ref="4E6BDBA4-C699-4EB0-83D4-512E1434A4AE" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0034" name="42WW7">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="2CD5B052-0DA5-4483-AE57-2A1EE639E76F" offsetFromOrigin="0" />
+                <endsAt onLinearElement="2CD5B052-0DA5-4483-AE57-2A1EE639E76F" offsetFromOrigin="57046" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="7B3D3D70-D987-418E-960C-C3CB7FBA7BED" />
+            <trainDetector ref="1B098E95-FE1B-4ADF-B915-9FFF1C507DF1" />
+          </trainDetectors>
+        </tvp>
+        <tvp id="DEDEMIPDRTVP27##0035" name="42GG253">
+          <linkedArea>
+            <includes>
+              <include>
+                <startsAt onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="1265575" />
+                <endsAt onLinearElement="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F" offsetFromOrigin="1336140" />
+              </include>
+            </includes>
+          </linkedArea>
+          <trainDetectors>
+            <trainDetector ref="976B786C-C136-401D-9E4A-5DD37A8D83C2" />
+            <trainDetector ref="C552AD4C-C86A-422D-8E6B-49977F8279AE" />
+          </trainDetectors>
+        </tvp>
+      </tvps>
+      <bufferStops>
+        <bufferStop id="1BB0101D-38D3-4DC1-AF1A-2118776FB6C3" isSwitchable="false">
+          <netPointReference appliesToDirection="same">
+            <hasTopoCoordinate onLinearElement="2CD5B052-0DA5-4483-AE57-2A1EE639E76F" offsetFromOrigin="0" />
+          </netPointReference>
+        </bufferStop>
+        <bufferStop id="3048781F-D0F1-4266-8893-78E3FFDA1265" isSwitchable="false">
+          <netPointReference appliesToDirection="same">
+            <hasTopoCoordinate onLinearElement="642FEAF3-01F6-44A9-89A3-093D0803514C" offsetFromOrigin="0" />
+          </netPointReference>
+        </bufferStop>
+      </bufferStops>
+    </functionalArea>
+  </functionalAreas>
+  <propertiesAreas>
+    <propertiesArea id="0ad3ab07-d2ed-4279-aaab-2b67c10c29fe" versionTimestamp="2025-04-15T21:59:04+02:00" gauge="tg1435mm" defaultVoltage="vtAC15kv16_7Hz" defaultMaxCurrent="111">
+      <linearElementSpeedProfiles>
+        <linearElementSpeedProfile id="85699235-2FFB-487E-B52C-FADE58DA3020">
+          <sameDirProfile>
+            <staticSpeedProfile>
+              <staticSpeedProfileItem pos="0" speed="0" />
+            </staticSpeedProfile>
+          </sameDirProfile>
+        </linearElementSpeedProfile>
+        <linearElementSpeedProfile id="B30816E1-95C1-4F89-8F9E-E1C5807BDC3F">
+          <sameDirProfile>
+            <staticSpeedProfile>
+              <staticSpeedProfileItem pos="0" speed="60" />
+            </staticSpeedProfile>
+          </sameDirProfile>
+        </linearElementSpeedProfile>
+        <linearElementSpeedProfile id="D3F6F81B-E94A-4707-AA72-4787A5436CA9">
+          <sameDirProfile>
+            <staticSpeedProfile>
+              <staticSpeedProfileItem pos="0" speed="50" />
+            </staticSpeedProfile>
+          </sameDirProfile>
+        </linearElementSpeedProfile>
+        <linearElementSpeedProfile id="7B854A8A-0C65-425F-AF3D-6D66659BCCD3">
+          <sameDirProfile>
+            <staticSpeedProfile>
+              <staticSpeedProfileItem pos="0" speed="40" />
+            </staticSpeedProfile>
+          </sameDirProfile>
+        </linearElementSpeedProfile>
+        <linearElementSpeedProfile id="87693E98-EC5A-4C58-9AAF-6DA7D7BC21B4">
+          <sameDirProfile>
+            <staticSpeedProfile>
+              <staticSpeedProfileItem pos="0" speed="60" />
+            </staticSpeedProfile>
+          </sameDirProfile>
+        </linearElementSpeedProfile>
+        <linearElementSpeedProfile id="642FEAF3-01F6-44A9-89A3-093D0803514C">
+          <sameDirProfile>
+            <staticSpeedProfile>
+              <staticSpeedProfileItem pos="0" speed="0" />
+            </staticSpeedProfile>
+          </sameDirProfile>
+        </linearElementSpeedProfile>
+        <linearElementSpeedProfile id="2CD5B052-0DA5-4483-AE57-2A1EE639E76F">
+          <sameDirProfile>
+            <staticSpeedProfile>
+              <staticSpeedProfileItem pos="0" speed="0" />
+            </staticSpeedProfile>
+          </sameDirProfile>
+        </linearElementSpeedProfile>
+        <linearElementSpeedProfile id="5735FE5B-E628-4641-B0B3-6FA58E127DC7">
+          <sameDirProfile>
+            <staticSpeedProfile>
+              <staticSpeedProfileItem pos="0" speed="40" />
+            </staticSpeedProfile>
+          </sameDirProfile>
+        </linearElementSpeedProfile>
+        <linearElementSpeedProfile id="1BC4FA7E-D730-4EFE-97F2-F3F325A1CD0A">
+          <sameDirProfile>
+            <staticSpeedProfile>
+              <staticSpeedProfileItem pos="0" speed="50" />
+            </staticSpeedProfile>
+          </sameDirProfile>
+        </linearElementSpeedProfile>
+      </linearElementSpeedProfiles>
+    </propertiesArea>
+  </propertiesAreas>
+</infrastructure>
