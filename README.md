@@ -1,5 +1,5 @@
 > **ℹ️ Note:**  
-> The **CCSTMS Model** is derived from the [Extended ERA Ontology](https://ext-era-doc.vercel.app/).
+> The **CCSTMS Model** is derived from the [Extended ERA Ontology](https://gitlab.com/era-europa-eu/public/interoperable-data-programme/era-ontology/era-ontology/-/tree/ext-ccstms?ref_type=heads).
 
 
 ![europesRail](https://github.com/user-attachments/assets/1bdea4d1-6623-409d-bd40-17a2c865db76)
