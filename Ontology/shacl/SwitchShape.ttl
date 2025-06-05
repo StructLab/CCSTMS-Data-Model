@@ -1,0 +1,48 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix era: <http://data.europa.eu/949/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+# Ensure that a Switch is related to exaxtly 3 LinearElements 
+
+era:SwitchShape a sh:NodeShape ;
+    sh:targetClass era:Switch ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "Switch must have exactly 3 unique (element + boolean) combinations across leftBranch and rightBranch." ;
+        sh:select """
+        PREFIX era: <http://data.europa.eu/949/>
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+        SELECT ?this
+        WHERE {
+          {
+            SELECT ?this (COUNT(DISTINCT ?elementWithFlag) AS ?uniqueCount)
+            WHERE {
+              {
+                SELECT ?this (CONCAT(STR(?elementA), "___", STR(?flagA)) AS ?elementWithFlag)
+                WHERE {
+                  ?this ?pointRole ?netRelation .
+                  FILTER (?pointRole IN (era:pointLeft, era:pointRight))
+                  ?netRelation era:elementA ?elementA ;
+                               era:isOnOriginOfElementA ?flagA .
+                }
+              }
+              UNION
+              {
+                SELECT ?this (CONCAT(STR(?elementB), "___", STR(?flagB)) AS ?elementWithFlag)
+                WHERE {
+                  ?this ?pointRole ?netRelation .
+                  FILTER (?pointRole IN (era:pointLeft, era:pointRight))
+                  ?netRelation era:elementB ?elementB ;
+                               era:isOnOriginOfElementB ?flagB .
+                }
+              }
+            }
+            GROUP BY ?this
+            HAVING (COUNT(DISTINCT ?elementWithFlag) != 3)
+          }
+        }
+        """ ;
+    ] .

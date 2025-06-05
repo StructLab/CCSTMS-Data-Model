@@ -1,0 +1,63 @@
+@prefix era: <http://data.europa.eu/949/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+era:NetRelationIntegrityShape
+    a sh:NodeShape ;
+    sh:targetClass era:NetRelation ;
+    sh:message "Invalid NetRelation connecting switch points" ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:prefixes <http://data.europa.eu/949/> ;  # Critical for SHACL engines
+        sh:select """
+            PREFIX era: <http://data.europa.eu/949/>
+            SELECT DISTINCT $this
+            WHERE {
+                $this a era:NetRelation ;
+                      era:elementA ?elementA ;
+                      era:elementB ?elementB ;
+                      era:isOnOriginOfElementA ?flagA ;
+                      era:isOnOriginOfElementB ?flagB .
+
+                # Find UNIQUE switch-connected pairs
+                {
+                    SELECT ?e1 ?f1 ?e2 ?f2
+                    WHERE {
+                        # First element
+                        {
+                            SELECT ?switch ?e1 ?f1
+                            WHERE {
+                                ?switch a era:Switch ;
+                                        era:pointLeft|era:pointRight ?p .
+                                { ?p era:elementA ?e1 ; era:isOnOriginOfElementA ?f1 }
+                                UNION
+                                { ?p era:elementB ?e1 ; era:isOnOriginOfElementB ?f1 }
+                            }
+                            GROUP BY ?switch ?e1 ?f1
+                            HAVING (COUNT(*) = 1)
+                        }
+                        # Second element
+                        {
+                            SELECT ?switch ?e2 ?f2
+                            WHERE {
+                                ?switch a era:Switch ;
+                                        era:pointLeft|era:pointRight ?p .
+                                { ?p era:elementA ?e2 ; era:isOnOriginOfElementA ?f2 }
+                                UNION
+                                { ?p era:elementB ?e2 ; era:isOnOriginOfElementB ?f2 }
+                            }
+                            GROUP BY ?switch ?e2 ?f2
+                            HAVING (COUNT(*) = 1)
+                        }
+                        FILTER(?e1 != ?e2)
+                    }
+                }
+
+                # Match invalid NetRelations
+                FILTER (
+                    (?elementA = ?e1 && ?flagA = ?f1 && ?elementB = ?e2 && ?flagB = ?f2) ||
+                    (?elementA = ?e2 && ?flagA = ?f2 && ?elementB = ?e1 && ?flagB = ?f1)
+                )
+            }
+            """ ;
+    ] .
