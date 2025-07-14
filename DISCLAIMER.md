@@ -12,7 +12,7 @@ EU Rail makes no representation or warranty as to the **accuracy** or **complete
 
 You may study, research, implement, adapt, improve, and otherwise use the information, content, and models in this document for your own purposes.  
 If you decide to publish or disclose any adapted, modified, or improved version of this document, implementation, or derivative work, **you must clearly indicate** that you have modified this document, with a reference to the original document name and these terms of use.  
-You may **not** use EU Rail’s trademarks or name in any way that may imply — directly or indirectly — that EU Rail is the author of your adaptations.
+You may **not** use EU Rail’s trademarks or name in any way that may imply "directly or indirectly" that EU Rail is the author of your adaptations.
 
 EU Rail cannot be held responsible for your product, even if you have used this document or its content.  
 It is your responsibility to verify the **quality, completeness, and accuracy** of the information you use for your own purposes.
