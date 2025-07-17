@@ -44,14 +44,13 @@ To get started with the CCS/TMS Data Model:
 2. **Review the Documentation**: Begin with the *Introduction* document to understand the model's purpose and scope. The *Data Model Schema* and *DM Docs* provides specific details on the data structure.
 3. **Explore the Model**: Use the DM Files, Ontology (RDF & TTL), and the schemas as templates for integrating this data model into your systems.
 
-      *- Infrastructure (INFRA)*  -->    covers all infrastructure data objects <br>
-      *- ATO*                     -->    configuration of ATO Trackside <br>
-      *- Engineering (ENG)*       -->    Engineering of ETCS L2 <br>
-      *- Map Reference (MAP)*     -->    Digital Map, e.g. for Localisation <br>
-      *- Operational Plan (OPP)*  -->    used by CCS-TMS Interface Specification <br>
-      *- Traffic Protection (TP)* -->    configuration for TPS / Safety Logic <br>
-      *- Subset 026 (SS026)*      -->    used for Engineering of ETCS Telegrams, later also for configuration interface specification <br>
-      *- Equipment model*         -->    imported from EULYNX for diagnostic purposes
+      *- Infrastructure (INFRA)*           -->    covers all infrastructure data objects <br>
+      *- On-Board Infrastructure (OI)*     -->    On-Board Infrastructure Data (OI Data) use case for Traffic and Train CS Domain <br>
+      *- Engineering (ENG)*                -->    Engineering of ETCS L2 <br>
+      *- Map Reference (MAP)*              -->    Digital Map, e.g. for Localisation <br>
+      *- Operational Plan (OPP)*           -->    used by CCS-TMS Interface Specification <br>
+      *- Traffic Protection (TP)*          -->    configuration for TPS / Safety Logic <br>
+      *- Subset 026 (SS026)*               -->    used for Engineering of ETCS Telegrams, later also for configuration interface specification <br>
 
 
 ## Collaboration and Development
