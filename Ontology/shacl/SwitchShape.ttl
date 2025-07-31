@@ -24,7 +24,7 @@ era:SwitchShape a sh:NodeShape ;
                 SELECT ?this (CONCAT(STR(?elementA), "___", STR(?flagA)) AS ?elementWithFlag)
                 WHERE {
                   ?this ?pointRole ?netRelation .
-                  FILTER (?pointRole IN (era:pointLeft, era:pointRight))
+                  FILTER (?pointRole IN (era:leftBranch, era:rightBranch))
                   ?netRelation era:elementA ?elementA ;
                                era:isOnOriginOfElementA ?flagA .
                 }
@@ -34,7 +34,7 @@ era:SwitchShape a sh:NodeShape ;
                 SELECT ?this (CONCAT(STR(?elementB), "___", STR(?flagB)) AS ?elementWithFlag)
                 WHERE {
                   ?this ?pointRole ?netRelation .
-                  FILTER (?pointRole IN (era:pointLeft, era:pointRight))
+                  FILTER (?pointRole IN (era:leftBranch, era:rightBranch))
                   ?netRelation era:elementB ?elementB ;
                                era:isOnOriginOfElementB ?flagB .
                 }
