@@ -62,7 +62,3 @@ This data model is developed in collaboration with various System Pillar domains
 ## License
 
 This repository follows *EUPL* license agreement for authorized usage. Please refer to the [European Union Public License](https://eupl.eu/1.2/en/) for more information.
-
----
-
-Thank you for visiting the CCS/TMS Data Model Repository!
