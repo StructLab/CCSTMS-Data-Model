@@ -4,9 +4,9 @@
 This repository is archived and no longer maintained.  
 Thank you for your interest in **ERA Ontology**.  
 
-As of **August 29th, 2025**, this project is no longer actively maintained, and the repository has been archived. This means:
+As of **August 29th, 2025**, this project is no longer actively maintained here, and this repository has been archived. This means:
 
-✅ The repository is now read-only.  
+✅ This repository is now read-only.  
 ❌ No further updates, bug fixes, or new features will be added.  
 ❌ Issues and pull requests will not be reviewed or accepted.  
 
